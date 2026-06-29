@@ -1,0 +1,133 @@
+// =============================================================================
+// Double Youpi — Shared variables (Sass + CSS custom properties)
+// =============================================================================
+//
+// "Dual" strategy:
+//   - Sass variables ($color-accent…) : usable in calc, mixins, math
+//   - CSS variables (--dy-accent…)    : runtime override (theming, dark mode,
+//     user-configurable accent via Settings, etc.)
+//
+// Systematic pattern:
+//   $color-accent: #5b8cff;
+//   :root { --dy-accent: #{$color-accent}; }
+//
+// When to update:
+//   - A colour changes → update the Sass value; the CSS version follows.
+//   - Runtime override needed → add a CSS custom property.
+//
+// =============================================================================
+
+
+// ── Colours: dark palette (media library) ────────────────────────────────────
+
+// Accents
+$color-accent:        #5b8cff;
+$color-accent-hover:  #6e9aff;
+
+// Text
+$color-ink:           #ecedf2;  // Primary light text
+$color-ink-soft:      #9ba3b5;  // Secondary text
+$color-ink-mute:      #5a6070;  // Tertiary text (labels, hints)
+$color-ink-faint:     #4a4f5d;  // Dimmed text (disabled, separator)
+
+// Backgrounds
+$color-bg:            #0c0e13;  // Global page background
+$color-bg-soft:       #0f1118;  // Panel background
+$color-bg-card:       #161a23;  // Card / input background
+$color-bg-elev:       #1d2030;  // Elevated background / hover
+
+// Lines / borders
+$color-line:          #1e2235;  // Standard border
+$color-line-hi:       #2a3049;  // Hover / input border
+$color-line-soft:     rgba(255, 255, 255, 0.04); // Very subtle separator
+
+// Semantic states
+$color-success:       #16a34a;
+$color-success-hover: #15803d;
+$color-warning:       #f59e0b;
+$color-danger:        #d63638;
+$color-danger-hover:  #b32d2e;
+
+// Brand colours (admin.css: home / dashboard page)
+$color-purple:        #342E71;
+$color-purple-600:    #2a2560;
+$color-purple-200:    #e9e7f3;
+$color-purple-100:    #f4f3f9;
+$color-yellow:        #ffd166;
+$color-yellow-600:    #f5b800;
+$color-yellow-100:    #fef9e7;
+
+
+// ── Spacing ──────────────────────────────────────────────────────────────────
+
+$spacing-xs:   2px;
+$spacing-sm:   4px;
+$spacing-md:   8px;
+$spacing-lg:   12px;
+$spacing-xl:   16px;
+$spacing-2xl:  20px;
+$spacing-3xl:  24px;
+$spacing-4xl:  32px;
+
+// Universal gutter (spacing around the media library)
+$gutter:       20px;
+
+
+// ── Typography ───────────────────────────────────────────────────────────────
+
+$font-display: 'Fraunces', ui-serif, Georgia, serif;
+$font-body:    'Inter Tight', system-ui, -apple-system, sans-serif;
+$font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+$font-size-xs:   10px;
+$font-size-sm:   12px;
+$font-size-base: 13px;
+$font-size-md:   14px;
+$font-size-lg:   16px;
+$font-size-xl:   18px;
+$font-size-2xl:  24px;
+$font-size-3xl:  30px;
+
+
+// ── Border radii ─────────────────────────────────────────────────────────────
+
+$radius-xs:  2px;
+$radius-sm:  4px;
+$radius-md:  6px;
+$radius-lg:  8px;
+$radius-xl:  12px;
+$radius-pill: 100px;
+
+
+// ── Transitions ──────────────────────────────────────────────────────────────
+
+$transition-fast:    0.12s ease;
+$transition-base:    0.15s ease;
+$transition-slow:    0.3s ease;
+$transition-panel:   0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+
+// ── Layout / WP dimensions ───────────────────────────────────────────────────
+
+$wp-sidebar-width:           160px;  // Admin sidebar default
+$wp-sidebar-width-folded:    36px;   // Admin sidebar collapsed
+$wp-admin-bar-height:        32px;
+$wp-admin-bar-height-mobile: 46px;
+
+$panel-folder-default-width: 220px;
+$panel-detail-default-width: 340px;
+
+
+// =============================================================================
+// CSS Custom Properties (runtime override possible)
+// =============================================================================
+//
+// All Sass variables above are also exposed as CSS vars under the --dy-* prefix.
+// This allows JS or a child theme to replace a colour without recompiling SCSS.
+//
+// IMPORTANT: this :root block is inserted only once — either via admin.scss or
+// via media-library.scss. To avoid duplication, it is NOT included here (files
+// that @use 'variables' only emit Sass variables).
+//
+// See _root.scss for the :root block.
+

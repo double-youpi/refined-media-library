@@ -1,0 +1,48 @@
+// =============================================================
+// _icons.scss
+// Global styles for the `.dy-icon` SVG sprite + line-draw animation.
+//
+// Architecture: <svg class="dy-icon"><use href="#dy-icon-{id}"></svg>
+// The sprite lives in assets/images/dy-modules-sprite.svg and is inlined
+// once per page via IconSprite::print_sprite() (admin_footer).
+//
+// Paths to animate carry the `.dy-draw` class and a
+// pathLength="100" attribute that normalises length for uniform animations.
+// =============================================================
+
+.dy-icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	color: inherit;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	vertical-align: middle;
+	overflow: visible;
+	// Sprite paths carry currentColor → the icon inherits the color
+	// of its parent (icon-tile, settings-link, etc.). See _cards.scss.
+}
+
+// When a path is in line-draw mode: we set the dasharray to
+// pathLength=100 and keep the icon fully drawn by default (dashoffset 0).
+// The animation is triggered by the card hover (see _cards.scss).
+.dy-icon .dy-draw {
+	stroke-dasharray: 100;
+	stroke-dashoffset: 0;
+}
+
+// Line-draw animation: passes through an invisible state (dashoffset 100)
+// before progressively redrawing to 0. Effect: "the stroke redraws on hover".
+@keyframes dy-line-draw {
+	0%   { stroke-dashoffset: 100; opacity: .55; }
+	30%  { opacity: 1; }
+	100% { stroke-dashoffset: 0;   opacity: 1; }
+}
+
+// Reduced motion: no animation, but the icon remains fully drawn.
+@media (prefers-reduced-motion: reduce) {
+	.dy-icon .dy-draw { animation: none !important; }
+}

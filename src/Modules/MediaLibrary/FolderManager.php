@@ -44,6 +44,8 @@ class FolderManager extends AbstractModule {
 		add_action( 'wp_ajax_doubleyoupi_ml_enable_feature', [ $this, 'ajax_enable_feature' ] );
 		// Priority 20: runs after MetadataAutoFiller (10) and before DuplicateDetector (30).
 		add_action( 'add_attachment', [ $this, 'assign_taxonomies_on_upload' ], 20, 1 );
+		// A new upload may introduce a second uploader → refresh the "Mine" gate.
+		add_action( 'add_attachment', [ $this, 'flush_uploader_cache' ] );
 
 		// Bulk actions on upload.php list view : Move to folder / Add to collection.
 		// No server-side handler is needed — JS intercepts the form submit
@@ -66,6 +68,37 @@ class FolderManager extends AbstractModule {
 	public function remove_noise_columns( array $columns ): array {
 		unset( $columns['comments'], $columns['doubleyoupi_duplicate'] );
 		return $columns;
+	}
+
+	/**
+	 * Whether the media library holds attachments from more than one author.
+	 * Used to gate the "Mine" filter button (pointless on a solo site).
+	 *
+	 * Cached in a transient — cleared on every new upload — so the lookup only
+	 * runs occasionally even on large libraries.
+	 */
+	private function has_multiple_uploaders(): bool {
+		$cached = get_transient( 'doubleyoupi_ml_multi_uploader' );
+		if ( false !== $cached ) {
+			return '1' === $cached;
+		}
+
+		global $wpdb;
+		// Read-only, no user input; LIMIT 2 lets the engine stop as soon as a
+		// second distinct author is seen.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$authors = $wpdb->get_col( "SELECT DISTINCT post_author FROM {$wpdb->posts} WHERE post_type = 'attachment' LIMIT 2" );
+		$multi   = count( $authors ) > 1;
+
+		set_transient( 'doubleyoupi_ml_multi_uploader', $multi ? '1' : '0', DAY_IN_SECONDS );
+		return $multi;
+	}
+
+	/**
+	 * Invalidate the multi-uploader cache (hooked on add_attachment).
+	 */
+	public function flush_uploader_cache(): void {
+		delete_transient( 'doubleyoupi_ml_multi_uploader' );
 	}
 
 	/**
@@ -192,6 +225,9 @@ class FolderManager extends AbstractModule {
 				'foldersEnabled'     => Settings::folders_enabled() ? '1' : '0',
 				'collectionsEnabled' => Settings::collections_enabled() ? '1' : '0',
 				'settingsUrl'        => admin_url( 'admin.php?page=doubleyoupi-media-library' ),
+				'currentUserId'      => get_current_user_id(),
+				// "Mine" filter button only makes sense when several people upload.
+				'mineFilter'         => $this->has_multiple_uploaders() ? '1' : '0',
 				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
 				'enableNonce'        => wp_create_nonce( 'doubleyoupi_ml_enable_feature' ),
 				'i18n'               => FolderManagerI18n::strings(),

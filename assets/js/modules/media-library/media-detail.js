@@ -338,13 +338,17 @@
 	}
 
 	function createLightbox() {
+		var svgPrev  = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg>';
+		var svgNext  = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg>';
+		var svgClose = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
+
 		var el = document.createElement( 'div' );
 		el.className = 'dy-lightbox';
 		el.innerHTML =
 			'<div class="dy-lb-backdrop"></div>' +
-			'<button type="button" class="dy-lb-close" title="' + esc( i18n.close ) + '" aria-label="' + esc( i18n.close ) + '">&#10005;</button>' +
-			'<button type="button" class="dy-lb-nav dy-lb-prev" title="' + esc( i18n.previous ) + '" aria-label="' + esc( i18n.previous ) + '">&#8249;</button>' +
-			'<button type="button" class="dy-lb-nav dy-lb-next" title="' + esc( i18n.next ) + '" aria-label="' + esc( i18n.next ) + '">&#8250;</button>' +
+			'<button type="button" class="dy-lb-close" title="' + esc( i18n.close ) + '" aria-label="' + esc( i18n.close ) + '">' + svgClose + '</button>' +
+			'<button type="button" class="dy-lb-nav dy-lb-prev" title="' + esc( i18n.previous ) + '" aria-label="' + esc( i18n.previous ) + '">' + svgPrev + '</button>' +
+			'<button type="button" class="dy-lb-nav dy-lb-next" title="' + esc( i18n.next ) + '" aria-label="' + esc( i18n.next ) + '">' + svgNext + '</button>' +
 			'<figure class="dy-lb-stage"><img class="dy-lb-img" alt=""><figcaption class="dy-lb-caption"></figcaption></figure>' +
 			'<div class="dy-lb-counter"></div>';
 		document.body.appendChild( el );

@@ -185,6 +185,7 @@ Media files won’t be deleted — they will simply be removed from this collect
 			'audio'                   => __( 'Audio', 'doubleyoupi-refined-media-library' ),
 			'documents'               => __( 'Documents', 'doubleyoupi-refined-media-library' ),
 			'svg'                     => __( 'SVG', 'doubleyoupi-refined-media-library' ),
+			'mine'                    => __( 'Mine', 'doubleyoupi-refined-media-library' ),
 
 			// ── Search action button (grid view, mirrors list view) ──────
 			'searchAction'            => __( 'Search', 'doubleyoupi-refined-media-library' ),

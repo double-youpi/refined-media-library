@@ -14,7 +14,10 @@
 	 * Labels come from PHP via doubleyoupiMediaFolders.i18n (proper WP i18n).
 	 */
 
-	var i18n = ( window.doubleyoupiMediaFolders && window.doubleyoupiMediaFolders.i18n ) || {};
+	var dyData        = window.doubleyoupiMediaFolders || {};
+	var i18n          = dyData.i18n || {};
+	var currentUserId = parseInt( dyData.currentUserId, 10 ) || 0;
+	var showMine      = dyData.mineFilter === '1';
 
 	var types = [
 		{ value: '',               label: i18n.allTypes  || 'All types' },
@@ -70,6 +73,41 @@
 		} else {
 			$( '.media-toolbar-primary' ).first().prepend( $select );
 		}
+	}
+
+	/*
+	 * "Mine" toggle button — filters the library to the current user's own
+	 * uploads. Only rendered when the library actually holds uploads from more
+	 * than one author (gated server-side via doubleyoupiMediaFolders.mineFilter),
+	 * so a solo site never sees a pointless control. Filters by the native
+	 * `author` query prop, the same one WP's own "Mine" filter uses.
+	 */
+	function injectMineButton() {
+		if ( ! showMine ) { return; }
+		if ( ! /\/upload\.php/.test( window.location.pathname ) ) { return; }
+		if ( $( '#dy-mine-filter' ).length ) { return; }
+
+		var $type = $( '#dy-type-filter' );
+		if ( ! $type.length ) { return; } // sit right after the type filter
+
+		var label = i18n.mine || 'Mine';
+		var icon  = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.4"></circle><path d="M5.5 20a6.5 6.5 0 0 1 13 0"></path></svg>';
+		var $btn  = $(
+			'<button type="button" id="dy-mine-filter" class="dy-mine-btn" aria-pressed="false" aria-label="' + label + '" title="' + label + '">' +
+				icon + '<span class="dy-mine-btn__label">' + label + '</span>' +
+			'</button>'
+		);
+
+		$btn.on( 'click', function () {
+			var on = $btn.attr( 'aria-pressed' ) !== 'true';
+			$btn.attr( 'aria-pressed', on ? 'true' : 'false' ).toggleClass( 'is-active', on );
+			var col = getCollection();
+			if ( col ) {
+				col.props.set( { author: on ? ( currentUserId || null ) : null } );
+			}
+		} );
+
+		$type.after( $btn );
 	}
 
 	/*
@@ -148,6 +186,7 @@
 	 */
 	function runInjectors() {
 		injectTypeFilter();
+		injectMineButton();
 		injectSearchButton();
 		fillSearchPlaceholder();
 		injectDetailClose();

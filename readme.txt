@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ There isn't one. This is the standalone version, no strings attached. If it save
 
 == Changelog ==
 
+= 0.1.3 =
+* New "Mine" filter in the media library toolbar (shown only when several people upload) to quickly narrow to your own files.
+* Removed a redundant media-type dropdown so the filters bar is cleaner.
+* Fixed a stray horizontal scrollbar above the media grid.
+* Lightbox navigation arrows are now crisp SVG icons.
+
 = 0.1.2 =
 * Readme and wording refresh, clearer feature descriptions and an expanded FAQ. No functional changes.
 
@@ -116,6 +122,9 @@ There isn't one. This is the standalone version, no strings attached. If it save
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.1.3 =
+A new "Mine" filter for multi-author sites, a cleaner filters bar, and a horizontal scrollbar fix.
 
 = 0.1.1 =
 A resizable, proportionally-scaling image preview with a new full-screen lightbox gallery, plus tidier handling of buttons added by other plugins.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-06-29T12:13:51+00:00\n"
+"POT-Creation-Date: 2026-06-29T14:28:22+00:00\n"
 "Language: it_IT\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -489,22 +489,22 @@ msgstr "Duplica"
 msgid "View original"
 msgstr "Vedi l’originale"
 
-#: src/Modules/MediaLibrary/FolderManager.php:79
+#: src/Modules/MediaLibrary/FolderManager.php:112
 msgid "Move to folder…"
 msgstr "Sposta in una cartella…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:82
+#: src/Modules/MediaLibrary/FolderManager.php:115
 msgid "Add to collection…"
 msgstr "Aggiungi a una collezione…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:487
 #: src/Modules/MediaLibrary/FolderManager.php:523
+#: src/Modules/MediaLibrary/FolderManager.php:559
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Una cartella non può essere spostata in sé stessa o in una delle sue "
 "sottocartelle."
 
-#: src/Modules/MediaLibrary/FolderManager.php:548
+#: src/Modules/MediaLibrary/FolderManager.php:584
 msgid "Could not delete folder."
 msgstr "Impossibile eliminare la cartella."
 
@@ -965,69 +965,73 @@ msgstr "Documenti"
 msgid "SVG"
 msgstr "SVG"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:190
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:188
+msgid "Mine"
+msgstr "I miei"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
 msgid "Search"
 msgstr "Cerca"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:194
 msgid "No media selected."
 msgstr "Nessun media selezionato."
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr "Modifica metadati (%d)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
 msgid "Bulk edit"
 msgstr "Modifica in blocco"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
 msgid "1 file selected"
 msgstr "1 file selezionato"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
 #, php-format
 msgid "%d files selected"
 msgstr "%d file selezionati"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr "Lascia un campo vuoto per mantenere il valore esistente di ogni file."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "Alt text"
 msgstr "Testo alternativo"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
 msgid "Describe the image…"
 msgstr "Descrivi l’immagine…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:206
 msgid "File title…"
 msgstr "Titolo del file…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:206
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
 msgid "Apply to 1 file"
 msgstr "Applica a 1 file"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
 #, php-format
 msgid "Apply to %d files"
 msgstr "Applica a %d file"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
 msgid "Applying…"
 msgstr "Applicazione…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
 msgid "Retry"
 msgstr "Riprova"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
 msgid "More fields"
 msgstr "Altri campi"
 
