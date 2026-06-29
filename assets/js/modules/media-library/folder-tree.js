@@ -321,6 +321,7 @@
 		$( '#dy-add-collection-btn' ).on( 'click', onAddCollection );
 
 		relocateAddMediaButton();
+		watchForeignActions();
 		mountPanelBrand();
 
 		initFolderResize();
@@ -535,6 +536,7 @@
 		$( '#dy-add-collection-btn' ).on( 'click', onAddCollection );
 
 		relocateAddMediaButton();
+		watchForeignActions();
 		mountPanelBrand();
 
 		initFolderResize();
@@ -599,6 +601,101 @@
 		// CSS-only collapse (`position: absolute; opacity: 0; pointer-
 		// events: none`) so it's invisible but functional.
 		$orig.addClass( 'dy-action-relocated' );
+	}
+
+	/*
+	 * Sweep action buttons that OTHER plugins inject into the page heading row
+	 * (WP convention: <a class="page-title-action"> as siblings of the <h1>,
+	 * e.g. Elementor's "Generate with Elementor AI"). Our <h1> is visually
+	 * hidden, so these leak under it and break the layout. We MOVE them (not
+	 * clone — preserving their bound handlers) into a discreet group at the
+	 * bottom of the panel, just above Settings.
+	 *
+	 * Idempotent. A MutationObserver + a couple of delayed sweeps catch buttons
+	 * injected asynchronously (some plugins add theirs after DOM-ready).
+	 */
+	function relocateForeignActions() {
+		var host = window.document.getElementById( 'dy-foreign-actions' );
+		var wrap = window.document.querySelector( '.wrap' );
+		if ( ! host || ! wrap ) { return; }
+
+		var hr     = wrap.querySelector( 'hr.wp-header-end' );
+		var strict = ! hr; // no header-end marker → only touch .page-title-action (safe)
+		var kids   = Array.prototype.slice.call( wrap.children ); // static snapshot (we move during the loop)
+
+		for ( var i = 0; i < kids.length; i++ ) {
+			var el = kids[ i ];
+			if ( hr && el === hr ) { break; }                                   // stop at the heading-row end
+			if ( el === host || el.id === 'dy-add-media-action' ) { continue; }
+			if ( el.tagName === 'H1' || el.classList.contains( 'wp-heading-inline' ) ) { continue; }
+			if ( el.classList.contains( 'dy-action-relocated' ) ) { continue; } // our native "Add media" (hidden)
+
+			var isAction;
+			if ( strict ) {
+				// No <hr class="wp-header-end"> boundary on this screen → only the
+				// safe, explicit convention (a bare .page-title-action).
+				isAction = el.classList.contains( 'page-title-action' );
+			} else {
+				// Heading row = everything before hr.wp-header-end. Relocate any
+				// action element OR a wrapper that holds one — e.g. Elementor wraps
+				// its "Generate with AI" link in <div id="e-image-ai-media-library">.
+				isAction = el.classList.contains( 'page-title-action' ) ||
+					el.tagName === 'A' || el.tagName === 'BUTTON' ||
+					!! el.querySelector( 'a, button' );
+			}
+			if ( ! isAction ) { continue; }
+
+			el.classList.add( 'dy-foreign-action' );
+			host.appendChild( el ); // MOVE — keeps the element and its event handlers intact
+			flattenForeignControl( el );
+		}
+	}
+
+	/*
+	 * Dissolve a relocated control's INNER boxes so only our outer .dy-foreign-action
+	 * shows (no button-in-button). Third-party styles often live in a <style> rule
+	 * (e.g. Elementor's Emotion class .css-…) that an external stylesheet can't
+	 * reliably beat — so we strip the inner chrome with INLINE !important, which
+	 * always wins. Wrappers and the link itself become display:contents so their
+	 * icon + label flow into our single row (the link stays clickable).
+	 */
+	function flattenForeignControl( root ) {
+		var kids = root.querySelectorAll( '*' );
+		Array.prototype.forEach.call( kids, function ( n ) {
+			var s      = n.style;
+			var tag    = n.tagName;
+			var isIcon = tag === 'I' || tag === 'IMG' || tag === 'SVG' ||
+				( n.className && /icon/i.test( n.className.toString() ) );
+			// Strip the element's own box chrome on every descendant.
+			s.setProperty( 'background', 'transparent', 'important' );
+			s.setProperty( 'border', '0', 'important' );
+			s.setProperty( 'box-shadow', 'none', 'important' );
+			s.setProperty( 'border-radius', '0', 'important' );
+			s.setProperty( 'margin', '0', 'important' );
+			s.setProperty( 'padding', '0', 'important' );
+			if ( isIcon ) { return; } // keep the icon a box (sized by our CSS)
+			s.setProperty( 'max-width', '100%', 'important' );
+			s.setProperty( 'min-width', '0', 'important' );
+			s.setProperty( 'width', 'auto', 'important' );
+			// Any non-icon wrapper/control dissolves from layout (display:contents)
+			// so its icon + text flow straight into our single row — universal,
+			// regardless of how the third-party plugin nests its markup. Links and
+			// buttons stay clickable when display:contents.
+			s.setProperty( 'display', 'contents', 'important' );
+		} );
+	}
+
+	var foreignActionsObserver = null;
+	function watchForeignActions() {
+		relocateForeignActions();
+		if ( foreignActionsObserver || typeof window.MutationObserver === 'undefined' ) { return; }
+		var wrap = window.document.querySelector( '.wrap' );
+		if ( ! wrap ) { return; }
+		// Catch buttons injected after our first pass (Elementor & co. add late).
+		foreignActionsObserver = new window.MutationObserver( function () { relocateForeignActions(); } );
+		foreignActionsObserver.observe( wrap, { childList: true } );
+		window.setTimeout( relocateForeignActions, 600 );
+		window.setTimeout( relocateForeignActions, 1800 );
 	}
 
 	/*
@@ -705,6 +802,9 @@
 					'<div id="dy-collection-list">' + collectionListInit + '</div>' +
 				'</div>' +
 
+				// Container for action buttons relocated from other plugins
+				// (filled by relocateForeignActions(); stays empty/hidden otherwise).
+				'<div id="dy-foreign-actions" class="dy-foreign-actions"></div>' +
 				settingsFooter +
 				'<div class="dy-rh-right" id="dy-rh-folder"></div>' +
 			'</div>'

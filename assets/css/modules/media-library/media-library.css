@@ -3338,6 +3338,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
 
 /* ── Preview ──────────────────────────────────────────────────────────────── */
 .dy-dp-preview {
+  position: relative;
   /* Checkered transparency pattern, same as thumbnail */
   background-color: var(--bg, #0c0e13);
   background-image: linear-gradient(45deg, #111318 25%, transparent 25%), linear-gradient(-45deg, #111318 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #111318 75%), linear-gradient(-45deg, transparent 75%, #111318 75%);
@@ -3346,17 +3347,246 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
-  max-height: 260px;
+  width: 100%;
+  /* Height follows the width through aspect-ratio (set inline per image), so a
+     wider panel enlarges the image proportionally — not just horizontally. */
+  aspect-ratio: 3 / 2;
+  min-height: 140px;
+  max-height: 70vh;
   border-bottom: 1px solid var(--line, #1e2235);
   overflow: hidden;
 }
 
+.dy-dp-preview[data-full] {
+  cursor: zoom-in;
+}
+
 .dy-dp-thumb-img {
-  max-width: 100%;
-  max-height: 260px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
+}
+
+/* Expand affordance — appears on hover, opens the lightbox */
+.dy-dp-expand {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: #fff;
+  background: rgba(12, 14, 19, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.18s cubic-bezier(0.23, 1, 0.32, 1), transform 0.18s cubic-bezier(0.23, 1, 0.32, 1), background 0.16s ease, border-color 0.16s ease;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.dy-dp-preview:hover .dy-dp-expand,
+.dy-dp-expand:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dy-dp-expand:hover {
+  background: rgba(91, 62, 254, 0.85);
+  border-color: rgba(91, 62, 254, 0.9);
+}
+
+.dy-dp-expand:active {
+  transform: scale(0.94);
+}
+
+.dy-dp-expand svg {
+  display: block;
+}
+
+/* Drag handle under the preview — resizes the image height */
+.dy-dp-resize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11px;
+  cursor: ns-resize;
+  background: var(--bg, #0c0e13);
+  border-bottom: 1px solid var(--line, #1e2235);
+  user-select: none;
+}
+
+.dy-dp-resize-grip {
+  width: 34px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--ink-mute, #5a6070);
+  opacity: 0.5;
+  transition: opacity 0.15s ease, background 0.15s ease, width 0.15s ease;
+}
+
+.dy-dp-resize:hover .dy-dp-resize-grip {
+  opacity: 1;
+  background: #5b3efe;
+  width: 46px;
+}
+
+body.dy-dp-resizing,
+body.dy-dp-resizing * {
+  cursor: ns-resize !important;
+  user-select: none !important;
+}
+
+/* ── Lightbox gallery ─────────────────────────────────────────────────────── */
+.dy-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dy-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dy-lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 11, 0.92);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.dy-lb-stage {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 88vw;
+  max-height: 86vh;
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dy-lightbox.is-open .dy-lb-stage {
+  transform: scale(1);
+}
+
+.dy-lb-img {
+  max-width: 88vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #0c0e13;
+  box-shadow: 0 24px 70px -20px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.14s ease, filter 0.14s ease;
+}
+
+.dy-lb-img.is-swapping {
+  opacity: 0;
+  filter: blur(8px);
+}
+
+.dy-lb-caption {
+  margin-top: 12px;
+  max-width: 70vw;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  text-align: center;
+}
+
+.dy-lb-close,
+.dy-lb-nav {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+}
+
+.dy-lb-close {
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dy-lb-nav {
+  top: 50%;
+  margin-top: -26px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.dy-lb-prev {
+  left: 22px;
+}
+
+.dy-lb-next {
+  right: 22px;
+}
+
+.dy-lb-close:hover,
+.dy-lb-nav:hover {
+  background: rgba(91, 62, 254, 0.85);
+  border-color: rgba(91, 62, 254, 0.9);
+}
+
+.dy-lb-close:active,
+.dy-lb-nav:active {
+  transform: scale(0.94);
+}
+
+.dy-lb-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+body.dy-lb-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dy-lightbox,
+  .dy-lb-stage,
+  .dy-lb-img,
+  .dy-dp-expand {
+    transition: none !important;
+  }
 }
 
 .dy-dp-thumb-icon {
@@ -5131,6 +5361,80 @@ body.upload-php .media-grid-view-switch > a.current::before {
 
 #dy-folder-panel.dy-folders-off #dy-show-all {
   opacity: 0.9;
+}
+
+/* Action buttons relocated from OTHER plugins (Elementor "Generate with AI",
+   etc.) — a discreet group just above Settings. Hidden when empty. */
+.dy-foreign-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--dy-line, rgba(255, 255, 255, 0.08));
+}
+.dy-foreign-actions:empty {
+  display: none;
+}
+/* When present, the foreign-actions group sits at the very bottom, just above
+   Settings (it takes over the auto-margin so there is no gap). When empty
+   (display:none), Settings keeps its own margin-top:auto and stays pinned. */
+.dy-foreign-actions:not(:empty) {
+  margin-top: auto;
+}
+.dy-foreign-actions:not(:empty) ~ .dy-panel-settings {
+  margin-top: 0;
+}
+/* The relocated control becomes ONE clean panel row, whatever plugin it came
+   from. The third-party element's own NESTED boxes (and a plugin's styles can
+   out-specify any external stylesheet — e.g. Elementor's
+   `body.upload-php #e-image-ai-media-library a { …!important }`) are dissolved
+   in JS via INLINE !important (flattenForeignControl in folder-tree.js), which
+   always wins. Here we only style our single outer button + the icon — !important
+   so our box also beats any rule the plugin puts on the wrapper itself. */
+#dy-folder-panel .dy-foreign-action {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  border: 1px solid var(--dy-line, rgba(255, 255, 255, 0.12)) !important;
+  border-radius: 9px !important;
+  background: var(--dy-bg) !important;
+  color: var(--dy-ink-soft, #c6c7cb) !important;
+  font: 500 12px/1.3 inherit !important;
+  text-align: left;
+  text-decoration: none !important;
+  white-space: normal;
+  overflow: hidden;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+#dy-folder-panel .dy-foreign-action:hover,
+#dy-folder-panel .dy-foreign-action:focus,
+#dy-folder-panel .dy-foreign-action:focus-within {
+  background: rgba(91, 62, 254, 0.1) !important;
+  border-color: rgba(91, 62, 254, 0.4) !important;
+  color: #fff !important;
+}
+/* Keep any icon (dashicon, Elementor eicon font, img, svg) sized + on-accent. */
+#dy-folder-panel .dy-foreign-action i,
+#dy-folder-panel .dy-foreign-action .dashicons,
+#dy-folder-panel .dy-foreign-action [class*="icon"],
+#dy-folder-panel .dy-foreign-action img,
+#dy-folder-panel .dy-foreign-action svg {
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  width: 15px !important;
+  height: 15px !important;
+  font-size: 15px !important;
+  color: var(--accent, #5b3efe) !important;
 }
 
 /* Panel footer: "Settings" button → RML settings. */

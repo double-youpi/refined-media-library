@@ -136,6 +136,7 @@ Media files won’t be deleted — they will simply be removed from this collect
 			'next'                    => __( 'Next', 'doubleyoupi-refined-media-library' ),
 			'close'                   => __( 'Close', 'doubleyoupi-refined-media-library' ),
 			'dragToResize'            => __( 'Drag to resize', 'doubleyoupi-refined-media-library' ),
+			'viewFullSize'            => __( 'View full size', 'doubleyoupi-refined-media-library' ),
 
 			'information'             => __( 'Information', 'doubleyoupi-refined-media-library' ),
 			'date'                    => __( 'Date', 'doubleyoupi-refined-media-library' ),

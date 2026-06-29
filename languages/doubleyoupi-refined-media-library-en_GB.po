@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Double Youpi 0.9.40-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-06-26T10:03:33+00:00\n"
+"POT-Creation-Date: 2026-06-29T11:51:25+00:00\n"
 "PO-Revision-Date: 2026-05-20 22:34+0000\n"
 "Last-Translator: Double Youpi\n"
 "Language-Team: Double Youpi (English (United Kingdom))\n"
@@ -622,7 +622,7 @@ msgid "Create"
 msgstr "Create"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
 msgid "Delete"
 msgstr "Delete"
 
@@ -795,213 +795,217 @@ msgstr "Loading error."
 msgid "Drag to resize"
 msgstr "Drag to resize"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:140
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:139
+msgid "View full size"
+msgstr "View full size"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:141
 msgid "Information"
 msgstr "Information"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:141
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:142
 msgid "Date"
 msgstr "Date"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:142
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:143
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:124
 msgid "Type"
 msgstr "Type"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:143
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:144
 msgid "Dimensions"
 msgstr "Dimensions"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:144
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:145
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:125
 msgid "Size"
 msgstr "Size"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:145
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:146
 msgid "Alternative text"
 msgstr "Alternative text"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:146
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:147
 msgid "Describe the image for accessibility…"
 msgstr "Describe the image for accessibility…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:147
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:148
 msgid "Title"
 msgstr "Title"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:148
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:149
 msgid "File URL"
 msgstr "File URL"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:149
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:150
 msgid "Copy"
 msgstr "Copy"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:150
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:151
 msgid "Copied!"
 msgstr "Copied!"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:152
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:153
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:64
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
 msgid "Folder"
 msgstr "Folder"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:153
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
 msgid "— No folder —"
 msgstr "— No folder —"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
 msgid "+ Add to a collection"
 msgstr "+ Add to a collection"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
 msgid "No collection"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
 msgid "Remove"
 msgstr "Remove"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
 msgid "Save"
 msgstr "Save"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
 msgid "Edit"
 msgstr "Edit"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
 msgid "Saving…"
 msgstr "Saving…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
 msgid "Saved ✓"
 msgstr "Saved ✓"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
 msgid "Error — try again"
 msgstr "Error — try again"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
 msgid "Not used in content."
 msgstr "Not used in content."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
 msgid "(untitled)"
 msgstr "(untitled)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
 msgid "Permanently delete this file? This action cannot be undone."
 msgstr "Permanently delete this file? This action cannot be undone."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
 msgid "Could not delete this file."
 msgstr "Could not delete this file."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
 msgid "Unsaved changes will be lost. Continue?"
 msgstr "Unsaved changes will be lost. Continue?"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:176
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
 msgid "B"
 msgstr "B"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
 msgid "KB"
 msgstr "KB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
 msgid "MB"
 msgstr "MB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:181
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
 msgid "All types"
 msgstr "All types"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
 msgid "Images"
 msgstr "Images"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
 msgid "Videos"
 msgstr "Videos"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:185
 msgid "Audio"
 msgstr "Audio"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:185
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:186
 msgid "Documents"
 msgstr "Documents"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:186
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:187
 msgid "SVG"
 msgstr "SVG"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:189
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:190
 msgid "Search"
 msgstr "Search"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
 msgid "No media selected."
 msgstr "No media selected."
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr "Edit metadata (%d)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
 msgid "Bulk edit"
 msgstr "Bulk edit"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
 msgid "1 file selected"
 msgstr "1 file selected"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
 #, php-format
 msgid "%d files selected"
 msgstr "%d files selected"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr "Leave a field empty to keep each file’s existing value unchanged."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
 msgid "Alt text"
 msgstr "Alt text"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "Describe the image…"
 msgstr "Describe the image…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
 msgid "File title…"
 msgstr "File title…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:206
 msgid "Apply to 1 file"
 msgstr "Apply to 1 file"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
 #, php-format
 msgid "Apply to %d files"
 msgstr "Apply to %d files"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
 msgid "Applying…"
 msgstr "Applying…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
 msgid "Retry"
 msgstr "Retry"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "More fields"
 msgstr "More fields"
 

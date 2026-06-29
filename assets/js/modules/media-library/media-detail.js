@@ -256,6 +256,144 @@
 		navigate( 1 );
 	} );
 
+	// ── Preview height resize (drag the handle under the image) ────────────
+	// Stores the chosen aspect-ratio globally so the viewport stays consistent
+	// across images and reloads (object-fit:contain keeps each one correct).
+	$( document ).on( 'mousedown', '.dy-dp-resize', function ( e ) {
+		e.preventDefault();
+		var $preview = $( this ).prevAll( '.dy-dp-preview' ).first();
+		if ( ! $preview.length ) { return; }
+		var startY = e.clientY;
+		var startH = $preview.outerHeight();
+		var pw     = $preview.outerWidth();
+		$( 'body' ).addClass( 'dy-dp-resizing' );
+		$( document ).on( 'mousemove.dyph', function ( e2 ) {
+			var newH = Math.max( 120, Math.min( window.innerHeight * 0.7, startH + ( e2.clientY - startY ) ) );
+			$preview[ 0 ].style.aspectRatio = String( clampPar( pw / newH ) );
+		} );
+		$( document ).on( 'mouseup.dyph', function () {
+			$( document ).off( '.dyph' );
+			$( 'body' ).removeClass( 'dy-dp-resizing' );
+			var par = parseFloat( $preview[ 0 ].style.aspectRatio );
+			if ( par > 0 ) { localStorage.setItem( 'dy-par', String( par ) ); }
+		} );
+	} );
+
+	// ── Lightbox gallery (click the image preview to open) ─────────────────
+	$( document ).on( 'click', '.dy-dp-preview[data-full]', function ( e ) {
+		e.preventDefault();
+		openLightbox( String( $( this ).attr( 'data-id' ) ) );
+	} );
+
+	var lb = { el: null, list: [], idx: 0 };
+
+	function lbAttachments() {
+		var $a = $( '.attachments li.attachment' );
+		if ( ! $a.length ) { $a = $( '.attachments .attachment' ); }
+		return $a;
+	}
+
+	function lbModel( id ) {
+		try { return wp.media.frame.content.get().collection.get( parseInt( id, 10 ) ); }
+		catch ( e ) { return null; }
+	}
+
+	function lbBestUrl( model ) {
+		var sizes = model.get( 'sizes' );
+		if ( sizes ) {
+			if ( sizes.large && sizes.large.url ) { return sizes.large.url; }
+			if ( sizes.full && sizes.full.url )   { return sizes.full.url; }
+		}
+		return model.get( 'url' ) || null;
+	}
+
+	// Build the gallery in the same order as the grid (= the order arrow-key
+	// navigation uses), restricted to images.
+	function buildImageList() {
+		var list = [];
+		lbAttachments().each( function () {
+			var id = String( $( this ).attr( 'data-id' ) || '' );
+			if ( ! id || id === '0' ) { return; }
+			var model = lbModel( id );
+			if ( ! model || ! /^image\//.test( model.get( 'mime' ) || '' ) ) { return; }
+			var u = lbBestUrl( model );
+			if ( u ) { list.push( { id: id, url: u, title: model.get( 'title' ) || model.get( 'filename' ) || '' } ); }
+		} );
+		return list;
+	}
+
+	function openLightbox( startId ) {
+		var list = buildImageList();
+		if ( ! list.length ) { return; }
+		var idx = 0;
+		for ( var i = 0; i < list.length; i++ ) {
+			if ( list[ i ].id === String( startId ) ) { idx = i; break; }
+		}
+		lb.list = list;
+		lb.idx  = idx;
+		if ( ! lb.el ) { createLightbox(); }
+		document.body.classList.add( 'dy-lb-open' );
+		renderLightbox();
+		requestAnimationFrame( function () { lb.el.classList.add( 'is-open' ); } );
+	}
+
+	function createLightbox() {
+		var el = document.createElement( 'div' );
+		el.className = 'dy-lightbox';
+		el.innerHTML =
+			'<div class="dy-lb-backdrop"></div>' +
+			'<button type="button" class="dy-lb-close" title="' + esc( i18n.close ) + '" aria-label="' + esc( i18n.close ) + '">&#10005;</button>' +
+			'<button type="button" class="dy-lb-nav dy-lb-prev" title="' + esc( i18n.previous ) + '" aria-label="' + esc( i18n.previous ) + '">&#8249;</button>' +
+			'<button type="button" class="dy-lb-nav dy-lb-next" title="' + esc( i18n.next ) + '" aria-label="' + esc( i18n.next ) + '">&#8250;</button>' +
+			'<figure class="dy-lb-stage"><img class="dy-lb-img" alt=""><figcaption class="dy-lb-caption"></figcaption></figure>' +
+			'<div class="dy-lb-counter"></div>';
+		document.body.appendChild( el );
+		lb.el = el;
+		el.querySelector( '.dy-lb-backdrop' ).addEventListener( 'click', closeLightbox );
+		el.querySelector( '.dy-lb-close' ).addEventListener( 'click', closeLightbox );
+		el.querySelector( '.dy-lb-prev' ).addEventListener( 'click', function () { stepLightbox( -1 ); } );
+		el.querySelector( '.dy-lb-next' ).addEventListener( 'click', function () { stepLightbox( 1 ); } );
+	}
+
+	function renderLightbox() {
+		var item = lb.list[ lb.idx ];
+		if ( ! item || ! lb.el ) { return; }
+		var img = lb.el.querySelector( '.dy-lb-img' );
+		// Quick crossfade with a blur mask while the next image decodes.
+		img.classList.add( 'is-swapping' );
+		var loader = new Image();
+		loader.onload = loader.onerror = function () {
+			img.src = item.url;
+			requestAnimationFrame( function () { img.classList.remove( 'is-swapping' ); } );
+		};
+		loader.src = item.url;
+		lb.el.querySelector( '.dy-lb-caption' ).textContent = item.title || '';
+		lb.el.querySelector( '.dy-lb-counter' ).textContent = ( lb.idx + 1 ) + ' / ' + lb.list.length;
+		lb.el.querySelector( '.dy-lb-prev' ).style.visibility = lb.idx > 0 ? 'visible' : 'hidden';
+		lb.el.querySelector( '.dy-lb-next' ).style.visibility = lb.idx < lb.list.length - 1 ? 'visible' : 'hidden';
+		[ lb.idx - 1, lb.idx + 1 ].forEach( function ( n ) {
+			if ( lb.list[ n ] ) { var pre = new Image(); pre.src = lb.list[ n ].url; }
+		} );
+	}
+
+	function stepLightbox( dir ) {
+		var n = lb.idx + dir;
+		if ( n < 0 || n >= lb.list.length ) { return; }
+		lb.idx = n;
+		renderLightbox();
+	}
+
+	function closeLightbox() {
+		if ( ! lb.el ) { return; }
+		lb.el.classList.remove( 'is-open' );
+		document.body.classList.remove( 'dy-lb-open' );
+		// Sync the panel to the last image viewed in the lightbox.
+		var viewed = lb.list[ lb.idx ] ? lb.list[ lb.idx ].id : null;
+		if ( viewed && state.open && String( viewed ) !== String( state.id ) ) {
+			openPanel( viewed, lbModel( viewed ) );
+		}
+	}
+
 	// ── Quick render from Backbone model (before REST reply) ───────────────
 
 	function renderPartial( model ) {
@@ -327,10 +465,22 @@
 		// Update filename in header.
 		$( '.dy-dp-filename' ).text( title || data.slug || '' );
 
-		// Preview.
-		var previewHtml = thumbUrl
-			? '<div class="dy-dp-preview"><img src="' + esc( thumbUrl ) + '" class="dy-dp-thumb-img" alt=""></div>'
-			: '<div class="dy-dp-preview"><div class="dy-dp-thumb-icon"><span class="dashicons ' + mimeIcon( mime ) + '"></span></div></div>';
+		// Preview. For images, aspect-ratio drives the height so it grows
+		// proportionally with the panel width; a drag handle underneath resizes it,
+		// and clicking opens a full-screen lightbox gallery.
+		var previewHtml;
+		if ( thumbUrl ) {
+			previewHtml =
+				'<div class="dy-dp-preview" style="aspect-ratio:' + previewAspect( details ) + '" data-full="' + esc( url ) + '" data-id="' + data.id + '">' +
+					'<img src="' + esc( thumbUrl ) + '" class="dy-dp-thumb-img" alt="">' +
+					'<button type="button" class="dy-dp-expand" title="' + esc( i18n.viewFullSize || 'View full size' ) + '" aria-label="' + esc( i18n.viewFullSize || 'View full size' ) + '">' +
+						'<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5"></path></svg>' +
+					'</button>' +
+				'</div>' +
+				'<div class="dy-dp-resize" title="' + esc( i18n.dragToResize ) + '" role="separator" aria-orientation="horizontal"><span class="dy-dp-resize-grip"></span></div>';
+		} else {
+			previewHtml = '<div class="dy-dp-preview"><div class="dy-dp-thumb-icon"><span class="dashicons ' + mimeIcon( mime ) + '"></span></div></div>';
+		}
 
 		// Metadata table.
 		var metaRows = '';
@@ -854,6 +1004,13 @@
 	// ── Keyboard shortcuts ─────────────────────────────────────────────────
 
 	$( document ).on( 'keydown', function ( e ) {
+		// Lightbox takes priority over the panel while it is open.
+		if ( document.body.classList.contains( 'dy-lb-open' ) ) {
+			if ( e.key === 'Escape' )                                   { e.preventDefault(); closeLightbox(); }
+			else if ( e.key === 'ArrowLeft'  || e.key === 'ArrowUp' )   { e.preventDefault(); stepLightbox( -1 ); }
+			else if ( e.key === 'ArrowRight' || e.key === 'ArrowDown' ) { e.preventDefault(); stepLightbox( 1 ); }
+			return;
+		}
 		if ( ! state.open ) { return; }
 		if ( $( e.target ).is( 'input, textarea, select' ) ) { return; }
 
@@ -872,6 +1029,23 @@
 	// so it can use the async designed dialog without blocking the click.)
 
 	// ── Helpers ───────────────────────────────────────────────────────────
+
+	// Clamp a preview aspect-ratio (width / height) to sane bounds so neither
+	// very wide nor very tall images blow out the panel.
+	function clampPar( p ) {
+		return Math.max( 0.45, Math.min( 3, p ) );
+	}
+
+	// Aspect-ratio for the preview box: a height the user has chosen (stored)
+	// wins; otherwise the image's own ratio, so each one looks right by default.
+	function previewAspect( details ) {
+		var stored = parseFloat( localStorage.getItem( 'dy-par' ) );
+		if ( stored && stored > 0 ) { return clampPar( stored ); }
+		if ( details && details.width && details.height ) {
+			return clampPar( details.width / details.height );
+		}
+		return 1.5;
+	}
 
 	function formatSize( bytes ) {
 		if ( bytes < 1024 )     { return bytes + ' ' + ( i18n.sizeBytes || 'B' ); }
