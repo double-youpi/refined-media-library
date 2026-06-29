@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support question
+    url: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library/
+    about: Questions, help and how-to go to the support forum on WordPress.org.
+  - name: Translations
+    url: https://translate.wordpress.org/projects/wp-plugins/doubleyoupi-refined-media-library/
+    about: Translations are managed on translate.wordpress.org.
+  - name: Security problem
+    url: https://github.com/double-youpi/refined-media-library/security/advisories/new
+    about: Please report vulnerabilities privately, never in a public issue.

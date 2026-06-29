@@ -1,0 +1,219 @@
+// =============================================================
+// _pages-shell.scss
+// Shell visuel de TOUTES les sous-pages Double Youpi
+// (?page=doubleyoupi-admin, doubleyoupi-performance, doubleyoupi-static,
+// doubleyoupi-media-library, doubleyoupi-backups, doubleyoupi-staging…).
+//
+// Scope :
+//   body[class*="page_doubleyoupi"] .wrap:not(.dy-overview)
+//
+// On exclut `.dy-overview` parce que la page Vue d'ensemble a son propre
+// shell (cf. _shell.scss). Sur les autres sous-pages, on cible le `.wrap`
+// natif de WP et on enrichit l'esthétique de la chrome WP-native sans
+// remplacer les classes (cf. CLAUDE.md §9.3-bis).
+// =============================================================
+
+// Sous-pages : on ne « boxe » PAS le contenu — on le centre dans la même
+// gouttière que la chipbar et les autres pages d'admin Double Youpi, en
+// utilisant le token --wrap-max (fluid clamp) du DS admin (ou son fallback
+// déclaré dans _tokens-fallback.scss quand Admin est désactivé).
+//
+// Exception : la page Media Library (`.doubleyoupi-media-library` dans le
+// body class) reste en pleine largeur — son layout de grille en a besoin.
+body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:not(.dy-overview) {
+	max-width: var(--wrap-max);
+	margin-inline: auto;
+	padding-inline: var(--wrap-pad-x);
+	padding-block: clamp(20px, 2vw, 32px);
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: var(--ink);
+	font-family: var(--font-body);
+	font-size: var(--fs-base);
+	line-height: var(--lh-base);
+	letter-spacing: var(--tracking-body);
+
+	// ── H1 de page : style aligné sur le hero Overview ──────
+	// Pas de border-bottom : le titre vit dans la même grid que la chipbar,
+	// et le séparateur visuel est porté par le chipbar lui-même quand
+	// le module Admin est actif. Sans Admin, on garde un h1 nu.
+	> h1 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: clamp(26px, 2vw, 34px);
+		font-variation-settings: "opsz" 30, "wght" 600;
+		letter-spacing: var(--tracking-tight);
+		line-height: 1.05;
+		color: var(--ink);
+		margin: 0 0 18px;
+		padding-bottom: 0;
+		border-bottom: 0;
+		display: flex;
+		align-items: baseline;
+		gap: 14px;
+
+		// Italique-accent sur le dernier mot, façon "Double Youpi" hero.
+		// On le déclenche via un span optionnel `.dy-page-title-mark` que
+		// les renderers peuvent injecter.
+		.dy-page-title-mark {
+			font-style: italic;
+			font-weight: 500;
+			color: var(--accent);
+		}
+	}
+
+	// Description / texte d'intro éventuel sous le titre.
+	> .description,
+	> p.description {
+		font-size: 14px;
+		color: var(--ink-soft);
+		line-height: var(--lh-base);
+		max-width: 64ch;
+		margin: -10px 0 24px;
+	}
+
+	// ── Sections de contenu : H2, H3 typographiés ──────────
+	h2 {
+		font-family: var(--font-display);
+		font-weight: 500;
+		font-size: 22px;
+		font-variation-settings: "opsz" 22, "wght" 500;
+		letter-spacing: var(--tracking-tight);
+		color: var(--ink);
+		margin: 36px 0 18px;
+		display: flex;
+		align-items: baseline;
+		gap: 10px;
+
+		// Bullet accent devant les H2 (sauf nav-tab-wrapper qui est un h2 WP).
+		&:not(.nav-tab-wrapper):not(.screen-reader-text)::before {
+			content: "";
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: var(--accent);
+			align-self: center;
+			translate: 0 -2px;
+		}
+	}
+
+	h3 {
+		font-family: var(--font-display);
+		font-weight: 500;
+		font-size: 17px;
+		color: var(--ink);
+		margin: 28px 0 14px;
+		letter-spacing: var(--tracking-tight);
+	}
+
+	p {
+		color: var(--ink-soft);
+		line-height: var(--lh-base);
+		margin: 0 0 14px;
+	}
+
+	a {
+		color: var(--accent);
+		text-decoration: none;
+		text-underline-offset: 3px;
+		transition: color var(--t-fast) var(--ease);
+
+		&:hover, &:focus {
+			text-decoration: underline;
+			text-decoration-thickness: 1px;
+		}
+	}
+
+	// Code inline & blocs
+	code {
+		font-family: var(--font-mono);
+		font-size: .92em;
+		padding: 1px 6px;
+		background: var(--paper-2);
+		border: 1px solid var(--line);
+		border-radius: var(--r-sm);
+		color: var(--ink);
+	}
+
+	pre {
+		font-family: var(--font-mono);
+		font-size: 12.5px;
+		background: var(--paper-2);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		padding: 14px 16px;
+		overflow-x: auto;
+		color: var(--ink);
+	}
+
+	// hr → divider léger
+	hr {
+		border: 0;
+		border-top: 1px solid var(--line);
+		margin: 28px 0;
+	}
+}
+
+// Media Library : on N'applique PAS le centrage du shell sous-pages
+// (elle reste full-width), mais on uniformise quand même la typo du H1
+// pour qu'elle matche les autres pages Double Youpi.
+body[class*="doubleyoupi-media-library"] .wrap > h1 {
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: clamp(26px, 2vw, 34px);
+	font-variation-settings: "opsz" 30, "wght" 600;
+	letter-spacing: var(--tracking-tight);
+	line-height: 1.05;
+	color: var(--ink);
+	margin: 0 0 18px;
+	padding-bottom: 0;
+	border-bottom: 0;
+	display: flex;
+	align-items: baseline;
+	gap: 14px;
+
+	.dy-page-title-mark {
+		font-style: italic;
+		font-weight: 500;
+		color: var(--accent);
+	}
+}
+
+// ── Override : panneau accent-feedback du module Admin Settings ──
+// Ma règle générique `p { margin: 0 0 14px }` du shell sous-pages injecte
+// 14px de margin-bottom à tous les <p>, y compris les <p class="dy-accent-feedback__title">
+// et <p class="dy-accent-feedback__text"> du panneau de validation accent.
+// Conséquence : le panneau alert prend une hauteur excessive avec une grosse
+// zone vide. On reset ici pour rendre la main au styling inline du Settings.
+body[class*="page_doubleyoupi"] .dy-accent-feedback p,
+body[class*="page_doubleyoupi"] .dy-accent-suggestion p {
+	margin: 0;
+}
+
+// Sub-page meta : la barre de méta sous-titre (status, last modified, etc.)
+// Si l'Eyebrow component injecte un dy-page-sub, on le style.
+body[class*="page_doubleyoupi"] .dy-page-sub {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: var(--tracking-mono);
+	text-transform: uppercase;
+	color: var(--ink-mute);
+	margin: -16px 0 24px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: currentColor;
+		opacity: .6;
+	}
+}

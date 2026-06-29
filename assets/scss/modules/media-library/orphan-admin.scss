@@ -1,0 +1,91 @@
+// =============================================================================
+// Orphan scanner tab — médiathèque > onglet « Médias inutilisés »
+// =============================================================================
+//
+// Cible la table des résultats du scan d'orphelins + le bloc de confirmation
+// avant suppression définitive. Volumétrie modeste (~70 lignes), pas de split
+// en partials nécessaire.
+// =============================================================================
+
+@use '../../shared/variables' as *;
+@use '../../shared/root';
+@use '../../shared/mixins' as *;
+
+
+// ── Table des résultats ──────────────────────────────────────────────────────
+
+#dy-orphan-table {
+
+	// Thumbnails
+	img {
+		display: block;
+		width: 40px;
+		height: 40px;
+		object-fit: cover;
+		border-radius: $radius-xs;
+		border: 1px solid #dcdcde;
+	}
+
+	// Placeholder quand pas de thumbnail
+	.dy-no-thumb {
+		@include flex-center;
+		width: 40px;
+		height: 40px;
+		font-size: $font-size-2xl;
+		color: #c3c4c7;
+		border: 1px solid #dcdcde;
+		border-radius: $radius-xs;
+	}
+
+	// Filename truncate
+	td strong {
+		display: block;
+		max-width: 260px;
+		@include truncate;
+	}
+}
+
+
+// ── Bloc de confirmation (avant delete définitif) ───────────────────────────
+
+#dy-orphan-confirm-block {
+	background: #fff8f0;
+	border-left: 4px solid $color-danger;
+	padding: $spacing-lg $spacing-xl;
+	border-radius: 0 $radius-xs $radius-xs 0;
+
+	label {
+		font-weight: 500;
+	}
+}
+
+
+// ── Bouton « Supprimer » (rouge danger, matched WP admin pattern) ───────────
+
+#dy-orphan-delete-btn {
+	background: $color-danger;
+	border-color: $color-danger;
+	color: #fff;
+
+	&:hover:not(:disabled) {
+		background: $color-danger-hover;
+		border-color: $color-danger-hover;
+		color: #fff;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+}
+
+
+// ── Message de fin (notice success après delete) ────────────────────────────
+
+#dy-orphan-done {
+	margin-top: $spacing-xl;
+
+	.notice {
+		margin: 0;
+	}
+}

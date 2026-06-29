@@ -1,0 +1,393 @@
+// =============================================================
+// _rich-components.scss
+// Harmonisation visuelle des composants riches inline des sous-pages
+// Double Youpi : progress bars, result panels, color picker, etc.
+//
+// On ne refait pas les composants en profondeur (chaque module garde
+// son SCSS) — on enrobe les éléments inline génériques pour qu'ils
+// s'intègrent au shell DY (paper, ink, tokens fluides).
+// =============================================================
+
+body[class*="page_doubleyoupi"] .wrap {
+
+	// ── HTML5 <progress> bar (Static Site full-push, etc.) ──
+	progress {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 100%;
+		max-width: 600px;
+		height: 8px;
+		border: 0;
+		border-radius: var(--r-pill);
+		overflow: hidden;
+		background: var(--paper-3);
+		display: block;
+		margin: 6px 0;
+
+		&::-webkit-progress-bar {
+			background: var(--paper-3);
+			border-radius: var(--r-pill);
+		}
+
+		&::-webkit-progress-value {
+			background: linear-gradient(90deg,
+				rgba(var(--accent-rgb), .55),
+				var(--accent)
+			);
+			border-radius: var(--r-pill);
+			transition: width var(--t-med) var(--ease);
+		}
+
+		&::-moz-progress-bar {
+			background: var(--accent);
+			border-radius: var(--r-pill);
+		}
+	}
+
+	// ── Result panels en font-mono (Static diagnostics, snapshots,
+	//    orphans, head-analyse, MediaLibrary import logs, etc.) ─
+	[id^="dy-static-"][id$="-result"],
+	[id^="dy-static-"][id$="-results"],
+	#dy-static-diagnostics-result,
+	#dy-static-snapshots-result,
+	#dy-static-orphans-result,
+	#dy-static-progress {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		line-height: 1.55;
+		color: var(--ink);
+		background: var(--paper-2);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		padding: 14px 16px;
+		max-height: 320px;
+		overflow: auto;
+		white-space: pre-wrap;
+
+		// Si jamais le panel est vide, on le réduit visuellement.
+		&:empty {
+			display: none;
+		}
+
+		// Status divs internes (.notice imbriquée, etc.) — restent
+		// stylés par _notices.scss s'ils ont .notice.
+	}
+
+	// Static module : barre de progression contextuelle (#dy-static-progress
+	// est un container, pas une <progress>) — apparence carte.
+	#dy-static-progress {
+		max-height: none;
+		padding: 14px 18px;
+
+		.dy-static-progress-label,
+		.dy-static-progress-meta {
+			font-family: var(--font-body);
+			color: var(--ink-soft);
+		}
+	}
+
+	// ── Inline metadata under buttons (Static-Site SidebarEditor) ─
+	#dy-static-meta-status {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		color: var(--ink-soft);
+		margin-top: 10px;
+	}
+
+	// ── WP color picker (Admin Settings) ────────────────────
+	// Stratégie "discrète" : on transforme le bouton-swatch natif WP en un
+	// petit carré qui ne montre QUE la couleur (le label texte "Sélectionner
+	// une couleur" / "Default" est masqué visuellement mais reste accessible
+	// au lecteur d'écran). À côté, on conserve l'input hex en mono pour
+	// l'édition fine. Plus de fond accent illisible sur lequel du texte
+	// blanc se perd quand la teinte n'est pas assez sombre.
+	.wp-picker-container {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: 5px 8px;
+		background: var(--paper-2);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		vertical-align: middle;
+
+		// Swatch carré 28×28 : juste la couleur, pas de texte visible
+		.wp-color-result.button {
+			width: 28px;
+			min-width: 28px;
+			height: 28px;
+			padding: 0;
+			border-radius: var(--r-sm);
+			border: 1px solid var(--line-strong);
+			box-shadow: inset 0 0 0 2px var(--paper);
+			min-height: 28px;
+			transition: transform var(--t-fast) var(--ease),
+			            box-shadow var(--t-fast) var(--ease);
+
+			&::after { display: none; }
+
+			// Texte interne ("Sélectionner une couleur" / "Default") :
+			// caché visuellement mais lisible par les ATs (clip + 1px).
+			.wp-color-result-text {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0 0 0 0);
+				white-space: nowrap;
+				border: 0;
+			}
+
+			&:hover {
+				transform: scale(1.05);
+				box-shadow: inset 0 0 0 2px var(--paper),
+				            0 0 0 3px rgba(var(--accent-rgb), .18);
+			}
+
+			&:focus-visible {
+				outline: none;
+				box-shadow: inset 0 0 0 2px var(--paper),
+				            0 0 0 3px rgba(var(--accent-rgb), .25);
+			}
+		}
+
+		// Wrap input hex + Clear/Default buttons
+		.wp-picker-input-wrap {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+		}
+
+		input.wp-color-picker[type="text"] {
+			font-family: var(--font-mono);
+			font-size: 12px;
+			letter-spacing: var(--tracking-mono);
+			color: var(--ink);
+			background: var(--paper);
+			border: 1px solid var(--line);
+			border-radius: var(--r-sm);
+			padding: 4px 8px;
+			min-height: 28px;
+			width: 92px;
+
+			&:focus, &:focus-visible {
+				outline: none;
+				border-color: var(--accent);
+				box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .14);
+			}
+		}
+
+		// Boutons Default / Clear : compacts et discrets, pas le primary bouton
+		.wp-picker-clear,
+		.wp-picker-default {
+			font-family: var(--font-body);
+			font-size: 11.5px;
+			font-weight: 500;
+			min-height: 28px;
+			padding: 4px 10px;
+			border-radius: var(--r-sm);
+			background: transparent;
+			border: 1px solid var(--line-strong);
+			color: var(--ink-soft);
+			box-shadow: none;
+			transition: background var(--t-fast) var(--ease),
+			            color var(--t-fast) var(--ease),
+			            border-color var(--t-fast) var(--ease);
+
+			&:hover, &:focus {
+				background: var(--paper);
+				color: var(--ink);
+				border-color: var(--ink-mute);
+				transform: none;
+				box-shadow: var(--shadow-sm);
+			}
+		}
+	}
+
+	.wp-picker-holder { z-index: 100; }
+
+	// ── Media uploader preview (logo selector dans Admin Settings) ─
+	.dy-media-preview,
+	.dy-admin-logo__preview {
+		display: inline-block;
+		max-width: 220px;
+		max-height: 80px;
+		padding: 12px 14px;
+		background: var(--paper-2);
+		border: 1px dashed var(--line-strong);
+		border-radius: var(--r-md);
+		margin-right: 12px;
+
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 56px;
+			object-fit: contain;
+		}
+
+		&:empty::before {
+			content: attr(data-empty-label);
+			color: var(--ink-mute);
+			font-size: 12px;
+		}
+	}
+
+	// ── Static diagnostics : liste type checklist (si Diagnostics
+	//    renvoie du HTML structuré avec .dy-diag-row / .dy-diag-status) ─
+	.dy-diag-row,
+	.dy-diagnostic-row {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		padding: 10px 14px;
+		border-bottom: 1px solid var(--line);
+
+		&:last-child { border-bottom: 0; }
+	}
+
+	.dy-diag-status,
+	.dy-diagnostic-status {
+		font-family: var(--font-mono);
+		font-size: 10.5px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-label);
+		padding: 3px 9px;
+		border-radius: var(--r-pill);
+		background: var(--paper-3);
+		color: var(--ink-soft);
+		flex-shrink: 0;
+
+		&.is-ok, &--ok {
+			background: var(--success-soft);
+			color: var(--success);
+		}
+
+		&.is-warn, &--warn {
+			background: var(--warn-soft);
+			color: var(--warn);
+		}
+
+		&.is-error, &--error, &.is-bad {
+			background: var(--danger-soft);
+			color: var(--danger);
+		}
+	}
+
+	// ── Folders / collections (Media Library settings tab) ─
+	.dy-folder-item,
+	.dy-collection-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 10px 14px;
+		background: var(--paper);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		transition: border-color var(--t-fast) var(--ease),
+		            box-shadow var(--t-fast) var(--ease);
+
+		&:hover {
+			border-color: var(--line-strong);
+			box-shadow: var(--shadow-sm);
+		}
+	}
+
+	// ── Tables WP natives (.wp-list-table, .widefat, .widefat.striped) ─
+	// La .wrap parent étant boxed, on garde une frame légère sur les
+	// tables (border + radius) mais SANS shadow ni paper bg dédié — la
+	// table sert de groupe visuel, pas de double-card.
+	// WP-natif applique #f6f7f7 sur tbody tr:nth-child(odd) via .striped,
+	// hardcoded → casse en dark mode (bandes blanches sur fond sombre).
+	// On override avec --paper-2 qui suit le theme.
+	.wp-list-table,
+	table.widefat {
+		background: var(--paper);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		border-collapse: separate;
+		border-spacing: 0;
+		overflow: hidden;
+		box-shadow: none;
+
+		thead th,
+		tfoot th {
+			background: var(--paper-2);
+			color: var(--ink);
+			font-family: var(--font-body);
+			font-weight: 600;
+			font-size: 12.5px;
+			letter-spacing: var(--tracking-body);
+			border-bottom: 1px solid var(--line);
+			padding: 12px 14px;
+			text-align: left;
+		}
+
+		tbody tr {
+			background: var(--paper);
+			transition: background var(--t-fast) var(--ease);
+		}
+
+		tbody td {
+			border-bottom: 1px solid var(--line-soft);
+			padding: 12px 14px;
+			color: var(--ink);
+			vertical-align: middle;
+			background: transparent;  // hérite du <tr>, pas de bande blanche
+		}
+
+		tbody tr:last-child td { border-bottom: 0; }
+
+		tbody tr:hover { background: var(--paper-2); }
+
+		// Striped : alterne paper / paper-2 (au lieu du #f6f7f7 hardcodé WP)
+		&.striped tbody tr:nth-child(odd) {
+			background: var(--paper-2);
+		}
+		&.striped tbody tr:hover {
+			background: var(--paper-3);
+		}
+
+		// Inputs/textareas DANS les cellules de table (cas Post Mapping) :
+		// hériter du shell mais sans la border doublée — la cellule fait
+		// déjà conteneur. On laisse le styling des inputs au form-table shell.
+		td input[type="text"],
+		td input[type="email"],
+		td input[type="url"],
+		td input[type="number"],
+		td input[type="search"],
+		td textarea {
+			width: 100%;
+		}
+
+		td .description {
+			margin-top: 4px;
+			font-size: 11.5px;
+			color: var(--ink-mute);
+		}
+	}
+
+	// Inline status pills générées par render_status_pill() — font-size 18 sans
+	// fond, juste le glyphe coloré. On normalise leur taille pour qu'ils ne
+	// déforment pas la table.
+	table.widefat span[style*="color:"] {
+		font-family: var(--font-mono);
+		line-height: 1;
+	}
+
+	// Card WP natif "ondashboard" utilisé dans Static (Diagnostics card)
+	.card {
+		background: var(--paper);
+		border: 1px solid var(--line);
+		border-radius: var(--r-md);
+		box-shadow: var(--shadow-sm);
+		color: var(--ink);
+		padding: 18px 22px;
+
+		h2, h3 { color: var(--ink); }
+		p      { color: var(--ink-soft); }
+		.description { color: var(--ink-mute); }
+	}
+}

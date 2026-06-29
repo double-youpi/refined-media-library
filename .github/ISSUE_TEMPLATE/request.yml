@@ -1,0 +1,24 @@
+name: Request
+description: Something you would like the plugin to do.
+labels: ["request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. We keep settings few on purpose: tell us what you are trying to do, not only the option you have in mind. For questions and help, the [support forum](https://wordpress.org/support/plugin/doubleyoupi-refined-media-library/) is faster.
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+      description: The situation, and who it is for (you, your clients, your team).
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How do you do it today?
+      description: With this plugin, another one, or by hand.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?

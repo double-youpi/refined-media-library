@@ -1,0 +1,513 @@
+// =============================================================
+// _cards.scss
+// Cards module : grille + states (is-active / is-inactive / is-soon),
+// hover-lift, ribbon accent, animations d'entrée staggered.
+// =============================================================
+
+.dy-overview {
+
+	// ── Grille responsive ────────────────────────────────────
+	// minmax(300px) garantit 3 colonnes confortables jusqu'à ~1280px
+	// puis 4 colonnes au-delà — les 9 modules tiennent en 3 rangs (3×3)
+	// ou 2-3 rangs (4×3 ou 4+4+1) avec marge suffisante pour les CTAs.
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: clamp(12px, 1.1vw, 16px);
+		margin: 0 0 28px;
+		// Légère perspective pour la translation Z du hover :
+		// le hover-lift gagne un peu de réalisme.
+		perspective: 1200px;
+	}
+
+	// ── Card de base ─────────────────────────────────────────
+	// Layout DESKTOP (>= 900px) : flex column, icon-tile + status pill sur la
+	// première ligne (card-head), nom en H2 dessous, desc, puis foot.
+	//
+	//   ┌──────────────────────────┐
+	//   │ [icon]            [stats] │  ← card-head (flex row)
+	//   │ Module name              │  ← H2
+	//   │ description (3 lines max) │
+	//   ├──────────────────────────┤
+	//   │ switch        settings-→ │  ← foot
+	//   └──────────────────────────┘
+	//
+	// Layout MOBILE (< 900px) : grid avec icon à GAUCHE du titre pour gagner
+	// en hauteur verticale. Géré dans le @media en bas de fichier.
+	&__card {
+		--card-i: 0;                // index cascade injecté inline en PHP
+
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		background: var(--paper);
+		border: 1px solid var(--line);
+		border-radius: var(--r-lg);
+		padding: 16px 18px 14px;
+		isolation: isolate;        // confine le ribbon ::before sous le contenu
+		overflow: hidden;
+		transition: transform var(--t-med) var(--ease),
+		            border-color var(--t-fast) var(--ease),
+		            box-shadow var(--t-med) var(--ease),
+		            background var(--t-fast) var(--ease);
+
+		// Entrée staggered : delay = base + i * step. --card-i posé
+		// inline via style="--card-i: 0..N" depuis OverviewPage.php.
+		opacity: 0;
+		transform: translateY(14px);
+		animation: dy-overview-card-rise 540ms var(--ease-out) forwards;
+		animation-delay: calc(420ms + var(--card-i) * 70ms);
+
+		// Ribbon accent (gauche) — révélé sur is-active.
+		&::before {
+			content: "";
+			position: absolute;
+			top: 10px;
+			bottom: 10px;
+			left: 0;
+			width: 3px;
+			border-radius: 0 var(--r-pill) var(--r-pill) 0;
+			background: var(--accent);
+			transform: scaleY(0);
+			transform-origin: top;
+			transition: transform var(--t-slow) var(--ease-out);
+			z-index: 1;
+		}
+
+		// Subtle glow inside card on hover — uses ::after rendered
+		// behind content. Reveals on hover only, very low intensity.
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(
+				420px circle at var(--mx, 50%) var(--my, 50%),
+				rgba(var(--accent-rgb), .06),
+				transparent 60%
+			);
+			opacity: 0;
+			transition: opacity var(--t-med) var(--ease);
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		// Place le contenu au-dessus des pseudos.
+		> * { position: relative; z-index: 2; }
+
+		// ── Hover ────────────────────────────────────────────
+		&:hover {
+			transform: translateY(-3px);
+			border-color: var(--line-strong);
+			box-shadow: var(--shadow-md);
+			background: var(--paper);
+
+			&::after { opacity: 1; }
+
+			.dy-overview__icon-tile {
+				border-color: rgba(var(--accent-rgb), .35);
+				background: var(--accent-soft);
+				color: var(--accent);
+			}
+
+			.dy-icon .dy-draw {
+				animation: dy-line-draw var(--t-very-slow) var(--ease-out);
+			}
+
+			.dy-overview__name {
+				color: var(--ink);
+			}
+
+			.dy-overview__settings-link {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		// Focus-visible enhancement
+		&:focus-within {
+			border-color: rgba(var(--accent-rgb), .5);
+			box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .12);
+		}
+
+		// ── État ACTIF ───────────────────────────────────────
+		&.is-active {
+			border-color: rgba(var(--accent-rgb), .22);
+			background: linear-gradient(
+				180deg,
+				rgba(var(--accent-rgb), .025) 0%,
+				var(--paper) 60%
+			);
+
+			&::before {
+				transform: scaleY(1);
+			}
+
+			.dy-overview__icon-tile {
+				color: var(--accent);
+				background: var(--accent-soft);
+				border-color: rgba(var(--accent-rgb), .25);
+			}
+
+			.dy-overview__status {
+				background: var(--success-soft);
+				color: var(--success);
+
+				&::before {
+					background: var(--success);
+					animation: dy-overview-status-pulse 2200ms var(--ease) infinite;
+				}
+			}
+		}
+
+		// ── État INACTIF (toggle off) ───────────────────────
+		&.is-inactive {
+			background: var(--paper);
+
+			.dy-overview__icon-tile {
+				color: var(--ink-mute);
+				background: var(--paper-2);
+				border-color: var(--line);
+			}
+
+			.dy-overview__name { color: var(--ink-soft); }
+
+			.dy-overview__status {
+				background: var(--paper-2);
+				color: var(--ink-mute);
+			}
+		}
+
+		// ── État BIENTÔT (placeholder, pas implémenté) ──────
+		&.is-soon {
+			background: transparent;
+			border-style: dashed;
+			border-color: var(--line);
+			opacity: .68;
+
+			.dy-overview__icon-tile {
+				color: var(--ink-mute);
+				background: transparent;
+				border-style: dashed;
+			}
+
+			.dy-overview__status {
+				background: transparent;
+				border: 1px dashed var(--line-strong);
+				color: var(--ink-mute);
+
+				&::before {
+					background: var(--ink-mute);
+					animation: none;
+				}
+			}
+
+			&:hover { transform: none; box-shadow: none; }
+		}
+	}
+
+	// ── Card head : icône + status pill (flex row) ──────────
+	&__card-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	&__icon-tile {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 38px;
+		height: 38px;
+		border-radius: var(--r-md);
+		background: var(--paper-2);
+		border: 1px solid var(--line);
+		color: var(--ink-soft);
+		flex-shrink: 0;
+		transition: color var(--t-med) var(--ease),
+		            background var(--t-med) var(--ease),
+		            border-color var(--t-med) var(--ease);
+
+		.dy-icon {
+			width: 22px;
+			height: 22px;
+			display: block;
+			color: inherit;
+		}
+	}
+
+	&__status {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-family: var(--font-mono);
+		font-size: 9.5px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+		padding: 3px 9px 3px 7px;
+		border-radius: var(--r-pill);
+		background: var(--paper-2);
+		color: var(--ink-soft);
+		white-space: nowrap;
+
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: var(--ink-mute);
+		}
+	}
+
+	// ── Card body : title sous l'icône, desc en dessous ─────
+	&__name {
+		font-family: var(--font-display);
+		font-size: 16.5px;
+		font-weight: 500;
+		font-variation-settings: "opsz" 16, "wght" 500;
+		letter-spacing: var(--tracking-tight);
+		line-height: 1.25;
+		color: var(--ink);
+		margin: 2px 0 0;
+		transition: color var(--t-fast) var(--ease);
+	}
+
+	&__desc {
+		font-size: 12.5px;
+		line-height: 1.5;
+		color: var(--ink-soft);
+		margin: 0;
+		flex: 1;                  // pousse le footer en bas
+
+		// Tronque proprement à 3 lignes — tooltip natif (title) ou hover
+		// peuvent restituer le texte complet si nécessaire à terme.
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	// ── Card foot : switch + settings link ─────────────────
+	&__card-foot {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		margin-top: 2px;
+		padding-top: 10px;
+		border-top: 1px solid var(--line);
+	}
+
+	&__settings-link {
+		font-family: var(--font-body);
+		font-size: 12.5px;
+		font-weight: 500;
+		color: var(--accent);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		opacity: 0;
+		transform: translateX(-4px);
+		transition: opacity var(--t-med) var(--ease),
+		            transform var(--t-med) var(--ease),
+		            color var(--t-fast) var(--ease);
+
+		&::after {
+			content: "→";
+			font-family: var(--font-mono);
+			transition: transform var(--t-fast) var(--ease);
+		}
+
+		&:hover {
+			color: var(--accent);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+			text-decoration-thickness: 1px;
+
+			&::after { transform: translateX(2px); }
+		}
+	}
+
+	&__coming-soon {
+		font-size: 12px;
+		color: var(--ink-mute);
+		font-style: italic;
+		font-family: var(--font-display);
+	}
+}
+
+// ── Keyframes ────────────────────────────────────────────
+
+@keyframes dy-overview-card-rise {
+	from { opacity: 0; transform: translateY(14px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dy-overview-status-pulse {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(0, 163, 42, .35); }
+	50%      { box-shadow: 0 0 0 5px rgba(0, 163, 42, 0); }
+}
+
+// ── Responsive ─────────────────────────────────────────
+//
+// Stratégie : sur grand écran (>= 900px) on garde le layout flex column
+// d'origine (icône + status en row 1, name en H2 en row 2, desc, foot).
+// Sur écran réduit (< 900px) on bascule en layout grille avec l'icône
+// À GAUCHE du titre — gain vertical massif pour libérer l'espace écran
+// quand la largeur diminue.
+
+// ──────────── Layout MOBILE/TABLETTE (< 900px) ────────────────
+//
+//   ┌──────┬────────────────┬───────┐
+//   │ icon │  name          │ stats │  ← row 1, items centrés verticalement
+//   ├──────┴────────────────┴───────┤
+//   │ description (3 cols)          │  ← row 2
+//   ├───────────────────────────────┤
+//   │ switch · · · settings-link    │  ← row 3 (foot, séparé par border-top)
+//   └───────────────────────────────┘
+//
+// On utilise `display: contents` sur .dy-overview__card-head pour
+// "déballer" le wrapper et faire des icon-tile + status des items
+// directs de la grille du card. HTML inchangé.
+@media (max-width: 900px) {
+
+	.dy-overview__grid {
+		gap: 12px;
+	}
+
+	.dy-overview__card {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas:
+			"icon  name   stats"
+			"desc  desc   desc"
+			"foot  foot   foot";
+		column-gap: 10px;
+		row-gap: 8px;
+		padding: 14px 16px 12px;
+		// On annule le flex-direction column hérité
+		flex-direction: initial;
+	}
+
+	.dy-overview__card-head { display: contents; }
+
+	.dy-overview__icon-tile {
+		grid-area: icon;
+		align-self: center;
+		width: 36px;
+		height: 36px;
+
+		.dy-icon { width: 20px; height: 20px; }
+	}
+
+	.dy-overview__status {
+		grid-area: stats;
+		align-self: center;
+		justify-self: end;
+	}
+
+	.dy-overview__name {
+		grid-area: name;
+		align-self: center;
+		margin: 0;
+		font-size: 15.5px;
+		min-width: 0;
+		// Tronque sur 1 ligne pour préserver l'alignement vertical
+		// icon/title quand le nom est long.
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.dy-overview__desc {
+		grid-area: desc;
+		flex: initial;            // annule le flex: 1 desktop
+	}
+
+	.dy-overview__card-foot { grid-area: foot; }
+}
+
+// ──────────── Mobile strict (< 480px) ─────────────────────
+// Status pill devient "dot-only" pour libérer de la largeur au profit
+// du nom. Padding et tailles encore réduits.
+@media (max-width: 480px) {
+	.dy-overview__grid {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+
+	.dy-overview__card {
+		padding: 13px 14px 11px;
+		column-gap: 10px;
+		row-gap: 6px;
+	}
+
+	.dy-overview__icon-tile {
+		width: 34px;
+		height: 34px;
+
+		.dy-icon { width: 19px; height: 19px; }
+	}
+
+	.dy-overview__name {
+		font-size: 15px;
+	}
+
+	// Status pill : on cache le label texte (font-size 0) pour ne
+	// garder que le dot coloré qui suffit à signaler l'état.
+	.dy-overview__status {
+		padding: 6px;
+		gap: 0;
+		font-size: 0;
+		min-width: 0;
+
+		&::before {
+			margin: 0;
+			width: 7px;
+			height: 7px;
+		}
+	}
+
+	.dy-overview__desc {
+		font-size: 12px;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+	}
+
+	.dy-overview__card-foot {
+		padding-top: 8px;
+	}
+}
+
+// ── Keyframes ────────────────────────────────────────────
+
+@keyframes dy-overview-card-rise {
+	from { opacity: 0; transform: translateY(14px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dy-overview-status-pulse {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(0, 163, 42, .35); }
+	50%      { box-shadow: 0 0 0 5px rgba(0, 163, 42, 0); }
+}
+
+// ── Reduced motion ─────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__card {
+		opacity: 1;
+		transform: none;
+		animation: none;
+
+		&::before { transition: none; }
+		&::after  { transition: none; }
+	}
+
+	.dy-overview__card.is-active .dy-overview__status::before { animation: none; }
+}

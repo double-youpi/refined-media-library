@@ -1,0 +1,58 @@
+name: Bug report
+description: Something does not work as it should, and you can reproduce it.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. For questions and help, the [support forum](https://wordpress.org/support/plugin/doubleyoupi-refined-media-library/) is faster.
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Plugin, WordPress and PHP versions.
+      placeholder: "Plugin 1.0.18, WordPress 7.1.3, PHP 8.3"
+    validations:
+      required: true
+  - type: dropdown
+    id: multisite
+    attributes:
+      label: Multisite?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: "Firefox 144, Chrome 142, Safari 26"
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: From a fresh page load.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console and log messages
+      description: Red messages in the browser console (F12) and in wp-content/debug.log, if any.
+      render: text
+  - type: textarea
+    id: context
+    attributes:
+      label: Other plugins and theme
+      description: If the bug only happens with a given plugin or theme, which one and which version.

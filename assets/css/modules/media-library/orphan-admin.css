@@ -1,0 +1,163 @@
+:root {
+  --dy-accent: #5b8cff;
+  --dy-accent-hover: #6e9aff;
+  --dy-ink: #ecedf2;
+  --dy-ink-soft: #9ba3b5;
+  --dy-ink-mute: #5a6070;
+  --dy-ink-faint: #4a4f5d;
+  --dy-bg: #0c0e13;
+  --dy-bg-soft: #0f1118;
+  --dy-bg-card: #161a23;
+  --dy-bg-elev: #1d2030;
+  --dy-line: #1e2235;
+  --dy-line-hi: #2a3049;
+  --dy-line-soft: rgba(255, 255, 255, 0.04);
+  --dy-success: #16a34a;
+  --dy-success-hover: #15803d;
+  --dy-warning: #f59e0b;
+  --dy-danger: #d63638;
+  --dy-danger-hover: #b32d2e;
+  --dy-purple: #342E71;
+  --dy-purple-600: #2a2560;
+  --dy-purple-200: #e9e7f3;
+  --dy-purple-100: #f4f3f9;
+  --dy-yellow: #ffd166;
+  --dy-yellow-600: #f5b800;
+  --dy-yellow-100: #fef9e7;
+  --dy-gutter: 20px;
+  --dy-radius: 6px;
+  --dy-radius-sm: 4px;
+  --dy-radius-lg: 8px;
+  --dy-title-h: 90px;
+  --dy-font-display: Fraunces, ui-serif, Georgia, serif;
+  --dy-font-body: Inter Tight, system-ui, -apple-system, sans-serif;
+  --dy-font-mono: JetBrains Mono, ui-monospace, SF Mono, monospace;
+}
+
+#dy-orphan-table img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #dcdcde;
+}
+#dy-orphan-table .dy-no-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  color: #c3c4c7;
+  border: 1px solid #dcdcde;
+  border-radius: 2px;
+}
+#dy-orphan-table td strong {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Colonnes : Aperçu réduit à la vignette pour rapprocher « Fichier » ──── */
+#dy-orphan-table .check-column { width: 2.4em; }
+#dy-orphan-table thead th:nth-child(2),
+#dy-orphan-table tbody td:nth-child(2) { width: 58px; }   /* Aperçu */
+#dy-orphan-table thead th:nth-child(4),
+#dy-orphan-table tbody td:nth-child(4) { width: 92px; }   /* Type */
+#dy-orphan-table thead th:nth-child(5),
+#dy-orphan-table tbody td:nth-child(5) { width: 84px; }   /* Taille */
+#dy-orphan-table thead th:nth-child(6),
+#dy-orphan-table tbody td:nth-child(6) { width: 108px; }  /* Uploadé */
+
+/* ── Bloc de confirmation (action destructive) — panneau danger sur dark ── */
+/* Rendu deux fois : au-dessus ET en dessous de la table (mêmes classes). */
+.dy-orphan-confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 15px 18px;
+  background: linear-gradient(180deg, rgba(214, 54, 56, 0.11), rgba(214, 54, 56, 0.045));
+  border: 1px solid rgba(214, 54, 56, 0.28);
+  border-left: 3px solid var(--dy-danger, #d63638);
+  border-radius: var(--dy-radius, 6px);
+  color: var(--dy-ink, #ecedf2);
+}
+.dy-orphan-confirm--top {
+  margin: 0 0 16px;
+}
+.dy-orphan-confirm--bottom {
+  margin: 22px 0 0;
+}
+.dy-orphan-confirm__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--dy-danger, #d63638);
+}
+.dy-orphan-confirm__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1 1 auto;
+  min-width: 220px;
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--dy-ink, #ecedf2);
+  cursor: pointer;
+}
+.dy-orphan-confirm__check input[type="checkbox"] {
+  flex-shrink: 0;
+  margin: 0;
+}
+.dy-orphan-confirm__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dy-orphan-delete-btn.button {
+  background: var(--dy-danger, #d63638);
+  border-color: var(--dy-danger, #d63638);
+  color: #fff;
+  border-radius: var(--dy-radius-sm, 4px);
+  padding: 4px 16px;
+  font-weight: 500;
+  text-shadow: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.dy-orphan-delete-btn.button:hover:not(:disabled),
+.dy-orphan-delete-btn.button:focus:not(:disabled) {
+  background: var(--dy-danger-hover, #b32d2e);
+  border-color: var(--dy-danger-hover, #b32d2e);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -7px rgba(214, 54, 56, 0.65);
+}
+.dy-orphan-delete-btn.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+.dy-orphan-delete-btn.button:disabled {
+  background: var(--dy-bg-elev, #1d2030);
+  border-color: var(--dy-line-hi, #2a3049);
+  color: var(--dy-ink-mute, #5a6070);
+  opacity: 1;
+  cursor: not-allowed;
+  box-shadow: none;
+  text-shadow: none;
+  transform: none;
+}
+
+#dy-orphan-done {
+  margin-top: 16px;
+}
+#dy-orphan-done .notice {
+  margin: 0;
+}

@@ -1,0 +1,114 @@
+// =============================================================
+// _switch.scss
+// Toggle switch custom — track + thumb + label "Activé/Désactivé".
+//
+// Pattern : <label class="dy-overview__switch">
+//             <input type="checkbox">
+//             <span class="dy-overview__switch-track"></span>
+//             <span class="dy-overview__switch-label">Activé</span>
+//           </label>
+// =============================================================
+
+.dy-overview__switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+
+	// Le vrai checkbox est invisible mais accessible : focus, état,
+	// keyboard. On le déplace hors flux pour qu'il n'occupe pas d'espace,
+	// mais on ne le cache pas avec display:none (ce qui retirerait le focus).
+	input[type="checkbox"] {
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		pointer-events: none;
+		margin: 0;
+	}
+
+	// ── Track + thumb ────────────────────────────────────────
+	&-track {
+		position: relative;
+		display: inline-block;
+		width: 38px;
+		height: 22px;
+		background: var(--paper-3);
+		border: 1px solid var(--line-strong);
+		border-radius: var(--r-pill);
+		transition: background var(--t-med) var(--ease),
+		            border-color var(--t-fast) var(--ease),
+		            box-shadow var(--t-fast) var(--ease);
+		flex-shrink: 0;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 16px;
+			height: 16px;
+			background: var(--paper);
+			border: 1px solid var(--line);
+			border-radius: 50%;
+			transition: transform var(--t-med) var(--ease-out),
+			            background var(--t-fast) var(--ease),
+			            border-color var(--t-fast) var(--ease),
+			            box-shadow var(--t-fast) var(--ease);
+		}
+	}
+
+	// État CHECKED : track devient accent, thumb glisse à droite + devient blanc.
+	input:checked + &-track {
+		background: var(--accent);
+		border-color: var(--accent);
+
+		&::after {
+			transform: translateX(16px);
+			background: #ffffff;
+			border-color: rgba(0, 0, 0, .08);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+		}
+	}
+
+	// Focus visible : halo accent autour du track.
+	input:focus-visible + &-track {
+		box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18);
+	}
+
+	// Hover : track plus marqué, thumb très légèrement allongé (squish).
+	&:hover &-track {
+		border-color: var(--ink-mute);
+
+		&::after { transform: translateX(1px) scaleX(1.08); }
+	}
+
+	&:hover input:checked + &-track::after {
+		transform: translateX(15px) scaleX(1.08);
+	}
+
+	// ── Label texte (Activé/Désactivé) ──────────────────────
+	&-label {
+		font-family: var(--font-body);
+		font-size: 12px;
+		font-weight: 500;
+		color: var(--ink-mute);
+		min-width: 56px;
+		transition: color var(--t-fast) var(--ease);
+	}
+
+	// Quand le checkbox est checked, le label dans le DOM dit "Activé"
+	// (rendu par PHP) — on lui donne la couleur ink-soft pour qu'il
+	// soit plus présent que "Désactivé".
+	&:has(input:checked) &-label {
+		color: var(--ink-soft);
+	}
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__switch-track,
+	.dy-overview__switch-track::after { transition: none; }
+}

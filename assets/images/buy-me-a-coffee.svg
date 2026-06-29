@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 60" width="252" height="60" role="img" aria-label="Buy me a coffee">
+  <defs>
+    <linearGradient id="dybmc-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d89a3c"/>
+      <stop offset="0.52" stop-color="#c98a2b"/>
+      <stop offset="1" stop-color="#b3771d"/>
+    </linearGradient>
+    <linearGradient id="dybmc-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Corps du bouton -->
+  <rect x="0.5" y="0.5" width="251" height="59" rx="16" fill="url(#dybmc-bg)" stroke="rgba(0,0,0,0.14)"/>
+  <!-- Reflet haut (effet bouton releve) -->
+  <rect x="2" y="2" width="248" height="26" rx="14" fill="url(#dybmc-sheen)"/>
+
+  <!-- Coeur plein (gratitude / soutien) : evite le doublon avec le monogramme tasse -->
+  <path transform="translate(20,15) scale(1.22)"
+        d="M12 21.3s-8.6-5.4-8.6-11.5A4.7 4.7 0 0 1 12 7a4.7 4.7 0 0 1 8.6 2.8c0 6.1-8.6 11.5-8.6 11.5z"
+        fill="#fff5e6"/>
+
+  <!-- Libelle -->
+  <text x="62" y="38" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif"
+        font-style="italic" font-weight="700" font-size="23" letter-spacing="0.2" fill="#fff5e6">Buy me a coffee</text>
+</svg>

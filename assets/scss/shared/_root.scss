@@ -1,0 +1,65 @@
+// =============================================================================
+// :root { --dy-* } — exposition runtime des tokens
+// =============================================================================
+//
+// Ce partial doit être @forward'é (ou @use'd avec ()) UNE SEULE FOIS par
+// fichier compilé final, sinon doublon dans le CSS sortie. Inclus depuis
+// admin.scss et chaque entry SCSS de module (media-library.scss…).
+//
+// =============================================================================
+
+@use 'variables' as *;
+
+:root {
+	// Accents
+	--dy-accent:        #{$color-accent};
+	--dy-accent-hover:  #{$color-accent-hover};
+
+	// Texte
+	--dy-ink:           #{$color-ink};
+	--dy-ink-soft:      #{$color-ink-soft};
+	--dy-ink-mute:      #{$color-ink-mute};
+	--dy-ink-faint:     #{$color-ink-faint};
+
+	// Fonds
+	--dy-bg:            #{$color-bg};
+	--dy-bg-soft:       #{$color-bg-soft};
+	--dy-bg-card:       #{$color-bg-card};
+	--dy-bg-elev:       #{$color-bg-elev};
+
+	// Lignes
+	--dy-line:          #{$color-line};
+	--dy-line-hi:       #{$color-line-hi};
+	--dy-line-soft:     #{$color-line-soft};
+
+	// États
+	--dy-success:       #{$color-success};
+	--dy-success-hover: #{$color-success-hover};
+	--dy-warning:       #{$color-warning};
+	--dy-danger:        #{$color-danger};
+	--dy-danger-hover:  #{$color-danger-hover};
+
+	// Marque
+	--dy-purple:        #{$color-purple};
+	--dy-purple-600:    #{$color-purple-600};
+	--dy-purple-200:    #{$color-purple-200};
+	--dy-purple-100:    #{$color-purple-100};
+	--dy-yellow:        #{$color-yellow};
+	--dy-yellow-600:    #{$color-yellow-600};
+	--dy-yellow-100:    #{$color-yellow-100};
+
+	// Layout
+	--dy-gutter:        #{$gutter};
+	--dy-radius:        #{$radius-md};
+	--dy-radius-sm:     #{$radius-sm};
+	--dy-radius-lg:     #{$radius-lg};
+
+	// Hauteur du titre — fallback (avant boot JS measureTitleHeight)
+	// Override en runtime : document.body.style.--dy-title-h = "Npx"
+	--dy-title-h:       90px;
+
+	// Typographie
+	--dy-font-display:  #{$font-display};
+	--dy-font-body:     #{$font-body};
+	--dy-font-mono:     #{$font-mono};
+}

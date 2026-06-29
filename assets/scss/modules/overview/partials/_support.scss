@@ -1,0 +1,460 @@
+// =============================================================
+// _support.scss
+// « Un mot du créateur » : carte de soutien en bas de la Vue d'ensemble,
+// affichée UNIQUEMENT dans les plugins solo gratuits (pas dans la suite).
+// Volontairement plus chaleureuse/douce que la grille de modules — elle se
+// lit comme une note personnelle, pas comme un module de plus.
+// Accent ambré « café » assumé, le reste reste fidèle aux tokens du système.
+// =============================================================
+
+.dy-overview {
+
+	&__support {
+		--coffee:      #c98a2b;
+		--coffee-rgb:  201, 138, 43;
+		--coffee-soft: rgba(201, 138, 43, .10);
+
+		position: relative;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: clamp(16px, 2.4vw, 32px);
+		margin: 30px 0 8px;
+		padding: clamp(18px, 2vw, 26px) clamp(20px, 2.4vw, 30px);
+		border: 1px solid var(--line);
+		border-radius: var(--r-lg);
+		background:
+			radial-gradient(120% 180% at 0% 0%, var(--coffee-soft) 0%, transparent 42%),
+			linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 70%);
+		overflow: hidden;
+		isolation: isolate;
+
+		// Entrée douce, après les cards (delay généreux).
+		opacity: 0;
+		transform: translateY(12px);
+		animation: dy-overview-card-rise 620ms var(--ease-out) forwards;
+		animation-delay: 1100ms;
+
+		// Hairline ambrée en haut.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 0 auto 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--coffee), transparent 70%);
+			opacity: .55;
+		}
+	}
+
+	// ── Monogramme / tasse fumante ───────────────────────────
+	&__support-mark {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--coffee-soft);
+		border: 1px solid rgba(var(--coffee-rgb), .3);
+		color: var(--coffee);
+		flex-shrink: 0;
+
+		svg { width: 26px; height: 26px; display: block; overflow: visible; }
+
+		.dy-steam {
+			transform-origin: center bottom;
+			animation: dy-steam 2600ms var(--ease) infinite;
+		}
+		.dy-steam--2 { animation-delay: 600ms; }
+		.dy-steam--3 { animation-delay: 1200ms; }
+	}
+
+	// ── Message ──────────────────────────────────────────────
+	&__support-body { min-width: 0; }
+
+	&__support-title {
+		font-family: var(--font-display);
+		font-size: 16.5px;
+		font-weight: 500;
+		letter-spacing: var(--tracking-tight);
+		color: var(--ink);
+		margin: 0 0 6px;
+	}
+
+	&__support-text {
+		font-size: 12.8px;
+		line-height: 1.6;
+		color: var(--ink-soft);
+		margin: 0;
+		max-width: 78ch;
+
+		b { color: var(--ink); font-weight: 600; }
+	}
+
+	&__support-sign {
+		display: inline-block;
+		margin-top: 10px;
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: 14px;
+		color: var(--ink);
+
+		em { color: var(--coffee); font-style: italic; }
+	}
+
+	// ── Actions ──────────────────────────────────────────────
+	&__support-actions {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 12px;
+		flex-shrink: 0;
+	}
+
+	// Bouton « Buy me a coffee » : pilule ambrée liquid-glass, cœur en trait
+	// (esprit tasse) qui bat + se remplit au survol, balayage de lumière.
+	&__coffee-btn {
+		--bmc:      #c98a2b;
+		--bmc-lo:   #b3771d;
+		--bmc-hi:   #e0a743;
+		--bmc-fg:   #fff5e6;
+		--ease-bmc: cubic-bezier(.23, 1, .32, 1);
+
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: 12px 24px 12px 18px;
+		border-radius: var(--r-pill);
+		background: linear-gradient(180deg, var(--bmc-hi) 0%, var(--bmc) 52%, var(--bmc-lo) 100%);
+		color: var(--bmc-fg);
+		text-decoration: none;
+		overflow: hidden;
+		isolation: isolate;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .38),
+			inset 0 -1px 0 rgba(0, 0, 0, .18),
+			0 6px 16px -8px rgba(201, 138, 43, .5);
+		transition: transform 200ms var(--ease-bmc), box-shadow 200ms var(--ease-bmc);
+		will-change: transform;
+
+		// Balayage de lumière (sheen), une passe au survol.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .5) 50%, transparent 68%);
+			transform: translateX(-130%);
+			pointer-events: none;
+			z-index: 3;
+		}
+	}
+
+	&__coffee-icon {
+		position: relative;
+		z-index: 1;
+		display: block;
+		width: 21px;
+		height: 21px;
+		color: var(--bmc-fg, #fff5e6);
+
+		svg { width: 100%; height: 100%; display: block; overflow: visible; }
+	}
+
+	// Cœur plein qui se remplit du bas vers le haut au survol (esprit tasse).
+	&__coffee-fill {
+		clip-path: inset(100% 0 0 0);
+		transition: clip-path 460ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	&__coffee-label {
+		position: relative;
+		z-index: 1;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 14px;
+		letter-spacing: -.005em;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&__coffee-btn:hover {
+			transform: translateY(-2px);
+			color: var(--bmc-fg);
+			box-shadow:
+				inset 0 1px 0 rgba(255, 255, 255, .42),
+				inset 0 -1px 0 rgba(0, 0, 0, .2),
+				0 12px 26px -10px rgba(201, 138, 43, .62);
+
+			&::before { animation: dy-coffee-sheen 720ms cubic-bezier(.23, 1, .32, 1); }
+			.dy-overview__coffee-icon { animation: dy-coffee-beat 1300ms ease-in-out infinite; }
+			.dy-overview__coffee-fill { clip-path: inset(0 0 0 0); }
+		}
+	}
+
+	&__coffee-btn:active {
+		transform: translateY(-1px) scale(.97);
+		color: var(--bmc-fg);
+		transition-duration: 120ms;
+	}
+
+	&__coffee-btn:focus-visible {
+		color: var(--bmc-fg);
+		outline: none;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .38),
+			0 0 0 3px rgba(201, 138, 43, .55);
+	}
+
+
+	&__support-btns {
+		display: flex;
+		align-items: stretch;
+		gap: 10px;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
+	&__support-link {
+		font-family: var(--font-body);
+		font-size: 12px;
+		color: var(--ink-soft);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		transition: color var(--t-fast) var(--ease);
+
+		&::after { content: "→"; font-family: var(--font-mono); transition: transform var(--t-fast) var(--ease); }
+		&:hover { color: var(--coffee); &::after { transform: translateX(3px); } }
+	}
+
+	// ── Responsive ───────────────────────────────────────────
+
+	// ── Bannière « Signaler / suggérer » ────────────────────────────
+	// Affichée en solo (sous la carte café) ET en suite. Fond accent SUBTIL
+	// (teinte sur le dark, pas un aplat criard), texte blanc lisible, glyphe à
+	// gauche, bouton solide accent à droite. Pendant « accent » de la carte café
+	// ambrée : les deux bannières se répondent, chacune dans sa couleur.
+	&__feedback {
+		--fb-rgb: var(--accent-rgb);
+
+		position: relative;
+		// MÊME grille que la carte café (auto 1fr auto) : glyphe, corps et bouton
+		// tombent sur les MÊMES colonnes que mark/body/actions ci-dessus, donc les
+		// deux bannières empilées s'alignent pile l'une sous l'autre.
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: clamp(16px, 2.4vw, 32px);
+		margin: clamp(16px, 1.8vw, 22px) 0 8px;
+		padding: clamp(18px, 2vw, 26px) clamp(20px, 2.4vw, 30px);
+		border: 1px solid rgba(var(--fb-rgb), .34);
+		border-radius: var(--r-lg);
+		background:
+			radial-gradient(120% 180% at 0% 0%, rgba(var(--fb-rgb), .26) 0%, transparent 52%),
+			linear-gradient(180deg, rgba(var(--fb-rgb), .20) 0%, rgba(var(--fb-rgb), .11) 100%);
+		overflow: hidden;
+		isolation: isolate;
+
+		// Entrée douce, juste après la carte de soutien.
+		opacity: 0;
+		transform: translateY(12px);
+		animation: dy-overview-card-rise 620ms var(--ease-out) forwards;
+		animation-delay: 1200ms;
+
+		// Hairline accent (un peu plus vive) en haut.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 0 auto 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--accent), transparent 70%);
+			opacity: .7;
+		}
+	}
+
+	// Glyphe (ampoule) dans une pastille accent — MÊME gabarit que le monogramme
+	// café (54px / svg 26px) pour aligner la colonne de texte des deux bannières.
+	&__feedback-glyph {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(var(--fb-rgb), .22);
+		border: 1px solid rgba(var(--fb-rgb), .42);
+		color: #fff;
+		flex-shrink: 0;
+
+		svg { width: 26px; height: 26px; display: block; }
+	}
+
+	&__feedback-body { min-width: 0; }
+
+	// Titre : même typo que __support-title, en blanc sur la teinte accent.
+	&__feedback-title {
+		font-family: var(--font-display);
+		font-size: 16.5px;
+		font-weight: 500;
+		letter-spacing: var(--tracking-tight);
+		color: #fff;
+		margin: 0 0 6px;
+	}
+
+	// Texte : MÊME taille que __support-text (12.8px / lh 1.6), en blanc.
+	&__feedback-text {
+		max-width: 78ch;
+		margin: 0;
+		font-size: 12.8px;
+		line-height: 1.6;
+		color: #fff;
+	}
+
+	// Bouton solide accent — MÊME effet de survol que le café (lift + balayage de
+	// lumière + ombre teintée). La flèche tient le rôle du battement de cœur.
+	&__feedback-btn {
+		--ease-fb: cubic-bezier(.23, 1, .32, 1);
+
+		position: relative;
+		justify-self: end;
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 22px;
+		border-radius: var(--r-pill);
+		background: linear-gradient(180deg, #6f54ff 0%, var(--accent) 55%, #4c2fe6 100%);
+		color: #fff;
+		text-decoration: none;
+		white-space: nowrap;
+		overflow: hidden;
+		isolation: isolate;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .28),
+			inset 0 -1px 0 rgba(0, 0, 0, .18),
+			0 6px 16px -8px rgba(var(--accent-rgb), .7);
+		transition: transform 200ms var(--ease-fb), box-shadow 200ms var(--ease-fb), color 200ms var(--ease-fb);
+		will-change: transform;
+
+		// Balayage de lumière (sheen) — identique au bouton café.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .5) 50%, transparent 68%);
+			transform: translateX(-130%);
+			pointer-events: none;
+			z-index: 3;
+		}
+
+		.dy-overview__feedback-label {
+			position: relative;
+			z-index: 1;
+			font-family: var(--font-display);
+			font-weight: 600;
+			font-size: 14px;
+			letter-spacing: -.005em;
+		}
+		.dy-overview__feedback-arrow {
+			position: relative;
+			z-index: 1;
+			width: 15px;
+			height: 15px;
+			display: block;
+			transition: transform 220ms var(--ease-fb);
+		}
+
+		&:hover,
+		&:active,
+		&:focus-visible { color: #fff; }
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				transform: translateY(-2px);
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, .32),
+					inset 0 -1px 0 rgba(0, 0, 0, .2),
+					0 12px 26px -10px rgba(var(--accent-rgb), .82);
+
+				&::before { animation: dy-coffee-sheen 720ms cubic-bezier(.23, 1, .32, 1); }
+				.dy-overview__feedback-arrow { transform: translate(2px, -2px); }
+			}
+		}
+		&:active { transform: translateY(-1px) scale(.97); transition-duration: 120ms; }
+		&:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .55); }
+	}
+
+	@media (max-width: 782px) {
+		&__support {
+			grid-template-columns: auto 1fr;
+			grid-template-areas:
+				"mark body"
+				"actions actions";
+			row-gap: 18px;
+		}
+		&__support-mark    { grid-area: mark; }
+		&__support-body    { grid-area: body; }
+		&__support-actions {
+			grid-area: actions;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		// Bannière feedback : même repli que la carte café (icône + corps en
+		// haut, bouton sur sa propre ligne).
+		&__feedback {
+			grid-template-columns: auto 1fr;
+			grid-template-areas:
+				"glyph body"
+				"btn   btn";
+			row-gap: 16px;
+		}
+		&__feedback-glyph { grid-area: glyph; }
+		&__feedback-body  { grid-area: body; }
+		&__feedback-btn   { grid-area: btn; justify-self: start; }
+	}
+}
+
+// ── Keyframes ────────────────────────────────────────────
+@keyframes dy-steam {
+	0%   { opacity: 0;   transform: translateY(2px) scaleY(.6); }
+	35%  { opacity: .9; }
+	100% { opacity: 0;   transform: translateY(-6px) scaleY(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__support {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+	.dy-overview__support-mark .dy-steam { animation: none; opacity: .7; }
+	.dy-overview__coffee-btn:hover { transform: none; }
+	.dy-overview__coffee-btn:hover::before,
+	.dy-overview__coffee-btn:hover .dy-overview__coffee-icon { animation: none; }
+	.dy-overview__coffee-fill { transition: none; }
+	.dy-overview__feedback {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+	.dy-overview__feedback-btn:hover { transform: none; }
+}
+
+// ── Keyframes bouton café ────────────────────────────────
+@keyframes dy-coffee-sheen {
+	from { transform: translateX(-130%); }
+	to   { transform: translateX(130%); }
+}
+
+// Battement de cœur (lub-dub).
+@keyframes dy-coffee-beat {
+	0%, 100% { transform: scale(1); }
+	14%      { transform: scale(1.18); }
+	28%      { transform: scale(1); }
+	42%      { transform: scale(1.1); }
+	62%      { transform: scale(1); }
+}
