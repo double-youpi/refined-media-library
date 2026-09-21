@@ -13,6 +13,8 @@
   --dy-line: #1e2235;
   --dy-line-hi: #2a3049;
   --dy-line-soft: rgba(255, 255, 255, 0.04);
+  --dy-edge: transparent;
+  --dy-edge-hi: transparent;
   --dy-success: #16a34a;
   --dy-success-hover: #15803d;
   --dy-warning: #f59e0b;
@@ -539,6 +541,50 @@ body.upload-php:has(.dy-detail-open) .wrap > .error {
   margin-right: calc(var(--dy-dw, 340px) + var(--dy-gutter, 20px) + 20px) !important;
 }
 
+/* ── Admin notices: one home, indented like the grid ───────────────────────
+   folder-tree.js moves every relocatable notice into #dy-ml-notices, a direct
+   child of .wrap placed just before the media frame. The container carries the
+   indentation; the notices inside carry none, so a plugin's own margins cannot
+   push one back over the wordmark. The selector lists above still indent stray
+   notices on their own, as a fallback for the no-JS case. */
+body.upload-php .wrap > #dy-ml-notices {
+  margin-left: min(var(--dy-fw, 220px), 35vw, 360px);
+  margin-right: var(--dy-gutter, 20px);
+  transition: margin-right 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), margin-left 0.15s ease;
+  box-sizing: border-box;
+}
+
+body.upload-php:has(.dy-detail-open) .wrap > #dy-ml-notices {
+  margin-right: calc(var(--dy-dw, 340px) + var(--dy-gutter, 20px) + 20px);
+}
+
+/* Nothing to show (empty, or every notice inside it hidden by someone else):
+   take no room at all. The JS sets data-empty, because CSS cannot ask whether
+   a child ended up visible. */
+body.upload-php .wrap > #dy-ml-notices:empty,
+body.upload-php .wrap > #dy-ml-notices[data-empty="true"] {
+  display: none;
+}
+
+/* Inside the container a notice is one item in a stack. Deliberately NOT
+   setting `display`: notices that WordPress or a plugin hides on purpose
+   (.hide-if-js, Elementor's cross-sell banners) must stay hidden. The gap
+   spaces the visible ones without giving height to the hidden ones. */
+body.upload-php .wrap > #dy-ml-notices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+body.upload-php #dy-ml-notices > .notice,
+body.upload-php #dy-ml-notices > .updated,
+body.upload-php #dy-ml-notices > .update-nag,
+body.upload-php #dy-ml-notices > .error {
+  margin: 0 !important;
+  float: none !important;
+}
+
 /*
  * Third-party promo notices (Elementor "Speed up your site with Image
  * Optimizer", etc.) inject themselves into the media library as cross-sell
@@ -689,7 +735,7 @@ body.upload-php #e-image-ai-media-library a:active {
   line-height: 1 !important;
   color: var(--ink, #ecedf2) !important;
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 6px !important;
   box-shadow: none !important;
   text-shadow: none !important;
@@ -808,7 +854,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   width: 22px;
   height: 22px;
   background: none;
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 4px;
   color: var(--ink-mute, #5a6070);
   font-size: 16px;
@@ -821,7 +867,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 
 #dy-add-folder-btn:hover {
   color: var(--ink, #ecedf2);
-  border-color: var(--line-hi, #2a3049);
+  border-color: var(--dy-edge-hi, #2a3049);
   background: var(--bg-elev, #1d2030);
 }
 
@@ -1121,7 +1167,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   min-width: 186px;
   padding: 5px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 8px;
   box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   opacity: 0;
@@ -1187,7 +1233,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   width: 100%;
   box-sizing: border-box;
   padding: 8px 10px;
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 6px;
   background: var(--bg, #0c0e13);
   color: var(--ink, #ecedf2);
@@ -1221,7 +1267,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   overflow-y: auto;
   padding: 5px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 8px;
   box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   opacity: 0;
@@ -1426,7 +1472,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
 
 .dy-bulk-dialog {
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 10px;
   box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.8);
   padding: 28px;
@@ -1482,7 +1528,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   width: 100%;
   padding: 8px 36px 8px 12px;
   background: var(--bg-elev, #1d2030);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink, #ecedf2);
   font-size: 13px;
@@ -1554,7 +1600,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
 
 .dy-bulk-btn-cancel {
   background: var(--bg-elev, #1d2030);
-  border-color: var(--line-hi, #2a3049);
+  border-color: var(--dy-edge-hi, #2a3049);
   color: var(--ink-soft, #9ba3b5);
 }
 
@@ -1683,7 +1729,7 @@ body.upload-php .page-title-action {
   margin-left: 12px;
   padding: 8px 14px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5);
   font-size: 13px;
@@ -1790,7 +1836,7 @@ body.upload-php .media-toolbar .attachment-filters {
   background-repeat: no-repeat !important;
   background-position: right 11px center !important;
   background-size: 10px 6px !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 4px !important;
   color: var(--ink-soft, #9ba3b5) !important;
   font-size: 12px !important;
@@ -1833,7 +1879,7 @@ body.upload-php .dy-mine-btn {
   padding: 0 8px !important;
   vertical-align: middle;
   background-color: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 4px !important;
   color: var(--ink-soft, #9ba3b5) !important;
   font-size: 12px !important;
@@ -1874,6 +1920,15 @@ body.upload-php .dy-mine-btn__label {
   transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
 }
 
+/* Bulk Select mode: WP hides the toolbar filters via an inline display:none
+   (media-grid.js → children.not('.spinner, .media-button').hide()). Our
+   !important on the button's display beat that inline rule, so "Mine" lingered
+   while the other filters vanished. Re-hide it in select mode only, with higher
+   specificity + !important. WP adds .media-toolbar-mode-select to the toolbar. */
+body.upload-php .media-toolbar-mode-select .dy-mine-btn {
+  display: none !important;
+}
+
 body.upload-php .dy-mine-btn:hover .dy-mine-btn__label,
 body.upload-php .dy-mine-btn:focus-visible .dy-mine-btn__label {
   max-width: 80px;
@@ -1901,7 +1956,7 @@ body.upload-php input.search[type=search] {
   height: 32px;
   padding: 0 10px;
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 4px !important;
   color: var(--ink, #ecedf2) !important;
   font-size: 12px !important;
@@ -1926,7 +1981,7 @@ body.upload-php .media-toolbar button.delete-selected-permanently-button {
   height: 32px;
   padding: 0 12px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5);
   font-size: 12px;
@@ -1967,7 +2022,7 @@ body.upload-php .media-toolbar .button-link-delete:hover {
 body.upload-php .media-toolbar .delete-selected-button:disabled,
 body.upload-php .media-toolbar .delete-selected-permanently-button:disabled {
   background: var(--bg-card, #161a23) !important;
-  border-color: var(--line-hi, #2a3049) !important;
+  border-color: var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink-mute, #5a6070) !important;
   opacity: 0.6;
   cursor: not-allowed;
@@ -1982,7 +2037,7 @@ body.upload-php .media-toolbar .delete-selected-permanently-button:disabled {
 body.upload-php .view-switch {
   display: inline-flex;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 6px;
   padding: 0;
   gap: 0;
@@ -2034,14 +2089,25 @@ body.upload-php .view-switch a:hover {
   background: var(--bg-elev, #1d2030);
 }
 
-body.upload-php .view-switch a.current {
-  background: var(--accent, #5b3efe);
-  color: #0a0c11;
-  box-shadow: 0 1px 4px rgba(91, 62, 254, 0.4);
+/* Active view: the icon takes the accent, on the same transparent ground as
+   the inactive one. The filled-pill version this replaces never showed, since
+   `background: none !important` on the link above cancelled it.
+   `::before` must be named: WordPress colours it itself
+   (`.view-switch a.current::before` in colors.min.css, 0,2,1), and inheriting
+   from the link is not enough to win. `.media-grid-view-switch` used to carry
+   this on its own, which is why grid mode looked right and list mode did not:
+   that second class only exists in grid mode. One rule now covers both. */
+body.upload-php .view-switch a.current,
+body.upload-php .view-switch a.current::before,
+body.upload-php .view-switch a.current:hover,
+body.upload-php .view-switch a.current:hover::before,
+body.upload-php .view-switch a.current:focus,
+body.upload-php .view-switch a.current:focus::before {
+  color: var(--accent, #5b3efe);
 }
 
 body.upload-php .view-switch a.current:hover {
-  color: #0a0c11;
+  background: var(--bg-elev, #1d2030);
 }
 
 /* Remove the screen-reader-text visual artifacts */
@@ -2131,7 +2197,7 @@ body.upload-php .media-toolbar-primary.search-form {
 
 .wp-filter .search-form #search-submit {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink-soft, #9ba3b5) !important;
   border-radius: 4px !important;
   box-shadow: none !important;
@@ -2255,7 +2321,7 @@ body.upload-php .attachment {
   background: var(--bg-card, #161a23) !important;
   border-radius: 8px !important;
   overflow: hidden !important;
-  box-shadow: 0 0 0 1px var(--line, #1e2235) !important;
+  box-shadow: 0 0 0 1px var(--dy-edge, transparent) !important;
   transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   cursor: pointer !important;
 }
@@ -2387,7 +2453,7 @@ body.upload-php .attachment-preview:not(.type-image) .thumbnail::before {
   line-height: 1;
   color: var(--ink-soft, #9ba3b5);
   background: var(--bg-elev, #1d2030);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 16px;
   box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.7);
   -webkit-font-smoothing: antialiased;
@@ -2470,7 +2536,7 @@ body.upload-php #wpbody table.wp-list-table * {
 
 body.upload-php #wpbody table.wp-list-table {
   background-color: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line, #1e2235) !important;
+  border: 1px solid var(--dy-edge, #1e2235) !important;
   border-radius: 8px;
   border-collapse: separate !important;
   border-spacing: 0;
@@ -2758,7 +2824,7 @@ body.upload-php .wp-list-table .column-title img,
 body.upload-php .wp-list-table .column-fichier img,
 body.upload-php .wp-list-table .media-icon img {
   border-radius: 4px;
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
 }
 
 /*
@@ -3035,7 +3101,7 @@ body.upload-php .wp-list-table .no-items td {
 
 /* 9. Checkbox: modernised to match the rest of the dark theme */
 body.upload-php .wp-list-table .check-column input[type=checkbox] {
-  border-color: var(--line-hi, #2a3049);
+  border-color: var(--dy-edge-hi, #2a3049);
   background: var(--bg-card, #161a23);
   color: transparent;
   border-radius: 3px;
@@ -3082,7 +3148,7 @@ body.upload-php .wp-list-table a:hover {
 /* Thumbnail in title column */
 body.upload-php .column-title .media-icon img {
   border-radius: 4px;
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
   background: var(--bg-elev, #1d2030);
 }
 
@@ -3131,7 +3197,7 @@ body.upload-php select#attachment-filter,
 body.upload-php select#dy-folder-filter,
 body.upload-php select.attachment-filters {
   background-color: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink-soft, #9ba3b5) !important;
   border-radius: 4px !important;
   height: 32px !important;
@@ -3179,7 +3245,7 @@ body.upload-php .displaying-num {
 body.upload-php .search-box input[type=search],
 body.upload-php #media-search-input {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
   border-radius: 4px !important;
   height: 32px !important;
@@ -3241,7 +3307,7 @@ body.upload-php .media-sidebar input[type=text],
 body.upload-php .media-sidebar input[type=url],
 body.upload-php .media-sidebar textarea {
   background: var(--bg-card, #161a23) !important;
-  border-color: var(--line-hi, #2a3049) !important;
+  border-color: var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
 }
 
@@ -3258,7 +3324,7 @@ body.upload-php .media-sidebar a {
 body.upload-php .media-sidebar .copy-to-clipboard-container input {
   background: var(--bg-elev, #1d2030) !important;
   color: var(--ink-mute, #5a6070) !important;
-  border-color: var(--line, #1e2235) !important;
+  border-color: var(--dy-edge, #1e2235) !important;
 }
 
 /* ── Scrollbars ─────────────────────────────────────────────────────────── */
@@ -3344,7 +3410,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   width: 30px;
   height: 30px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5);
   font-size: 18px;
@@ -3689,7 +3755,13 @@ body.dy-lb-open {
   border-bottom: none;
 }
 
-.dy-dp-section-title {
+/* Section titles and field labels are the SAME voice, so they share one rule
+   and cannot drift apart when the palette moves. The prefixed selector is
+   there because field labels are real <label> elements, and
+   `body.post-type-attachment label` (0,2,1) was lightening them. */
+.dy-dp-section-title,
+.dy-dp-field-label,
+body.upload-php #dy-detail-panel .dy-dp-field-label {
   font-family: var(--font-mono, "JetBrains Mono", ui-monospace, monospace);
   font-size: 9.5px;
   font-weight: 600;
@@ -3733,7 +3805,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input {
   width: 100%;
   padding: 9px 12px;
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 5px;
   color: var(--ink, #ecedf2) !important;
   font-size: 13px;
@@ -3816,7 +3888,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
   box-sizing: border-box;
   padding: 9px 12px;
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 5px;
   color: var(--ink, #ecedf2) !important;
   font-size: 13px;
@@ -3928,7 +4000,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
   flex-shrink: 0;
   padding: 6px 10px;
   background: var(--bg-elev, #1d2030);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5);
   font-size: 11px;
@@ -3986,28 +4058,80 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
   background: var(--bg, #0c0e13);
 }
 
-.dy-dp-save {
+/* ── Save button: a state, not a decoration ────────────────────────────────
+   A button that is loud at rest cannot get louder when it matters. So at rest
+   it is a quiet outline, and it only fills with the accent once a field holds
+   something the server has not got yet. The action bar is sticky, so this
+   signal is on screen whatever the panel is scrolled to. */
+.dy-dp-save,
+body.upload-php #dy-detail-panel .dy-dp-save {
   flex: 1;
   justify-content: center;
-  background: var(--accent, #5b3efe) !important;
-  border-color: var(--accent, #5b3efe) !important;
-  color: #0a0c11 !important;
+  background: transparent !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  color: var(--ink-soft, #9ba3b5) !important;
   font-weight: 600 !important;
   height: 32px;
   border-radius: 4px !important;
   font-size: 12px !important;
-  transition: background 0.15s, transform 0.1s !important;
+  box-shadow: none !important;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s, transform 0.1s !important;
 }
 
-.dy-dp-save:hover:not(:disabled) {
+.dy-dp-save:hover:not(:disabled),
+body.upload-php #dy-detail-panel .dy-dp-save:hover:not(:disabled) {
+  border-color: var(--ink-faint, #4a4f5d) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+/* Unsaved: filled, haloed, and it wakes up once. No looping animation, which
+   would nag instead of inform. */
+.dy-dp-save.is-dirty,
+body.upload-php #dy-detail-panel .dy-dp-save.is-dirty {
+  background: var(--accent, #5b3efe) !important;
+  border-color: var(--accent, #5b3efe) !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16) !important;
+  animation: dy-save-wake 0.42s cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+.dy-dp-save.is-dirty:hover:not(:disabled),
+body.upload-php #dy-detail-panel .dy-dp-save.is-dirty:hover:not(:disabled) {
   background: #7059fe !important;
   border-color: #7059fe !important;
+  color: #fff !important;
   transform: translateY(-1px);
 }
 
-.dy-dp-save:disabled {
+@keyframes dy-save-wake {
+  0%   { box-shadow: 0 0 0 0 rgba(91, 62, 254, 0.5); }
+  60%  { box-shadow: 0 0 0 7px rgba(91, 62, 254, 0); }
+  100% { box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16); }
+}
+
+.dy-dp-save:disabled,
+body.upload-php #dy-detail-panel .dy-dp-save:disabled {
   opacity: 0.6 !important;
   cursor: wait !important;
+}
+
+/* Which field did I touch? A dot on its label answers it at a glance, which
+   matters once four fields sit in the same section. */
+.dy-dp-field-label.is-modified::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 7px;
+  border-radius: 50%;
+  background: var(--accent, #5b3efe);
+  vertical-align: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dy-dp-save.is-dirty {
+    animation: none;
+  }
 }
 
 .dy-dp-edit-link {
@@ -4016,7 +4140,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
   height: 32px;
   padding: 0 12px;
   background: var(--bg-card, #161a23);
-  border: 1px solid var(--line-hi, #2a3049);
+  border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5);
   font-size: 12px;
@@ -4132,7 +4256,7 @@ body.post-type-attachment .notice,
 body.post-type-attachment div.updated,
 body.post-type-attachment div.error {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-left-width: 4px !important;
   border-radius: 6px !important;
   color: var(--ink, #ecedf2) !important;
@@ -4220,7 +4344,7 @@ body.post-type-attachment .notice.is-dismissible .notice-dismiss:hover::before {
 body.upload-php .notice .button,
 body.post-type-attachment .notice .button {
   background: var(--bg-elev, #1d2030) !important;
-  border-color: var(--line-hi, #2a3049) !important;
+  border-color: var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink-soft, #9ba3b5) !important;
   box-shadow: none !important;
 }
@@ -4254,7 +4378,7 @@ body.upload-php #dy-detail-panel {
 
 body.upload-php #screen-meta-links .show-settings {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: none !important;
   color: var(--ink-mute, #5a6070) !important;
   border-radius: 0 0 4px 4px !important;
@@ -4267,7 +4391,7 @@ body.upload-php #screen-meta-links .show-settings:hover {
 
 body.upload-php #contextual-help-link-wrap {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: none !important;
   border-radius: 0 0 4px 4px !important;
 }
@@ -4286,7 +4410,7 @@ body.upload-php #screen-meta {
   position: relative;
   z-index: 101;
   background: var(--bg-soft, #141720) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: 0 !important;
   box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
   color: var(--ink-soft, #9ba3b5) !important;
@@ -4296,7 +4420,7 @@ body.upload-php #screen-meta {
    affects elements that already have a border-width, so nothing new appears),
    and remove the inset box-shadow hairlines WP uses on the help tabs/panels. */
 body.upload-php #screen-meta * {
-  border-color: var(--line, #1e2235) !important;
+  border-color: var(--dy-edge, #1e2235) !important;
 }
 
 body.upload-php #screen-meta .contextual-help-tabs .active,
@@ -4315,7 +4439,7 @@ body.upload-php #screen-meta #contextual-help-wrap,
 body.upload-php #screen-meta .contextual-help-tabs,
 body.upload-php #screen-meta .help-tab-content {
   background: transparent !important;
-  border-color: var(--line, #1e2235) !important;
+  border-color: var(--dy-edge, #1e2235) !important;
 }
 
 body.upload-php #screen-meta h5,
@@ -4337,7 +4461,7 @@ body.upload-php #screen-meta input[type=number],
 body.upload-php #screen-meta input.screen-per-page,
 body.upload-php #screen-meta select {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
 }
 
@@ -4357,7 +4481,7 @@ body.upload-php #screen-meta .contextual-help-tabs ul {
 
 body.upload-php #screen-meta .contextual-help-tabs .active {
   background: var(--bg-card, #161a23) !important;
-  border-color: var(--line-hi, #2a3049) !important;
+  border-color: var(--dy-edge-hi, #2a3049) !important;
 }
 
 /* ── Remove WP's white-on-dark highlight behind screen-reader-text ──────── */
@@ -4433,7 +4557,7 @@ body.upload-php .attachment.dy-detail-active {
   width: 22px;
   height: 22px;
   background: none;
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 4px;
   color: var(--ink-mute, #5a6070);
   font-size: 16px;
@@ -4446,7 +4570,7 @@ body.upload-php .attachment.dy-detail-active {
 
 #dy-add-collection-btn:hover {
   color: var(--ink, #ecedf2);
-  border-color: var(--line-hi, #2a3049);
+  border-color: var(--dy-edge-hi, #2a3049);
   background: var(--bg-elev, #1d2030);
 }
 
@@ -4729,7 +4853,7 @@ body.upload-php input[type=checkbox] {
 /* Attachment thumbnail in list rows */
 body.upload-php .column-title .media-icon img {
   border-radius: 4px;
-  border: 1px solid var(--line, #1e2235);
+  border: 1px solid var(--dy-edge, #1e2235);
 }
 
 /* List view is intentionally not showing the folder panel (it's server-side).
@@ -4813,7 +4937,7 @@ body.post-type-attachment .page-title-action {
   margin-left: 12px;
   padding: 8px 14px;
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-radius: 4px;
   color: var(--ink-soft, #9ba3b5) !important;
   font-size: 13px;
@@ -4842,7 +4966,7 @@ body.post-type-attachment .wrap > p:first-of-type a {
 body.post-type-attachment #titlewrap input[type=text],
 body.post-type-attachment input[name=post_title] {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
   font-size: 15px !important;
   padding: 9px 12px !important;
@@ -4886,7 +5010,7 @@ body.post-type-attachment .label {
 body.post-type-attachment .wp-editor-area,
 body.post-type-attachment textarea {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
   border-radius: 5px !important;
   padding: 10px 12px !important;
@@ -4897,7 +5021,7 @@ body.post-type-attachment textarea {
 /* Editor toolbar (b i link b-quote del ins img ul ol li code) */
 body.post-type-attachment .quicktags-toolbar {
   background: var(--bg-elev, #1d2030) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-bottom: none !important;
   border-radius: 5px 5px 0 0 !important;
   padding: 6px !important;
@@ -4905,7 +5029,7 @@ body.post-type-attachment .quicktags-toolbar {
 
 body.post-type-attachment .quicktags-toolbar input.button {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line, #1e2235) !important;
+  border: 1px solid var(--dy-edge, #1e2235) !important;
   color: var(--ink-soft, #9ba3b5) !important;
   border-radius: 3px !important;
   margin-right: 4px !important;
@@ -4920,7 +5044,7 @@ body.post-type-attachment .quicktags-toolbar input.button:hover {
 /* Postbox (right meta-boxes: "Save", "Double Youpi") */
 body.post-type-attachment .postbox {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line, #1e2235) !important;
+  border: 1px solid var(--dy-edge, #1e2235) !important;
   border-radius: 8px !important;
   box-shadow: none !important;
   color: var(--ink-soft, #9ba3b5);
@@ -4970,7 +5094,7 @@ body.post-type-attachment .button-primary:hover {
 
 body.post-type-attachment .button {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink-soft, #9ba3b5) !important;
   border-radius: 4px !important;
   box-shadow: none !important;
@@ -5025,7 +5149,7 @@ body.post-type-attachment input.large-text,
 body.post-type-attachment input[type=url],
 body.post-type-attachment input[type=text]:not(#title) {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   color: var(--ink, #ecedf2) !important;
   border-radius: 4px !important;
   padding: 6px 10px !important;
@@ -5043,7 +5167,7 @@ body.post-type-attachment input.large-text:focus {
 /* Permalink section */
 body.post-type-attachment #edit-slug-box {
   background: var(--bg-elev, #1d2030) !important;
-  border: 1px solid var(--line, #1e2235) !important;
+  border: 1px solid var(--dy-edge, #1e2235) !important;
   border-radius: 4px;
   padding: 8px 10px;
   color: var(--ink-soft, #9ba3b5);
@@ -5092,7 +5216,7 @@ body.post-type-attachment #wpfooter {
 body.upload-php #wpadminbar .ab-sub-wrapper,
 body.post-type-attachment #wpadminbar .ab-sub-wrapper {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
 }
 
@@ -5278,7 +5402,7 @@ body.media-new-php .notice,
 body.media-new-php div.updated,
 body.media-new-php div.error {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-left-width: 4px !important;
   border-radius: 6px !important;
   color: var(--ink, #ecedf2) !important;
@@ -5321,7 +5445,7 @@ body.media-new-php #screen-meta-links {
 
 body.media-new-php #screen-meta-links .show-settings {
   background: var(--bg-card, #161a23) !important;
-  border: 1px solid var(--line-hi, #2a3049) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: none !important;
   color: var(--ink-mute, #5a6070) !important;
   border-radius: 0 0 4px 4px !important;
@@ -5419,14 +5543,6 @@ body.upload-php {
   --accent: #5b3efe;
 }
 
-/* Active view-switch: icon in accent colour (instead of dark-on-dark). */
-body.upload-php .media-grid-view-switch a.current,
-body.upload-php .media-grid-view-switch a.current::before,
-body.upload-php .media-grid-view-switch > a.current,
-body.upload-php .media-grid-view-switch > a.current::before {
-  color: var(--accent, #5b3efe);
-}
-
 /* "Folders/Collections disabled" indicator inside an inactive section. */
 .dy-panel-disabled {
   margin: 0;
@@ -5479,7 +5595,7 @@ body.upload-php .media-grid-view-switch > a.current::before {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 8px 12px !important;
-  border: 1px solid var(--dy-line, rgba(255, 255, 255, 0.12)) !important;
+  border: 1px solid var(--dy-edge, transparent) !important;
   border-radius: 9px !important;
   background: var(--dy-bg) !important;
   color: var(--dy-ink-soft, #c6c7cb) !important;
@@ -5566,4 +5682,89 @@ body.upload-php .media-grid-view-switch > a.current::before {
 .dy-panel-disabled .dy-panel-enable.is-loading {
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* ── Grouped editable fields ───────────────────────────────────────────────
+   Title, alt text, caption and description live in one section. Four separate
+   sections would push the file URL and where-used below the fold on a default
+   panel width. The mono labels keep the rhythm of the section titles, and
+   being real <label> elements they also make each field clickable. */
+/* Only what is specific to a label; the shared look lives with the section
+   titles further up. */
+.dy-dp-field-label {
+  display: block;
+  cursor: pointer;
+}
+
+.dy-dp-fields .dy-dp-input + .dy-dp-field-label {
+  margin-top: 16px;
+}
+
+/* Four stacked fields: each textarea starts shorter than a lone one would,
+   and stays draggable. Description gets the extra room it usually needs. */
+.dy-dp-fields .dy-dp-textarea {
+  min-height: 58px;
+}
+
+.dy-dp-fields #dy-dp-description {
+  min-height: 84px;
+}
+
+/* ── Folder and Collections, side by side on a wide panel ──────────────────
+   The panel width comes from the user dragging its edge (--dy-dw, 260 to
+   720px), which a media query cannot see. A container query on the wrapper
+   can: past 440px each column still holds a folder name without truncating. */
+.dy-dp-duo-ct {
+  container-type: inline-size;
+}
+
+/* Collections is the last child of the wrapper, not of the panel body, so it
+   must get its bottom border back (`.dy-dp-section:last-child` removes it). */
+.dy-dp-duo > .dy-dp-section:last-child {
+  border-bottom: 1px solid var(--line-soft, #0d1018);
+}
+
+@container (min-width: 440px) {
+  .dy-dp-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .dy-dp-duo > .dy-dp-section {
+    min-width: 0;
+  }
+
+  .dy-dp-duo > .dy-dp-section:first-child {
+    border-right: 1px solid var(--line-soft, #0d1018);
+  }
+}
+
+/* ── Blocks without an outline ─────────────────────────────────────
+ * The edge tokens are transparent (shared/_root.scss): panels, cards,
+ * popovers, dialogs, toolbars and buttons rest on their fill, not on a
+ * hairline. Same decision as the rest of the design system (doc 16).
+ *
+ * Text fields follow the blocks too (Raphaël, 21/09/2026). A title, an
+ * alternative text or a caption is a filled box on the panel ground: the
+ * fill carries it, the line added nothing. Their fill is left exactly as it
+ * was.
+ *
+ * What keeps a trait, because there the trait IS the control and not
+ * decoration:
+ *   1. the dropdowns. Without it a select stops reading as something you
+ *      can open, and the folder picker of the detail panel is a <button>
+ *      drawn as one, so it is named here.
+ *   2. the checkboxes and the radios, whose entire visual is that square.
+ *   3. the Save button of the detail panel, a quiet outline at rest that
+ *      fills with the accent once there is something to save.
+ *
+ * Accent outlines (selection, focus, primary) and dashed drop zones are not
+ * concerned: they are indicators, not the hairline.
+ */
+:is(select, input[type="checkbox"], input[type="radio"]),
+.dy-dp-folder-trigger,
+.dy-dp-save {
+  --dy-edge: var(--dy-line);
+  --dy-edge-hi: var(--dy-line-hi);
 }

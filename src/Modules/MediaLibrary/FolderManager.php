@@ -220,6 +220,10 @@ class FolderManager extends AbstractModule {
 				'restCollections'    => rest_url( self::REST_NS . '/media-collections' ),
 				'restBulk'           => rest_url( self::REST_NS . '/media-bulk-edit' ),
 				'whereUsed'          => rest_url( self::REST_NS . '/where-used' ),
+				// Core media route, built server-side on purpose. With "Plain"
+				// permalinks the REST root is `/index.php?rest_route=/`, which the
+				// JS cannot guess from the site address.
+				'restMedia'          => rest_url( 'wp/v2/media/' ),
 				'nonce'              => wp_create_nonce( 'wp_rest' ),
 				// Explicit strings: wp_localize_script casts booleans (false → "").
 				'foldersEnabled'     => Settings::folders_enabled() ? '1' : '0',

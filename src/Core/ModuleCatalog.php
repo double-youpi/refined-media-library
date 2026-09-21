@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * "available / coming-soon". The solo difference lies elsewhere:
  *   - `available_ids()` returns only the module(s) ACTUALLY bundled
  *     (SoloConfig::present_modules()), so only those get a persistent toggle;
+ *   - the module(s) bundled here are promoted to "available" whatever their
+ *     range status, so each solo plugin features its own module;
  *   - OverviewPage decides "bundled here vs. showcase" via ModuleRegistry::has().
  *
  * Modules marked `available` but NOT bundled (e.g. Refined Admin Dashboard in
@@ -30,15 +32,16 @@ final class ModuleCatalog {
 	 * @return array<int, array{id:string, name:string, description:string, icon:string, status:string, settings_url:?string}>
 	 */
 	public static function all(): array {
-		return [
+		$entries = [
 			[
 				'id'           => 'admin',
 				'name'         => __( 'Refined Admin Dashboard', 'doubleyoupi-refined-media-library' ),
 				'description'  => __( 'A full rethink of the WordPress admin: smart dashboard, reworked navigation, redesigned content tables, dark mode, and your branding.', 'doubleyoupi-refined-media-library' ),
 				'icon'         => 'dashicons-admin-customizer',
-				// Refined Admin Dashboard is not yet published as a standalone plugin
-				// and is still in progress, so the solo overview shows it as coming soon
-				// (compact card, no preview) rather than a showcase card.
+				// Range status: not yet published as a standalone plugin on
+				// WordPress.org, hence "coming soon" in the OTHER solo builds.
+				// In its own build it is promoted to "available" by
+				// `with_present_modules_promoted()`.
 				'status'       => self::STATUS_COMING_SOON,
 				'settings_url' => null,
 			],
@@ -96,6 +99,66 @@ final class ModuleCatalog {
 				'settings_url' => null,
 			],
 		];
+
+		return self::with_present_modules_promoted( $entries );
+	}
+
+	/**
+	 * Promotes the module(s) bundled in THIS build to "available".
+	 *
+	 * The statuses above describe the RANGE (which modules already exist as a
+	 * standalone plugin), not the current build. A module shipped inside this
+	 * plugin is available by definition: the user is running it right now.
+	 * Without this pass, a solo plugin could list its own module under
+	 * "Coming soon" while the module powers the very page being displayed
+	 * (Refined Admin Dashboard did, in its own solo build).
+	 *
+	 * Consequence, valid for every present and future solo build: each plugin
+	 * puts its own module forward as a real card (toggle + settings link) and
+	 * showcases the rest of the range.
+	 *
+	 * @param array<int, array{id:string, name:string, description:string, icon:string, status:string, settings_url:?string}> $entries
+	 * @return array<int, array{id:string, name:string, description:string, icon:string, status:string, settings_url:?string}>
+	 */
+	private static function with_present_modules_promoted( array $entries ): array {
+		if ( ! class_exists( SoloConfig::class ) ) {
+			return $entries;
+		}
+		$present = SoloConfig::present_modules();
+		if ( empty( $present ) ) {
+			return $entries;
+		}
+
+		foreach ( $entries as $i => $entry ) {
+			if ( ! in_array( $entry['id'], $present, true ) ) {
+				continue;
+			}
+			$entries[ $i ]['status'] = self::STATUS_AVAILABLE;
+			if ( empty( $entry['settings_url'] ) ) {
+				$entries[ $i ]['settings_url'] = self::settings_url_for( $entry['id'] );
+			}
+		}
+
+		return $entries;
+	}
+
+	/**
+	 * Admin page of a module, when it has one. Used only to restore the link of
+	 * a module promoted by `with_present_modules_promoted()`: the entries above
+	 * deliberately carry `null` while the module is not deliverable.
+	 */
+	private static function settings_url_for( string $id ): ?string {
+		$pages = [
+			'admin'         => 'doubleyoupi-admin',
+			'media-library' => 'doubleyoupi-media-library',
+			'performance'   => 'doubleyoupi-performance',
+			'static-site'   => 'doubleyoupi-static',
+			'metrics'       => 'doubleyoupi-metrics',
+			'backups'       => 'doubleyoupi-backups',
+			'staging'       => 'doubleyoupi-staging',
+		];
+
+		return isset( $pages[ $id ] ) ? admin_url( 'admin.php?page=' . $pages[ $id ] ) : null;
 	}
 
 	/** @return array|null */
@@ -131,7 +194,7 @@ final class ModuleCatalog {
 
 		$map = [
 			'admin'         => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/plugins/refined-admin-dashboard' ],
-			'media-library' => [ 'tier' => 'free', 'wporg_slug' => 'refined-media-library', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-media-library' ],
+			'media-library' => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-media-library', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-media-library' ],
 			'performance'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-performance' ],
 			'static-site'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-static' ],
 			'seo-a11y'      => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-seo-accessibility' ],

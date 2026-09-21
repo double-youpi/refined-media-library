@@ -29,7 +29,7 @@
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
     var(--dy-bg-card, #161a23);
-  border: 1px solid var(--dy-line, #1e2235);
+  border: 1px solid var(--dy-edge, transparent);
   border-radius: var(--dy-radius-lg, 8px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px -22px rgba(0, 0, 0, 0.8);
   scrollbar-width: thin;

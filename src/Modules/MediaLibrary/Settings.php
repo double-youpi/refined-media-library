@@ -205,7 +205,7 @@ class Settings extends AbstractModule {
 
 		$piloted_msg = $piloted_externally
 			/* translators: %s: name of the module piloting image conversion */
-			? sprintf( __( 'Piloted by %s — settings managed there.', 'doubleyoupi-refined-media-library' ), $external_label )
+			? sprintf( __( 'Piloted by %s. Settings managed there.', 'doubleyoupi-refined-media-library' ), $external_label )
 			: '';
 		$webp_block = ! $webp_ok ? __( 'This server cannot generate WebP images.', 'doubleyoupi-refined-media-library' ) : $piloted_msg;
 		$avif_block = ! $avif_ok ? __( 'This server cannot generate AVIF images.', 'doubleyoupi-refined-media-library' ) : $piloted_msg;

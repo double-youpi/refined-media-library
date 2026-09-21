@@ -34,7 +34,7 @@ final class MigrationI18n {
 			'phaseTerms'     => __( 'Creating folders…', 'doubleyoupi-refined-media-library' ),
 			'phaseRelations' => __( 'Assigning media…', 'doubleyoupi-refined-media-library' ),
 			/* translators: %1$d: folders+collections, %2$d: media */
-			'doneMessage'    => __( 'Done — %1$d folders and %2$d media imported.', 'doubleyoupi-refined-media-library' ),
+			'doneMessage'    => __( 'Done. %1$d folders and %2$d media imported.', 'doubleyoupi-refined-media-library' ),
 			'viewLibrary'    => __( 'Open the media library', 'doubleyoupi-refined-media-library' ),
 			'rollbackConfirm'=> __( 'Remove all folders created by this import? Your media and the source plugin are left untouched.', 'doubleyoupi-refined-media-library' ),
 			'rollingBack'    => __( 'Undoing…', 'doubleyoupi-refined-media-library' ),

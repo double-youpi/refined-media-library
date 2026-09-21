@@ -2,9 +2,9 @@
 Contributors: doubleyoupi
 Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.1.3
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,20 @@ There isn't one. This is the standalone version, no strings attached. If it save
 
 == Changelog ==
 
+= 0.2.0 =
+* Caption and description are now editable straight from the detail panel, next to the title and alt text. Everything a file carries is in one place.
+* The four text fields sit in one section, in the order you actually write them: title, alternative text, caption, description. Their labels are clickable.
+* Moving to the next file saves what you typed, and drops the cursor back in the same field, so a long captioning run never needs the mouse. Cmd/Ctrl + arrow moves on from inside a field.
+* The Save button now tells you something: quiet when there is nothing to save, lit when there is. Each edited field is marked next to its label.
+* Folders and Collections sit side by side once you drag the panel wider.
+* Fixed: on a site left on Plain permalinks, opening a file from the grid answered 404 and the panel stayed empty.
+* Fixed: admin notices printed over the page title instead of lining up with the grid.
+* Fixed: pressing Escape in the folder picker closed the whole detail panel.
+* Fixed: in list view, the switch between list and grid did not show which view you were on.
+* Tidier surfaces: lighter borders in the library, fields that rest on the panel instead of being boxed in, redrawn file-type icons.
+* Confirmed with WordPress 7.1.
+* French translation aligned with the official WordPress.org glossary and typography.
+
 = 0.1.3 =
 * New "Mine" filter in the media library toolbar (shown only when several people upload) to quickly narrow to your own files.
 * Removed a redundant media-type dropdown so the filters bar is cleaner.
@@ -122,6 +136,9 @@ There isn't one. This is the standalone version, no strings attached. If it save
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.2.0 =
+Caption and description in the detail panel, saving that keeps up with you, and notices that no longer cover the page title.
 
 = 0.1.3 =
 A new "Mine" filter for multi-author sites, a cleaner filters bar, and a horizontal scrollbar fix.

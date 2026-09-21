@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Double Youpï Refined Media Library 0.1.3\n"
+"Project-Id-Version: Double Youpï Refined Media Library 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-29T14:28:22+00:00\n"
+"POT-Creation-Date: 2026-09-21T15:41:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: doubleyoupi-refined-media-library\n"
@@ -44,9 +44,9 @@ msgstr ""
 msgid "You are already running the full Double Youpi suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first."
 msgstr ""
 
-#: src/Admin/AdminMenu.php:120
+#: src/Admin/AdminMenu.php:136
 #: src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:501
+#: src/Admin/OverviewPage.php:509
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:86
 msgid "Settings"
@@ -141,7 +141,7 @@ msgid "Your media library finally has a personality. It's smug."
 msgstr ""
 
 #: src/Admin/OverviewPage.php:68
-msgid "Double Youpi — Overview"
+msgid "Double Youpi · Overview"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:69
@@ -149,24 +149,24 @@ msgid "Overview"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:153
-#: src/Admin/OverviewPage.php:447
+#: src/Admin/OverviewPage.php:455
 msgid "Active"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:154
 #: src/Admin/OverviewPage.php:156
-#: src/Admin/OverviewPage.php:448
-#: src/Admin/OverviewPage.php:489
+#: src/Admin/OverviewPage.php:456
+#: src/Admin/OverviewPage.php:497
 msgid "Disabled"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:155
-#: src/Admin/OverviewPage.php:488
+#: src/Admin/OverviewPage.php:496
 msgid "Enabled"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:158
-msgid "Could not save — please retry."
+msgid "Could not save. Please retry."
 msgstr ""
 
 #: src/Admin/OverviewPage.php:159
@@ -194,13 +194,13 @@ msgid "Discover on doubleyoupi.com"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:165
-#: src/Admin/OverviewPage.php:551
-#: src/Admin/OverviewPage.php:581
+#: src/Admin/OverviewPage.php:559
+#: src/Admin/OverviewPage.php:589
 msgid "Free"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:166
-#: src/Admin/OverviewPage.php:551
+#: src/Admin/OverviewPage.php:559
 msgid "Suite"
 msgstr ""
 
@@ -233,176 +233,176 @@ msgstr ""
 msgid "active modules"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:401
+#: src/Admin/OverviewPage.php:409
 msgid "Save modules"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:446
+#: src/Admin/OverviewPage.php:454
 msgid "Coming soon"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:497
+#: src/Admin/OverviewPage.php:505
 #: src/Modules/MediaLibrary/Settings.php:319
 #: src/Modules/MediaLibrary/Settings.php:346
 msgid "Saved"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:519
+#: src/Admin/OverviewPage.php:527
 msgid "Reload to apply"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:524
+#: src/Admin/OverviewPage.php:532
 msgid "In preparation"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:578
+#: src/Admin/OverviewPage.php:586
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:122
 msgid "Preview"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:583
+#: src/Admin/OverviewPage.php:591
 msgid "Soon on WP.org"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:585
+#: src/Admin/OverviewPage.php:593
 msgid "In the suite"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:616
-#: src/Admin/OverviewPage.php:617
+#: src/Admin/OverviewPage.php:624
+#: src/Admin/OverviewPage.php:625
 msgid "Coming soon to Double Youpi"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:627
+#: src/Admin/OverviewPage.php:635
 msgid "Up next"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:635
+#: src/Admin/OverviewPage.php:643
 msgid "Almost ready"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:672
+#: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:681
+#: src/Admin/OverviewPage.php:689
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:683
+#: src/Admin/OverviewPage.php:691
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:136
 msgid "Next"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:727
+#: src/Admin/OverviewPage.php:735
 msgid "Support the project"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:741
+#: src/Admin/OverviewPage.php:749
 msgid "Free, and built to stay that way"
 msgstr ""
 
 #. translators: 1: author first name (bold), 2: freelance studio name (linked).
-#: src/Admin/OverviewPage.php:758
+#: src/Admin/OverviewPage.php:766
 #, php-format
 msgid "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
 msgstr ""
 
 #. translators: %s: author first name (bold).
-#: src/Admin/OverviewPage.php:768
+#: src/Admin/OverviewPage.php:776
 #, php-format
 msgid "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
 msgstr ""
 
 #. translators: %s: author first name.
-#: src/Admin/OverviewPage.php:780
+#: src/Admin/OverviewPage.php:788
 #, php-format
 msgid "%s · Double Youpi"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:793
+#: src/Admin/OverviewPage.php:801
 msgid "Buy me a coffee"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:809
+#: src/Admin/OverviewPage.php:817
 msgid "Leave a review"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:816
+#: src/Admin/OverviewPage.php:824
 msgid "All Double Youpi plugins on WordPress.org"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:832
+#: src/Admin/OverviewPage.php:840
 msgid "Report or suggest"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:867
-#: src/Admin/OverviewPage.php:876
+#: src/Admin/OverviewPage.php:875
+#: src/Admin/OverviewPage.php:884
 msgid "Want to get involved?"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:878
+#: src/Admin/OverviewPage.php:886
 msgid "Found a bug or got an idea to make it better? Let me know."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:36
+#: src/Core/ModuleCatalog.php:38
 msgid "Refined Admin Dashboard"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:37
+#: src/Core/ModuleCatalog.php:39
 msgid "A full rethink of the WordPress admin: smart dashboard, reworked navigation, redesigned content tables, dark mode, and your branding."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:47
+#: src/Core/ModuleCatalog.php:50
 #: src/Modules/MediaLibrary/MediaLibrary.php:46
 #: src/Modules/MediaLibrary/MediaLibrary.php:97
 msgid "Refined Media Library"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:48
+#: src/Core/ModuleCatalog.php:51
 msgid "Folders and collections, drag & drop, quick preview, duplicate & orphan cleanup, plus WebP/AVIF conversion on upload."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:55
+#: src/Core/ModuleCatalog.php:58
 msgid "Simple Performance"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:56
+#: src/Core/ModuleCatalog.php:59
 msgid "Caching, CSS/JS, lazy-load, responsive WebP/AVIF delivery, self-hosted fonts, and a native Cloudflare CDN."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:65
+#: src/Core/ModuleCatalog.php:68
 msgid "Simple Static"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:66
+#: src/Core/ModuleCatalog.php:69
 msgid "Static HTML export to shrink your attack surface and host free on Cloudflare Pages, Netlify or GitHub Pages."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:76
+#: src/Core/ModuleCatalog.php:79
 msgid "Simple SEO & Accessibility"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:77
+#: src/Core/ModuleCatalog.php:80
 msgid "Completes Rank Math on accessibility: auto aria-labels, AI alt-text, and a WCAG audit."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:84
+#: src/Core/ModuleCatalog.php:87
 msgid "Simple Metrics"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:85
+#: src/Core/ModuleCatalog.php:88
 msgid "PageSpeed Insights tracking in the admin: per-page history over time, on mobile and desktop."
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:92
+#: src/Core/ModuleCatalog.php:95
 msgid "Simple Backups"
 msgstr ""
 
-#: src/Core/ModuleCatalog.php:93
+#: src/Core/ModuleCatalog.php:96
 msgid "Scheduled full or DB-only backups, with rotation and one-click restore (auto-snapshot first)."
 msgstr ""
 
@@ -452,12 +452,12 @@ msgstr ""
 msgid "Add to collection…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManager.php:523
-#: src/Modules/MediaLibrary/FolderManager.php:559
+#: src/Modules/MediaLibrary/FolderManager.php:527
+#: src/Modules/MediaLibrary/FolderManager.php:563
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManager.php:584
+#: src/Modules/MediaLibrary/FolderManager.php:588
 msgid "Could not delete folder."
 msgstr ""
 
@@ -501,6 +501,7 @@ msgid "Delete this folder? Media files will not be deleted."
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:193
 msgid "No folder"
 msgstr ""
@@ -571,11 +572,11 @@ msgid "Destination folder"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:72
-msgid "— Root (no folder) —"
+msgid "Root (no folder)"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:73
-msgid "— Choose a collection —"
+msgid "Choose a collection"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:74
@@ -596,7 +597,7 @@ msgid "Create"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
 msgid "Delete"
 msgstr ""
 
@@ -638,7 +639,7 @@ msgstr ""
 msgid ""
 "Delete folder « %s »?\n"
 "\n"
-"Media inside won’t be deleted — they will be moved to « Media without folder »."
+"Media inside won’t be deleted, they will be moved to « Media without folder »."
 msgstr ""
 
 #. translators: %s: collection name.
@@ -647,7 +648,7 @@ msgstr ""
 msgid ""
 "Delete collection « %s »?\n"
 "\n"
-"Media files won’t be deleted — they will simply be removed from this collection."
+"Media files won’t be deleted, they will simply be removed from this collection."
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:98
@@ -797,183 +798,200 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:149
-msgid "File URL"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:150
-msgid "Copy"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:151
-msgid "Copied!"
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:152
+msgid "Caption"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:153
+msgid "Description"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
+msgid "File URL"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+msgid "Copy"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+msgid "Copied!"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:64
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
 msgid "Folder"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
-msgid "— No folder —"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
 msgid "+ Add to a collection"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
 msgid "No collection"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
 msgid "Remove"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
 msgid "Save"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Edit"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
 msgid "Saving…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
 msgid "Saved ✓"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
-msgid "Error — try again"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
-msgid "Not used in content."
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
-msgid "(untitled)"
-msgstr ""
-
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:169
-msgid "Permanently delete this file? This action cannot be undone."
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
-msgid "Could not delete this file."
+msgid "Error, try again"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:171
+msgid "Not used in content."
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
+msgid "(untitled)"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
+msgid "Permanently delete this file? This action cannot be undone."
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
+msgid "Could not delete this file."
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:176
 msgid "Unsaved changes will be lost. Continue?"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
-msgid "B"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
-msgid "KB"
-msgstr ""
-
+#. translators: shown after the panel saved pending edits on its own when the user moved to another media file.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:179
-msgid "MB"
+msgid "Changes saved"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
-msgid "All types"
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:180
+msgid "Could not save your changes"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
-msgid "Images"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
-msgid "Videos"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:185
-msgid "Audio"
-msgstr ""
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:186
-msgid "Documents"
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:181
+msgid "You have unsaved changes"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:187
-msgid "SVG"
+msgid "B"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:188
-msgid "Mine"
+msgid "KB"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
-msgid "Search"
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:189
+msgid "MB"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
+msgid "All types"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
+msgid "Images"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:194
+msgid "Videos"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
+msgid "Audio"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
+msgid "Documents"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+msgid "SVG"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+msgid "Mine"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+msgid "Search"
+msgstr ""
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "No media selected."
 msgstr ""
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
 msgid "Bulk edit"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
 msgid "1 file selected"
 msgstr ""
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
 #, php-format
 msgid "%d files selected"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
 msgid "Alt text"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
 msgid "Describe the image…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:206
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "File title…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Apply to 1 file"
 msgstr ""
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
 #, php-format
 msgid "Apply to %d files"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
 msgid "Applying…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:221
 msgid "Retry"
 msgstr ""
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
 msgid "More fields"
 msgstr ""
 
@@ -1083,7 +1101,7 @@ msgstr ""
 #. translators: %1$d: folders+collections, %2$d: media
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:37
 #, php-format
-msgid "Done — %1$d folders and %2$d media imported."
+msgid "Done. %1$d folders and %2$d media imported."
 msgstr ""
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:38
@@ -1109,7 +1127,7 @@ msgid "Something went wrong. Please try again."
 msgstr ""
 
 #: src/Modules/MediaLibrary/Migration/MigrationManager.php:466
-msgid "Import folders and collections from another media library plugin. Your media stay in place — this only re-creates the folder structure inside Refined Media Library. The source plugin is never modified, so you can verify the result before removing it."
+msgid "Import folders and collections from another media library plugin. Your media stay in place. This only re-creates the folder structure inside Refined Media Library, and the source plugin is never modified, so you can verify the result before removing it."
 msgstr ""
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:71
@@ -1194,7 +1212,7 @@ msgstr ""
 #. translators: %s: name of the module piloting image conversion
 #: src/Modules/MediaLibrary/Settings.php:208
 #, php-format
-msgid "Piloted by %s — settings managed there."
+msgid "Piloted by %s. Settings managed there."
 msgstr ""
 
 #: src/Modules/MediaLibrary/Settings.php:210

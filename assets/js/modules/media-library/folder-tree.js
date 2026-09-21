@@ -168,6 +168,9 @@
 		// to hide them when there is nothing more to load.
 		hookLoadMoreObserver();
 
+		// Notices: one home, to the right of the wordmark (see above).
+		hookNoticeRelocation();
+
 		// Hard safety for the reveal curtain — see markFrameReady() above.
 		// If anything in the init throws before injectPanel runs, this still
 		// flips body.dy-ml-ready so the grid is never permanently hidden.
@@ -696,6 +699,155 @@
 		foreignActionsObserver.observe( wrap, { childList: true } );
 		window.setTimeout( relocateForeignActions, 600 );
 		window.setTimeout( relocateForeignActions, 1800 );
+	}
+
+	/*
+	 * ── Admin notices: give them one home ───────────────────────────────────
+	 *
+	 * WordPress leaves a notice wherever the plugin that printed it hooked in.
+	 * Core relocates SOME of them into `.wrap`, where our CSS indents them past
+	 * the folder panel. Everything else stays put: `all_admin_notices` output,
+	 * `.update-nag` banners, and anything a plugin injects later with its own
+	 * JS. Those land at the far left of the content column, which is exactly
+	 * where the fixed "Refined Media Library" wordmark sits, so they print on
+	 * top of it.
+	 *
+	 * Chasing every possible parent in CSS is a losing game: the next plugin
+	 * invents a new one. Instead every notice is moved into a single container
+	 * that is a direct child of `.wrap`, just before the media frame, so it
+	 * inherits the very indentation the grid uses. One place to style, one
+	 * place to reason about. A MutationObserver catches late arrivals.
+	 *
+	 * Refined Admin Dashboard owns notices when it is active (it collects them
+	 * into its notices centre). Its dock is printed server-side, so it is in the
+	 * DOM before any of this runs: if we see it, we stand down rather than
+	 * fight over the same nodes.
+	 */
+	var NOTICE_SELECTOR = '.notice, div.updated, div.error, .update-nag';
+
+	// Containers where a "notice" is a working part of the screen rather than a
+	// message to the user. Moving those would break the feature that owns them
+	// (upload errors live inside the media frame, for one).
+	var NOTICE_SKIP = [
+		'#dy-ml-notices',
+		'.media-frame',
+		'.media-modal',
+		'.wp-list-table',
+		'.postbox',
+		'#screen-meta',
+		'#screen-options-wrap',
+		'#contextual-help-wrap',
+		'.dy-notices-modal',
+		'.dy-notice-dock'
+	].join( ',' );
+
+	var noticeHome = null;
+
+	function noticesAreOwnedElsewhere() {
+		return !! window.document.getElementById( 'dy-notice-dock' );
+	}
+
+	function getNoticeHome() {
+		if ( noticeHome && noticeHome.isConnected ) { return noticeHome; }
+
+		var wrap = window.document.querySelector( '.wrap' );
+		if ( ! wrap ) { return null; }
+
+		noticeHome = window.document.getElementById( 'dy-ml-notices' );
+		if ( noticeHome ) { return noticeHome; }
+
+		noticeHome = window.document.createElement( 'div' );
+		noticeHome.id = 'dy-ml-notices';
+
+		// Before the grid (or the list-mode form), never before the <h1>: the
+		// heading stays the first thing a screen reader meets.
+		var before = wrap.querySelector( ':scope > .media-frame, :scope > #posts-filter' );
+		if ( before ) {
+			wrap.insertBefore( noticeHome, before );
+		} else {
+			wrap.appendChild( noticeHome );
+		}
+		return noticeHome;
+	}
+
+	function isRelocatableNotice( el ) {
+		if ( ! el || el.nodeType !== 1 ) { return false; }
+		if ( el.getAttribute( 'data-dy-relocated' ) === '1' ) { return false; }
+		// `.inline` is WordPress's own "leave me where I am" convention, used for
+		// messages attached to a row or a field. `.update-nag` is the exception:
+		// it is a full-width banner that happens to carry the class.
+		if ( el.classList.contains( 'inline' ) && ! el.classList.contains( 'update-nag' ) ) { return false; }
+		if ( el.closest( NOTICE_SKIP ) ) { return false; }
+		return true;
+	}
+
+	function relocateNotices( scope ) {
+		if ( noticesAreOwnedElsewhere() ) { return; }
+
+		var root = scope && scope.nodeType === 1 ? scope : window.document.getElementById( 'wpbody-content' );
+		if ( ! root ) { return; }
+
+		var found = [];
+		try {
+			if ( root.matches && root.matches( NOTICE_SELECTOR ) ) { found.push( root ); }
+			found = found.concat( [].slice.call( root.querySelectorAll( NOTICE_SELECTOR ) ) );
+		} catch ( e ) {
+			return;
+		}
+
+		var home = null;
+		found.forEach( function ( el ) {
+			if ( ! isRelocatableNotice( el ) ) { return; }
+			home = home || getNoticeHome();
+			if ( ! home ) { return; }
+			el.setAttribute( 'data-dy-relocated', '1' );
+			home.appendChild( el );
+		} );
+
+		syncNoticeHomeState();
+	}
+
+	/*
+	 * The container may hold nothing but notices someone else hides
+	 * (`.hide-if-js`, a plugin's own cross-sell banner we suppress), or the
+	 * user may have dismissed the last visible one. CSS cannot ask "did any
+	 * child end up visible", so the answer is published as an attribute.
+	 */
+	function syncNoticeHomeState() {
+		if ( ! noticeHome || ! noticeHome.isConnected ) { return; }
+		var anyVisible = [].slice.call( noticeHome.children ).some( function ( el ) {
+			return el.offsetParent !== null;
+		} );
+		noticeHome.setAttribute( 'data-empty', anyVisible ? 'false' : 'true' );
+	}
+
+	function hookNoticeRelocation() {
+		if ( noticesAreOwnedElsewhere() ) { return; }
+
+		relocateNotices();
+
+		// Dismissing the last visible notice must collapse the container too.
+		$( window.document ).on( 'click.dyNotices', '#dy-ml-notices .notice-dismiss, #dy-ml-notices [data-dismiss]', function () {
+			window.setTimeout( syncNoticeHomeState, 0 );
+		} );
+
+		// Plugins print notices from their own scripts, sometimes seconds in.
+		if ( ! window.MutationObserver ) { return; }
+		var host = window.document.getElementById( 'wpbody-content' );
+		if ( ! host ) { return; }
+
+		var pending = false;
+		var observer = new window.MutationObserver( function ( records ) {
+			if ( pending ) { return; }
+			var worth = records.some( function ( r ) { return r.addedNodes && r.addedNodes.length; } );
+			if ( ! worth ) { return; }
+			pending = true;
+			window.requestAnimationFrame( function () {
+				pending = false;
+				relocateNotices();
+			} );
+		} );
+		observer.observe( host, { childList: true, subtree: true } );
 	}
 
 	/*

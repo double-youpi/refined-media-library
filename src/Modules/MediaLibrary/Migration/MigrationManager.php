@@ -463,7 +463,7 @@ final class MigrationManager extends AbstractModule {
 		}
 		?>
 		<p class="description">
-			<?php esc_html_e( 'Import folders and collections from another media library plugin. Your media stay in place — this only re-creates the folder structure inside Refined Media Library. The source plugin is never modified, so you can verify the result before removing it.', 'doubleyoupi-refined-media-library' ); ?>
+			<?php esc_html_e( 'Import folders and collections from another media library plugin. Your media stay in place. This only re-creates the folder structure inside Refined Media Library, and the source plugin is never modified, so you can verify the result before removing it.', 'doubleyoupi-refined-media-library' ); ?>
 		</p>
 		<div id="dy-ml-migration" data-loading="1">
 			<p><span class="spinner is-active" style="float:none"></span></p>

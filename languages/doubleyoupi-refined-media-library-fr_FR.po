@@ -2,19 +2,19 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-06-29T14:28:22+00:00\n"
+"POT-Creation-Date: 2026-09-21T15:41:22+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
 #. Plugin Name of the plugin
 #: doubleyoupi-refined-media-library.php
 msgid "Double Youpï Refined Media Library"
-msgstr ""
+msgstr "Double Youpï Refined Media Library"
 
 #. Plugin URI of the plugin
 #: doubleyoupi-refined-media-library.php
 msgid "https://doubleyoupi.com/plugins/refined-media-library"
-msgstr ""
+msgstr "https://doubleyoupi.com/plugins/refined-media-library"
 
 #. Description of the plugin
 #: doubleyoupi-refined-media-library.php
@@ -23,6 +23,9 @@ msgid ""
 "cleanup, auto alt text and WebP/AVIF for the WordPress media library, "
 "without the per-image fiddling."
 msgstr ""
+"Dossiers imbriqués en glisser-déposer, collections, nettoyage des doublons "
+"et des orphelins, texte alternatif automatique et WebP/AVIF pour la "
+"médiathèque WordPress, sans réglage image par image."
 
 #. Author of the plugin
 #: doubleyoupi-refined-media-library.php src/Admin/OverviewPage.php:343
@@ -40,9 +43,12 @@ msgid ""
 "Youpï Refined Media Library. This standalone copy stepped aside to stay out "
 "of its way. Want to run it on its own? Deactivate the suite first."
 msgstr ""
+"Vous utilisez déjà la suite Double Youpi complète, et elle inclut Double "
+"Youpï Refined Media Library. Cette copie autonome s’est mise en retrait pour "
+"ne pas la gêner. Vous voulez l’utiliser seule ? Désactivez d’abord la suite."
 
-#: src/Admin/AdminMenu.php:120 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:501
+#: src/Admin/AdminMenu.php:136 src/Admin/OverviewPage.php:157
+#: src/Admin/OverviewPage.php:509
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:86
 msgid "Settings"
@@ -55,8 +61,8 @@ msgstr "Double Youpi"
 #: src/Admin/HeroQuips.php:51
 msgid "Objectively the best plugin you've installed in the last five minutes."
 msgstr ""
-"Objectivement le meilleur plugin que tu aies installé ces cinq dernières "
-"minutes."
+"Objectivement la meilleure extension que vous ayez installée ces cinq "
+"dernières minutes."
 
 #: src/Admin/HeroQuips.php:52
 msgid "Built different. We have a certificate and everything."
@@ -64,31 +70,32 @@ msgstr "Pas comme les autres. On a même un diplôme pour le prouver."
 
 #: src/Admin/HeroQuips.php:53
 msgid "Zero shortcodes were harmed in the making of this plugin."
-msgstr "Aucun shortcode n'a été maltraité durant la conception de ce plugin."
+msgstr ""
+"Aucun shortcode n’a été maltraité durant la conception de cette extension."
 
 #: src/Admin/HeroQuips.php:54
 msgid "Awarded Plugin of the Year by a panel of one."
-msgstr "Élu plugin de l'année par un jury d'une seule personne."
+msgstr "Élue extension de l’année par un jury d’une seule personne."
 
 #: src/Admin/HeroQuips.php:55
 msgid "Refined enough to make your theme nervous."
-msgstr "Assez raffiné pour rendre ton thème nerveux."
+msgstr "Assez raffinée pour rendre votre thème nerveux."
 
 #: src/Admin/HeroQuips.php:56
 msgid "We benchmarked it against perfection. Perfection lost."
-msgstr "On l'a comparé à la perfection. La perfection a perdu."
+msgstr "On l’a comparée à la perfection. La perfection a perdu."
 
 #: src/Admin/HeroQuips.php:57
 msgid "Your other plugins are taking this personally."
-msgstr "Tes autres plugins le prennent personnellement."
+msgstr "Vos autres extensions le prennent personnellement."
 
 #: src/Admin/HeroQuips.php:58
 msgid "Currently winning an argument it wasn't invited to."
-msgstr "En train de gagner un débat auquel il n'était pas invité."
+msgstr "En train de gagner un débat auquel elle n’était pas invitée."
 
 #: src/Admin/HeroQuips.php:59
 msgid "Suspiciously good for something this free."
-msgstr "Étonnamment bon pour quelque chose d'aussi gratuit."
+msgstr "Étonnamment bon pour quelque chose d’aussi gratuit."
 
 #: src/Admin/HeroQuips.php:60
 msgid "The bar was high. We brought a ladder."
@@ -96,27 +103,27 @@ msgstr "La barre était haute. On a apporté une échelle."
 
 #: src/Admin/HeroQuips.php:61
 msgid "Compared to nothing, it is literally the best."
-msgstr "Comparé à rien, c'est littéralement le meilleur."
+msgstr "Comparée à rien, c’est littéralement la meilleure."
 
 #: src/Admin/HeroQuips.php:62
 msgid "Powered by talent and a concerning amount of confidence."
-msgstr "Propulsé par le talent et une dose inquiétante de confiance."
+msgstr "Propulsée par le talent et une dose inquiétante de confiance."
 
 #: src/Admin/HeroQuips.php:63
 msgid "Reviews are in: we wrote them ourselves."
-msgstr "Les avis sont là : on les a écrits nous-mêmes."
+msgstr "Les avis sont là : on les a écrits nous-mêmes."
 
 #: src/Admin/HeroQuips.php:64
 msgid "Finally, a plugin that matches your impeccable taste."
-msgstr "Enfin un plugin à la hauteur de ton goût impeccable."
+msgstr "Enfin une extension à la hauteur de votre goût impeccable."
 
 #: src/Admin/HeroQuips.php:65
 msgid "Great taste. You installed this, after all."
-msgstr "Très bon goût. C'est toi qui as installé ça, après tout."
+msgstr "Très bon goût. C’est vous qui l’avez installée, après tout."
 
 #: src/Admin/HeroQuips.php:66
 msgid "Two icons in one admin: you and this plugin."
-msgstr "Deux icônes dans un seul admin : toi et ce plugin."
+msgstr "Deux icônes dans une seule administration : vous et cette extension."
 
 #: src/Admin/HeroQuips.php:67
 msgid "People with taste end up here. Welcome."
@@ -124,45 +131,45 @@ msgstr "Les gens de goût finissent ici. Bienvenue."
 
 #: src/Admin/HeroQuips.php:68
 msgid "Smart move installing this. We expected nothing less from you."
-msgstr "Bien vu de l'installer. On n'attendait pas moins de toi."
+msgstr "Bien vu de l’installer. On n’attendait pas moins de vous."
 
 #: src/Admin/HeroQuips.php:80
 msgid "Probably the finest media library you'll configure all day."
 msgstr ""
-"Probablement la plus belle médiathèque que tu configureras de la journée."
+"Probablement la plus belle médiathèque que vous configurerez de la journée."
 
 #: src/Admin/HeroQuips.php:81
 msgid "The plugin your media library brags about."
-msgstr "Le plugin dont ta médiathèque se vante."
+msgstr "L’extension dont votre médiathèque se vante."
 
 #: src/Admin/HeroQuips.php:82
 msgid "Your media library finally has a personality. It's smug."
-msgstr "Ta médiathèque a enfin une personnalité. Elle est prétentieuse."
+msgstr "Votre médiathèque a enfin une personnalité. Elle est prétentieuse."
 
 #: src/Admin/OverviewPage.php:68
-msgid "Double Youpi — Overview"
-msgstr "Double Youpi — Vue d’ensemble"
+msgid "Double Youpi · Overview"
+msgstr "Double Youpi · Vue d’ensemble"
 
 #: src/Admin/OverviewPage.php:69
 msgid "Overview"
 msgstr "Vue d’ensemble"
 
-#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:447
+#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:455
 msgid "Active"
 msgstr "Actif"
 
 #: src/Admin/OverviewPage.php:154 src/Admin/OverviewPage.php:156
-#: src/Admin/OverviewPage.php:448 src/Admin/OverviewPage.php:489
+#: src/Admin/OverviewPage.php:456 src/Admin/OverviewPage.php:497
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:488
+#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:496
 msgid "Enabled"
 msgstr "Activé"
 
 #: src/Admin/OverviewPage.php:158
-msgid "Could not save — please retry."
-msgstr "Échec de l’enregistrement — veuillez réessayer."
+msgid "Could not save. Please retry."
+msgstr "Échec de l’enregistrement. Veuillez réessayer."
 
 #: src/Admin/OverviewPage.php:159
 msgid "Install for free"
@@ -178,7 +185,7 @@ msgstr "Installé ✓"
 
 #: src/Admin/OverviewPage.php:162
 msgid "Install failed, open the installer"
-msgstr "Échec de l'installation, ouvrez l'installateur"
+msgstr "Échec de l’installation, ouvrez l’installateur"
 
 #: src/Admin/OverviewPage.php:163
 msgid "Soon on WordPress.org"
@@ -188,12 +195,12 @@ msgstr "Bientôt sur WordPress.org"
 msgid "Discover on doubleyoupi.com"
 msgstr "À découvrir sur doubleyoupi.com"
 
-#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:551
-#: src/Admin/OverviewPage.php:581
+#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:559
+#: src/Admin/OverviewPage.php:589
 msgid "Free"
 msgstr "Gratuit"
 
-#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:551
+#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:559
 msgid "Suite"
 msgstr "Suite"
 
@@ -203,7 +210,7 @@ msgstr "Accès refusé."
 
 #: src/Admin/OverviewPage.php:199
 msgid "Modules updated. Reload the page to see the effects."
-msgstr "Modules mis à jour. Recharge la page pour voir les effets."
+msgstr "Modules mis à jour. Rechargez la page pour voir les effets."
 
 #: src/Admin/OverviewPage.php:200
 msgid "No changes to save."
@@ -218,8 +225,8 @@ msgid ""
 "Modular suite for pros who ship WordPress sites. Enable the modules you "
 "need, disable the rest."
 msgstr ""
-"Suite modulaire pour pros qui livrent des sites WordPress. Active les "
-"modules dont tu as besoin, désactive le reste."
+"Suite modulaire pour pros qui livrent des sites WordPress. Activez les "
+"modules dont vous avez besoin, désactivez le reste."
 
 #: src/Admin/OverviewPage.php:358
 msgid "Suite information"
@@ -229,78 +236,78 @@ msgstr "Informations sur la suite"
 msgid "active modules"
 msgstr "modules actifs"
 
-#: src/Admin/OverviewPage.php:401
+#: src/Admin/OverviewPage.php:409
 msgid "Save modules"
 msgstr "Enregistrer les modules"
 
-#: src/Admin/OverviewPage.php:446
+#: src/Admin/OverviewPage.php:454
 msgid "Coming soon"
 msgstr "Bientôt"
 
-#: src/Admin/OverviewPage.php:497 src/Modules/MediaLibrary/Settings.php:319
+#: src/Admin/OverviewPage.php:505 src/Modules/MediaLibrary/Settings.php:319
 #: src/Modules/MediaLibrary/Settings.php:346
 msgid "Saved"
 msgstr "Enregistré"
 
-#: src/Admin/OverviewPage.php:519
+#: src/Admin/OverviewPage.php:527
 msgid "Reload to apply"
 msgstr "Recharger pour appliquer"
 
-#: src/Admin/OverviewPage.php:524
+#: src/Admin/OverviewPage.php:532
 msgid "In preparation"
 msgstr "En préparation"
 
-#: src/Admin/OverviewPage.php:578
+#: src/Admin/OverviewPage.php:586
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:122
 msgid "Preview"
 msgstr "Aperçu"
 
-#: src/Admin/OverviewPage.php:583
+#: src/Admin/OverviewPage.php:591
 msgid "Soon on WP.org"
 msgstr "Bientôt sur WP.org"
 
-#: src/Admin/OverviewPage.php:585
+#: src/Admin/OverviewPage.php:593
 msgid "In the suite"
 msgstr "Dans la suite"
 
-#: src/Admin/OverviewPage.php:616 src/Admin/OverviewPage.php:617
+#: src/Admin/OverviewPage.php:624 src/Admin/OverviewPage.php:625
 msgid "Coming soon to Double Youpi"
 msgstr "Bientôt dans Double Youpi"
 
-#: src/Admin/OverviewPage.php:627
+#: src/Admin/OverviewPage.php:635
 msgid "Up next"
 msgstr "À suivre"
 
-#: src/Admin/OverviewPage.php:635
+#: src/Admin/OverviewPage.php:643
 msgid "Almost ready"
 msgstr "Bientôt prêt"
 
-#: src/Admin/OverviewPage.php:672
+#: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "Fermer"
 
-#: src/Admin/OverviewPage.php:681
+#: src/Admin/OverviewPage.php:689
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
 msgstr "Précédent"
 
-#: src/Admin/OverviewPage.php:683
+#: src/Admin/OverviewPage.php:691
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:136
 msgid "Next"
 msgstr "Suivant"
 
-#: src/Admin/OverviewPage.php:727
+#: src/Admin/OverviewPage.php:735
 msgid "Support the project"
 msgstr "Soutenir le projet"
 
-#: src/Admin/OverviewPage.php:741
+#: src/Admin/OverviewPage.php:749
 msgid "Free, and built to stay that way"
 msgstr "Gratuit, et fait pour le rester"
 
 #. translators: 1: author first name (bold), 2: freelance studio name (linked).
-#: src/Admin/OverviewPage.php:758
+#: src/Admin/OverviewPage.php:766
 #, php-format
 msgid ""
 "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double "
@@ -310,15 +317,15 @@ msgid ""
 "appreciated ;) Otherwise, just using it (and dropping a kind review) already "
 "helps a lot. Thanks!"
 msgstr ""
-"Moi c'est <b>%1$s</b>, designer et dev freelance, alias %2$s. Je fabrique "
-"Double Youpi pour que WordPress soit plus agréable à utiliser. Ce plugin "
-"restera gratuit à vie, mises à jour comprises. Si un truc coince ou te "
-"manque, merci de me le dire. Et si le plugin t'est utile et te plaît "
-"vraiment, un café ça fait toujours plaisir ;) Sinon, juste l'utiliser (et "
-"lâcher un avis sympa) aide déjà énormément. Merci !"
+"Moi c’est <b>%1$s</b>, designer et dev freelance, alias %2$s. Je fabrique "
+"Double Youpi pour que WordPress soit plus agréable à utiliser. Cette "
+"extension restera gratuite à vie, mises à jour comprises. Si un truc coince "
+"ou vous manque, merci de me le dire. Et si l’extension vous est utile et "
+"vous plaît vraiment, un café ça fait toujours plaisir ;) Sinon, juste "
+"l’utiliser (et lâcher un avis sympa) aide déjà énormément. Merci !"
 
 #. translators: %s: author first name (bold).
-#: src/Admin/OverviewPage.php:768
+#: src/Admin/OverviewPage.php:776
 #, php-format
 msgid ""
 "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make "
@@ -328,74 +335,74 @@ msgid ""
 "Otherwise, just using it (and dropping a kind review) already helps a lot. "
 "Thanks!"
 msgstr ""
-"Moi c'est <b>%s</b>, designer et dev freelance. Je fabrique Double Youpi "
-"pour que WordPress soit plus agréable à utiliser. Ce plugin restera gratuit "
-"à vie, mises à jour comprises. Si un truc coince ou te manque, merci de me "
-"le dire. Et si le plugin t'est utile et te plaît vraiment, un café ça fait "
-"toujours plaisir ;) Sinon, juste l'utiliser (et lâcher un avis sympa) aide "
-"déjà énormément. Merci !"
+"Moi c’est <b>%s</b>, designer et dev freelance. Je fabrique Double Youpi "
+"pour que WordPress soit plus agréable à utiliser. Cette extension restera "
+"gratuite à vie, mises à jour comprises. Si un truc coince ou vous manque, "
+"merci de me le dire. Et si l’extension vous est utile et vous plaît "
+"vraiment, un café ça fait toujours plaisir ;) Sinon, juste l’utiliser (et "
+"lâcher un avis sympa) aide déjà énormément. Merci !"
 
 #. translators: %s: author first name.
-#: src/Admin/OverviewPage.php:780
+#: src/Admin/OverviewPage.php:788
 #, php-format
 msgid "%s · Double Youpi"
 msgstr "%s · Double Youpi"
 
-#: src/Admin/OverviewPage.php:793
+#: src/Admin/OverviewPage.php:801
 msgid "Buy me a coffee"
 msgstr "Offrez-moi un café"
 
-#: src/Admin/OverviewPage.php:809
+#: src/Admin/OverviewPage.php:817
 msgid "Leave a review"
 msgstr "Laisser un avis"
 
-#: src/Admin/OverviewPage.php:816
+#: src/Admin/OverviewPage.php:824
 msgid "All Double Youpi plugins on WordPress.org"
-msgstr "Tous les plugins Double Youpi sur WordPress.org"
+msgstr "Toutes les extensions Double Youpi sur WordPress.org"
 
-#: src/Admin/OverviewPage.php:832
+#: src/Admin/OverviewPage.php:840
 msgid "Report or suggest"
 msgstr "Signaler ou suggérer"
 
-#: src/Admin/OverviewPage.php:867 src/Admin/OverviewPage.php:876
+#: src/Admin/OverviewPage.php:875 src/Admin/OverviewPage.php:884
 msgid "Want to get involved?"
-msgstr "Envie de participer ?"
+msgstr "Envie de participer ?"
 
-#: src/Admin/OverviewPage.php:878
+#: src/Admin/OverviewPage.php:886
 msgid "Found a bug or got an idea to make it better? Let me know."
-msgstr "Un bug repéré ou une idée pour l'améliorer ? Dis-le-moi."
+msgstr "Un bug repéré ou une idée pour l’améliorer ? Dites-le-moi."
 
-#: src/Core/ModuleCatalog.php:36
+#: src/Core/ModuleCatalog.php:38
 msgid "Refined Admin Dashboard"
 msgstr "Refined Admin Dashboard"
 
-#: src/Core/ModuleCatalog.php:37
+#: src/Core/ModuleCatalog.php:39
 msgid ""
 "A full rethink of the WordPress admin: smart dashboard, reworked navigation, "
 "redesigned content tables, dark mode, and your branding."
 msgstr ""
-"Une refonte complète de l'admin WordPress : dashboard intelligent, "
-"navigation retravaillée, tableaux de contenu redessinés, mode sombre et "
-"votre identité visuelle."
+"Une refonte complète de l’administration WordPress : tableau de bord "
+"intelligent, navigation retravaillée, tableaux de contenu redessinés, mode "
+"sombre et votre identité visuelle."
 
-#: src/Core/ModuleCatalog.php:47 src/Modules/MediaLibrary/MediaLibrary.php:46
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:46
 #: src/Modules/MediaLibrary/MediaLibrary.php:97
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
-#: src/Core/ModuleCatalog.php:48
+#: src/Core/ModuleCatalog.php:51
 msgid ""
 "Folders and collections, drag & drop, quick preview, duplicate & orphan "
 "cleanup, plus WebP/AVIF conversion on upload."
 msgstr ""
 "Dossiers et collections, glisser-déposer, aperçu rapide, nettoyage des "
-"doublons et des médias orphelins, plus conversion WebP/AVIF à l'upload."
+"doublons et des orphelins, plus conversion WebP/AVIF au téléversement."
 
-#: src/Core/ModuleCatalog.php:55
+#: src/Core/ModuleCatalog.php:58
 msgid "Simple Performance"
-msgstr ""
+msgstr "Simple Performance"
 
-#: src/Core/ModuleCatalog.php:56
+#: src/Core/ModuleCatalog.php:59
 msgid ""
 "Caching, CSS/JS, lazy-load, responsive WebP/AVIF delivery, self-hosted "
 "fonts, and a native Cloudflare CDN."
@@ -403,53 +410,53 @@ msgstr ""
 "Cache, CSS/JS, lazy-load, livraison responsive WebP/AVIF, polices auto-"
 "hébergées et CDN Cloudflare natif."
 
-#: src/Core/ModuleCatalog.php:65
+#: src/Core/ModuleCatalog.php:68
 msgid "Simple Static"
-msgstr ""
+msgstr "Simple Static"
 
-#: src/Core/ModuleCatalog.php:66
+#: src/Core/ModuleCatalog.php:69
 msgid ""
 "Static HTML export to shrink your attack surface and host free on Cloudflare "
 "Pages, Netlify or GitHub Pages."
 msgstr ""
-"Export HTML statique pour réduire ta surface d'attaque et héberger "
+"Export HTML statique pour réduire votre surface d’attaque et héberger "
 "gratuitement sur Cloudflare Pages, Netlify ou GitHub Pages."
 
-#: src/Core/ModuleCatalog.php:76
+#: src/Core/ModuleCatalog.php:79
 msgid "Simple SEO & Accessibility"
-msgstr ""
+msgstr "Simple SEO & Accessibility"
 
-#: src/Core/ModuleCatalog.php:77
+#: src/Core/ModuleCatalog.php:80
 msgid ""
 "Completes Rank Math on accessibility: auto aria-labels, AI alt-text, and a "
 "WCAG audit."
 msgstr ""
-"Complète Rank Math sur l'accessibilité : aria-labels automatiques, texte "
+"Complète Rank Math sur l’accessibilité : aria-labels automatiques, texte "
 "alternatif par IA et audit WCAG."
 
-#: src/Core/ModuleCatalog.php:84
+#: src/Core/ModuleCatalog.php:87
 msgid "Simple Metrics"
-msgstr ""
+msgstr "Simple Metrics"
 
-#: src/Core/ModuleCatalog.php:85
+#: src/Core/ModuleCatalog.php:88
 msgid ""
 "PageSpeed Insights tracking in the admin: per-page history over time, on "
 "mobile and desktop."
 msgstr ""
-"Suivi PageSpeed Insights dans l'admin : historique par page dans le temps, "
-"sur mobile et desktop."
+"Suivi PageSpeed Insights dans l’administration : historique par page dans le "
+"temps, sur mobile et ordinateur."
 
-#: src/Core/ModuleCatalog.php:92
+#: src/Core/ModuleCatalog.php:95
 msgid "Simple Backups"
-msgstr ""
+msgstr "Simple Backups"
 
-#: src/Core/ModuleCatalog.php:93
+#: src/Core/ModuleCatalog.php:96
 msgid ""
 "Scheduled full or DB-only backups, with rotation and one-click restore (auto-"
 "snapshot first)."
 msgstr ""
-"Sauvegardes planifiées, complètes ou base seule, avec rotation et "
-"restauration en un clic (snapshot auto d'abord)."
+"Sauvegardes planifiées, complètes ou base de données seule, avec rotation et "
+"restauration en un clic (instantané automatique d’abord)."
 
 #: src/Modules/MediaLibrary/CollectionManager.php:168
 msgid "Could not delete collection."
@@ -483,7 +490,7 @@ msgstr "Aucune collection trouvée"
 #: src/Modules/MediaLibrary/DuplicateDetector.php:120
 #: src/Modules/MediaLibrary/DuplicateDetector.php:134
 msgid "Duplicate"
-msgstr "Dupliquer"
+msgstr "Doublon"
 
 #: src/Modules/MediaLibrary/DuplicateDetector.php:133
 msgid "View original"
@@ -497,14 +504,14 @@ msgstr "Déplacer dans un dossier…"
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:523
-#: src/Modules/MediaLibrary/FolderManager.php:559
+#: src/Modules/MediaLibrary/FolderManager.php:527
+#: src/Modules/MediaLibrary/FolderManager.php:563
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
-"Un dossier ne peut pas être déplacé dans lui-même ou dans un de ses sous-"
+"Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:584
+#: src/Modules/MediaLibrary/FolderManager.php:588
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
 
@@ -545,9 +552,10 @@ msgstr "Supprimer le dossier"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:43
 msgid "Delete this folder? Media files will not be deleted."
-msgstr "Supprimer ce dossier ? Les fichiers médias ne seront pas supprimés."
+msgstr "Supprimer ce dossier ? Les fichiers médias ne seront pas supprimés."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:193
 msgid "No folder"
 msgstr "Aucun dossier"
@@ -584,7 +592,7 @@ msgstr "Supprimer la collection"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:56
 msgid "Delete this collection? Media files will not be deleted."
 msgstr ""
-"Supprimer cette collection ? Les fichiers médias ne seront pas supprimés."
+"Supprimer cette collection ? Les fichiers médias ne seront pas supprimés."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:57
 msgid "No collections yet."
@@ -619,12 +627,12 @@ msgid "Destination folder"
 msgstr "Dossier de destination"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:72
-msgid "— Root (no folder) —"
-msgstr "— Racine (sans dossier) —"
+msgid "Root (no folder)"
+msgstr "Racine (sans dossier)"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:73
-msgid "— Choose a collection —"
-msgstr "— Choisir une collection —"
+msgid "Choose a collection"
+msgstr "Choisir une collection"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
@@ -644,13 +652,13 @@ msgid "Create"
 msgstr "Créer"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
 msgid "Delete"
 msgstr "Supprimer"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:79
 msgid "Discard"
-msgstr "Annuler"
+msgstr "Abandonner"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:80
 msgid "Folder name"
@@ -686,13 +694,9 @@ msgstr "Ajouter 1 fichier à une collection"
 msgid ""
 "Delete folder « %s »?\n"
 "\n"
-"Media inside won’t be deleted — they will be moved to « Media without "
+"Media inside won’t be deleted, they will be moved to « Media without "
 "folder »."
 msgstr ""
-"Delete folder \"%s\"?\n"
-"\n"
-"Media inside won't be deleted — they will be moved to \"Media without "
-"folder\"."
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:95
@@ -700,13 +704,9 @@ msgstr ""
 msgid ""
 "Delete collection « %s »?\n"
 "\n"
-"Media files won’t be deleted — they will simply be removed from this "
+"Media files won’t be deleted, they will simply be removed from this "
 "collection."
 msgstr ""
-"Delete collection \"%s\"?\n"
-"\n"
-"Media files won't be deleted — they will simply be removed from this "
-"collection."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:98
 msgid "this folder"
@@ -720,13 +720,13 @@ msgstr "cette collection"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:103
 #, php-format
 msgid "Folder « %s » deleted"
-msgstr "Folder \"%s\" deleted"
+msgstr "Dossier « %s » supprimé"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:105
 #, php-format
 msgid "Collection « %s » deleted"
-msgstr "Collection \"%s\" deleted"
+msgstr "Collection « %s » supprimée"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:106
 msgid "Could not delete folder"
@@ -756,37 +756,37 @@ msgstr "collection"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:114
 #, php-format
 msgid "1 file moved to « %s »"
-msgstr "1 file moved to \"%s\""
+msgstr "1 fichier déplacé vers « %s »"
 
 #. translators: %1$d: number of files; %2$s: folder name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:116
 #, php-format
 msgid "%1$d files moved to « %2$s »"
-msgstr "%1$d files moved to \"%2$s\""
+msgstr "%1$d fichiers déplacés vers « %2$s »"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:118
 #, php-format
 msgid "1 file added to « %s »"
-msgstr "1 file added to \"%s\""
+msgstr "1 fichier ajouté à « %s »"
 
 #. translators: %1$d: number of files; %2$s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:120
 #, php-format
 msgid "%1$d files added to « %2$s »"
-msgstr "%1$d files added to \"%2$s\""
+msgstr "%1$d fichiers ajoutés à « %2$s »"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:122
 #, php-format
 msgid "Already in « %s »"
-msgstr "Already in \"%s\""
+msgstr "Déjà dans « %s »"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:124
 #, php-format
 msgid "All already in « %s »"
-msgstr "All already in \"%s\""
+msgstr "Tous déjà dans « %s »"
 
 #. translators: %1$d: number of files moved; %2$d: number already present.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:126
@@ -855,184 +855,202 @@ msgstr "Décrire l’image pour l’accessibilité…"
 msgid "Title"
 msgstr "Titre"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:149
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:152
+msgid "Caption"
+msgstr "Légende"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:153
+msgid "Description"
+msgstr "Description"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
 msgid "File URL"
 msgstr "URL du fichier"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:150
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
 msgid "Copy"
 msgstr "Copier"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:151
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
 msgid "Copied!"
-msgstr "Copié !"
+msgstr "Copié !"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:153
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:64
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
 msgid "Folder"
 msgstr "Dossier"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
-msgid "— No folder —"
-msgstr "— Aucun dossier —"
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
 msgid "+ Add to a collection"
 msgstr "+ Ajouter à une collection"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
 msgid "No collection"
 msgstr "Aucune collection"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
 msgid "Remove"
 msgstr "Retirer"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Edit"
 msgstr "Modifier"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
 msgid "Saving…"
 msgstr "Enregistrement…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
 msgid "Saved ✓"
 msgstr "Enregistré ✓"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
-msgid "Error — try again"
-msgstr "Erreur — réessayer"
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+msgid "Error, try again"
+msgstr "Erreur, réessayez"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
 msgid "Not used in content."
 msgstr "Non utilisé dans le contenu."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
 msgid "(untitled)"
 msgstr "(sans titre)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
 msgid "Permanently delete this file? This action cannot be undone."
-msgstr "Supprimer définitivement ce fichier ? Cette action est irréversible."
+msgstr "Supprimer définitivement ce fichier ? Cette action est irréversible."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
 msgid "Could not delete this file."
 msgstr "Impossible de supprimer ce fichier."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:176
 msgid "Unsaved changes will be lost. Continue?"
-msgstr "Les modifications non enregistrées seront perdues. Continuer ?"
+msgstr "Les modifications non enregistrées seront perdues. Continuer ?"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
-msgid "B"
-msgstr "B"
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
-msgid "KB"
-msgstr "KB"
-
+#. translators: shown after the panel saved pending edits on its own when the user moved to another media file.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:179
-msgid "MB"
-msgstr "MB"
+msgid "Changes saved"
+msgstr "Modifications enregistrées"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:180
+msgid "Could not save your changes"
+msgstr "Impossible d’enregistrer vos modifications"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:181
+msgid "You have unsaved changes"
+msgstr "Vous avez des modifications non enregistrées"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:187
+msgid "B"
+msgstr "o"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:188
+msgid "KB"
+msgstr "Ko"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:189
+msgid "MB"
+msgstr "Mo"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
 msgid "All types"
 msgstr "Tous les types"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
 msgid "Images"
 msgstr "Images"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:194
 msgid "Videos"
 msgstr "Vidéos"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:185
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
 msgid "Audio"
 msgstr "Audio"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:186
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
 msgid "Documents"
 msgstr "Documents"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:187
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
 msgid "SVG"
 msgstr "SVG"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:188
+# Overlay aligné sur GlotPress fr_FR (lot vouvoyé, 2026-09-16). Les entrées ici priment sur languages/doubleyoupi-fr_FR.po dans le build solo.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
 msgid "Mine"
 msgstr "Les miens"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:194
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "No media selected."
 msgstr "Aucun média sélectionné."
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr "Modifier les métadonnées (%d)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
 msgid "Bulk edit"
 msgstr "Édition groupée"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
 msgid "1 file selected"
 msgstr "1 fichier sélectionné"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:202
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
 #, php-format
 msgid "%d files selected"
 msgstr "%d fichiers sélectionnés"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:203
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr ""
 "Laissez un champ vide pour conserver la valeur existante de chaque fichier."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
 msgid "Alt text"
 msgstr "Texte alternatif"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:205
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
 msgid "Describe the image…"
 msgstr "Décrivez l’image…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:206
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "File title…"
 msgstr "Titre du fichier…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Apply to 1 file"
 msgstr "Appliquer à 1 fichier"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
 #, php-format
 msgid "Apply to %d files"
 msgstr "Appliquer à %d fichiers"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
 msgid "Applying…"
 msgstr "Application…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:221
 msgid "Retry"
 msgstr "Réessayer"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
 msgid "More fields"
 msgstr "Plus de champs"
 
@@ -1082,7 +1100,7 @@ msgstr "Laisser %s gérer"
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
-msgstr "%s gère la médiathèque. Refined Media Library s'est effacé."
+msgstr "%s gère la médiathèque. Refined Media Library s’est effacé."
 
 #: src/Modules/MediaLibrary/MediaManagerConflict.php:217
 msgid "Use Refined Media Library"
@@ -1090,11 +1108,11 @@ msgstr "Utiliser Refined Media Library"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:19
 msgid "No other folder plugin detected. Nothing to import."
-msgstr "Aucun autre plugin de dossiers détecté. Rien à importer."
+msgstr "Aucune autre extension de dossiers détectée. Rien à importer."
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:20
 msgid "Detected plugins"
-msgstr "Plugins détectés"
+msgstr "Extensions détectées"
 
 #. translators: %1$d: folder count, %2$d: media count
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:22
@@ -1143,8 +1161,8 @@ msgstr "Affectation des médias…"
 #. translators: %1$d: folders+collections, %2$d: media
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:37
 #, php-format
-msgid "Done — %1$d folders and %2$d media imported."
-msgstr "Terminé — %1$d dossiers et %2$d médias importés."
+msgid "Done. %1$d folders and %2$d media imported."
+msgstr "Terminé. %1$d dossiers et %2$d médias importés."
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:38
 msgid "Open the media library"
@@ -1155,7 +1173,7 @@ msgid ""
 "Remove all folders created by this import? Your media and the source plugin "
 "are left untouched."
 msgstr ""
-"Supprimer tous les dossiers créés par cet import ? Vos médias et le plugin "
+"Supprimer tous les dossiers créés par cet import ? Vos médias et l’extension "
 "source ne sont pas touchés."
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:40
@@ -1175,14 +1193,10 @@ msgstr "Une erreur est survenue. Veuillez réessayer."
 #: src/Modules/MediaLibrary/Migration/MigrationManager.php:466
 msgid ""
 "Import folders and collections from another media library plugin. Your media "
-"stay in place — this only re-creates the folder structure inside Refined "
-"Media Library. The source plugin is never modified, so you can verify the "
-"result before removing it."
+"stay in place. This only re-creates the folder structure inside Refined "
+"Media Library, and the source plugin is never modified, so you can verify "
+"the result before removing it."
 msgstr ""
-"Importez les dossiers et collections d’un autre plugin de médiathèque. Vos "
-"médias restent en place — cela recrée seulement la structure de dossiers "
-"dans Refined Media Library. Le plugin source n’est jamais modifié, vous "
-"pouvez donc vérifier le résultat avant de le supprimer."
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:71
 msgid "Scanning…"
@@ -1190,7 +1204,7 @@ msgstr "Analyse…"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:72
 msgid "No unused media found. Your library is clean!"
-msgstr "Aucun média inutilisé. Votre médiathèque est propre !"
+msgstr "Aucun média inutilisé. Votre médiathèque est propre !"
 
 #. translators: %d: number of unused media files found.
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:74
@@ -1261,7 +1275,7 @@ msgstr "Fichier"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:126
 msgid "Uploaded"
-msgstr "Uploadé"
+msgstr "Téléversé"
 
 #: src/Modules/MediaLibrary/Settings.php:201
 msgid "Optimization"
@@ -1270,16 +1284,16 @@ msgstr "Optimisation"
 #. translators: %s: name of the module piloting image conversion
 #: src/Modules/MediaLibrary/Settings.php:208
 #, php-format
-msgid "Piloted by %s — settings managed there."
-msgstr "Piloté par %s — réglages gérés là-bas."
+msgid "Piloted by %s. Settings managed there."
+msgstr "Piloté par %s. Réglages gérés à cet endroit."
 
 #: src/Modules/MediaLibrary/Settings.php:210
 msgid "This server cannot generate WebP images."
-msgstr "Ce serveur ne peut pas générer d'images WebP."
+msgstr "Ce serveur ne peut pas générer d’images WebP."
 
 #: src/Modules/MediaLibrary/Settings.php:211
 msgid "This server cannot generate AVIF images."
-msgstr "Ce serveur ne peut pas générer d'images AVIF."
+msgstr "Ce serveur ne peut pas générer d’images AVIF."
 
 #: src/Modules/MediaLibrary/Settings.php:218
 msgid "Organisation"
@@ -1295,12 +1309,13 @@ msgstr "Regrouper les médias en collections transversales"
 
 #: src/Modules/MediaLibrary/Settings.php:241
 msgid "Auto alt & title"
-msgstr "Alt & titre auto"
+msgstr "Alt et titre automatiques"
 
 #: src/Modules/MediaLibrary/Settings.php:242
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
-"Remplir l’alt et le titre depuis le nom du fichier à l’upload (si vides)"
+"Remplir le texte alternatif et le titre depuis le nom du fichier au "
+"téléversement (si vides)"
 
 #: src/Modules/MediaLibrary/Settings.php:250
 msgid "Conversion"
@@ -1308,15 +1323,15 @@ msgstr "Conversion"
 
 #: src/Modules/MediaLibrary/Settings.php:257
 msgid "WebP on upload"
-msgstr "WebP à l'upload"
+msgstr "WebP au téléversement"
 
 #: src/Modules/MediaLibrary/Settings.php:258
 msgid "Generate a WebP version of each image on upload"
-msgstr "Générer une version WebP de chaque image à l'upload"
+msgstr "Générer une version WebP de chaque image au téléversement"
 
 #: src/Modules/MediaLibrary/Settings.php:267
 msgid "AVIF on upload"
-msgstr "AVIF à l'upload"
+msgstr "AVIF au téléversement"
 
 #: src/Modules/MediaLibrary/Settings.php:268
 msgid "Generate an AVIF version too (requires Imagick)"
@@ -1332,7 +1347,59 @@ msgstr "Qualité de conversion"
 
 #: src/Modules/MediaLibrary/Settings.php:333
 msgid "Higher means better quality and larger files. Default 82."
-msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
+msgstr ""
+"Plus la valeur est élevée, meilleure est la qualité et plus les fichiers "
+"sont lourds. Par défaut : 82."
+
+#~ msgid "— Root (no folder) —"
+#~ msgstr "— Racine (sans dossier) —"
+
+#~ msgid "— Choose a collection —"
+#~ msgstr "— Choisir une collection —"
+
+#~ msgid "— No folder —"
+#~ msgstr "— Aucun dossier —"
+
+#~ msgid "Double Youpi — Overview"
+#~ msgstr "Double Youpi : Vue d’ensemble"
+
+#~ msgid "Could not save — please retry."
+#~ msgstr "Échec de l’enregistrement, veuillez réessayer."
+
+#~ msgid ""
+#~ "Delete folder « %s »?\\n\\nMedia inside won’t be deleted — they will be "
+#~ "moved to « Media without folder »."
+#~ msgstr ""
+#~ "Supprimer le dossier « %s » ?\\n\\nLes médias qu’il contient ne seront "
+#~ "pas supprimés : ils seront déplacés vers « Médias sans dossier »."
+
+#~ msgid ""
+#~ "Delete collection « %s »?\\n\\nMedia files won’t be deleted — they will "
+#~ "simply be removed from this collection."
+#~ msgstr ""
+#~ "Supprimer la collection « %s » ?\\n\\nLes fichiers médias ne seront pas "
+#~ "supprimés : ils seront simplement retirés de cette collection."
+
+#~ msgid "Error — try again"
+#~ msgstr "Erreur, réessayez."
+
+#~ msgid "Done — %1$d folders and %2$d media imported."
+#~ msgstr "Terminé : %1$d dossiers et %2$d médias importés."
+
+#~ msgid ""
+#~ "Import folders and collections from another media library plugin. Your "
+#~ "media stay in place — this only re-creates the folder structure inside "
+#~ "Refined Media Library. The source plugin is never modified, so you can "
+#~ "verify the result before removing it."
+#~ msgstr ""
+#~ "Importez les dossiers et collections d’une autre extension de "
+#~ "médiathèque. Vos médias restent en place : cela recrée seulement la "
+#~ "structure de dossiers dans Refined Media Library. L’extension source "
+#~ "n’est jamais modifiée, vous pouvez donc vérifier le résultat avant de la "
+#~ "supprimer."
+
+#~ msgid "Piloted by %s — settings managed there."
+#~ msgstr "Piloté par %s, réglages gérés à cet endroit."
 
 #~ msgid ""
 #~ "Folders, collections, duplicate and orphan cleanup, auto alt text and "
@@ -1697,8 +1764,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Assign to role"
 #~ msgstr "Assigner au rôle"
 
-#~ msgid "— None —"
-#~ msgstr "— Aucun —"
+#~ msgid "None"
+#~ msgstr "Aucun"
 
 #~ msgid "Lock the layout"
 #~ msgstr "Verrouiller la disposition"
@@ -1736,8 +1803,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Disposition name"
 #~ msgstr "Nom de la disposition"
 
-#~ msgid "— New disposition —"
-#~ msgstr "— Nouvelle disposition —"
+#~ msgid "New disposition"
+#~ msgstr "Nouvelle disposition"
 
 #~ msgid "Delete this disposition"
 #~ msgstr "Supprimer cette disposition"
@@ -1951,7 +2018,7 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgstr "Aucun écran valide après sanitisation."
 
 #, php-format
-#~ msgid "Informations %s et Extensions"
+#~ msgid "%s and plugins"
 #~ msgstr "Informations %s et Extensions"
 
 #~ msgid "WordPress"
@@ -2223,8 +2290,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Permalinks"
 #~ msgstr "Permaliens"
 
-#~ msgid "No action — edit the widget config."
-#~ msgstr "Aucune action — édite la config du widget."
+#~ msgid "No action. Edit the widget config."
+#~ msgstr "Aucune action. Édite la config du widget."
 
 #~ msgid "Shortcuts"
 #~ msgstr "Raccourcis"
@@ -2582,8 +2649,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Drag to reorder"
 #~ msgstr "Glisser pour réorganiser"
 
-#~ msgid "Reorder failed — please refresh."
-#~ msgstr "Échec du réordonnancement — rechargez la page."
+#~ msgid "Reorder failed. Please refresh."
+#~ msgstr "Échec du réordonnancement. Rechargez la page."
 
 #~ msgid "Unknown post type."
 #~ msgstr "Type de contenu inconnu."
@@ -2600,8 +2667,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Resize navigation"
 #~ msgstr "Redimensionner la navigation"
 
-#~ msgid "Toggle navigation width (Cmd/Ctrl + K)"
-#~ msgstr "Basculer la largeur de navigation (Cmd/Ctrl + K)"
+#~ msgid "Toggle navigation width"
+#~ msgstr "Basculer la largeur de navigation"
 
 # --- Réorganiseur de navigation (auto) ---
 #~ msgid "Builder"
@@ -2689,28 +2756,26 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Invalid accent color (expected format: #rrggbb)."
 #~ msgstr "Couleur d’accent invalide (format attendu : #rrggbb)."
 
-#~ msgid ""
-#~ "Color too dark — even strong saturation cannot recover identity here."
+#~ msgid "Color too dark: even strong saturation cannot recover identity here."
 #~ msgstr ""
-#~ "Couleur trop sombre — même une forte saturation ne peut pas récupérer "
+#~ "Couleur trop sombre : même une forte saturation ne peut pas récupérer "
 #~ "l’identité ici."
 
 #~ msgid ""
-#~ "Color too light — even strong saturation cannot recover identity here."
+#~ "Color too light: even strong saturation cannot recover identity here."
 #~ msgstr ""
-#~ "Couleur trop claire — même une forte saturation ne peut pas récupérer "
+#~ "Couleur trop claire : même une forte saturation ne peut pas récupérer "
 #~ "l’identité ici."
 
-#~ msgid "Gray too dark — without saturation, tinted surfaces will turn muddy."
+#~ msgid "Gray too dark: without saturation, tinted surfaces will turn muddy."
 #~ msgstr ""
-#~ "Gris trop sombre — sans saturation, les surfaces teintées deviendront "
+#~ "Gris trop sombre : sans saturation, les surfaces teintées deviendront "
 #~ "ternes."
 
 #~ msgid ""
-#~ "Gray too light — without saturation, the accent fades on white "
-#~ "backgrounds."
+#~ "Gray too light: without saturation, the accent fades on white backgrounds."
 #~ msgstr ""
-#~ "Gris trop clair — sans saturation, la couleur d’accent s’efface sur les "
+#~ "Gris trop clair : sans saturation, la couleur d’accent s’efface sur les "
 #~ "fonds blancs."
 
 #~ msgid "General"
@@ -2754,9 +2819,9 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "System, Developer) all use the accent color. Otherwise, each line keeps "
 #~ "its own color."
 #~ msgstr ""
-#~ "Si activé, les 7 lignes du menu (Content, Commerce, Users, Community, "
-#~ "Site, System, Developer) utilisent toutes la couleur d'accent. Sinon, "
-#~ "chaque ligne garde sa couleur propre."
+#~ "Si activé, les 7 lignes du menu (Contenu, Commerce, Utilisateurs, "
+#~ "Communauté, Site, Système, Développeur) utilisent toutes la couleur "
+#~ "d'accent. Sinon, chaque ligne garde sa couleur propre."
 
 #~ msgid "Custom logo"
 #~ msgstr "Logo personnalisé"
@@ -3306,8 +3371,29 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "Pour restaurer : gunzip le fichier, puis mysql -u<user> -p<db> < "
 #~ "database.sql."
 
-#~ msgid "None"
-#~ msgstr "Aucun"
+#, php-format
+#~ msgid ""
+#~ "Delete folder « %s »?\n"
+#~ "\n"
+#~ "Media inside won’t be deleted — they will be moved to « Media without "
+#~ "folder »."
+#~ msgstr ""
+#~ "Delete folder \"%s\"?\n"
+#~ "\n"
+#~ "Media inside won't be deleted — they will be moved to \"Media without "
+#~ "folder\"."
+
+#, php-format
+#~ msgid ""
+#~ "Delete collection « %s »?\n"
+#~ "\n"
+#~ "Media files won’t be deleted — they will simply be removed from this "
+#~ "collection."
+#~ msgstr ""
+#~ "Delete collection \"%s\"?\n"
+#~ "\n"
+#~ "Media files won't be deleted — they will simply be removed from this "
+#~ "collection."
 
 #~ msgid ""
 #~ "Media files not referenced in any post, page, featured image, or custom "
@@ -4277,19 +4363,19 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid ""
 #~ "301 redirect on front and admin, rewriting of http→https URLs in the "
 #~ "content. Replaces Really Simple SSL. (The WordPress « Site Address » "
-#~ "setting is not modified — do it manually.)"
+#~ "setting is not modified: do it manually.)"
 #~ msgstr ""
 #~ "301 redirect front et admin, réécriture des URLs http→https dans le "
 #~ "contenu. Remplace Really Simple SSL. (Le réglage WordPress « Adresse du "
-#~ "site » n’est pas modifié — à faire à la main.)"
+#~ "site » n’est pas modifié : à faire à la main.)"
 
 #~ msgid ""
-#~ "Local environment detected — Force HTTPS is blocked here to avoid "
-#~ "breaking access to the site (local certificates are usually not "
-#~ "configured). To override: "
-#~ "add_filter( 'doubleyoupi_toolkit_force_https_in_local', '__return_true' );"
+#~ "Local environment detected: Force HTTPS is blocked here to avoid breaking "
+#~ "access to the site (local certificates are usually not configured). To "
+#~ "override: add_filter( 'doubleyoupi_toolkit_force_https_in_local', "
+#~ "'__return_true' );"
 #~ msgstr ""
-#~ "Environnement local détecté — Force HTTPS bloqué ici pour ne pas casser "
+#~ "Environnement local détecté : Force HTTPS bloqué ici pour ne pas casser "
 #~ "l’accès au site (les certificats locaux ne sont généralement pas "
 #~ "configurés). Pour outrepasser : "
 #~ "add_filter( 'doubleyoupi_toolkit_force_https_in_local', '__return_true' );"
@@ -4311,11 +4397,11 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "évite tout verrouillage. Remplace WPS Hide Login."
 
 #~ msgid ""
-#~ "Recovery mode is active (DOUBLEYOUPI_HIDE_LOGIN_DISABLE in wp-config.php) "
-#~ "— the default login is restored."
+#~ "Recovery mode is active (DOUBLEYOUPI_HIDE_LOGIN_DISABLE in wp-"
+#~ "config.php): the default login is restored."
 #~ msgstr ""
 #~ "Le mode de récupération est actif (DOUBLEYOUPI_HIDE_LOGIN_DISABLE dans wp-"
-#~ "config.php) — la connexion par défaut est rétablie."
+#~ "config.php) : la connexion par défaut est rétablie."
 
 #~ msgid "Hide login is not supported on multisite networks."
 #~ msgstr ""
@@ -4332,10 +4418,9 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgstr "Votre page de connexion : %s"
 
 #~ msgid ""
-#~ "Set a slug to activate — the feature stays off until a valid slug is "
-#~ "saved."
+#~ "Set a slug to activate: the feature stays off until a valid slug is saved."
 #~ msgstr ""
-#~ "Définissez un slug pour activer — la fonctionnalité reste désactivée tant "
+#~ "Définissez un slug pour activer : la fonctionnalité reste désactivée tant "
 #~ "qu’aucun slug valide n’est enregistré."
 
 #, php-format
@@ -4360,7 +4445,7 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "\n"
 #~ "New login URL: %1$s\n"
 #~ "\n"
-#~ "The default %2$s now returns a 404 to logged-out visitors — bookmark the "
+#~ "The default %2$s now returns a 404 to logged-out visitors. Bookmark the "
 #~ "new URL.\n"
 #~ "\n"
 #~ "If you ever get locked out, add this line to wp-config.php to restore the "
@@ -4371,8 +4456,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "\n"
 #~ "Nouvelle URL de connexion : %1$s\n"
 #~ "\n"
-#~ "Le %2$s par défaut renvoie désormais une 404 aux visiteurs déconnectés — "
-#~ "ajoutez la nouvelle URL à vos favoris.\n"
+#~ "Le %2$s par défaut renvoie désormais une 404 aux visiteurs déconnectés. "
+#~ "Ajoutez la nouvelle URL à vos favoris.\n"
 #~ "\n"
 #~ "Si vous êtes un jour verrouillé dehors, ajoutez cette ligne à wp-"
 #~ "config.php pour rétablir la connexion par défaut :\n"
@@ -4404,12 +4489,12 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 
 #~ msgid ""
 #~ "Adds an avatar upload field to user profiles and serves every avatar "
-#~ "locally — no request ever reaches gravatar.com (GDPR-friendly). Users "
+#~ "locally: no request ever reaches gravatar.com (GDPR-friendly). Users "
 #~ "without an uploaded avatar get a generated initials avatar. Replaces "
 #~ "Simple Local Avatars."
 #~ msgstr ""
 #~ "Ajoute un champ de téléversement d’avatar aux profils utilisateurs et "
-#~ "sert chaque avatar localement — aucune requête n’atteint gravatar.com "
+#~ "sert chaque avatar localement : aucune requête n’atteint gravatar.com "
 #~ "(respectueux du RGPD). Les utilisateurs sans avatar téléversé reçoivent "
 #~ "un avatar généré à partir de leurs initiales. Remplace Simple Local "
 #~ "Avatars."
@@ -4422,10 +4507,10 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 
 #~ msgid ""
 #~ "Stored locally in the media library. No avatar uses an automatically "
-#~ "generated one — Gravatar is never contacted."
+#~ "generated one. Gravatar is never contacted."
 #~ msgstr ""
 #~ "Stocké localement dans la médiathèque. Sans avatar, un avatar généré "
-#~ "automatiquement est utilisé — Gravatar n’est jamais contacté."
+#~ "automatiquement est utilisé. Gravatar n’est jamais contacté."
 
 #~ msgid "Select an avatar"
 #~ msgstr "Sélectionner un avatar"
@@ -4559,8 +4644,8 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "pending pay"
 #~ msgstr "paiement en attente"
 
-#~ msgid "Nothing waiting — all caught up."
-#~ msgstr "Rien en attente — tout est traité."
+#~ msgid "Nothing waiting. All caught up."
+#~ msgstr "Rien en attente. Tout est traité."
 
 #~ msgid "vs last month"
 #~ msgstr "vs le mois dernier"
@@ -4645,10 +4730,10 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgstr "Vue complète : ventes et opérations"
 
 #~ msgid ""
-#~ "One create button per content type, generated automatically — including "
+#~ "One create button per content type, generated automatically, including "
 #~ "your custom post types."
 #~ msgstr ""
-#~ "Un bouton de création par type de contenu, généré automatiquement — y "
+#~ "Un bouton de création par type de contenu, généré automatiquement, y "
 #~ "compris vos types personnalisés."
 
 #~ msgid "No content type available to create."
@@ -4663,11 +4748,11 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ msgid "Sales in depth, plus the editor flow"
 #~ msgstr "Les ventes en détail, plus le flux éditeur"
 
-#~ msgid "Create — all types"
-#~ msgstr "Créer — tous types"
+#~ msgid "Create (all types)"
+#~ msgstr "Créer (tous types)"
 
-#~ msgid "Create — one type"
-#~ msgstr "Créer — un type"
+#~ msgid "Create (one type)"
+#~ msgstr "Créer (un type)"
 
 #~ msgid "Assign to role(s)…"
 #~ msgstr "Assigner au(x) rôle(s)…"
@@ -4775,3 +4860,463 @@ msgstr "Plus haut = meilleure qualité et fichiers plus lourds. Défaut 82."
 #~ "Admin Columns réécrit les colonnes des listes WordPress, ce qui entre en "
 #~ "conflit avec les tables repensées de Refined Admin Dashboard. Il a été "
 #~ "désactivé automatiquement pour éviter un affichage cassé."
+
+#~ msgid "Got it, dismiss"
+#~ msgstr "Compris, masquer"
+
+#~ msgid "Choose a logo"
+#~ msgstr "Choisir un logo"
+
+#~ msgid "Use this image"
+#~ msgstr "Utiliser cette image"
+
+#~ msgid "Today, we're on a roll"
+#~ msgstr "Aujourd'hui, on cartonne"
+
+#~ msgid "What are we making on **{{site.name}}** today?"
+#~ msgstr "On crée quoi de beau sur **{{site.name}}** aujourd'hui ?"
+
+#~ msgid "Picking up the thread"
+#~ msgstr "Le fil du jour"
+
+#~ msgid "The engine room"
+#~ msgstr "La salle des machines"
+
+#~ msgid "All in order?"
+#~ msgstr "Tout est en ordre ?"
+
+#~ msgid "The cash drawer"
+#~ msgstr "Le tiroir-caisse"
+
+#~ msgid "What comes in, what moves, what's running low."
+#~ msgstr "Ce qui rentre, ce qui bouge, ce qui manque."
+
+#~ msgid "Keyboards at the ready"
+#~ msgstr "À vos claviers"
+
+#~ msgid "Blank page? Never heard of it."
+#~ msgstr "Le syndrome de la page blanche ? Connais pas."
+
+#~ msgid "What's next?"
+#~ msgstr "Et ensuite ?"
+
+#~ msgid "Shall we?"
+#~ msgstr "On y va ?"
+
+#~ msgid "Sales and orders, without leaving the dashboard."
+#~ msgstr "Le nerf de la guerre, sans quitter le tableau de bord."
+
+#~ msgid "Update"
+#~ msgstr "Mettre à jour"
+
+#~ msgid "Updating…"
+#~ msgstr "Mise à jour…"
+
+#~ msgid "Updated"
+#~ msgstr "À jour"
+
+#~ msgid "Update failed"
+#~ msgstr "Échec de la mise à jour"
+
+#~ msgid "Update available"
+#~ msgstr "Mise à jour disponible"
+
+#~ msgid "1 update available"
+#~ msgstr "1 mise à jour disponible"
+
+#~ msgid "%d updates available"
+#~ msgstr "%d mises à jour disponibles"
+
+#~ msgid "Update all"
+#~ msgstr "Tout mettre à jour"
+
+#~ msgid "Auto-updates"
+#~ msgstr "MAJ auto"
+
+#~ msgid "More"
+#~ msgstr "Plus"
+
+#~ msgid "No plugin matches your search."
+#~ msgstr "Aucune extension ne correspond à votre recherche."
+
+#~ msgctxt "plugins list group"
+#~ msgid "Active"
+#~ msgstr "Activées"
+
+#~ msgctxt "plugins list group"
+#~ msgid "Inactive"
+#~ msgstr "Désactivées"
+
+#~ msgid "Send feedback about this screen"
+#~ msgstr "Envoyer un retour sur cet écran"
+
+#~ msgid "Send"
+#~ msgstr "Envoyer"
+
+#~ msgid "Sending…"
+#~ msgstr "Envoi…"
+
+#~ msgid "Try again"
+#~ msgstr "Réessayer"
+
+#~ msgid "%s (theme)"
+#~ msgstr "%s (thème)"
+
+#~ msgid "This image is still too large after compression (1.5 MB maximum)."
+#~ msgstr "Cette image reste trop lourde après compression (1,5 Mo maximum)."
+
+#~ msgid "Please use a PNG, JPEG or WebP image."
+#~ msgstr "Utilisez une image PNG, JPEG ou WebP."
+
+#~ msgid "Your report could not be sent. Check your connection and try again."
+#~ msgstr ""
+#~ "Votre retour n'a pas pu être envoyé. Vérifiez votre connexion et "
+#~ "réessayez."
+
+#~ msgid "Reference %s."
+#~ msgstr "Référence %s."
+
+#~ msgid "(anonymous site identifier)"
+#~ msgstr "(identifiant anonyme du site)"
+
+#~ msgid "This screen"
+#~ msgstr "Cet écran"
+
+#~ msgid "It concerns"
+#~ msgstr "Il concerne"
+
+#~ msgid ""
+#~ "We could not tell which plugin this screen belongs to. Pick it above if "
+#~ "you know."
+#~ msgstr ""
+#~ "Impossible de savoir à quelle extension cet écran se rattache. Choisissez-"
+#~ "la ci-dessus si vous la connaissez."
+
+#~ msgid "What kind of feedback"
+#~ msgstr "Quel type de retour"
+
+#~ msgid "Something is wrong"
+#~ msgstr "Quelque chose ne va pas"
+
+#~ msgid "An idea"
+#~ msgstr "Une idée"
+
+#~ msgid "Something else"
+#~ msgstr "Autre chose"
+
+#~ msgid "Your message"
+#~ msgstr "Votre message"
+
+#~ msgid "What happened, and what you expected."
+#~ msgstr "Ce qui s'est passé, et ce que vous attendiez."
+
+#~ msgid "Attach a screenshot"
+#~ msgstr "Joindre une capture"
+
+#~ msgid "or paste an image here (Ctrl/Cmd + V)"
+#~ msgstr "ou collez une image ici (Ctrl/Cmd + V)"
+
+#~ msgid "You may write back to me at"
+#~ msgstr "Vous pouvez me répondre à"
+
+#~ msgid ""
+#~ "I agree to send this report to Double Youpi: my message, the screenshot "
+#~ "if any, this screen's address inside wp-admin, the plugin or theme it "
+#~ "belongs to, and version numbers (WordPress, PHP, theme, this plugin). No "
+#~ "site content is sent, and no site address unless I ask for a reply."
+#~ msgstr ""
+#~ "J'accepte d'envoyer ce retour à Double Youpi : mon message, la capture "
+#~ "s'il y en a une, l'adresse de cet écran dans wp-admin, l'extension ou le "
+#~ "thème concerné, et les numéros de version (WordPress, PHP, thème, cette "
+#~ "extension). Aucun contenu du site n'est envoyé, ni l'adresse du site sauf "
+#~ "si je demande une réponse."
+
+#~ msgid "See exactly what will be sent"
+#~ msgstr "Voir exactement ce qui sera envoyé"
+
+#~ msgid "Seen with %s"
+#~ msgstr "Vu avec %s"
+
+#~ msgid "Thank you, it is on its way."
+#~ msgstr "Merci, c'est parti."
+
+#~ msgid "Please confirm you agree to send this report."
+#~ msgstr "Confirmez que vous acceptez d'envoyer ce retour."
+
+#~ msgid "Please write a few words first."
+#~ msgstr "Écrivez d'abord quelques mots."
+
+#~ msgid "This email address does not look right."
+#~ msgstr "Cette adresse e-mail ne semble pas valide."
+
+#~ msgid "The screenshot is too large."
+#~ msgstr "La capture est trop lourde."
+
+#~ msgid "Too many reports in a short time. Please try again in an hour."
+#~ msgstr "Trop de retours en peu de temps. Réessayez dans une heure."
+
+#~ msgid "The feedback service did not answer. Please try again later."
+#~ msgstr "Le service de retours n'a pas répondu. Réessayez plus tard."
+
+#~ msgctxt "admin bar button"
+#~ msgid "Feedback"
+#~ msgstr "Feedback"
+
+#~ msgid "Your feedback on %s"
+#~ msgstr "Votre retour sur %s"
+
+#~ msgid "This widget could not load."
+#~ msgstr "Ce widget n'a pas pu se charger."
+
+#~ msgid "You are not allowed to export these settings."
+#~ msgstr "Vous n'avez pas le droit d'exporter ces réglages."
+
+#~ msgid "You are not allowed to import these settings."
+#~ msgstr "Vous n'avez pas le droit d'importer ces réglages."
+
+#~ msgid "Accent color and logo"
+#~ msgstr "Couleur d'accent et logo"
+
+#~ msgid "Navigation tree (reimagined or native) and the Reorganize layout"
+#~ msgstr "Arborescence (repensée ou native) et disposition de Réorganiser"
+
+#~ msgid "Screens left in native styling"
+#~ msgstr "Écrans laissés en style natif"
+
+#~ msgid "Toolkit toggles"
+#~ msgstr "Interrupteurs de la boîte à outils"
+
+#~ msgid "You are not allowed to do this."
+#~ msgstr "Vous n'avez pas le droit de faire cela."
+
+#~ msgid "Refined Admin Dashboard is on."
+#~ msgstr "Refined Admin Dashboard est actif."
+
+#~ msgid "See what changed"
+#~ msgstr "Voir ce qui a changé"
+
+#~ msgid "Dismiss"
+#~ msgstr "Ignorer"
+
+#~ msgid "Navigation tree"
+#~ msgstr "Arborescence"
+
+#~ msgid ""
+#~ "Seven sections instead of the WordPress menu. Prefer the native order for "
+#~ "a team trained on it? One switch."
+#~ msgstr ""
+#~ "Sept sections à la place du menu WordPress. Une équipe formée sur l'ordre "
+#~ "natif ? Un interrupteur suffit."
+
+#~ msgid "Choose the tree"
+#~ msgstr "Choisir l'arborescence"
+
+#~ msgid "Colour and logo"
+#~ msgstr "Couleur et logo"
+
+#~ msgid ""
+#~ "One accent for buttons and active states, your logo above the rail and on "
+#~ "the login screen."
+#~ msgstr ""
+#~ "Une couleur d'accent pour les boutons et les états actifs, votre logo au-"
+#~ "dessus du rail et sur l'écran de connexion."
+
+#~ msgid "Set the brand"
+#~ msgstr "Régler la marque"
+
+#~ msgid "Dark or light"
+#~ msgstr "Sombre ou clair"
+
+#~ msgid ""
+#~ "Each person picks their theme with the sun and moon button in the top "
+#~ "bar. Nothing to set here."
+#~ msgstr ""
+#~ "Chacun choisit son thème avec le bouton soleil et lune de la barre du "
+#~ "haut. Rien à régler ici."
+
+#~ msgid "Refined Admin Dashboard is on"
+#~ msgstr "Refined Admin Dashboard est actif"
+
+#~ msgid "Here is what changed"
+#~ msgstr "Voilà ce qui a changé"
+
+#~ msgid ""
+#~ "The menu became a rail with seven sections, lists and the editor were "
+#~ "redrawn, notices moved into one place, and the dashboard is modular. "
+#~ "Everything else is automatic."
+#~ msgstr ""
+#~ "Le menu est devenu un rail à sept sections, les listes et l'éditeur ont "
+#~ "été redessinés, les notifications sont regroupées au même endroit et le "
+#~ "tableau de bord est modulaire. Tout le reste est automatique."
+
+#~ msgid "Got it"
+#~ msgstr "Compris"
+
+#~ msgid "Three things worth a look"
+#~ msgstr "Trois choses à regarder"
+
+#~ msgid "Setting up several sites?"
+#~ msgstr "Vous installez sur plusieurs sites ?"
+
+#~ msgid "Export this setup as a profile and import it on the next one."
+#~ msgstr ""
+#~ "Exportez cette configuration en profil et importez-la sur le suivant."
+
+#~ msgid "Some settings are pinned in code."
+#~ msgstr "Certains réglages sont figés dans le code."
+
+#~ msgid ""
+#~ "A profile is set through DOUBLEYOUPI_ADMIN_PROFILE (or the "
+#~ "doubleyoupi_filter_admin_profile filter): the fields it covers are locked "
+#~ "below and cannot be changed from this page."
+#~ msgstr ""
+#~ "Un profil est défini par DOUBLEYOUPI_ADMIN_PROFILE (ou le filtre "
+#~ "doubleyoupi_filter_admin_profile) : les champs qu'il couvre sont "
+#~ "verrouillés ci-dessous et ne peuvent pas être modifiés depuis cette page."
+
+#~ msgid "Reimagined (recommended): seven sections, content first"
+#~ msgstr "Repensée (recommandé) : sept sections, le contenu d'abord"
+
+#~ msgid "Native WordPress: the menu as WordPress orders it, drawn by our rail"
+#~ msgstr ""
+#~ "WordPress natif : le menu tel que WordPress l'ordonne, dessiné par notre "
+#~ "rail"
+
+#~ msgid ""
+#~ "Native keeps the muscle memory of a team trained on the WordPress menu: "
+#~ "same entries, same order, same sub-menus. Everything else in Refined "
+#~ "Admin Dashboard still applies. The Reorganize tab only affects the "
+#~ "reimagined tree."
+#~ msgstr ""
+#~ "Le mode natif préserve les réflexes d'une équipe formée sur le menu "
+#~ "WordPress : mêmes entrées, même ordre, mêmes sous-menus. Tout le reste de "
+#~ "Refined Admin Dashboard s'applique. L'onglet Réorganiser ne concerne que "
+#~ "l'arborescence repensée."
+
+#~ msgid "Settings profile"
+#~ msgstr "Profil de réglages"
+
+#~ msgid ""
+#~ "The site-level setup as one JSON file: export it from a finished site, "
+#~ "import it on the next one. It carries:"
+#~ msgstr ""
+#~ "La configuration du site en un seul fichier JSON : exportez-la depuis un "
+#~ "site terminé, importez-la sur le suivant. Elle contient :"
+
+#~ msgid ""
+#~ "Personal choices (theme, rail width) and dashboard layouts stay with each "
+#~ "site."
+#~ msgstr ""
+#~ "Les choix personnels (thème, largeur du rail) et les dispositions du "
+#~ "tableau de bord restent propres à chaque site."
+
+#~ msgid "Download the profile"
+#~ msgstr "Télécharger le profil"
+
+#~ msgid "To pin it in code on every site, add to wp-config.php:"
+#~ msgstr ""
+#~ "Pour le figer dans le code sur chaque site, ajoutez à wp-config.php :"
+
+#~ msgid "Import the profile"
+#~ msgstr "Importer le profil"
+
+#~ msgid ""
+#~ "Values go through the same checks as this form. The logo keeps its URL "
+#~ "only; the image is not copied."
+#~ msgstr ""
+#~ "Les valeurs passent par les mêmes contrôles que ce formulaire. Le logo ne "
+#~ "garde que son URL ; l'image n'est pas copiée."
+
+#~ msgid "No file received."
+#~ msgstr "Aucun fichier reçu."
+
+#~ msgid "This file is too large to be a profile."
+#~ msgstr "Ce fichier est trop volumineux pour être un profil."
+
+#~ msgid "This file is not a Double Youpi admin profile."
+#~ msgstr "Ce fichier n'est pas un profil d'administration Double Youpi."
+
+#~ msgid ""
+#~ "This profile was written by a newer version. Update the plugin first."
+#~ msgstr ""
+#~ "Ce profil a été écrit par une version plus récente. Mettez d'abord "
+#~ "l'extension à jour."
+
+#~ msgid "New columns from %1$s: %2$s."
+#~ msgstr "Nouvelles colonnes venues de %1$s : %2$s."
+
+#~ msgid "New columns added by an extension: %s."
+#~ msgstr "Nouvelles colonnes ajoutées par une extension : %s."
+
+#~ msgid "Hide the ones you do not need from the table gear."
+#~ msgstr ""
+#~ "Masquez celles qui ne vous servent pas depuis l'engrenage du tableau."
+
+#~ msgid "New columns: %s"
+#~ msgstr "Nouvelles colonnes : %s"
+
+#~ msgid "The native WordPress tree is active."
+#~ msgstr "L'arborescence WordPress native est active."
+
+#~ msgid ""
+#~ "This layout only applies to the reimagined tree. Switch back from the "
+#~ "General tab to see it in the rail."
+#~ msgstr ""
+#~ "Cette disposition ne s'applique qu'à l'arborescence repensée. Repassez-y "
+#~ "depuis l'onglet Général pour la voir dans le rail."
+
+#~ msgid "Profile imported: %d setting applied."
+#~ msgid_plural "Profile imported: %d settings applied."
+#~ msgstr[0] "Profil importé : %d réglage appliqué."
+#~ msgstr[1] "Profil importé : %d réglages appliqués."
+
+#~ msgid "Reorganize the tree"
+#~ msgstr "Réorganiser l'arborescence"
+
+#~ msgid ""
+#~ "Native keeps the muscle memory of a team trained on the WordPress menu: "
+#~ "same entries, same order, same sub-menus. Everything else in Refined "
+#~ "Admin Dashboard still applies. The Reorganize tab is hidden in native "
+#~ "mode; your layout is kept for when you switch back."
+#~ msgstr ""
+#~ "Le mode natif préserve les réflexes d'une équipe formée sur le menu "
+#~ "WordPress : mêmes entrées, même ordre, mêmes sous-menus. Tout le reste de "
+#~ "Refined Admin Dashboard s'applique. L'onglet Réorganiser disparaît en "
+#~ "mode natif ; votre disposition est conservée pour votre retour."
+
+#~ msgid "Appearance"
+#~ msgstr "Apparence"
+
+#~ msgid "Section pages on hover"
+#~ msgstr "Pages de la section au survol"
+
+#~ msgid "One level (recommended): the pages of the section"
+#~ msgstr "Un niveau (recommandé) : les pages de la section"
+
+#~ msgid "Two levels: the pages and their sub-pages"
+#~ msgstr "Deux niveaux : les pages et leurs sous-pages"
+
+#~ msgid ""
+#~ "Hovering a section of the rail opens its pages next to it: every page is "
+#~ "one click away, whatever the section you are in. Keyboard: the right "
+#~ "arrow opens the list, Escape closes it. Nothing changes at rest."
+#~ msgstr ""
+#~ "Survoler une section du rail ouvre ses pages à côté : chaque page est à "
+#~ "un clic, quelle que soit la section où vous êtes. Clavier : la flèche "
+#~ "droite ouvre la liste, Échap la referme. Au repos, rien ne change."
+
+#~ msgid ""
+#~ "Navigation tree (reimagined or native), section pages on hover, and the "
+#~ "Reorganize layout"
+#~ msgstr ""
+#~ "Arborescence (repensée ou native), pages de la section au survol, et "
+#~ "disposition de Réorganiser"
+
+#~ msgid ""
+#~ "If enabled, the 7 menu lines (Content, Commerce, Users, Community, "
+#~ "Appearance, System, Developer) all use the accent color. Otherwise, each "
+#~ "line keeps its own color."
+#~ msgstr ""
+#~ "Si activé, les 7 lignes du menu (Contenu, Commerce, Utilisateurs, "
+#~ "Communauté, Apparence, Système, Développeur) utilisent toutes la couleur "
+#~ "d'accent. Sinon, chaque ligne garde sa couleur propre."

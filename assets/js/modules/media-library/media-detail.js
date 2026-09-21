@@ -18,9 +18,24 @@
 	 */
 
 	var nonce   = doubleyoupiMediaFolders.nonce;
-	var restWP  = ( window.wpApiSettings && wpApiSettings.root )
-		? wpApiSettings.root + 'wp/v2/media/'
-		: window.location.origin + '/wp-json/wp/v2/media/';
+	// Built by WordPress (see FolderManager), because the shape of a REST URL
+	// depends on the permalink structure and cannot be guessed from the site
+	// address: with "Plain" permalinks it is `/index.php?rest_route=/wp/v2/media/`,
+	// not `/wp-json/wp/v2/media/`. The two fallbacks only cover a stale cached
+	// script, and are ordered from most to least reliable.
+	var restWP  = doubleyoupiMediaFolders.restMedia
+		|| ( ( window.wpApiSettings && wpApiSettings.root ) ? wpApiSettings.root + 'wp/v2/media/' : null )
+		|| ( window.location.origin + '/wp-json/wp/v2/media/' );
+
+	/*
+	 * Appends a query string to a REST URL. On a site with "Plain" permalinks
+	 * that URL already carries one (`?rest_route=…`), so a second `?` makes
+	 * WordPress answer 404 rather than read the parameter. Reported from a
+	 * clean install with no other plugin.
+	 */
+	function restQuery( url, query ) {
+		return url + ( url.indexOf( '?' ) === -1 ? '?' : '&' ) + query;
+	}
 	var restWhere = doubleyoupiMediaFolders.whereUsed;
 	var i18n     = doubleyoupiMediaFolders.i18n || {};
 
@@ -30,7 +45,21 @@
 	var foldersEnabled     = doubleyoupiMediaFolders.foldersEnabled !== '0';
 	var collectionsEnabled = doubleyoupiMediaFolders.collectionsEnabled !== '0';
 
-	var state = { open: false, id: null, dirty: false };
+	// lastField: id of the editable field the user worked in last (alt, title,
+	// caption, description). carryField: the one to focus again on the next
+	// item when navigating with prev/next, so a captioning run stays hands-on.
+	// initial: the four field values as they arrived from the server. Dirty is a
+	// comparison against them, not a "something was typed" flag, so undoing an
+	// edit by hand quietly puts the Save button back to sleep.
+	var state = { open: false, id: null, dirty: false, lastField: null, carryField: null, initial: null };
+
+	var EDITABLE_FIELDS = '#dy-dp-title, #dy-dp-alt, #dy-dp-caption, #dy-dp-description';
+	var FIELD_KEYS      = {
+		'dy-dp-title':       'title',
+		'dy-dp-alt':         'alt_text',
+		'dy-dp-caption':     'caption',
+		'dy-dp-description': 'description'
+	};
 
 	// ── Hook the Manage frame ──────────────────────────────────────────────
 
@@ -82,16 +111,10 @@
 				closePanel();
 				return;
 			}
-			// Guard: switching away from an item with unsaved edits asks first.
+			// Leaving an item with pending edits saves them, exactly like using
+			// the prev/next arrows. One rule for every way out of a media file.
 			if ( state.open && state.dirty && id !== String( state.id ) ) {
-				window.dyDialog.confirm( {
-					title:        i18n.unsavedConfirm,
-					confirmLabel: i18n.discard,
-					cancelLabel:  i18n.cancel
-				} ).then( function ( ok ) {
-					if ( ok ) { state.dirty = false; openPanel( id, model ); }
-				} );
-				return;
+				saveBeforeLeaving();
 			}
 			openPanel( id, model );
 		} );
@@ -174,9 +197,15 @@
 	}
 
 	function closePanel() {
-		state.open  = false;
-		state.id    = null;
-		state.dirty = false;
+		// Closing is one more way of leaving a media file: same rule.
+		saveBeforeLeaving();
+
+		state.open       = false;
+		state.id         = null;
+		state.dirty      = false;
+		state.lastField  = null;
+		state.carryField = null;
+		state.initial    = null;
 
 		$( '.attachments-browser' ).removeClass( 'dy-detail-open' );
 		$( '.attachment.dy-detail-active' ).removeClass( 'dy-detail-active' );
@@ -421,7 +450,7 @@
 	// ── Full fetch + render ────────────────────────────────────────────────
 
 	function fetchAndRender( id ) {
-		var url = restWP + id + '?context=edit';
+		var url = restQuery( restWP + id, 'context=edit' );
 		window.fetch( url, {
 			headers: { 'X-WP-Nonce': nonce },
 		} )
@@ -448,6 +477,8 @@
 	function renderFull( data ) {
 		var title    = ( data.title && data.title.raw ) || '';
 		var altText  = data.alt_text || '';
+		var caption  = ( data.caption && data.caption.raw ) || '';
+		var descr    = ( data.description && data.description.raw ) || '';
 		var mime     = data.mime_type || '';
 		var url      = data.source_url || '';
 		var isImage  = data.media_type === 'image';
@@ -499,6 +530,15 @@
 		var folderHtml      = foldersEnabled ? buildFolderSection( folderIds, data.id ) : '';
 		var collectionsHtml = collectionsEnabled ? buildCollectionsSection( collectionIds, data.id ) : '';
 
+		// Where a file lives: folder on the left, collections on the right once
+		// the panel is dragged wide enough (a container query does the split,
+		// since the width comes from the user's drag, not the viewport).
+		// With only one of the two enabled there is nothing to pair, so the
+		// wrapper is skipped entirely.
+		var duoHtml = ( folderHtml && collectionsHtml )
+			? '<div class="dy-dp-duo-ct"><div class="dy-dp-duo">' + folderHtml + collectionsHtml + '</div></div>'
+			: folderHtml + collectionsHtml;
+
 		// Build body.
 		var body =
 			previewHtml +
@@ -508,18 +548,25 @@
 				'<table class="dy-dp-meta">' + metaRows + '</table>' +
 			'</div>' +
 
-			folderHtml +
-			collectionsHtml +
+			duoHtml +
 
-			'<div class="dy-dp-section">' +
-				'<div class="dy-dp-section-title">' + esc( i18n.altText ) + '</div>' +
+			// The four native text fields, grouped in one section: four separate
+			// sections would push everything else below the fold. Order follows
+			// how they are written: name it, describe it for accessibility,
+			// then caption and description for the sites that need them.
+			'<div class="dy-dp-section dy-dp-fields">' +
+				'<label class="dy-dp-field-label" for="dy-dp-title">' + esc( i18n.title ) + '</label>' +
+				'<input type="text" id="dy-dp-title" class="dy-dp-input" value="' + esc( title ) + '">' +
+
+				'<label class="dy-dp-field-label" for="dy-dp-alt">' + esc( i18n.altText ) + '</label>' +
 				'<textarea id="dy-dp-alt" class="dy-dp-input dy-dp-textarea" rows="2" ' +
 					'placeholder="' + esc( i18n.altPlaceholder ) + '">' + esc( altText ) + '</textarea>' +
-			'</div>' +
 
-			'<div class="dy-dp-section">' +
-				'<div class="dy-dp-section-title">' + esc( i18n.title ) + '</div>' +
-				'<input type="text" id="dy-dp-title" class="dy-dp-input" value="' + esc( title ) + '">' +
+				'<label class="dy-dp-field-label" for="dy-dp-caption">' + esc( i18n.caption || 'Caption' ) + '</label>' +
+				'<textarea id="dy-dp-caption" class="dy-dp-input dy-dp-textarea" rows="2">' + esc( caption ) + '</textarea>' +
+
+				'<label class="dy-dp-field-label" for="dy-dp-description">' + esc( i18n.description || 'Description' ) + '</label>' +
+				'<textarea id="dy-dp-description" class="dy-dp-input dy-dp-textarea" rows="3">' + esc( descr ) + '</textarea>' +
 			'</div>' +
 
 			'<div class="dy-dp-section">' +
@@ -536,14 +583,27 @@
 			'</div>' +
 
 			'<div class="dy-dp-actions">' +
-				'<button type="button" class="dy-dp-save button button-primary" data-id="' + data.id + '">' + esc( i18n.save ) + '</button>' +
+				'<button type="button" class="dy-dp-save button" data-id="' + data.id + '">' + esc( i18n.save ) + '</button>' +
 				'<button type="button" class="dy-dp-delete-btn" data-id="' + data.id + '">' + esc( i18n.deleteAction ) + '</button>' +
 			'</div>';
 
 		$( '.dy-dp-body' ).html( body );
 
+		// Snapshot of what the server sent, so "modified" means actually different.
+		state.initial = {
+			alt_text:    altText,
+			title:       title,
+			caption:     caption,
+			description: descr
+		};
+
 		// Bind events.
 		bindPanelEvents( data.id );
+		refreshDirty();
+
+		// Coming from prev/next: put the cursor back in the field the user was
+		// working in on the previous item.
+		applyCarriedFocus();
 
 		// Fetch where-used asynchronously.
 		fetchWhereUsed( data.id );
@@ -631,7 +691,7 @@
 
 	function buildFolderSection( folderIds, attId ) {
 		var currentId = folderIds.length ? folderIds[ 0 ] : 0;
-		var label     = currentId ? getFolderName( currentId ) : ( i18n.noFolderOption || '— No folder —' );
+		var label     = currentId ? getFolderName( currentId ) : ( i18n.noFolderOption || 'No folder' );
 
 		// Custom trigger that opens a hierarchical folder popover (the native
 		// <select> cannot render a real tree).
@@ -700,7 +760,10 @@
 		var items = Array.prototype.slice.call( folderPopEl.querySelectorAll( '.dy-folder-pop__item' ) );
 		if ( ! items.length ) { return; }
 		var idx = items.indexOf( document.activeElement );
-		if ( e.key === 'Escape' ) { e.preventDefault(); var t = folderPopTrigger; closeFolderPopover(); if ( t ) { t.focus(); } }
+		// stopPropagation matters: without it this Escape also reaches the panel's
+		// own keydown handler, which closes the whole detail panel behind the
+		// popover instead of just dismissing the folder list.
+		if ( e.key === 'Escape' ) { e.preventDefault(); e.stopPropagation(); var t = folderPopTrigger; closeFolderPopover(); if ( t ) { t.focus(); } }
 		else if ( e.key === 'ArrowDown' ) { e.preventDefault(); items[ ( idx + 1 ) % items.length ].focus(); }
 		else if ( e.key === 'ArrowUp' ) { e.preventDefault(); items[ ( idx - 1 + items.length ) % items.length ].focus(); }
 	}
@@ -716,7 +779,7 @@
 		if ( trigger ) {
 			trigger.setAttribute( 'data-current', folderId );
 			var l = trigger.querySelector( '.dy-dp-folder-trigger__label' );
-			if ( l ) { l.textContent = folderId ? getFolderName( folderId ) : ( i18n.noFolderOption || '— No folder —' ); }
+			if ( l ) { l.textContent = folderId ? getFolderName( folderId ) : ( i18n.noFolderOption || 'No folder' ); }
 		}
 	}
 
@@ -732,7 +795,7 @@
 			'<button type="button" class="dy-folder-pop__item' + ( currentId === 0 ? ' is-current' : '' ) +
 				'" role="menuitemradio" aria-checked="' + ( currentId === 0 ) + '" data-id="0" style="padding-left:12px">' +
 				'<span class="dashicons dashicons-dismiss dy-folder-pop__icon"></span>' +
-				'<span class="dy-folder-pop__name">' + esc( i18n.noFolderOption || '— No folder —' ) + '</span>' +
+				'<span class="dy-folder-pop__name">' + esc( i18n.noFolderOption || 'No folder' ) + '</span>' +
 				( currentId === 0 ? '<span class="dashicons dashicons-yes dy-folder-pop__check"></span>' : '' ) +
 			'</button>' +
 			renderFolderPopItems( roots, 0, currentId );
@@ -826,9 +889,12 @@
 			deleteAttachment( id );
 		} );
 
-		// Dirty tracking.
-		$body.find( '.dy-dp-input' ).not( '.dy-dp-url-input, .dy-dp-folder-select, .dy-dp-col-add-select' ).on( 'input', function () {
-			state.dirty = true;
+		// Dirty tracking: every keystroke re-compares against the server values.
+		$body.find( EDITABLE_FIELDS ).on( 'input', refreshDirty );
+
+		// Remember the field the user works in, so prev/next can land there again.
+		$body.find( EDITABLE_FIELDS ).on( 'focusin', function () {
+			state.lastField = this.id;
 		} );
 
 		// Folder change.
@@ -915,38 +981,152 @@
 
 	// ── Save / delete ──────────────────────────────────────────────────────
 
-	function saveAttachment( id, $btn ) {
-		var alt   = $( '#dy-dp-alt' ).val();
-		var title = $( '#dy-dp-title' ).val();
+	// The four editable fields, read from the panel as it is right now.
+	function collectFields() {
+		return {
+			alt_text:    $( '#dy-dp-alt' ).val() || '',
+			title:       $( '#dy-dp-title' ).val() || '',
+			caption:     $( '#dy-dp-caption' ).val() || '',
+			description: $( '#dy-dp-description' ).val() || ''
+		};
+	}
 
-		$btn.prop( 'disabled', true ).text( i18n.saving );
-
-		window.fetch( restWP + id, {
+	// Persists the fields for one attachment and mirrors them into the
+	// Backbone model so the grid stays in sync. Resolves on success.
+	function persistFields( id, fields ) {
+		return window.fetch( restWP + id, {
 			method:  'POST',
 			headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': nonce },
-			body:    JSON.stringify( { alt_text: alt, title: title } ),
+			body:    JSON.stringify( fields ),
 		} )
 		.then( function ( r ) {
 			if ( ! r.ok ) { throw new Error( r.status ); }
 			return r.json();
 		} )
+		.then( function ( saved ) {
+			try {
+				var model = wp.media.frame.content.get().collection.get( parseInt( id, 10 ) );
+				if ( model ) {
+					model.set( {
+						title:       fields.title,
+						alt:         fields.alt_text,
+						caption:     fields.caption,
+						description: fields.description
+					} );
+				}
+			} catch ( e ) {}
+			return saved;
+		} );
+	}
+
+	function saveAttachment( id, $btn ) {
+		// Clicking Save with nothing changed is a reflex, not a mistake: answer
+		// it on the button, but do not claim changes were saved and do not send
+		// a pointless request.
+		if ( ! state.dirty ) {
+			$btn.prop( 'disabled', true ).text( i18n.saved );
+			setTimeout( function () {
+				$btn.prop( 'disabled', false ).text( i18n.save );
+			}, 1200 );
+			return;
+		}
+
+		$btn.prop( 'disabled', true ).text( i18n.saving );
+
+		var sent = collectFields();
+
+		persistFields( id, sent )
 		.then( function () {
 			$btn.text( i18n.saved );
-			state.dirty = false;
+
+			// Same confirmation whichever way the save was triggered. The button
+			// answers in place, the toast is the signal the user learns to trust,
+			// and it would be odd for it to go missing on the one save they asked
+			// for explicitly.
+			if ( window.dyShowToast ) {
+				window.dyShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
+			}
+
+			// What was just saved becomes the new reference, so the button
+			// settles back to its quiet state and the field dots clear.
+			if ( String( state.id ) === String( id ) ) {
+				state.initial = sent;
+				refreshDirty();
+			}
 			setTimeout( function () {
 				$btn.prop( 'disabled', false ).text( i18n.save );
 			}, 2000 );
-			// Update the Backbone model if available.
-			try {
-				var model = wp.media.frame.content.get().collection.get( id );
-				if ( model ) {
-					model.set( { title: title, alt: alt } );
-				}
-			} catch ( e ) {}
 		} )
 		.catch( function () {
 			$btn.prop( 'disabled', false ).text( i18n.errorRetry );
 		} );
+	}
+
+	// ── Unsaved state ──────────────────────────────────────────────────────
+	// The Save button is the single signal. At rest it is a quiet outline; the
+	// moment a value differs from what the server sent it fills with the accent
+	// and wakes up once. Each changed field also gets a dot next to its label,
+	// so on a four-field panel you can see what you touched.
+
+	function refreshDirty() {
+		var $save = $( '.dy-dp-save' );
+		if ( ! state.initial ) {
+			$save.removeClass( 'is-dirty' );
+			return;
+		}
+
+		var now   = collectFields();
+		var dirty = false;
+
+		$( EDITABLE_FIELDS ).each( function () {
+			var key      = FIELD_KEYS[ this.id ];
+			var changed  = key && now[ key ] !== state.initial[ key ];
+			dirty        = dirty || !! changed;
+			$( 'label[for="' + this.id + '"]' ).toggleClass( 'is-modified', !! changed );
+		} );
+
+		state.dirty = dirty;
+		$save.toggleClass( 'is-dirty', dirty );
+		$save.attr( 'title', dirty ? ( i18n.unsavedHint || '' ) : null );
+	}
+
+	// Saves pending edits when the user moves on, rather than blocking the move
+	// with a dialog: on a captioning run, a confirm on every item is unusable.
+	// WordPress's own attachment modal saves as you go for the same reason.
+	// Failures are never silent, otherwise the text would vanish unnoticed.
+	function saveBeforeLeaving() {
+		if ( ! state.dirty || ! state.id ) { return; }
+		var leavingId = state.id;
+		state.dirty   = false;
+
+		persistFields( leavingId, collectFields() )
+			.then( function () {
+				if ( window.dyShowToast ) {
+					window.dyShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
+				}
+			} )
+			.catch( function () {
+				if ( window.dyShowToast ) {
+					window.dyShowToast( i18n.saveOnLeaveFailed || 'Could not save your changes', 'error' );
+				}
+			} );
+	}
+
+	// ── Carried focus ──────────────────────────────────────────────────────
+	// After prev/next, drop the cursor back where it was on the previous item,
+	// at the end of whatever text is already there.
+
+	function applyCarriedFocus() {
+		var fieldId = state.carryField;
+		state.carryField = null;
+		if ( ! fieldId ) { return; }
+		var el = document.getElementById( fieldId );
+		if ( ! el ) { return; }
+		el.focus();
+		try {
+			var len = el.value.length;
+			el.setSelectionRange( len, len );
+		} catch ( e ) {}
 	}
 
 	function deleteAttachment( id ) {
@@ -958,7 +1138,7 @@
 			danger:       true
 		} ).then( function ( ok ) {
 			if ( ! ok ) { return; }
-			window.fetch( restWP + id + '?force=true', {
+			window.fetch( restQuery( restWP + id, 'force=true' ), {
 				method:  'DELETE',
 				headers: { 'X-WP-Nonce': nonce },
 			} )
@@ -966,6 +1146,8 @@
 				if ( ! r.ok ) { throw new Error( r.status ); }
 				// Remove from Backbone collection + grid.
 				$( '.attachment[data-id="' + id + '"]' ).fadeOut( 200, function () { $( this ).remove(); } );
+				// The file is gone: nothing left to save on the way out.
+				state.dirty = false;
 				closePanel();
 			} )
 			.catch( function () {
@@ -1002,6 +1184,12 @@
 			model = wp.media.frame.content.get().collection.get( parseInt( newId, 10 ) );
 		} catch ( e ) {}
 
+		// Moving on with prev/next is a deliberate "next one": pending edits are
+		// saved on the way out, and the cursor lands in the same field on the
+		// next item.
+		saveBeforeLeaving();
+		state.carryField = state.lastField;
+
 		openPanel( newId, model );
 	}
 
@@ -1016,6 +1204,15 @@
 			return;
 		}
 		if ( ! state.open ) { return; }
+
+		// Cmd/Ctrl + arrow moves to the next item even from inside a field, so a
+		// captioning run never needs the mouse: type, Cmd+Right, type again.
+		if ( ( e.metaKey || e.ctrlKey ) && ( e.key === 'ArrowLeft' || e.key === 'ArrowRight' ) ) {
+			e.preventDefault();
+			navigate( e.key === 'ArrowRight' ? 1 : -1 );
+			return;
+		}
+
 		if ( $( e.target ).is( 'input, textarea, select' ) ) { return; }
 
 		if ( e.key === 'Escape' ) {

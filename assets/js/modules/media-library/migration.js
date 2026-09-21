@@ -193,7 +193,7 @@
 
 	function renderPreview( src, data ) {
 		clear();
-		root.appendChild( el( 'h2', { text: t( 'previewTitle' ) + ' — ' + src.label } ) );
+		root.appendChild( el( 'h2', { text: t( 'previewTitle' ) + ': ' + src.label } ) );
 		root.appendChild( el( 'div', { class: 'notice notice-info inline' }, [
 			el( 'p', { text: fmt( t( 'previewCounts' ), data.folders, data.collections, data.relations ) } )
 		] ) );

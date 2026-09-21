@@ -3,6 +3,7 @@ namespace DoubleYoupi\Core;
 
 use DoubleYoupi\Admin\AdminMenu;
 use DoubleYoupi\Admin\DyShell;
+use DoubleYoupi\Admin\Feedback;
 use DoubleYoupi\Admin\OverviewPage;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -61,6 +62,18 @@ final class Plugin {
 		// Standalone Double Youpi admin skin (dark) on DY pages. In solo builds, the
 		// Admin module is not bundled → this skin is always applied.
 		DyShell::register();
+
+		// "Send feedback about this screen" (admin-bar button + dialog + REST
+		// relay). Opt-in on every report, see Admin\Feedback.
+		//
+		// Only when the build actually bundles it: a solo that talks to an
+		// external service must declare it in its readme, with links to the
+		// service's terms and privacy policy (WordPress.org guidelines). A build
+		// that cannot make that declaration ships without the feature rather
+		// than shipping an undeclared one.
+		if ( class_exists( Feedback::class ) ) {
+			Feedback::register();
+		}
 	}
 
 	/**

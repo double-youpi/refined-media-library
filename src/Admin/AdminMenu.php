@@ -76,6 +76,21 @@ final class AdminMenu {
 		$module_pages    = array_filter( self::$pages, static fn( array $p ): bool => $p['slug'] !== self::SLUG );
 		$rename_settings = 1 === count( $module_pages ) && class_exists( '\\DoubleYoupi\\Core\\SoloConfig' );
 
+		// A solo may bundle satellite modules that register their own page
+		// (Refined Admin Dashboard ships the Toolkit as "Tools"): what makes a
+		// solo "mono" is the number of PRESENT modules, not the number of
+		// pages. With one present module, its settings page is labelled
+		// "Settings" and the top-level menu carries the plugin name; the
+		// satellite pages keep their own labels.
+		$settings_slug = '';
+		if ( class_exists( '\\DoubleYoupi\\Core\\SoloConfig' ) && method_exists( '\\DoubleYoupi\\Core\\SoloConfig', 'present_modules' ) ) {
+			$present = (array) \DoubleYoupi\Core\SoloConfig::present_modules();
+			if ( 1 === count( $present ) ) {
+				$rename_settings = true;
+				$settings_slug   = self::SLUG . '-' . (string) reset( $present );
+			}
+		}
+
 		// Top-level menu label. In MONO-SOLO mode (one module + solo context),
 		// the menu carries the PLUGIN NAME (e.g., "Refined Media Library") rather
 		// than the "Double Youpi" umbrella: the user finds their plugin under the
@@ -114,10 +129,11 @@ final class AdminMenu {
 			if ( 0 === $i && $page['slug'] === self::SLUG ) {
 				continue;
 			}
+			$is_settings = $rename_settings && ( '' === $settings_slug || $page['slug'] === $settings_slug );
 			add_submenu_page(
 				self::SLUG,
 				$page['page_title'],
-				$rename_settings ? __( 'Settings', 'doubleyoupi-refined-media-library' ) : $page['menu_title'],
+				$is_settings ? __( 'Settings', 'doubleyoupi-refined-media-library' ) : $page['menu_title'],
 				self::CAPABILITY,
 				$page['slug'],
 				$page['callback']

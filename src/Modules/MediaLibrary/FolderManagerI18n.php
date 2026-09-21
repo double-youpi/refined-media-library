@@ -69,8 +69,8 @@ final class FolderManagerI18n {
 
 			// ── Bulk dialogs ──────────────────────────────────────────────
 			'destinationFolder'       => __( 'Destination folder', 'doubleyoupi-refined-media-library' ),
-			'rootNoFolder'            => __( '— Root (no folder) —', 'doubleyoupi-refined-media-library' ),
-			'chooseCollection'        => __( '— Choose a collection —', 'doubleyoupi-refined-media-library' ),
+			'rootNoFolder'            => __( 'Root (no folder)', 'doubleyoupi-refined-media-library' ),
+			'chooseCollection'        => __( 'Choose a collection', 'doubleyoupi-refined-media-library' ),
 			'cancel'                  => __( 'Cancel', 'doubleyoupi-refined-media-library' ),
 			'move'                    => __( 'Move', 'doubleyoupi-refined-media-library' ),
 			'add'                     => __( 'Add', 'doubleyoupi-refined-media-library' ),
@@ -90,11 +90,11 @@ final class FolderManagerI18n {
 			/* translators: %s: folder name. */
 			'deleteFolderConfirm'     => __( "Delete folder « %s »?
 
-Media inside won’t be deleted — they will be moved to « Media without folder ».", 'doubleyoupi-refined-media-library' ),
+Media inside won’t be deleted, they will be moved to « Media without folder ».", 'doubleyoupi-refined-media-library' ),
 			/* translators: %s: collection name. */
 			'deleteCollectionConfirm' => __( "Delete collection « %s »?
 
-Media files won’t be deleted — they will simply be removed from this collection.", 'doubleyoupi-refined-media-library' ),
+Media files won’t be deleted, they will simply be removed from this collection.", 'doubleyoupi-refined-media-library' ),
 			'thisFolder'              => __( 'this folder', 'doubleyoupi-refined-media-library' ),
 			'thisCollection'          => __( 'this collection', 'doubleyoupi-refined-media-library' ),
 
@@ -146,12 +146,17 @@ Media files won’t be deleted — they will simply be removed from this collect
 			'altText'                 => __( 'Alternative text', 'doubleyoupi-refined-media-library' ),
 			'altPlaceholder'          => __( 'Describe the image for accessibility…', 'doubleyoupi-refined-media-library' ),
 			'title'                   => __( 'Title', 'doubleyoupi-refined-media-library' ),
+			// The two extra native fields, always visible: portfolios and photo
+			// archives live on them, and hiding them behind a toggle only moved
+			// the problem. No setting involved.
+			'caption'                 => __( 'Caption', 'doubleyoupi-refined-media-library' ),
+			'description'             => __( 'Description', 'doubleyoupi-refined-media-library' ),
 			'fileUrl'                 => __( 'File URL', 'doubleyoupi-refined-media-library' ),
 			'copy'                    => __( 'Copy', 'doubleyoupi-refined-media-library' ),
 			'copied'                  => __( 'Copied!', 'doubleyoupi-refined-media-library' ),
 
 			'folder'                  => __( 'Folder', 'doubleyoupi-refined-media-library' ),
-			'noFolderOption'          => __( '— No folder —', 'doubleyoupi-refined-media-library' ),
+			'noFolderOption'          => __( 'No folder', 'doubleyoupi-refined-media-library' ),
 			'addToCollection'         => __( '+ Add to a collection', 'doubleyoupi-refined-media-library' ),
 			'noCollections'           => __( 'No collection', 'doubleyoupi-refined-media-library' ),
 			'remove'                  => __( 'Remove', 'doubleyoupi-refined-media-library' ),
@@ -161,7 +166,7 @@ Media files won’t be deleted — they will simply be removed from this collect
 			'deleteAction'            => __( 'Delete', 'doubleyoupi-refined-media-library' ),
 			'saving'                  => __( 'Saving…', 'doubleyoupi-refined-media-library' ),
 			'saved'                   => __( 'Saved ✓', 'doubleyoupi-refined-media-library' ),
-			'errorRetry'              => __( 'Error — try again', 'doubleyoupi-refined-media-library' ),
+			'errorRetry'              => __( 'Error, try again', 'doubleyoupi-refined-media-library' ),
 
 			'notUsedInContent'        => __( 'Not used in content.', 'doubleyoupi-refined-media-library' ),
 			'untitled'                => __( '(untitled)', 'doubleyoupi-refined-media-library' ),
@@ -169,6 +174,11 @@ Media files won’t be deleted — they will simply be removed from this collect
 			'deleteFileConfirm'       => __( 'Permanently delete this file? This action cannot be undone.', 'doubleyoupi-refined-media-library' ),
 			'deleteFileFailed'        => __( 'Could not delete this file.', 'doubleyoupi-refined-media-library' ),
 			'unsavedConfirm'          => __( 'Unsaved changes will be lost. Continue?', 'doubleyoupi-refined-media-library' ),
+			/* translators: shown after the panel saved pending edits on its own
+			   when the user moved to another media file. */
+			'savedOnLeave'            => __( 'Changes saved', 'doubleyoupi-refined-media-library' ),
+			'saveOnLeaveFailed'       => __( 'Could not save your changes', 'doubleyoupi-refined-media-library' ),
+			'unsavedHint'             => __( 'You have unsaved changes', 'doubleyoupi-refined-media-library' ),
 
 			// Locale tag for JS date formatting (e.g. "fr-FR", "en-US").
 			'dateLocale'              => str_replace( '_', '-', get_locale() ),

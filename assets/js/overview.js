@@ -406,7 +406,7 @@
 			if ( src ) {
 				var img = document.createElement( 'img' );
 				img.src = src;
-				img.alt = alt + ' — ' + ( idx + 1 );
+				img.alt = alt + ' ' + ( idx + 1 );
 				img.loading = 'lazy';
 				slide.appendChild( img );
 			}

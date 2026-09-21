@@ -65,7 +65,7 @@ final class OverviewPage {
 	 */
 	public static function register(): void {
 		AdminMenu::add_page(
-			__( 'Double Youpi — Overview', 'doubleyoupi-refined-media-library' ),
+			__( 'Double Youpi · Overview', 'doubleyoupi-refined-media-library' ),
 			__( 'Overview', 'doubleyoupi-refined-media-library' ),
 			self::PAGE_SLUG,
 			[ self::class, 'render' ]
@@ -155,7 +155,7 @@ final class OverviewPage {
 					'switchOn'       => __( 'Enabled', 'doubleyoupi-refined-media-library' ),
 					'switchOff'      => __( 'Disabled', 'doubleyoupi-refined-media-library' ),
 					'settings'       => __( 'Settings', 'doubleyoupi-refined-media-library' ),
-					'saveError'      => __( 'Could not save — please retry.', 'doubleyoupi-refined-media-library' ),
+					'saveError'      => __( 'Could not save. Please retry.', 'doubleyoupi-refined-media-library' ),
 					'install'        => __( 'Install for free', 'doubleyoupi-refined-media-library' ),
 					'installing'     => __( 'Installing…', 'doubleyoupi-refined-media-library' ),
 					'installed'      => __( 'Installed ✓', 'doubleyoupi-refined-media-library' ),
@@ -383,6 +383,14 @@ final class OverviewPage {
 				<div class="notice notice-success is-dismissible"><p><?php echo esc_html( $notice ); ?></p></div>
 			<?php endif; ?>
 
+			<?php
+			/**
+			 * Room above the module grid (first-run card of a module, for
+			 * instance). Modules listen; the core stays uncoupled.
+			 */
+			do_action( 'doubleyoupi_overview_before_grid' );
+			?>
+
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="<?php echo esc_attr( self::FORM_ACTION ); ?>">
 				<?php wp_nonce_field( self::FORM_ACTION, self::NONCE_NAME ); ?>
@@ -425,7 +433,7 @@ final class OverviewPage {
 	 * Renders a module card (extracted for readability).
 	 *
 	 * @param array{id:string, name:string, description:string, icon:string, status:string, settings_url:?string} $module
-	 * @param int $index Position in the grid — used for the staggered entry animation (--card-i).
+	 * @param int $index Position in the grid — used for the staggered entry animation (--dya-card-i).
 	 */
 	private static function render_card( array $module, int $index = 0 ): void {
 		$is_available  = $module['status'] === ModuleCatalog::STATUS_AVAILABLE;
@@ -466,7 +474,7 @@ final class OverviewPage {
 		<div class="dy-overview__card <?php echo esc_attr( $status_class ); ?>"
 		     data-module-id="<?php echo esc_attr( $module['id'] ); ?>"
 		     <?php if ( $settings_url ) : ?>data-settings-url="<?php echo esc_url( $settings_url ); ?>"<?php endif; ?>
-		     style="--card-i: <?php echo (int) $index; ?>;">
+		     style="--dya-card-i: <?php echo (int) $index; ?>;">
 			<div class="dy-overview__card-head">
 				<span class="dy-overview__icon-tile" aria-hidden="true">
 					<?php echo $icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
@@ -562,7 +570,7 @@ final class OverviewPage {
 		     data-wporg-slug="<?php echo esc_attr( (string) ( $v['wporg_slug'] ?? '' ) ); ?>"
 		     data-marketing-url="<?php echo esc_url( $v['marketing_url'] ); ?>"
 		     data-screenshots="<?php echo esc_attr( (string) wp_json_encode( $shots ) ); ?>"
-		     style="--card-i: <?php echo (int) $index; ?>;">
+		     style="--dya-card-i: <?php echo (int) $index; ?>;">
 			<div class="dy-overview__card-head">
 				<span class="dy-overview__icon-tile" aria-hidden="true">
 					<?php echo $icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
