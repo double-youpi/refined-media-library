@@ -449,18 +449,27 @@
 
 	// ── Full fetch + render ────────────────────────────────────────────────
 
+	/*
+	 * Fetches one attachment and renders the panel.
+	 *
+	 * `context=edit` needs `edit_post` on that file. An author browsing the
+	 * library sees everyone's uploads but may only edit their own, so clicking
+	 * someone else's file used to answer 403 and print "Loading error. Error:
+	 * 403" — a status code where an explanation was due. We ask again without
+	 * that context, which any logged-in user may read, and show the panel in
+	 * read-only form: same information, no controls that would fail.
+	 */
 	function fetchAndRender( id ) {
-		var url = restQuery( restWP + id, 'context=edit' );
-		window.fetch( url, {
+		window.fetch( restQuery( restWP + id, 'context=edit' ), {
 			headers: { 'X-WP-Nonce': nonce },
 		} )
 		.then( function ( r ) {
+			if ( r.status === 403 ) { return fetchReadOnly( id ); }
 			if ( ! r.ok ) { throw new Error( r.status ); }
-			return r.json();
-		} )
-		.then( function ( data ) {
-			if ( String( state.id ) !== String( id ) ) { return; } // panel moved on
-			renderFull( data );
+			return r.json().then( function ( data ) {
+				if ( String( state.id ) !== String( id ) ) { return; }
+				renderFull( data );
+			} );
 		} )
 		.catch( function ( err ) {
 			if ( String( state.id ) === String( id ) ) {
@@ -472,13 +481,32 @@
 		} );
 	}
 
+	function fetchReadOnly( id ) {
+		return window.fetch( restWP + id, { headers: { 'X-WP-Nonce': nonce } } )
+			.then( function ( r ) {
+				if ( ! r.ok ) { throw new Error( r.status ); }
+				return r.json();
+			} )
+			.then( function ( data ) {
+				if ( String( state.id ) !== String( id ) ) { return; }
+				renderFull( data, true );
+			} );
+	}
+
 	// ── Full render ────────────────────────────────────────────────────────
 
-	function renderFull( data ) {
-		var title    = ( data.title && data.title.raw ) || '';
+	function renderFull( data, readOnly ) {
+		var title    = ( data.title && data.title.raw ) || ( data.title && data.title.rendered ) || '';
 		var altText  = data.alt_text || '';
 		var caption  = ( data.caption && data.caption.raw ) || '';
 		var descr    = ( data.description && data.description.raw ) || '';
+		// The read-only fetch uses the `view` context, which returns rendered
+		// HTML instead of the raw field. Strip the wrapper so the textarea shows
+		// text rather than markup.
+		if ( readOnly ) {
+			caption = caption || stripHtml( ( data.caption && data.caption.rendered ) || '' );
+			descr   = descr   || stripHtml( ( data.description && data.description.rendered ) || '' );
+		}
 		var mime     = data.mime_type || '';
 		var url      = data.source_url || '';
 		var isImage  = data.media_type === 'image';
@@ -582,12 +610,20 @@
 				'<p class="dy-dp-loading" style="padding:0;margin:0;font-size:12px">' + esc( i18n.loadingShort || i18n.loading ) + '</p>' +
 			'</div>' +
 
-			'<div class="dy-dp-actions">' +
-				'<button type="button" class="dy-dp-save button" data-id="' + data.id + '">' + esc( i18n.save ) + '</button>' +
-				'<button type="button" class="dy-dp-delete-btn" data-id="' + data.id + '">' + esc( i18n.deleteAction ) + '</button>' +
-			'</div>';
+			( readOnly
+				? '<div class="dy-dp-section dy-dp-readonly"><p>' + esc( i18n.readOnlyNotice || 'You can view this file but not edit it.' ) + '</p></div>'
+				: '<div class="dy-dp-actions">' +
+					'<button type="button" class="dy-dp-save button" data-id="' + data.id + '">' + esc( i18n.save ) + '</button>' +
+					'<button type="button" class="dy-dp-delete-btn" data-id="' + data.id + '">' + esc( i18n.deleteAction ) + '</button>' +
+				'</div>' );
 
 		$( '.dy-dp-body' ).html( body );
+
+		if ( readOnly ) {
+			// Everything stays readable, nothing pretends to be actionable.
+			$( '.dy-dp-body' ).find( EDITABLE_FIELDS ).prop( 'readonly', true );
+			$( '.dy-dp-body' ).find( '.dy-dp-folder-trigger, .dy-dp-col-add-select, .dy-dp-col-remove' ).prop( 'disabled', true );
+		}
 
 		// Snapshot of what the server sent, so "modified" means actually different.
 		state.initial = {
@@ -1260,6 +1296,15 @@
 		if ( /^audio\//.test( mime ) )  { return 'dashicons-format-audio'; }
 		if ( /pdf/.test( mime ) )       { return 'dashicons-media-document'; }
 		return 'dashicons-media-default';
+	}
+
+	// The `view` context returns rendered HTML (a <p> wrapper, entities). The
+	// panel shows plain text, so unwrap it using the browser's own parser.
+	function stripHtml( html ) {
+		if ( ! html ) { return ''; }
+		var d = window.document.createElement( 'div' );
+		d.innerHTML = html;
+		return ( d.textContent || '' ).trim();
 	}
 
 	function esc( str ) {

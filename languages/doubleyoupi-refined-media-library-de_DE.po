@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T15:41:22+00:00\n"
+"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -50,7 +50,7 @@ msgstr ""
 "zurückgezogen, um ihr nicht in die Quere zu kommen. Sie möchten sie "
 "eigenständig nutzen? Deaktivieren Sie zuerst die Suite."
 
-#: src/Admin/AdminMenu.php:136 src/Admin/OverviewPage.php:157
+#: src/Admin/AdminMenu.php:152 src/Admin/OverviewPage.php:157
 #: src/Admin/OverviewPage.php:509
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:86
@@ -60,6 +60,168 @@ msgstr "Einstellungen"
 #: src/Admin/DyShell.php:118
 msgid "Double Youpi"
 msgstr "Double Youpi"
+
+#: src/Admin/Feedback.php:127
+msgctxt "admin bar button"
+msgid "Feedback"
+msgstr "Feedback"
+
+#. translators: %s = product name (e.g. "Refined Admin Dashboard")
+#: src/Admin/Feedback.php:135
+#, php-format
+msgid "Your feedback on %s"
+msgstr "Dein Feedback zu %s"
+
+#: src/Admin/Feedback.php:214 src/Admin/Feedback.php:301
+msgid "Send"
+msgstr "Senden"
+
+#: src/Admin/Feedback.php:215
+msgid "Sending…"
+msgstr "Wird gesendet…"
+
+#: src/Admin/Feedback.php:216
+msgid "Try again"
+msgstr "Erneut versuchen"
+
+#. translators: %s = name of the theme
+#: src/Admin/Feedback.php:218
+#, php-format
+msgid "%s (theme)"
+msgstr "%s (Theme)"
+
+#: src/Admin/Feedback.php:219
+msgid "This image is still too large after compression (1.5 MB maximum)."
+msgstr "Dieses Bild ist auch nach der Komprimierung zu groß (maximal 1,5 MB)."
+
+#: src/Admin/Feedback.php:220 src/Admin/Feedback.php:373
+msgid "Please use a PNG, JPEG or WebP image."
+msgstr "Bitte ein PNG-, JPEG- oder WebP-Bild verwenden."
+
+#: src/Admin/Feedback.php:221
+msgid "Your report could not be sent. Check your connection and try again."
+msgstr ""
+"Dein Bericht konnte nicht gesendet werden. Prüfe deine Verbindung und "
+"versuche es erneut."
+
+#. translators: %s = reference returned by the feedback service
+#: src/Admin/Feedback.php:223
+#, php-format
+msgid "Reference %s."
+msgstr "Referenz %s."
+
+#: src/Admin/Feedback.php:224
+msgid "(anonymous site identifier)"
+msgstr "(anonyme Website-Kennung)"
+
+#: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
+#: src/Admin/OverviewPage.php:680
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
+msgid "Close"
+msgstr "Schließen"
+
+#: src/Admin/Feedback.php:252
+msgid "This screen"
+msgstr "Dieser Bildschirm"
+
+#: src/Admin/Feedback.php:256
+msgid "What kind of feedback"
+msgstr "Welche Art von Feedback"
+
+#: src/Admin/Feedback.php:257
+msgid "Something is wrong"
+msgstr "Etwas stimmt nicht"
+
+#: src/Admin/Feedback.php:258
+msgid "An idea"
+msgstr "Eine Idee"
+
+#: src/Admin/Feedback.php:259
+msgid "Something else"
+msgstr "Etwas anderes"
+
+#: src/Admin/Feedback.php:262
+msgid "Your message"
+msgstr "Deine Nachricht"
+
+#: src/Admin/Feedback.php:263
+msgid "What happened, and what you expected."
+msgstr "Was passiert ist und was du erwartet hast."
+
+#: src/Admin/Feedback.php:270
+msgid "Attach a screenshot"
+msgstr "Screenshot anhängen"
+
+#: src/Admin/Feedback.php:272
+msgid "or paste an image here (Ctrl/Cmd + V)"
+msgstr "oder ein Bild hier einfügen (Strg/Cmd + V)"
+
+#: src/Admin/Feedback.php:275
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+msgid "Remove"
+msgstr "Entfernen"
+
+#: src/Admin/Feedback.php:280
+msgid "You may write back to me at"
+msgstr "Ihr dürft mir antworten an"
+
+#: src/Admin/Feedback.php:285
+msgid ""
+"I agree to send this report to Double Youpi: my message, the screenshot if "
+"any, this screen's address inside wp-admin, the plugin or theme it belongs "
+"to, and version numbers (WordPress, PHP, theme, this plugin). No site "
+"content is sent, and no site address unless I ask for a reply."
+msgstr ""
+"Ich stimme zu, diesen Bericht an Double Youpi zu senden: meine Nachricht, "
+"den Screenshot falls vorhanden, die Adresse dieses Bildschirms innerhalb von "
+"wp-admin, das betroffene Plugin oder Theme und Versionsnummern (WordPress, "
+"PHP, Theme, dieses Plugin). Es werden keine Inhalte der Website gesendet und "
+"keine Website-Adresse, außer ich bitte um eine Antwort."
+
+#: src/Admin/Feedback.php:288
+msgid "See exactly what will be sent"
+msgstr "Genau sehen, was gesendet wird"
+
+#. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
+#: src/Admin/Feedback.php:297
+#, php-format
+msgid "Seen with %s"
+msgstr "Gesehen mit %s"
+
+#: src/Admin/Feedback.php:300 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/Admin/Feedback.php:305
+msgid "Thank you, it is on its way."
+msgstr "Danke, es ist unterwegs."
+
+#: src/Admin/Feedback.php:349
+msgid "Please confirm you agree to send this report."
+msgstr "Bitte bestätige, dass du diesen Bericht senden möchtest."
+
+#: src/Admin/Feedback.php:357
+msgid "Please write a few words first."
+msgstr "Bitte schreibe zuerst ein paar Worte."
+
+#: src/Admin/Feedback.php:364
+msgid "This email address does not look right."
+msgstr "Diese E-Mail-Adresse sieht nicht richtig aus."
+
+#: src/Admin/Feedback.php:370
+msgid "The screenshot is too large."
+msgstr "Der Screenshot ist zu groß."
+
+#: src/Admin/Feedback.php:382
+msgid "Too many reports in a short time. Please try again in an hour."
+msgstr ""
+"Zu viele Berichte in kurzer Zeit. Bitte versuche es in einer Stunde erneut."
+
+#: src/Admin/Feedback.php:443 src/Admin/Feedback.php:447
+msgid "The feedback service did not answer. Please try again later."
+msgstr ""
+"Der Feedback-Dienst hat nicht geantwortet. Bitte versuche es später erneut."
 
 #: src/Admin/HeroQuips.php:51
 msgid "Objectively the best plugin you've installed in the last five minutes."
@@ -290,11 +452,6 @@ msgstr "Als Nächstes"
 msgid "Almost ready"
 msgstr "Fast fertig"
 
-#: src/Admin/OverviewPage.php:680
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
-msgid "Close"
-msgstr "Schließen"
-
 #: src/Admin/OverviewPage.php:689
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
@@ -511,14 +668,14 @@ msgstr "In Ordner verschieben …"
 msgid "Add to collection…"
 msgstr "Zur Sammlung hinzufügen …"
 
-#: src/Modules/MediaLibrary/FolderManager.php:527
-#: src/Modules/MediaLibrary/FolderManager.php:563
+#: src/Modules/MediaLibrary/FolderManager.php:532
+#: src/Modules/MediaLibrary/FolderManager.php:568
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Ein Ordner kann nicht in sich selbst oder einen seiner Unterordner "
 "verschoben werden."
 
-#: src/Modules/MediaLibrary/FolderManager.php:588
+#: src/Modules/MediaLibrary/FolderManager.php:593
 msgid "Could not delete folder."
 msgstr "Ordner konnte nicht gelöscht werden."
 
@@ -562,7 +719,7 @@ msgid "Delete this folder? Media files will not be deleted."
 msgstr "Diesen Ordner löschen? Die Mediendateien werden nicht gelöscht."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:193
 msgid "No folder"
 msgstr "Kein Ordner"
@@ -640,11 +797,6 @@ msgstr "Stammverzeichnis (kein Ordner)"
 msgid "Choose a collection"
 msgstr "Sammlung auswählen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:74
-#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
-msgid "Cancel"
-msgstr "Abbrechen"
-
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:75
 msgid "Move"
 msgstr "Verschieben"
@@ -658,7 +810,7 @@ msgid "Create"
 msgstr "Erstellen"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
 msgid "Delete"
 msgstr "Löschen"
 
@@ -703,6 +855,10 @@ msgid ""
 "Media inside won’t be deleted, they will be moved to « Media without "
 "folder »."
 msgstr ""
+"Ordner „%s“ löschen?\n"
+"\n"
+"Die enthaltenen Medien werden nicht gelöscht, sie werden nach „Medien ohne "
+"Ordner“ verschoben."
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:95
@@ -713,6 +869,10 @@ msgid ""
 "Media files won’t be deleted, they will simply be removed from this "
 "collection."
 msgstr ""
+"Sammlung „%s“ löschen?\n"
+"\n"
+"Die Mediendateien werden nicht gelöscht, sie werden lediglich aus dieser "
+"Sammlung entfernt."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:98
 msgid "this folder"
@@ -869,194 +1029,194 @@ msgstr "Beschriftung"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+msgid "You can view this file but not edit it."
+msgstr "Sie können diese Datei ansehen, aber nicht bearbeiten."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
 msgid "File URL"
 msgstr "Datei-URL"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
 msgid "Copied!"
 msgstr "Kopiert!"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:64
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
 msgid "Folder"
 msgstr "Ordner"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
 msgid "+ Add to a collection"
 msgstr "+ Zu einer Sammlung hinzufügen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
 msgid "No collection"
 msgstr "Keine Sammlung"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
-msgid "Remove"
-msgstr "Entfernen"
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
 msgid "Save"
 msgstr "Speichern"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
 msgid "Saving…"
 msgstr "Speichern …"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
 msgid "Saved ✓"
 msgstr "Gespeichert ✓"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
 msgid "Error, try again"
 msgstr "Fehler, bitte erneut versuchen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
 msgid "Not used in content."
 msgstr "Nicht im Inhalt verwendet."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
 msgid "(untitled)"
 msgstr "(ohne Titel)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
 msgid "Permanently delete this file? This action cannot be undone."
 msgstr ""
 "Diese Datei dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht "
 "werden."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
 msgid "Could not delete this file."
 msgstr "Diese Datei konnte nicht gelöscht werden."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:176
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
 msgid "Unsaved changes will be lost. Continue?"
 msgstr "Ungespeicherte Änderungen gehen verloren. Fortfahren?"
 
 #. translators: shown after the panel saved pending edits on its own when the user moved to another media file.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:180
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
 msgid "Could not save your changes"
 msgstr "Ihre Änderungen konnten nicht gespeichert werden"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:181
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
 msgid "You have unsaved changes"
 msgstr "Sie haben ungespeicherte Änderungen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:187
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:190
 msgid "B"
 msgstr "B"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:188
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
 msgid "KB"
 msgstr "kB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:189
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
 msgid "MB"
 msgstr "MB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
 msgid "All types"
 msgstr "Alle Typen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
 msgid "Images"
 msgstr "Bilder"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:194
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
 msgid "Videos"
 msgstr "Videos"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
 msgid "Audio"
 msgstr "Audio"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
 msgid "Documents"
 msgstr "Dokumente"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
 msgid "SVG"
 msgstr "SVG"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
 msgid "Mine"
 msgstr "Meine"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "Search"
 msgstr "Suchen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
 msgid "No media selected."
 msgstr "Keine Medien ausgewählt."
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr "Metadaten bearbeiten (%d)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
 msgid "Bulk edit"
 msgstr "Sammelbearbeitung"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "1 file selected"
 msgstr "1 Datei ausgewählt"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
 #, php-format
 msgid "%d files selected"
 msgstr "%d Dateien ausgewählt"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr "Lass ein Feld leer, um den vorhandenen Wert jeder Datei beizubehalten."
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Alt text"
 msgstr "Alternativtext"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:218
 msgid "Describe the image…"
 msgstr "Beschreibe das Bild…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
 msgid "File title…"
 msgstr "Dateititel…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
 msgid "Apply to 1 file"
 msgstr "Auf 1 Datei anwenden"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:222
 #, php-format
 msgid "Apply to %d files"
 msgstr "Auf %d Dateien anwenden"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:223
 msgid "Applying…"
 msgstr "Wird angewendet…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:221
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
 msgid "Retry"
 msgstr "Erneut versuchen"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:227
 msgid "More fields"
 msgstr "Weitere Felder"
 
@@ -1090,27 +1250,33 @@ msgid "Import"
 msgstr "Importieren"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:209
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:257
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr "Refined Media Library verwaltet die Mediathek. %s ist ebenfalls aktiv."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:211
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
 #, php-format
 msgid "Let %s manage it"
 msgstr "%s verwalten lassen"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:216
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:264
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
 msgstr "%s verwaltet die Mediathek. Refined Media Library hat Platz gemacht."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:217
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
 msgid "Use Refined Media Library"
 msgstr "Refined Media Library verwenden"
+
+#. translators: %s: name of the competing media-library plugin (e.g. FileBird).
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:286
+#, php-format
+msgid "Import folders from %s"
+msgstr "Ordner aus %s importieren"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:19
 msgid "No other folder plugin detected. Nothing to import."
@@ -1203,6 +1369,10 @@ msgid ""
 "Media Library, and the source plugin is never modified, so you can verify "
 "the result before removing it."
 msgstr ""
+"Importieren Sie Ordner und Sammlungen aus einem anderen Mediathek-Plugin. "
+"Ihre Medien bleiben an Ort und Stelle: Es wird nur die Ordnerstruktur in "
+"Refined Media Library neu angelegt, und das Quell-Plugin wird nie verändert, "
+"sodass Sie das Ergebnis prüfen können, bevor Sie es entfernen."
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:71
 msgid "Scanning…"
@@ -4947,39 +5117,6 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 #~ msgid "Send feedback about this screen"
 #~ msgstr "Feedback zu diesem Bildschirm senden"
 
-#~ msgid "Send"
-#~ msgstr "Senden"
-
-#~ msgid "Sending…"
-#~ msgstr "Wird gesendet…"
-
-#~ msgid "Try again"
-#~ msgstr "Erneut versuchen"
-
-#~ msgid "%s (theme)"
-#~ msgstr "%s (Theme)"
-
-#~ msgid "This image is still too large after compression (1.5 MB maximum)."
-#~ msgstr ""
-#~ "Dieses Bild ist auch nach der Komprimierung zu groß (maximal 1,5 MB)."
-
-#~ msgid "Please use a PNG, JPEG or WebP image."
-#~ msgstr "Bitte ein PNG-, JPEG- oder WebP-Bild verwenden."
-
-#~ msgid "Your report could not be sent. Check your connection and try again."
-#~ msgstr ""
-#~ "Dein Bericht konnte nicht gesendet werden. Prüfe deine Verbindung und "
-#~ "versuche es erneut."
-
-#~ msgid "Reference %s."
-#~ msgstr "Referenz %s."
-
-#~ msgid "(anonymous site identifier)"
-#~ msgstr "(anonyme Website-Kennung)"
-
-#~ msgid "This screen"
-#~ msgstr "Dieser Bildschirm"
-
 #~ msgid "It concerns"
 #~ msgstr "Es betrifft"
 
@@ -4989,84 +5126,6 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 #~ msgstr ""
 #~ "Wir konnten nicht erkennen, zu welchem Plugin dieser Bildschirm gehört. "
 #~ "Wähle es oben aus, falls du es weißt."
-
-#~ msgid "What kind of feedback"
-#~ msgstr "Welche Art von Feedback"
-
-#~ msgid "Something is wrong"
-#~ msgstr "Etwas stimmt nicht"
-
-#~ msgid "An idea"
-#~ msgstr "Eine Idee"
-
-#~ msgid "Something else"
-#~ msgstr "Etwas anderes"
-
-#~ msgid "Your message"
-#~ msgstr "Deine Nachricht"
-
-#~ msgid "What happened, and what you expected."
-#~ msgstr "Was passiert ist und was du erwartet hast."
-
-#~ msgid "Attach a screenshot"
-#~ msgstr "Screenshot anhängen"
-
-#~ msgid "or paste an image here (Ctrl/Cmd + V)"
-#~ msgstr "oder ein Bild hier einfügen (Strg/Cmd + V)"
-
-#~ msgid "You may write back to me at"
-#~ msgstr "Ihr dürft mir antworten an"
-
-#~ msgid ""
-#~ "I agree to send this report to Double Youpi: my message, the screenshot "
-#~ "if any, this screen's address inside wp-admin, the plugin or theme it "
-#~ "belongs to, and version numbers (WordPress, PHP, theme, this plugin). No "
-#~ "site content is sent, and no site address unless I ask for a reply."
-#~ msgstr ""
-#~ "Ich stimme zu, diesen Bericht an Double Youpi zu senden: meine Nachricht, "
-#~ "den Screenshot falls vorhanden, die Adresse dieses Bildschirms innerhalb "
-#~ "von wp-admin, das betroffene Plugin oder Theme und Versionsnummern "
-#~ "(WordPress, PHP, Theme, dieses Plugin). Es werden keine Inhalte der "
-#~ "Website gesendet und keine Website-Adresse, außer ich bitte um eine "
-#~ "Antwort."
-
-#~ msgid "See exactly what will be sent"
-#~ msgstr "Genau sehen, was gesendet wird"
-
-#~ msgid "Seen with %s"
-#~ msgstr "Gesehen mit %s"
-
-#~ msgid "Thank you, it is on its way."
-#~ msgstr "Danke, es ist unterwegs."
-
-#~ msgid "Please confirm you agree to send this report."
-#~ msgstr "Bitte bestätige, dass du diesen Bericht senden möchtest."
-
-#~ msgid "Please write a few words first."
-#~ msgstr "Bitte schreibe zuerst ein paar Worte."
-
-#~ msgid "This email address does not look right."
-#~ msgstr "Diese E-Mail-Adresse sieht nicht richtig aus."
-
-#~ msgid "The screenshot is too large."
-#~ msgstr "Der Screenshot ist zu groß."
-
-#~ msgid "Too many reports in a short time. Please try again in an hour."
-#~ msgstr ""
-#~ "Zu viele Berichte in kurzer Zeit. Bitte versuche es in einer Stunde "
-#~ "erneut."
-
-#~ msgid "The feedback service did not answer. Please try again later."
-#~ msgstr ""
-#~ "Der Feedback-Dienst hat nicht geantwortet. Bitte versuche es später "
-#~ "erneut."
-
-#~ msgctxt "admin bar button"
-#~ msgid "Feedback"
-#~ msgstr "Feedback"
-
-#~ msgid "Your feedback on %s"
-#~ msgstr "Dein Feedback zu %s"
 
 #~ msgid "This widget could not load."
 #~ msgstr "Dieses Widget konnte nicht geladen werden."

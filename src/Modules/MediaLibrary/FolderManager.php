@@ -228,7 +228,12 @@ class FolderManager extends AbstractModule {
 				// Explicit strings: wp_localize_script casts booleans (false → "").
 				'foldersEnabled'     => Settings::folders_enabled() ? '1' : '0',
 				'collectionsEnabled' => Settings::collections_enabled() ? '1' : '0',
-				'settingsUrl'        => admin_url( 'admin.php?page=doubleyoupi-media-library' ),
+				// Empty for anyone who cannot open that page: the panel hides the
+				// link when there is no URL, rather than offering a door that
+				// answers 403. Authors and editors browse the library too.
+				'settingsUrl'        => current_user_can( 'manage_options' )
+					? admin_url( 'admin.php?page=doubleyoupi-media-library' )
+					: '',
 				'currentUserId'      => get_current_user_id(),
 				// "Mine" filter button only makes sense when several people upload.
 				'mineFilter'         => $this->has_multiple_uploaders() ? '1' : '0',

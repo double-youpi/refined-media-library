@@ -151,6 +151,9 @@ Media files won’t be deleted, they will simply be removed from this collection
 			// the problem. No setting involved.
 			'caption'                 => __( 'Caption', 'doubleyoupi-refined-media-library' ),
 			'description'             => __( 'Description', 'doubleyoupi-refined-media-library' ),
+			// Shown instead of the action bar when the current user may read the
+			// file but not edit it (an author looking at someone else's upload).
+			'readOnlyNotice'          => __( 'You can view this file but not edit it.', 'doubleyoupi-refined-media-library' ),
 			'fileUrl'                 => __( 'File URL', 'doubleyoupi-refined-media-library' ),
 			'copy'                    => __( 'Copy', 'doubleyoupi-refined-media-library' ),
 			'copied'                  => __( 'Copied!', 'doubleyoupi-refined-media-library' ),

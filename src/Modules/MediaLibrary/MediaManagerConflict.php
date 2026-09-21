@@ -45,18 +45,26 @@ class MediaManagerConflict extends AbstractModule {
 	 * panel, so there is nothing to own or hide (its import is handled
 	 * separately by SourceDetector).
 	 *
-	 * @var array<string,array{label:string,plugins:string[],hide:string}>
+	 * `folders` holds regular expressions matched against the DIRECTORY of each
+	 * active plugin. Exact basenames are not enough: the paid editions live in
+	 * their own directory (`filebird-pro`, `happyfiles-pro`), and a directory can
+	 * be renamed on install. Matching the directory catches every edition, which
+	 * is what a conflict is about — a competing UI being on screen.
+	 *
+	 * @var array<string,array{label:string,plugins:string[],folders:string[],hide:string}>
 	 */
 	private const COMPETITORS = [
 		'filebird'           => [
 			'label'   => 'FileBird',
 			'plugins' => [ 'filebird/filebird.php' ],
+			'folders' => [ '#^filebird#' ],
 			'hide'    => '#filebird-root{display:none!important}'
 				. 'body.filebird-upload-php.upload-php .wrap>.media-frame{margin-left:min(var(--dy-fw,220px),35vw,360px)!important}',
 		],
 		'happyfiles'         => [
 			'label'   => 'HappyFiles',
 			'plugins' => [ 'happyfiles-pro/happyfiles.php', 'happyfiles/happyfiles.php' ],
+			'folders' => [ '#^happyfiles#' ],
 			// Best-effort: HappyFiles' free build is closed on WordPress.org and
 			// could not be inspected. The "step aside" path works regardless.
 			'hide'    => '#happyfiles-categories,.happyfiles-categories,#happyfiles-folders{display:none!important}',
@@ -64,11 +72,15 @@ class MediaManagerConflict extends AbstractModule {
 		'real-media-library' => [
 			'label'   => 'Real Media Library',
 			'plugins' => [ 'real-media-library/index.php', 'real-media-library-lite/index.php' ],
+			'folders' => [ '#^real-media-library#' ],
 			'hide'    => '.rml-container{display:none!important}',
 		],
 		'folders'            => [
 			'label'   => 'Folders',
 			'plugins' => [ 'folders/folders.php' ],
+			// Anchored on both ends: "folders" is a common word, and a directory
+			// such as `my-folders-helper` is not Premio's plugin.
+			'folders' => [ '#^folders$#' ],
 			'hide'    => '.wcp-container{display:none!important}',
 		],
 	];
@@ -101,16 +113,52 @@ class MediaManagerConflict extends AbstractModule {
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
+		$dirs = $this->active_plugin_dirs();
+
 		$active = [];
 		foreach ( self::COMPETITORS as $key => $cfg ) {
+			$found = false;
 			foreach ( $cfg['plugins'] as $basename ) {
 				if ( is_plugin_active( $basename ) ) {
-					$active[] = $key;
+					$found = true;
 					break;
 				}
 			}
+			if ( ! $found ) {
+				foreach ( $cfg['folders'] as $pattern ) {
+					foreach ( $dirs as $dir ) {
+						if ( preg_match( $pattern, $dir ) ) {
+							$found = true;
+							break 2;
+						}
+					}
+				}
+			}
+			if ( $found ) {
+				$active[] = $key;
+			}
 		}
 		return $active;
+	}
+
+	/**
+	 * Directory of every active plugin, network-wide activations included.
+	 *
+	 * @return string[]
+	 */
+	private function active_plugin_dirs(): array {
+		$paths = (array) get_option( 'active_plugins', [] );
+		if ( is_multisite() ) {
+			$paths = array_merge( $paths, array_keys( (array) get_site_option( 'active_sitewide_plugins', [] ) ) );
+		}
+		$dirs = [];
+		foreach ( $paths as $path ) {
+			$dir = strtok( (string) $path, '/' );
+			if ( is_string( $dir ) && '' !== $dir ) {
+				$dirs[] = strtolower( $dir );
+			}
+		}
+		return array_unique( $dirs );
 	}
 
 	public function has_conflict(): bool {
@@ -223,9 +271,27 @@ class MediaManagerConflict extends AbstractModule {
 			self::SWITCH_ACTION
 		);
 
+		// When the competitor still holds folders, importing them is the useful
+		// next step, not switching back and forth. We only offer it when there is
+		// something to import: the adapter reads the competitor's own tables, so
+		// it answers for the data, not for the plugin being installed.
+		$import = '';
+		if ( 'rml' === $owner && class_exists( Migration\SourceDetector::class ) ) {
+			$adapter = Migration\SourceDetector::get( $comp_key );
+			if ( $adapter && $adapter->is_present() ) {
+				$import = sprintf(
+					'<a href="%1$s" class="button button-primary" style="margin-left:6px">%2$s</a>',
+					esc_url( admin_url( 'admin.php?page=doubleyoupi-media-library&tab=import' ) ),
+					/* translators: %s: name of the competing media-library plugin (e.g. FileBird). */
+					esc_html( sprintf( __( 'Import folders from %s', 'doubleyoupi-refined-media-library' ), $comp_label ) )
+				);
+			}
+		}
+
 		printf(
-			'<div class="notice notice-info"><p>%1$s <a href="%2$s" class="button" style="margin-left:6px">%3$s</a></p></div>',
+			'<div class="notice notice-info"><p>%1$s %2$s<a href="%3$s" class="button" style="margin-left:6px">%4$s</a></p></div>',
 			esc_html( $message ),
+			$import, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- assembled above from escaped parts.
 			esc_url( $url ),
 			esc_html( $button )
 		);

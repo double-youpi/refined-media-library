@@ -65,8 +65,8 @@ final class OverviewPage {
 	 */
 	public static function register(): void {
 		AdminMenu::add_page(
-			__( 'Double Youpi · Overview', 'doubleyoupi-refined-media-library' ),
-			__( 'Overview', 'doubleyoupi-refined-media-library' ),
+			static fn(): string => __( 'Double Youpi · Overview', 'doubleyoupi-refined-media-library' ),
+			static fn(): string => __( 'Overview', 'doubleyoupi-refined-media-library' ),
 			self::PAGE_SLUG,
 			[ self::class, 'render' ]
 		);

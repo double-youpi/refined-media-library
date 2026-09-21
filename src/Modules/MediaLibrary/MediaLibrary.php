@@ -43,8 +43,8 @@ class MediaLibrary extends AbstractModule {
 
 		// Tabbed page: callback on this class to manage the active tab.
 		AdminMenu::add_page(
-			__( 'Refined Media Library', 'doubleyoupi-refined-media-library' ),
-			__( 'Media Library', 'doubleyoupi-refined-media-library' ),
+			static fn(): string => __( 'Refined Media Library', 'doubleyoupi-refined-media-library' ),
+			static fn(): string => __( 'Media Library', 'doubleyoupi-refined-media-library' ),
 			'doubleyoupi-media-library',
 			[ $this, 'render_page' ]
 		);

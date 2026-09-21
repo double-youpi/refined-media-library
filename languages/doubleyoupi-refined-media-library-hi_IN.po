@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T15:41:22+00:00\n"
+"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -49,7 +49,7 @@ msgstr ""
 "Library शामिल है। यह स्टैंडअलोन प्रति उसके रास्ते से हट गई है। इसे अलग से चलाना चाहते हैं? "
 "पहले सुइट को निष्क्रिय करें।"
 
-#: src/Admin/AdminMenu.php:136 src/Admin/OverviewPage.php:157
+#: src/Admin/AdminMenu.php:152 src/Admin/OverviewPage.php:157
 #: src/Admin/OverviewPage.php:509
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:86
@@ -59,6 +59,163 @@ msgstr "सेटिंग्स"
 #: src/Admin/DyShell.php:118
 msgid "Double Youpi"
 msgstr "Double Youpi"
+
+#: src/Admin/Feedback.php:127
+msgctxt "admin bar button"
+msgid "Feedback"
+msgstr "फ़ीडबैक"
+
+#. translators: %s = product name (e.g. "Refined Admin Dashboard")
+#: src/Admin/Feedback.php:135
+#, php-format
+msgid "Your feedback on %s"
+msgstr "%s पर आपका फ़ीडबैक"
+
+#: src/Admin/Feedback.php:214 src/Admin/Feedback.php:301
+msgid "Send"
+msgstr "भेजें"
+
+#: src/Admin/Feedback.php:215
+msgid "Sending…"
+msgstr "भेजा जा रहा है…"
+
+#: src/Admin/Feedback.php:216
+msgid "Try again"
+msgstr "फिर से कोशिश करें"
+
+#. translators: %s = name of the theme
+#: src/Admin/Feedback.php:218
+#, php-format
+msgid "%s (theme)"
+msgstr "%s (थीम)"
+
+#: src/Admin/Feedback.php:219
+msgid "This image is still too large after compression (1.5 MB maximum)."
+msgstr "संपीड़न के बाद भी यह छवि बहुत बड़ी है (अधिकतम 1.5 MB)।"
+
+#: src/Admin/Feedback.php:220 src/Admin/Feedback.php:373
+msgid "Please use a PNG, JPEG or WebP image."
+msgstr "कृपया PNG, JPEG या WebP छवि का उपयोग करें।"
+
+#: src/Admin/Feedback.php:221
+msgid "Your report could not be sent. Check your connection and try again."
+msgstr "आपकी रिपोर्ट नहीं भेजी जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।"
+
+#. translators: %s = reference returned by the feedback service
+#: src/Admin/Feedback.php:223
+#, php-format
+msgid "Reference %s."
+msgstr "संदर्भ %s।"
+
+#: src/Admin/Feedback.php:224
+msgid "(anonymous site identifier)"
+msgstr "(साइट का गुमनाम पहचानकर्ता)"
+
+#: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
+#: src/Admin/OverviewPage.php:680
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
+msgid "Close"
+msgstr "बंद करें"
+
+#: src/Admin/Feedback.php:252
+msgid "This screen"
+msgstr "यह स्क्रीन"
+
+#: src/Admin/Feedback.php:256
+msgid "What kind of feedback"
+msgstr "किस प्रकार का फ़ीडबैक"
+
+#: src/Admin/Feedback.php:257
+msgid "Something is wrong"
+msgstr "कुछ गड़बड़ है"
+
+#: src/Admin/Feedback.php:258
+msgid "An idea"
+msgstr "एक विचार"
+
+#: src/Admin/Feedback.php:259
+msgid "Something else"
+msgstr "कुछ और"
+
+#: src/Admin/Feedback.php:262
+msgid "Your message"
+msgstr "आपका संदेश"
+
+#: src/Admin/Feedback.php:263
+msgid "What happened, and what you expected."
+msgstr "क्या हुआ, और आप क्या उम्मीद कर रहे थे।"
+
+#: src/Admin/Feedback.php:270
+msgid "Attach a screenshot"
+msgstr "स्क्रीनशॉट संलग्न करें"
+
+#: src/Admin/Feedback.php:272
+msgid "or paste an image here (Ctrl/Cmd + V)"
+msgstr "या यहाँ एक छवि पेस्ट करें (Ctrl/Cmd + V)"
+
+#: src/Admin/Feedback.php:275
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+msgid "Remove"
+msgstr "हटाएँ"
+
+#: src/Admin/Feedback.php:280
+msgid "You may write back to me at"
+msgstr "आप मुझे यहाँ जवाब दे सकते हैं"
+
+#: src/Admin/Feedback.php:285
+msgid ""
+"I agree to send this report to Double Youpi: my message, the screenshot if "
+"any, this screen's address inside wp-admin, the plugin or theme it belongs "
+"to, and version numbers (WordPress, PHP, theme, this plugin). No site "
+"content is sent, and no site address unless I ask for a reply."
+msgstr ""
+"मैं यह रिपोर्ट Double Youpi को भेजने के लिए सहमत हूँ: मेरा संदेश, स्क्रीनशॉट (यदि कोई "
+"हो), wp-admin के भीतर इस स्क्रीन का पता, संबंधित प्लगइन या थीम, और संस्करण संख्याएँ "
+"(WordPress, PHP, थीम, यह प्लगइन)। साइट की कोई सामग्री नहीं भेजी जाती, और जब तक मैं "
+"उत्तर न माँगूँ, साइट का पता भी नहीं।"
+
+#: src/Admin/Feedback.php:288
+msgid "See exactly what will be sent"
+msgstr "ठीक-ठीक देखें कि क्या भेजा जाएगा"
+
+#. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
+#: src/Admin/Feedback.php:297
+#, php-format
+msgid "Seen with %s"
+msgstr "%s के साथ देखा गया"
+
+#: src/Admin/Feedback.php:300 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/Admin/Feedback.php:305
+msgid "Thank you, it is on its way."
+msgstr "धन्यवाद, यह भेजा जा रहा है।"
+
+#: src/Admin/Feedback.php:349
+msgid "Please confirm you agree to send this report."
+msgstr "कृपया पुष्टि करें कि आप यह रिपोर्ट भेजने के लिए सहमत हैं।"
+
+#: src/Admin/Feedback.php:357
+msgid "Please write a few words first."
+msgstr "पहले कुछ शब्द लिखें।"
+
+#: src/Admin/Feedback.php:364
+msgid "This email address does not look right."
+msgstr "यह ईमेल पता सही नहीं लगता।"
+
+#: src/Admin/Feedback.php:370
+msgid "The screenshot is too large."
+msgstr "स्क्रीनशॉट बहुत बड़ा है।"
+
+#: src/Admin/Feedback.php:382
+msgid "Too many reports in a short time. Please try again in an hour."
+msgstr "थोड़े समय में बहुत सारी रिपोर्ट। कृपया एक घंटे बाद फिर से कोशिश करें।"
+
+#: src/Admin/Feedback.php:443 src/Admin/Feedback.php:447
+msgid "The feedback service did not answer. Please try again later."
+msgstr "फ़ीडबैक सेवा ने जवाब नहीं दिया। कृपया बाद में फिर से कोशिश करें।"
 
 #: src/Admin/HeroQuips.php:51
 msgid "Objectively the best plugin you've installed in the last five minutes."
@@ -281,11 +438,6 @@ msgstr "अगला"
 msgid "Almost ready"
 msgstr "लगभग तैयार"
 
-#: src/Admin/OverviewPage.php:680
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
-msgid "Close"
-msgstr "बंद करें"
-
 #: src/Admin/OverviewPage.php:689
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
@@ -499,12 +651,12 @@ msgstr "फ़ोल्डर में स्थानांतरित कर
 msgid "Add to collection…"
 msgstr "संग्रह में जोड़ें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:527
-#: src/Modules/MediaLibrary/FolderManager.php:563
+#: src/Modules/MediaLibrary/FolderManager.php:532
+#: src/Modules/MediaLibrary/FolderManager.php:568
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "किसी फ़ोल्डर को उसी में या उसके किसी सबफ़ोल्डर में नहीं ले जाया जा सकता।"
 
-#: src/Modules/MediaLibrary/FolderManager.php:588
+#: src/Modules/MediaLibrary/FolderManager.php:593
 msgid "Could not delete folder."
 msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 
@@ -548,7 +700,7 @@ msgid "Delete this folder? Media files will not be deleted."
 msgstr "यह फ़ोल्डर हटाएँ? मीडिया फ़ाइलें नहीं हटेंगी।"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:193
 msgid "No folder"
 msgstr "कोई फ़ोल्डर नहीं"
@@ -626,11 +778,6 @@ msgstr "मूल (कोई फ़ोल्डर नहीं)"
 msgid "Choose a collection"
 msgstr "संग्रह चुनें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:74
-#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
-msgid "Cancel"
-msgstr "रद्द करें"
-
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:75
 msgid "Move"
 msgstr "स्थानांतरित करें"
@@ -644,7 +791,7 @@ msgid "Create"
 msgstr "बनाएं"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:166
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
 msgid "Delete"
 msgstr "हटाएँ"
 
@@ -689,6 +836,10 @@ msgid ""
 "Media inside won’t be deleted, they will be moved to « Media without "
 "folder »."
 msgstr ""
+"फ़ोल्डर « %s » हटाएँ?\n"
+"\n"
+"अंदर की मीडिया नहीं हटेगी, उन्हें « फ़ोल्डर के बिना मीडिया » में स्थानांतरित कर दिया "
+"जाएगा।"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:95
@@ -699,6 +850,9 @@ msgid ""
 "Media files won’t be deleted, they will simply be removed from this "
 "collection."
 msgstr ""
+"संग्रह « %s » हटाएँ?\n"
+"\n"
+"मीडिया फ़ाइलें नहीं हटेंगी, उन्हें केवल इस संग्रह से हटाया जाएगा।"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:98
 msgid "this folder"
@@ -855,192 +1009,192 @@ msgstr "कैप्शन"
 msgid "Description"
 msgstr "विवरण"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:154
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+msgid "You can view this file but not edit it."
+msgstr "आप यह फ़ाइल देख सकते हैं, पर उसे संपादित नहीं कर सकते।"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
 msgid "File URL"
 msgstr "फ़ाइल URL"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:155
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
 msgid "Copy"
 msgstr "कॉपी करें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
 msgid "Copied!"
 msgstr "कॉपी हो गया!"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:64
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
 msgid "Folder"
 msgstr "फ़ोल्डर"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:160
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
 msgid "+ Add to a collection"
 msgstr "+ एक संग्रह में जोड़ें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
 msgid "No collection"
 msgstr "कोई संग्रह नहीं"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
-msgid "Remove"
-msgstr "हटाएँ"
-
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
 msgid "Save"
 msgstr "सहेजें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
 msgid "Edit"
 msgstr "संपादित करें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
 msgid "Saving…"
 msgstr "सहेजा जा रहा है…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
 msgid "Saved ✓"
 msgstr "सहेजा गया ✓"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
 msgid "Error, try again"
 msgstr "त्रुटि, फिर से प्रयास करें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
 msgid "Not used in content."
 msgstr "कंटेंट में उपयोग नहीं।"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
 msgid "(untitled)"
 msgstr "(शीर्षकहीन)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
 msgid "Permanently delete this file? This action cannot be undone."
 msgstr "इस फ़ाइल को स्थायी रूप से हटाएँ? यह क्रिया वापस नहीं की जा सकती।"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
 msgid "Could not delete this file."
 msgstr "यह फ़ाइल नहीं हटाई जा सकी।"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:176
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
 msgid "Unsaved changes will be lost. Continue?"
 msgstr "असहेजे गए परिवर्तन खो जाएँगे। जारी रखें?"
 
 #. translators: shown after the panel saved pending edits on its own when the user moved to another media file.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
 msgid "Changes saved"
 msgstr "परिवर्तन सहेजे गए"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:180
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
 msgid "Could not save your changes"
 msgstr "आपके परिवर्तन सहेजे नहीं जा सके"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:181
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
 msgid "You have unsaved changes"
 msgstr "आपके पास बिना सहेजे गए परिवर्तन हैं"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:187
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:190
 msgid "B"
 msgstr "B"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:188
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
 msgid "KB"
 msgstr "kB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:189
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
 msgid "MB"
 msgstr "MB"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
 msgid "All types"
 msgstr "सभी प्रकार"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:193
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
 msgid "Images"
 msgstr "छवियाँ"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:194
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
 msgid "Videos"
 msgstr "वीडियो"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
 msgid "Audio"
 msgstr "ऑडियो"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
 msgid "Documents"
 msgstr "दस्तावेज़"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
 msgid "SVG"
 msgstr "SVG"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
 msgid "Mine"
 msgstr "मेरे"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
 msgid "Search"
 msgstr "खोजें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
 msgid "No media selected."
 msgstr "कोई मीडिया चयनित नहीं।"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:208
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
 #, php-format
 msgid "Edit metadata (%d)"
 msgstr "मेटाडेटा संपादित करें (%d)"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:209
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
 msgid "Bulk edit"
 msgstr "सामूहिक संपादन"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:210
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "1 file selected"
 msgstr "1 फ़ाइल चयनित"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
 #, php-format
 msgid "%d files selected"
 msgstr "%d फ़ाइलें चयनित"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr "प्रत्येक फ़ाइल का मौजूदा मान बनाए रखने के लिए कोई फ़ील्ड खाली छोड़ें।"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:214
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Alt text"
 msgstr "वैकल्पिक टेक्स्ट"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:218
 msgid "Describe the image…"
 msgstr "छवि का वर्णन करें…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
 msgid "File title…"
 msgstr "फ़ाइल शीर्षक…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
 msgid "Apply to 1 file"
 msgstr "1 फ़ाइल पर लागू करें"
 
 #. translators: %d: number of selected media files.
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:222
 #, php-format
 msgid "Apply to %d files"
 msgstr "%d फ़ाइलों पर लागू करें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:223
 msgid "Applying…"
 msgstr "लागू किया जा रहा है…"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:221
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
 msgid "Retry"
 msgstr "पुनः प्रयास करें"
 
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:227
 msgid "More fields"
 msgstr "अधिक फ़ील्ड"
 
@@ -1074,29 +1228,35 @@ msgid "Import"
 msgstr "आयात करें"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:209
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:257
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr ""
 "Refined Media Library मीडिया लाइब्रेरी को manage कर रहा है। %s भी active है।"
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:211
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
 #, php-format
 msgid "Let %s manage it"
 msgstr "%s को manage करने दें"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:216
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:264
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
 msgstr ""
 "%s मीडिया लाइब्रेरी को manage कर रहा है। Refined Media Library पीछे हट गया है।"
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:217
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
 msgid "Use Refined Media Library"
 msgstr "Refined Media Library इस्तेमाल करें"
+
+#. translators: %s: name of the competing media-library plugin (e.g. FileBird).
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:286
+#, php-format
+msgid "Import folders from %s"
+msgstr "%s से फ़ोल्डर आयात करें"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:19
 msgid "No other folder plugin detected. Nothing to import."
@@ -1188,6 +1348,9 @@ msgid ""
 "Media Library, and the source plugin is never modified, so you can verify "
 "the result before removing it."
 msgstr ""
+"किसी अन्य मीडिया लाइब्रेरी प्लगइन से फ़ोल्डर और संग्रह आयात करें। आपकी मीडिया यथास्थान "
+"रहती है: यह केवल Refined Media Library में फ़ोल्डर संरचना को फिर से बनाता है, और स्रोत "
+"प्लगइन कभी नहीं बदला जाता, इसलिए आप उसे हटाने से पहले परिणाम की जाँच कर सकते हैं।"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:71
 msgid "Scanning…"
@@ -4821,36 +4984,6 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Send feedback about this screen"
 #~ msgstr "इस स्क्रीन के बारे में फ़ीडबैक भेजें"
 
-#~ msgid "Send"
-#~ msgstr "भेजें"
-
-#~ msgid "Sending…"
-#~ msgstr "भेजा जा रहा है…"
-
-#~ msgid "Try again"
-#~ msgstr "फिर से कोशिश करें"
-
-#~ msgid "%s (theme)"
-#~ msgstr "%s (थीम)"
-
-#~ msgid "This image is still too large after compression (1.5 MB maximum)."
-#~ msgstr "संपीड़न के बाद भी यह छवि बहुत बड़ी है (अधिकतम 1.5 MB)।"
-
-#~ msgid "Please use a PNG, JPEG or WebP image."
-#~ msgstr "कृपया PNG, JPEG या WebP छवि का उपयोग करें।"
-
-#~ msgid "Your report could not be sent. Check your connection and try again."
-#~ msgstr "आपकी रिपोर्ट नहीं भेजी जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।"
-
-#~ msgid "Reference %s."
-#~ msgstr "संदर्भ %s।"
-
-#~ msgid "(anonymous site identifier)"
-#~ msgstr "(साइट का गुमनाम पहचानकर्ता)"
-
-#~ msgid "This screen"
-#~ msgstr "यह स्क्रीन"
-
 #~ msgid "It concerns"
 #~ msgstr "यह संबंधित है"
 
@@ -4859,78 +4992,6 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "you know."
 #~ msgstr ""
 #~ "हम यह नहीं जान सके कि यह स्क्रीन किस प्लगइन की है। यदि आप जानते हैं तो ऊपर चुनें।"
-
-#~ msgid "What kind of feedback"
-#~ msgstr "किस प्रकार का फ़ीडबैक"
-
-#~ msgid "Something is wrong"
-#~ msgstr "कुछ गड़बड़ है"
-
-#~ msgid "An idea"
-#~ msgstr "एक विचार"
-
-#~ msgid "Something else"
-#~ msgstr "कुछ और"
-
-#~ msgid "Your message"
-#~ msgstr "आपका संदेश"
-
-#~ msgid "What happened, and what you expected."
-#~ msgstr "क्या हुआ, और आप क्या उम्मीद कर रहे थे।"
-
-#~ msgid "Attach a screenshot"
-#~ msgstr "स्क्रीनशॉट संलग्न करें"
-
-#~ msgid "or paste an image here (Ctrl/Cmd + V)"
-#~ msgstr "या यहाँ एक छवि पेस्ट करें (Ctrl/Cmd + V)"
-
-#~ msgid "You may write back to me at"
-#~ msgstr "आप मुझे यहाँ जवाब दे सकते हैं"
-
-#~ msgid ""
-#~ "I agree to send this report to Double Youpi: my message, the screenshot "
-#~ "if any, this screen's address inside wp-admin, the plugin or theme it "
-#~ "belongs to, and version numbers (WordPress, PHP, theme, this plugin). No "
-#~ "site content is sent, and no site address unless I ask for a reply."
-#~ msgstr ""
-#~ "मैं यह रिपोर्ट Double Youpi को भेजने के लिए सहमत हूँ: मेरा संदेश, स्क्रीनशॉट (यदि कोई "
-#~ "हो), wp-admin के भीतर इस स्क्रीन का पता, संबंधित प्लगइन या थीम, और संस्करण संख्याएँ "
-#~ "(WordPress, PHP, थीम, यह प्लगइन)। साइट की कोई सामग्री नहीं भेजी जाती, और जब "
-#~ "तक मैं उत्तर न माँगूँ, साइट का पता भी नहीं।"
-
-#~ msgid "See exactly what will be sent"
-#~ msgstr "ठीक-ठीक देखें कि क्या भेजा जाएगा"
-
-#~ msgid "Seen with %s"
-#~ msgstr "%s के साथ देखा गया"
-
-#~ msgid "Thank you, it is on its way."
-#~ msgstr "धन्यवाद, यह भेजा जा रहा है।"
-
-#~ msgid "Please confirm you agree to send this report."
-#~ msgstr "कृपया पुष्टि करें कि आप यह रिपोर्ट भेजने के लिए सहमत हैं।"
-
-#~ msgid "Please write a few words first."
-#~ msgstr "पहले कुछ शब्द लिखें।"
-
-#~ msgid "This email address does not look right."
-#~ msgstr "यह ईमेल पता सही नहीं लगता।"
-
-#~ msgid "The screenshot is too large."
-#~ msgstr "स्क्रीनशॉट बहुत बड़ा है।"
-
-#~ msgid "Too many reports in a short time. Please try again in an hour."
-#~ msgstr "थोड़े समय में बहुत सारी रिपोर्ट। कृपया एक घंटे बाद फिर से कोशिश करें।"
-
-#~ msgid "The feedback service did not answer. Please try again later."
-#~ msgstr "फ़ीडबैक सेवा ने जवाब नहीं दिया। कृपया बाद में फिर से कोशिश करें।"
-
-#~ msgctxt "admin bar button"
-#~ msgid "Feedback"
-#~ msgstr "फ़ीडबैक"
-
-#~ msgid "Your feedback on %s"
-#~ msgstr "%s पर आपका फ़ीडबैक"
 
 #~ msgid "This widget could not load."
 #~ msgstr "यह विजेट लोड नहीं हो सका।"

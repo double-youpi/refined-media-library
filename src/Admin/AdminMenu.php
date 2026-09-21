@@ -23,7 +23,7 @@ final class AdminMenu {
 	public const SLUG       = 'doubleyoupi';
 	public const CAPABILITY = 'manage_options';
 
-	/** @var array<array{page_title:string, menu_title:string, slug:string, callback:callable}> */
+	/** @var array<array{page_title:string|\Closure, menu_title:string|\Closure, slug:string, callback:callable}> */
 	private static array $pages = [];
 
 	/**
@@ -43,17 +43,33 @@ final class AdminMenu {
 	 * Must be called during a module's boot() (i.e., on plugins_loaded),
 	 * before the admin_menu hook fires.
 	 *
-	 * The first call defines the landing page for the top-level menu.
+	 * Titles SHOULD be passed as closures returning the translated string.
+	 * Registration happens on `plugins_loaded`, which is before `init`, and
+	 * translations are only loaded on `init`. A string evaluated by the caller
+	 * is therefore frozen in English: WordPress 6.7 papers over it by loading
+	 * the text domain just in time, but 6.5 and 6.6, which we support, do not.
+	 * A closure is resolved on `admin_menu`, when the catalogue is in place.
 	 *
-	 * @param callable $callback Valid PHP callable that renders the page.
+	 * @param string|\Closure $page_title Document title, or a closure returning it.
+	 * @param string|\Closure $menu_title Menu label, or a closure returning it.
+	 * @param callable        $callback   Valid PHP callable that renders the page.
 	 */
 	public static function add_page(
-		string   $page_title,
-		string   $menu_title,
+		$page_title,
+		$menu_title,
 		string   $slug,
 		callable $callback
 	): void {
 		self::$pages[] = compact( 'page_title', 'menu_title', 'slug', 'callback' );
+	}
+
+	/**
+	 * Resolves a title registered either as a plain string or as a closure.
+	 *
+	 * @param string|\Closure $title
+	 */
+	private static function title( $title ): string {
+		return $title instanceof \Closure ? (string) $title() : (string) $title;
 	}
 
 	/**
@@ -132,8 +148,8 @@ final class AdminMenu {
 			$is_settings = $rename_settings && ( '' === $settings_slug || $page['slug'] === $settings_slug );
 			add_submenu_page(
 				self::SLUG,
-				$page['page_title'],
-				$is_settings ? __( 'Settings', 'doubleyoupi-refined-media-library' ) : $page['menu_title'],
+				self::title( $page['page_title'] ),
+				$is_settings ? __( 'Settings', 'doubleyoupi-refined-media-library' ) : self::title( $page['menu_title'] ),
 				self::CAPABILITY,
 				$page['slug'],
 				$page['callback']
@@ -159,7 +175,7 @@ final class AdminMenu {
 		if ( $first_is_parent && isset( $submenu[ self::SLUG ] ) ) {
 			foreach ( $submenu[ self::SLUG ] as $i => $entry ) {
 				if ( is_array( $entry ) && ( $entry[2] ?? '' ) === self::SLUG ) {
-					$submenu[ self::SLUG ][ $i ][0] = $first['menu_title'];
+					$submenu[ self::SLUG ][ $i ][0] = self::title( $first['menu_title'] );
 					return;
 				}
 			}

@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, an
 == Description ==
 
 The WordPress media library hasn't really changed in years. A few hundred uploads in, you spend more time scrolling than working. Refined Media Library turns it into an actual asset manager, without adding a single per-image setting for you to babysit.
+
+https://www.youtube.com/watch?v=zslcgfwP7hQ
 
 **Folders that actually feel like folders**
 
@@ -92,6 +94,22 @@ No. Alt text is built from the filename, right there on your server. Conversion 
 
 There isn't one. This is the standalone version, no strings attached. If it saves you an afternoon and you feel like it, there's a coffee button somewhere. Entirely optional.
 
+== External services ==
+
+This plugin sends a report to doubleyoupi.com when you use the "Send feedback" tab, and only then. Nothing is sent while you simply use the media library, and nothing is sent in the background.
+
+**When it happens.** Only when you open the feedback tab, write a message and tick the consent box. The dialog shows you the exact report before you send it, and you can read every field.
+
+**What is sent.** Your message and, if you attached one, your screenshot. The title and address of the admin screen you were on, with any token removed. The plugin or theme the screen belongs to. Version numbers for WordPress, PHP, your theme and this plugin. Your browser's user agent string and window size. A site identifier that is a truncated one-way hash of your site address, so reports from one install can be grouped without knowing which site it is. If, and only if, you ask for a reply, your email address and your site address.
+
+**What is never sent.** No posts, pages, media files, users, passwords or database content. Nothing from your site's contents, ever.
+
+Reports are kept for 24 months, then deleted, screenshot included. You can ask for access, correction or deletion at any time.
+
+Service provider: Double Youpi, https://doubleyoupi.com
+Terms of use: https://doubleyoupi.com/terms
+Privacy policy: https://doubleyoupi.com/privacy
+
 == Screenshots ==
 
 1. Nested folders and collections, in a panel that slots right into the native media library.
@@ -104,6 +122,15 @@ There isn't one. This is the standalone version, no strings attached. If it save
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.0 =
+* New: a feedback tab on every admin screen, to report a bug or ask for something without leaving the page. It shows you the exact report before it leaves, and sends nothing until you agree. See "External services" above.
+* A file you are not allowed to edit now opens read-only, with its information and a line explaining why, instead of an error code.
+* The folder panel no longer shows a Settings link to people who cannot open that page.
+* When a competing media library plugin is active and holds folders, the notice offers to import them rather than only to switch.
+* Fixed: competing plugins were only recognised by their free edition's folder name, so a paid edition went unnoticed and its interface overlapped ours.
+* Fixed: menu labels stayed in English on WordPress 6.5 and 6.6.
+* Fixed: three strings had lost their translations in every language, including the text of the Import tab.
 
 = 0.2.0 =
 * Caption and description are now editable straight from the detail panel, next to the title and alt text. Everything a file carries is in one place.
@@ -136,6 +163,9 @@ There isn't one. This is the standalone version, no strings attached. If it save
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.0 =
+A feedback tab to reach the author from any screen, read-only details for files you cannot edit, and translations restored.
 
 = 0.2.0 =
 Caption and description in the detail panel, saving that keeps up with you, and notices that no longer cover the page title.
