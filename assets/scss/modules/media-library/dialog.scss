@@ -1,0 +1,175 @@
+// =============================================================================
+// Refined Media Library — designed dialogs (confirm / prompt / alert)
+// =============================================================================
+//
+// Source of assets/css/modules/media-library/dialog.css.
+//
+// Deliberately WITHOUT `@use '../../shared/root'`: this file loads on
+// upload.php as well as on the RML settings tabs, where the token block may or
+// may not already be on the page. Every token therefore carries its own
+// fallback, and the sheet emits no :root of its own.
+// =============================================================================
+
+/* Refined Media Library — designed dialogs (confirm / prompt / alert).
+   On-brand replacement for native browser dialogs. Tokens carry fallbacks so
+   the file works whether or not media-library.css / admin-overview.css is on
+   the page (it loads on both upload.php and the RML settings tabs). */
+
+.dy-dialog-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200000; /* above the WP admin bar + media frame */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: rgba(6, 8, 12, 0.55);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+	opacity: 0;
+	transition: opacity 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+
+	&.is-open {
+		opacity: 1;
+	}
+}
+
+.dy-dialog {
+	width: 100%;
+	max-width: 420px;
+	box-sizing: border-box;
+	padding: 22px 22px 18px;
+	background: var(--dy-bg-card, #161a23);
+	border: 1px solid var(--dy-edge, transparent);
+	border-radius: var(--dy-radius-lg, 8px);
+	box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+	color: var(--dy-ink, #ecedf2);
+	transform: translateY(8px) scale(0.97);
+	opacity: 0;
+	transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+	transform-origin: center;
+}
+
+.dy-dialog-overlay.is-open .dy-dialog {
+	transform: none;
+	opacity: 1;
+}
+
+.dy-dialog__eyebrow {
+	margin-bottom: 8px;
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--dy-accent, #5b3efe);
+}
+
+.dy-dialog__title {
+	margin: 0 0 6px;
+	font-size: 17px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1.3;
+	color: var(--dy-ink, #ecedf2);
+}
+
+.dy-dialog__message {
+	margin: 0;
+	font-size: 13.5px;
+	line-height: 1.5;
+	white-space: pre-line; /* honour the blank line in multi-line confirms */
+	color: var(--dy-ink-soft, #9ba3b5);
+}
+
+.dy-dialog__field {
+	margin-top: 14px;
+}
+
+.dy-dialog__label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--dy-ink-soft, #9ba3b5);
+}
+
+.dy-dialog__input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 9px 12px;
+	font-size: 14px;
+	color: var(--dy-ink, #ecedf2);
+	background: var(--dy-bg, #0c0e13);
+	border: 1px solid var(--dy-edge-hi, transparent);
+	border-radius: var(--dy-radius-sm, 4px);
+	outline: none;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+	&:focus {
+		border-color: var(--dy-accent, #5b3efe);
+		box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.18);
+	}
+}
+
+.dy-dialog__actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+.dy-dialog__btn {
+	-webkit-appearance: none;
+	appearance: none;
+	border: 1px solid transparent;
+	border-radius: var(--dy-radius-sm, 4px);
+	padding: 7px 16px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.3;
+	cursor: pointer;
+	transition: background 0.14s ease, border-color 0.14s ease, transform 0.12s ease, box-shadow 0.14s ease, filter 0.14s ease;
+
+	&:active {
+		transform: scale(0.97);
+	}
+
+	&--ghost {
+		background: transparent;
+		border-color: var(--dy-edge-hi, transparent);
+		color: var(--dy-ink-soft, #9ba3b5);
+
+		&:hover {
+			background: var(--dy-bg-elev, #1d2030);
+			color: var(--dy-ink, #ecedf2);
+		}
+	}
+
+	&--primary {
+		background: var(--dy-accent, #5b3efe);
+		color: #fff;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+		&:hover {
+			filter: brightness(1.06);
+		}
+	}
+
+	&--danger {
+		background: var(--dy-danger, #d63638);
+	}
+
+	&--ghost:focus-visible,
+	&--primary:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.4);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.dy-dialog-overlay,
+	.dy-dialog {
+		transition: none;
+	}
+}

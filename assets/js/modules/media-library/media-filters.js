@@ -63,15 +63,28 @@
 			}
 		} );
 
-		var $secondary  = $( '.media-toolbar-secondary' ).first();
+		/*
+		 * The browsing toolbar, and only that one.
+		 *
+		 * A media frame has two `.media-toolbar-secondary`: the one above the
+		 * grid, and the one in the footer next to the Select button. Taking the
+		 * first match in the document was right only by luck, as long as the
+		 * grid existed. On the "Upload files" tab it does not, so the type
+		 * filter dropped into the footer and sat next to the Select button.
+		 *
+		 * Anchoring on `.attachments-browser` says what we mean, and `:visible`
+		 * keeps it out of the modals a screen has already closed.
+		 */
+		var $browse     = $( '.attachments-browser .media-toolbar-secondary' ).filter( ':visible' );
+		var $secondary  = ( $browse.length ? $browse : $( '.attachments-browser .media-toolbar-secondary' ) ).first();
+		if ( ! $secondary.length ) { return; }
+
 		var $lastFilter = $secondary.find( 'select.attachment-filters' ).last();
 
 		if ( $lastFilter.length ) {
 			$lastFilter.after( $select );
-		} else if ( $secondary.length ) {
-			$secondary.append( $select );
 		} else {
-			$( '.media-toolbar-primary' ).first().prepend( $select );
+			$secondary.append( $select );
 		}
 	}
 
@@ -191,8 +204,19 @@
 		fillSearchPlaceholder();
 		injectDetailClose();
 	}
+	/*
+	 * The targets appear at their own pace: the toolbar on open, the grid and
+	 * the details pane later. Every injector is idempotent, so we simply try
+	 * again for a while.
+	 *
+	 * The tail beyond 1.6s is not padding. The type filter now insists on the
+	 * browsing toolbar (see injectTypeFilter) instead of falling back to
+	 * whatever toolbar exists first, so on a library slow to render there is
+	 * nothing to inject into during the early attempts. Without these last
+	 * tries the filter would simply never appear.
+	 */
 	function runInjectorsBurst() {
-		[ 120, 300, 600, 1000, 1600 ].forEach( function ( d ) {
+		[ 120, 300, 600, 1000, 1600, 2600, 4000 ].forEach( function ( d ) {
 			setTimeout( runInjectors, d );
 		} );
 	}

@@ -113,7 +113,28 @@
 				wp.media.view.AttachmentsBrowser.prototype.render = function () {
 					origRender.apply( this, arguments );
 					injectPanel( this.$el );
+					// A render usually happens while the view is still detached,
+					// so "what is visible" is only settled a tick later. Re-assert
+					// then: this is what catches the browser WordPress builds when
+					// you come back from the "Upload files" tab.
+					setTimeout( placePanelInVisibleModal, 0 );
+					setTimeout( placePanelInVisibleModal, 250 );
 					return this;
+				};
+			}
+
+			/*
+			 * Opening a modal does not always render its browser: WordPress
+			 * reuses a view it has already rendered, and our render patch never
+			 * fires. Without this, reopening a picker showed no folders at all.
+			 */
+			if ( window.wp && wp.media && wp.media.view && wp.media.view.Modal ) {
+				var origModalOpen = wp.media.view.Modal.prototype.open;
+				wp.media.view.Modal.prototype.open = function () {
+					var result = origModalOpen.apply( this, arguments );
+					setTimeout( placePanelInVisibleModal, 0 );
+					setTimeout( placePanelInVisibleModal, 250 );
+					return result;
 				};
 			}
 
@@ -506,8 +527,68 @@
 
 	// ── Panel injection ───────────────────────────────────────────────────────
 
+	/*
+	 * Is this attachments browser the one inside a media picker modal, rather
+	 * than the media library page?
+	 *
+	 * The same script runs in both places, and almost every layout decision
+	 * below differs between them: where the panel is mounted, how it is
+	 * positioned, whether the screen wordmark belongs on screen at all. Naming
+	 * that difference once beats re-deriving it by accident at four call sites,
+	 * which is how the modal ended up inheriting the page's layout wholesale.
+	 */
+	function isModalBrowser( $browser ) {
+		if ( $browser && $browser.length && $browser.closest( '.media-modal' ).length ) {
+			return true;
+		}
+		/*
+		 * Ancestry alone is not enough. Backbone renders an AttachmentsBrowser
+		 * BEFORE inserting it into the modal, and our render patch runs at that
+		 * moment: `closest('.media-modal')` is still empty, and the view would
+		 * be mistaken for the page's own grid.
+		 *
+		 * So fall back on the screen. The media library page is the only place
+		 * with a browser of its own; anywhere else, every attachments browser
+		 * belongs to a picker. Appending into a view not yet inserted is fine,
+		 * it travels with it.
+		 */
+		return ! document.body.classList.contains( 'upload-php' );
+	}
+
+	/*
+	 * The attachments browser the user is actually looking at.
+	 *
+	 * A screen accumulates media modals: WordPress keeps each frame's markup
+	 * after it closes, and switching to "Upload files" and back builds a second
+	 * browser inside the same modal. Several are in the DOM, one is on screen,
+	 * and the panel has to be in that one — being in any other means being
+	 * invisible, which is how the panel silently went missing after a tab
+	 * round-trip.
+	 *
+	 * So the target is re-derived from what is VISIBLE, at every trigger,
+	 * rather than trusted from whichever view happened to render last. That is
+	 * what makes this hold under an order of renders we do not control.
+	 */
+	function visibleModalBrowser() {
+		var modals = document.querySelectorAll( '.media-modal' );
+		for ( var i = 0; i < modals.length; i++ ) {
+			if ( modals[ i ].getBoundingClientRect().height <= 0 ) { continue; }
+			var browser = modals[ i ].querySelector( '.attachments-browser' );
+			if ( browser ) { return $( browser ); }
+		}
+		return null;
+	}
+
+	// Re-assert the panel's place. Cheap and idempotent: safe to call often,
+	// and on any trigger that might have moved the ground under it.
+	function placePanelInVisibleModal() {
+		var $browser = visibleModalBrowser();
+		if ( $browser ) { injectPanel( $browser ); }
+	}
+
 	function injectPanel( $browser ) {
 		if ( ! $browser || ! $browser.length ) { return; }
+		var inModal = isModalBrowser( $browser );
 		/*
 		 * Mount the dy-has-folder-panel class on the browser on EVERY call (so
 		 * Backbone re-renders that replace .attachments-browser still get the
@@ -528,10 +609,54 @@
 		 *      the "mispositioned ghost" appearance.
 		 * <body> has no transform and no Backbone-driven re-render, so both
 		 * symptoms vanish.
+		 *
+		 * ALL OF THAT HOLDS FOR THE LIBRARY PAGE, AND ONLY THERE. Inside a
+		 * picker modal the same choice is exactly wrong, and was the whole of
+		 * what users saw as a broken integration:
+		 *   · the panel kept the page's position:fixed, anchored to the WP
+		 *     admin sidebar, so it landed wherever that sidebar happens to be
+		 *     rather than against the modal;
+		 *   · at z-index 100 under a modal at 160000 it was painted behind the
+		 *     overlay, so the picker simply had no folders at all, while the
+		 *     toolbar above still stepped aside for a panel that wasn't there;
+		 *   · living on <body>, it outlived the modal and stayed on screen,
+		 *     over the post editor, until the page was reloaded.
+		 * In a modal the panel belongs INSIDE .attachments-browser: that box is
+		 * position:relative, it is the containing block the modal CSS below
+		 * expects, and it goes away when the modal does.
 		 */
 		$browser.addClass( 'dy-has-folder-panel' );
-		if ( $( '#dy-folder-panel' ).length ) { return; }
-		$( 'body' ).append( buildPanel() );
+
+		// In a modal, the browser we were handed is not necessarily the one on
+		// screen: a render can fire for a browser belonging to a closed modal.
+		// What is visible wins.
+		var $host     = inModal ? ( visibleModalBrowser() || $browser ) : $( 'body' );
+
+		if ( inModal ) {
+			/*
+			 * Marks the modal as ours to dress. A dark folder panel bolted onto
+			 * an otherwise stock white modal reads as unfinished, which is
+			 * precisely how this looked. The class carries the theme in CSS.
+			 *
+			 * It is set from here rather than on every `.media-modal` so that a
+			 * picker we have deliberately stepped away from (another folder
+			 * plugin owning the media UI) keeps WordPress's own appearance.
+			 */
+			$host.closest( '.media-modal' ).addClass( 'dy-ml-modal' );
+		}
+		var $existing = $( '#dy-folder-panel' );
+
+		if ( $existing.length ) {
+			// Already built. If the context changed, MOVE it instead of
+			// rebuilding: the loaded tree, the scroll position and every bound
+			// handler come along, and no second REST round-trip is needed.
+			if ( ! $existing.parent().is( $host ) ) {
+				$existing.appendTo( $host );
+			}
+			return;
+		}
+
+		$host.append( buildPanel() );
 
 		// Apply saved widths as CSS custom properties on body (panels are position:fixed,
 		// .wrap padding reads vars too — body is the common ancestor for everything).
@@ -541,11 +666,24 @@
 		$( '#dy-add-folder-btn' ).on( 'click', onAddFolder );
 		$( '#dy-add-collection-btn' ).on( 'click', onAddCollection );
 
-		relocateAddMediaButton();
-		watchForeignActions();
-		mountPanelBrand();
-
-		initFolderResize();
+		if ( ! inModal ) {
+			/*
+			 * These four belong to the library PAGE and to nothing else: the
+			 * relocated "Add Media" action, the foreign buttons lifted out of
+			 * the page heading, the screen wordmark, and the drag-to-resize
+			 * handle.
+			 *
+			 * A picker modal has its own chrome, its own title, and its own
+			 * width (--dy-modal-fw, which follows the modal rather than a
+			 * stored preference). Running any of this there is what put a large
+			 * "Refined Media Library" wordmark across the post editor, and left
+			 * a resize handle writing to a variable the modal ignores.
+			 */
+			relocateAddMediaButton();
+			watchForeignActions();
+			mountPanelBrand();
+			initFolderResize();
+		}
 
 		loadFolderTree();
 		loadCollections();
@@ -1027,6 +1165,10 @@
 			? '<div id="dy-show-orphans" class="dy-show-all" data-id="-1">' +
 					'<span class="dashicons dashicons-minus"></span>' +
 					'<span class="dy-show-all__label">' + esc( i18n.showOrphans ) + '</span>' +
+					// Left empty on purpose: filled by loadPanelCounts() once the
+					// real number is known. A placeholder zero would be a wrong
+					// number on screen for as long as the request takes.
+					'<span class="dy-show-all__count" aria-hidden="true"></span>' +
 				'</div>'
 			: '';
 		// Panel footer: "Settings" link → RML settings page.
@@ -1044,6 +1186,7 @@
 				'<div id="dy-show-all" class="dy-show-all" data-id="0">' +
 					'<span class="dashicons dashicons-admin-media"></span>' +
 					'<span class="dy-show-all__label">' + esc( i18n.showAll ) + '</span>' +
+					'<span class="dy-show-all__count" aria-hidden="true"></span>' +
 				'</div>' +
 				showOrphans +
 
@@ -1088,7 +1231,69 @@
 
 	// ── Folder tree ───────────────────────────────────────────────────────────
 
+	/*
+	 * Counts for "Show all media" and "Media without folder".
+	 *
+	 * These two entries are views like any other, and they were the only ones
+	 * without a number. The badge is the panel's existing one, reused: a count
+	 * in parentheses would have been a third way of writing the same thing,
+	 * after the folder badge and the page's own heading.
+	 *
+	 * Kept silent on failure. A stale number is worse than no number, so the
+	 * badge simply empties rather than keeping a figure we can no longer vouch
+	 * for.
+	 */
+	function loadPanelCounts() {
+		/*
+		 * The badges are looked up when the ANSWER comes back, never before.
+		 *
+		 * In a picker modal the panel is built inside an attachments browser
+		 * that Backbone has not inserted into the page yet. A lookup at call
+		 * time searches the document and finds nothing, and an early return
+		 * there means the request is never sent at all: the counts stayed
+		 * blank in every modal while working on the library page. By the time
+		 * the fetch resolves the browser is in place.
+		 */
+		var ecrire = function ( total, sansDossier ) {
+			var $all     = $( '#dy-show-all .dy-show-all__count' );
+			var $orphans = $( '#dy-show-orphans .dy-show-all__count' );
+			$all.text( total );
+			$orphans.text( sansDossier );
+			return $all.length || $orphans.length;
+		};
+
+		window.fetch( restBase + '/counts', { headers: { 'X-WP-Nonce': nonce } } )
+			.then( function ( r ) { return r.json(); } )
+			.then( function ( c ) {
+				if ( ! c || typeof c.total !== 'number' ) { throw new Error( 'bad payload' ); }
+				// One retry: on a slow panel the answer can still beat the markup.
+				if ( ! ecrire( c.total, c.unassigned ) ) {
+					setTimeout( function () { ecrire( c.total, c.unassigned ); }, 400 );
+				}
+			} )
+			.catch( function () {
+				// A stale number is worse than none: empty the badges rather
+				// than keep a figure we can no longer vouch for.
+				ecrire( '', '' );
+			} );
+	}
+
 	function loadFolderTree() {
+		/*
+		 * Deliberately before the folders guard, and inside this function rather
+		 * than beside its dozen call sites.
+		 *
+		 * Every mutation that can move these totals already ends here: a file
+		 * dropped on a folder, a folder deleted, an upload (through
+		 * dyRefreshCountsSoon), a change from the details pane (through
+		 * window.dyReloadFolders). Hanging the counts off the same point means
+		 * they inherit that whole web for free, instead of being refreshed at
+		 * ten sites and forgotten at the eleventh.
+		 *
+		 * Before the guard because the total on "Show all media" stands even
+		 * when the Folders section is switched off.
+		 */
+		loadPanelCounts();
 		if ( ! foldersEnabled ) { return; }
 		window.fetch( restBase, { headers: { 'X-WP-Nonce': nonce } } )
 			.then( function ( r ) { return r.json(); } )
@@ -2036,12 +2241,23 @@
 	 * of that button. Remove them when the selection is empty.
 	 */
 	function syncBulkLocationBar( selection ) {
+		/*
+		 * Library page only. In a picker these two buttons were duplicated into
+		 * every media toolbar on the screen and landed on top of the date
+		 * filter; see the matching note in bulk-metadata.js for why they have
+		 * no place there even when they land correctly.
+		 */
+		if ( ! document.body.classList.contains( 'upload-php' ) ) {
+			$( '#dy-bulk-location-bar' ).remove();
+			return;
+		}
+
 		if ( selection.length < 1 ) {
 			$( '#dy-bulk-location-bar' ).remove();
 			return;
 		}
 
-		var $toolbar = $( '.media-toolbar-secondary' );
+		var $toolbar = $( '.media-toolbar-secondary' ).first();
 		if ( ! $toolbar.length ) { return; }
 
 		var $bar = $( '#dy-bulk-location-bar' );

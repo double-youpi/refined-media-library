@@ -101,7 +101,23 @@
 	}
 
 	function injectBulkButton( count ) {
-		var $toolbar = $( '.media-toolbar-secondary' );
+		/*
+		 * Library page only, and one toolbar only.
+		 *
+		 * `.media-toolbar-secondary` matches every media toolbar in the
+		 * document, and a screen accumulates them: one per picker modal opened,
+		 * plus the page's own. jQuery then prepends a COPY into each, which is
+		 * how three "Edit metadata" buttons ended up scattered across a picker.
+		 *
+		 * Beyond the duplication, this button does not belong in a picker at
+		 * all: there, a selection means "about to be inserted", not "about to
+		 * be bulk-edited". Two meanings for one selection is a trap, and the
+		 * modal already has its own action in the footer.
+		 */
+		if ( ! document.body.classList.contains( 'upload-php' ) ) {
+			return;
+		}
+		var $toolbar = $( '.media-toolbar-secondary' ).first();
 		if ( ! $toolbar.length ) {
 			return;
 		}

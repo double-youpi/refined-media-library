@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Double Youpi 0.9.40-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-22T10:45:23+00:00\n"
+"POT-Creation-Date: 2026-09-22T17:58:21+00:00\n"
 "PO-Revision-Date: 2026-05-20 22:34+0000\n"
 "Last-Translator: Double Youpi\n"
 "Language-Team: Double Youpi (English (United Kingdom))\n"
@@ -630,12 +630,12 @@ msgstr "Move to folder…"
 msgid "Add to collection…"
 msgstr "Add to collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:538
-#: src/Modules/MediaLibrary/FolderManager.php:574
+#: src/Modules/MediaLibrary/FolderManager.php:600
+#: src/Modules/MediaLibrary/FolderManager.php:636
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "A folder cannot be moved into itself or one of its subfolders."
 
-#: src/Modules/MediaLibrary/FolderManager.php:599
+#: src/Modules/MediaLibrary/FolderManager.php:661
 msgid "Could not delete folder."
 msgstr "Could not delete folder."
 

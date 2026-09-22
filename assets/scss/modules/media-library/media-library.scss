@@ -381,9 +381,44 @@ body.folded #dy-folder-panel {
 	border-right: 1px solid var( --line, #1e2235 );
 }
 /* Toolbar (filters) + grid offset to the right of the panel. */
+/*
+ * Toolbar (filters), grid and drop zone all step aside for the panel.
+ *
+ * The grid offset has to land on `.attachments` (the <ul> that actually holds
+ * the thumbnails), NOT on `.attachments-wrapper`. Core leaves that wrapper
+ * `position: static`, and `left` on a static box is simply ignored: the rule
+ * was dead, so the toolbar moved while the grid stayed put, and the filter bar
+ * ended up misaligned with the thumbnails under it. The <ul> is absolutely
+ * positioned with both `left` and `right`, so moving its left edge resizes it
+ * in one declaration, with no width arithmetic to keep in step.
+ */
 .media-modal .attachments-browser.dy-has-folder-panel > .media-toolbar,
-.media-modal .attachments-browser.dy-has-folder-panel .attachments-wrapper {
+.media-modal .attachments-browser.dy-has-folder-panel .attachments,
+.media-modal .attachments-browser.dy-has-folder-panel .uploader-inline {
 	left: var( --dy-modal-fw, 220px ) !important;
+}
+
+/*
+ * A closed media modal keeps its markup: WordPress collapses it rather than
+ * removing it. The panel now lives inside that markup, so it follows the modal
+ * out of sight on its own, but only as long as the collapse actually zeroes its
+ * box. This says it outright instead of depending on that, because the failure
+ * it guards against is the ugly one: a folder panel left across the editor.
+ */
+body:not(.modal-open) .media-modal #dy-folder-panel {
+	display: none !important;
+}
+
+/*
+ * Two panel affordances that belong to the library page only.
+ * The drag handle writes a stored width the modal does not read, and the
+ * Settings link would navigate away from a post being edited, losing the
+ * draft. Both are hidden here rather than removed from the markup, so the
+ * panel stays one component with one template.
+ */
+.media-modal #dy-folder-panel .dy-rh-right,
+.media-modal #dy-folder-panel .dy-panel-settings {
+	display: none !important;
 }
 
 /* Detail panel: fixed, starts below the title + 20px from the right edge.
@@ -710,7 +745,7 @@ body.upload-php #e-image-ai-media-library a:active {
 	font-size: 12px !important;
 	font-weight: 600 !important;
 	line-height: 1 !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-radius: 6px !important;
@@ -723,18 +758,18 @@ body.upload-php #e-image-ai-media-library a:active {
 body.upload-php #e-image-ai-media-library a:hover {
 	background: var( --bg-elev, #1d2030 ) !important;
 	border-color: var( --ink-faint, #4a4f5d ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.upload-php #e-image-ai-media-library a:focus,
 body.upload-php #e-image-ai-media-library a:focus-visible {
 	background: var( --bg-card, #161a23 ) !important;
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 3px rgba( 91, 140, 255, 0.15 ) !important;
+	box-shadow: 0 0 0 3px rgba( 91, 62, 254, 0.15 ) !important;
 	outline: none !important;
 }
 body.upload-php #e-image-ai-media-library a i,
 body.upload-php #e-image-ai-media-library a [class*="eicon"] {
-	color: var( --accent, #5b3efe );
+	color: var( --accent, #5b3efe ) !important;
 }
 
 /* ── Panel header ─────────────────────────────────────────────────────────── */
@@ -793,7 +828,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 }
 
 .dy-show-all.is-active {
-	background: rgba( 91, 140, 255, 0.08 );
+	background: rgba( 91, 62, 254, 0.08 );
 	color: var( --ink, #ecedf2 );
 }
 
@@ -945,7 +980,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 }
 
 .dy-folder-root.is-active {
-	background: rgba( 91, 140, 255, 0.08 );
+	background: rgba( 91, 62, 254, 0.08 );
 	color: var( --ink, #ecedf2 );
 }
 
@@ -988,7 +1023,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 }
 
 .dy-folder-root.is-active .dy-folder-root__count {
-	background: rgba( 91, 140, 255, 0.15 );
+	background: rgba( 91, 62, 254, 0.15 );
 	color: var( --accent, #5b3efe );
 }
 
@@ -1011,7 +1046,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 }
 
 .dy-folder-item.is-active {
-	background: rgba( 91, 140, 255, 0.08 );
+	background: rgba( 91, 62, 254, 0.08 );
 	color: var( --ink, #ecedf2 );
 }
 
@@ -1043,6 +1078,26 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 .dy-folder-toggle.is-open { transform: rotate( 90deg ); }
 .dy-folder-toggle-spacer { width: 14px; flex-shrink: 0; }
 
+
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* Guide rail: a thin line descending from a folder's chevron alongside its
+   children. --dy-rail-x is set inline per subtree (aligned to the parent's
+   chevron centre). */
+.dy-folder-children {
+  position: relative;
+}
+.dy-folder-children::before {
+  content: "";
+  position: absolute;
+  left: var(--dy-rail-x, 21px);
+  top: -2px;
+  bottom: 15px;
+  width: 1px;
+  background: var(--line-hi, #2a3049);
+  pointer-events: none;
+}
+
+
 .dy-folder-item__icon {
 	flex-shrink: 0;
 	font-size: 14px;
@@ -1064,7 +1119,8 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 	white-space: nowrap;
 }
 
-.dy-folder-item__count {
+.dy-folder-item__count,
+.dy-show-all__count {
 	font-size: 10px;
 	font-family: var( --font-mono, monospace );
 	color: var( --ink-mute, #5a6070 ) !important;
@@ -1073,62 +1129,276 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 	border-radius: 3px;
 	flex-shrink: 0;
 }
-.dy-folder-item.is-active .dy-folder-item__count {
-	background: rgba( 91, 140, 255, 0.15 );
+.dy-folder-item.is-active .dy-folder-item__count,
+.dy-show-all.is-active .dy-show-all__count {
+	background: rgba( 91, 62, 254, 0.15 );
 	color: var( --accent, #5b3efe ) !important;
 }
 
-/* Actions — appear on row hover */
-.dy-folder-actions {
-	display: flex;
-	align-items: center;
-	gap: 1px;
-	flex-shrink: 0;
-	opacity: 0;
-	transition: opacity 0.12s;
-}
-.dy-folder-item:hover .dy-folder-actions,
-.dy-folder-item.is-active .dy-folder-actions,
-.dy-collection-item:hover .dy-folder-actions,
-.dy-collection-item.is-active .dy-folder-actions { opacity: 1; }
 
-.dy-folder-actions button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 22px;
-	height: 22px;
-	border-radius: 4px;
-	background: none;
-	border: none;
-	color: var( --ink-mute, #5a6070 );
-	cursor: pointer;
-	padding: 0;
-	min-height: 0;
-	transition: color 0.12s, background 0.12s;
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* Actions — appear on row hover */
+/* ⋯ actions button (reveals on hover/focus; opens the context menu) */
+.dy-item-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--ink-mute, #5a6070);
+  cursor: pointer;
+  opacity: 0;
+  min-height: 0;
+  transition: opacity 0.12s ease, color 0.12s ease, background 0.12s ease;
 }
-.dy-folder-actions button:hover {
-	color: var( --ink, #ecedf2 );
-	background: var( --bg-hi, #232938 );
+.dy-folder-item:hover .dy-item-menu-btn,
+.dy-folder-item.is-active .dy-item-menu-btn,
+.dy-collection-item:hover .dy-item-menu-btn,
+.dy-collection-item.is-active .dy-item-menu-btn,
+.dy-item-menu-btn:focus-visible {
+  opacity: 1;
 }
-.dy-folder-actions .dy-btn-delete:hover,
-.dy-folder-actions .dy-btn-delete-col:hover {
-	color: var( --accent-4, #ff6b8a );
+.dy-item-menu-btn:hover,
+.dy-item-menu-btn:focus-visible {
+  color: var(--ink, #ecedf2);
+  background: var(--bg-hi, #232938);
+  outline: none;
 }
-.dy-folder-actions .dashicons {
-	font-size: 13px;
-	width: 13px;
-	height: 13px;
+.dy-item-menu-btn svg {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
+
+/* Context menu popover (right-click / ⋯) */
+.dy-ctx-menu {
+  position: fixed;
+  z-index: 160000;
+  min-width: 186px;
+  padding: 5px;
+  background: var(--bg-card, #161a23);
+  border: 1px solid var(--dy-edge, #1e2235);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.dy-ctx-menu.is-open {
+  opacity: 1;
+  transform: none;
+}
+.dy-ctx-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--ink-soft, #9ba3b5);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+.dy-ctx-menu__item:hover,
+.dy-ctx-menu__item:focus-visible {
+  background: var(--bg-elev, #1d2030);
+  color: var(--ink, #ecedf2);
+  outline: none;
+}
+.dy-ctx-menu__item.is-danger {
+  color: var(--accent-4, #ff6b8a);
+}
+.dy-ctx-menu__item.is-danger:hover,
+.dy-ctx-menu__item.is-danger:focus-visible {
+  background: rgba(214, 54, 56, 0.12);
+  color: #ff7a8f;
+}
+.dy-ctx-menu__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+.dy-ctx-menu__label {
+  flex: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dy-ctx-menu {
+    transition: none;
+  }
+}
+
+
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* Detail-panel folder picker: trigger + hierarchical popover */
+.dy-dp-folder-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid var(--dy-edge-hi, #2a3049);
+  border-radius: 6px;
+  background: var(--bg, #0c0e13);
+  color: var(--ink, #ecedf2);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.14s ease, background 0.14s ease;
+}
+.dy-dp-folder-trigger:hover {
+  border-color: var(--accent, #5b3efe);
+}
+.dy-dp-folder-trigger__icon,
+.dy-dp-folder-trigger__caret {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  color: var(--ink-mute, #5a6070);
+}
+.dy-dp-folder-trigger__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dy-folder-pop {
+  position: fixed;
+  z-index: 200001;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 5px;
+  background: var(--bg-card, #161a23);
+  border: 1px solid var(--dy-edge, #1e2235);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.dy-folder-pop.is-open {
+  opacity: 1;
+  transform: none;
+}
+.dy-folder-pop__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--ink-soft, #9ba3b5);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+.dy-folder-pop__item:hover,
+.dy-folder-pop__item:focus-visible {
+  background: var(--bg-elev, #1d2030);
+  color: var(--ink, #ecedf2);
+  outline: none;
+}
+.dy-folder-pop__item.is-current {
+  color: var(--ink, #ecedf2);
+}
+.dy-folder-pop__icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  color: var(--ink-mute, #5a6070);
+}
+.dy-folder-pop__item.is-current .dy-folder-pop__icon {
+  color: var(--accent, #5b3efe);
+}
+.dy-folder-pop__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dy-folder-pop__check {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  color: var(--accent, #5b3efe);
+}
+@media (prefers-reduced-motion: reduce) {
+  .dy-folder-pop {
+    transition: none;
+  }
+}
+
+
+// Les boutons d'action en ligne (.dy-folder-actions) ont été remplacés par
+// le bouton ⋯ et son menu contextuel, plus haut dans ce fichier.
+
 
 /* Drop target */
 .dy-folder-item.dy-drop-target,
 .dy-folder-root.dy-drop-target {
-	background: rgba( 91, 140, 255, 0.14 ) !important;
+	background: rgba( 91, 62, 254, 0.14 ) !important;
 	color: var( --ink, #ecedf2 ) !important;
-	outline: 1px dashed rgba( 91, 140, 255, 0.5 );
+	outline: 1px dashed rgba( 91, 62, 254, 0.5 );
 	outline-offset: -2px;
 }
+
+
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* ── Folder drag (re-parent / reorder) ───────────────────────────────────── */
+.dy-folder-item[draggable="true"] { cursor: grab; }
+body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
+
+.dy-folder-item.dy-folder-dragging {
+  opacity: 0.4;
+}
+
+/* Drop INTO a folder (re-parent) — solid accent ring. */
+.dy-folder-item.dy-drop-into,
+#dy-show-all.dy-drop-into {
+  background: rgba(91, 62, 254, 0.18) !important;
+  color: var(--ink, #ecedf2) !important;
+  box-shadow: inset 0 0 0 1px rgba(91, 62, 254, 0.6);
+  border-radius: 5px;
+}
+
+/* Reorder BETWEEN siblings — insertion line above/below. */
+.dy-folder-item.dy-drop-before::before,
+.dy-folder-item.dy-drop-after::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: var(--accent, #5b3efe);
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2);
+  pointer-events: none;
+}
+.dy-folder-item.dy-drop-before::before { top: -1px; }
+.dy-folder-item.dy-drop-after::after { bottom: -1px; }
+
 
 /* ── Duplicate badge ──────────────────────────────────────────────────────── */
 
@@ -1288,7 +1558,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 .dy-bulk-folder-select:focus,
 .dy-bulk-col-select:focus {
 	border-color: var( --accent, #5b3efe );
-	box-shadow: 0 0 0 3px rgba( 91, 140, 255, 0.15 );
+	box-shadow: 0 0 0 3px rgba( 91, 62, 254, 0.15 );
 }
 
 .dy-bulk-dialog__field select:hover,
@@ -1369,7 +1639,7 @@ body.upload-php #e-image-ai-media-library a [class*="eicon"] {
 	color: var( --accent-3, #a57cff ) !important;
 }
 
-.dy-bulk-folder-btn:hover { background: rgba( 91, 140, 255, 0.1 ) !important; }
+.dy-bulk-folder-btn:hover { background: rgba( 91, 62, 254, 0.1 ) !important; }
 .dy-bulk-col-btn:hover    { background: rgba( 165, 124, 255, 0.1 ) !important; }
 
 /* ── Type filter ─────────────────────────────────────────────────────────── */
@@ -1544,7 +1814,7 @@ body.upload-php .media-toolbar .attachment-filters {
 	background-size: 10px 6px !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-radius: 4px !important;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	font-size: 12px !important;
 	font-family: inherit !important;
 	line-height: 30px !important;
@@ -1558,13 +1828,13 @@ body.upload-php .media-toolbar .attachment-filters {
 body.upload-php .media-toolbar select:hover,
 body.upload-php .media-toolbar .attachment-filters:hover {
 	border-color: var( --accent, #5b3efe ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.upload-php .media-toolbar select:focus,
 body.upload-php .media-toolbar .attachment-filters:focus {
 	outline: none !important;
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 2px rgba( 91, 140, 255, 0.2 ) !important;
+	box-shadow: 0 0 0 2px rgba( 91, 62, 254, 0.2 ) !important;
 }
 
 /* Option 1: hide the redundant native "All media items" type dropdown.
@@ -1595,7 +1865,7 @@ body.upload-php .dy-mine-btn {
 
 	&:hover {
 		border-color: var( --accent, #5b3efe ) !important;
-		color: var( --ink, #ecedf2 );
+		color: var( --ink, #ecedf2 ) !important;
 	}
 
 	&:focus-visible {
@@ -1607,14 +1877,14 @@ body.upload-php .dy-mine-btn {
 	&.is-active {
 		background-color: rgba( 91, 62, 254, 0.14 ) !important;
 		border-color: var( --accent, #5b3efe ) !important;
-		color: var( --ink, #ecedf2 );
+		color: var( --ink, #ecedf2 ) !important;
 	}
 
 	svg {
 		display: block;
 	}
 
-	/* Label hidden by default; slides open on hover / keyboard focus. */
+	// Label hidden by default; slides open on hover / keyboard focus.
 	&__label {
 		max-width: 0;
 		overflow: hidden;
@@ -1664,14 +1934,14 @@ body.upload-php input.search[type="search"] {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-radius: 4px !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-size: 12px !important;
 	box-shadow: none !important;
 	transition: border-color 0.15s !important;
 }
 body.upload-php input.search[type="search"]:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 2px rgba( 91, 140, 255, 0.2 ) !important;
+	box-shadow: 0 0 0 2px rgba( 91, 62, 254, 0.2 ) !important;
 	outline: none !important;
 }
 body.upload-php input.search[type="search"]::placeholder {
@@ -1711,20 +1981,20 @@ body.upload-php .media-toolbar .delete-selected-permanently-button,
 body.upload-php .media-toolbar .button-link-delete {
 	background: #d63638 !important;
 	border-color: #d63638 !important;
-	color: #fff;
+	color: #fff !important;
 }
 body.upload-php .media-toolbar .delete-selected-button:hover,
 body.upload-php .media-toolbar .delete-selected-permanently-button:hover,
 body.upload-php .media-toolbar .button-link-delete:hover {
 	background: #b32d2e !important;
 	border-color: #b32d2e !important;
-	color: #fff;
+	color: #fff !important;
 }
 body.upload-php .media-toolbar .delete-selected-button:disabled,
 body.upload-php .media-toolbar .delete-selected-permanently-button:disabled {
 	background: var( --bg-card, #161a23 ) !important;
 	border-color: var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	opacity: 0.6;
 	cursor: not-allowed;
 }
@@ -1787,14 +2057,25 @@ body.upload-php .view-switch a:hover {
 	background: var( --bg-elev, #1d2030 );
 }
 
-body.upload-php .view-switch a.current {
-	background: var( --accent, #5b3efe );
-	color: #0a0c11;
-	box-shadow: 0 1px 4px rgba( 91, 140, 255, 0.4 );
+/* Active view: the icon takes the accent, on the same transparent ground as
+   the inactive one. The filled-pill version this replaces never showed, since
+   `background: none !important` on the link above cancelled it.
+   `::before` must be named: WordPress colours it itself
+   (`.view-switch a.current::before` in colors.min.css, 0,2,1), and inheriting
+   from the link is not enough to win. `.media-grid-view-switch` used to carry
+   this on its own, which is why grid mode looked right and list mode did not:
+   that second class only exists in grid mode. One rule now covers both. */
+body.upload-php .view-switch a.current,
+body.upload-php .view-switch a.current::before,
+body.upload-php .view-switch a.current:hover,
+body.upload-php .view-switch a.current:hover::before,
+body.upload-php .view-switch a.current:focus,
+body.upload-php .view-switch a.current:focus::before {
+  color: var(--accent, #5b3efe);
 }
 
 body.upload-php .view-switch a.current:hover {
-	color: #0a0c11;
+  background: var(--bg-elev, #1d2030);
 }
 
 /* Remove the screen-reader-text visual artifacts */
@@ -1885,7 +2166,7 @@ body.upload-php .media-toolbar-primary.search-form {
 .wp-filter .search-form #search-submit {
 	background: var(--bg-card, #161a23) !important;
     border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-    color: var(--ink-soft, #9ba3b5);
+    color: var(--ink-soft, #9ba3b5) !important;
     border-radius: 4px !important;
     box-shadow: none !important;
     text-shadow: none !important;
@@ -1893,7 +2174,7 @@ body.upload-php .media-toolbar-primary.search-form {
 .wp-filter .search-form #search-submit:hover {
 	border-color: var( --accent, #5b3efe ) !important;
 	background: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 /* Search input — width is now controlled by the flex rule above (input grows
    inside search-form). Just kill default WP margins. */
@@ -2014,7 +2295,7 @@ body.upload-php .attachment {
 
 body.upload-php .attachment:hover {
 	box-shadow:
-		0 0 0 1px rgba( 91, 140, 255, 0.3 ),
+		0 0 0 1px rgba( 91, 62, 254, 0.3 ),
 		0 12px 32px -8px rgba( 0, 0, 0, 0.7 ),
 		0 4px 8px -2px rgba( 0, 0, 0, 0.4 ) !important;
 	transform: scale( 1.02 ) !important;
@@ -2030,7 +2311,7 @@ body.upload-php .selected.attachment {
 	box-shadow:
 		inset 0 0 0 2px var( --accent, #5b3efe ),
 		0 0 0 1px var( --accent, #5b3efe ),
-		0 8px 20px -6px rgba( 91, 140, 255, 0.35 ) !important;
+		0 8px 20px -6px rgba( 91, 62, 254, 0.35 ) !important;
 	transform: translateY( -1px ) !important;
 }
 
@@ -2038,7 +2319,7 @@ body.upload-php .selected.attachment {
 body.upload-php .attachment.details {
 	box-shadow:
 		0 0 0 2px var( --accent, #5b3efe ),
-		0 0 20px rgba( 91, 140, 255, 0.25 ) !important;
+		0 0 20px rgba( 91, 62, 254, 0.25 ) !important;
 }
 
 /* Thumbnail background — checkered pattern for transparency */
@@ -2106,7 +2387,7 @@ body.upload-php .attachment .filename {
 	) !important;
 	border: 0 !important;
 	box-shadow: none !important; /* kill WP core's inset 0 0 0 1px hairline */
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-family: var( --font-body, "Inter Tight", system-ui, -apple-system, sans-serif ) !important;
 	font-size: 10.5px !important;
 	font-weight: 500 !important;
@@ -2208,7 +2489,7 @@ body.upload-php .uploader-inline:hover {
 /* ── No-media / count text ───────────────────────────────────────────────── */
 
 body.upload-php .no-media {
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2238,7 +2519,7 @@ body.upload-php #wpbody table.wp-list-table {
 	border-radius: 8px;
 	border-collapse: separate !important;
 	border-spacing: 0;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	/*
 	 * IMPORTANT: we keep table-layout: fixed (WP default) so that column
 	 * widths are predictable. With table-layout: auto the .column-title cell
@@ -2254,13 +2535,13 @@ body.upload-php #wpbody table.wp-list-table {
 
 body.upload-php #wpbody table.wp-list-table tbody td,
 body.upload-php #wpbody table.wp-list-table tbody th {
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 }
 
 body.upload-php #wpbody table.wp-list-table thead th,
 body.upload-php #wpbody table.wp-list-table tfoot th {
 	background-color: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	border-bottom: 1px solid var( --line, #1e2235 );
 	font-family: var( --font-mono, ui-monospace, monospace );
 	font-size: 10px;
@@ -2308,7 +2589,7 @@ body.upload-php #wpbody table.wp-list-table tbody > tr.alternate {
 
 body.upload-php .wp-list-table thead th a,
 body.upload-php .wp-list-table tfoot th a {
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	font-weight: 600;
 	display: inline-flex;
 	align-items: center;
@@ -2318,7 +2599,7 @@ body.upload-php .wp-list-table tfoot th a {
 
 body.upload-php .wp-list-table thead th.sorted a,
 body.upload-php .wp-list-table thead th.sorted .sorting-indicator {
-	color: var( --accent, #5b3efe );
+	color: var( --accent, #5b3efe ) !important;
 }
 
 /*
@@ -2394,7 +2675,7 @@ body.upload-php .wp-list-table th.sortable a:hover .sorting-indicators::after {
 body.upload-php .wp-list-table tbody td,
 body.upload-php .wp-list-table tbody th {
 	border-bottom: 1px solid var( --line-soft, #0d1018 );
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	padding: 14px !important;
 	background: transparent !important;
 	vertical-align: middle;
@@ -2408,7 +2689,7 @@ body.upload-php #wpbody table.wp-list-table tbody tr:hover,
 body.upload-php #wpbody table.wp-list-table tbody tr:hover td,
 body.upload-php #wpbody table.wp-list-table tbody tr:hover th {
 	background-color: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /*
@@ -2478,13 +2759,13 @@ body.upload-php .wp-list-table .row-actions .download {
 body.upload-php .wp-list-table .column-title strong a,
 body.upload-php .wp-list-table .column-fichier strong a,
 body.upload-php .wp-list-table .filename a {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	text-decoration: none;
 	font-weight: 600;
 }
 body.upload-php .wp-list-table .column-title strong a:hover,
 body.upload-php .wp-list-table .column-fichier strong a:hover {
-	color: var( --accent, #5b3efe );
+	color: var( --accent, #5b3efe ) !important;
 }
 
 /* Thumbnail in filename column — rounded corners, subtle border */
@@ -2596,10 +2877,10 @@ body.upload-php .wp-list-table .column-author,
 body.upload-php .wp-list-table .column-parent,
 body.upload-php .wp-list-table .column-date {
 	font-size: 12px;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 }
 body.upload-php .wp-list-table .column-parent strong {
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	font-weight: 500;
 	display: block;
 	margin-bottom: 2px;
@@ -2731,7 +3012,7 @@ body.upload-php .wp-list-table tbody tr.iedit:hover td {
 /* 6. Selected state — checkbox checked = full row highlighted
    WP adds aria-checked on the row OR we target via :has() (modern browsers) */
 body.upload-php .wp-list-table tbody tr:has( .check-column input:checked ) {
-	background: rgba( 91, 140, 255, 0.06 ) !important;
+	background: rgba( 91, 62, 254, 0.06 ) !important;
 	box-shadow: inset 3px 0 0 var( --accent, #5b3efe );
 }
 body.upload-php .wp-list-table tbody tr:has( .check-column input:checked ) td {
@@ -2754,7 +3035,7 @@ body.upload-php .wp-list-table .row-actions span:last-child::after {
 body.upload-php .wp-list-table .no-items td {
 	text-align: center !important;
 	padding: 60px 14px !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	font-style: italic;
 	font-size: 14px;
 }
@@ -2788,7 +3069,7 @@ body.upload-php .wp-list-table tbody tr.iedit:hover td {
 /* Cell contents */
 body.upload-php .wp-list-table strong a,
 body.upload-php .wp-list-table .row-title {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -2849,7 +3130,7 @@ body.upload-php select#dy-folder-filter,
 body.upload-php select.attachment-filters {
 	background-color: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	border-radius: 4px !important;
 	height: 32px !important;
 	min-height: 32px !important;
@@ -2879,7 +3160,7 @@ body.upload-php .tablenav .button:hover,
 body.upload-php .filter-items select:hover,
 body.upload-php select.attachment-filters:hover {
 	border-color: var( --accent, #5b3efe ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 body.upload-php select option {
@@ -2897,7 +3178,7 @@ body.upload-php .search-box input[type="search"],
 body.upload-php #media-search-input {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	border-radius: 4px !important;
 	height: 32px !important;
 	padding: 0 10px !important;
@@ -2906,13 +3187,13 @@ body.upload-php #media-search-input {
 body.upload-php .search-box input[type="search"]:focus,
 body.upload-php #media-search-input:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 2px rgba( 91, 140, 255, 0.2 ) !important;
+	box-shadow: 0 0 0 2px rgba( 91, 62, 254, 0.2 ) !important;
 }
 
 body.upload-php .search-box input[type="submit"] {
 	background: var( --accent, #5b3efe ) !important;
 	border: 1px solid var( --accent, #5b3efe ) !important;
-	color: #0a0c11;
+	color: #0a0c11 !important;
 	font-weight: 600 !important;
 }
 
@@ -2954,17 +3235,17 @@ body.upload-php .media-sidebar input[type="url"],
 body.upload-php .media-sidebar textarea {
 	background: var( --bg-card, #161a23 ) !important;
 	border-color: var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.upload-php .media-sidebar input:focus,
 body.upload-php .media-sidebar textarea:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 2px rgba( 91, 140, 255, 0.2 ) !important;
+	box-shadow: 0 0 0 2px rgba( 91, 62, 254, 0.2 ) !important;
 }
 body.upload-php .media-sidebar a { color: var( --accent, #5b3efe ); }
 body.upload-php .media-sidebar .copy-to-clipboard-container input {
 	background: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	border-color: var(--dy-edge, #1e2235) !important;
 }
 
@@ -3132,7 +3413,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
 	width: 100%;
 	/* Height follows the width through aspect-ratio (set inline per image), so a
 	   wider panel enlarges the image proportionally — not just horizontally. */
-	aspect-ratio: 3 / 2;
+	aspect-ratio: #{"3 / 2"};
 	min-height: 140px;
 	max-height: 70vh;
 	border-bottom: 1px solid var( --line, #1e2235 );
@@ -3399,7 +3680,13 @@ body.dy-lb-open {
 
 .dy-dp-section:last-child { border-bottom: none; }
 
-.dy-dp-section-title {
+/* Section titles and field labels share one rule, so the two always match
+   and cannot drift apart when the palette moves. The prefixed selector is
+   there because field labels are real <label> elements, and
+   `body.post-type-attachment label` (0,2,1) was lightening them. */
+.dy-dp-section-title,
+.dy-dp-field-label,
+body.upload-php #dy-detail-panel .dy-dp-field-label {
 	font-family: var( --font-mono, 'JetBrains Mono', ui-monospace, monospace );
 	font-size: 9.5px;
 	font-weight: 600;
@@ -3465,7 +3752,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input {
 .dy-dp-input:focus,
 body.upload-php #dy-detail-panel .dy-dp-input:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 3px rgba( 91, 140, 255, 0.15 ) !important;
+	box-shadow: 0 0 0 3px rgba( 91, 62, 254, 0.15 ) !important;
 	/* background-COLOR (not the shorthand): the shorthand was resetting
 	   background-image/position → the <select> chevron jumped to the left /
 	   disappeared on focus. */
@@ -3526,7 +3813,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-radius: 5px;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-size: 13px;
 	font-family: inherit;
 	line-height: 1.4;
@@ -3715,7 +4002,7 @@ body.upload-php #dy-detail-panel .dy-dp-save {
 .dy-dp-save:hover:not( :disabled ),
 body.upload-php #dy-detail-panel .dy-dp-save:hover:not( :disabled ) {
 	border-color: var( --ink-faint, #4a4f5d ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Unsaved: filled, haloed, and it wakes up once. No looping animation, which
@@ -3733,7 +4020,7 @@ body.upload-php #dy-detail-panel .dy-dp-save.is-dirty {
 body.upload-php #dy-detail-panel .dy-dp-save.is-dirty:hover:not( :disabled ) {
 	background: #7059fe !important;
 	border-color: #7059fe !important;
-	color: #fff;
+	color: #fff !important;
 	transform: translateY( -1px );
 }
 
@@ -3813,7 +4100,7 @@ body.upload-php #dy-detail-panel .dy-dp-save:disabled {
 body.upload-php .attachment.dy-detail-active {
 	box-shadow:
 		inset 0 0 0 2px var( --accent, #5b3efe ),
-		0 0 12px rgba( 91, 140, 255, 0.4 ) !important;
+		0 0 12px rgba( 91, 62, 254, 0.4 ) !important;
 }
 
 /* ── Loading state ────────────────────────────────────────────────────────── */
@@ -3901,7 +4188,7 @@ body.post-type-attachment div.error {
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-left-width: 4px !important;
 	border-radius: 6px !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	box-shadow: none !important;
 	padding: 12px 16px !important;
 	margin: 12px 0 !important;
@@ -3914,7 +4201,7 @@ body.upload-php div.error p,
 body.post-type-attachment .notice p,
 body.post-type-attachment div.updated p,
 body.post-type-attachment div.error p {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	margin: 0.4em 0;
 	font-size: 13px;
 	line-height: 1.5;
@@ -3962,7 +4249,7 @@ body.post-type-attachment .notice.is-dismissible .notice-dismiss {
 }
 body.upload-php .notice.is-dismissible .notice-dismiss::before,
 body.post-type-attachment .notice.is-dismissible .notice-dismiss::before {
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	font-size: 14px;
 	transition: color 0.15s;
 }
@@ -3972,7 +4259,7 @@ body.post-type-attachment .notice.is-dismissible .notice-dismiss:hover {
 }
 body.upload-php .notice.is-dismissible .notice-dismiss:hover::before,
 body.post-type-attachment .notice.is-dismissible .notice-dismiss:hover::before {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Inline action buttons inside notices (e.g. "Hide this notice") */
@@ -3980,13 +4267,13 @@ body.upload-php .notice .button,
 body.post-type-attachment .notice .button {
 	background: var( --bg-elev, #1d2030 ) !important;
 	border-color: var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	box-shadow: none !important;
 }
 body.upload-php .notice .button:hover,
 body.post-type-attachment .notice .button:hover {
 	border-color: var( --accent, #5b3efe ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 
@@ -4017,12 +4304,12 @@ body.upload-php #screen-meta-links .show-settings {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-top: none !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	border-radius: 0 0 4px 4px !important;
 }
 
 body.upload-php #screen-meta-links .show-settings:hover {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	border-color: var( --ink-faint, #4a4f5d ) !important;
 }
 
@@ -4034,11 +4321,11 @@ body.upload-php #contextual-help-link-wrap {
 }
 
 body.upload-php #contextual-help-link {
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 }
 
 body.upload-php #contextual-help-link:hover {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* ── Screen Options / Help PANEL when open: dark, readable, and ABOVE the
@@ -4050,7 +4337,7 @@ body.upload-php #screen-meta {
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-top: 0 !important;
 	box-shadow: 0 18px 40px -16px rgba( 0, 0, 0, 0.6 );
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 }
 /* Recolor EVERY remaining WP-core light border to our dark hairline (only
    affects elements that already have a border-width, so nothing new appears),
@@ -4078,14 +4365,14 @@ body.upload-php #screen-meta .help-tab-content {
 body.upload-php #screen-meta h5,
 body.upload-php #screen-meta legend,
 body.upload-php #screen-meta .contextual-help-tabs .active a {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.upload-php #screen-meta label,
 body.upload-php #screen-meta p,
 body.upload-php #screen-meta td,
 body.upload-php #screen-meta li,
 body.upload-php #screen-meta .description {
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 }
 body.upload-php #screen-meta input[type="text"],
 body.upload-php #screen-meta input[type="number"],
@@ -4093,11 +4380,11 @@ body.upload-php #screen-meta input.screen-per-page,
 body.upload-php #screen-meta select {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.upload-php #screen-meta input[type="checkbox"],
 body.upload-php #screen-meta input[type="radio"] { accent-color: var( --accent, #5b3efe ); }
-body.upload-php #screen-meta a { color: var( --accent, #5b3efe ); }
+body.upload-php #screen-meta a { color: var( --accent, #5b3efe ) !important; }
 /* The contextual-help left tab list has its own light panel in WP core. */
 body.upload-php #screen-meta .contextual-help-tabs ul { background: transparent !important; }
 body.upload-php #screen-meta .contextual-help-tabs .active {
@@ -4139,7 +4426,7 @@ body.upload-php .attachments-browser > p {
 body.upload-php .attachment.dy-detail-active {
 	box-shadow:
 		inset 0 0 0 2px var( --accent, #5b3efe ),
-		0 0 12px rgba( 91, 140, 255, 0.4 ) !important;
+		0 0 12px rgba( 91, 62, 254, 0.4 ) !important;
 	transform: none !important;
 }
 
@@ -4406,7 +4693,10 @@ body.upload-php #dy-detail-panel select.dy-dp-col-add-select:focus,
  */
 body.dy-dragging-media .uploader-window,
 body.dy-dragging-media .uploader-inline-content,
-body.dy-dragging-media .uploader-inline {
+body.dy-dragging-media .uploader-inline,
+body.dy-dragging-folder .uploader-window,
+body.dy-dragging-folder .uploader-inline-content,
+body.dy-dragging-folder .uploader-inline {
 	display: none !important;
 	pointer-events: none !important;
 }
@@ -4437,7 +4727,7 @@ body.dy-dragging-media .uploader-inline {
  * on dark background).
  */
 .uploader-editor-title {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Show col-resize cursor on the left edge of the detail panel */
@@ -4511,7 +4801,7 @@ body.upload-php::before {
 	letter-spacing: 0.05em;
 	border-radius: 100px;
 	pointer-events: none;
-	box-shadow: 0 4px 12px rgba( 91, 140, 255, 0.4 );
+	box-shadow: 0 4px 12px rgba( 91, 62, 254, 0.4 );
 }
 */
 
@@ -4565,7 +4855,7 @@ body.post-type-attachment #wpfooter {
 }
 
 body.post-type-attachment h1 {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-family: var( --font-display, 'Fraunces', ui-serif, Georgia, serif );
 	font-weight: 600;
 	font-size: 28px;
@@ -4579,7 +4869,7 @@ body.post-type-attachment .page-title-action {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-radius: 4px;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	font-size: 13px;
 	font-weight: 500;
 	text-decoration: none;
@@ -4590,7 +4880,7 @@ body.post-type-attachment .page-title-action {
 body.post-type-attachment .page-title-action:hover {
 	background: var( --bg-elev, #1d2030 ) !important;
 	border-color: var( --accent, #5b3efe ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Permalink line */
@@ -4606,7 +4896,7 @@ body.post-type-attachment #titlewrap input[type="text"],
 body.post-type-attachment input[name="post_title"] {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-size: 15px !important;
 	padding: 9px 12px !important;
 	border-radius: 5px !important;
@@ -4617,7 +4907,7 @@ body.post-type-attachment input[type="text"]:focus,
 body.post-type-attachment input[type="url"]:focus,
 body.post-type-attachment textarea:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 3px rgba( 91, 140, 255, 0.15 ) !important;
+	box-shadow: 0 0 0 3px rgba( 91, 62, 254, 0.15 ) !important;
 }
 
 /* Image preview */
@@ -4654,7 +4944,7 @@ body.post-type-attachment .wp-editor-area,
 body.post-type-attachment textarea {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	border-radius: 5px !important;
 	padding: 10px 12px !important;
 	font-family: inherit !important;
@@ -4672,14 +4962,14 @@ body.post-type-attachment .quicktags-toolbar {
 body.post-type-attachment .quicktags-toolbar input.button {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge, #1e2235) !important;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	border-radius: 3px !important;
 	margin-right: 4px !important;
 	box-shadow: none !important;
 }
 body.post-type-attachment .quicktags-toolbar input.button:hover {
 	border-color: var( --accent, #5b3efe ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Postbox (right meta-boxes: "Save", "Double Youpi") */
@@ -4696,7 +4986,7 @@ body.post-type-attachment .postbox .hndle,
 body.post-type-attachment .postbox h2.hndle {
 	background: var( --bg-elev, #1d2030 ) !important;
 	border-bottom: 1px solid var( --line, #1e2235 ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-size: 13px !important;
 	font-weight: 600 !important;
 	padding: 12px 14px !important;
@@ -4711,7 +5001,7 @@ body.post-type-attachment .postbox .inside {
 body.post-type-attachment .postbox .handlediv,
 body.post-type-attachment .postbox .handle-order-higher,
 body.post-type-attachment .postbox .handle-order-lower {
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 }
 
 /* Save / publish buttons */
@@ -4719,10 +5009,10 @@ body.post-type-attachment .button-primary,
 body.post-type-attachment #publish {
 	background: var( --accent, #5b3efe ) !important;
 	border: 1px solid var( --accent, #5b3efe ) !important;
-	color: #0a0c11;
+	color: #0a0c11 !important;
 	font-weight: 600 !important;
 	border-radius: 4px !important;
-	box-shadow: 0 2px 6px rgba( 91, 140, 255, 0.3 ) !important;
+	box-shadow: 0 2px 6px rgba( 91, 62, 254, 0.3 ) !important;
 	text-shadow: none !important;
 }
 body.post-type-attachment .button-primary:hover {
@@ -4735,7 +5025,7 @@ body.post-type-attachment .button-primary:hover {
 body.post-type-attachment .button {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 	border-radius: 4px !important;
 	box-shadow: none !important;
 	text-shadow: none !important;
@@ -4744,16 +5034,16 @@ body.post-type-attachment .button {
 body.post-type-attachment .button:hover {
 	border-color: var( --accent, #5b3efe ) !important;
 	background: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 /* Delete link */
 body.post-type-attachment a.submitdelete {
-	color: var( --accent-4, #ff6b8a );
+	color: var( --accent-4, #ff6b8a ) !important;
 	text-decoration: none;
 }
 body.post-type-attachment a.submitdelete:hover {
-	color: #ff8da6;
+	color: #ff8da6 !important;
 	text-decoration: underline;
 }
 
@@ -4788,7 +5078,7 @@ body.post-type-attachment input[type="url"],
 body.post-type-attachment input[type="text"]:not(#title) {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	border-radius: 4px !important;
 	padding: 6px 10px !important;
 	font-size: 12px !important;
@@ -4799,7 +5089,7 @@ body.post-type-attachment input[type="text"]:not(#title) {
 body.post-type-attachment input.urlfield:focus,
 body.post-type-attachment input.large-text:focus {
 	border-color: var( --accent, #5b3efe ) !important;
-	box-shadow: 0 0 0 3px rgba( 91, 140, 255, 0.15 ) !important;
+	box-shadow: 0 0 0 3px rgba( 91, 62, 254, 0.15 ) !important;
 }
 
 /* Permalink section */
@@ -4858,7 +5148,7 @@ body.post-type-attachment #wpadminbar .ab-sub-wrapper {
 
 body.upload-php #wpadminbar .ab-sub-wrapper li > .ab-item,
 body.post-type-attachment #wpadminbar .ab-sub-wrapper li > .ab-item {
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 }
 
 body.upload-php #wpadminbar .ab-sub-wrapper li:hover > .ab-item,
@@ -4866,7 +5156,7 @@ body.upload-php #wpadminbar .ab-sub-wrapper li.hover > .ab-item,
 body.post-type-attachment #wpadminbar .ab-sub-wrapper li:hover > .ab-item,
 body.post-type-attachment #wpadminbar .ab-sub-wrapper li.hover > .ab-item {
 	background: var( --bg-elev, #1d2030 ) !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 
 
@@ -4897,7 +5187,7 @@ body.post-type-attachment #wpadminbar .ab-sub-wrapper li.hover > .ab-item {
 .dy-toast--success {
 	background: var( --accent, #5b3efe );
 	box-shadow:
-		0 12px 28px -8px rgba( 91, 140, 255, 0.5 ),
+		0 12px 28px -8px rgba( 91, 62, 254, 0.5 ),
 		0 4px 10px rgba( 0, 0, 0, 0.3 );
 }
 
@@ -4986,18 +5276,18 @@ body.media-new-php #plupload-upload-ui.drag-over,
 body.media-new-php .drag-drop.drag-over,
 body.media-new-php #plupload-upload-ui:hover {
 	border-color: var( --accent, #5b3efe ) !important;
-	background: rgba( 91, 140, 255, 0.04 ) !important;
+	background: rgba( 91, 62, 254, 0.04 ) !important;
 }
 
 body.media-new-php .drag-drop-info {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	font-size: 18px;
 	font-weight: 500;
 	margin: 0 0 12px;
 }
 
 body.media-new-php .drag-drop-inside p {
-	color: var( --ink-soft, #9ba3b5 );
+	color: var( --ink-soft, #9ba3b5 ) !important;
 }
 
 /* ── Browse button (#plupload-browse-button .button-hero) ───────────────── */
@@ -5007,7 +5297,7 @@ body.media-new-php input.button-hero[type="button"],
 body.media-new-php input.button-hero[type="submit"] {
 	background: var( --accent, #5b3efe ) !important;
 	border: 1px solid var( --accent, #5b3efe ) !important;
-	color: #fff;
+	color: #fff !important;
 	border-radius: 6px !important;
 	padding: 10px 20px !important;
 	font-size: 14px !important;
@@ -5054,13 +5344,13 @@ body.media-new-php div.error {
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-left-width: 4px !important;
 	border-radius: 6px !important;
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 	box-shadow: none !important;
 	padding: 12px 16px !important;
 	margin: 12px 0 !important;
 }
 body.media-new-php .notice p {
-	color: var( --ink, #ecedf2 );
+	color: var( --ink, #ecedf2 ) !important;
 }
 body.media-new-php .notice-success,
 body.media-new-php div.updated { border-left-color: #16a34a !important; }
@@ -5082,7 +5372,7 @@ body.media-new-php #screen-meta-links .show-settings {
 	background: var( --bg-card, #161a23 ) !important;
 	border: 1px solid var(--dy-edge-hi, #2a3049) !important;
 	border-top: none !important;
-	color: var( --ink-mute, #5a6070 );
+	color: var( --ink-mute, #5a6070 ) !important;
 	border-radius: 0 0 4px 4px !important;
 }
 
@@ -5141,7 +5431,7 @@ body.dy-admin.dy-media-library .dy-dp-col-add-select {
 body.dy-admin.upload-php .view-switch a.current,
 body.dy-admin.upload-php .view-switch a.current:hover,
 body.dy-admin.upload-php .view-switch a.current:focus {
-	color: var( --accent );
+	color: var( --accent ) !important;
 }
 body.dy-admin.upload-php .view-switch a.current::before,
 body.dy-admin.upload-php .view-switch a.current .dashicons {
@@ -5193,6 +5483,83 @@ body.upload-php { --accent: #5b3efe; }
 }
 #dy-folder-panel.dy-folders-off #dy-show-all { opacity: .9; }
 
+
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* Action buttons relocated from OTHER plugins (Elementor "Generate with AI",
+   etc.) — a discreet group just above Settings. Hidden when empty. */
+.dy-foreign-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--dy-line, rgba(255, 255, 255, 0.08));
+}
+.dy-foreign-actions:empty {
+  display: none;
+}
+/* When present, the foreign-actions group sits at the very bottom, just above
+   Settings (it takes over the auto-margin so there is no gap). When empty
+   (display:none), Settings keeps its own margin-top:auto and stays pinned. */
+.dy-foreign-actions:not(:empty) {
+  margin-top: auto;
+}
+.dy-foreign-actions:not(:empty) ~ .dy-panel-settings {
+  margin-top: 0;
+}
+/* The relocated control becomes ONE clean panel row, whatever plugin it came
+   from. The third-party element's own NESTED boxes (and a plugin's styles can
+   out-specify any external stylesheet — e.g. Elementor's
+   `body.upload-php #e-image-ai-media-library a { …!important }`) are dissolved
+   in JS via INLINE !important (flattenForeignControl in folder-tree.js), which
+   always wins. Here we only style our single outer button + the icon — !important
+   so our box also beats any rule the plugin puts on the wrapper itself. */
+#dy-folder-panel .dy-foreign-action {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  border: 1px solid var(--dy-edge, transparent) !important;
+  border-radius: 9px !important;
+  background: var(--dy-bg) !important;
+  color: var(--dy-ink-soft, #c6c7cb) !important;
+  font: 500 12px/1.3 inherit !important;
+  text-align: left;
+  text-decoration: none !important;
+  white-space: normal;
+  overflow: hidden;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+#dy-folder-panel .dy-foreign-action:hover,
+#dy-folder-panel .dy-foreign-action:focus,
+#dy-folder-panel .dy-foreign-action:focus-within {
+  background: rgba(91, 62, 254, 0.1) !important;
+  border-color: rgba(91, 62, 254, 0.4) !important;
+  color: #fff !important;
+}
+/* Keep any icon (dashicon, Elementor eicon font, img, svg) sized + on-accent. */
+#dy-folder-panel .dy-foreign-action i,
+#dy-folder-panel .dy-foreign-action .dashicons,
+#dy-folder-panel .dy-foreign-action [class*="icon"],
+#dy-folder-panel .dy-foreign-action img,
+#dy-folder-panel .dy-foreign-action svg {
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  width: 15px !important;
+  height: 15px !important;
+  font-size: 15px !important;
+  color: var(--accent, #5b3efe) !important;
+}
+
+
 /* Panel footer: "Settings" button → RML settings. */
 .dy-panel-settings {
 	flex-shrink: 0;
@@ -5233,6 +5600,65 @@ body.upload-php { --accent: #5b3efe; }
 }
 .dy-panel-disabled .dy-panel-enable:hover { text-decoration: underline; }
 .dy-panel-disabled .dy-panel-enable.is-loading { opacity: .5; pointer-events: none; }
+
+
+// ── Réinjecté depuis le CSS livré (restauration du 22/09/2026) ─────────
+/* ── Grouped editable fields ───────────────────────────────────────────────
+   Title, alt text, caption and description live in one section. Four separate
+   sections would push the file URL and where-used below the fold on a default
+   panel width. The mono labels keep the rhythm of the section titles, and
+   being real <label> elements they also make each field clickable. */
+/* Only what is specific to a label; the shared look lives with the section
+   titles further up. */
+.dy-dp-field-label {
+  display: block;
+  cursor: pointer;
+}
+
+.dy-dp-fields .dy-dp-input + .dy-dp-field-label {
+  margin-top: 16px;
+}
+
+/* Four stacked fields: each textarea starts shorter than a lone one would,
+   and stays draggable. Description gets the extra room it usually needs. */
+.dy-dp-fields .dy-dp-textarea {
+  min-height: 58px;
+}
+
+.dy-dp-fields #dy-dp-description {
+  min-height: 84px;
+}
+
+/* ── Folder and Collections, side by side on a wide panel ──────────────────
+   The panel width comes from the user dragging its edge (--dy-dw, 260 to
+   720px), which a media query cannot see. A container query on the wrapper
+   can: past 440px each column still holds a folder name without truncating. */
+.dy-dp-duo-ct {
+  container-type: inline-size;
+}
+
+/* Collections is the last child of the wrapper, not of the panel body, so it
+   must get its bottom border back (`.dy-dp-section:last-child` removes it). */
+.dy-dp-duo > .dy-dp-section:last-child {
+  border-bottom: 1px solid var(--line-soft, #0d1018);
+}
+
+@container (min-width: 440px) {
+  .dy-dp-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .dy-dp-duo > .dy-dp-section {
+    min-width: 0;
+  }
+
+  .dy-dp-duo > .dy-dp-section:first-child {
+    border-right: 1px solid var(--line-soft, #0d1018);
+  }
+}
+
 
 /* ── Blocks without an outline ─────────────────────────────────────
  * The edge tokens are transparent (shared/_root.scss): panels, cards,
@@ -5276,6 +5702,538 @@ body.upload-php { --accent: #5b3efe; }
  *    consumes it: it already places this panel, and its rules are the more
  *    specific ones, so a second rule here would only fight it.
  */
+/* ═══════════════════════════════════════════════════════════════════════
+   Defensive — host sites that force one text colour on the whole admin
+   ───────────────────────────────────────────────────────────────────────
+   Seen on real installs, printed inline on every admin screen by an
+   admin-customiser plugin or by the site's own custom CSS:
+
+       h1, h2, h3, h4, h5, h6, p, td, th, span, label, legend,
+       .media-menu-item { color: #3c434a; }   ← with !important
+
+   That is a bug on those sites (a blanket !important on every span in
+   wp-admin breaks far more than this plugin), but the failure here is
+   total: this screen paints itself dark, so every label lands near-black
+   on near-black and the media library becomes unreadable.
+
+   Almost all of our labels INHERIT their colour from the component around
+   them (.dy-folder-item__name and friends declare none of their own), so
+   the site rule hits the leaf directly and inheritance has no way to
+   answer. We restore it explicitly.
+
+   The specificity is the whole trick, and it is deliberately narrow.
+   Between two !important declarations, specificity decides, so:
+     · the site's rule is a bare tag list — one element, (0,0,1);
+     · ours reads `body :where(our surfaces) :is(tags)` — the `body` and the
+       tag add up to (0,0,2), just enough to answer it;
+     · every colour we set on purpose carries a class, (0,1,0) or more, so
+       it still wins over this line. Their relative cascade is unchanged.
+   Wrapping the surfaces in :where() keeps the ids from inflating that count.
+
+   The scope stays on the surfaces we own. The native parts of the screen
+   are deliberately left alone: forcing a colour there would change how
+   WordPress looks on every site in order to repair a handful.
+   ═══════════════════════════════════════════════════════════════════════ */
+body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
+            .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog,
+            .dy-toast, .dy-mine-btn, .dy-duplicate-badge)
+  :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons)) {
+  color: inherit !important;
+}
+
+/*
+ * Icons are held out of the rule above and answered on their own line.
+ *
+ * A dashicon is a <span>, so the site rule hits it too and it would vanish
+ * into the panel background. But restoring inheritance would BRIGHTEN it:
+ * icons here are deliberately dimmer than the label they sit next to, and
+ * that tone is set page-wide (`body.post-type-attachment .dashicons`), from
+ * outside these surfaces. Inheriting would lose it.
+ *
+ * So we restate the tone they already have, scoped to our own surfaces. One
+ * class of specificity: enough to beat the neutraliser above, low enough
+ * that every icon we colour on purpose (the settings cog, an accent chip)
+ * keeps winning on its own. Keep this value in step with the page-wide rule.
+ *
+ * QUESTION OUVERTE (22/09/2026). L'autre parade, plus cohérente, est de
+ * laisser les icônes hériter de la couleur de leur libellé : c'est ce que
+ * demande leur propre CSS (`color: inherit`). Elle a été écartée parce
+ * qu'elle éclaircissait 17 icônes, donc changeait l'apparence d'un écran
+ * vitrine sans que Raphaël l'ait demandé. Décision prise seule, signalée
+ * comme révisable, jamais arbitrée : la coupure du 22 septembre est arrivée
+ * avant la réponse. Le coût du choix actuel est ce couplage à tenir à la
+ * main. Si la question est tranchée dans l'autre sens, cette règle disparaît
+ * et le couplage avec elle.
+ */
+:where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel,
+       .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog)
+  .dashicons {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+
 body.dy-admin #dy-panel-brand {
+  display: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   The picker modal wears the same design system as the library page
+   ───────────────────────────────────────────────────────────────────────
+   The folder panel paints itself dark wherever it goes. Dropped into an
+   otherwise stock white modal it read as half-finished work, which is what
+   people reported. This dresses the rest of the modal to match.
+
+   Every value below is the one the library page already uses on the same
+   component, taken from the `body.upload-php` rules further up rather than
+   re-invented: the two screens are the same product and must not drift.
+   Change one, change the other.
+
+   `.dy-ml-modal` is set by folder-tree.js only on pickers we actually own,
+   so a modal we have stepped away from keeps WordPress's own look.
+   ═══════════════════════════════════════════════════════════════════════ */
+.media-modal.dy-ml-modal {
+  --accent: #5b3efe;
+}
+
+/* ── Frame, title, close ──────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-modal-content,
+.media-modal.dy-ml-modal .media-frame-title,
+.media-modal.dy-ml-modal .media-frame-content,
+.media-modal.dy-ml-modal .attachments-browser {
+  background: var(--bg, #0c0e13) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-frame-title h1 {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-modal-close .media-modal-icon::before {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-modal-close:hover .media-modal-icon::before,
+.media-modal.dy-ml-modal .media-modal-close:focus .media-modal-icon::before {
+  color: var(--ink, #ecedf2) !important;
+}
+
+/* ── Tabs (Upload files / Media Library) ──────────────────────────────── */
+/* Underlined in the accent rather than boxed: same treatment as the active
+   row in the folder panel, so one accent marks "you are here" throughout. */
+.media-modal.dy-ml-modal .media-router .media-menu-item {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-router .media-menu-item:hover,
+.media-modal.dy-ml-modal .media-router .media-menu-item:focus {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-router .media-menu-item.active {
+  color: var(--ink, #ecedf2) !important;
+  box-shadow: inset 0 -2px 0 var(--accent, #5b3efe) !important;
+}
+
+/* ── Filter bar ───────────────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-toolbar {
+  background: var(--bg, #0c0e13) !important;
+  border-bottom: 1px solid var(--line, #1e2235) !important;
+}
+
+.media-modal.dy-ml-modal .media-toolbar label,
+.media-modal.dy-ml-modal .media-toolbar .media-search-input-label {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-toolbar select,
+.media-modal.dy-ml-modal .media-toolbar .attachment-filters {
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 30px 0 10px !important;
+  background-color: var(--bg-card, #161a23) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23808791' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 11px center !important;
+  background-size: 10px 6px !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink-soft, #9ba3b5) !important;
+  font-size: 12px !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal input.search[type=search],
+.media-modal.dy-ml-modal #media-search-input {
+  height: 32px !important;
+  padding: 0 10px !important;
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink, #ecedf2) !important;
+  font-size: 12px !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal input.search[type=search]:focus,
+.media-modal.dy-ml-modal #media-search-input:focus {
+  border-color: var(--accent, #5b3efe) !important;
+  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  outline: none !important;
+}
+
+/* ── Thumbnails ───────────────────────────────────────────────────────── */
+/* Checkerboard behind transparent images, exactly as on the page. */
+.media-modal.dy-ml-modal .attachment .thumbnail {
+  background-color: var(--bg-elev, #1d2030) !important;
+  background-image: linear-gradient(45deg, var(--bg, #0c0e13) 25%, transparent 25%), linear-gradient(-45deg, var(--bg, #0c0e13) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--bg, #0c0e13) 75%), linear-gradient(-45deg, transparent 75%, var(--bg, #0c0e13) 75%) !important;
+  background-size: 12px 12px !important;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px !important;
+}
+
+.media-modal.dy-ml-modal .attachment[data-type=application] .thumbnail,
+.media-modal.dy-ml-modal .attachment[data-type=video] .thumbnail,
+.media-modal.dy-ml-modal .attachment[data-type=audio] .thumbnail {
+  background-image: none !important;
+}
+
+/*
+ * The caption becomes a gradient laid over the image instead of the opaque
+ * white slab core draws. That slab is also what clipped long filenames: core
+ * caps its height and hides the overflow, so a three-line name lost its last
+ * line mid-stroke. Letting the height grow fixes the cut at the same time.
+ */
+.media-modal.dy-ml-modal .attachment .filename {
+  display: block !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 18px 9px 7px !important;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .attachment .filename > div {
+  padding: 0 !important;
+  background: none !important;
+  color: inherit !important;
+}
+
+/* Selection: accent ring on the tile, accent disc with a real check. */
+.media-modal.dy-ml-modal .attachment.selected .thumbnail,
+.media-modal.dy-ml-modal .attachment.details .thumbnail {
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important;
+  outline: none !important;
+}
+
+.media-modal.dy-ml-modal .check {
+  background: var(--accent, #5b3efe) !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+.media-modal.dy-ml-modal .check .media-modal-icon {
+  background-color: var(--accent-on, #04130d) !important;
+  background-image: none !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/12px 12px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/12px 12px;
+}
+
+/* ── Details sidebar ──────────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-sidebar {
+  background: var(--bg-soft, #0f1118) !important;
+  border-left: 1px solid var(--line, #1e2235) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar .attachment-details h2,
+.media-modal.dy-ml-modal .media-sidebar .attachment-details h3,
+.media-modal.dy-ml-modal .media-sidebar .attachment-info .filename {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar,
+.media-modal.dy-ml-modal .media-sidebar label,
+.media-modal.dy-ml-modal .media-sidebar .setting > span,
+.media-modal.dy-ml-modal .media-sidebar .attachment-info {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar input[type=text],
+.media-modal.dy-ml-modal .media-sidebar input[type=url],
+.media-modal.dy-ml-modal .media-sidebar input[type=number],
+.media-modal.dy-ml-modal .media-sidebar textarea,
+.media-modal.dy-ml-modal .media-sidebar select {
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink, #ecedf2) !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar a {
+  color: var(--accent-3, #a57cff) !important;
+}
+
+/* ── Footer and buttons ───────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-frame-toolbar .media-toolbar {
+  background: var(--bg, #0c0e13) !important;
+  border-top: 1px solid var(--line, #1e2235) !important;
+  border-bottom: 0 !important;
+}
+
+.media-modal.dy-ml-modal .button {
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink-soft, #9ba3b5) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal .button:hover:not(:disabled) {
+  border-color: var(--line-hi, #2a3049) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .button-primary {
+  background: var(--accent, #5b3efe) !important;
+  border: 1px solid var(--accent, #5b3efe) !important;
+  color: #0a0c11 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px rgba(91, 62, 254, 0.3) !important;
+}
+
+.media-modal.dy-ml-modal .button-primary:hover:not(:disabled) {
+  background: #7059fe !important;
+  border-color: #7059fe !important;
+  color: #0a0c11 !important;
+}
+
+.media-modal.dy-ml-modal .button:disabled,
+.media-modal.dy-ml-modal .button-primary:disabled {
+  background: var(--bg-elev, #1d2030) !important;
+  border-color: var(--line, #1e2235) !important;
+  color: var(--ink-mute, #5a6070) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* ── Drop zone (Upload files tab) ─────────────────────────────────────── */
+.media-modal.dy-ml-modal .uploader-inline {
+  background: transparent !important;
+  border: 2px dashed var(--line-hi, #2a3049) !important;
+}
+
+.media-modal.dy-ml-modal .uploader-inline h2,
+.media-modal.dy-ml-modal .uploader-inline .upload-message,
+.media-modal.dy-ml-modal .upload-instructions {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .uploader-inline p,
+.media-modal.dy-ml-modal .max-upload-size,
+.media-modal.dy-ml-modal #post-upload-info {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+/*
+ * ── The tile, identical to the library page ──────────────────────────────
+ *
+ * Same card as on the page, down to the values: a surface in --bg-card, 8px
+ * radius, a 12px inset that frames the image, and the same lift on hover.
+ * Without it the picker showed bare images edge to edge while the page showed
+ * cards, and the two screens no longer looked like one product.
+ */
+.media-modal.dy-ml-modal .attachment {
+  position: relative !important;
+  /*
+   * The gutter, without touching the column maths.
+   *
+   * The page spaces its cards 16px apart; core's picker grid lays its tiles
+   * edge to edge, gutter zero. Dropping a rounded card into that leaves the
+   * only gap where the four corners curve away, and the dark ground showing
+   * through reads as a little star repeated at every intersection.
+   *
+   * A transparent border carves the gutter out of the tile itself: box-sizing
+   * is border-box across wp-admin, so the 8px on each side come off the tile's
+   * own width and the grid keeps counting exactly the same columns. Margin
+   * would have added to it and dropped a column.
+   *
+   * background-clip stops the card surface at the padding box, and the 16px
+   * radius on the border box leaves precisely 8px of curve on the visible
+   * card: the page's value, reached from the other side.
+   */
+  border: 8px solid transparent !important;
+  background-clip: padding-box !important;
+  padding: 12px !important;
+  background-color: var(--bg-card, #161a23) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 0 1px var(--dy-edge, transparent) !important;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.media-modal.dy-ml-modal .attachment:hover {
+  box-shadow: 0 0 0 1px rgba(91, 62, 254, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* The light plate core puts behind every preview shows through at the tile
+   edges once the surroundings are dark. */
+.media-modal.dy-ml-modal .attachment .attachment-preview {
+  background: var(--bg-elev, #1d2030) !important;
+}
+
+/*
+ * The caption is drawn by WordPress itself: core renders
+ * `.attachment:not(:has(.filename))::after { content: attr(aria-label) }` as an
+ * opaque white slab capped at 48px with the overflow hidden, so a long name was
+ * cut mid-stroke. The page replaces it with a gradient over the image, on ONE
+ * line, trimmed with an ellipsis. Same rule here, same values: a name that does
+ * not fit ends in a proper ellipsis rather than being sliced.
+ */
+.media-modal.dy-ml-modal .attachment:not(:has(.filename))::after {
+  content: attr(aria-label);
+  display: block !important;
+  box-sizing: border-box !important;
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  width: auto !important;
+  margin: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 18px 9px 7px !important;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink, #ecedf2) !important;
+  font-family: var(--font-body, "Inter Tight", system-ui, -apple-system, sans-serif) !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-wrap: normal !important;
+  pointer-events: none;
+  z-index: 2 !important;
+}
+
+/*
+ * ── The filter bar reads as one line ─────────────────────────────────────
+ *
+ * Core stacks a visible label above each control and lays the row out on a
+ * grid, so the date select sat one step lower than the type select and the
+ * search field lower still: three controls, three baselines. The labels are
+ * the accessible name of those controls, so they are hidden from sight only,
+ * never removed, and the search field already carries its label as a
+ * placeholder.
+ */
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar label,
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-search-input-label {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-toolbar-secondary,
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-toolbar-primary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  float: none !important;
+  margin: 0 !important;
+  height: auto !important;
+}
+
+/*
+ * ── The rule under the tabs ──────────────────────────────────────────────
+ * Core draws it in near-white, which cut the dark modal in two. Same line as
+ * the panel edges below it.
+ */
+.media-modal.dy-ml-modal .media-frame-content {
+  border-top: 1px solid var(--line, #1e2235) !important;
+}
+
+/* ── Details pane: two of our own pieces that had no style here ───────── */
+/*
+ * The × that clears the selection and folds the details pane away. It is ours
+ * (media-filters.js) and had no rule of its own, so it fell back to the
+ * browser's default button and read as a stray box in the corner.
+ */
+.media-modal.dy-ml-modal .dy-detail-close {
+  position: absolute !important;
+  top: 8px !important;
+  right: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  color: var(--ink-mute, #5a6070) !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+
+.media-modal.dy-ml-modal .dy-detail-close:hover,
+.media-modal.dy-ml-modal .dy-detail-close:focus-visible {
+  background: var(--bg-elev, #1d2030) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+/*
+ * "Where used" sits in a column of floated rows. Without a clear it slid up
+ * beside the alt-text description and the two texts read as one interleaved
+ * mess. The hard-coded grey border it shipped with predates the palette.
+ */
+.media-modal.dy-ml-modal .dy-where-used {
+  clear: both !important;
+  border-top-color: var(--line, #1e2235) !important;
+}
+
+/*
+ * The drop zone fills the whole pane, so a dashed frame drawn on its own box
+ * hugs the modal edges and reads as a stray rule under the tabs rather than as
+ * a target. Inset it, and round it, so it looks like something to drop onto.
+ */
+.media-modal.dy-ml-modal .uploader-inline {
+  margin: 16px !important;
+  border-radius: 8px !important;
+}
+
+/* The two non-folder entries carry the same badge as the folders. It is empty
+   until the count arrives, and an empty badge must not draw a stray pill. */
+.dy-show-all__count:empty {
   display: none;
 }

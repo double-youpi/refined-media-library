@@ -8,7 +8,7 @@
 //     user-configurable accent via Settings, etc.)
 //
 // Systematic pattern:
-//   $color-accent: #5b8cff;
+//   $color-accent: #5b3efe;
 //   :root { --dy-accent: #{$color-accent}; }
 //
 // When to update:
@@ -21,8 +21,8 @@
 // ── Colours: dark palette (media library) ────────────────────────────────────
 
 // Accents
-$color-accent:        #5b8cff;
-$color-accent-hover:  #6e9aff;
+$color-accent:        #5b3efe !default;
+$color-accent-hover:  #7059fe !default;
 
 // Text
 $color-ink:           #ecedf2;  // Primary light text

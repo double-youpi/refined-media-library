@@ -412,10 +412,44 @@ body.folded #dy-folder-panel {
   border-right: 1px solid var(--line, #1e2235);
 }
 
-/* Toolbar (filters) + grid offset to the right of the panel. */
+/*
+ * Toolbar (filters), grid and drop zone all step aside for the panel.
+ *
+ * The grid offset has to land on `.attachments` (the <ul> that actually holds
+ * the thumbnails), NOT on `.attachments-wrapper`. Core leaves that wrapper
+ * `position: static`, and `left` on a static box is simply ignored: the rule
+ * was dead, so the toolbar moved while the grid stayed put, and the filter bar
+ * ended up misaligned with the thumbnails under it. The <ul> is absolutely
+ * positioned with both `left` and `right`, so moving its left edge resizes it
+ * in one declaration, with no width arithmetic to keep in step.
+ */
 .media-modal .attachments-browser.dy-has-folder-panel > .media-toolbar,
-.media-modal .attachments-browser.dy-has-folder-panel .attachments-wrapper {
+.media-modal .attachments-browser.dy-has-folder-panel .attachments,
+.media-modal .attachments-browser.dy-has-folder-panel .uploader-inline {
   left: var(--dy-modal-fw, 220px) !important;
+}
+
+/*
+ * A closed media modal keeps its markup: WordPress collapses it rather than
+ * removing it. The panel now lives inside that markup, so it follows the modal
+ * out of sight on its own, but only as long as the collapse actually zeroes its
+ * box. This says it outright instead of depending on that, because the failure
+ * it guards against is the ugly one: a folder panel left across the editor.
+ */
+body:not(.modal-open) .media-modal #dy-folder-panel {
+  display: none !important;
+}
+
+/*
+ * Two panel affordances that belong to the library page only.
+ * The drag handle writes a stored width the modal does not read, and the
+ * Settings link would navigate away from a post being edited, losing the
+ * draft. Both are hidden here rather than removed from the markup, so the
+ * panel stays one component with one template.
+ */
+.media-modal #dy-folder-panel .dy-rh-right,
+.media-modal #dy-folder-panel .dy-panel-settings {
+  display: none !important;
 }
 
 /* Detail panel: fixed, starts below the title + 20px from the right edge.
@@ -1121,7 +1155,8 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   white-space: nowrap;
 }
 
-.dy-folder-item__count {
+.dy-folder-item__count,
+.dy-show-all__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
   color: var(--ink-mute, #5a6070) !important;
@@ -1131,7 +1166,8 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   flex-shrink: 0;
 }
 
-.dy-folder-item.is-active .dy-folder-item__count {
+.dy-folder-item.is-active .dy-folder-item__count,
+.dy-show-all.is-active .dy-show-all__count {
   background: rgba(91, 62, 254, 0.15);
   color: var(--accent, #5b3efe) !important;
 }
@@ -5887,5 +5923,467 @@ body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
 }
 
 body.dy-admin #dy-panel-brand {
+  display: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   The picker modal wears the same design system as the library page
+   ───────────────────────────────────────────────────────────────────────
+   The folder panel paints itself dark wherever it goes. Dropped into an
+   otherwise stock white modal it read as half-finished work, which is what
+   people reported. This dresses the rest of the modal to match.
+
+   Every value below is the one the library page already uses on the same
+   component, taken from the `body.upload-php` rules further up rather than
+   re-invented: the two screens are the same product and must not drift.
+   Change one, change the other.
+
+   `.dy-ml-modal` is set by folder-tree.js only on pickers we actually own,
+   so a modal we have stepped away from keeps WordPress's own look.
+   ═══════════════════════════════════════════════════════════════════════ */
+.media-modal.dy-ml-modal {
+  --accent: #5b3efe;
+}
+
+/* ── Frame, title, close ──────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-modal-content,
+.media-modal.dy-ml-modal .media-frame-title,
+.media-modal.dy-ml-modal .media-frame-content,
+.media-modal.dy-ml-modal .attachments-browser {
+  background: var(--bg, #0c0e13) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-frame-title h1 {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-modal-close .media-modal-icon::before {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-modal-close:hover .media-modal-icon::before,
+.media-modal.dy-ml-modal .media-modal-close:focus .media-modal-icon::before {
+  color: var(--ink, #ecedf2) !important;
+}
+
+/* ── Tabs (Upload files / Media Library) ──────────────────────────────── */
+/* Underlined in the accent rather than boxed: same treatment as the active
+   row in the folder panel, so one accent marks "you are here" throughout. */
+.media-modal.dy-ml-modal .media-router .media-menu-item {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-router .media-menu-item:hover,
+.media-modal.dy-ml-modal .media-router .media-menu-item:focus {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-router .media-menu-item.active {
+  color: var(--ink, #ecedf2) !important;
+  box-shadow: inset 0 -2px 0 var(--accent, #5b3efe) !important;
+}
+
+/* ── Filter bar ───────────────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-toolbar {
+  background: var(--bg, #0c0e13) !important;
+  border-bottom: 1px solid var(--line, #1e2235) !important;
+}
+
+.media-modal.dy-ml-modal .media-toolbar label,
+.media-modal.dy-ml-modal .media-toolbar .media-search-input-label {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-toolbar select,
+.media-modal.dy-ml-modal .media-toolbar .attachment-filters {
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 30px 0 10px !important;
+  background-color: var(--bg-card, #161a23) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23808791' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 11px center !important;
+  background-size: 10px 6px !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink-soft, #9ba3b5) !important;
+  font-size: 12px !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal input.search[type=search],
+.media-modal.dy-ml-modal #media-search-input {
+  height: 32px !important;
+  padding: 0 10px !important;
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink, #ecedf2) !important;
+  font-size: 12px !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal input.search[type=search]:focus,
+.media-modal.dy-ml-modal #media-search-input:focus {
+  border-color: var(--accent, #5b3efe) !important;
+  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  outline: none !important;
+}
+
+/* ── Thumbnails ───────────────────────────────────────────────────────── */
+/* Checkerboard behind transparent images, exactly as on the page. */
+.media-modal.dy-ml-modal .attachment .thumbnail {
+  background-color: var(--bg-elev, #1d2030) !important;
+  background-image: linear-gradient(45deg, var(--bg, #0c0e13) 25%, transparent 25%), linear-gradient(-45deg, var(--bg, #0c0e13) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--bg, #0c0e13) 75%), linear-gradient(-45deg, transparent 75%, var(--bg, #0c0e13) 75%) !important;
+  background-size: 12px 12px !important;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px !important;
+}
+
+.media-modal.dy-ml-modal .attachment[data-type=application] .thumbnail,
+.media-modal.dy-ml-modal .attachment[data-type=video] .thumbnail,
+.media-modal.dy-ml-modal .attachment[data-type=audio] .thumbnail {
+  background-image: none !important;
+}
+
+/*
+ * The caption becomes a gradient laid over the image instead of the opaque
+ * white slab core draws. That slab is also what clipped long filenames: core
+ * caps its height and hides the overflow, so a three-line name lost its last
+ * line mid-stroke. Letting the height grow fixes the cut at the same time.
+ */
+.media-modal.dy-ml-modal .attachment .filename {
+  display: block !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 18px 9px 7px !important;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .attachment .filename > div {
+  padding: 0 !important;
+  background: none !important;
+  color: inherit !important;
+}
+
+/* Selection: accent ring on the tile, accent disc with a real check. */
+.media-modal.dy-ml-modal .attachment.selected .thumbnail,
+.media-modal.dy-ml-modal .attachment.details .thumbnail {
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important;
+  outline: none !important;
+}
+
+.media-modal.dy-ml-modal .check {
+  background: var(--accent, #5b3efe) !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+.media-modal.dy-ml-modal .check .media-modal-icon {
+  background-color: var(--accent-on, #04130d) !important;
+  background-image: none !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/12px 12px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/12px 12px;
+}
+
+/* ── Details sidebar ──────────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-sidebar {
+  background: var(--bg-soft, #0f1118) !important;
+  border-left: 1px solid var(--line, #1e2235) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar .attachment-details h2,
+.media-modal.dy-ml-modal .media-sidebar .attachment-details h3,
+.media-modal.dy-ml-modal .media-sidebar .attachment-info .filename {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar,
+.media-modal.dy-ml-modal .media-sidebar label,
+.media-modal.dy-ml-modal .media-sidebar .setting > span,
+.media-modal.dy-ml-modal .media-sidebar .attachment-info {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar input[type=text],
+.media-modal.dy-ml-modal .media-sidebar input[type=url],
+.media-modal.dy-ml-modal .media-sidebar input[type=number],
+.media-modal.dy-ml-modal .media-sidebar textarea,
+.media-modal.dy-ml-modal .media-sidebar select {
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink, #ecedf2) !important;
+  box-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal .media-sidebar a {
+  color: var(--accent-3, #a57cff) !important;
+}
+
+/* ── Footer and buttons ───────────────────────────────────────────────── */
+.media-modal.dy-ml-modal .media-frame-toolbar .media-toolbar {
+  background: var(--bg, #0c0e13) !important;
+  border-top: 1px solid var(--line, #1e2235) !important;
+  border-bottom: 0 !important;
+}
+
+.media-modal.dy-ml-modal .button {
+  background: var(--bg-card, #161a23) !important;
+  border: 1px solid var(--dy-edge-hi, #2a3049) !important;
+  border-radius: 4px !important;
+  color: var(--ink-soft, #9ba3b5) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.media-modal.dy-ml-modal .button:hover:not(:disabled) {
+  border-color: var(--line-hi, #2a3049) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .button-primary {
+  background: var(--accent, #5b3efe) !important;
+  border: 1px solid var(--accent, #5b3efe) !important;
+  color: #0a0c11 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px rgba(91, 62, 254, 0.3) !important;
+}
+
+.media-modal.dy-ml-modal .button-primary:hover:not(:disabled) {
+  background: #7059fe !important;
+  border-color: #7059fe !important;
+  color: #0a0c11 !important;
+}
+
+.media-modal.dy-ml-modal .button:disabled,
+.media-modal.dy-ml-modal .button-primary:disabled {
+  background: var(--bg-elev, #1d2030) !important;
+  border-color: var(--line, #1e2235) !important;
+  color: var(--ink-mute, #5a6070) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* ── Drop zone (Upload files tab) ─────────────────────────────────────── */
+.media-modal.dy-ml-modal .uploader-inline {
+  background: transparent !important;
+  border: 2px dashed var(--line-hi, #2a3049) !important;
+}
+
+.media-modal.dy-ml-modal .uploader-inline h2,
+.media-modal.dy-ml-modal .uploader-inline .upload-message,
+.media-modal.dy-ml-modal .upload-instructions {
+  color: var(--ink, #ecedf2) !important;
+}
+
+.media-modal.dy-ml-modal .uploader-inline p,
+.media-modal.dy-ml-modal .max-upload-size,
+.media-modal.dy-ml-modal #post-upload-info {
+  color: var(--ink-mute, #5a6070) !important;
+}
+
+/*
+ * ── The tile, identical to the library page ──────────────────────────────
+ *
+ * Same card as on the page, down to the values: a surface in --bg-card, 8px
+ * radius, a 12px inset that frames the image, and the same lift on hover.
+ * Without it the picker showed bare images edge to edge while the page showed
+ * cards, and the two screens no longer looked like one product.
+ */
+.media-modal.dy-ml-modal .attachment {
+  position: relative !important;
+  /*
+   * The gutter, without touching the column maths.
+   *
+   * The page spaces its cards 16px apart; core's picker grid lays its tiles
+   * edge to edge, gutter zero. Dropping a rounded card into that leaves the
+   * only gap where the four corners curve away, and the dark ground showing
+   * through reads as a little star repeated at every intersection.
+   *
+   * A transparent border carves the gutter out of the tile itself: box-sizing
+   * is border-box across wp-admin, so the 8px on each side come off the tile's
+   * own width and the grid keeps counting exactly the same columns. Margin
+   * would have added to it and dropped a column.
+   *
+   * background-clip stops the card surface at the padding box, and the 16px
+   * radius on the border box leaves precisely 8px of curve on the visible
+   * card: the page's value, reached from the other side.
+   */
+  border: 8px solid transparent !important;
+  background-clip: padding-box !important;
+  padding: 12px !important;
+  background-color: var(--bg-card, #161a23) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 0 1px var(--dy-edge, transparent) !important;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.media-modal.dy-ml-modal .attachment:hover {
+  box-shadow: 0 0 0 1px rgba(91, 62, 254, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* The light plate core puts behind every preview shows through at the tile
+   edges once the surroundings are dark. */
+.media-modal.dy-ml-modal .attachment .attachment-preview {
+  background: var(--bg-elev, #1d2030) !important;
+}
+
+/*
+ * The caption is drawn by WordPress itself: core renders
+ * `.attachment:not(:has(.filename))::after { content: attr(aria-label) }` as an
+ * opaque white slab capped at 48px with the overflow hidden, so a long name was
+ * cut mid-stroke. The page replaces it with a gradient over the image, on ONE
+ * line, trimmed with an ellipsis. Same rule here, same values: a name that does
+ * not fit ends in a proper ellipsis rather than being sliced.
+ */
+.media-modal.dy-ml-modal .attachment:not(:has(.filename))::after {
+  content: attr(aria-label);
+  display: block !important;
+  box-sizing: border-box !important;
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  width: auto !important;
+  margin: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 18px 9px 7px !important;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--ink, #ecedf2) !important;
+  font-family: var(--font-body, "Inter Tight", system-ui, -apple-system, sans-serif) !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-wrap: normal !important;
+  pointer-events: none;
+  z-index: 2 !important;
+}
+
+/*
+ * ── The filter bar reads as one line ─────────────────────────────────────
+ *
+ * Core stacks a visible label above each control and lays the row out on a
+ * grid, so the date select sat one step lower than the type select and the
+ * search field lower still: three controls, three baselines. The labels are
+ * the accessible name of those controls, so they are hidden from sight only,
+ * never removed, and the search field already carries its label as a
+ * placeholder.
+ */
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar label,
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-search-input-label {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-toolbar-secondary,
+.media-modal.dy-ml-modal .attachments-browser > .media-toolbar .media-toolbar-primary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  float: none !important;
+  margin: 0 !important;
+  height: auto !important;
+}
+
+/*
+ * ── The rule under the tabs ──────────────────────────────────────────────
+ * Core draws it in near-white, which cut the dark modal in two. Same line as
+ * the panel edges below it.
+ */
+.media-modal.dy-ml-modal .media-frame-content {
+  border-top: 1px solid var(--line, #1e2235) !important;
+}
+
+/* ── Details pane: two of our own pieces that had no style here ───────── */
+/*
+ * The × that clears the selection and folds the details pane away. It is ours
+ * (media-filters.js) and had no rule of its own, so it fell back to the
+ * browser's default button and read as a stray box in the corner.
+ */
+.media-modal.dy-ml-modal .dy-detail-close {
+  position: absolute !important;
+  top: 8px !important;
+  right: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  color: var(--ink-mute, #5a6070) !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+
+.media-modal.dy-ml-modal .dy-detail-close:hover,
+.media-modal.dy-ml-modal .dy-detail-close:focus-visible {
+  background: var(--bg-elev, #1d2030) !important;
+  color: var(--ink, #ecedf2) !important;
+}
+
+/*
+ * "Where used" sits in a column of floated rows. Without a clear it slid up
+ * beside the alt-text description and the two texts read as one interleaved
+ * mess. The hard-coded grey border it shipped with predates the palette.
+ */
+.media-modal.dy-ml-modal .dy-where-used {
+  clear: both !important;
+  border-top-color: var(--line, #1e2235) !important;
+}
+
+/*
+ * The drop zone fills the whole pane, so a dashed frame drawn on its own box
+ * hugs the modal edges and reads as a stray rule under the tabs rather than as
+ * a target. Inset it, and round it, so it looks like something to drop onto.
+ */
+.media-modal.dy-ml-modal .uploader-inline {
+  margin: 16px !important;
+  border-radius: 8px !important;
+}
+
+/* The two non-folder entries carry the same badge as the folders. It is empty
+   until the count arrives, and an empty badge must not draw a stray pill. */
+.dy-show-all__count:empty {
   display: none;
 }

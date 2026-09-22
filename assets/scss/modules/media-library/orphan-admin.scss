@@ -3,7 +3,11 @@
 // =============================================================================
 //
 // Targets the orphan scan results table and the confirmation block shown
-// before permanent deletion. Small file (~70 lines), no partial split needed.
+// before permanent deletion. Small file, no partial split needed.
+//
+// Source of assets/css/modules/media-library/orphan-admin.css. The tokens come
+// from shared/root; the panel and the delete button are drawn on the dark
+// ground, like the rest of the module.
 // =============================================================================
 
 @use '../../shared/variables' as *;
@@ -36,50 +40,143 @@
 		border-radius: $radius-xs;
 	}
 
-	// Filename truncation
+	// Filename truncation. The cell carries the width, so the text takes all
+	// of it and no more.
 	td strong {
 		display: block;
-		max-width: 260px;
+		max-width: 100%;
 		@include truncate;
 	}
 }
 
+/* ── Colonnes : Aperçu réduit à la vignette pour rapprocher « Fichier » ──── */
+#dy-orphan-table {
 
-// ── Confirmation block (before permanent deletion) ──────────────────────────
+	.check-column {
+		width: 2.4em;
+	}
 
-// Rendered twice (above AND below the table); both copies share these classes
-// and are kept in sync by orphan-admin.js.
-.dy-orphan-confirm {
-	background: #fff8f0;
-	border-left: 4px solid $color-danger;
-	padding: $spacing-lg $spacing-xl;
-	border-radius: 0 $radius-xs $radius-xs 0;
+	// Aperçu
+	thead th:nth-child(2),
+	tbody td:nth-child(2) {
+		width: 58px;
+	}
 
-	label {
-		font-weight: 500;
+	// Type
+	thead th:nth-child(4),
+	tbody td:nth-child(4) {
+		width: 92px;
+	}
+
+	// Taille
+	thead th:nth-child(5),
+	tbody td:nth-child(5) {
+		width: 84px;
+	}
+
+	// Uploadé
+	thead th:nth-child(6),
+	tbody td:nth-child(6) {
+		width: 108px;
 	}
 }
 
-.dy-orphan-confirm--top    { margin: 0 0 $spacing-lg; }
-.dy-orphan-confirm--bottom { margin: $spacing-xl 0 0; }
+
+/* ── Bloc de confirmation (action destructive) — panneau danger sur dark ── */
+/* Rendu deux fois : au-dessus ET en dessous de la table (mêmes classes). */
+.dy-orphan-confirm {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: $spacing-lg $spacing-xl;
+	padding: 15px 18px;
+	background: linear-gradient(180deg, rgba(214, 54, 56, 0.11), rgba(214, 54, 56, 0.045));
+	border: 1px solid rgba(214, 54, 56, 0.28);
+	border-left: 3px solid var(--dy-danger, #{$color-danger});
+	border-radius: var(--dy-radius, 6px);
+	color: var(--dy-ink, #ecedf2);
+}
+
+.dy-orphan-confirm--top {
+	margin: 0 0 $spacing-xl;
+}
+
+.dy-orphan-confirm--bottom {
+	margin: 22px 0 0;
+}
+
+.dy-orphan-confirm__icon {
+	flex-shrink: 0;
+	width: 22px;
+	height: 22px;
+	color: var(--dy-danger, #{$color-danger});
+}
+
+.dy-orphan-confirm__check {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	flex: 1 1 auto;
+	min-width: 220px;
+	margin: 0;
+	font-size: 13.5px;
+	font-weight: 500;
+	line-height: 1.45;
+	color: var(--dy-ink, #ecedf2);
+	cursor: pointer;
+
+	input[type="checkbox"] {
+		flex-shrink: 0;
+		margin: 0;
+	}
+}
+
+.dy-orphan-confirm__actions {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
 
 
 // ── "Delete" button (danger red, matching WP admin pattern) ─────────────────
+//
+// The .button anchor raises specificity above the native WP button rules,
+// which would otherwise win on background and text-shadow.
 
-.dy-orphan-delete-btn {
-	background: $color-danger;
-	border-color: $color-danger;
+.dy-orphan-delete-btn.button {
+	background: var(--dy-danger, #{$color-danger});
+	border-color: var(--dy-danger, #{$color-danger});
 	color: #fff;
+	border-radius: var(--dy-radius-sm, #{$radius-sm});
+	padding: 4px 16px;
+	font-weight: 500;
+	text-shadow: none;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 
-	&:hover:not(:disabled) {
-		background: $color-danger-hover;
-		border-color: $color-danger-hover;
+	&:hover:not(:disabled),
+	&:focus:not(:disabled) {
+		background: var(--dy-danger-hover, #{$color-danger-hover});
+		border-color: var(--dy-danger-hover, #{$color-danger-hover});
 		color: #fff;
+		transform: translateY(-1px);
+		box-shadow: 0 6px 16px -7px rgba(214, 54, 56, 0.65);
+	}
+
+	&:active:not(:disabled) {
+		transform: translateY(0);
 	}
 
 	&:disabled {
-		opacity: 0.4;
+		background: var(--dy-bg-elev, #1d2030);
+		border-color: var(--dy-line-hi, #2a3049);
+		color: var(--dy-ink-mute, #5a6070);
+		opacity: 1;
 		cursor: not-allowed;
+		box-shadow: none;
+		text-shadow: none;
+		transform: none;
 	}
 }
 

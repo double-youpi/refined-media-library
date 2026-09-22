@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-22T10:45:23+00:00\n"
+"POT-Creation-Date: 2026-09-22T17:58:21+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -63,7 +63,7 @@ msgstr "Double Youpi"
 #: src/Admin/Feedback.php:127
 msgctxt "admin bar button"
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Faire un retour"
 
 #. translators: %s = product name (e.g. "Refined Admin Dashboard")
 #: src/Admin/Feedback.php:135
@@ -232,7 +232,7 @@ msgstr "Pas comme les autres. On a même un diplôme pour le prouver."
 #: src/Admin/HeroQuips.php:53
 msgid "Zero shortcodes were harmed in the making of this plugin."
 msgstr ""
-"Aucun shortcode n’a été maltraité durant la conception de cette extension."
+"Aucun code court n’a été maltraité durant la conception de cette extension."
 
 #: src/Admin/HeroQuips.php:54
 msgid "Awarded Plugin of the Year by a panel of one."
@@ -526,7 +526,7 @@ msgstr "Envie de participer ?"
 
 #: src/Admin/OverviewPage.php:886
 msgid "Found a bug or got an idea to make it better? Let me know."
-msgstr "Un bug repéré ou une idée pour l’améliorer ? Dites-le-moi."
+msgstr "Un bogue repéré ou une idée pour l’améliorer ? Dites-le-moi."
 
 #: src/Core/ModuleCatalog.php:38
 msgid "Refined Admin Dashboard"
@@ -563,8 +563,8 @@ msgid ""
 "Caching, CSS/JS, lazy-load, responsive WebP/AVIF delivery, self-hosted "
 "fonts, and a native Cloudflare CDN."
 msgstr ""
-"Cache, CSS/JS, lazy-load, livraison responsive WebP/AVIF, polices auto-"
-"hébergées et CDN Cloudflare natif."
+"Cache, CSS/JS, chargement différé, livraison responsive WebP/AVIF, polices "
+"auto-hébergées et CDN Cloudflare natif."
 
 #: src/Core/ModuleCatalog.php:68
 msgid "Simple Static"
@@ -575,7 +575,7 @@ msgid ""
 "Static HTML export to shrink your attack surface and host free on Cloudflare "
 "Pages, Netlify or GitHub Pages."
 msgstr ""
-"Export HTML statique pour réduire votre surface d’attaque et héberger "
+"Exportation HTML statique pour réduire votre surface d’attaque et héberger "
 "gratuitement sur Cloudflare Pages, Netlify ou GitHub Pages."
 
 #: src/Core/ModuleCatalog.php:79
@@ -660,14 +660,14 @@ msgstr "Déplacer dans un dossier…"
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:538
-#: src/Modules/MediaLibrary/FolderManager.php:574
+#: src/Modules/MediaLibrary/FolderManager.php:600
+#: src/Modules/MediaLibrary/FolderManager.php:636
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:599
+#: src/Modules/MediaLibrary/FolderManager.php:661
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
 
@@ -1290,7 +1290,7 @@ msgstr "Déjà importé"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:26
 msgid "Undo this import"
-msgstr "Annuler cet import"
+msgstr "Annuler cette importation"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:27
 msgid "Reading source…"
@@ -1312,7 +1312,7 @@ msgstr "Démarrer l’import"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:33
 msgid "Importing…"
-msgstr "Import en cours…"
+msgstr "Importation en cours…"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:34
 msgid "Creating folders…"
@@ -1337,8 +1337,8 @@ msgid ""
 "Remove all folders created by this import? Your media and the source plugin "
 "are left untouched."
 msgstr ""
-"Supprimer tous les dossiers créés par cet import ? Vos médias et l’extension "
-"source ne sont pas touchés."
+"Supprimer tous les dossiers créés par cette importation ? Vos médias et "
+"l’extension source ne sont pas touchés."
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:40
 msgid "Undoing…"

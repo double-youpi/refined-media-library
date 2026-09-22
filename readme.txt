@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,15 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.3 =
+* Your folders are now in the media picker, wherever it opens: inserting an image into a post, setting a featured image, choosing a file in a page builder. They were meant to be there and were not.
+* The picker now looks like the rest of the plugin, instead of a stock white dialog with a dark panel bolted to its side. Thumbnails, filters and buttons all match the Media screen.
+* "All media" and "Media without folder" now show how many files they hold, like every folder already did.
+* Fixed: after closing the media picker, the folder panel stayed on top of the post editor until the page was reloaded.
+* Fixed: long file names were cut off mid-word under each thumbnail in the picker. They now end in an ellipsis, as on the Media screen.
+* Fixed: with a file selected in the picker, bulk buttons appeared two and three times over and landed on top of the date filter.
+* Fixed: in the picker, the date filter, the type filter and the search field each sat at a different height.
+
 = 0.3.2 =
 * Fixed: installing this plugin next to Double Youpï Refined Admin Dashboard brought the whole site down, front end included. The two run side by side now.
 * Fixed: with both plugins active, the folder panel sat on top of the page title and the thumbnails covered the file names.
@@ -177,6 +186,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.3 =
+Your folders now work in the media picker, not just on the Media screen, and the picker matches the rest of the plugin.
 
 = 0.3.2 =
 Running this plugin next to Refined Admin Dashboard no longer takes the site down, and the two now share the media screen cleanly.

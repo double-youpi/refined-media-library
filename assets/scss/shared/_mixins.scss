@@ -34,7 +34,7 @@
 
 @mixin focus-ring($color: var(--dy-accent)) {
 	outline: none;
-	box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.15);
+	box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15);
 	border-color: $color;
 }
 

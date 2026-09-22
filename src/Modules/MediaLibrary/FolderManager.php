@@ -332,6 +332,55 @@ class FolderManager extends AbstractModule {
 	 * (and it will), our REST surface remains isolated and independently
 	 * versionable. The `v1` is not cosmetic — it is a contract.
 	 */
+	/**
+	 * Totals behind the two non-folder entries of the panel.
+	 *
+	 * Both numbers have to agree with what clicking the entry actually shows,
+	 * so they are counted with the SAME query the grid runs, minus the folder
+	 * filter:
+	 *   · statuses: `inherit`, plus `private` for whoever may read private
+	 *     posts — exactly what wp_ajax_query_attachments allows;
+	 *   · "without folder": the `NOT EXISTS` clause from
+	 *     FolderTaxonomy::filter_ajax_query, not a subtraction of folder counts.
+	 *     Subtracting would be wrong the moment one file sits in two folders.
+	 *
+	 * `posts_per_page => 1` with `fields => 'ids'`: we only ever read
+	 * found_posts, so nothing but the count crosses the wire.
+	 */
+	public function rest_get_counts(): \WP_REST_Response {
+		$statuses = [ 'inherit' ];
+		if ( current_user_can( 'read_private_posts' ) ) {
+			$statuses[] = 'private';
+		}
+
+		$base = [
+			'post_type'              => 'attachment',
+			'post_status'            => $statuses,
+			'posts_per_page'         => 1,
+			'fields'                 => 'ids',
+			'ignore_sticky_posts'    => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		];
+
+		$all = new \WP_Query( $base );
+
+		$orphans = new \WP_Query( array_merge( $base, [
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			'tax_query' => [
+				[
+					'taxonomy' => FolderTaxonomy::TAXONOMY,
+					'operator' => 'NOT EXISTS',
+				],
+			],
+		] ) );
+
+		return new \WP_REST_Response( [
+			'total'      => (int) $all->found_posts,
+			'unassigned' => (int) $orphans->found_posts,
+		], 200 );
+	}
+
 	public function register_rest_routes(): void {
 		$perm = static fn() => current_user_can( 'upload_files' );
 
@@ -369,6 +418,19 @@ class FolderManager extends AbstractModule {
 				'callback'            => [ $this, 'rest_delete_folder' ],
 				'permission_callback' => $perm,
 			],
+		] );
+
+		/*
+		 * Counts for the two panel entries that are not folders: "Show all
+		 * media" and "Media without folder". A route of its own rather than two
+		 * more keys on /media-folders, so the tree endpoint keeps returning a
+		 * plain list and its shape stays a contract. The panel fetches both in
+		 * parallel, so this costs no extra wait.
+		 */
+		register_rest_route( self::REST_NS, '/media-folders/counts', [
+			'methods'             => \WP_REST_Server::READABLE,
+			'callback'            => [ $this, 'rest_get_counts' ],
+			'permission_callback' => $perm,
 		] );
 
 		register_rest_route( self::REST_NS, '/media-folders/reorder', [
