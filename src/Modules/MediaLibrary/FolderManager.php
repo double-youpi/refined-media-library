@@ -436,7 +436,11 @@ class FolderManager extends AbstractModule {
 		foreach ( $terms as $term ) {
 			$map[ $term->term_id ] = [
 				'id'       => $term->term_id,
-				'name'     => $term->name,
+				// WordPress stores term names HTML-encoded (`A &amp; B`). The panel escapes
+			// every value before inserting it, so sending the encoded form would
+			// escape it twice and print the entity. Decode here: the client gets
+			// plain text and does its own escaping.
+			'name'     => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
 				'parent'   => $term->parent,
 				'order'    => (int) get_term_meta( $term->term_id, FolderTaxonomy::META_ORDER, true ),
 				'count'    => (int) $term->count,
@@ -510,7 +514,7 @@ class FolderManager extends AbstractModule {
 		$term = get_term( $term_id, FolderTaxonomy::TAXONOMY );
 		return new \WP_REST_Response( [
 			'id'       => $term_id,
-			'name'     => $term->name,
+			'name'     => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
 			'parent'   => $term->parent,
 			'order'    => $order,
 			'count'    => 0,

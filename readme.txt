@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,13 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.1 =
+* Fixed: on sites where another plugin or some custom CSS changes the width of the WordPress admin sidebar, the folder panel sat behind it. The panel now measures the sidebar instead of assuming its width, and follows it when it is collapsed or resized.
+* Fixed: a notice about translations being loaded too early could appear at the top of the Media screen, on the first page load after an update.
+* Fixed: on a site that forces one text colour across the whole admin, the folder panel turned unreadable. It now restores its own colours on those screens.
+* Fixed: with a long list of folders, the Add Media button and the section headers were squeezed to a fraction of their height. They keep their size now, and the lists scroll instead.
+* Fixed: a folder or a collection whose name contains an ampersand displayed it as "&amp;".
+
 = 0.3.0 =
 * New: a feedback tab on every admin screen, to report a bug or ask for something without leaving the page. It shows you the exact report before it leaves, and sends nothing until you agree. See "External services" above.
 * A file you are not allowed to edit now opens read-only, with its information and a line explaining why, instead of an error code.
@@ -163,6 +170,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.1 =
+Fixes reported from real sites: the folder panel follows a resized admin sidebar, the update notice is gone, the panel stays readable when a site forces text colours, the Add Media button keeps its height, and ampersands show properly in folder names.
 
 = 0.3.0 =
 A feedback tab to reach the author from any screen, read-only details for files you cannot edit, and translations restored.

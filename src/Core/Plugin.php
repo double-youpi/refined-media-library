@@ -47,7 +47,20 @@ final class Plugin {
 			);
 		}, 1 );
 
-		$this->maybe_run_migrations();
+		/*
+		 * Migrations on init@5 — never earlier.
+		 *
+		 * They run the activation callbacks, and those register taxonomies whose
+		 * labels are translated. Called from plugins_loaded, that asks WordPress
+		 * for a translation before the textdomain exists, which WP 6.7+ reports
+		 * on screen as "Translation loading … was triggered too early" — visible
+		 * to the user on the first page load after every update.
+		 *
+		 * init@5 sits after the textdomain (init@1) and before the modules
+		 * register their own taxonomies (init@10), so the flush_rewrite_rules()
+		 * at the end of Installer::run() still sees them registered.
+		 */
+		add_action( 'init', [ $this, 'maybe_run_migrations' ], 5 );
 
 		// Overview page — registered BEFORE modules so it lands in
 		// the first menu position (the plugin's home).
@@ -80,8 +93,10 @@ final class Plugin {
 	 * Idempotent migrations driven by SoloConfig. Sets default options and
 	 * runs activation callbacks (taxonomy registration, etc.) on first load
 	 * and on each version upgrade. No-op if already up to date.
+	 *
+	 * Public because it is hooked on init@5 — do not call it directly.
 	 */
-	private function maybe_run_migrations(): void {
+	public function maybe_run_migrations(): void {
 		$option    = SoloConfig::installed_version_option();
 		$installed = (string) get_option( $option, '0.0.0' );
 		if ( version_compare( $installed, DOUBLEYOUPI_VERSION, '>=' ) ) {

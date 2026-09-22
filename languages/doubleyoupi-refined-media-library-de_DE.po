@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
+"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -622,7 +622,7 @@ msgstr ""
 "Geplante Voll- oder Nur-DB-Backups, mit Rotation und Wiederherstellung per "
 "Klick (zuerst automatischer Snapshot)."
 
-#: src/Modules/MediaLibrary/CollectionManager.php:168
+#: src/Modules/MediaLibrary/CollectionManager.php:169
 msgid "Could not delete collection."
 msgstr "Sammlung konnte nicht gelöscht werden."
 
@@ -668,14 +668,14 @@ msgstr "In Ordner verschieben …"
 msgid "Add to collection…"
 msgstr "Zur Sammlung hinzufügen …"
 
-#: src/Modules/MediaLibrary/FolderManager.php:532
-#: src/Modules/MediaLibrary/FolderManager.php:568
+#: src/Modules/MediaLibrary/FolderManager.php:536
+#: src/Modules/MediaLibrary/FolderManager.php:572
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Ein Ordner kann nicht in sich selbst oder einen seiner Unterordner "
 "verschoben werden."
 
-#: src/Modules/MediaLibrary/FolderManager.php:593
+#: src/Modules/MediaLibrary/FolderManager.php:597
 msgid "Could not delete folder."
 msgstr "Ordner konnte nicht gelöscht werden."
 
@@ -1601,6 +1601,31 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 # Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
 #~ msgid "Could not save — please retry."
 #~ msgstr "Speichern fehlgeschlagen — bitte erneut versuchen."
+
+# En-tête « Description » du solo RAD.
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
+#~ "components only."
+#~ msgstr ""
+#~ "Eine dunkle und helle Neugestaltung des gesamten WordPress-Adminbereichs: "
+#~ "eine Navigationsleiste, die Sie neu ordnen, überarbeitete Listentabellen "
+#~ "und ein überarbeiteter Editor, ein einziger Ort für alle Hinweise, ein "
+#~ "Dashboard, das Sie selbst zusammenstellen, und ein integriertes Toolkit. "
+#~ "Nur native Komponenten."
+
+# Variante RAD, dérivée de la variante RML de la même locale.
+#~ msgid ""
+#~ "You are already running the full Double Youpi suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
+#~ msgstr ""
+#~ "Die vollständige Double-Youpi-Suite ist bereits aktiv und enthält Double "
+#~ "Youpï Refined Admin Dashboard. Diese eigenständige Version hat sich "
+#~ "zurückgezogen, um ihr nicht in die Quere zu kommen. Sie möchten sie "
+#~ "eigenständig nutzen? Deaktivieren Sie zuerst die Suite."
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals — performance, "
@@ -5385,3 +5410,9 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 #~ "Wenn aktiviert, verwenden alle 7 Menü-Zeilen (Inhalt, Handel, Benutzer, "
 #~ "Community, Design, System, Entwickler) die Akzentfarbe. Andernfalls "
 #~ "behält jede Zeile ihre eigene Farbe."
+
+#~ msgid "Double Youpi · Tools"
+#~ msgstr "Double Youpi · Werkzeuge"
+
+#~ msgid "%s detected, we hand control over to it."
+#~ msgstr "%s erkannt, wir überlassen ihm die Kontrolle."

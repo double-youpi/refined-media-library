@@ -92,7 +92,7 @@ body.upload-php .wrap {
      background nor its right border. The panel starts 32px below the brand;
      --dy-brand-h is the brand's measured height (set by folder-tree.js). */
   top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--dy-gutter, 20px) + var(--dy-brand-h, 56px) + 32px);
-  left: calc(160px + var(--dy-gutter, 20px));
+  left: calc(var(--dy-adminmenu-w, 160px) + var(--dy-gutter, 20px));
   bottom: var(--dy-gutter, 20px);
   width: var(--dy-fw, 220px);
   z-index: 100;
@@ -151,7 +151,7 @@ body.upload-php .wrap > .error {
 #dy-panel-brand {
   position: fixed;
   top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--dy-gutter, 20px));
-  left: calc(160px + var(--dy-gutter, 20px));
+  left: calc(var(--dy-adminmenu-w, 160px) + var(--dy-gutter, 20px));
   width: var(--dy-fw, 220px);
   z-index: 100;
   margin: 0;
@@ -171,18 +171,18 @@ body.upload-php .wrap > .error {
 }
 
 #dy-panel-brand .dy-panel-brand__refined {
-  color: var(--accent, #5b3efe);
+  color: var(--accent, #5b3efe) !important;
   font-style: italic;
 }
 
 /* Brand left tracks the WP sidebar state, exactly like the folder panel. */
 body.folded #dy-panel-brand {
-  left: calc(36px + var(--dy-gutter, 20px));
+  left: calc(var(--dy-adminmenu-w, 36px) + var(--dy-gutter, 20px));
 }
 
 @media (max-width: 960px) {
   body.auto-fold #dy-panel-brand {
-    left: calc(36px + var(--dy-gutter, 20px));
+    left: calc(var(--dy-adminmenu-w, 36px) + var(--dy-gutter, 20px));
   }
 }
 @media (max-width: 782px) {
@@ -358,13 +358,13 @@ body.dy-panel-expanded #dy-folder-panel {
 
 /* WP admin sidebar manually collapsed (via the "Collapse menu" toggle) */
 body.folded #dy-folder-panel {
-  left: calc(36px + var(--dy-gutter, 20px));
+  left: calc(var(--dy-adminmenu-w, 36px) + var(--dy-gutter, 20px));
 }
 
 /* WP admin sidebar auto-collapsed between 960px and 782px (body.auto-fold) */
 @media (max-width: 960px) {
   body.auto-fold #dy-folder-panel {
-    left: calc(36px + var(--dy-gutter, 20px));
+    left: calc(var(--dy-adminmenu-w, 36px) + var(--dy-gutter, 20px));
   }
 }
 /*
@@ -665,12 +665,22 @@ body.upload-php [data-dy-adopt=notice-cta] {
  * (see "Heading row" + "Add Media CTA relocated" sections) to match
  * the other admin pages.
  */
+/*
+ * flex: 0 0 <h> — the panel is a flex column and these rows are NOT negotiable.
+ * With many folders the tree (max-height 60vh) plus the collections section can
+ * exceed the panel height; every shrinkable child then gets squeezed and the
+ * CTA and the section headers lose part of their height. Fixing the flex basis
+ * and the min-height makes them incompressible: the overflow is absorbed by the
+ * scrollable lists, which is what they are for.
+ */
 #dy-add-media-action {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  flex: 0 0 44px;
   height: 44px;
+  min-height: 44px;
   margin: 0;
   padding: 0 14px;
   background: var(--ink, #ecedf2);
@@ -769,7 +779,9 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
+  flex: 0 0 44px;
   height: 44px;
+  min-height: 44px;
   border-bottom: 1px solid var(--line, #1e2235);
   gap: 8px;
   /* Subtle top gradient for depth */
@@ -784,7 +796,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
 }
 
 /* "Show all media" + "Media without folder" — top quick-filters */
@@ -933,7 +945,9 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
+  flex: 0 0 36px;
   height: 36px;
+  min-height: 36px;
   border-bottom: 1px solid var(--line-soft, #0d1018);
 }
 
@@ -1051,7 +1065,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   font-size: 10px;
   transition: transform 0.15s;
   cursor: pointer;
@@ -1109,7 +1123,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-folder-item__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   background: var(--bg-elev, #1d2030);
   padding: 1px 5px;
   border-radius: 3px;
@@ -1118,7 +1132,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 
 .dy-folder-item.is-active .dy-folder-item__count {
   background: rgba(91, 62, 254, 0.15);
-  color: var(--accent, #5b3efe);
+  color: var(--accent, #5b3efe) !important;
 }
 
 /* Actions — appear on row hover */
@@ -1384,7 +1398,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   top: 5px;
   right: 5px;
   background: #d63638;
-  color: #fff;
+  color: #fff !important;
   font-size: 8px;
   font-weight: 700;
   line-height: 1;
@@ -1409,7 +1423,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #888;
+  color: #888 !important;
   margin: 0 0 10px;
 }
 
@@ -1447,14 +1461,14 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
 
 .dy-where-used__empty {
   font-size: 12px;
-  color: #666;
+  color: #666 !important;
   font-style: italic;
   margin: 0;
 }
 
 .dy-where-used__loading {
   font-size: 12px;
-  color: #888;
+  color: #888 !important;
   font-style: italic;
 }
 
@@ -1491,20 +1505,20 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent, #5b3efe);
+  color: var(--accent, #5b3efe) !important;
   margin: 0 0 6px;
 }
 
 .dy-bulk-dialog h3 {
   font-size: 18px;
   font-weight: 600;
-  color: var(--ink, #ecedf2);
+  color: var(--ink, #ecedf2) !important;
   margin: 0;
 }
 
 .dy-bulk-dialog__hint {
   font-size: 12px;
-  color: var(--ink-mute, #6f7585);
+  color: var(--ink-mute, #6f7585) !important;
   margin: 0 0 20px;
 }
 
@@ -1516,7 +1530,7 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   display: block;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ink-soft, #9ba3b5);
+  color: var(--ink-soft, #9ba3b5) !important;
   margin-bottom: 6px;
 }
 
@@ -3432,7 +3446,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   flex: 1;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ink-soft, #9ba3b5);
+  color: var(--ink-soft, #9ba3b5) !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3767,7 +3781,7 @@ body.upload-php #dy-detail-panel .dy-dp-field-label {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   margin-bottom: 10px;
 }
 
@@ -3785,14 +3799,14 @@ body.upload-php #dy-detail-panel .dy-dp-field-label {
 }
 
 .dy-dp-meta td:first-child {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   width: 90px;
   flex-shrink: 0;
   padding-right: 8px;
 }
 
 .dy-dp-meta td:last-child {
-  color: var(--ink-soft, #9ba3b5);
+  color: var(--ink-soft, #9ba3b5) !important;
   word-break: break-all;
 }
 
@@ -3862,7 +3876,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
   padding: 0;
   text-align: left;
   background: transparent !important;
-  color: var(--ink, #ecedf2);
+  color: var(--ink, #ecedf2) !important;
 }
 
 .dy-dp-compat .compat-attachment-fields th label,
@@ -3873,7 +3887,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--ink-mute, #8b90a0);
+  color: var(--ink-mute, #8b90a0) !important;
 }
 
 .dy-dp-compat .compat-attachment-fields input[type=text],
@@ -3933,7 +3947,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
   text-transform: none;
   letter-spacing: 0;
   font-size: 12px;
-  color: var(--ink, #ecedf2);
+  color: var(--ink, #ecedf2) !important;
 }
 
 .dy-dp-compat .compat-attachment-fields input[type=checkbox] {
@@ -3946,7 +3960,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
 .dy-dp-compat .compat-attachment-fields p.help {
   margin: 4px 0 0;
   font-size: 11px;
-  color: var(--ink-mute, #8b90a0);
+  color: var(--ink-mute, #8b90a0) !important;
 }
 
 .dy-dp-textarea {
@@ -4042,7 +4056,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
 
 .dy-dp-used-empty {
   font-size: 12px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   font-style: italic;
 }
 
@@ -4185,7 +4199,7 @@ body.upload-php .attachment.dy-detail-active {
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   font-size: 13px;
   font-style: italic;
 }
@@ -4631,7 +4645,7 @@ body.upload-php .attachment.dy-detail-active {
 .dy-collection-item__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   background: var(--bg-elev, #1d2030);
   padding: 1px 5px;
   border-radius: 3px;
@@ -4640,7 +4654,7 @@ body.upload-php .attachment.dy-detail-active {
 
 .dy-collection-item.is-active .dy-collection-item__count {
   background: rgba(165, 124, 255, 0.15);
-  color: var(--accent-3, #a57cff);
+  color: var(--accent-3, #a57cff) !important;
 }
 
 /* Collection drop target */
@@ -4655,7 +4669,7 @@ body.upload-php .attachment.dy-detail-active {
 .dy-panel-empty {
   padding: 8px 14px;
   font-size: 11px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   font-style: italic;
   margin: 0;
 }
@@ -4686,7 +4700,7 @@ body.upload-php .attachment.dy-detail-active {
   border-radius: 100px;
   padding: 2px 8px 2px 10px;
   font-size: 11px;
-  color: var(--accent-3, #a57cff);
+  color: var(--accent-3, #a57cff) !important;
   font-family: inherit;
 }
 
@@ -4714,7 +4728,7 @@ body.upload-php .attachment.dy-detail-active {
 
 .dy-dp-col-none {
   font-size: 12px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #5a6070) !important;
   font-style: italic;
 }
 
@@ -5550,7 +5564,7 @@ body.upload-php {
   font-size: 12px;
   font-style: italic;
   line-height: 1.4;
-  color: var(--dy-ink-mute, #6f7077);
+  color: var(--dy-ink-mute, #6f7077) !important;
 }
 
 #dy-folder-panel.dy-folders-off #dy-show-all {
@@ -5767,4 +5781,64 @@ body.upload-php {
 .dy-dp-save {
   --dy-edge: var(--dy-line);
   --dy-edge-hi: var(--dy-line-hi);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Defensive — host sites that force one text colour on the whole admin
+   ───────────────────────────────────────────────────────────────────────
+   Seen on real installs, printed inline on every admin screen by an
+   admin-customiser plugin or by the site's own custom CSS:
+
+       h1, h2, h3, h4, h5, h6, p, td, th, span, label, legend,
+       .media-menu-item { color: #3c434a; }   ← with !important
+
+   That is a bug on those sites (a blanket !important on every span in
+   wp-admin breaks far more than this plugin), but the failure here is
+   total: this screen paints itself dark, so every label lands near-black
+   on near-black and the media library becomes unreadable.
+
+   Almost all of our labels INHERIT their colour from the component around
+   them (.dy-folder-item__name and friends declare none of their own), so
+   the site rule hits the leaf directly and inheritance has no way to
+   answer. We restore it explicitly.
+
+   The specificity is the whole trick, and it is deliberately narrow.
+   Between two !important declarations, specificity decides, so:
+     · the site's rule is a bare tag list — one element, (0,0,1);
+     · ours reads `body :where(our surfaces) :is(tags)` — the `body` and the
+       tag add up to (0,0,2), just enough to answer it;
+     · every colour we set on purpose carries a class, (0,1,0) or more, so
+       it still wins over this line. Their relative cascade is unchanged.
+   Wrapping the surfaces in :where() keeps the ids from inflating that count.
+
+   The scope stays on the surfaces we own. The native parts of the screen
+   are deliberately left alone: forcing a colour there would change how
+   WordPress looks on every site in order to repair a handful.
+   ═══════════════════════════════════════════════════════════════════════ */
+body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
+            .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog,
+            .dy-toast, .dy-mine-btn, .dy-duplicate-badge)
+  :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons)) {
+  color: inherit !important;
+}
+
+/*
+ * Icons are held out of the rule above and answered on their own line.
+ *
+ * A dashicon is a <span>, so the site rule hits it too and it would vanish
+ * into the panel background. But restoring inheritance would BRIGHTEN it:
+ * icons here are deliberately dimmer than the label they sit next to, and
+ * that tone is set page-wide (`body.post-type-attachment .dashicons`), from
+ * outside these surfaces. Inheriting would lose it.
+ *
+ * So we restate the tone they already have, scoped to our own surfaces. One
+ * class of specificity: enough to beat the neutraliser above, low enough
+ * that every icon we colour on purpose (the settings cog, an accent chip)
+ * keeps winning on its own. Keep this value in step with the page-wide rule.
+ */
+:where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel,
+       .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog)
+  .dashicons {
+  color: var(--ink-mute, #5a6070) !important;
 }

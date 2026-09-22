@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
+"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -611,7 +611,7 @@ msgstr ""
 "Backups agendados, completos ou só do banco, com rotação e restauração em um "
 "clique (snapshot automático primeiro)."
 
-#: src/Modules/MediaLibrary/CollectionManager.php:168
+#: src/Modules/MediaLibrary/CollectionManager.php:169
 msgid "Could not delete collection."
 msgstr "Não foi possível excluir a coleção."
 
@@ -657,14 +657,14 @@ msgstr "Mover para uma pasta…"
 msgid "Add to collection…"
 msgstr "Adicionar a uma coleção…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:532
-#: src/Modules/MediaLibrary/FolderManager.php:568
+#: src/Modules/MediaLibrary/FolderManager.php:536
+#: src/Modules/MediaLibrary/FolderManager.php:572
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Uma pasta não pode ser movida para dentro de si mesma ou de uma de suas "
 "subpastas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:593
+#: src/Modules/MediaLibrary/FolderManager.php:597
 msgid "Could not delete folder."
 msgstr "Não foi possível excluir a pasta."
 
@@ -1590,6 +1590,29 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 # Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
 #~ msgid "Could not save — please retry."
 #~ msgstr "Não foi possível salvar — tente novamente."
+
+# En-tête « Description » du solo RAD.
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
+#~ "components only."
+#~ msgstr ""
+#~ "Um redesenho escuro e claro de todo o painel do WordPress: uma barra de "
+#~ "navegação que você reorganiza, listas e editor repensados, um único lugar "
+#~ "para todos os avisos, um painel que você compõe e um kit de ferramentas "
+#~ "integrado. Apenas componentes nativos."
+
+# Variante RAD, dérivée de la variante RML de la même locale.
+#~ msgid ""
+#~ "You are already running the full Double Youpi suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
+#~ msgstr ""
+#~ "A suíte completa Double Youpi já está ativa e inclui o Double Youpï "
+#~ "Refined Admin Dashboard. Esta cópia independente se afastou para não "
+#~ "atrapalhar. Quer usá-la sozinha? Desative a suíte primeiro."
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals — performance, "
@@ -5347,3 +5370,9 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ "Se ativado, as 7 linhas do menu (Conteúdo, Comércio, Usuários, "
 #~ "Comunidade, Aparência, Sistema, Desenvolvedor) usam a cor de destaque. "
 #~ "Caso contrário, cada linha mantém sua cor própria."
+
+#~ msgid "Double Youpi · Tools"
+#~ msgstr "Double Youpi · Ferramentas"
+
+#~ msgid "%s detected, we hand control over to it."
+#~ msgstr "%s detectado, deixamos o controle com ele."

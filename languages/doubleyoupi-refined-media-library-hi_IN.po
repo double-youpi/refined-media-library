@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
+"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -605,7 +605,7 @@ msgstr ""
 "शेड्यूल किए गए पूर्ण या केवल-DB बैकअप, रोटेशन और एक-क्लिक रिस्टोर के साथ (पहले ऑटो-"
 "स्नैपशॉट)।"
 
-#: src/Modules/MediaLibrary/CollectionManager.php:168
+#: src/Modules/MediaLibrary/CollectionManager.php:169
 msgid "Could not delete collection."
 msgstr "संग्रह नहीं हटाया जा सका।"
 
@@ -651,12 +651,12 @@ msgstr "फ़ोल्डर में स्थानांतरित कर
 msgid "Add to collection…"
 msgstr "संग्रह में जोड़ें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:532
-#: src/Modules/MediaLibrary/FolderManager.php:568
+#: src/Modules/MediaLibrary/FolderManager.php:536
+#: src/Modules/MediaLibrary/FolderManager.php:572
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "किसी फ़ोल्डर को उसी में या उसके किसी सबफ़ोल्डर में नहीं ले जाया जा सकता।"
 
-#: src/Modules/MediaLibrary/FolderManager.php:593
+#: src/Modules/MediaLibrary/FolderManager.php:597
 msgid "Could not delete folder."
 msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 
@@ -1570,6 +1570,28 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 # Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
 #~ msgid "Could not save — please retry."
 #~ msgstr "सहेजा नहीं जा सका — कृपया फिर से प्रयास करें।"
+
+# En-tête « Description » du solo RAD.
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
+#~ "components only."
+#~ msgstr ""
+#~ "पूरे वर्डप्रेस एडमिन का डार्क और लाइट रीडिज़ाइन: एक नेविगेशन रेल जिसे आप पुनर्व्यवस्थित "
+#~ "करते हैं, नए सिरे से सोची गई सूचियाँ और संपादक, सभी सूचनाओं के लिए एक ही जगह, एक "
+#~ "डैशबोर्ड जिसे आप स्वयं बनाते हैं, और एक अंतर्निर्मित टूलकिट। केवल नेटिव घटक।"
+
+# Variante RAD, dérivée de la variante RML de la même locale.
+#~ msgid ""
+#~ "You are already running the full Double Youpi suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
+#~ msgstr ""
+#~ "आप पहले से ही पूरा Double Youpi सुइट चला रहे हैं, जिसमें Double Youpï Refined "
+#~ "Admin Dashboard शामिल है। यह स्टैंडअलोन प्रति उसके रास्ते से हट गई है। इसे अलग से "
+#~ "चलाना चाहते हैं? पहले सुइट को निष्क्रिय करें।"
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals — performance, "
@@ -5230,3 +5252,9 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "यदि सक्षम है, मेन्यू की सभी 7 पंक्तियाँ (सामग्री, वाणिज्य, उपयोगकर्ता, समुदाय, "
 #~ "दिखावट, सिस्टम, डेवलपर) एक्सेंट रंग का उपयोग करती हैं। अन्यथा, प्रत्येक पंक्ति अपना स्वयं "
 #~ "का रंग रखती है।"
+
+#~ msgid "Double Youpi · Tools"
+#~ msgstr "Double Youpi · उपकरण"
+
+#~ msgid "%s detected, we hand control over to it."
+#~ msgstr "%s मिला, हम नियंत्रण उसे सौंप देते हैं।"

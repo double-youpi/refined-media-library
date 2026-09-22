@@ -124,7 +124,8 @@ class CollectionManager extends AbstractModule {
 		return new \WP_REST_Response(
 			array_values( array_map( static fn( $t ) => [
 				'id'    => $t->term_id,
-				'name'  => $t->name,
+				// See the note in FolderManager::term_payload — decoded here, escaped client-side.
+				'name'  => html_entity_decode( $t->name, ENT_QUOTES, 'UTF-8' ),
 				'count' => (int) $t->count,
 			], $terms ) ),
 			200
@@ -141,7 +142,7 @@ class CollectionManager extends AbstractModule {
 		$term = get_term( $result['term_id'], CollectionTaxonomy::TAXONOMY );
 		return new \WP_REST_Response( [
 			'id'    => $term->term_id,
-			'name'  => $term->name,
+			'name'  => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
 			'count' => 0,
 		], 201 );
 	}

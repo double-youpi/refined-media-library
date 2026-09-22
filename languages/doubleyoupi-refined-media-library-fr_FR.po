@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
+"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -612,7 +612,7 @@ msgstr ""
 "Sauvegardes planifiées, complètes ou base de données seule, avec rotation et "
 "restauration en un clic (instantané automatique d’abord)."
 
-#: src/Modules/MediaLibrary/CollectionManager.php:168
+#: src/Modules/MediaLibrary/CollectionManager.php:169
 msgid "Could not delete collection."
 msgstr "Impossible de supprimer la collection."
 
@@ -658,14 +658,14 @@ msgstr "Déplacer dans un dossier…"
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:532
-#: src/Modules/MediaLibrary/FolderManager.php:568
+#: src/Modules/MediaLibrary/FolderManager.php:536
+#: src/Modules/MediaLibrary/FolderManager.php:572
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:593
+#: src/Modules/MediaLibrary/FolderManager.php:597
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
 
@@ -1648,6 +1648,31 @@ msgstr ""
 #~ msgstr ""
 #~ "Clone la production sur un sous-domaine privé pour tester sans risque, "
 #~ "avec noindex, robots et basic auth optionnelle."
+
+# En-tête « Description » du solo RAD.
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
+#~ "components only."
+#~ msgstr ""
+#~ "Une refonte sombre et claire de toute l'administration WordPress : un "
+#~ "rail de navigation que vous réorganisez, des listes et un éditeur "
+#~ "repensés, un seul endroit pour toutes les notifications, un tableau de "
+#~ "bord que vous composez et une boîte à outils intégrée. Uniquement des "
+#~ "composants natifs."
+
+# Variante RAD, dérivée de la variante RML de la même locale.
+#~ msgid ""
+#~ "You are already running the full Double Youpi suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
+#~ msgstr ""
+#~ "Vous utilisez déjà la suite Double Youpi complète, et elle inclut Double "
+#~ "Youpï Refined Admin Dashboard. Cette copie autonome s’est mise en retrait "
+#~ "pour ne pas la gêner. Vous voulez l’utiliser seule ? Désactivez d’abord "
+#~ "la suite."
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals — performance, "
@@ -5382,3 +5407,9 @@ msgstr ""
 #~ "Si activé, les 7 lignes du menu (Contenu, Commerce, Utilisateurs, "
 #~ "Communauté, Apparence, Système, Développeur) utilisent toutes la couleur "
 #~ "d'accent. Sinon, chaque ligne garde sa couleur propre."
+
+#~ msgid "Double Youpi · Tools"
+#~ msgstr "Double Youpi · Outils"
+
+#~ msgid "%s detected, we hand control over to it."
+#~ msgstr "%s détecté, nous lui laissons la main."

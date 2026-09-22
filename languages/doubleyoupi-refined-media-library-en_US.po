@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Double Youpi 0.9.40-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T17:22:44+00:00\n"
+"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
 "PO-Revision-Date: 2026-05-20 22:31+0000\n"
 "Last-Translator: Double Youpi\n"
 "Language-Team: Double Youpi (English (United States))\n"
@@ -584,7 +584,7 @@ msgid ""
 "snapshot first)."
 msgstr ""
 
-#: src/Modules/MediaLibrary/CollectionManager.php:168
+#: src/Modules/MediaLibrary/CollectionManager.php:169
 msgid "Could not delete collection."
 msgstr "Could not delete collection."
 
@@ -630,12 +630,12 @@ msgstr "Move to folder…"
 msgid "Add to collection…"
 msgstr "Add to collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:532
-#: src/Modules/MediaLibrary/FolderManager.php:568
+#: src/Modules/MediaLibrary/FolderManager.php:536
+#: src/Modules/MediaLibrary/FolderManager.php:572
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "A folder cannot be moved into itself or one of its subfolders."
 
-#: src/Modules/MediaLibrary/FolderManager.php:593
+#: src/Modules/MediaLibrary/FolderManager.php:597
 msgid "Could not delete folder."
 msgstr "Could not delete folder."
 
@@ -4947,3 +4947,9 @@ msgstr ""
 #~ "If enabled, the 7 menu lines (Content, Commerce, Users, Community, "
 #~ "Appearance, System, Developer) all use the accent color. Otherwise, each "
 #~ "line keeps its own color."
+
+#~ msgid "Double Youpi · Tools"
+#~ msgstr "Double Youpi · Tools"
+
+#~ msgid "%s detected, we hand control over to it."
+#~ msgstr "%s detected, we hand control over to it."

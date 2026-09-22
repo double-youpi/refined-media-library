@@ -3,7 +3,7 @@
  * Plugin Name:       Double Youpï Refined Media Library
  * Plugin URI:        https://doubleyoupi.com/plugins/refined-media-library
  * Description:       Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, auto alt text and WebP/AVIF for the WordPress media library, without the per-image fiddling.
- * Version:           0.3.0
+ * Version:           0.3.1
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Double Youpï
@@ -46,7 +46,7 @@ if ( ( static function (): bool {
 	return;
 }
 
-define( 'DOUBLEYOUPI_VERSION', '0.3.0' );
+define( 'DOUBLEYOUPI_VERSION', '0.3.1' );
 define( 'DOUBLEYOUPI_FILE', __FILE__ );
 define( 'DOUBLEYOUPI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DOUBLEYOUPI_URL', plugin_dir_url( __FILE__ ) );

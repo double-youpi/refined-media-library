@@ -30,6 +30,9 @@
 	var ajaxUrl            = doubleyoupiMediaFolders.ajaxUrl || '';
 	var enableNonce        = doubleyoupiMediaFolders.enableNonce || '';
 
+	// The admin-sidebar watcher is wired once per page (see watchAdminMenuWidth).
+	var adminMenuWatched   = false;
+
 	/*
 	 * sprintf-lite — supports %s, %d, and positional %1$s / %2$d.
 	 * Used to inject runtime values into translated PHP strings (e.g. names, counts).
@@ -873,6 +876,7 @@
 			window.document.fonts.ready.then( syncBrandHeight );
 		}
 		$( window ).on( 'resize', syncBrandHeight );
+		watchAdminMenuWidth();
 	}
 
 	// Publish the brand's rendered height so the folder panel can sit exactly
@@ -881,6 +885,69 @@
 		var el = window.document.getElementById( 'dy-panel-brand' );
 		if ( ! el ) { return; }
 		window.document.body.style.setProperty( '--dy-brand-h', el.offsetHeight + 'px' );
+	}
+
+	/*
+	 * ── WP admin sidebar width, measured rather than assumed ────────────────
+	 *
+	 * The panel and its brand are position:fixed and must sit just right of the
+	 * WP admin rail. Hard-coding that offset (160px expanded / 36px folded) is
+	 * wrong on a large share of real sites: admin-enhancer plugins (Ultimate
+	 * Client Dash and friends) and plain site CSS routinely rewrite
+	 * `#adminmenu, #adminmenuback, #adminmenuwrap { width: … }`. The rail then
+	 * covers the panel and the whole screen reads as broken.
+	 *
+	 * So we publish the rail's real geometry as --dy-adminmenu-w; the CSS keeps
+	 * 160/36px only as the no-JS fallback. We measure the rail's RIGHT edge, not
+	 * its width: that also survives a rail which does not start at x=0.
+	 *
+	 * #adminmenuback is the painted rail (the one whose width those plugins set);
+	 * the wrap and the menu itself are fallbacks for markup we have not seen.
+	 */
+	function adminMenuRail() {
+		var doc = window.document;
+		return doc.getElementById( 'adminmenuback' ) ||
+			doc.getElementById( 'adminmenuwrap' ) ||
+			doc.getElementById( 'adminmenu' );
+	}
+
+	function syncAdminMenuWidth() {
+		var rail = adminMenuRail();
+		if ( ! rail ) { return; }
+
+		// Below 782px WP takes the rail off-canvas (hidden or translated out):
+		// the measure reads 0 or negative. Leave the variable untouched — the
+		// mobile media query already pins the panel to the gutter.
+		var right = Math.round( rail.getBoundingClientRect().right );
+		if ( right <= 0 ) { return; }
+
+		window.document.body.style.setProperty( '--dy-adminmenu-w', right + 'px' );
+	}
+
+	function watchAdminMenuWidth() {
+		if ( adminMenuWatched ) { return; }
+		adminMenuWatched = true;
+
+		syncAdminMenuWidth();
+
+		var rail = adminMenuRail();
+		if ( rail && typeof window.ResizeObserver !== 'undefined' ) {
+			// Covers everything at once: the "Collapse menu" transition, the
+			// responsive auto-fold, and any plugin resizing the rail later.
+			new window.ResizeObserver( syncAdminMenuWidth ).observe( rail );
+		} else {
+			// No ResizeObserver: the collapse toggle is the one width change we
+			// can anticipate. Re-measure across its 0.2s transition.
+			$( window.document ).on( 'click', '#collapse-menu', function () {
+				var frames = 0;
+				( function tick() {
+					syncAdminMenuWidth();
+					if ( ++frames < 24 ) { window.requestAnimationFrame( tick ); }
+				} )();
+			} );
+		}
+
+		$( window ).on( 'resize', syncAdminMenuWidth );
 	}
 
 	/*
