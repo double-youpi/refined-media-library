@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Modules\MediaLibrary;
 
+use DoubleYoupi\Core\Build;
+
 use DoubleYoupi\Core\AbstractModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -52,11 +54,11 @@ class DuplicateDetector extends AbstractModule {
 			return;
 		}
 
-		$js = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/duplicate-badge.js';
+		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/duplicate-badge.js' );
 		if ( file_exists( $js ) ) {
 			wp_enqueue_script(
 				'dy-duplicate-badge',
-				DOUBLEYOUPI_URL . 'assets/js/modules/media-library/duplicate-badge.js',
+				Build::url( __FILE__, 'assets/js/modules/media-library/duplicate-badge.js' ),
 				[ 'jquery', 'media-views' ],
 				DOUBLEYOUPI_VERSION,
 				true

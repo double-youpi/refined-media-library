@@ -1,0 +1,114 @@
+// =============================================================
+// _switch.scss
+// Custom toggle switch — track + thumb + "Enabled/Disabled" label.
+//
+// Pattern: <label class="dy-overview__switch">
+//             <input type="checkbox">
+//             <span class="dy-overview__switch-track"></span>
+//             <span class="dy-overview__switch-label">Enabled</span>
+//           </label>
+// =============================================================
+
+.dy-overview__switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+
+	// The real checkbox is invisible but accessible: focus, state,
+	// keyboard. We move it out of flow so it occupies no space,
+	// but we do not hide it with display:none (which would remove focus).
+	input[type="checkbox"] {
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		pointer-events: none;
+		margin: 0;
+	}
+
+	// ── Track + thumb ─────────────────────────────────────────
+	&-track {
+		position: relative;
+		display: inline-block;
+		width: 38px;
+		height: 22px;
+		background: var(--dya-paper-3);
+		border: 1px solid var(--dya-edge-strong);
+		border-radius: var(--dya-r-pill);
+		transition: background var(--dya-t-med) var(--dya-ease),
+		            border-color var(--dya-t-fast) var(--dya-ease),
+		            box-shadow var(--dya-t-fast) var(--dya-ease);
+		flex-shrink: 0;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 16px;
+			height: 16px;
+			background: var(--dya-paper);
+			border: 1px solid var(--dya-edge);
+			border-radius: 50%;
+			transition: transform var(--dya-t-med) var(--dya-ease-out),
+			            background var(--dya-t-fast) var(--dya-ease),
+			            border-color var(--dya-t-fast) var(--dya-ease),
+			            box-shadow var(--dya-t-fast) var(--dya-ease);
+		}
+	}
+
+	// CHECKED state: track becomes accent, thumb slides right + turns white.
+	input:checked + &-track {
+		background: var(--dya-accent);
+		border-color: var(--dya-accent);
+
+		&::after {
+			transform: translateX(16px);
+			background: #ffffff;
+			border-color: rgba(0, 0, 0, .08);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+		}
+	}
+
+	// Focus visible: accent halo around the track.
+	input:focus-visible + &-track {
+		box-shadow: 0 0 0 4px rgba(var(--dya-accent-rgb), .18);
+	}
+
+	// Hover: more prominent track, thumb very slightly elongated (squish).
+	&:hover &-track {
+		border-color: var(--dya-ink-mute);
+
+		&::after { transform: translateX(1px) scaleX(1.08); }
+	}
+
+	&:hover input:checked + &-track::after {
+		transform: translateX(15px) scaleX(1.08);
+	}
+
+	// ── Text label (Enabled/Disabled) ──────────────────────
+	&-label {
+		font-family: var(--dya-font-body);
+		font-size: 12px;
+		font-weight: 500;
+		color: var(--dya-ink-mute);
+		min-width: 56px;
+		transition: color var(--dya-t-fast) var(--dya-ease);
+	}
+
+	// When the checkbox is checked, the label in the DOM reads "Enabled"
+	// (rendered by PHP) — we give it the ink-soft color so it is
+	// more prominent than "Disabled".
+	&:has(input:checked) &-label {
+		color: var(--dya-ink-soft);
+	}
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__switch-track,
+	.dy-overview__switch-track::after { transition: none; }
+}

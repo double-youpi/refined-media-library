@@ -1,0 +1,98 @@
+// =============================================================
+// _quickfacts.scss
+// Hero meta-info: "X/Y modules active" counter, version, last-update.
+// Positioned via grid-area: meta (see _shell.scss).
+// =============================================================
+
+.dy-overview {
+	&__hero-meta {
+		grid-area: meta;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		align-items: flex-end;
+		font-family: var(--dya-font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: var(--dya-tracking-mono);
+		color: var(--dya-ink-mute);
+		text-transform: uppercase;
+		opacity: 0;
+		animation: dy-overview-fade-up 420ms var(--dya-ease-out) 360ms forwards;
+
+		// On mobile: drops below the title, left-aligned.
+		@media (max-width: 720px) {
+			align-items: flex-start;
+		}
+	}
+
+	&__hero-meta-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+
+		// Dot before each meta-row: semantically color-coded by context.
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background: var(--dya-ink-mute);
+		}
+
+		&[data-state="active"]::before {
+			background: var(--dya-accent);
+			box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .14);
+			animation: dy-overview-dot-pulse 2400ms var(--dya-ease) infinite;
+		}
+	}
+
+	&__hero-meta-value {
+		color: var(--dya-ink);
+		font-weight: 600;
+	}
+
+	// Solo punchline (in place of the counter): light tone, accent,
+	// display italic. We neutralise the inherited mono/uppercase style from hero-meta.
+	&__hero-quip {
+		display: block;
+		max-width: 42ch;
+		font-family: var(--dya-font-display);
+		font-style: italic;
+		font-weight: 300;
+		font-variation-settings: "wght" 300;
+		font-size: 13.5px;
+		letter-spacing: var(--dya-tracking-body);
+		text-transform: none;
+		color: var(--dya-accent);
+		text-align: right;
+		line-height: 1.45;
+		// Balances lines when the punchline wraps to two lines
+		// (approximately equal lengths). Chrome 114+, Safari 17.5+, Firefox 121+.
+		text-wrap: balance;
+
+		@media (max-width: 720px) {
+			text-align: left;
+		}
+	}
+}
+
+// ── Quickfacts dot pulse animation ──────────────────────────
+
+@keyframes dy-overview-dot-pulse {
+	0%, 100% {
+		box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .14);
+		transform: scale(1);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(var(--dya-accent-rgb), .06);
+		transform: scale(1.15);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__hero-meta-row[data-state="active"]::before {
+		animation: none;
+	}
+}

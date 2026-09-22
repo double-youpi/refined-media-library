@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Modules\MediaLibrary;
 
+use DoubleYoupi\Core\Build;
+
 use DoubleYoupi\Core\AbstractModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -146,13 +148,13 @@ class FolderManager extends AbstractModule {
 	 * confirm/prompt/alert (upload.php and the RML settings tabs).
 	 */
 	public static function enqueue_dialog_assets( $ver ): void {
-		$css = DOUBLEYOUPI_DIR . 'assets/css/modules/media-library/dialog.css';
+		$css = Build::dir( __FILE__, 'assets/css/modules/media-library/dialog.css' );
 		if ( file_exists( $css ) ) {
-			wp_enqueue_style( 'doubleyoupi-ml-dialog', DOUBLEYOUPI_URL . 'assets/css/modules/media-library/dialog.css', [], $ver );
+			wp_enqueue_style( 'doubleyoupi-ml-dialog', Build::url( __FILE__, 'assets/css/modules/media-library/dialog.css' ), [], $ver );
 		}
-		$js = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/dialog.js';
+		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/dialog.js' );
 		if ( file_exists( $js ) ) {
-			wp_enqueue_script( 'doubleyoupi-ml-dialog', DOUBLEYOUPI_URL . 'assets/js/modules/media-library/dialog.js', [], $ver, true );
+			wp_enqueue_script( 'doubleyoupi-ml-dialog', Build::url( __FILE__, 'assets/js/modules/media-library/dialog.js' ), [], $ver, true );
 		}
 	}
 
@@ -185,11 +187,11 @@ class FolderManager extends AbstractModule {
 		// In production, use the plugin version as a stable cache-buster.
 		$ver = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? time() : DOUBLEYOUPI_VERSION;
 
-		$css = DOUBLEYOUPI_DIR . 'assets/css/modules/media-library/media-library.css';
+		$css = Build::dir( __FILE__, 'assets/css/modules/media-library/media-library.css' );
 		if ( file_exists( $css ) ) {
 			wp_enqueue_style(
 				'doubleyoupi-media-library',
-				DOUBLEYOUPI_URL . 'assets/css/modules/media-library/media-library.css',
+				Build::url( __FILE__, 'assets/css/modules/media-library/media-library.css' ),
 				[],
 				$ver
 			);
@@ -204,13 +206,13 @@ class FolderManager extends AbstractModule {
 		// Designed dialog system (replaces native confirm/prompt/alert).
 		self::enqueue_dialog_assets( $ver );
 
-		$js = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/folder-tree.js';
+		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/folder-tree.js' );
 		if ( file_exists( $js ) ) {
 			// media-views: critical dependency — ensures Backbone wp.media is loaded.
 			// doubleyoupi-ml-dialog: folder/collection CRUD confirmations use it.
 			wp_enqueue_script(
 				'doubleyoupi-media-folders',
-				DOUBLEYOUPI_URL . 'assets/js/modules/media-library/folder-tree.js',
+				Build::url( __FILE__, 'assets/js/modules/media-library/folder-tree.js' ),
 				[ 'jquery', 'media-views', 'doubleyoupi-ml-dialog' ],
 				$ver,
 				true
@@ -250,11 +252,11 @@ class FolderManager extends AbstractModule {
 			'dy-media-filters' => 'media-filters.js',
 			'dy-media-detail'  => 'media-detail.js',
 		] as $handle => $filename ) {
-			$path = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/' . $filename;
+			$path = Build::dir( __FILE__, 'assets/js/modules/media-library/' ) . $filename;
 			if ( file_exists( $path ) ) {
 				wp_enqueue_script(
 					$handle,
-					DOUBLEYOUPI_URL . 'assets/js/modules/media-library/' . $filename,
+					Build::url( __FILE__, 'assets/js/modules/media-library/' ) . $filename,
 					[ 'jquery', 'media-views', 'doubleyoupi-media-folders' ],
 					$ver,
 					true
@@ -437,10 +439,10 @@ class FolderManager extends AbstractModule {
 			$map[ $term->term_id ] = [
 				'id'       => $term->term_id,
 				// WordPress stores term names HTML-encoded (`A &amp; B`). The panel escapes
-			// every value before inserting it, so sending the encoded form would
-			// escape it twice and print the entity. Decode here: the client gets
-			// plain text and does its own escaping.
-			'name'     => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
+				// every value before inserting it, so sending the encoded form would
+				// escape it twice and print the entity. Decode here: the client gets
+				// plain text and does its own escaping.
+				'name'     => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
 				'parent'   => $term->parent,
 				'order'    => (int) get_term_meta( $term->term_id, FolderTaxonomy::META_ORDER, true ),
 				'count'    => (int) $term->count,

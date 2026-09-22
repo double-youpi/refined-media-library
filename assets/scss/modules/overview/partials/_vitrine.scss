@@ -1,0 +1,570 @@
+// =============================================================
+// _vitrine.scss
+// Showcase section: cards for modules NOT bundled (solo plugins),
+// FREE / Suite badges, and a presentation modal with a carousel.
+// Consistent with _cards.scss (same tokens, same durations/eases).
+// =============================================================
+
+.dy-overview {
+
+	// ── Badge (FREE / Suite) ─────────────────────────────────
+	&__badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		font-family: var(--dya-font-mono);
+		font-size: 9.5px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: .11em;
+		padding: 3px 9px;
+		border-radius: var(--dya-r-pill);
+		white-space: nowrap;
+
+		&--free {
+			background: var(--dya-success-soft);
+			color: var(--dya-success);
+			box-shadow: inset 0 0 0 1px rgba(0, 163, 42, .22);
+		}
+
+		&--paid {
+			background: var(--dya-accent-soft);
+			color: var(--dya-accent);
+			box-shadow: inset 0 0 0 1px rgba(var(--dya-accent-rgb), .25);
+		}
+	}
+
+	// ── Showcase card ────────────────────────────────────────
+	&__card.is-vitrine {
+		background: linear-gradient(180deg, var(--dya-paper-2) 0%, var(--dya-paper) 70%);
+		cursor: default;
+
+		.dy-overview__icon-tile {
+			color: var(--dya-ink-soft);
+			background: var(--dya-paper);
+		}
+
+		&.is-free:hover .dy-overview__icon-tile {
+			color: var(--dya-success);
+			border-color: rgba(0, 163, 42, .3);
+			background: var(--dya-success-soft);
+		}
+
+		.dy-overview__name { color: var(--dya-ink); }
+
+		// The left accent ribbon stays subtle in showcase cards.
+		&::before { background: var(--dya-line-strong); }
+	}
+
+	// ── Showcase card footer ─────────────────────────────────
+	&__vitrine-open {
+		appearance: none;
+		border: 1px solid var(--dya-edge-strong);
+		background: var(--dya-paper);
+		color: var(--dya-ink);
+		font-family: var(--dya-font-body);
+		font-size: 12.5px;
+		font-weight: 600;
+		padding: 6px 14px;
+		border-radius: var(--dya-r-pill);
+		cursor: pointer;
+		transition: border-color var(--dya-t-fast) var(--dya-ease),
+		            background var(--dya-t-fast) var(--dya-ease),
+		            color var(--dya-t-fast) var(--dya-ease),
+		            transform var(--dya-t-fast) var(--dya-ease);
+
+		&:hover {
+			border-color: rgba(var(--dya-accent-rgb), .5);
+			color: var(--dya-accent);
+			background: var(--dya-accent-soft);
+			transform: translateY(-1px);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .25);
+		}
+	}
+
+	&__vitrine-tag {
+		font-family: var(--dya-font-mono);
+		font-size: 10px;
+		letter-spacing: .04em;
+		color: var(--dya-ink-mute);
+
+		&.is-free { color: var(--dya-success); }
+		&.is-paid { color: var(--dya-accent); }
+	}
+
+	// ── Modal ────────────────────────────────────────────────
+	&__modal {
+		position: fixed;
+		inset: 0;
+		z-index: 100000;            // above the WP admin chrome
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: clamp(16px, 4vw, 48px);
+
+		&[hidden] { display: none; }
+
+		&-backdrop {
+			position: absolute;
+			inset: 0;
+			background: rgba(8, 10, 14, .55);
+			backdrop-filter: blur(3px);
+			opacity: 0;
+			transition: opacity var(--dya-t-med) var(--dya-ease);
+		}
+
+		&-panel {
+			position: relative;
+			width: min(720px, 100%);
+			max-height: calc(100vh - 64px);
+			overflow: auto;
+			background: var(--dya-paper);
+			border: 1px solid var(--dya-edge);
+			border-radius: var(--dya-r-lg);
+			box-shadow: 0 24px 70px -16px rgba(8, 10, 14, .5);
+			opacity: 0;
+			transform: translateY(14px) scale(.98);
+			transition: opacity var(--dya-t-med) var(--dya-ease-out),
+			            transform var(--dya-t-med) var(--dya-ease-out);
+		}
+
+		&.is-open &-backdrop { opacity: 1; }
+		&.is-open &-panel {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+
+		&-close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 3;
+			width: 34px;
+			height: 34px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+			line-height: 1;
+			border: none;
+			border-radius: 50%;
+			background: rgba(8, 10, 14, .35);
+			color: #fff;
+			cursor: pointer;
+			transition: background var(--dya-t-fast) var(--dya-ease), transform var(--dya-t-fast) var(--dya-ease);
+
+			&:hover { background: rgba(8, 10, 14, .6); transform: rotate(90deg); }
+			&:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(255, 255, 255, .5); }
+		}
+
+		&-body {
+			padding: 18px 22px 22px;
+		}
+
+		&-title {
+			font-family: var(--dya-font-display);
+			font-size: 21px;
+			font-weight: 500;
+			letter-spacing: var(--dya-tracking-tight);
+			color: var(--dya-ink);
+			margin: 10px 0 6px;
+		}
+
+		&-desc {
+			font-size: 13.5px;
+			line-height: 1.55;
+			color: var(--dya-ink-soft);
+			margin: 0 0 16px;
+		}
+
+		&-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+	}
+
+	// ── Carousel ─────────────────────────────────────────────
+	&__carousel {
+		position: relative;
+		background: var(--dya-paper-2);
+		border-bottom: 1px solid var(--dya-line);
+		border-radius: var(--dya-r-lg) var(--dya-r-lg) 0 0;
+		overflow: hidden;
+
+		&-viewport {
+			overflow: hidden;
+		}
+
+		&-track {
+			display: flex;
+			transition: transform var(--dya-t-slow) var(--dya-ease-out);
+			will-change: transform;
+		}
+
+		&-slide {
+			flex: 0 0 100%;
+			aspect-ratio: 16 / 9;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		&-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 36px;
+			height: 36px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+			line-height: 1;
+			border: none;
+			border-radius: 50%;
+			background: rgba(8, 10, 14, .4);
+			color: #fff;
+			cursor: pointer;
+			transition: background var(--dya-t-fast) var(--dya-ease);
+
+			&.is-prev { left: 10px; }
+			&.is-next { right: 10px; }
+			&:hover { background: rgba(8, 10, 14, .7); }
+			&[hidden] { display: none; }
+		}
+
+		&-dots {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			gap: 7px;
+
+			&[hidden] { display: none; }
+		}
+
+		&-dot {
+			width: 7px;
+			height: 7px;
+			padding: 0;
+			border: none;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, .5);
+			cursor: pointer;
+			transition: background var(--dya-t-fast) var(--dya-ease), transform var(--dya-t-fast) var(--dya-ease);
+
+			&.is-active { background: #fff; transform: scale(1.3); }
+		}
+	}
+
+	// ── Modal buttons ────────────────────────────────────────
+	&__btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--dya-font-body);
+		font-size: 13px;
+		font-weight: 600;
+		padding: 9px 18px;
+		border-radius: var(--dya-r-pill);
+		text-decoration: none;
+		cursor: pointer;
+		border: 1px solid transparent;
+		transition: background var(--dya-t-fast) var(--dya-ease),
+		            border-color var(--dya-t-fast) var(--dya-ease),
+		            color var(--dya-t-fast) var(--dya-ease),
+		            transform var(--dya-t-fast) var(--dya-ease);
+
+		&--dya-primary {
+			background: var(--dya-accent);
+			color: #fff;
+			&:hover { transform: translateY(-1px); filter: brightness(1.06); }
+		}
+
+		&--dya-ghost {
+			background: transparent;
+			border-color: var(--dya-edge-strong);
+			color: var(--dya-ink);
+			&:hover { border-color: rgba(var(--dya-accent-rgb), .5); color: var(--dya-accent); }
+		}
+
+		&.is-disabled {
+			opacity: .55;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+
+		&:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .3); }
+	}
+}
+
+// Scroll lock when the modal is open.
+body.dy-modal-open {
+	overflow: hidden;
+}
+
+// ── Reduced motion ───────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__modal-panel,
+	.dy-overview__modal-backdrop,
+	.dy-overview__carousel-track {
+		transition: none;
+	}
+	.dy-overview__modal-close:hover { transform: none; }
+}
+
+// =============================================================
+// "Coming soon" section: compact cards, icon on the left, text on the right,
+// no action or hover. More understated than the main module grid.
+// =============================================================
+.dy-overview {
+
+	&__soon {
+		margin: 30px 0 8px;
+		padding-top: 22px;
+		border-top: 1px solid var(--dya-line);
+	}
+
+	// ── "Up next" spotlight: the flagship (Refined Admin Dashboard), nearly
+	//    done and shipping first. Accent-tinted, alive — deliberately louder
+	//    than the understated coming-soon grid below it. ──────────────────────
+	&__upnext {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 16px 18px;
+		margin: 0 0 14px;
+		border-radius: var(--dya-r-md);
+		border: 1px solid rgba(var(--dya-accent-rgb), .38);
+		background: linear-gradient(180deg, rgba(var(--dya-accent-rgb), .12), rgba(var(--dya-accent-rgb), .045));
+		box-shadow: var(--dya-shadow-accent, 0 12px 28px rgba(var(--dya-accent-rgb), .18));
+		overflow: hidden;
+		isolation: isolate;
+
+		// Soft accent bloom in the top-left corner.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(120% 150% at 0% 0%, rgba(var(--dya-accent-rgb), .16), transparent 58%);
+			pointer-events: none;
+			z-index: -1;
+		}
+
+		@media (max-width: 600px) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 13px;
+		}
+	}
+
+	&__upnext-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 46px;
+		height: 46px;
+		flex-shrink: 0;
+		border-radius: 13px;
+		color: var(--dya-accent-on);
+		background: var(--dya-accent);
+		box-shadow: 0 6px 16px rgba(var(--dya-accent-rgb), .38);
+
+		.dy-icon { width: 24px; height: 24px; display: block; color: inherit; }
+	}
+
+	&__upnext-body { min-width: 0; flex: 1; }
+
+	&__upnext-eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		margin: 0 0 4px;
+		font-family: var(--dya-font-mono);
+		font-size: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: .16em;
+		color: var(--dya-accent);
+	}
+
+	&__upnext-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--dya-accent);
+		box-shadow: 0 0 0 0 rgba(var(--dya-accent-rgb), .55);
+		animation: dy-upnext-pulse 2.4s ease-out infinite;
+	}
+
+	&__upnext-name {
+		font-family: var(--dya-font-display);
+		font-size: 17px;
+		font-weight: 600;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		margin: 0 0 3px;
+	}
+
+	&__upnext-desc {
+		font-size: 12px;
+		line-height: 1.45;
+		color: var(--dya-ink-soft);
+		margin: 0 0 11px;
+		max-width: 64ch;
+	}
+
+	&__upnext-progress {
+		display: flex;
+		align-items: center;
+		gap: 11px;
+	}
+
+	&__upnext-rail {
+		position: relative;
+		flex: 1;
+		max-width: 300px;
+		height: 6px;
+		border-radius: 999px;
+		background: rgba(var(--dya-accent-rgb), .15);
+		overflow: hidden;
+	}
+
+	&__upnext-fill {
+		position: relative;
+		display: block;
+		height: 100%;
+		width: 92%;
+		border-radius: inherit;
+		overflow: hidden;
+		background: linear-gradient(90deg, rgba(var(--dya-accent-rgb), .55), var(--dya-accent));
+		transform-origin: left center;
+		animation: dy-upnext-fill 1s cubic-bezier(.23, 1, .32, 1) both;
+
+		// Light sweeps across the fill on a slow loop.
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 40%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .5), transparent);
+			transform: translateX(-130%);
+			animation: dy-upnext-shimmer 2.8s ease-in-out 1.1s infinite;
+		}
+	}
+
+	&__upnext-state {
+		font-family: var(--dya-font-mono);
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: .04em;
+		color: var(--dya-accent);
+		white-space: nowrap;
+	}
+
+	&__soon-title {
+		font-family: var(--dya-font-mono);
+		font-size: 10.5px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: .14em;
+		color: var(--dya-ink-mute);
+		margin: 0 0 14px;
+	}
+
+	&__soon-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 10px;
+	}
+
+	&__soon-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 11px;
+		padding: 11px 13px;
+		border: 1px dashed var(--dya-line-strong);
+		border-radius: var(--dya-r-md);
+		background: transparent;
+		opacity: .72;
+		// No hover, no transition: these modules are not interactive.
+	}
+
+	&__soon-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		border-radius: var(--dya-r-sm, 8px);
+		background: var(--dya-paper-2);
+		border: 1px solid var(--dya-edge);
+		color: var(--dya-ink-mute);
+		flex-shrink: 0;
+
+		.dy-icon { width: 18px; height: 18px; display: block; color: inherit; }
+	}
+
+	&__soon-text { min-width: 0; }
+
+	&__soon-name {
+		font-family: var(--dya-font-display);
+		font-size: 13.5px;
+		font-weight: 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink-soft);
+		margin: 1px 0 3px;
+	}
+
+	&__soon-desc {
+		font-size: 11.5px;
+		line-height: 1.45;
+		color: var(--dya-ink-mute);
+		margin: 0;
+	}
+
+	@media (max-width: 600px) {
+		&__soon-grid { grid-template-columns: 1fr; }
+	}
+}
+
+// ── "Up next" spotlight motion ───────────────────────────────────────────────
+@keyframes dy-upnext-fill {
+	from { transform: scaleX(0); }
+	to   { transform: scaleX(1); }
+}
+
+@keyframes dy-upnext-shimmer {
+	0%        { transform: translateX(-130%); }
+	55%, 100% { transform: translateX(360%); }
+}
+
+@keyframes dy-upnext-pulse {
+	0%   { box-shadow: 0 0 0 0 rgba(var(--dya-accent-rgb), .55); }
+	70%  { box-shadow: 0 0 0 7px rgba(var(--dya-accent-rgb), 0); }
+	100% { box-shadow: 0 0 0 0 rgba(var(--dya-accent-rgb), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__upnext-dot,
+	.dy-overview__upnext-fill,
+	.dy-overview__upnext-fill::after { animation: none; }
+	.dy-overview__upnext-fill { transform: none; }
+}

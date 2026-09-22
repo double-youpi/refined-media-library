@@ -1,0 +1,73 @@
+// =============================================================================
+// :root { --dy-* } — runtime token exposure
+// =============================================================================
+//
+// This partial must be @forwarded (or @used with ()) ONLY ONCE per final
+// compiled file, otherwise it produces duplicate output in the CSS. Included
+// from admin.scss and each module SCSS entry point (media-library.scss…).
+//
+// =============================================================================
+
+@use 'variables' as *;
+
+:root {
+	// Accent colours
+	--dy-accent:        #{$color-accent};
+	--dy-accent-hover:  #{$color-accent-hover};
+
+	// Text
+	--dy-ink:           #{$color-ink};
+	--dy-ink-soft:      #{$color-ink-soft};
+	--dy-ink-mute:      #{$color-ink-mute};
+	--dy-ink-faint:     #{$color-ink-faint};
+
+	// Backgrounds
+	--dy-bg:            #{$color-bg};
+	--dy-bg-soft:       #{$color-bg-soft};
+	--dy-bg-card:       #{$color-bg-card};
+	--dy-bg-elev:       #{$color-bg-elev};
+
+	// Lines
+	--dy-line:          #{$color-line};
+	--dy-line-hi:       #{$color-line-hi};
+	--dy-line-soft:     #{$color-line-soft};
+	// Edges: the hairline around the media library surfaces (panel, cards,
+	// toolbar, popovers, buttons). Transparent since 21/09/2026: the blocks
+	// rest on their fill, like the rest of the design system (doc 16). The
+	// exception rule at the end of media-library.scss gives the fields their
+	// hairline back. To bring the outlines back everywhere: `var(--dy-line)`
+	// / `var(--dy-line-hi)`.
+	--dy-edge:          transparent;
+	--dy-edge-hi:       transparent;
+
+	// States
+	--dy-success:       #{$color-success};
+	--dy-success-hover: #{$color-success-hover};
+	--dy-warning:       #{$color-warning};
+	--dy-danger:        #{$color-danger};
+	--dy-danger-hover:  #{$color-danger-hover};
+
+	// Brand
+	--dy-purple:        #{$color-purple};
+	--dy-purple-600:    #{$color-purple-600};
+	--dy-purple-200:    #{$color-purple-200};
+	--dy-purple-100:    #{$color-purple-100};
+	--dy-yellow:        #{$color-yellow};
+	--dy-yellow-600:    #{$color-yellow-600};
+	--dy-yellow-100:    #{$color-yellow-100};
+
+	// Layout dimensions
+	--dy-gutter:        #{$gutter};
+	--dy-radius:        #{$radius-md};
+	--dy-radius-sm:     #{$radius-sm};
+	--dy-radius-lg:     #{$radius-lg};
+
+	// Title height — fallback value (before JS measureTitleHeight runs on boot)
+	// Runtime override: document.body.style.--dy-title-h = "Npx"
+	--dy-title-h:       90px;
+
+	// Typography
+	--dy-font-display:  #{$font-display};
+	--dy-font-body:     #{$font-body};
+	--dy-font-mono:     #{$font-mono};
+}

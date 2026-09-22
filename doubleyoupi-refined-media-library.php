@@ -3,7 +3,7 @@
  * Plugin Name:       Double Youpï Refined Media Library
  * Plugin URI:        https://doubleyoupi.com/plugins/refined-media-library
  * Description:       Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, auto alt text and WebP/AVIF for the WordPress media library, without the per-image fiddling.
- * Version:           0.3.1
+ * Version:           0.3.2
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Double Youpï
@@ -46,13 +46,22 @@ if ( ( static function (): bool {
 	return;
 }
 
-define( 'DOUBLEYOUPI_VERSION', '0.3.1' );
-define( 'DOUBLEYOUPI_FILE', __FILE__ );
-define( 'DOUBLEYOUPI_DIR', plugin_dir_path( __FILE__ ) );
-define( 'DOUBLEYOUPI_URL', plugin_dir_url( __FILE__ ) );
-define( 'DOUBLEYOUPI_BASENAME', plugin_basename( __FILE__ ) );
+// ── Constants ────────────────────────────────────────────────────────────────
+// Guarded: another Double Youpi build (the other standalone) may already be
+// active and have defined them first. Its values stay, and this build still
+// finds its own files, because the autoloader and Core\Build below are bound
+// to THIS directory rather than to the constant.
+defined( 'DOUBLEYOUPI_VERSION' )  || define( 'DOUBLEYOUPI_VERSION', '0.3.2' );
+defined( 'DOUBLEYOUPI_FILE' )     || define( 'DOUBLEYOUPI_FILE', __FILE__ );
+defined( 'DOUBLEYOUPI_DIR' )      || define( 'DOUBLEYOUPI_DIR', plugin_dir_path( __FILE__ ) );
+defined( 'DOUBLEYOUPI_URL' )      || define( 'DOUBLEYOUPI_URL', plugin_dir_url( __FILE__ ) );
+defined( 'DOUBLEYOUPI_BASENAME' ) || define( 'DOUBLEYOUPI_BASENAME', plugin_basename( __FILE__ ) );
 
-// ── Minimal PSR-4 autoloader (DoubleYoupi\ → src/) — no Composer required ────
+// ── Minimal PSR-4 autoloader (DoubleYoupi\ → src/), no Composer required ────
+// Bound to __DIR__, never to DOUBLEYOUPI_DIR: with two standalone builds
+// active, each one must load the classes it actually ships. PHP walks every
+// registered autoloader, so a class this build does not carry is found by the
+// other one, and the shared core is loaded once from whichever came first.
 spl_autoload_register( static function ( string $class ): void {
 	$prefix = 'DoubleYoupi\\';
 	$len    = strlen( $prefix );
@@ -60,11 +69,15 @@ spl_autoload_register( static function ( string $class ): void {
 		return;
 	}
 	$rel  = str_replace( '\\', '/', substr( $class, $len ) );
-	$file = DOUBLEYOUPI_DIR . 'src/' . $rel . '.php';
+	$file = __DIR__ . '/src/' . $rel . '.php';
 	if ( is_file( $file ) ) {
 		require $file;
 	}
 } );
+
+// Where this build lives, so its modules resolve their own assets even when
+// the constants point at the other one (see Core\Build).
+\DoubleYoupi\Core\Build::register( __DIR__, plugin_dir_url( __FILE__ ) );
 
 register_activation_hook( __FILE__, array( '\DoubleYoupi\Core\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( '\DoubleYoupi\Core\Activator', 'deactivate' ) );

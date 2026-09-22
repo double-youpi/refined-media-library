@@ -542,11 +542,11 @@ body.upload-php:has(.dy-detail-open) .wrap > .error {
 }
 
 /* ── Admin notices: one home, indented like the grid ───────────────────────
-   folder-tree.js moves every relocatable notice into #dy-ml-notices, a direct
-   child of .wrap placed just before the media frame. The container carries the
-   indentation; the notices inside carry none, so a plugin's own margins cannot
-   push one back over the wordmark. The selector lists above still indent stray
-   notices on their own, as a fallback for the no-JS case. */
+	 folder-tree.js moves every relocatable notice into #dy-ml-notices, a direct
+	 child of .wrap placed just before the media frame. The container carries the
+	 indentation; the notices inside carry none, so a plugin's own margins cannot
+	 push one back over the wordmark. The selector lists above still indent stray
+	 notices on their own, as a fallback for the no-JS case. */
 body.upload-php .wrap > #dy-ml-notices {
   margin-left: min(var(--dy-fw, 220px), 35vw, 360px);
   margin-right: var(--dy-gutter, 20px);
@@ -559,17 +559,17 @@ body.upload-php:has(.dy-detail-open) .wrap > #dy-ml-notices {
 }
 
 /* Nothing to show (empty, or every notice inside it hidden by someone else):
-   take no room at all. The JS sets data-empty, because CSS cannot ask whether
-   a child ended up visible. */
+	 take no room at all. The JS sets data-empty, because CSS cannot ask whether
+	 a child ended up visible. */
 body.upload-php .wrap > #dy-ml-notices:empty,
-body.upload-php .wrap > #dy-ml-notices[data-empty="true"] {
+body.upload-php .wrap > #dy-ml-notices[data-empty=true] {
   display: none;
 }
 
 /* Inside the container a notice is one item in a stack. Deliberately NOT
-   setting `display`: notices that WordPress or a plugin hides on purpose
-   (.hide-if-js, Elementor's cross-sell banners) must stay hidden. The gap
-   spaces the visible ones without giving height to the hidden ones. */
+	 setting `display`: notices that WordPress or a plugin hides on purpose
+	 (.hide-if-js, Elementor's cross-sell banners) must stay hidden. The gap
+	 spaces the visible ones without giving height to the hidden ones. */
 body.upload-php .wrap > #dy-ml-notices {
   display: flex;
   flex-direction: column;
@@ -669,8 +669,8 @@ body.upload-php [data-dy-adopt=notice-cta] {
  * flex: 0 0 <h> — the panel is a flex column and these rows are NOT negotiable.
  * With many folders the tree (max-height 60vh) plus the collections section can
  * exceed the panel height; every shrinkable child then gets squeezed and the
- * CTA and the section headers lose part of their height. Fixing the flex basis
- * and the min-height makes them incompressible: the overflow is absorbed by the
+ * CTA/headers lose part of their height. Fixing the flex basis and the
+ * min-height makes them incompressible: the overflow is absorbed by the
  * scrollable lists, which is what they are for.
  */
 #dy-add-media-action {
@@ -1087,6 +1087,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-folder-children {
   position: relative;
 }
+
 .dy-folder-children::before {
   content: "";
   position: absolute;
@@ -1155,6 +1156,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   min-height: 0;
   transition: opacity 0.12s ease, color 0.12s ease, background 0.12s ease;
 }
+
 .dy-folder-item:hover .dy-item-menu-btn,
 .dy-folder-item.is-active .dy-item-menu-btn,
 .dy-collection-item:hover .dy-item-menu-btn,
@@ -1162,12 +1164,14 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-item-menu-btn:focus-visible {
   opacity: 1;
 }
+
 .dy-item-menu-btn:hover,
 .dy-item-menu-btn:focus-visible {
   color: var(--ink, #ecedf2);
   background: var(--bg-hi, #232938);
   outline: none;
 }
+
 .dy-item-menu-btn svg {
   display: block;
   width: 16px;
@@ -1188,10 +1192,12 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   transform: scale(0.96);
   transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
 .dy-ctx-menu.is-open {
   opacity: 1;
   transform: none;
 }
+
 .dy-ctx-menu__item {
   display: flex;
   align-items: center;
@@ -1209,20 +1215,24 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   cursor: pointer;
   transition: background 0.1s ease, color 0.1s ease;
 }
+
 .dy-ctx-menu__item:hover,
 .dy-ctx-menu__item:focus-visible {
   background: var(--bg-elev, #1d2030);
   color: var(--ink, #ecedf2);
   outline: none;
 }
+
 .dy-ctx-menu__item.is-danger {
   color: var(--accent-4, #ff6b8a);
 }
+
 .dy-ctx-menu__item.is-danger:hover,
 .dy-ctx-menu__item.is-danger:focus-visible {
   background: rgba(214, 54, 56, 0.12);
   color: #ff7a8f;
 }
+
 .dy-ctx-menu__icon {
   flex-shrink: 0;
   width: 16px;
@@ -1230,15 +1240,16 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-size: 16px;
   line-height: 16px;
 }
+
 .dy-ctx-menu__label {
   flex: 1;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .dy-ctx-menu {
     transition: none;
   }
 }
-
 /* Detail-panel folder picker: trigger + hierarchical popover */
 .dy-dp-folder-trigger {
   display: flex;
@@ -1256,9 +1267,11 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   cursor: pointer;
   transition: border-color 0.14s ease, background 0.14s ease;
 }
+
 .dy-dp-folder-trigger:hover {
   border-color: var(--accent, #5b3efe);
 }
+
 .dy-dp-folder-trigger__icon,
 .dy-dp-folder-trigger__caret {
   flex-shrink: 0;
@@ -1267,6 +1280,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-size: 16px;
   color: var(--ink-mute, #5a6070);
 }
+
 .dy-dp-folder-trigger__label {
   flex: 1;
   overflow: hidden;
@@ -1288,10 +1302,12 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   transform: scale(0.97);
   transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
 .dy-folder-pop.is-open {
   opacity: 1;
   transform: none;
 }
+
 .dy-folder-pop__item {
   display: flex;
   align-items: center;
@@ -1308,15 +1324,18 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   cursor: pointer;
   transition: background 0.1s ease, color 0.1s ease;
 }
+
 .dy-folder-pop__item:hover,
 .dy-folder-pop__item:focus-visible {
   background: var(--bg-elev, #1d2030);
   color: var(--ink, #ecedf2);
   outline: none;
 }
+
 .dy-folder-pop__item.is-current {
   color: var(--ink, #ecedf2);
 }
+
 .dy-folder-pop__icon {
   flex-shrink: 0;
   width: 15px;
@@ -1324,15 +1343,18 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-size: 15px;
   color: var(--ink-mute, #5a6070);
 }
+
 .dy-folder-pop__item.is-current .dy-folder-pop__icon {
   color: var(--accent, #5b3efe);
 }
+
 .dy-folder-pop__name {
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .dy-folder-pop__check {
   flex-shrink: 0;
   width: 15px;
@@ -1340,12 +1362,12 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-size: 15px;
   color: var(--accent, #5b3efe);
 }
+
 @media (prefers-reduced-motion: reduce) {
   .dy-folder-pop {
     transition: none;
   }
 }
-
 /* Drop target */
 .dy-folder-item.dy-drop-target,
 .dy-folder-root.dy-drop-target {
@@ -1356,8 +1378,13 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 }
 
 /* ── Folder drag (re-parent / reorder) ───────────────────────────────────── */
-.dy-folder-item[draggable="true"] { cursor: grab; }
-body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
+.dy-folder-item[draggable=true] {
+  cursor: grab;
+}
+
+body.dy-dragging-folder .dy-folder-item {
+  cursor: grabbing;
+}
 
 .dy-folder-item.dy-folder-dragging {
   opacity: 0.4;
@@ -1385,8 +1412,14 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
   box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2);
   pointer-events: none;
 }
-.dy-folder-item.dy-drop-before::before { top: -1px; }
-.dy-folder-item.dy-drop-after::after { bottom: -1px; }
+
+.dy-folder-item.dy-drop-before::before {
+  top: -1px;
+}
+
+.dy-folder-item.dy-drop-after::after {
+  bottom: -1px;
+}
 
 /* ── Duplicate badge ──────────────────────────────────────────────────────── */
 .attachment.dy-is-duplicate {
@@ -1903,29 +1936,23 @@ body.upload-php .dy-mine-btn {
   box-shadow: none !important;
   transition: border-color 0.15s, color 0.15s, background-color 0.15s;
 }
-
 body.upload-php .dy-mine-btn:hover {
   border-color: var(--accent, #5b3efe) !important;
   color: var(--ink, #ecedf2) !important;
 }
-
 body.upload-php .dy-mine-btn:focus-visible {
   outline: none !important;
   border-color: var(--accent, #5b3efe) !important;
   box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
 }
-
 body.upload-php .dy-mine-btn.is-active {
   background-color: rgba(91, 62, 254, 0.14) !important;
   border-color: var(--accent, #5b3efe) !important;
   color: var(--ink, #ecedf2) !important;
 }
-
 body.upload-php .dy-mine-btn svg {
   display: block;
 }
-
-/* Label hidden by default; slides open on hover / keyboard focus. */
 body.upload-php .dy-mine-btn__label {
   max-width: 0;
   overflow: hidden;
@@ -1934,11 +1961,14 @@ body.upload-php .dy-mine-btn__label {
   transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
 }
 
-/* Bulk Select mode: WP hides the toolbar filters via an inline display:none
-   (media-grid.js → children.not('.spinner, .media-button').hide()). Our
-   !important on the button's display beat that inline rule, so "Mine" lingered
-   while the other filters vanished. Re-hide it in select mode only, with higher
-   specificity + !important. WP adds .media-toolbar-mode-select to the toolbar. */
+/*
+ * Bulk Select mode: WP hides the toolbar filters with an inline `display:none`
+ * (media-grid.js → children.not('.spinner, .media-button').hide()). Our
+ * `!important` on the button's own display beat that inline rule, so "Mine"
+ * lingered while the other filters vanished. Re-hide it in select mode only,
+ * with higher specificity + !important so it wins. WP adds
+ * `.media-toolbar-mode-select` to the toolbar while bulk editing.
+ */
 body.upload-php .media-toolbar-mode-select .dy-mine-btn {
   display: none !important;
 }
@@ -3504,7 +3534,6 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   border-bottom: 1px solid var(--line, #1e2235);
   overflow: hidden;
 }
-
 .dy-dp-preview[data-full] {
   cursor: zoom-in;
 }
@@ -3538,22 +3567,17 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
-
-.dy-dp-preview:hover .dy-dp-expand,
-.dy-dp-expand:focus-visible {
+.dy-dp-preview:hover .dy-dp-expand, .dy-dp-expand:focus-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .dy-dp-expand:hover {
   background: rgba(91, 62, 254, 0.85);
   border-color: rgba(91, 62, 254, 0.9);
 }
-
 .dy-dp-expand:active {
   transform: scale(0.94);
 }
-
 .dy-dp-expand svg {
   display: block;
 }
@@ -3569,6 +3593,11 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   border-bottom: 1px solid var(--line, #1e2235);
   user-select: none;
 }
+.dy-dp-resize:hover .dy-dp-resize-grip {
+  opacity: 1;
+  background: #5b3efe;
+  width: 46px;
+}
 
 .dy-dp-resize-grip {
   width: 34px;
@@ -3577,12 +3606,6 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   background: var(--ink-mute, #5a6070);
   opacity: 0.5;
   transition: opacity 0.15s ease, background 0.15s ease, width 0.15s ease;
-}
-
-.dy-dp-resize:hover .dy-dp-resize-grip {
-  opacity: 1;
-  background: #5b3efe;
-  width: 46px;
 }
 
 body.dy-dp-resizing,
@@ -3603,10 +3626,12 @@ body.dy-dp-resizing * {
   pointer-events: none;
   transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .dy-lightbox.is-open {
   opacity: 1;
   pointer-events: auto;
+}
+.dy-lightbox.is-open .dy-lb-stage {
+  transform: scale(1);
 }
 
 .dy-lb-backdrop {
@@ -3630,10 +3655,6 @@ body.dy-dp-resizing * {
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.dy-lightbox.is-open .dy-lb-stage {
-  transform: scale(1);
-}
-
 .dy-lb-img {
   max-width: 88vw;
   max-height: 80vh;
@@ -3643,7 +3664,6 @@ body.dy-dp-resizing * {
   box-shadow: 0 24px 70px -20px rgba(0, 0, 0, 0.7);
   transition: opacity 0.14s ease, filter 0.14s ease;
 }
-
 .dy-lb-img.is-swapping {
   opacity: 0;
   filter: blur(8px);
@@ -3671,6 +3691,19 @@ body.dy-dp-resizing * {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+}
+.dy-lb-close:hover,
+.dy-lb-nav:hover {
+  background: rgba(91, 62, 254, 0.85);
+  border-color: rgba(91, 62, 254, 0.9);
+}
+.dy-lb-close:active,
+.dy-lb-nav:active {
+  transform: scale(0.94);
+}
+.dy-lb-close svg,
+.dy-lb-nav svg {
+  display: block;
 }
 
 .dy-lb-close {
@@ -3701,22 +3734,6 @@ body.dy-dp-resizing * {
   right: 22px;
 }
 
-.dy-lb-close:hover,
-.dy-lb-nav:hover {
-  background: rgba(91, 62, 254, 0.85);
-  border-color: rgba(91, 62, 254, 0.9);
-}
-
-.dy-lb-close:active,
-.dy-lb-nav:active {
-  transform: scale(0.94);
-}
-
-.dy-lb-close svg,
-.dy-lb-nav svg {
-  display: block;
-}
-
 .dy-lb-counter {
   position: absolute;
   bottom: 20px;
@@ -3741,7 +3758,6 @@ body.dy-lb-open {
     transition: none !important;
   }
 }
-
 .dy-dp-thumb-icon {
   display: flex;
   align-items: center;
@@ -3769,7 +3785,7 @@ body.dy-lb-open {
   border-bottom: none;
 }
 
-/* Section titles and field labels are the SAME voice, so they share one rule
+/* Section titles and field labels share one rule, so the two always match
    and cannot drift apart when the palette moves. The prefixed selector is
    there because field labels are real <label> elements, and
    `body.post-type-attachment label` (0,2,1) was lightening them. */
@@ -4118,11 +4134,16 @@ body.upload-php #dy-detail-panel .dy-dp-save.is-dirty:hover:not(:disabled) {
 }
 
 @keyframes dy-save-wake {
-  0%   { box-shadow: 0 0 0 0 rgba(91, 62, 254, 0.5); }
-  60%  { box-shadow: 0 0 0 7px rgba(91, 62, 254, 0); }
-  100% { box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(91, 62, 254, 0.5);
+  }
+  60% {
+    box-shadow: 0 0 0 7px rgba(91, 62, 254, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16);
+  }
 }
-
 .dy-dp-save:disabled,
 body.upload-php #dy-detail-panel .dy-dp-save:disabled {
   opacity: 0.6 !important;
@@ -4147,7 +4168,6 @@ body.upload-php #dy-detail-panel .dy-dp-save:disabled {
     animation: none;
   }
 }
-
 .dy-dp-edit-link {
   display: inline-flex;
   align-items: center;
@@ -4890,7 +4910,7 @@ body.upload-php::before {
 	letter-spacing: 0.05em;
 	border-radius: 100px;
 	pointer-events: none;
-	box-shadow: 0 4px 12px rgba( 91, 140, 255, 0.4 );
+	box-shadow: 0 4px 12px rgba( 91, 62, 254, 0.4 );
 }
 */
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -5581,18 +5601,22 @@ body.upload-php {
   padding: 10px 14px;
   border-top: 1px solid var(--dy-line, rgba(255, 255, 255, 0.08));
 }
+
 .dy-foreign-actions:empty {
   display: none;
 }
+
 /* When present, the foreign-actions group sits at the very bottom, just above
    Settings (it takes over the auto-margin so there is no gap). When empty
    (display:none), Settings keeps its own margin-top:auto and stays pinned. */
 .dy-foreign-actions:not(:empty) {
   margin-top: auto;
 }
+
 .dy-foreign-actions:not(:empty) ~ .dy-panel-settings {
   margin-top: 0;
 }
+
 /* The relocated control becomes ONE clean panel row, whatever plugin it came
    from. The third-party element's own NESTED boxes (and a plugin's styles can
    out-specify any external stylesheet — e.g. Elementor's
@@ -5623,6 +5647,7 @@ body.upload-php {
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
+
 #dy-folder-panel .dy-foreign-action:hover,
 #dy-folder-panel .dy-foreign-action:focus,
 #dy-folder-panel .dy-foreign-action:focus-within {
@@ -5630,10 +5655,11 @@ body.upload-php {
   border-color: rgba(91, 62, 254, 0.4) !important;
   color: #fff !important;
 }
+
 /* Keep any icon (dashicon, Elementor eicon font, img, svg) sized + on-accent. */
 #dy-folder-panel .dy-foreign-action i,
 #dy-folder-panel .dy-foreign-action .dashicons,
-#dy-folder-panel .dy-foreign-action [class*="icon"],
+#dy-folder-panel .dy-foreign-action [class*=icon],
 #dy-folder-panel .dy-foreign-action img,
 #dy-folder-panel .dy-foreign-action svg {
   display: inline-flex !important;
@@ -5744,16 +5770,13 @@ body.upload-php {
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
   }
-
   .dy-dp-duo > .dy-dp-section {
     min-width: 0;
   }
-
   .dy-dp-duo > .dy-dp-section:first-child {
     border-right: 1px solid var(--line-soft, #0d1018);
   }
 }
-
 /* ── Blocks without an outline ─────────────────────────────────────
  * The edge tokens are transparent (shared/_root.scss): panels, cards,
  * popovers, dialogs, toolbars and buttons rest on their fill, not on a
@@ -5776,14 +5799,26 @@ body.upload-php {
  * Accent outlines (selection, focus, primary) and dashed drop zones are not
  * concerned: they are indicators, not the hairline.
  */
-:is(select, input[type="checkbox"], input[type="radio"]),
+:is(select, input[type=checkbox], input[type=radio]),
 .dy-dp-folder-trigger,
 .dy-dp-save {
   --dy-edge: var(--dy-line);
   --dy-edge-hi: var(--dy-line-hi);
 }
 
-
+/* ── With Refined Admin Dashboard active ───────────────────────────────────
+ * The two plugins can now run side by side, and they split the screen the
+ * way the pair was always meant to: Refined Admin Dashboard dresses the
+ * admin, Refined Media Library enriches the media library. So its chrome
+ * wins where they overlap.
+ *
+ * 1. Our brand block goes. Its section bar already names the screen, and
+ *    ours is position:fixed, so it landed straight on top of it.
+ * 2. Our panel's top is published as --dy-panel-top by folder-tree.js,
+ *    measured on the toolbar row. Refined Admin Dashboard's own bridge
+ *    consumes it: it already places this panel, and its rules are the more
+ *    specific ones, so a second rule here would only fight it.
+ */
 /* ═══════════════════════════════════════════════════════════════════════
    Defensive — host sites that force one text colour on the whole admin
    ───────────────────────────────────────────────────────────────────────
@@ -5817,9 +5852,8 @@ body.upload-php {
    WordPress looks on every site in order to repair a handful.
    ═══════════════════════════════════════════════════════════════════════ */
 body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
-            .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog,
-            .dy-toast, .dy-mine-btn, .dy-duplicate-badge)
-  :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons)) {
+.dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog,
+.dy-toast, .dy-mine-btn, .dy-duplicate-badge) :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons)) {
   color: inherit !important;
 }
 
@@ -5836,9 +5870,22 @@ body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
  * class of specificity: enough to beat the neutraliser above, low enough
  * that every icon we colour on purpose (the settings cog, an accent chip)
  * keeps winning on its own. Keep this value in step with the page-wide rule.
+ *
+ * QUESTION OUVERTE (22/09/2026). L'autre parade, plus cohérente, est de
+ * laisser les icônes hériter de la couleur de leur libellé : c'est ce que
+ * demande leur propre CSS (`color: inherit`). Elle a été écartée parce
+ * qu'elle éclaircissait 17 icônes, donc changeait l'apparence d'un écran
+ * vitrine sans que Raphaël l'ait demandé. Décision prise seule, signalée
+ * comme révisable, jamais arbitrée : la coupure du 22 septembre est arrivée
+ * avant la réponse. Le coût du choix actuel est ce couplage à tenir à la
+ * main. Si la question est tranchée dans l'autre sens, cette règle disparaît
+ * et le couplage avec elle.
  */
 :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel,
-       .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog)
-  .dashicons {
+.dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog) .dashicons {
   color: var(--ink-mute, #5a6070) !important;
+}
+
+body.dy-admin #dy-panel-brand {
+  display: none;
 }

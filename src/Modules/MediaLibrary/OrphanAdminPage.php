@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Modules\MediaLibrary;
 
+use DoubleYoupi\Core\Build;
+
 use DoubleYoupi\Core\AbstractModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,21 +46,21 @@ class OrphanAdminPage extends AbstractModule {
 			return;
 		}
 
-		$css = DOUBLEYOUPI_DIR . 'assets/css/modules/media-library/orphan-admin.css';
+		$css = Build::dir( __FILE__, 'assets/css/modules/media-library/orphan-admin.css' );
 		if ( file_exists( $css ) ) {
 			wp_enqueue_style(
 				'doubleyoupi-orphan-admin',
-				DOUBLEYOUPI_URL . 'assets/css/modules/media-library/orphan-admin.css',
+				Build::url( __FILE__, 'assets/css/modules/media-library/orphan-admin.css' ),
 				[],
 				DOUBLEYOUPI_VERSION
 			);
 		}
 
-		$js = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/orphan-admin.js';
+		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/orphan-admin.js' );
 		if ( file_exists( $js ) ) {
 			wp_enqueue_script(
 				'doubleyoupi-orphan-admin',
-				DOUBLEYOUPI_URL . 'assets/js/modules/media-library/orphan-admin.js',
+				Build::url( __FILE__, 'assets/js/modules/media-library/orphan-admin.js' ),
 				[ 'jquery' ],
 				DOUBLEYOUPI_VERSION,
 				true

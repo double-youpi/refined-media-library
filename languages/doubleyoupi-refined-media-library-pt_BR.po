@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-21T23:49:00+00:00\n"
+"POT-Creation-Date: 2026-09-22T10:45:23+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -16,7 +16,6 @@ msgstr ""
 msgid "https://doubleyoupi.com/plugins/refined-media-library"
 msgstr ""
 
-# Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
 #. Description of the plugin
 #: doubleyoupi-refined-media-library.php
 msgid ""
@@ -38,7 +37,6 @@ msgstr "Double Youpï"
 msgid "https://doubleyoupi.com"
 msgstr "https://doubleyoupi.com"
 
-# Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
 #: doubleyoupi-refined-media-library.php:43
 msgid ""
 "You are already running the full Double Youpi suite, and it includes Double "
@@ -52,7 +50,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:152 src/Admin/OverviewPage.php:157
 #: src/Admin/OverviewPage.php:509
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:86
+#: src/Modules/MediaLibrary/MediaLibrary.php:87
 msgid "Settings"
 msgstr "Configurações"
 
@@ -403,8 +401,8 @@ msgstr "Salvar os módulos"
 msgid "Coming soon"
 msgstr "Em breve"
 
-#: src/Admin/OverviewPage.php:505 src/Modules/MediaLibrary/Settings.php:319
-#: src/Modules/MediaLibrary/Settings.php:346
+#: src/Admin/OverviewPage.php:505 src/Modules/MediaLibrary/Settings.php:321
+#: src/Modules/MediaLibrary/Settings.php:348
 msgid "Saved"
 msgstr "Salvo"
 
@@ -418,7 +416,7 @@ msgstr "Em preparação"
 
 #: src/Admin/OverviewPage.php:586
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:122
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
 msgid "Preview"
 msgstr "Pré-visualizar"
 
@@ -538,8 +536,8 @@ msgstr ""
 "navegação reformulada, tabelas de conteúdo redesenhadas, modo escuro e a sua "
 "marca."
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:46
-#: src/Modules/MediaLibrary/MediaLibrary.php:97
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:47
+#: src/Modules/MediaLibrary/MediaLibrary.php:98
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -618,7 +616,7 @@ msgstr "Não foi possível excluir a coleção."
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Settings.php:233
+#: src/Modules/MediaLibrary/Settings.php:235
 msgid "Collections"
 msgstr "Coleções"
 
@@ -640,38 +638,38 @@ msgstr "Editar coleção"
 msgid "No collections found"
 msgstr "Nenhuma coleção encontrada"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:120
-#: src/Modules/MediaLibrary/DuplicateDetector.php:134
+#: src/Modules/MediaLibrary/DuplicateDetector.php:122
+#: src/Modules/MediaLibrary/DuplicateDetector.php:136
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:133
+#: src/Modules/MediaLibrary/DuplicateDetector.php:135
 msgid "View original"
 msgstr "Ver original"
 
-#: src/Modules/MediaLibrary/FolderManager.php:112
+#: src/Modules/MediaLibrary/FolderManager.php:114
 msgid "Move to folder…"
 msgstr "Mover para uma pasta…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:115
+#: src/Modules/MediaLibrary/FolderManager.php:117
 msgid "Add to collection…"
 msgstr "Adicionar a uma coleção…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:536
-#: src/Modules/MediaLibrary/FolderManager.php:572
+#: src/Modules/MediaLibrary/FolderManager.php:538
+#: src/Modules/MediaLibrary/FolderManager.php:574
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Uma pasta não pode ser movida para dentro de si mesma ou de uma de suas "
 "subpastas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:597
+#: src/Modules/MediaLibrary/FolderManager.php:599
 msgid "Could not delete folder."
 msgstr "Não foi possível excluir a pasta."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:225
+#: src/Modules/MediaLibrary/Settings.php:227
 msgid "Folders"
 msgstr "Pastas"
 
@@ -985,7 +983,7 @@ msgid "Date"
 msgstr "Data"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:143
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:126
 msgid "Type"
 msgstr "Tipo"
 
@@ -994,7 +992,7 @@ msgid "Dimensions"
 msgstr "Dimensões"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:145
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:125
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:127
 msgid "Size"
 msgstr "Tamanho"
 
@@ -1223,15 +1221,15 @@ msgstr "Atualizar pasta"
 msgid "No folders found"
 msgstr "Nenhuma pasta encontrada"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:47
+#: src/Modules/MediaLibrary/MediaLibrary.php:48
 msgid "Media Library"
 msgstr "Biblioteca de mídia"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:87
+#: src/Modules/MediaLibrary/MediaLibrary.php:88
 msgid "Unused media"
 msgstr "Mídia não utilizada"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:93
+#: src/Modules/MediaLibrary/MediaLibrary.php:94
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importar"
@@ -1353,7 +1351,7 @@ msgstr "%d pastas importadas removidas."
 msgid "Something went wrong. Please try again."
 msgstr "Algo deu errado. Tente novamente."
 
-#: src/Modules/MediaLibrary/Migration/MigrationManager.php:466
+#: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
 msgid ""
 "Import folders and collections from another media library plugin. Your media "
 "stay in place. This only re-creates the folder structure inside Refined "
@@ -1365,66 +1363,66 @@ msgstr ""
 "do Refined Media Library, e o plugin de origem nunca é modificado, então "
 "você pode verificar o resultado antes de removê-lo."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:71
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:73
 msgid "Scanning…"
 msgstr "Verificando…"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:72
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:74
 msgid "No unused media found. Your library is clean!"
 msgstr "Nenhuma mídia não utilizada encontrada. Sua biblioteca está limpa!"
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:74
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:76
 #, php-format
 msgid "%d unused media file found."
 msgstr "%d arquivo de mídia não utilizado encontrado."
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:76
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
 #, php-format
 msgid "%d unused media files found."
 msgstr "%d arquivos de mídia não utilizados encontrados."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
 #, php-format
 msgid "%d unused media file remaining."
 msgstr "%d arquivo de mídia não utilizado restante."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
 #, php-format
 msgid "%d unused media files remaining."
 msgstr "%d arquivos de mídia não utilizados restantes."
 
 #. translators: %d: number of media files to be deleted.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
 #, php-format
 msgid "I confirm the permanent deletion of %d media files."
 msgstr "Confirmo a exclusão permanente de %d arquivos de mídia."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:83
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:162
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:85
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:164
 msgid "Delete selected media"
 msgstr "Excluir as mídias selecionadas"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
 msgid "Deleting…"
 msgstr "Excluindo…"
 
 #. translators: %d: number of deleted media files.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:88
 #, php-format
 msgid "%d files deleted."
 msgstr "%d arquivos excluídos."
 
 #. translators: %d: number of errors encountered.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:88
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:90
 #, php-format
 msgid "%d errors."
 msgstr "%d erros."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:100
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:102
 msgid ""
 "Media files not referenced in any post, page, featured image, or custom "
 "field."
@@ -1432,86 +1430,86 @@ msgstr ""
 "Arquivos de mídia não referenciados em nenhum post, página, imagem destacada "
 "ou campo personalizado."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:105
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:107
 msgid "Scan for unused media"
 msgstr "Procurar mídia não utilizada"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:123
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:125
 msgid "File"
 msgstr "Arquivo"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:126
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:128
 msgid "Uploaded"
 msgstr "Enviado"
 
-#: src/Modules/MediaLibrary/Settings.php:201
+#: src/Modules/MediaLibrary/Settings.php:203
 msgid "Optimization"
 msgstr "Otimização"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:208
+#: src/Modules/MediaLibrary/Settings.php:210
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "Controlado por %s. As configurações são gerenciadas lá."
 
-#: src/Modules/MediaLibrary/Settings.php:210
+#: src/Modules/MediaLibrary/Settings.php:212
 msgid "This server cannot generate WebP images."
 msgstr "Este servidor não pode gerar imagens WebP."
 
-#: src/Modules/MediaLibrary/Settings.php:211
+#: src/Modules/MediaLibrary/Settings.php:213
 msgid "This server cannot generate AVIF images."
 msgstr "Este servidor não pode gerar imagens AVIF."
 
-#: src/Modules/MediaLibrary/Settings.php:218
+#: src/Modules/MediaLibrary/Settings.php:220
 msgid "Organisation"
 msgstr "Organização"
 
-#: src/Modules/MediaLibrary/Settings.php:226
+#: src/Modules/MediaLibrary/Settings.php:228
 msgid "Organise the media library into folders"
 msgstr "Organizar a biblioteca de mídia em pastas"
 
-#: src/Modules/MediaLibrary/Settings.php:234
+#: src/Modules/MediaLibrary/Settings.php:236
 msgid "Group media into cross-folder collections"
 msgstr "Agrupar mídias em coleções entre pastas"
 
-#: src/Modules/MediaLibrary/Settings.php:241
+#: src/Modules/MediaLibrary/Settings.php:243
 msgid "Auto alt & title"
 msgstr "Auto alt e título"
 
-#: src/Modules/MediaLibrary/Settings.php:242
+#: src/Modules/MediaLibrary/Settings.php:244
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
 "Preencher alt e título a partir do nome do arquivo no upload (se vazios)"
 
-#: src/Modules/MediaLibrary/Settings.php:250
+#: src/Modules/MediaLibrary/Settings.php:252
 msgid "Conversion"
 msgstr "Conversão"
 
-#: src/Modules/MediaLibrary/Settings.php:257
+#: src/Modules/MediaLibrary/Settings.php:259
 msgid "WebP on upload"
 msgstr "WebP no envio"
 
-#: src/Modules/MediaLibrary/Settings.php:258
+#: src/Modules/MediaLibrary/Settings.php:260
 msgid "Generate a WebP version of each image on upload"
 msgstr "Gerar uma versão WebP de cada imagem no envio"
 
-#: src/Modules/MediaLibrary/Settings.php:267
+#: src/Modules/MediaLibrary/Settings.php:269
 msgid "AVIF on upload"
 msgstr "AVIF no envio"
 
-#: src/Modules/MediaLibrary/Settings.php:268
+#: src/Modules/MediaLibrary/Settings.php:270
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "Gerar também uma versão AVIF (requer Imagick)"
 
-#: src/Modules/MediaLibrary/Settings.php:280
+#: src/Modules/MediaLibrary/Settings.php:282
 msgid "Save changes"
 msgstr "Salvar alterações"
 
-#: src/Modules/MediaLibrary/Settings.php:332
+#: src/Modules/MediaLibrary/Settings.php:334
 msgid "Conversion quality"
 msgstr "Qualidade de conversão"
 
-#: src/Modules/MediaLibrary/Settings.php:333
+#: src/Modules/MediaLibrary/Settings.php:335
 msgid "Higher means better quality and larger files. Default 82."
 msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
@@ -1582,37 +1580,6 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ msgstr ""
 #~ "Clona a produção em um subdomínio privado para testar com segurança, com "
 #~ "noindex, robots e basic auth opcional."
-
-# Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
-#~ msgid "Double Youpi — Overview"
-#~ msgstr "Double Youpi — Visão geral"
-
-# Libellés 0.1.3 (ancienne formulation) pour la release 0.1.4
-#~ msgid "Could not save — please retry."
-#~ msgstr "Não foi possível salvar — tente novamente."
-
-# En-tête « Description » du solo RAD.
-#~ msgid ""
-#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
-#~ "you can reorganise, reimagined list tables and post editor, one place for "
-#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
-#~ "components only."
-#~ msgstr ""
-#~ "Um redesenho escuro e claro de todo o painel do WordPress: uma barra de "
-#~ "navegação que você reorganiza, listas e editor repensados, um único lugar "
-#~ "para todos os avisos, um painel que você compõe e um kit de ferramentas "
-#~ "integrado. Apenas componentes nativos."
-
-# Variante RAD, dérivée de la variante RML de la même locale.
-#~ msgid ""
-#~ "You are already running the full Double Youpi suite, and it includes "
-#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
-#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
-#~ "first."
-#~ msgstr ""
-#~ "A suíte completa Double Youpi já está ativa e inclui o Double Youpï "
-#~ "Refined Admin Dashboard. Esta cópia independente se afastou para não "
-#~ "atrapalhar. Quer usá-la sozinha? Desative a suíte primeiro."
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals — performance, "
@@ -5119,6 +5086,30 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ msgid "This widget could not load."
 #~ msgstr "Este widget não pôde ser carregado."
 
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, and a built-in toolkit. Native "
+#~ "components only."
+#~ msgstr ""
+#~ "Um redesenho escuro e claro de todo o painel do WordPress: uma barra de "
+#~ "navegação que você reorganiza, listas e editor repensados, um único lugar "
+#~ "para todos os avisos, um painel que você compõe e um kit de ferramentas "
+#~ "integrado. Apenas componentes nativos."
+
+#~ msgid ""
+#~ "You are already running the full Double Youpi suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
+#~ msgstr ""
+#~ "A suíte completa Double Youpi já está ativa e inclui o Double Youpï "
+#~ "Refined Admin Dashboard. Esta cópia independente se afastou para não "
+#~ "atrapalhar. Quer usá-la sozinha? Desative a suíte primeiro."
+
+#~ msgid "Appearance"
+#~ msgstr "Aparência"
+
 #~ msgid "You are not allowed to export these settings."
 #~ msgstr "Você não tem permissão para exportar estas configurações."
 
@@ -5128,15 +5119,148 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ msgid "Accent color and logo"
 #~ msgstr "Cor de destaque e logo"
 
-#~ msgid "Navigation tree (reimagined or native) and the Reorganize layout"
+#~ msgid ""
+#~ "Navigation tree (reimagined or native), section pages on hover, and the "
+#~ "Reorganize layout"
 #~ msgstr ""
-#~ "Árvore de navegação (repensada ou nativa) e disposição de Reorganizar"
+#~ "Árvore de navegação (repensada ou nativa), páginas da seção ao passar o "
+#~ "mouse e disposição de Reorganizar"
 
 #~ msgid "Screens left in native styling"
 #~ msgstr "Telas mantidas no estilo nativo"
 
 #~ msgid "Toolkit toggles"
 #~ msgstr "Chaves do Toolkit"
+
+#~ msgid "Some settings are pinned in code."
+#~ msgstr "Algumas configurações estão fixadas no código."
+
+#~ msgid ""
+#~ "A profile is set through DOUBLEYOUPI_ADMIN_PROFILE (or the "
+#~ "doubleyoupi_filter_admin_profile filter): the fields it covers are locked "
+#~ "below and cannot be changed from this page."
+#~ msgstr ""
+#~ "Um perfil está definido por DOUBLEYOUPI_ADMIN_PROFILE (ou pelo filtro "
+#~ "doubleyoupi_filter_admin_profile): os campos que ele cobre estão "
+#~ "bloqueados abaixo e não podem ser alterados nesta página."
+
+#~ msgid ""
+#~ "If enabled, the 7 menu lines (Content, Commerce, Users, Community, "
+#~ "Appearance, System, Developer) all use the accent color. Otherwise, each "
+#~ "line keeps its own color."
+#~ msgstr ""
+#~ "Se ativado, as 7 linhas do menu (Conteúdo, Comércio, Usuários, "
+#~ "Comunidade, Aparência, Sistema, Desenvolvedor) usam a cor de destaque. "
+#~ "Caso contrário, cada linha mantém sua cor própria."
+
+#~ msgid "Navigation tree"
+#~ msgstr "Árvore de navegação"
+
+#~ msgid "Reimagined (recommended): seven sections, content first"
+#~ msgstr "Repensada (recomendado): sete seções, conteúdo primeiro"
+
+#~ msgid "Native WordPress: the menu as WordPress orders it, drawn by our rail"
+#~ msgstr ""
+#~ "WordPress nativo: o menu na ordem do WordPress, desenhado pelo nosso "
+#~ "trilho"
+
+#~ msgid "Reorganize the tree"
+#~ msgstr "Reorganizar a árvore"
+
+#~ msgid ""
+#~ "Native keeps the muscle memory of a team trained on the WordPress menu: "
+#~ "same entries, same order, same sub-menus. Everything else in Refined "
+#~ "Admin Dashboard still applies. The Reorganize tab is hidden in native "
+#~ "mode; your layout is kept for when you switch back."
+#~ msgstr ""
+#~ "O nativo preserva os reflexos de uma equipe treinada no menu do "
+#~ "WordPress: mesmas entradas, mesma ordem, mesmos submenus. Todo o resto do "
+#~ "Refined Admin Dashboard continua valendo. A aba Reorganizar fica oculta "
+#~ "no modo nativo; sua disposição é mantida para quando você voltar."
+
+#~ msgid "Section pages on hover"
+#~ msgstr "Páginas da seção ao passar o mouse"
+
+#~ msgid "One level (recommended): the pages of the section"
+#~ msgstr "Um nível (recomendado): as páginas da seção"
+
+#~ msgid "Two levels: the pages and their sub-pages"
+#~ msgstr "Dois níveis: as páginas e suas subpáginas"
+
+#~ msgid ""
+#~ "Hovering a section of the rail opens its pages next to it: every page is "
+#~ "one click away, whatever the section you are in. Keyboard: the right "
+#~ "arrow opens the list, Escape closes it. Nothing changes at rest."
+#~ msgstr ""
+#~ "Passar o mouse sobre uma seção do trilho abre suas páginas ao lado: cada "
+#~ "página fica a um clique, seja qual for a seção em que você está. Teclado: "
+#~ "a seta para a direita abre a lista, Esc a fecha. Em repouso, nada muda."
+
+#~ msgid "Settings profile"
+#~ msgstr "Perfil de configurações"
+
+#~ msgid ""
+#~ "The site-level setup as one JSON file: export it from a finished site, "
+#~ "import it on the next one. It carries:"
+#~ msgstr ""
+#~ "A configuração do site em um único arquivo JSON: exporte de um site "
+#~ "pronto, importe no próximo. Ele inclui:"
+
+#~ msgid ""
+#~ "Personal choices (theme, rail width) and dashboard layouts stay with each "
+#~ "site."
+#~ msgstr ""
+#~ "As escolhas pessoais (tema, largura do trilho) e as disposições do painel "
+#~ "ficam em cada site."
+
+#~ msgid "Download the profile"
+#~ msgstr "Baixar o perfil"
+
+#~ msgid "To pin it in code on every site, add to wp-config.php:"
+#~ msgstr ""
+#~ "Para fixá-lo no código em todos os sites, adicione ao wp-config.php:"
+
+#~ msgid "Import the profile"
+#~ msgstr "Importar o perfil"
+
+#~ msgid ""
+#~ "Values go through the same checks as this form. The logo keeps its URL "
+#~ "only; the image is not copied."
+#~ msgstr ""
+#~ "Os valores passam pelas mesmas verificações deste formulário. O logo "
+#~ "mantém apenas a URL; a imagem não é copiada."
+
+#~ msgid "Profile imported: %d setting applied."
+#~ msgid_plural "Profile imported: %d settings applied."
+#~ msgstr[0] "Perfil importado: %d configuração aplicada."
+#~ msgstr[1] "Perfil importado: %d configurações aplicadas."
+
+#~ msgid "No file received."
+#~ msgstr "Nenhum arquivo recebido."
+
+#~ msgid "This file is too large to be a profile."
+#~ msgstr "Este arquivo é grande demais para ser um perfil."
+
+#~ msgid "This file is not a Double Youpi admin profile."
+#~ msgstr "Este arquivo não é um perfil de administração do Double Youpi."
+
+#~ msgid ""
+#~ "This profile was written by a newer version. Update the plugin first."
+#~ msgstr ""
+#~ "Este perfil foi gravado por uma versão mais recente. Atualize o plugin "
+#~ "primeiro."
+
+#~ msgid "New columns from %1$s: %2$s."
+#~ msgstr "Novas colunas de %1$s: %2$s."
+
+#~ msgid "New columns added by an extension: %s."
+#~ msgstr "Novas colunas adicionadas por uma extensão: %s."
+
+#~ msgid "Hide the ones you do not need from the table gear."
+#~ msgstr "Oculte as que você não precisa pela engrenagem da tabela."
+
+#~ msgid "New columns: %s"
+#~ msgstr "Novas colunas: %s"
 
 #~ msgid "You are not allowed to do this."
 #~ msgstr "Você não tem permissão para fazer isso."
@@ -5149,9 +5273,6 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
 #~ msgid "Dismiss"
 #~ msgstr "Dispensar"
-
-#~ msgid "Navigation tree"
-#~ msgstr "Árvore de navegação"
 
 #~ msgid ""
 #~ "Seven sections instead of the WordPress menu. Prefer the native order for "
@@ -5212,164 +5333,6 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
 #~ msgid "Export this setup as a profile and import it on the next one."
 #~ msgstr "Exporte esta configuração como perfil e importe no próximo."
-
-#~ msgid "Some settings are pinned in code."
-#~ msgstr "Algumas configurações estão fixadas no código."
-
-#~ msgid ""
-#~ "A profile is set through DOUBLEYOUPI_ADMIN_PROFILE (or the "
-#~ "doubleyoupi_filter_admin_profile filter): the fields it covers are locked "
-#~ "below and cannot be changed from this page."
-#~ msgstr ""
-#~ "Um perfil está definido por DOUBLEYOUPI_ADMIN_PROFILE (ou pelo filtro "
-#~ "doubleyoupi_filter_admin_profile): os campos que ele cobre estão "
-#~ "bloqueados abaixo e não podem ser alterados nesta página."
-
-#~ msgid "Reimagined (recommended): seven sections, content first"
-#~ msgstr "Repensada (recomendado): sete seções, conteúdo primeiro"
-
-#~ msgid "Native WordPress: the menu as WordPress orders it, drawn by our rail"
-#~ msgstr ""
-#~ "WordPress nativo: o menu na ordem do WordPress, desenhado pelo nosso "
-#~ "trilho"
-
-#~ msgid ""
-#~ "Native keeps the muscle memory of a team trained on the WordPress menu: "
-#~ "same entries, same order, same sub-menus. Everything else in Refined "
-#~ "Admin Dashboard still applies. The Reorganize tab only affects the "
-#~ "reimagined tree."
-#~ msgstr ""
-#~ "O nativo preserva os reflexos de uma equipe treinada no menu do "
-#~ "WordPress: mesmas entradas, mesma ordem, mesmos submenus. Todo o resto do "
-#~ "Refined Admin Dashboard continua valendo. A aba Reorganizar só afeta a "
-#~ "árvore repensada."
-
-#~ msgid "Settings profile"
-#~ msgstr "Perfil de configurações"
-
-#~ msgid ""
-#~ "The site-level setup as one JSON file: export it from a finished site, "
-#~ "import it on the next one. It carries:"
-#~ msgstr ""
-#~ "A configuração do site em um único arquivo JSON: exporte de um site "
-#~ "pronto, importe no próximo. Ele inclui:"
-
-#~ msgid ""
-#~ "Personal choices (theme, rail width) and dashboard layouts stay with each "
-#~ "site."
-#~ msgstr ""
-#~ "As escolhas pessoais (tema, largura do trilho) e as disposições do painel "
-#~ "ficam em cada site."
-
-#~ msgid "Download the profile"
-#~ msgstr "Baixar o perfil"
-
-#~ msgid "To pin it in code on every site, add to wp-config.php:"
-#~ msgstr ""
-#~ "Para fixá-lo no código em todos os sites, adicione ao wp-config.php:"
-
-#~ msgid "Import the profile"
-#~ msgstr "Importar o perfil"
-
-#~ msgid ""
-#~ "Values go through the same checks as this form. The logo keeps its URL "
-#~ "only; the image is not copied."
-#~ msgstr ""
-#~ "Os valores passam pelas mesmas verificações deste formulário. O logo "
-#~ "mantém apenas a URL; a imagem não é copiada."
-
-#~ msgid "No file received."
-#~ msgstr "Nenhum arquivo recebido."
-
-#~ msgid "This file is too large to be a profile."
-#~ msgstr "Este arquivo é grande demais para ser um perfil."
-
-#~ msgid "This file is not a Double Youpi admin profile."
-#~ msgstr "Este arquivo não é um perfil de administração do Double Youpi."
-
-#~ msgid ""
-#~ "This profile was written by a newer version. Update the plugin first."
-#~ msgstr ""
-#~ "Este perfil foi gravado por uma versão mais recente. Atualize o plugin "
-#~ "primeiro."
-
-#~ msgid "New columns from %1$s: %2$s."
-#~ msgstr "Novas colunas de %1$s: %2$s."
-
-#~ msgid "New columns added by an extension: %s."
-#~ msgstr "Novas colunas adicionadas por uma extensão: %s."
-
-#~ msgid "Hide the ones you do not need from the table gear."
-#~ msgstr "Oculte as que você não precisa pela engrenagem da tabela."
-
-#~ msgid "New columns: %s"
-#~ msgstr "Novas colunas: %s"
-
-#~ msgid "The native WordPress tree is active."
-#~ msgstr "A árvore nativa do WordPress está ativa."
-
-#~ msgid ""
-#~ "This layout only applies to the reimagined tree. Switch back from the "
-#~ "General tab to see it in the rail."
-#~ msgstr ""
-#~ "Esta disposição só vale para a árvore repensada. Volte a ela pela aba "
-#~ "Geral para vê-la no trilho."
-
-#~ msgid "Profile imported: %d setting applied."
-#~ msgid_plural "Profile imported: %d settings applied."
-#~ msgstr[0] "Perfil importado: %d configuração aplicada."
-#~ msgstr[1] "Perfil importado: %d configurações aplicadas."
-
-#~ msgid "Reorganize the tree"
-#~ msgstr "Reorganizar a árvore"
-
-#~ msgid ""
-#~ "Native keeps the muscle memory of a team trained on the WordPress menu: "
-#~ "same entries, same order, same sub-menus. Everything else in Refined "
-#~ "Admin Dashboard still applies. The Reorganize tab is hidden in native "
-#~ "mode; your layout is kept for when you switch back."
-#~ msgstr ""
-#~ "O nativo preserva os reflexos de uma equipe treinada no menu do "
-#~ "WordPress: mesmas entradas, mesma ordem, mesmos submenus. Todo o resto do "
-#~ "Refined Admin Dashboard continua valendo. A aba Reorganizar fica oculta "
-#~ "no modo nativo; sua disposição é mantida para quando você voltar."
-
-#~ msgid "Appearance"
-#~ msgstr "Aparência"
-
-#~ msgid "Section pages on hover"
-#~ msgstr "Páginas da seção ao passar o mouse"
-
-#~ msgid "One level (recommended): the pages of the section"
-#~ msgstr "Um nível (recomendado): as páginas da seção"
-
-#~ msgid "Two levels: the pages and their sub-pages"
-#~ msgstr "Dois níveis: as páginas e suas subpáginas"
-
-#~ msgid ""
-#~ "Hovering a section of the rail opens its pages next to it: every page is "
-#~ "one click away, whatever the section you are in. Keyboard: the right "
-#~ "arrow opens the list, Escape closes it. Nothing changes at rest."
-#~ msgstr ""
-#~ "Passar o mouse sobre uma seção do trilho abre suas páginas ao lado: cada "
-#~ "página fica a um clique, seja qual for a seção em que você está. Teclado: "
-#~ "a seta para a direita abre a lista, Esc a fecha. Em repouso, nada muda."
-
-#~ msgid ""
-#~ "Navigation tree (reimagined or native), section pages on hover, and the "
-#~ "Reorganize layout"
-#~ msgstr ""
-#~ "Árvore de navegação (repensada ou nativa), páginas da seção ao passar o "
-#~ "mouse e disposição de Reorganizar"
-
-#~ msgid ""
-#~ "If enabled, the 7 menu lines (Content, Commerce, Users, Community, "
-#~ "Appearance, System, Developer) all use the accent color. Otherwise, each "
-#~ "line keeps its own color."
-#~ msgstr ""
-#~ "Se ativado, as 7 linhas do menu (Conteúdo, Comércio, Usuários, "
-#~ "Comunidade, Aparência, Sistema, Desenvolvedor) usam a cor de destaque. "
-#~ "Caso contrário, cada linha mantém sua cor própria."
 
 #~ msgid "Double Youpi · Tools"
 #~ msgstr "Double Youpi · Ferramentas"

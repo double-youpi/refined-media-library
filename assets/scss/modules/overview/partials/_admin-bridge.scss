@@ -1,0 +1,82 @@
+// =============================================================
+// _admin-bridge.scss
+// Additional overrides when the Admin module IS active.
+//
+// When body.dy-admin is present:
+//   - The admin DS has already overridden the tokens (--dya-paper, --dya-ink, --dya-accent…)
+//     at body scope, so all Overview components switch automatically
+//     (dark by default, or light via .dy-theme-light).
+//   - SPECIFICITY ISSUE: admin.css loads AFTER admin-overview.css,
+//     so at equal specificity (0,2,0) the DS rules win. We use
+//     `body.dy-admin .wrap.dy-overview` (specificity 0,3,0) here for
+//     spatial overrides where we genuinely need to beat `body.dy-admin .wrap`.
+// =============================================================
+
+// ── PADDING / top margin of the Overview page ────────────────
+// body.dy-admin .wrap (0,2,0) sets padding: var(--dya-wrap-pad-y) var(--dya-wrap-pad-x) 80px.
+// We want a much more generous padding-top than the other pages — the
+// Overview is the plugin home page and needs room to breathe.
+body.dy-admin .wrap.dy-overview {
+	padding-top: clamp(24px, 2.1vw, 40px);
+	padding-bottom: clamp(32px, 3vw, 56px);
+}
+
+// ── Overview title: clearly sized ────────────────────────────
+// .dy-overview__title (0,1,0) can be overridden by other h1 rules
+// in the DS. We enforce typographic dominance here; the title must
+// remain the primary visual anchor of the plugin home page.
+body.dy-admin .dy-overview__title {
+	font-size: clamp(34px, 2.8vw, 46px);
+	line-height: 1.02;
+}
+
+// ── Notice (success transient): breathing room above and below ──────────
+// body.dy-admin .notice (0,2,0) overrides our default margins. We
+// bump specificity with `.wrap.dy-overview .notice` (0,3,0).
+body.dy-admin .wrap.dy-overview .notice {
+	margin-top: clamp(28px, 2.8vw, 40px);
+	margin-bottom: clamp(20px, 2vw, 32px);
+}
+
+// ── View Transitions + glow card ────────────────────────────
+body.dy-admin .dy-overview {
+
+	&__hero {
+		view-transition-name: dy-overview-hero;
+	}
+
+	&__grid {
+		view-transition-name: dy-overview-grid;
+	}
+
+	// Card radial-gradient glow is more pronounced in dark mode.
+	&__card::after {
+		background: radial-gradient(
+			480px circle at var(--mx, 50%) var(--my, 50%),
+			rgba(var(--dya-accent-rgb), .08),
+			transparent 60%
+		);
+	}
+}
+
+// ── Dark mode: subtly amplifies the accent ribbon ───────
+body.dy-admin:not(.dy-theme-light) .dy-overview {
+
+	&__card {
+		&::before {
+			width: 4px;
+			box-shadow: 0 0 24px rgba(var(--dya-accent-rgb), .35);
+		}
+	}
+
+	&__actions .button-primary {
+		box-shadow: 0 1px 0 rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .08);
+	}
+}
+
+// ── Light theme inside Admin ───────────────────────────────────
+body.dy-admin.dy-theme-light .dy-overview__card {
+	border-color: var(--dya-edge);
+
+	&:hover { border-color: var(--dya-edge-strong); }
+}

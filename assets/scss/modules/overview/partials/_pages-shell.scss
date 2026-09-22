@@ -1,0 +1,219 @@
+// =============================================================
+// _pages-shell.scss
+// Visual shell for ALL Double Youpi sub-pages
+// (?page=doubleyoupi-admin, doubleyoupi-performance, doubleyoupi-static,
+// doubleyoupi-media-library, doubleyoupi-backups, doubleyoupi-staging…).
+//
+// Scope:
+//   body[class*="page_doubleyoupi"] .wrap:not(.dy-overview)
+//
+// We exclude `.dy-overview` because the Overview page has its own
+// shell (see _shell.scss). On other sub-pages, we target the native WP `.wrap`
+// and enhance the visual chrome without replacing the classes
+// (see CLAUDE.md §9.3-bis).
+// =============================================================
+
+// Sub-pages: we do NOT "box" the content — we center it in the same
+// gutter as the chipbar and other Double Youpi admin pages, using
+// the --dya-wrap-max token (fluid clamp) from the admin DS (or its fallback
+// declared in _tokens-fallback.scss when Admin is disabled).
+//
+// Exception: the Media Library page (`.doubleyoupi-media-library` in the
+// body class) stays full-width — its grid layout requires it.
+body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:not(.dy-overview) {
+	max-width: var(--dya-wrap-max);
+	margin-inline: auto;
+	padding-inline: var(--dya-wrap-pad-x);
+	padding-block: clamp(20px, 2vw, 32px);
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: var(--dya-ink);
+	font-family: var(--dya-font-body);
+	font-size: var(--dya-fs-base);
+	line-height: var(--dya-lh-base);
+	letter-spacing: var(--dya-tracking-body);
+
+	// ── Page H1: style aligned with the Overview hero ──────
+	// No border-bottom: the title lives in the same grid as the chipbar,
+	// and the visual separator is carried by the chipbar itself when
+	// the Admin module is active. Without Admin, we keep a bare h1.
+	> h1 {
+		font-family: var(--dya-font-display);
+		font-weight: 600;
+		font-size: clamp(26px, 2vw, 34px);
+		font-variation-settings: "opsz" 30, "wght" 600;
+		letter-spacing: var(--dya-tracking-tight);
+		line-height: 1.05;
+		color: var(--dya-ink);
+		margin: 0 0 18px;
+		padding-bottom: 0;
+		border-bottom: 0;
+		display: flex;
+		align-items: baseline;
+		gap: 14px;
+
+		// Italic accent on the last word, "Double Youpi" hero style.
+		// Triggered via an optional span `.dy-page-title-mark` that
+		// renderers can inject.
+		.dy-page-title-mark {
+			font-style: italic;
+			font-weight: 500;
+			color: var(--dya-accent);
+		}
+	}
+
+	// Optional description / intro text below the title.
+	> .description,
+	> p.description {
+		font-size: 14px;
+		color: var(--dya-ink-soft);
+		line-height: var(--dya-lh-base);
+		max-width: 64ch;
+		margin: -10px 0 24px;
+	}
+
+	// ── Content sections: typographed H2, H3 ──────────
+	h2 {
+		font-family: var(--dya-font-display);
+		font-weight: 500;
+		font-size: 22px;
+		font-variation-settings: "opsz" 22, "wght" 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		margin: 36px 0 18px;
+		display: flex;
+		align-items: baseline;
+		gap: 10px;
+
+		// Accent bullet before H2s (except nav-tab-wrapper which is a WP h2).
+		&:not(.nav-tab-wrapper):not(.screen-reader-text)::before {
+			content: "";
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: var(--dya-accent);
+			align-self: center;
+			translate: 0 -2px;
+		}
+	}
+
+	h3 {
+		font-family: var(--dya-font-display);
+		font-weight: 500;
+		font-size: 17px;
+		color: var(--dya-ink);
+		margin: 28px 0 14px;
+		letter-spacing: var(--dya-tracking-tight);
+	}
+
+	p {
+		color: var(--dya-ink-soft);
+		line-height: var(--dya-lh-base);
+		margin: 0 0 14px;
+	}
+
+	a {
+		color: var(--dya-accent);
+		text-decoration: none;
+		text-underline-offset: 3px;
+		transition: color var(--dya-t-fast) var(--dya-ease);
+
+		&:hover, &:focus {
+			text-decoration: underline;
+			text-decoration-thickness: 1px;
+		}
+	}
+
+	// Code inline & blocs
+	code {
+		font-family: var(--dya-font-mono);
+		font-size: .92em;
+		padding: 1px 6px;
+		background: var(--dya-paper-2);
+		border: 1px solid var(--dya-edge);
+		border-radius: var(--dya-r-sm);
+		color: var(--dya-ink);
+	}
+
+	pre {
+		font-family: var(--dya-font-mono);
+		font-size: 12.5px;
+		background: var(--dya-paper-2);
+		border: 1px solid var(--dya-edge);
+		border-radius: var(--dya-r-md);
+		padding: 14px 16px;
+		overflow-x: auto;
+		color: var(--dya-ink);
+	}
+
+	// hr → subtle divider
+	hr {
+		border: 0;
+		border-top: 1px solid var(--dya-line);
+		margin: 28px 0;
+	}
+}
+
+// Media Library: we do NOT apply the sub-page shell centering
+// (it stays full-width), but we still normalise the H1 typography
+// so it matches the other Double Youpi pages.
+body[class*="doubleyoupi-media-library"] .wrap > h1 {
+	font-family: var(--dya-font-display);
+	font-weight: 600;
+	font-size: clamp(26px, 2vw, 34px);
+	font-variation-settings: "opsz" 30, "wght" 600;
+	letter-spacing: var(--dya-tracking-tight);
+	line-height: 1.05;
+	color: var(--dya-ink);
+	margin: 0 0 18px;
+	padding-bottom: 0;
+	border-bottom: 0;
+	display: flex;
+	align-items: baseline;
+	gap: 14px;
+
+	.dy-page-title-mark {
+		font-style: italic;
+		font-weight: 500;
+		color: var(--dya-accent);
+	}
+}
+
+// ── Override: Admin Settings accent-feedback panel ──
+// Our generic `p { margin: 0 0 14px }` rule from the sub-page shell injects
+// 14px of margin-bottom on all <p> elements, including <p class="dy-accent-feedback__title">
+// and <p class="dy-accent-feedback__text"> inside the accent validation panel.
+// Result: the alert panel gains excessive height with a large empty area.
+// We reset here to hand control back to the inline Settings styling.
+body[class*="page_doubleyoupi"] .dy-accent-feedback p,
+body[class*="page_doubleyoupi"] .dy-accent-suggestion p {
+	margin: 0;
+}
+
+// Sub-page meta: subtitle metadata bar (status, last modified, etc.)
+// If the Eyebrow component injects a dy-page-sub, we style it.
+body[class*="page_doubleyoupi"] .dy-page-sub {
+	font-family: var(--dya-font-mono);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: var(--dya-tracking-mono);
+	text-transform: uppercase;
+	color: var(--dya-ink-mute);
+	margin: -16px 0 24px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: currentColor;
+		opacity: .6;
+	}
+}

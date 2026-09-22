@@ -1,0 +1,147 @@
+// =============================================================================
+// Double Youpi — Shared mixins
+// =============================================================================
+//
+// Minimal library of recurring patterns. A pattern is added here ONLY
+// if it appears 3 or more times across multiple files.
+//
+// =============================================================================
+
+@use 'variables' as *;
+
+
+// ── Layout flex ──────────────────────────────────────────────────────────────
+
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flex-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@mixin flex-row {
+	display: flex;
+	align-items: center;
+}
+
+
+// ── Accessible focus states ──────────────────────────────────────────────────
+
+@mixin focus-ring($color: var(--dy-accent)) {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.15);
+	border-color: $color;
+}
+
+
+// ── Buttons (shared base) ────────────────────────────────────────────────────
+
+@mixin btn-base {
+	display: inline-flex;
+	align-items: center;
+	gap: $spacing-md;
+	padding: $spacing-md $spacing-xl;
+	border-radius: $radius-md;
+	font-size: $font-size-base;
+	font-weight: 500;
+	font-family: inherit;
+	line-height: 1.4;
+	border: 1px solid transparent;
+	cursor: pointer;
+	transition: background $transition-base,
+	            border-color $transition-base,
+	            color $transition-base,
+	            transform $transition-fast;
+
+	&:focus-visible {
+		@include focus-ring;
+	}
+
+	&:disabled,
+	&[disabled] {
+		opacity: 0.55;
+		cursor: not-allowed;
+	}
+}
+
+@mixin btn-primary {
+	@include btn-base;
+	background: var(--dy-accent);
+	border-color: var(--dy-accent);
+	color: #fff;
+
+	&:hover:not(:disabled) {
+		background: var(--dy-accent-hover);
+		border-color: var(--dy-accent-hover);
+	}
+}
+
+@mixin btn-secondary {
+	@include btn-base;
+	background: var(--dy-bg-elev);
+	border-color: var(--dy-line-hi);
+	color: var(--dy-ink-soft);
+
+	&:hover:not(:disabled) {
+		color: var(--dy-ink);
+		border-color: var(--dy-ink-faint);
+	}
+}
+
+@mixin btn-danger {
+	@include btn-base;
+	background: var(--dy-danger);
+	border-color: var(--dy-danger);
+	color: #fff;
+
+	&:hover:not(:disabled) {
+		background: var(--dy-danger-hover);
+		border-color: var(--dy-danger-hover);
+	}
+}
+
+
+// ── Fixed panel transitions (folder + detail) ────────────────────────────────
+
+@mixin panel-transition {
+	transition: width $transition-panel,
+	            top $transition-panel;
+}
+
+
+// ── Shadows ──────────────────────────────────────────────────────────────────
+
+@mixin shadow-subtle {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06),
+	            0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+// ── Single-line ellipsis text ────────────────────────────────────────────────
+
+@mixin truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+// ── Screen-reader only (a11y) ────────────────────────────────────────────────
+
+@mixin sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	clip-path: inset(50%) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}

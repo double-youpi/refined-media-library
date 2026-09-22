@@ -1,0 +1,42 @@
+// Refined Media Library — Import tab (migration).
+// SCSS source for assets/css/modules/media-library/migration.css.
+// Minimal styles: everything else relies on native WP classes.
+
+#dy-ml-migration {
+	margin-top: 12px;
+
+	.dy-ml-tree {
+		margin: 12px 0 20px;
+		max-height: 320px;
+		overflow: auto;
+		border: 1px solid #dcdcde;
+		border-radius: 4px;
+		padding: 12px 16px;
+		background: #fff;
+
+		ul {
+			margin: 2px 0 2px 20px;
+		}
+
+		li {
+			list-style: none;
+			position: relative;
+			padding: 2px 0;
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: -14px;
+				top: 10px;
+				width: 8px;
+				height: 1px;
+				background: #c3c4c7;
+			}
+		}
+	}
+
+	progress {
+		margin-top: 10px;
+		height: 14px;
+	}
+}

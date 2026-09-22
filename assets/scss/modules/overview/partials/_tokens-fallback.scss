@@ -1,0 +1,158 @@
+// =============================================================
+// _tokens-fallback.scss
+// Light WP-native tokens declared at :root.
+//
+// Cascade logic:
+//   - Admin module OFF: these values apply everywhere (light only).
+//   - Admin module ON:  body.dy-admin from the admin DS overrides with its
+//                       own values (dark by default, or light via
+//                       body.dy-theme-light). The CSS cascade handles
+//                       the swap automatically.
+//
+// Token names mirror EXACTLY those from the admin DS
+// (assets/scss/modules/admin/partials/_tokens.scss) so the substitution
+// is seamless.
+// =============================================================
+
+// SELF-HOSTED display font (Bricolage Grotesque, SIL OFL 1.1) — see
+// assets/fonts/. WordPress.org prohibits loading resources from external
+// services at runtime: we therefore no longer @import from a font CDN.
+// Only Bricolage is bundled (--dya-font-display); body and mono use system fonts
+// (system-ui / ui-monospace), nothing to load.
+// Latin subset (covers EN/FR/ES/DE/IT/PT); non-latin glyphs fall back
+// gracefully to the system stack. Paths are relative to the compiled CSS (assets/css/).
+$dy-fw: 300, 400, 500, 600, 700;
+@each $w in $dy-fw {
+	@font-face {
+		font-family: "Bricolage Grotesque";
+		font-style: normal;
+		font-weight: $w;
+		font-display: swap;
+		src: url("../fonts/bricolage-grotesque-#{$w}.woff2") format("woff2");
+	}
+}
+
+:root {
+	// ── Paper stack (LIGHT, WP-native admin background) ───────
+	--dya-bg:           #f0f0f1;
+	--dya-bg-elev:      #fafafa;
+	--dya-paper:        #ffffff;
+	--dya-paper-2:      #f6f7f7;
+	--dya-paper-3:      #ededed;
+
+	// ── Ink ──────────────────────────────────────────────────
+	--dya-ink:          #1d2327;
+	--dya-ink-soft:     #50575e;
+	--dya-ink-mute:     #8c8f94;
+	--dya-ink-fade:     #c3c4c7;
+
+	// ── Rules / dividers ─────────────────────────────────────
+	--dya-line:         rgba(0, 0, 0, .08);
+	--dya-line-strong:  rgba(0, 0, 0, .15);
+	--dya-line-soft:    rgba(0, 0, 0, .04);
+	--dya-edge:         transparent; // blocks without outline (15/09/2026), fields excepted below
+	--dya-edge-strong:  transparent;
+
+	// ── Accent: WP-native primary by default. When the Admin module
+	//   is active, Brand::inject_variables() overrides
+	//   --dya-accent and --dya-accent-rgb at :root via inline <style>,
+	//   so the user's custom accent takes over.
+	--dya-accent:       #2271b1;
+	--dya-accent-rgb:   34, 113, 177;
+	--dya-accent-soft:  rgba(34, 113, 177, .08);
+	--dya-accent-on:    #ffffff;
+
+	// ── Semantic ─────────────────────────────────────────────
+	--dya-success:      #00a32a;
+	--dya-success-soft: rgba(0, 163, 42, .12);
+	--dya-warn:         #dba617;
+	--dya-warn-soft:    rgba(219, 166, 23, .12);
+	--dya-danger:       #d63638;
+	--dya-danger-soft:  rgba(214, 54, 56, .10);
+	--dya-info:         #2271b1;
+	--dya-info-soft:    rgba(34, 113, 177, .08);
+
+	// ── Typography ───────────────────────────────────────────
+	// Bricolage Grotesque: self-hosted variable font (see Admin::register_bricolage_font).
+	// Body + mono: no webfont, system-ui (San Francisco / Segoe UI / Roboto).
+	--dya-font-display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--dya-font-body:    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--dya-font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+	--dya-fs-xs:        11px;
+	--dya-fs-sm:        12px;
+	--dya-fs-base:      14px;
+	--dya-fs-md:        15px;
+	--dya-fs-lg:        18px;
+	--dya-fs-xl:        22px;
+	--dya-fs-2xl:       28px;
+	--dya-fs-3xl:       40px;
+
+	--dya-lh-tight:     1.2;
+	--dya-lh-base:      1.55;
+	--dya-lh-loose:     1.7;
+
+	--dya-tracking-tight: -.022em;
+	--dya-tracking-body:  -.005em;
+	--dya-tracking-mono:  .04em;
+	--dya-tracking-label: .08em;
+
+	// ── Motion ───────────────────────────────────────────────
+	--dya-ease:         cubic-bezier(.22, .7, .2, 1);
+	--dya-ease-out:     cubic-bezier(.16, 1, .3, 1);
+	--dya-t-fast:       140ms;
+	--dya-t-med:        260ms;
+	--dya-t-slow:       480ms;
+	--dya-t-very-slow:  720ms;
+
+	// ── Radius scale ─────────────────────────────────────────
+	--dya-r-xs:         4px;
+	--dya-r-sm:         6px;
+	--dya-r-md:         10px;
+	--dya-r-lg:         14px;
+	--dya-r-xl:         18px;
+	--dya-r-2xl:        22px;
+	--dya-r-pill:       999px;
+
+	// ── Shadows (light-tuned, very subtle) ───────────────────
+	--dya-shadow-sm:    0 1px 2px rgba(0, 0, 0, .04);
+	--dya-shadow-md:    0 8px 24px rgba(0, 0, 0, .06), 0 2px 6px rgba(0, 0, 0, .04);
+	--dya-shadow-lg:    0 24px 56px rgba(0, 0, 0, .10), 0 6px 16px rgba(0, 0, 0, .06);
+	--dya-shadow-accent: 0 12px 28px rgba(var(--dya-accent-rgb), .18);
+
+	// ── Layout container (fallback when the admin DS is not loaded) ─
+	// When body.dy-admin is present, the admin DS overrides --dya-wrap-max
+	// and --dya-wrap-pad-x with its own fluid clamp values (see
+	// modules/admin/partials/_tokens.scss). Otherwise these fallbacks
+	// provide consistent centering on Double Youpi sub-pages.
+	--dya-wrap-max:     clamp(1024px, 78vw, 1240px);
+	--dya-wrap-pad-x:   clamp(20px, 2vw, 40px);
+}
+
+// Smart contrast token: --dya-accent-on auto-computed via OKLCH when supported.
+// Chrome 119+, Safari 16.4+, Firefox 128+. Fallback: white declared above
+// (works for most WP-native accents which are mid-to-dark blues).
+@supports (color: oklch(from red l c h)) {
+	:root {
+		--dya-accent-on: oklch(from var(--dya-accent) clamp(0, calc((0.5 - l) * 100), 1) 0 0);
+	}
+}
+
+// Reduced motion: animations/transitions become near-instantaneous.
+// No aggressive transition: none — we keep a very short fade for
+// focus states, which remain essential for accessibility.
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--dya-t-fast:      0ms;
+		--dya-t-med:       0ms;
+		--dya-t-slow:      0ms;
+		--dya-t-very-slow: 0ms;
+	}
+}
+
+// Fields keep a visible outline; buttons follow the blocks (same rule as the
+// Admin module's _tokens.scss).
+:is(input:not([type="button"]):not([type="submit"]):not([type="reset"]):not(.button), select, textarea) {
+	--dya-edge:        var(--dya-line);
+	--dya-edge-strong: var(--dya-line-strong);
+}

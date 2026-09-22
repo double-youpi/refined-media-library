@@ -33,7 +33,22 @@ final class Plugin {
 		return self::$instance;
 	}
 
+	private bool $booted = false;
+
 	public function boot(): void {
+		// Two standalone builds can be active at once (Refined Admin Dashboard
+		// and Refined Media Library): each calls boot() on this shared
+		// singleton. The first wins, the second would only add every hook a
+		// second time.
+		if ( $this->booted ) {
+			// The one-time setup is done. Still pick up any module the other
+			// build registered after we booted: the registry starts only what
+			// it has not started yet.
+			ModuleRegistry::boot();
+			return;
+		}
+		$this->booted = true;
+
 		// Translations on init@1 — avoids the "textdomain loaded too early" notice (WP 6.7+).
 		// We keep load_plugin_textdomain() because translations are BUNDLED and
 		// just-in-time loading from the plugin directory is only automatic
@@ -87,6 +102,7 @@ final class Plugin {
 		if ( class_exists( Feedback::class ) ) {
 			Feedback::register();
 		}
+
 	}
 
 	/**

@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Modules\MediaLibrary\Migration;
 
+use DoubleYoupi\Core\Build;
+
 use DoubleYoupi\Core\AbstractModule;
 use DoubleYoupi\Modules\MediaLibrary\CollectionTaxonomy;
 use DoubleYoupi\Modules\MediaLibrary\FolderTaxonomy;
@@ -56,11 +58,11 @@ final class MigrationManager extends AbstractModule {
 			return;
 		}
 
-		$css = DOUBLEYOUPI_DIR . 'assets/css/modules/media-library/migration.css';
+		$css = Build::dir( __FILE__, 'assets/css/modules/media-library/migration.css' );
 		if ( file_exists( $css ) ) {
 			wp_enqueue_style(
 				'doubleyoupi-ml-migration',
-				DOUBLEYOUPI_URL . 'assets/css/modules/media-library/migration.css',
+				Build::url( __FILE__, 'assets/css/modules/media-library/migration.css' ),
 				[],
 				DOUBLEYOUPI_VERSION
 			);
@@ -69,11 +71,11 @@ final class MigrationManager extends AbstractModule {
 		// Designed dialog system (the rollback action uses it).
 		\DoubleYoupi\Modules\MediaLibrary\FolderManager::enqueue_dialog_assets( DOUBLEYOUPI_VERSION );
 
-		$js = DOUBLEYOUPI_DIR . 'assets/js/modules/media-library/migration.js';
+		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/migration.js' );
 		if ( file_exists( $js ) ) {
 			wp_enqueue_script(
 				'doubleyoupi-ml-migration',
-				DOUBLEYOUPI_URL . 'assets/js/modules/media-library/migration.js',
+				Build::url( __FILE__, 'assets/js/modules/media-library/migration.js' ),
 				[ 'doubleyoupi-ml-dialog' ],
 				DOUBLEYOUPI_VERSION,
 				true

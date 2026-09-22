@@ -1,0 +1,546 @@
+// =============================================================
+// _toolkit.scss
+// "Quick tools" section injected by the Toolkit module via the hook
+// `doubleyoupi_overview_after_modules_grid` (see OverviewPage::render()).
+//
+// Visual direction: unified grid-table with internal separators
+// (not individual cards). Technique: `gap: 1px` on a `var(--dya-line)` background
+// — the gap reveals the separators between cells.
+//
+// Visual hierarchy:
+//   - Large icon (40px) in soft grey on the left, vertically centred
+//   - Title + description in the middle (description always visible)
+//   - Toggle + status (LED + mono caps label) on the right
+//   - Generous padding for comfortable reading
+//
+// The active state is indicated by the ON toggle + green LED + "ACTIVE" label
+// only — no accent color on the background or borders to preserve the
+// requested sobriety.
+// =============================================================
+
+// Tools now live on their dedicated page "Double Youpi > Tools"
+// (.wrap.dy-tools), no longer in the Overview. The root context is therefore
+// .dy-tools (no longer .dy-overview).
+.dy-tools {
+
+	// Tools section — no 56px separator: this is the entire page.
+	.dy-toolkit {
+		margin-top: 8px;
+	}
+
+	// Intro paragraph below the section heading
+	.dy-toolkit__intro {
+		color: var(--dya-ink-soft);
+		font-size: var(--dya-fs-base);
+		line-height: var(--dya-lh-base);
+		max-width: 64ch;
+		margin: -4px 0 28px;
+	}
+
+	// -------------------------------------------------------------
+	// Grid table — 2 columns max, NO background or box.
+	// Internal separators are owned by the cards themselves
+	// via border-top / border-left targeted by :nth-child (see below) —
+	// which avoids dependency on a colored background and ensures
+	// lines never overflow the cells.
+	// -------------------------------------------------------------
+	.dy-toolkit__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0;
+		margin: 0;
+	}
+
+	// -------------------------------------------------------------
+	// Individual cell — no longer a "card" but a table row.
+	// The <label> wraps the hidden <input> to make the entire surface clickable.
+	// -------------------------------------------------------------
+	.dy-toolkit__card {
+		--dya-card-i: 0;
+		position: relative;
+		display: grid;
+		grid-template-columns: 48px 1fr auto auto;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+			"icon name   switch status"
+			"icon desc   desc   desc"
+			"block block  block  block";
+		column-gap: 20px;
+		row-gap: 8px;
+		background: transparent;
+		padding: 28px 30px;
+		cursor: pointer;
+		transition: background var(--dya-t-fast) var(--dya-ease);
+		opacity: 0;
+		transform: translateY(8px);
+		animation: dy-toolkit-rise 500ms var(--dya-ease-out) forwards;
+		animation-delay: calc(680ms + var(--dya-card-i) * 55ms);
+		-webkit-tap-highlight-color: transparent;
+
+		// Internal separators — borders owned by the cards themselves.
+		// 2 columns: the 2nd column carries a border-left.
+		// Rows 2+: cards 3+ carry a border-top.
+		&:nth-child(2n) {
+			border-left: 1px solid var(--dya-line);
+		}
+		&:nth-child(n + 3) {
+			border-top: 1px solid var(--dya-line);
+		}
+
+		&:hover {
+			background: var(--dya-bg-elev);
+
+			.dy-toolkit__icon {
+				opacity: 0.85;
+				color: var(--dya-ink-mute);
+			}
+			.dy-toolkit__switch-track { border-color: var(--dya-ink-mute); }
+		}
+
+		&:focus-within {
+			background: var(--dya-bg-elev);
+			box-shadow: inset 0 0 0 2px rgba(var(--dya-accent-rgb), 0.18);
+		}
+
+		// Active state — indicated by ON toggle + green LED only,
+		// no background or border change (sobriety). The icon
+		// gains a little opacity to confirm the card is active.
+		&[data-state="active"],
+		&:has(.dy-toolkit__input:checked):not([data-state^="blocked"]) {
+			.dy-toolkit__icon {
+				opacity: 0.85;
+				color: var(--dya-ink-soft);  // stays grey, just slightly more present
+			}
+
+			.dy-toolkit__led {
+				background: var(--dya-success);
+				box-shadow: 0 0 0 0 rgba(0, 163, 42, 0.4);
+				animation: dy-toolkit-led-pulse 2200ms var(--dya-ease) infinite;
+			}
+
+			.dy-toolkit__status-label { color: var(--dya-success); }
+		}
+
+		// Blocked states — icon even more translucent, toggle locked.
+		&[data-state^="blocked"] {
+			cursor: not-allowed;
+
+			.dy-toolkit__icon { opacity: 0.3; }
+			.dy-toolkit__name { color: var(--dya-ink-mute); }
+			.dy-toolkit__switch { opacity: 0.45; pointer-events: none; }
+
+			&:hover {
+				background: transparent;
+
+				.dy-toolkit__icon {
+					opacity: 0.3;
+					color: var(--dya-ink-fade);
+				}
+				.dy-toolkit__switch-track { border-color: var(--dya-edge-strong); }
+			}
+		}
+
+		&[data-state="blocked-plugin"] {
+			.dy-toolkit__led { background: var(--dya-info); }
+			.dy-toolkit__status-label { color: var(--dya-info); }
+		}
+
+		&[data-state="blocked-env"] {
+			.dy-toolkit__led { background: var(--dya-warn); }
+			.dy-toolkit__status-label { color: var(--dya-warn); }
+		}
+	}
+
+	// -------------------------------------------------------------
+	// Sub-elements
+	// -------------------------------------------------------------
+
+	.dy-toolkit__input,
+	body.dy-admin & .dy-toolkit__input,
+	body.dy-admin & .dy-toolkit__input:disabled {
+		position: absolute;
+		opacity: 0 !important; // the generic disabled-checkbox rule (opacity .5) made the blocked one visible
+		pointer-events: none;
+		width: 0 !important;
+		height: 0 !important;
+		min-width: 0;
+		border: 0 !important;
+		margin: 0;
+		appearance: none;
+	}
+
+	// Icon — 40px, soft grey + reduced opacity to remain very discreet.
+	// Vertically centred across rows 1+2 (in the middle of the title+desc block).
+	// The stroke stays at 1.5 (defined on the inline SVGs) but opacity
+	// lowers visual presence without changing the stroke grammar.
+	.dy-toolkit__icon {
+		grid-area: icon;
+		align-self: center;
+		justify-self: start;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		color: var(--dya-ink-fade);
+		opacity: 0.55;
+		flex-shrink: 0;
+		transition: color var(--dya-t-med) var(--dya-ease), opacity var(--dya-t-med) var(--dya-ease);
+
+		svg {
+			width: 36px;
+			height: 36px;
+		}
+	}
+
+	// Body — the wrapper is `display: contents` so the children
+	// (name, desc) take their grid-area directly.
+	.dy-toolkit__body { display: contents; }
+
+	.dy-toolkit__name {
+		grid-area: name;
+		font-family: var(--dya-font-display);
+		font-size: 16px;
+		font-weight: 500;
+		font-variation-settings: "opsz" 16, "wght" 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		margin: 0;
+		line-height: 1.3;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		align-self: center;
+	}
+
+	// Description = single source, always visible, clamped to 3 lines max.
+	.dy-toolkit__desc {
+		grid-area: desc;
+		font-size: 13px;
+		color: var(--dya-ink-soft);
+		margin: 0;
+		line-height: 1.55;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		align-self: start;
+	}
+
+	// -------------------------------------------------------------
+	// Additional feature settings (e.g. slug field for Hide Login).
+	// The body is `display: contents`, so this block is a DIRECT grid item.
+	// Without explicit placement it would fall into the icon column (48px) → broken.
+	// We force it to span the content columns (row 2 → end); it
+	// flows onto a new row below the description. Default cursor:
+	// this is NOT a toggle zone (a JS guard stops propagation).
+	// -------------------------------------------------------------
+	.dy-toolkit__field {
+		grid-column: 2 / -1;
+		align-self: start;
+		margin-top: 14px;
+		padding-top: 14px;
+		border-top: 1px solid var(--dya-line);
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+		cursor: default;
+	}
+
+	.dy-toolkit__field-label {
+		font-family: var(--dya-font-mono);
+		font-size: 10.5px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: var(--dya-tracking-label);
+		color: var(--dya-ink-mute);
+	}
+
+	.dy-toolkit__field input[type="text"] {
+		width: 100%;
+		max-width: 340px;
+		padding: 7px 11px;
+		font-family: var(--dya-font-mono);
+		font-size: 13px;
+		color: var(--dya-ink);
+		background: var(--dya-paper);
+		border: 1px solid var(--dya-edge-strong);
+		border-radius: var(--dya-r-md);
+		transition: border-color var(--dya-t-fast) var(--dya-ease), box-shadow var(--dya-t-fast) var(--dya-ease);
+
+		&:focus {
+			outline: none;
+			border-color: var(--dya-accent);
+			box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), 0.16);
+		}
+	}
+
+	.dy-toolkit__field .description {
+		font-size: 12px;
+		color: var(--dya-ink-soft);
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	.dy-toolkit__field code {
+		font-family: var(--dya-font-mono);
+		font-size: 11px;
+		background: rgba(0, 0, 0, 0.06);
+		padding: 1px 5px;
+		border-radius: 3px;
+		color: var(--dya-ink);
+	}
+
+	// Toggle (track + thumb) — compact 36×20px.
+	.dy-toolkit__switch {
+		grid-area: switch;
+		align-self: center;
+		display: inline-flex;
+		position: relative;
+	}
+
+	.dy-toolkit__switch-track {
+		position: relative;
+		display: inline-block;
+		width: 36px;
+		height: 20px;
+		background: var(--dya-paper-3);
+		border: 1px solid var(--dya-edge-strong);
+		border-radius: var(--dya-r-pill);
+		transition:
+			background var(--dya-t-med) var(--dya-ease),
+			border-color var(--dya-t-fast) var(--dya-ease),
+			box-shadow var(--dya-t-fast) var(--dya-ease);
+		flex-shrink: 0;
+	}
+
+	.dy-toolkit__switch-thumb {
+		position: absolute;
+		top: 1px;
+		left: 1px;
+		width: 16px;
+		height: 16px;
+		background: var(--dya-paper);
+		border: 1px solid var(--dya-edge);
+		border-radius: 50%;
+		transition:
+			transform var(--dya-t-med) var(--dya-ease-out),
+			background var(--dya-t-fast) var(--dya-ease),
+			border-color var(--dya-t-fast) var(--dya-ease),
+			box-shadow var(--dya-t-fast) var(--dya-ease);
+	}
+
+	.dy-toolkit__input:checked ~ .dy-toolkit__switch {
+		.dy-toolkit__switch-track {
+			background: var(--dya-success);
+			border-color: var(--dya-success);
+		}
+
+		.dy-toolkit__switch-thumb {
+			transform: translateX(16px);
+			background: #ffffff;
+			border-color: rgba(0, 0, 0, 0.08);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+		}
+	}
+
+	.dy-toolkit__input:focus-visible ~ .dy-toolkit__switch .dy-toolkit__switch-track {
+		box-shadow: 0 0 0 4px rgba(var(--dya-accent-rgb), 0.18);
+	}
+
+	// Status — LED + mono caps label to the right of the toggle.
+	.dy-toolkit__status {
+		grid-area: status;
+		align-self: center;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-family: var(--dya-font-mono);
+		font-size: 10.5px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: var(--dya-tracking-label);
+		color: var(--dya-ink-mute);
+		white-space: nowrap;
+		min-width: 80px;
+		justify-content: flex-start;
+		padding-left: 18px;  // gap between toggle and status
+	}
+
+	.dy-toolkit__led {
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--dya-ink-fade);
+		transition: background var(--dya-t-fast) var(--dya-ease),
+		            box-shadow var(--dya-t-fast) var(--dya-ease);
+		flex-shrink: 0;
+	}
+
+	// -------------------------------------------------------------
+	// Message block (plugin or env conflict) — placed below all content,
+	// full cell width. Sober: no colored background or border-left;
+	// just a separator hairline and italic text.
+	// -------------------------------------------------------------
+	.dy-toolkit__block {
+		grid-area: block;
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		margin-top: 14px;
+		padding-top: 14px;
+		border-top: 1px solid var(--dya-line);
+		font-size: 12.5px;
+		color: var(--dya-ink-soft);
+		line-height: 1.5;
+		font-style: italic;
+	}
+
+	// Inline code in the block (e.g. filter names) — discreet but readable.
+	.dy-toolkit__block code {
+		font-family: var(--dya-font-mono);
+		font-style: normal;
+		font-size: 11.5px;
+		background: rgba(0, 0, 0, 0.06);
+		padding: 1px 5px;
+		border-radius: 3px;
+		color: var(--dya-ink);
+	}
+
+	.dy-toolkit__block-icon {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		color: var(--dya-ink-mute);
+		margin-top: 2px;
+	}
+
+	.dy-toolkit__block--env .dy-toolkit__block-icon {
+		color: var(--dya-ink-mute);
+	}
+
+	// -------------------------------------------------------------
+	// Form actions (Save)
+	// -------------------------------------------------------------
+	.dy-toolkit__actions {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 22px;
+		padding-top: 18px;
+		border-top: 1px solid var(--dya-line);
+
+		.button-primary {
+			background: var(--dya-accent);
+			border-color: var(--dya-accent);
+			color: var(--dya-accent-on);
+			border-radius: var(--dya-r-md);
+			padding: 8px 18px;
+			font-family: var(--dya-font-body);
+			font-size: 13px;
+			font-weight: 500;
+			letter-spacing: 0;
+			text-shadow: none;
+			box-shadow: var(--dya-shadow-sm);
+			transition:
+				background var(--dya-t-fast) var(--dya-ease),
+				transform var(--dya-t-fast) var(--dya-ease),
+				box-shadow var(--dya-t-fast) var(--dya-ease);
+			cursor: pointer;
+
+			&:hover,
+			&:focus {
+				transform: translateY(-1px);
+				box-shadow: var(--dya-shadow-accent);
+				background: var(--dya-accent);
+			}
+
+			&:active {
+				transform: translateY(0);
+				box-shadow: var(--dya-shadow-sm);
+			}
+		}
+	}
+
+	// -------------------------------------------------------------
+	// Responsive breakpoints
+	// -------------------------------------------------------------
+	@media (max-width: 1100px) {
+		.dy-toolkit__card {
+			padding: 24px 26px;
+		}
+	}
+
+	@media (max-width: 860px) {
+		// Switch to 1 column — rows become a vertical list.
+		// We reset the internal borders: no more border-left (no 2nd
+		// column), border-top on all except the first.
+		.dy-toolkit__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.dy-toolkit__card {
+			padding: 22px 22px;
+			column-gap: 16px;
+
+			&:nth-child(2n) { border-left: none; }
+			&:nth-child(n + 3) { border-top: 1px solid var(--dya-line); }
+			&:nth-child(n + 2) { border-top: 1px solid var(--dya-line); }
+			&:first-child { border-top: none; }
+		}
+	}
+
+	@media (max-width: 600px) {
+		.dy-toolkit__card {
+			grid-template-columns: 40px 1fr auto;
+			grid-template-areas:
+				"icon name switch"
+				"icon desc desc"
+				"block block block";
+			column-gap: 14px;
+			padding: 20px;
+		}
+
+		.dy-toolkit__status { display: none; }
+
+		.dy-toolkit__icon {
+			width: 32px;
+			height: 32px;
+
+			svg {
+				width: 28px;
+				height: 28px;
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.dy-toolkit__card {
+			opacity: 1;
+			transform: none;
+			animation: none;
+		}
+
+		.dy-toolkit__switch-track,
+		.dy-toolkit__switch-thumb {
+			transition: none;
+		}
+
+		.dy-toolkit__led { animation: none !important; }
+	}
+}
+
+// -------------------------------------------------------------
+// Keyframes (outside `.dy-overview` because they are global by SCSS nature)
+// -------------------------------------------------------------
+@keyframes dy-toolkit-rise {
+	from { opacity: 0; transform: translateY(8px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dy-toolkit-led-pulse {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(0, 163, 42, 0.35); }
+	50%      { box-shadow: 0 0 0 5px rgba(0, 163, 42, 0); }
+}

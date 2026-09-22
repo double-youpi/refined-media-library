@@ -1,0 +1,180 @@
+// =============================================================
+// _buttons.scss
+// Redesign of native WordPress buttons (.button, .button-primary,
+// .button-secondary, .button-link) on Double Youpi sub-pages.
+// HTML pattern is unchanged.
+// =============================================================
+
+body[class*="page_doubleyoupi"] .wrap {
+
+	// ── Primary button: accent fill ────────────────────────
+	.button-primary,
+	.button.button-primary {
+		font-family: var(--dya-font-body);
+		font-size: 13.5px;
+		font-weight: 500;
+		letter-spacing: 0;
+		color: var(--dya-accent-on);
+		background: var(--dya-accent);
+		border: 1px solid var(--dya-accent);
+		border-radius: var(--dya-r-md);
+		padding: 8px 18px;
+		min-height: 38px;
+		line-height: 1;
+		text-shadow: none;
+		box-shadow: var(--dya-shadow-sm);
+		transition: transform var(--dya-t-fast) var(--dya-ease),
+		            box-shadow var(--dya-t-med) var(--dya-ease),
+		            filter var(--dya-t-fast) var(--dya-ease);
+		cursor: pointer;
+
+		&:hover, &:focus {
+			color: var(--dya-accent-on);
+			background: var(--dya-accent);
+			border-color: var(--dya-accent);
+			transform: translateY(-1px);
+			box-shadow: var(--dya-shadow-accent, 0 6px 18px rgba(var(--dya-accent-rgb), .25));
+			filter: brightness(1.06);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--dya-shadow-sm),
+			            0 0 0 4px rgba(var(--dya-accent-rgb), .22);
+		}
+
+		&:active {
+			transform: translateY(0);
+			filter: brightness(.95);
+		}
+
+		&:disabled, &.disabled {
+			opacity: .5;
+			cursor: not-allowed;
+			transform: none;
+			box-shadow: none;
+		}
+	}
+
+	// ── Secondary / default button: outline + paper ────────
+	.button:not(.button-primary):not(.button-link),
+	.button-secondary {
+		font-family: var(--dya-font-body);
+		font-size: 13.5px;
+		font-weight: 500;
+		color: var(--dya-ink);
+		background: var(--dya-paper);
+		border: 1px solid var(--dya-edge-strong);
+		border-radius: var(--dya-r-md);
+		padding: 7px 16px;
+		min-height: 38px;
+		line-height: 1;
+		text-shadow: none;
+		box-shadow: var(--dya-shadow-sm);
+		transition: color var(--dya-t-fast) var(--dya-ease),
+		            background var(--dya-t-fast) var(--dya-ease),
+		            border-color var(--dya-t-fast) var(--dya-ease),
+		            transform var(--dya-t-fast) var(--dya-ease);
+		cursor: pointer;
+
+		&:hover, &:focus {
+			color: var(--dya-ink);
+			background: var(--dya-paper-2);
+			border-color: var(--dya-ink-mute);
+			transform: translateY(-1px);
+			box-shadow: var(--dya-shadow-md);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--dya-shadow-sm),
+			            0 0 0 4px rgba(var(--dya-accent-rgb), .14);
+			border-color: var(--dya-accent);
+		}
+
+		&:active { transform: translateY(0); }
+
+		&:disabled, &.disabled {
+			opacity: .5;
+			cursor: not-allowed;
+			transform: none;
+		}
+	}
+
+	// ── Button-link (text link styled as button) ───────────────
+	.button-link {
+		color: var(--dya-accent);
+		font-family: var(--dya-font-body);
+		font-weight: 500;
+		text-decoration: none;
+		background: transparent;
+		border: 0;
+		padding: 4px 8px;
+		border-radius: var(--dya-r-sm);
+		transition: background var(--dya-t-fast) var(--dya-ease);
+
+		&:hover, &:focus {
+			background: var(--dya-accent-soft, rgba(var(--dya-accent-rgb), .08));
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+
+	// ── Button group (toolbar style) ──────────────────
+	.tablenav,
+	.dy-button-group,
+	.submit {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+		align-items: center;
+		margin: 20px 0;
+		padding: 0;
+
+		// Native p.submit (Settings API) with inline padding
+		&.submit { padding: 24px 0 0; border-top: 1px solid var(--dya-line); }
+	}
+
+	// ── Native WP spinner: replaced by an SVG circle ──────
+	.spinner {
+		background: none;
+		width: 18px;
+		height: 18px;
+		opacity: 1;
+		margin: 0 4px;
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 50%;
+			border: 2px solid var(--dya-line-strong);
+			border-top-color: var(--dya-accent);
+			animation: dy-spinner-spin 720ms linear infinite;
+		}
+
+		// Visible state (WP toggle .is-active)
+		&.is-active { visibility: visible; }
+		&:not(.is-active) { visibility: hidden; }
+	}
+}
+
+@keyframes dy-spinner-spin {
+	to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body[class*="page_doubleyoupi"] .wrap .spinner::after {
+		animation-duration: 2400ms;
+	}
+}
+
+// Disabled buttons: core's grey hairline (!important) gives way to the edge token.
+body[class*="page_doubleyoupi"] .wrap .button:disabled,
+body[class*="page_doubleyoupi"] .wrap .button.disabled,
+body[class*="page_doubleyoupi"] .wrap .button-disabled {
+	border-color: var(--dya-edge-strong) !important;
+}

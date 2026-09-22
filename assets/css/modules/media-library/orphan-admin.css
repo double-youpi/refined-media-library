@@ -1,6 +1,7 @@
+@charset "UTF-8";
 :root {
-  --dy-accent: #5b8cff;
-  --dy-accent-hover: #6e9aff;
+  --dy-accent: #5b3efe;
+  --dy-accent-hover: #7059fe;
   --dy-ink: #ecedf2;
   --dy-ink-soft: #9ba3b5;
   --dy-ink-mute: #5a6070;
@@ -12,6 +13,8 @@
   --dy-line: #1e2235;
   --dy-line-hi: #2a3049;
   --dy-line-soft: rgba(255, 255, 255, 0.04);
+  --dy-edge: transparent;
+  --dy-edge-hi: transparent;
   --dy-success: #16a34a;
   --dy-success-hover: #15803d;
   --dy-warning: #f59e0b;
@@ -62,15 +65,25 @@
 }
 
 /* ── Colonnes : Aperçu réduit à la vignette pour rapprocher « Fichier » ──── */
-#dy-orphan-table .check-column { width: 2.4em; }
+#dy-orphan-table .check-column {
+  width: 2.4em;
+}
 #dy-orphan-table thead th:nth-child(2),
-#dy-orphan-table tbody td:nth-child(2) { width: 58px; }   /* Aperçu */
+#dy-orphan-table tbody td:nth-child(2) {
+  width: 58px;
+}
 #dy-orphan-table thead th:nth-child(4),
-#dy-orphan-table tbody td:nth-child(4) { width: 92px; }   /* Type */
+#dy-orphan-table tbody td:nth-child(4) {
+  width: 92px;
+}
 #dy-orphan-table thead th:nth-child(5),
-#dy-orphan-table tbody td:nth-child(5) { width: 84px; }   /* Taille */
+#dy-orphan-table tbody td:nth-child(5) {
+  width: 84px;
+}
 #dy-orphan-table thead th:nth-child(6),
-#dy-orphan-table tbody td:nth-child(6) { width: 108px; }  /* Uploadé */
+#dy-orphan-table tbody td:nth-child(6) {
+  width: 108px;
+}
 
 /* ── Bloc de confirmation (action destructive) — panneau danger sur dark ── */
 /* Rendu deux fois : au-dessus ET en dessous de la table (mêmes classes). */
@@ -86,18 +99,22 @@
   border-radius: var(--dy-radius, 6px);
   color: var(--dy-ink, #ecedf2);
 }
+
 .dy-orphan-confirm--top {
   margin: 0 0 16px;
 }
+
 .dy-orphan-confirm--bottom {
   margin: 22px 0 0;
 }
+
 .dy-orphan-confirm__icon {
   flex-shrink: 0;
   width: 22px;
   height: 22px;
   color: var(--dy-danger, #d63638);
 }
+
 .dy-orphan-confirm__check {
   display: inline-flex;
   align-items: center;
@@ -111,10 +128,11 @@
   color: var(--dy-ink, #ecedf2);
   cursor: pointer;
 }
-.dy-orphan-confirm__check input[type="checkbox"] {
+.dy-orphan-confirm__check input[type=checkbox] {
   flex-shrink: 0;
   margin: 0;
 }
+
 .dy-orphan-confirm__actions {
   display: inline-flex;
   align-items: center;
@@ -133,8 +151,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
-.dy-orphan-delete-btn.button:hover:not(:disabled),
-.dy-orphan-delete-btn.button:focus:not(:disabled) {
+.dy-orphan-delete-btn.button:hover:not(:disabled), .dy-orphan-delete-btn.button:focus:not(:disabled) {
   background: var(--dy-danger-hover, #b32d2e);
   border-color: var(--dy-danger-hover, #b32d2e);
   color: #fff;

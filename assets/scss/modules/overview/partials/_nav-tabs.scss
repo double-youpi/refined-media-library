@@ -1,0 +1,141 @@
+// =============================================================
+// _nav-tabs.scss
+// Redesign of the native WordPress tab navigation (.nav-tab-wrapper).
+// HTML pattern unchanged (see CLAUDE.md §9.3-bis):
+//   <h2 class="nav-tab-wrapper">
+//     <a class="nav-tab nav-tab-active">Tab 1</a>
+//     <a class="nav-tab">Tab 2</a>
+//   </h2>
+// Inspired by the admin DS chipbar: animated underline, display font,
+// underline hover lift.
+// =============================================================
+
+body[class*="page_doubleyoupi"] .wrap .nav-tab-wrapper {
+	display: flex;
+	align-items: stretch;
+	gap: 0;
+	border-bottom: 1px solid var(--dya-line);
+	margin: 0 0 28px;
+	padding: 0;
+	background: transparent;
+	font-family: var(--dya-font-display);
+
+	// Reset default WP margins/padding
+	&::before,
+	&::after { display: none; }
+
+	.nav-tab {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-family: var(--dya-font-display);
+		font-size: 14px;
+		font-weight: 500;
+		font-variation-settings: "opsz" 14, "wght" 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink-soft);
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		padding: 14px 18px;
+		margin: 0;
+		text-decoration: none;
+		line-height: 1;
+		float: none;
+		transition: color var(--dya-t-fast) var(--dya-ease),
+		            background var(--dya-t-fast) var(--dya-ease);
+
+		// Animated track underline — revealed on hover/active
+		&::after {
+			content: "";
+			position: absolute;
+			left: 18px;
+			right: 18px;
+			bottom: -1px;
+			height: 2px;
+			background: var(--dya-accent);
+			border-radius: 2px 2px 0 0;
+			transform: scaleX(0);
+			transform-origin: center;
+			transition: transform var(--dya-t-med) var(--dya-ease-out),
+			            background var(--dya-t-fast) var(--dya-ease);
+		}
+
+		// Hover state
+		&:hover, &:focus {
+			color: var(--dya-ink);
+			background: var(--dya-paper-2);
+			box-shadow: none;
+			outline: none;
+
+			&::after {
+				transform: scaleX(.45);
+				background: var(--dya-ink-mute);
+			}
+		}
+
+		// Active state — solid underline
+		&.nav-tab-active,
+		&[aria-current="page"] {
+			color: var(--dya-ink);
+			background: transparent;
+			cursor: default;
+
+			&::after {
+				transform: scaleX(1);
+				background: var(--dya-accent);
+			}
+		}
+
+		// Focus visible (keyboard): accent halo around the label
+		&:focus-visible {
+			color: var(--dya-ink);
+			box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .18) inset;
+			border-radius: var(--dya-r-sm);
+		}
+
+		// Optional: inline counter/badge in a tab
+		.count, .nav-tab-count {
+			display: inline-block;
+			font-family: var(--dya-font-mono);
+			font-size: 10.5px;
+			padding: 2px 7px;
+			border-radius: var(--dya-r-pill);
+			background: var(--dya-paper-3);
+			color: var(--dya-ink-soft);
+			line-height: 1;
+			min-width: 18px;
+			text-align: center;
+		}
+
+		&.nav-tab-active .count {
+			background: var(--dya-accent-soft, rgba(var(--dya-accent-rgb), .12));
+			color: var(--dya-accent);
+		}
+	}
+}
+
+// Mobile: horizontally scrollable tabs (overflow-x auto)
+@media (max-width: 720px) {
+	body[class*="page_doubleyoupi"] .wrap .nav-tab-wrapper {
+		overflow-x: auto;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+
+		&::-webkit-scrollbar { display: none; }
+
+		.nav-tab {
+			padding: 12px 14px;
+			font-size: 13px;
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body[class*="page_doubleyoupi"] .wrap .nav-tab-wrapper .nav-tab::after {
+		transition: none;
+	}
+}

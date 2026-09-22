@@ -19,6 +19,9 @@ final class ModuleRegistry {
 	private static array $modules = [];
 	private static bool  $booted  = false;
 
+	/** @var array<string,true> Ids already booted, so a later call starts only what is new. */
+	private static array $booted_ids = [];
+
 	/**
 	 * Registers a module in the registry.
 	 * Must be called before Plugin::boot().
@@ -29,19 +32,25 @@ final class ModuleRegistry {
 
 	/**
 	 * Boots all modules that are both available and enabled by the user.
-	 * Idempotent: a duplicate call is silently ignored.
+	 *
+	 * Incremental: a module is booted once and only once, but a later call
+	 * picks up whatever was registered in between. Two standalone builds can
+	 * be active at once and each registers its own module on the same hook:
+	 * refusing the second call would leave the second build dormant.
 	 *
 	 * Two gates: `is_available()` (module's technical prerequisites — PHP extensions,
 	 * third-party plugins, etc.) AND `ModuleSettings::is_enabled()` (user toggle
 	 * from the Overview page). Both must pass for boot() to be called.
 	 */
 	public static function boot(): void {
-		if ( self::$booted ) {
-			return;
-		}
-		self::$booted = true;
-
-		foreach ( self::$modules as $module ) {
+		$fresh = false;
+		foreach ( self::$modules as $id => $module ) {
+			if ( isset( self::$booted_ids[ $id ] ) ) {
+				continue;
+			}
+			self::$booted_ids[ $id ] = true;
+			self::$booted            = true;
+			$fresh                   = true;
 			if ( ! $module->is_available() ) {
 				continue;
 			}
@@ -52,7 +61,9 @@ final class ModuleRegistry {
 			do_action( 'doubleyoupi_module_booted', $module->id(), $module );
 		}
 
-		do_action( 'doubleyoupi_all_modules_booted', self::$modules );
+		if ( $fresh ) {
+			do_action( 'doubleyoupi_all_modules_booted', self::$modules );
+		}
 	}
 
 	/**

@@ -1,0 +1,109 @@
+// =============================================================
+// _notices.scss
+// Redesign of native admin notices (.notice, .notice-success,
+// .notice-warning, .notice-error, .notice-info) on Double Youpi
+// sub-pages. Preserves the HTML, enhances the visual output.
+// =============================================================
+
+body[class*="page_doubleyoupi"] .wrap .notice {
+	position: relative;
+	background: var(--dya-paper);
+	border: 1px solid var(--dya-edge);
+	border-radius: var(--dya-r-md);
+	// Wider left padding (38px) to accommodate the inner dot
+	// and the gap between the dot and the text.
+	padding: 14px 18px 14px 38px;
+	margin: 0 0 20px;
+	box-shadow: var(--dya-shadow-sm);
+	color: var(--dya-ink);
+	font-size: 13.5px;
+	line-height: 1.5;
+
+	// Dot INSIDE the notice, aligned with the first line of text.
+	// No more white border + line halo — that was the "badge pinned to the
+	// edge" effect we no longer want. The dot now carries the semantic
+	// color code on its own (success / warn / error / info).
+	&::before {
+		content: "";
+		position: absolute;
+		top: 19px;
+		left: 16px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--dya-ink-mute);
+	}
+
+	p {
+		margin: 0;
+		color: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
+
+	p + p { margin-top: 6px; }
+
+	strong { color: var(--dya-ink); font-weight: 600; }
+	em     { font-style: italic; color: var(--dya-ink-soft); }
+	a      { color: var(--dya-accent); }
+
+	// Buttons inside (action notice): compact + outline
+	.button {
+		margin-top: 8px;
+		font-size: 12.5px;
+		padding: 5px 12px;
+		min-height: 30px;
+	}
+
+	// ── Semantic variants — dot color only ──────────────
+
+	&.notice-success::before { background: var(--dya-success); }
+	&.notice-warning::before { background: var(--dya-warn); }
+	&.notice-error::before   { background: var(--dya-danger); }
+	&.notice-info::before    { background: var(--dya-info); }
+
+	// ── Dismissible: subtle close button ───────────────────────
+	&.is-dismissible {
+		padding-right: 44px;
+
+		.notice-dismiss {
+			top: 50%;
+			transform: translateY(-50%);
+			right: 12px;
+			padding: 0;
+			width: 28px;
+			height: 28px;
+			border-radius: var(--dya-r-sm);
+			transition: background var(--dya-t-fast) var(--dya-ease);
+
+			&:hover, &:focus {
+				background: var(--dya-paper-2);
+			}
+
+			&::before {
+				color: var(--dya-ink-mute);
+				font-size: 16px;
+				width: 28px;
+				height: 28px;
+				line-height: 28px;
+			}
+
+			&:hover::before { color: var(--dya-ink); }
+		}
+	}
+}
+
+// Subtle fade-in for notices appearing after an action
+body[class*="page_doubleyoupi"] .wrap .notice.is-dismissible,
+body[class*="page_doubleyoupi"] .wrap .updated.is-dismissible {
+	animation: dy-notice-slide-in 360ms var(--dya-ease-out);
+}
+
+@keyframes dy-notice-slide-in {
+	from { opacity: 0; transform: translateY(-6px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body[class*="page_doubleyoupi"] .wrap .notice { animation: none; }
+}

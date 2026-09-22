@@ -1,0 +1,538 @@
+// =============================================================
+// _support.scss
+// "A word from the creator": support card at the bottom of the Overview,
+// displayed ONLY in standalone free plugins (not in the suite).
+// Intentionally warmer and softer than the module grid — it reads
+// as a personal note, not as one more module.
+// Deliberate amber "coffee" accent; everything else follows the system tokens.
+// =============================================================
+
+.dy-overview {
+
+	&__support {
+		--dya-coffee:      #c98a2b;
+		--dya-coffee-rgb:  201, 138, 43;
+		--dya-coffee-soft: rgba(201, 138, 43, .10);
+		// Text variant of the amber: the decorative #c98a2b reaches 5.9:1 on the
+		// dark paper but only 2.9:1 on the light one. Decorations (border,
+		// glow, tinted background) keep the bright amber, running text uses
+		// this token so it stays AA in both themes.
+		--dya-coffee-ink:  var(--dya-coffee);
+
+		position: relative;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: clamp(16px, 2.4vw, 32px);
+		margin: 30px 0 8px;
+		padding: clamp(18px, 2vw, 26px) clamp(20px, 2.4vw, 30px);
+		border: 1px solid var(--dya-edge);
+		border-radius: var(--dya-r-lg);
+		background:
+			radial-gradient(120% 180% at 0% 0%, var(--dya-coffee-soft) 0%, transparent 42%),
+			linear-gradient(180deg, var(--dya-paper-2) 0%, var(--dya-paper) 70%);
+		overflow: hidden;
+		isolation: isolate;
+
+		// Smooth entry, after the cards (generous delay).
+		opacity: 0;
+		transform: translateY(12px);
+		animation: dy-overview-card-rise 620ms var(--dya-ease-out) forwards;
+		animation-delay: 1100ms;
+
+		// Amber hairline at the top.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 0 auto 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--dya-coffee), transparent 70%);
+			opacity: .55;
+		}
+	}
+
+	// ── Monogram / steaming cup ───────────────────────────
+	&__support-mark {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--dya-coffee-soft);
+		border: 1px solid rgba(var(--dya-coffee-rgb), .3);
+		color: var(--dya-coffee);
+		flex-shrink: 0;
+
+		svg { width: 26px; height: 26px; display: block; overflow: visible; }
+
+		.dy-steam {
+			transform-origin: center bottom;
+			animation: dy-steam 2600ms var(--dya-ease) infinite;
+		}
+		.dy-steam--2 { animation-delay: 600ms; }
+		.dy-steam--3 { animation-delay: 1200ms; }
+	}
+
+	// ── Message ───────────────────────────────────────────────
+	&__support-body { min-width: 0; }
+
+	&__support-title {
+		font-family: var(--dya-font-display);
+		font-size: 16.5px;
+		font-weight: 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		margin: 0 0 6px;
+	}
+
+	&__support-text {
+		font-size: 12.8px;
+		line-height: 1.6;
+		color: var(--dya-ink-soft);
+		margin: 0;
+		max-width: 78ch;
+
+		b { color: var(--dya-ink); font-weight: 600; }
+	}
+
+	// "Freelance name" link in the description: golden, italic, no
+	// underline or hover effect (a discreet mention, not a CTA).
+	&__support-studio {
+		&,
+		&:hover,
+		&:focus,
+		&:focus-visible,
+		&:active,
+		&:visited {
+			color: var(--dya-coffee-ink);
+			font-style: italic;
+			text-decoration: none;
+		}
+	}
+
+	&__support-sign {
+		display: inline-block;
+		margin-top: 10px;
+		font-family: var(--dya-font-display);
+		font-style: italic;
+		font-size: 14px;
+		color: var(--dya-ink);
+
+		em { color: var(--dya-coffee); font-style: italic; }
+	}
+
+	// ── Actions ───────────────────────────────────────────────
+	&__support-actions {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 12px;
+		flex-shrink: 0;
+	}
+
+	// ── Support duo: "Buy me a coffee" (amber) + "Leave a review" (light gold)
+	// joined together. At the centre, a TRANSPARENT circular bite (a mask that
+	// punches through both pills) reveals the card background; two horizontal
+	// golden hairlines (the top/bottom borders of the pills) cross it, and a
+	// shared animated heart floats in the middle. Hovering either pill → filled
+	// heart + heartbeat. (markup: __duo, modifier --joined)
+	&__duo {
+		--dya-bmc:      #c98a2b;
+		--dya-bmc-lo:   #b3771d;
+		--dya-bmc-hi:   #e0a743;
+		--dya-bite:     34px;   // rayon de la bouche circulaire (cœur « plus gros »)
+		--dya-ease-bmc: cubic-bezier(.23, 1, .32, 1);
+
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	// Common base for both pills.
+	&__duo-btn {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 22px;
+		border-radius: var(--dya-r-pill);
+		font-family: var(--dya-font-display);
+		font-weight: 600;
+		font-size: 14px;
+		letter-spacing: -.005em;
+		text-decoration: none;
+		overflow: hidden;
+		isolation: isolate;
+		transition: background 200ms var(--dya-ease-bmc), box-shadow 200ms var(--dya-ease-bmc), color 200ms var(--dya-ease-bmc);
+
+		// Light sweep (sheen), one pass on pill hover.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .5) 50%, transparent 68%);
+			transform: translateX(-130%);
+			pointer-events: none;
+			z-index: 3;
+		}
+
+		&:active { transform: scale(.98); transition-duration: 120ms; }
+		&:focus-visible {
+			outline: none;
+			z-index: 4;
+			box-shadow: 0 0 0 3px rgba(var(--dya-coffee-rgb), .55);
+		}
+	}
+
+	&__duo-label { position: relative; z-index: 1; }
+
+	// "Coffee" pill: solid amber.
+	&__duo-btn--coffee {
+		background: linear-gradient(180deg, var(--dya-bmc-hi) 0%, var(--dya-bmc) 52%, var(--dya-bmc-lo) 100%);
+		color: #fff5e6;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .38),
+			inset 0 -1px 0 rgba(0, 0, 0, .18),
+			0 6px 16px -8px rgba(var(--dya-coffee-rgb), .5);
+
+		&:hover,
+		&:active,
+		&:focus-visible { color: #fff5e6; }
+	}
+
+	// "Review" pill: LIGHT gold, deep golden text.
+	&__duo-btn--review {
+		background: linear-gradient(180deg, #f3d597 0%, #ecc679 100%);
+		color: #4f3208; // 7.2:1 on the gold (was #7d5214, 4.2)
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .55),
+			0 6px 16px -8px rgba(var(--dya-coffee-rgb), .4);
+
+		&:hover,
+		&:active,
+		&:focus-visible { color: #4f3208; }
+		&:hover { background: linear-gradient(180deg, #f7dca6 0%, #f0cd85 100%); }
+	}
+
+	// ── Join: pills joined together + transparent circular bite ────────
+	// The radial mask cuts a half-disc into the inner edge of each
+	// pill; the two half-discs meet to form a transparent circle at the
+	// centre. Inner padding is increased so the label clears the bite.
+	&__duo--joined &__duo-btn--coffee {
+		padding-right: 42px;
+		border-radius: var(--dya-r-pill) 0 0 var(--dya-r-pill);
+		-webkit-mask: radial-gradient(circle var(--dya-bite) at 100% 50%, transparent calc(var(--dya-bite) - 1px), #000 var(--dya-bite));
+		        mask: radial-gradient(circle var(--dya-bite) at 100% 50%, transparent calc(var(--dya-bite) - 1px), #000 var(--dya-bite));
+	}
+	&__duo--joined &__duo-btn--review {
+		padding-left: 42px;
+		border-radius: 0 var(--dya-r-pill) var(--dya-r-pill) 0;
+		-webkit-mask: radial-gradient(circle var(--dya-bite) at 0% 50%, transparent calc(var(--dya-bite) - 1px), #000 var(--dya-bite));
+		        mask: radial-gradient(circle var(--dya-bite) at 0% 50%, transparent calc(var(--dya-bite) - 1px), #000 var(--dya-bite));
+	}
+
+
+	// Shared heart, larger, WITHOUT a background (the transparent bite acts as the background).
+	// Zero-width element placed exactly on the join; the svg is pixel-centred
+	// (negative margin, transform kept free for the heartbeat).
+	&__duo-heart {
+		position: relative;
+		z-index: 3;
+		align-self: stretch;
+		width: 0;
+		color: var(--dya-bmc);
+		pointer-events: none;
+
+		svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 34px;
+			height: 34px;
+			margin: -17px 0 0 -17px;
+			overflow: visible;
+			filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .4));
+		}
+	}
+
+
+	// Filled heart that fills from the bottom up.
+	&__duo-heart-fill {
+		clip-path: inset(100% 0 0 0);
+		transition: clip-path 460ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	// Hovering either pill (i.e. the duo) → filled heart + heartbeat;
+	// the sheen only plays on the pill actually being hovered.
+	@media (hover: hover) and (pointer: fine) {
+		&__duo:hover &__duo-heart svg   { animation: dy-coffee-beat 1300ms ease-in-out infinite; }
+		&__duo:hover &__duo-heart-fill  { clip-path: inset(0 0 0 0); }
+		&__duo-btn:hover::before        { animation: dy-coffee-sheen 720ms cubic-bezier(.23, 1, .32, 1); }
+	}
+
+
+	&__support-link {
+		font-family: var(--dya-font-body);
+		font-size: 12px;
+		color: var(--dya-ink-soft);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		transition: color var(--dya-t-fast) var(--dya-ease);
+
+		&::after { content: "→"; font-family: var(--dya-font-mono); transition: transform var(--dya-t-fast) var(--dya-ease); }
+		&:hover { color: var(--dya-coffee); &::after { transform: translateX(3px); } }
+	}
+
+	// ── Responsive ───────────────────────────────────────────
+
+	// ── "Report / suggest" banner ────────────────────────────────
+	// Shown in standalone (below the coffee card) AND in the suite. SUBTLE accent
+	// background (tint on dark, not a garish flat fill), readable white text, glyph
+	// on the left, solid accent button on the right. The "accent" counterpart to the
+	// amber coffee card: the two banners echo each other, each in its own color.
+	&__feedback {
+		--dya-fb-rgb: var(--dya-accent-rgb);
+
+		position: relative;
+		// SAME grid as the coffee card (auto 1fr auto): glyph, body and button
+		// fall on the SAME columns as mark/body/actions above, so both stacked
+		// banners align precisely one beneath the other.
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: clamp(16px, 2.4vw, 32px);
+		margin: clamp(16px, 1.8vw, 22px) 0 8px;
+		padding: clamp(18px, 2vw, 26px) clamp(20px, 2.4vw, 30px);
+		border: 1px solid rgba(var(--dya-fb-rgb), .34);
+		border-radius: var(--dya-r-lg);
+		background:
+			radial-gradient(120% 180% at 0% 0%, rgba(var(--dya-fb-rgb), .26) 0%, transparent 52%),
+			linear-gradient(180deg, rgba(var(--dya-fb-rgb), .20) 0%, rgba(var(--dya-fb-rgb), .11) 100%);
+		overflow: hidden;
+		isolation: isolate;
+
+		// Smooth entry, right after the support card.
+		opacity: 0;
+		transform: translateY(12px);
+		animation: dy-overview-card-rise 620ms var(--dya-ease-out) forwards;
+		animation-delay: 1200ms;
+
+		// Accent hairline (slightly more vivid) at the top.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 0 auto 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--dya-accent), transparent 70%);
+			opacity: .7;
+		}
+	}
+
+	// Glyph (lightbulb) in an accent badge — SAME dimensions as the coffee monogram
+	// (54px / svg 26px) to align the text column of both banners.
+	&__feedback-glyph {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(var(--dya-fb-rgb), .22);
+		border: 1px solid rgba(var(--dya-fb-rgb), .42);
+		// Theme-aware : blanc-ish sur teinte sombre (dark), accent lisible sur
+		// teinte pâle (light) — #fff devenait invisible sur le lavande clair.
+		color: var(--dya-accent-text);
+		flex-shrink: 0;
+
+		svg { width: 26px; height: 26px; display: block; }
+	}
+
+	&__feedback-body { min-width: 0; }
+
+	// Title: same typography as __support-title. Theme-aware ink so it stays
+	// readable on the accent tint in BOTH themes (was hardcoded #fff → invisible
+	// on the pale-lavender tint in light mode — QA F7).
+	&__feedback-title {
+		font-family: var(--dya-font-display);
+		font-size: 16.5px;
+		font-weight: 500;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		margin: 0 0 6px;
+	}
+
+	// Text: SAME size as __support-text (12.8px / lh 1.6). Theme-aware ink.
+	&__feedback-text {
+		max-width: 78ch;
+		margin: 0;
+		font-size: 12.8px;
+		line-height: 1.6;
+		color: var(--dya-ink);
+	}
+
+	// Solid accent button — SAME hover effect as the coffee pill (lift + light
+	// sweep + tinted shadow). The arrow takes the role of the heartbeat.
+	&__feedback-btn {
+		--dya-ease-fb: cubic-bezier(.23, 1, .32, 1);
+
+		position: relative;
+		justify-self: end;
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 22px;
+		border-radius: var(--dya-r-pill);
+		background: linear-gradient(180deg, #6f54ff 0%, var(--dya-accent) 55%, #4c2fe6 100%);
+		color: #fff;
+		text-decoration: none;
+		white-space: nowrap;
+		overflow: hidden;
+		isolation: isolate;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, .28),
+			inset 0 -1px 0 rgba(0, 0, 0, .18),
+			0 6px 16px -8px rgba(var(--dya-accent-rgb), .7);
+		transition: transform 200ms var(--dya-ease-fb), box-shadow 200ms var(--dya-ease-fb), color 200ms var(--dya-ease-fb);
+		will-change: transform;
+
+		// Light sweep (sheen) — identical to the coffee button.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .5) 50%, transparent 68%);
+			transform: translateX(-130%);
+			pointer-events: none;
+			z-index: 3;
+		}
+
+		.dy-overview__feedback-label {
+			position: relative;
+			z-index: 1;
+			font-family: var(--dya-font-display);
+			font-weight: 600;
+			font-size: 14px;
+			letter-spacing: -.005em;
+		}
+		.dy-overview__feedback-arrow {
+			position: relative;
+			z-index: 1;
+			width: 15px;
+			height: 15px;
+			display: block;
+			transition: transform 220ms var(--dya-ease-fb);
+		}
+
+		&:hover,
+		&:active,
+		&:focus-visible { color: #fff; }
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				transform: translateY(-2px);
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, .32),
+					inset 0 -1px 0 rgba(0, 0, 0, .2),
+					0 12px 26px -10px rgba(var(--dya-accent-rgb), .82);
+
+				&::before { animation: dy-coffee-sheen 720ms cubic-bezier(.23, 1, .32, 1); }
+				.dy-overview__feedback-arrow { transform: translate(2px, -2px); }
+			}
+		}
+		&:active { transform: translateY(-1px) scale(.97); transition-duration: 120ms; }
+		&:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .55); }
+	}
+
+	@media (max-width: 782px) {
+		&__support {
+			grid-template-columns: auto 1fr;
+			grid-template-areas:
+				"mark body"
+				"actions actions";
+			row-gap: 18px;
+		}
+		&__support-mark    { grid-area: mark; }
+		&__support-body    { grid-area: body; }
+		&__support-actions {
+			grid-area: actions;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		// Feedback banner: same collapse as the coffee card (icon + body
+		// at the top, button on its own line).
+		&__feedback {
+			grid-template-columns: auto 1fr;
+			grid-template-areas:
+				"glyph body"
+				"btn   btn";
+			row-gap: 16px;
+		}
+		&__feedback-glyph { grid-area: glyph; }
+		&__feedback-body  { grid-area: body; }
+		&__feedback-btn   { grid-area: btn; justify-self: start; }
+	}
+}
+
+// ── Keyframes ────────────────────────────────────────────
+@keyframes dy-steam {
+	0%   { opacity: 0;   transform: translateY(2px) scaleY(.6); }
+	35%  { opacity: .9; }
+	100% { opacity: 0;   transform: translateY(-6px) scaleY(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__support {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+	.dy-overview__support-mark .dy-steam { animation: none; opacity: .7; }
+	.dy-overview__duo:hover .dy-overview__duo-heart { animation: none; }
+	.dy-overview__duo-btn:hover::before { animation: none; }
+	.dy-overview__duo-heart-fill { transition: none; }
+	.dy-overview__feedback {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+	.dy-overview__feedback-btn:hover { transform: none; }
+}
+
+// ── Coffee button keyframes ────────────────────────────────
+@keyframes dy-coffee-sheen {
+	from { transform: translateX(-130%); }
+	to   { transform: translateX(130%); }
+}
+
+// Heartbeat (lub-dub).
+@keyframes dy-coffee-beat {
+	0%, 100% { transform: scale(1); }
+	14%      { transform: scale(1.18); }
+	28%      { transform: scale(1); }
+	42%      { transform: scale(1.1); }
+	62%      { transform: scale(1); }
+}
+
+// ── QA : neutralise le margin-top hérité sur les titres de cartes ──────────
+// La règle générique `body.dy-admin .wrap h2/h3` (admin.css) injecte
+// margin: 28px 0 12px sur ces titres display (spécificité 0,2,2, elle bat les
+// classes BEM à 0,1,0). Ces cartes gèrent leur propre espacement vertical →
+// on annule uniquement la marge HAUTE (marge basse conservée). Demande Raphaël.
+body.dy-admin .wrap {
+	.dy-overview__upnext-name,
+	.dy-overview__support-title,
+	.dy-overview__feedback-title { margin-top: 0; }
+}
+
+// Light theme: darker amber for running text only (4.7:1 on white), the
+// decorative amber above is unchanged.
+body.dy-theme-light .dy-overview__support {
+	--dya-coffee-ink: #9c6a1c;
+}

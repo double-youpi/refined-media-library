@@ -28,5 +28,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 		delete_option( $option );
 	}
 	delete_transient( 'doubleyoupi_activated_notice' );
+	delete_transient( 'doubleyoupi_ml_initial_hash_scan_needed' );
+	// Ancien nom, servi jusqu'à la 0.3.1 : les sites installés le portent encore.
 	delete_transient( 'dy_ml_initial_hash_scan_needed' );
 } )();

@@ -1,0 +1,225 @@
+// =============================================================
+// _toggle-feedback.scss
+// Module grid auto-save (Overview): visual switch feedback,
+// discreet "Reload to apply" button, auto-save hint, and toasts.
+//
+// Driven by overview.js, which adds `.dy-overview--js` to the wrap as soon as
+// the script activates. Everything below therefore only triggers WHEN JS is
+// running — without JS, the form and its "Save modules" button remain the path.
+// =============================================================
+
+// ── Auto-save toggle: under JS, the entire "Save modules" area disappears ───
+// Feedback is now delivered by a transient "✓ Saved" badge next to
+// each toggle (see .dy-overview__saved). Without JS, the form and its
+// button remain the save path.
+.dy-overview--js .dy-overview__actions {
+	display: none;
+}
+
+// ── "✓ Saved" badge next to the toggle ─────────────────────────────────────
+// Hidden by default ([hidden] attribute set in PHP). overview.js removes [hidden]
+// then adds .is-in (fade-in) for ~2.2 s on each (de)activation.
+.dy-overview__saved {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-family: var(--dya-font-body);
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: .01em;
+	color: var(--dya-success);
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateY(2px);
+	transition: opacity var(--dya-t-med) var(--dya-ease-out), transform var(--dya-t-med) var(--dya-ease-out);
+
+	&[hidden] { display: none; }
+	&.is-in { opacity: 1; transform: none; }
+
+	&-icon {
+		width: 13px;
+		height: 13px;
+		display: block;
+		flex-shrink: 0;
+	}
+}
+
+// ── Switch micro-feedback ───────────────────────────────────────────────
+.dy-overview__switch {
+	// In progress: track slightly dimmed, label discreet.
+	&.is-saving &-track {
+		opacity: .65;
+	}
+
+	// Confirmed: brief accent halo around the track.
+	&.is-saved &-track {
+		animation: dy-switch-saved 1.4s var(--dya-ease) 1;
+	}
+
+	// Failure: brief red halo (state was reverted by JS).
+	&.is-error &-track {
+		animation: dy-switch-error 1.4s var(--dya-ease) 1;
+		border-color: var(--dya-danger, #d63638);
+	}
+}
+
+@keyframes dy-switch-saved {
+	0%   { box-shadow: 0 0 0 0 rgba(var(--dya-accent-rgb), .45); }
+	30%  { box-shadow: 0 0 0 5px rgba(var(--dya-accent-rgb), .22); }
+	100% { box-shadow: 0 0 0 0 rgba(var(--dya-accent-rgb), 0); }
+}
+
+@keyframes dy-switch-error {
+	0%   { box-shadow: 0 0 0 0 rgba(214, 54, 56, .5); }
+	30%  { box-shadow: 0 0 0 5px rgba(214, 54, 56, .22); }
+	100% { box-shadow: 0 0 0 0 rgba(214, 54, 56, 0); }
+}
+
+// ── Hero counter: bump on each change ────────────────────────────
+.dy-overview__hero-meta-row.is-bumped .dy-overview__hero-meta-value {
+	animation: dy-counter-bump var(--dya-t-med) var(--dya-ease-out) 1;
+}
+
+@keyframes dy-counter-bump {
+	0%   { transform: scale(1); }
+	40%  { transform: scale(1.16); }
+	100% { transform: scale(1); }
+}
+
+// ── Discreet "Reload to apply" button ─────────────────────────────────────
+// Lives in the card foot; moves to its own line (flex-basis 100%)
+// so it does not disrupt the switch ↔ Settings row.
+.dy-overview__card-foot {
+	flex-wrap: wrap;
+}
+
+.dy-overview__reload {
+	order: 3;
+	flex-basis: 100%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	white-space: nowrap;       // single line → predictable height for the animation.
+
+	font-family: var(--dya-font-body);
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: .01em;
+	line-height: 1;
+	padding: 6px 12px;
+	cursor: pointer;
+
+	color: var(--dya-accent);
+	background: var(--dya-accent-soft);
+	border: 1px solid rgba(var(--dya-accent-rgb), .32);
+	border-radius: var(--dya-r-pill);
+
+	// ── Collapsed state (default) ────────────────────────────────────────────
+	// When the state differs from pageload, JS removes [hidden] then adds
+	// .is-visible: the badge unfolds (height + margin), slides and
+	// fades in. max-height caps without freezing the real height —
+	// so the card grows fluidly, with no jank or dead space.
+	overflow: hidden;
+	max-height: 0;
+	margin-top: 0;
+	opacity: 0;
+	transform: translateY(-4px);
+	transition: max-height var(--dya-t-med) var(--dya-ease),
+	            margin-top var(--dya-t-med) var(--dya-ease),
+	            opacity var(--dya-t-med) var(--dya-ease),
+	            transform var(--dya-t-med) var(--dya-ease),
+	            background var(--dya-t-fast) var(--dya-ease),
+	            border-color var(--dya-t-fast) var(--dya-ease),
+	            color var(--dya-t-fast) var(--dya-ease);
+
+	// Hidden = truly out of flow: the Admin card stays as compact as the
+	// others as long as the badge is not relevant. The [hidden] specificity
+	// (0,2,0) takes precedence over the base display (0,1,0).
+	&[hidden] {
+		display: none;
+	}
+
+	&.is-visible {
+		max-height: 40px;        // ≥ real height (~30px) → ceiling, no gap.
+		margin-top: 8px;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&:hover {
+		color: var(--dya-accent-on);
+		background: var(--dya-accent);
+		border-color: var(--dya-accent);
+
+		.dy-overview__reload-icon {
+			transform: rotate(-120deg);
+		}
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(var(--dya-accent-rgb), .25);
+	}
+
+	&-icon {
+		display: block;
+		flex-shrink: 0;
+		transition: transform var(--dya-t-slow) var(--dya-ease-out);
+	}
+}
+
+// ── Toasts (save error) ──────────────────────────────────────────
+.dy-overview__toasts {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 100000; // above the WP admin bar.
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	pointer-events: none;
+}
+
+.dy-overview__toast {
+	pointer-events: auto;
+	max-width: 320px;
+	padding: 11px 15px;
+	font-family: var(--dya-font-body);
+	font-size: 12.5px;
+	font-weight: 500;
+	line-height: 1.4;
+	color: var(--dya-paper);
+	background: var(--dya-ink);
+	border-radius: var(--dya-r-md);
+	box-shadow: var(--dya-shadow-md, 0 10px 30px rgba(0, 0, 0, .25));
+
+	// Danger accent stripe on the left.
+	border-left: 3px solid var(--dya-danger, #d63638);
+
+	opacity: 0;
+	transform: translateY(8px) scale(.98);
+	transition: opacity var(--dya-t-med) var(--dya-ease),
+	            transform var(--dya-t-med) var(--dya-ease-out);
+
+	&.is-visible {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+// ── Reduced motion ──────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+	.dy-overview__reload,
+	.dy-overview__reload-icon,
+	.dy-overview__toast {
+		transition: none;
+	}
+
+	.dy-overview__switch.is-saved .dy-overview__switch-track,
+	.dy-overview__switch.is-error .dy-overview__switch-track,
+	.dy-overview__hero-meta-row.is-bumped .dy-overview__hero-meta-value {
+		animation: none;
+	}
+}

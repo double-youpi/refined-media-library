@@ -40,6 +40,7 @@ class MediaLibrary extends AbstractModule {
 		OrphanAdminPage::instance()->boot();
 		MigrationManager::instance()->boot();
 		MediaManagerConflict::instance()->boot();
+		( new FeedbackOwner() )->boot();
 
 		// Tabbed page: callback on this class to manage the active tab.
 		AdminMenu::add_page(

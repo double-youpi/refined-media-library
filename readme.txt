@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,13 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.2 =
+* Fixed: installing this plugin next to Double Youpï Refined Admin Dashboard brought the whole site down, front end included. The two run side by side now.
+* Fixed: with both plugins active, the folder panel sat on top of the page title and the thumbnails covered the file names.
+* Feedback sent from a media screen is now filed under this plugin instead of WordPress, so a report about folders or collections lands in the right place.
+* The Unused Media screen now carries the same accent colour as every other screen of the plugin. It had kept an older blue.
+* French translation: apostrophes are typographic throughout, as most of the interface already was.
+
 = 0.3.1 =
 * Fixed: on sites where another plugin or some custom CSS changes the width of the WordPress admin sidebar, the folder panel sat behind it. The panel now measures the sidebar instead of assuming its width, and follows it when it is collapsed or resized.
 * Fixed: a notice about translations being loaded too early could appear at the top of the Media screen, on the first page load after an update.
@@ -170,6 +177,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.2 =
+Running this plugin next to Refined Admin Dashboard no longer takes the site down, and the two now share the media screen cleanly.
 
 = 0.3.1 =
 Fixes reported from real sites: the folder panel follows a resized admin sidebar, the update notice is gone, the panel stays readable when a site forces text colours, the Add Media button keeps its height, and ampersands show properly in folder names.

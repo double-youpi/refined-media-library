@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Modules\MediaLibrary;
 
+use DoubleYoupi\Core\Build;
+
 use DoubleYoupi\Core\AbstractModule;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -100,13 +102,13 @@ class Settings extends AbstractModule {
 			return;
 		}
 		$rel = 'assets/js/modules/media-library/ml-settings.js';
-		$abs = DOUBLEYOUPI_DIR . $rel;
+		$abs = Build::dir( __FILE__, $rel );
 		if ( ! file_exists( $abs ) ) {
 			return;
 		}
 		wp_enqueue_script(
 			'doubleyoupi-ml-settings',
-			DOUBLEYOUPI_URL . $rel,
+			Build::url( __FILE__, $rel ),
 			[ 'jquery' ],
 			(string) ( filemtime( $abs ) ?: DOUBLEYOUPI_VERSION ),
 			true

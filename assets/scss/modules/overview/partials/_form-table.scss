@@ -1,0 +1,220 @@
+// =============================================================
+// _form-table.scss
+// Redesign of the native WordPress form table (.form-table)
+// used by all Settings API forms. We do not touch the HTML
+// (see CLAUDE.md §9.3-bis); we enhance the rendering via CSS scoped
+// to Double Youpi sub-pages.
+// =============================================================
+
+body[class*="page_doubleyoupi"] .wrap .form-table {
+	// The parent .wrap is already boxed (paper background + border + radius).
+	// We avoid a double border: the form-table becomes a group of rows
+	// separated by line-soft, with no outer frame.
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 0 0 28px;
+	width: 100%;
+	box-shadow: none;
+
+	// ── Row: generous padding + subtle separator ───────────
+	tr {
+		display: grid;
+		grid-template-columns: minmax(180px, 240px) 1fr;
+		gap: 24px;
+		padding: 16px 0;
+		border-top: 1px solid var(--dya-line-soft);
+
+		// No separator on the first row.
+		&:first-child {
+			border-top: 0;
+			padding-top: 4px;
+		}
+	}
+
+	// ── Labels: Geist typography + tracking-label ─────────
+	th {
+		padding: 0;
+		font-family: var(--dya-font-body);
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--dya-ink);
+		letter-spacing: 0;
+		text-align: left;
+		vertical-align: top;
+		min-width: 0;
+		width: auto;
+
+		// Inline label (WP forms.scss uses <label>)
+		label {
+			display: inline-block;
+			color: var(--dya-ink);
+			cursor: pointer;
+		}
+
+		// Optional suffix (e.g. required asterisk)
+		.required, .req {
+			color: var(--dya-danger);
+			margin-left: 3px;
+		}
+	}
+
+	// ── Data cell: inputs + description ──────────────────
+	td {
+		padding: 0;
+		font-size: 14px;
+		color: var(--dya-ink-soft);
+		vertical-align: top;
+		min-width: 0;
+		width: auto;
+
+		// Native inputs (text, email, url, number, password) ─────
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="number"],
+		input[type="password"],
+		input[type="search"],
+		input[type="date"],
+		select,
+		textarea {
+			font-family: var(--dya-font-body);
+			font-size: 14px;
+			color: var(--dya-ink);
+			background: var(--dya-paper-2);
+			border: 1px solid var(--dya-edge);
+			border-radius: var(--dya-r-md);
+			padding: 8px 12px;
+			min-height: 38px;
+			box-shadow: none;
+			transition: border-color var(--dya-t-fast) var(--dya-ease),
+			            box-shadow var(--dya-t-fast) var(--dya-ease),
+			            background var(--dya-t-fast) var(--dya-ease);
+
+			&:hover {
+				border-color: var(--dya-ink-mute);
+			}
+
+			&:focus, &:focus-visible {
+				outline: none;
+				border-color: var(--dya-accent);
+				background: var(--dya-paper);
+				box-shadow: 0 0 0 4px rgba(var(--dya-accent-rgb), .14);
+			}
+
+			&::placeholder { color: var(--dya-ink-mute); }
+
+			&:disabled, &[readonly] {
+				background: var(--dya-paper-2);
+				color: var(--dya-ink-mute);
+				cursor: not-allowed;
+			}
+		}
+
+		// WP regular-text input: consistent width
+		input.regular-text { width: 100%; max-width: 480px; }
+		input.small-text   { width: 80px; }
+		input.large-text   { width: 100%; max-width: 720px; }
+		textarea           { width: 100%; min-height: 96px; line-height: 1.5; resize: vertical; }
+
+		// Checkbox & radio: enlarged and accent-colored.
+		// We keep vertical-align: middle (native default) instead of -2px: the
+		// -2px hack breaks vertical alignment with flex-styled labels,
+		// and WP native already aligns correctly when inputs and labels are
+		// `display: inline-block` + `vertical-align: middle`.
+		input[type="checkbox"],
+		input[type="radio"] {
+			width: 16px;
+			height: 16px;
+			margin: 0 8px 0 0;
+			accent-color: var(--dya-accent);
+			cursor: pointer;
+			vertical-align: middle;
+		}
+
+		// Labels that CONTAIN a checkbox/radio input: set to inline-flex
+		// for impeccable vertical alignment of the pair (input + text).
+		// `:has()` is now supported by Chrome 105+ / Safari 15.4+ / Firefox 121+
+		// — graceful fallback for the rest (vertical-align: middle above works correctly).
+		label:has(> input[type="checkbox"]),
+		label:has(> input[type="radio"]) {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			line-height: 1.4;
+
+			// Reset input margins when parent is flex (gap handles spacing)
+			input[type="checkbox"],
+			input[type="radio"] {
+				margin: 0;
+				flex-shrink: 0;
+			}
+		}
+
+		// Inline description below the field
+		.description, p.description, span.description {
+			display: block;
+			font-size: 12.5px;
+			color: var(--dya-ink-mute);
+			line-height: 1.5;
+			margin: 8px 0 0;
+			max-width: 56ch;
+		}
+
+		// Checkbox list in a fieldset (common Settings API pattern)
+		fieldset {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			border: 0;
+			padding: 0;
+			margin: 0;
+
+			label {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				cursor: pointer;
+				color: var(--dya-ink);
+				font-size: 13.5px;
+				line-height: 1.4;
+
+				// Direct child input: no margin (gap handles it)
+				> input[type="checkbox"],
+				> input[type="radio"] {
+					margin: 0;
+					flex-shrink: 0;
+				}
+
+				&:has(input:checked) { font-weight: 500; }
+			}
+		}
+
+		// Inline buttons (e.g. "Reset", "Choose image")
+		.button {
+			margin-left: 8px;
+
+			&:first-child { margin-left: 0; }
+		}
+	}
+
+	// ── Mobile: stack th + td ─────────────────────────────
+	@media (max-width: 720px) {
+		tr {
+			grid-template-columns: 1fr;
+			gap: 8px;
+			padding: 16px 18px;
+		}
+	}
+}
+
+// "settings-section" wrapper or similar: if a module uses an
+// h2 + form-table group, we add better spacing.
+body[class*="page_doubleyoupi"] .wrap {
+	h2 + .form-table,
+	h3 + .form-table {
+		margin-top: 16px;
+	}
+}

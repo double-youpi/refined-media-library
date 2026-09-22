@@ -1,0 +1,164 @@
+// =============================================================
+// _welcome.scss
+// Carte de première visite de Refined Admin Dashboard, au-dessus de la
+// grille des modules : ce qui a changé, trois réglages de site à regarder,
+// le profil pour les agences. Même vocabulaire que la carte « Up next »
+// (_vitrine.scss) : bande teintée à l'accent, icône en pastille.
+// =============================================================
+
+.dy-overview {
+
+	&__welcome {
+		position: relative;
+		margin: 0 0 22px;
+		padding: 20px 22px 18px;
+		border-radius: var(--dya-r-md);
+		border: 1px solid rgba(var(--dya-accent-rgb), .34);
+		background: linear-gradient(180deg, rgba(var(--dya-accent-rgb), .11), rgba(var(--dya-accent-rgb), .035));
+		overflow: hidden;
+		isolation: isolate;
+		transition: opacity 240ms ease, transform 240ms ease;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(110% 140% at 0% 0%, rgba(var(--dya-accent-rgb), .14), transparent 58%);
+			pointer-events: none;
+			z-index: -1;
+		}
+
+		&.is-leaving { opacity: 0; transform: translateY(-6px); }
+	}
+
+	&__welcome-head {
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+
+		@media (max-width: 640px) { flex-wrap: wrap; }
+	}
+
+	&__welcome-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 42px;
+		height: 42px;
+		flex-shrink: 0;
+		border-radius: 12px;
+		color: var(--dya-accent-on);
+		background: var(--dya-accent);
+		box-shadow: 0 6px 16px rgba(var(--dya-accent-rgb), .34);
+
+		.dy-icon { width: 22px; height: 22px; display: block; color: inherit; }
+	}
+
+	&__welcome-lead { flex: 1; min-width: 0; }
+
+	&__welcome-eyebrow {
+		margin: 0 0 4px;
+		font-family: var(--dya-font-mono);
+		font-size: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: .16em;
+		color: var(--dya-accent);
+	}
+
+	// La coquille des pages Double Youpi décore les `h2` du `.wrap` (point
+	// d'accent en ::before, corps 22 px) avec un sélecteur très spécifique :
+	// le titre de la carte garde sa propre mise en forme (voir aussi la
+	// surcharge à la fin du fichier).
+	&__welcome &__welcome-title,
+	&__welcome-title {
+		margin: 0 0 6px;
+		padding: 0;
+		font-family: var(--dya-font-display);
+		font-size: 20px;
+		font-weight: 600;
+		letter-spacing: var(--dya-tracking-tight);
+		color: var(--dya-ink);
+		text-wrap: balance;
+
+		&::before,
+		&::after { content: none; display: none; }
+	}
+
+	&__welcome-text {
+		margin: 0;
+		font-size: 13px;
+		line-height: 1.55;
+		color: var(--dya-ink-soft);
+		max-width: 72ch;
+	}
+
+	&__welcome-dismiss { flex-shrink: 0; margin: 2px 0 0; }
+
+	&__welcome-sub {
+		margin: 18px 0 10px;
+		font-family: var(--dya-font-mono);
+		font-size: 10px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: .12em;
+		color: var(--dya-ink-mute);
+	}
+
+	&__welcome-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 12px;
+
+		@media (max-width: 900px) { grid-template-columns: 1fr; }
+	}
+
+	&__welcome-item {
+		padding: 14px 16px;
+		border-radius: var(--dya-r-sm);
+		background: var(--dya-paper);
+		border: 1px solid var(--dya-edge);
+
+		h3 {
+			margin: 0 0 5px;
+			font-size: 13.5px;
+			font-weight: 600;
+			color: var(--dya-ink);
+		}
+		p {
+			margin: 0 0 8px;
+			font-size: 12.5px;
+			line-height: 1.5;
+			color: var(--dya-ink-soft);
+		}
+	}
+
+	&__welcome-link {
+		font-size: 12.5px;
+		font-weight: 600;
+		color: var(--dya-accent-text, var(--dya-accent));
+		text-decoration: none;
+
+		&:hover { text-decoration: underline; }
+	}
+
+	&__welcome-foot {
+		margin: 14px 0 0;
+		font-size: 12.5px;
+		color: var(--dya-ink-soft);
+
+		a { color: var(--dya-accent-text, var(--dya-accent)); }
+	}
+}
+
+// Surcharge à spécificité supérieure à celle de la coquille des pages
+// (`body[class*="page_doubleyoupi"]:not(…) .wrap … h2`).
+body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap .dy-overview__welcome .dy-overview__welcome-title {
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0;
+	margin: 0 0 6px;
+
+	&::before,
+	&::after { content: none !important; display: none !important; }
+}

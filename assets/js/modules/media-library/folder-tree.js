@@ -924,11 +924,42 @@
 		window.document.body.style.setProperty( '--dy-adminmenu-w', right + 'px' );
 	}
 
+	/*
+	 * ── Vertical anchor, measured the same way as the width ─────────────────
+	 *
+	 * The panel's top is computed from the admin bar (admin bar + gutter +
+	 * brand + 32px). That holds on a native admin, where nothing sits between
+	 * the admin bar and the media screen. Refined Admin Dashboard puts two
+	 * rows there, its section bar and the page header, so a fixed panel lands
+	 * on top of them.
+	 *
+	 * Rather than hard-code another product's chrome, we measure the row the
+	 * panel should line up with: the media toolbar in grid view, the table nav
+	 * in list view. Published as --dy-panel-top, which the CSS reads only when
+	 * Refined Admin Dashboard is active.
+	 */
+	function contentAnchor() {
+		return window.document.querySelector( '.media-toolbar, .tablenav.top, .wp-filter' );
+	}
+
+	function syncPanelTop() {
+		var body = window.document.body;
+		if ( ! body.classList.contains( 'dy-admin' ) ) { return; }
+		var anchor = contentAnchor();
+		if ( ! anchor ) { return; }
+		// Document position, not viewport: the panel is fixed, and this must
+		// not move when the page scrolls.
+		var top = Math.round( anchor.getBoundingClientRect().top + ( window.pageYOffset || 0 ) );
+		if ( top <= 0 ) { return; }
+		body.style.setProperty( '--dy-panel-top', top + 'px' );
+	}
+
 	function watchAdminMenuWidth() {
 		if ( adminMenuWatched ) { return; }
 		adminMenuWatched = true;
 
 		syncAdminMenuWidth();
+		syncPanelTop();
 
 		var rail = adminMenuRail();
 		if ( rail && typeof window.ResizeObserver !== 'undefined' ) {
@@ -947,7 +978,18 @@
 			} );
 		}
 
-		$( window ).on( 'resize', syncAdminMenuWidth );
+		$( window ).on( 'resize', function () {
+			syncAdminMenuWidth();
+			syncPanelTop();
+		} );
+
+		// The header above us grows and shrinks (a notice appears, the title
+		// wraps): re-measure whenever the content area changes height.
+		var anchored = contentAnchor();
+		if ( anchored && typeof window.ResizeObserver !== 'undefined' ) {
+			new window.ResizeObserver( syncPanelTop ).observe( window.document.body );
+		}
+		$( window ).on( 'load', syncPanelTop );
 	}
 
 	/*

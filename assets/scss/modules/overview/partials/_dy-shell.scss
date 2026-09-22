@@ -1,0 +1,287 @@
+// =============================================================
+// _dy-shell.scss
+// STANDALONE Double Youpi admin skin (dark only), applied exclusively to
+// DY pages when the Refined Admin Dashboard module is not active
+// (standalone plugin, or suite with Admin module disabled).
+//
+// Trigger: body.dy-shell, added by DyShell.php only on DY pages
+// and only when the global Admin redesign is not running.
+//
+// Scope: CONTENT + CHIPBAR. The top admin bar and the WP left menu
+// remain native (untouched). No light mode / toggle.
+//
+// The dark tokens mirror the values from the admin DS
+// (modules/admin/partials/_tokens.scss). Existing content styles
+// (hero, cards, vitrine, support, pages-shell, form-table…) consume
+// these tokens → they become dark automatically, without duplication.
+// =============================================================
+
+body.dy-shell {
+	// ── Paper stack (dark) ───────────────────────────────────
+	--dya-bg:          #0c0e13;
+	--dya-bg-elev:     #161a23;
+	--dya-paper:       #161a23;
+	--dya-paper-2:     #1c2230;
+	--dya-paper-3:     #242b3a;
+
+	// ── Ink ──────────────────────────────────────────────────
+	--dya-ink:         #ededee;
+	--dya-ink-soft:    #a8a9ad;
+	--dya-ink-mute:    #6f7077;
+	--dya-ink-fade:    #4a4b52;
+
+	// ── Rules / dividers ─────────────────────────────────────
+	--dya-line:        rgba(255, 255, 255, .07);
+	--dya-line-strong: rgba(255, 255, 255, .14);
+	--dya-line-soft:   rgba(255, 255, 255, .04);
+	// Edges: the hairline around rounded surfaces (same contract as the Admin
+	// module's _tokens.scss). Transparent since 15/09/2026: the blocks have
+	// no outline, fields keep theirs (rule in _tokens-fallback.scss).
+	--dya-edge:        transparent;
+	--dya-edge-strong: transparent;
+
+	// ── Accent (Double Youpi brand indigo, default for the Admin module) ─
+	--dya-accent:      #5b3efe;
+	--dya-accent-rgb:  91, 62, 254;
+	--dya-accent-soft: rgba(91, 62, 254, .16);
+	--dya-accent-on:   #ffffff;
+
+	// Native WP controls (checked checkbox/radio, focus, range…): WordPress colors
+	// them via --wp-admin-theme-color. We map it to the Double Youpi accent
+	// so that checked inputs on settings pages use the accent color (not the default WP blue).
+	// The checkmark itself is drawn by WP, contrasted against the accent.
+	--wp-admin-theme-color:           var(--dya-accent);
+	--wp-admin-theme-color-darker-10: var(--dya-accent);
+	--wp-admin-theme-color-darker-20: var(--dya-accent);
+
+	// ── Shadows (dark-tuned, plus profondes) ─────────────────
+	--dya-shadow-sm:     0 1px 2px rgba(0, 0, 0, .25);
+	--dya-shadow-md:     0 8px 24px rgba(0, 0, 0, .40), 0 2px 6px rgba(0, 0, 0, .30);
+	--dya-shadow-lg:     0 24px 60px rgba(0, 0, 0, .55), 0 6px 16px rgba(0, 0, 0, .35);
+	--dya-shadow-accent: 0 12px 28px rgba(var(--dya-accent-rgb), .30);
+
+	// ── Dimensions / typography / radius: PARITY with the Admin module ─
+	// The fallback (_tokens-fallback) has diverged (1240px, different font-sizes
+	// and radii). We realign to modules/admin/partials/_tokens.scss
+	// so that DY pages look identical with or without the Admin module.
+	--dya-wrap-max:   clamp(1280px, 78vw, 1640px);
+	--dya-wrap-pad-x: clamp(32px, 2.4vw, 48px);
+	--dya-wrap-pad-y: clamp(28px, 2.0vw, 40px);
+
+	--dya-fs-xs:   10.5px;
+	--dya-fs-sm:   11.5px;
+	--dya-fs-base: clamp(13.5px, 0.85vw, 15px);
+	--dya-fs-md:   clamp(14.5px, 0.9vw, 16px);
+	--dya-fs-lg:   clamp(18px, 1.15vw, 20px);
+	--dya-fs-xl:   clamp(22px, 1.45vw, 25px);
+	--dya-fs-2xl:  clamp(26px, 1.75vw, 31px);
+	--dya-fs-3xl:  clamp(32px, 2.1vw, 38px);
+
+	--dya-lh-tight: 1.25;
+	--dya-lh-base:  1.5;
+	--dya-lh-loose: 1.65;
+
+	--dya-tracking-tight: -.025em;
+	--dya-tracking-body:  -.005em;
+	--dya-tracking-mono:  .08em;
+	--dya-tracking-label: .12em;
+
+	--dya-r-xs: 4px;
+	--dya-r-sm: 6px;
+	--dya-r-md: 8px;
+	--dya-r-lg: 10px;
+	--dya-r-xl: 12px;
+	--dya-r-2xl: 16px;
+
+	// ── Background of the content column only ─────────────
+	// #wpcontent = right-hand column (the #adminmenumain menu remains native).
+	// We tint the background so DY pages are dark from edge to edge.
+	// The body itself is tinted so the dark extends to the bottom of the
+	// viewport on short pages (e.g. the Settings page) — the menu column
+	// remains covered by the native WordPress background (#adminmenuback).
+	background: var(--dya-bg);
+
+	#wpcontent,
+	#wpbody-content {
+		background: var(--dya-bg);
+	}
+
+	#wpbody-content {
+		color: var(--dya-ink);
+	}
+
+	// Overview: centered on --dya-wrap-max (instead of the 1240px left-aligned value
+	// from the _shell.scss fallback). Aligns the overview, sub-pages and chipbar
+	// to the SAME gutter → the chipbar aligns with the left edge of the content.
+	.dy-overview,
+	.dy-overview.wrap {
+		max-width: var(--dya-wrap-max);
+		margin-inline: auto;
+		// +20px on the inline-end to balance the 20px padding applied on the
+		// left of the parent container, so the content stays visually centered.
+		padding-inline: var(--dya-wrap-pad-x) calc(var(--dya-wrap-pad-x) + 20px);
+		// Fixed vertical padding requested: 50px (instead of the 48→80 clamp in _shell).
+		padding-block: 50px;
+	}
+
+	// The plugin name (h1 .dy-overview__title--solo) must override the WP core
+	// `.wrap h1` rule (font-size 23px, specificity 0,1,1). Here specificity
+	// is (0,2,1) and we restore the full hero typography (size, weight,
+	// white color, line-height), otherwise WP would impose 23px + its own weight/color.
+	.dy-overview__title--solo {
+		font-size: clamp(34px, 2.8vw, 46px);
+		font-weight: 600;
+		font-variation-settings: "opsz" 40, "wght" 600;
+		line-height: 1.05;
+		color: var(--dya-ink);
+		margin: 0;
+		padding: 0;
+	}
+
+	// Module sub-pages (Settings…): SAME width and SAME gutters as the Overview
+	// and the chipbar — all centered on --dya-wrap-max + --dya-wrap-pad-x,
+	// so content aligns precisely below the chipbar tabs. Includes the
+	// Media Library module Settings page, which _pages-shell excludes from centering
+	// (that exclusion targets the full-width grid on upload.php, which is not
+	// a dy-shell page anyway).
+	.wrap:not(.dy-overview) {
+		max-width: var(--dya-wrap-max);
+		margin-inline: auto;
+		padding-inline: var(--dya-wrap-pad-x);
+		padding-block: clamp(20px, 2vw, 32px);
+	}
+
+	// Module sub-pages (e.g. Settings): the h1 title is visually hidden —
+	// redundant with the "Settings" tab/chipbar. Kept for screen readers
+	// (clip rather than display:none, to avoid breaking accessibility).
+	.wrap:not(.dy-overview) > h1 {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		white-space: nowrap;
+	}
+
+	// WP footer: readable on dark background, subtle separator.
+	#wpfooter {
+		color: var(--dya-ink-mute);
+		border-top-color: var(--dya-line);
+
+		a { color: var(--dya-ink-soft); }
+	}
+
+	// The optional anti-FOUC curtain and generic content links.
+	#wpbody-content a:not(.button):not(.dy-chip):not([class*="dy-overview__"]) {
+		color: var(--dya-accent);
+	}
+}
+
+// =============================================================
+// Standalone chipbar (Double Youpi tabs)
+// Rendered by DyShell.php via in_admin_header → lives at the top of #wpcontent
+// (content column), so it does NOT overlap the native left menu.
+// Reuses the .dy-chipbar / .dy-chip / .dy-track vocabulary from the Admin
+// module, but driven by --dya-accent (no "lines" system).
+// =============================================================
+body.dy-shell .dy-chipbar {
+	--dya-line-color:      var(--dya-accent);
+	--dya-line-soft-color: var(--dya-accent-soft);
+
+	background: var(--dya-bg);
+	border-bottom: 1px solid var(--dya-line);
+	padding: 0;
+}
+
+body.dy-shell .dy-chipbar-inner {
+	max-width: var(--dya-wrap-max);
+	margin: 0 auto;
+	padding: 8px var(--dya-wrap-pad-x);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: thin;
+	scrollbar-color: var(--dya-line-strong) transparent;
+
+	&::-webkit-scrollbar       { height: 6px; }
+	&::-webkit-scrollbar-track { background: transparent; }
+	&::-webkit-scrollbar-thumb {
+		background: var(--dya-line-strong);
+		border-radius: var(--dya-r-pill);
+		border: 1px solid transparent;
+		background-clip: padding-box;
+	}
+}
+
+body.dy-shell .dy-chip {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 14px;
+	border-radius: var(--dya-r-md);
+	font-family: var(--dya-font-body);
+	font-size: 12.5px;
+	font-weight: 500;
+	color: var(--dya-ink-mute);
+	background: transparent;
+	border: 0;
+	white-space: nowrap;
+	flex-shrink: 0;
+	text-decoration: none;
+	transition: color var(--dya-t-fast) var(--dya-ease), background var(--dya-t-fast) var(--dya-ease);
+
+	&:hover {
+		color: var(--dya-ink);
+		background: var(--dya-paper-2);
+	}
+	&.current {
+		color: var(--dya-ink);
+		background: var(--dya-line-soft-color);
+	}
+
+	> .dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: var(--dya-line-color);
+		opacity: .45;
+		transition: opacity var(--dya-t-fast) var(--dya-ease);
+	}
+	&:hover > .dot,
+	&.current > .dot { opacity: 1; }
+
+	.dy-chip-icon {
+		width: 15px;
+		height: 15px;
+		flex-shrink: 0;
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 2px rgba(var(--dya-accent-rgb), .55);
+	}
+}
+
+// Animated underline that slides between chips (JS sets left/width).
+body.dy-shell .dy-track {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 2px;
+	background: var(--dya-line-color);
+	opacity: .9;
+	transition: transform var(--dya-t-med) var(--dya-ease), width var(--dya-t-med) var(--dya-ease);
+	pointer-events: none;
+	will-change: transform, width;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.dy-shell .dy-track { transition: none; }
+}

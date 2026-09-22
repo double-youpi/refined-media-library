@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+// =============================================================
+// admin-overview.scss
+// Double Youpi — visual shell for ALL admin pages of the plugin:
+//   - Overview page (?page=doubleyoupi)
+//   - Module sub-pages (?page=doubleyoupi-admin, performance,
+//     static, media-library, backups, staging, …)
+//
+// Compile: assets/scss/admin-overview.scss
+//        → assets/css/admin-overview.css
+// (entry listed in .vscode/settings.json:liveSassCompile.includeItems)
+// Enqueued by OverviewPage::maybe_enqueue_styles() on all pages
+// whose slug starts with `doubleyoupi`.
+//
+// STANDALONE stylesheet: must work even when the Admin module is
+// disabled. Light WP-native tokens are declared at :root in
+// _tokens-fallback. When body.dy-admin is present (= Admin module active),
+// the admin DS overrides (declared at body.dy-admin and body.dy-theme-light)
+// win by cascade specificity, and the user's dark/light theme + custom accent
+// propagate automatically with no additional JS logic.
+//
+// =============================================================
+
+// Note: @import url() for web fonts are placed AT THE TOP of the partial
+// _tokens-fallback.scss, because Sass requires @use to precede any
+// other rule. Since _tokens-fallback is the first @use, its content is
+// emitted first in the compiled CSS → @import url() lines end up at the
+// top of the final admin-overview.css (CSS @import must appear at the top
+// to be valid).
+// Tokens (light WP-native by default, overridden by admin DS when active)
+@use "modules/overview/partials/tokens-fallback";
+
+// Overview page (plugin home page)
+@use "modules/overview/partials/shell";
+@use "modules/overview/partials/quickfacts";
+@use "modules/overview/partials/cards";
+@use "modules/overview/partials/icons";
+@use "modules/overview/partials/switch";
+@use "modules/overview/partials/toggle-feedback";
+@use "modules/overview/partials/toolkit";
+@use "modules/overview/partials/vitrine";
+@use "modules/overview/partials/welcome";
+@use "modules/overview/partials/support";
+@use "modules/overview/partials/ml-settings";
+@use "modules/overview/partials/dy-shell";
+
+// Sub-page shell (Admin, Performance, Static, Media Library, …)
+// Targets body[class*="page_doubleyoupi"] .wrap:not(.dy-overview)
+@use "modules/overview/partials/pages-shell";
+@use "modules/overview/partials/form-table";
+@use "modules/overview/partials/nav-tabs";
+@use "modules/overview/partials/buttons";
+@use "modules/overview/partials/notices";
+@use "modules/overview/partials/rich-components";
+
+// Bridge: overrides when body.dy-admin is active (View Transitions, etc.)
+@use "modules/overview/partials/admin-bridge";
