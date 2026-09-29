@@ -2159,11 +2159,11 @@ body.upload-php .media-toolbar-primary.search-form {
 	justify-content: flex-end;
 }
 
-.wp-filter .search-form {
+body.upload-php .wp-filter .search-form {
 	margin: 0 !important;
 }
 
-.wp-filter .search-form #search-submit {
+body.upload-php .wp-filter .search-form #search-submit {
 	background: var(--bg-card, #161a23) !important;
     border: 1px solid var(--dy-edge-hi, #2a3049) !important;
     color: var(--ink-soft, #9ba3b5) !important;
@@ -2171,7 +2171,7 @@ body.upload-php .media-toolbar-primary.search-form {
     box-shadow: none !important;
     text-shadow: none !important;
 }
-.wp-filter .search-form #search-submit:hover {
+body.upload-php .wp-filter .search-form #search-submit:hover {
 	border-color: var( --accent, #5b3efe ) !important;
 	background: var( --bg-elev, #1d2030 ) !important;
 	color: var( --ink, #ecedf2 ) !important;
@@ -4712,10 +4712,12 @@ body.dy-dragging-folder .uploader-inline {
  * dedicated --paper-rgb token. `color-mix(in srgb, --paper 75%, transparent)`
  * achieves the same result (75% opacity) without an extra token.
  */
-.uploader-window {
+body.upload-php .uploader-window,
+body.modal-open .uploader-window {
 	background: color-mix( in srgb, var( --paper, #161a23 ) 75%, transparent );
 }
-.uploader-window > .uploader-window-content {
+body.upload-php .uploader-window > .uploader-window-content,
+body.modal-open .uploader-window > .uploader-window-content {
 	border-color: var( --accent, #5b3efe );
 }
 
@@ -4726,7 +4728,8 @@ body.dy-dragging-folder .uploader-inline {
  * which automatically swaps with the theme (dark on light background, light
  * on dark background).
  */
-.uploader-editor-title {
+body.upload-php .uploader-editor-title,
+body.modal-open .uploader-editor-title {
 	color: var( --ink, #ecedf2 ) !important;
 }
 

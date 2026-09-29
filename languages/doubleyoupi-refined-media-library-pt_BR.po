@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-22T17:58:21+00:00\n"
+"POT-Creation-Date: 2026-09-29T09:14:40+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 

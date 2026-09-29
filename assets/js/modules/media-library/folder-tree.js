@@ -95,6 +95,27 @@
 	 * Our handler fires after — .attachments-browser is already in the DOM.
 	 */
 	$( function () {
+		/*
+		 * WHICH SCREEN IS THIS?
+		 * ─────────────────────
+		 * This has to be the very first question, and everything below depends
+		 * on the answer.
+		 *
+		 * These assets deliberately load far beyond the media library: the
+		 * picker modal can be opened from anywhere WordPress has enqueued
+		 * media, and it has to be dressed wherever it opens. On such a screen
+		 * the ONLY thing that belongs to RML is that modal. The screen's own
+		 * chrome — its title, its notices, its list table — is somebody else's.
+		 *
+		 * Getting this wrong is not cosmetic. Without the guard, every boot
+		 * step below ran on post lists and taxonomy term lists, mounting the
+		 * folder panel over screens that have nothing to do with media.
+		 */
+		if ( ! isLibraryScreen() ) {
+			bootPickerOnly();
+			return;
+		}
+
 		// Detect grid vs list mode (only upload.php has both — modal is always grid).
 		// In list mode we navigate via URL (?doubleyoupi_folder=N); in grid mode we use Backbone.
 		var listMode = isListMode();
@@ -107,36 +128,8 @@
 			// upload.php?mode=grid&doubleyoupi_folder=N (or doubleyoupi_collection=N) apply the filter.
 			syncStateFromUrl();
 
-			// Patch prototype for future renders (modals, state changes)
-			if ( window.wp && wp.media && wp.media.view && wp.media.view.AttachmentsBrowser ) {
-				var origRender = wp.media.view.AttachmentsBrowser.prototype.render;
-				wp.media.view.AttachmentsBrowser.prototype.render = function () {
-					origRender.apply( this, arguments );
-					injectPanel( this.$el );
-					// A render usually happens while the view is still detached,
-					// so "what is visible" is only settled a tick later. Re-assert
-					// then: this is what catches the browser WordPress builds when
-					// you come back from the "Upload files" tab.
-					setTimeout( placePanelInVisibleModal, 0 );
-					setTimeout( placePanelInVisibleModal, 250 );
-					return this;
-				};
-			}
-
-			/*
-			 * Opening a modal does not always render its browser: WordPress
-			 * reuses a view it has already rendered, and our render patch never
-			 * fires. Without this, reopening a picker showed no folders at all.
-			 */
-			if ( window.wp && wp.media && wp.media.view && wp.media.view.Modal ) {
-				var origModalOpen = wp.media.view.Modal.prototype.open;
-				wp.media.view.Modal.prototype.open = function () {
-					var result = origModalOpen.apply( this, arguments );
-					setTimeout( placePanelInVisibleModal, 0 );
-					setTimeout( placePanelInVisibleModal, 250 );
-					return result;
-				};
-			}
+			// Panel into every browser Backbone renders, now and later.
+			patchMediaViews();
 
 			injectPanel( $( '.attachments-browser' ).first() );
 
@@ -317,10 +310,93 @@
 	}
 
 	/*
-	 * Two indicators of list mode on upload.php:
+	 * Is this the media library page, the one screen RML owns end to end?
+	 *
+	 * The body class is the only answer worth trusting. WordPress derives it
+	 * from the hook suffix in admin-header.php, so `upload-php` is on the
+	 * media library and on nothing else — it does not depend on which plugins
+	 * enqueued what, nor on markup any of them may also render.
+	 *
+	 * Do NOT infer the screen from the DOM. That was the bug: list mode used
+	 * to be detected by the presence of `#posts-filter`, which reads as "a
+	 * server-rendered list table" and is therefore true on upload.php in list
+	 * mode — but equally true on edit.php for every post type, and on
+	 * edit-tags.php for every taxonomy. Wherever a plugin had called
+	 * wp_enqueue_media() (ACF, page builders, theme options all do it widely),
+	 * those screens loaded this file, matched the heuristic, and grew a folder
+	 * panel. A shape shared by four core screens cannot identify one of them.
+	 */
+	function isLibraryScreen() {
+		return document.body.classList.contains( 'upload-php' );
+	}
+
+	/*
+	 * Boot for every OTHER admin screen: dress the picker modal, touch nothing
+	 * else. No panel on <body>, no title measuring, no notice relocation, no
+	 * curtain — all of that belongs to a screen we do not own here.
+	 *
+	 * The modal's own panel is mounted by the view patches, on render and on
+	 * open, and it lives inside .attachments-browser so it leaves with the
+	 * modal.
+	 */
+	function bootPickerOnly() {
+		// Folder/collection filtering of the picker's queries.
+		initMediaAjaxHook();
+		patchMediaViews();
+		// A modal may already be on screen if something opened one on load.
+		placePanelInVisibleModal();
+	}
+
+	/*
+	 * Teach Backbone's media views to carry the panel.
+	 *
+	 * Shared by the library page and by every other screen, because a picker
+	 * modal behaves the same wherever it opens. Installed once — the patched
+	 * prototypes are global, and this file runs once per page.
+	 */
+	function patchMediaViews() {
+		if ( patchMediaViews.done ) { return; }
+		patchMediaViews.done = true;
+
+		// Future renders (modals, state changes).
+		if ( window.wp && wp.media && wp.media.view && wp.media.view.AttachmentsBrowser ) {
+			var origRender = wp.media.view.AttachmentsBrowser.prototype.render;
+			wp.media.view.AttachmentsBrowser.prototype.render = function () {
+				origRender.apply( this, arguments );
+				injectPanel( this.$el );
+				// A render usually happens while the view is still detached,
+				// so "what is visible" is only settled a tick later. Re-assert
+				// then: this is what catches the browser WordPress builds when
+				// you come back from the "Upload files" tab.
+				setTimeout( placePanelInVisibleModal, 0 );
+				setTimeout( placePanelInVisibleModal, 250 );
+				return this;
+			};
+		}
+
+		/*
+		 * Opening a modal does not always render its browser: WordPress
+		 * reuses a view it has already rendered, and our render patch never
+		 * fires. Without this, reopening a picker showed no folders at all.
+		 */
+		if ( window.wp && wp.media && wp.media.view && wp.media.view.Modal ) {
+			var origModalOpen = wp.media.view.Modal.prototype.open;
+			wp.media.view.Modal.prototype.open = function () {
+				var result = origModalOpen.apply( this, arguments );
+				setTimeout( placePanelInVisibleModal, 0 );
+				setTimeout( placePanelInVisibleModal, 250 );
+				return result;
+			};
+		}
+	}
+
+	/*
+	 * Two indicators of list mode, evaluated on upload.php ONLY (isLibraryScreen
+	 * has already answered the screen question — see the note there on why the
+	 * third test must never be asked anywhere else):
 	 *  - URL contains ?mode=list
-	 *  - DOM has #posts-filter form (server-side rendered list table)
 	 *  - Absence of .media-frame.mode-grid
+	 *  - DOM has #posts-filter form (server-side rendered list table)
 	 */
 	function isListMode() {
 		if ( /[?&]mode=list\b/.test( window.location.search ) ) { return true; }
