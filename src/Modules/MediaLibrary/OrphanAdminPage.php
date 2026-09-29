@@ -18,8 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * UX flow:
  *  1. "Scan" button → AJAX → list of orphans (thumbnail, name, size, date)
  *  2. Multiple selection via checkboxes
- *  3. Explicit confirmation required before deletion
- *  4. AJAX deletion with feedback (X deleted, Y errors)
+ *  3. Explicit confirmation required before anything moves
+ *  4. AJAX move to the trash, with feedback (X moved, Y kept, Z errors)
+ *  5. A "Recently removed" section below, where each file can be put back or
+ *     erased for good. Nothing on this screen erases a file in one step.
  */
 class OrphanAdminPage extends AbstractModule {
 
@@ -68,7 +70,9 @@ class OrphanAdminPage extends AbstractModule {
 			wp_localize_script( 'doubleyoupi-orphan-admin', 'doubleyoupiOrphanAdmin', [
 				'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
 				'nonceScan'   => wp_create_nonce( 'doubleyoupi_ml_orphan_scan' ),
-				'nonceDelete' => wp_create_nonce( 'doubleyoupi_ml_orphan_delete' ),
+				'nonceDelete'  => wp_create_nonce( 'doubleyoupi_ml_orphan_delete' ),
+				'nonceRestore' => wp_create_nonce( 'doubleyoupi_ml_orphan_restore' ),
+				'noncePurge'   => wp_create_nonce( 'doubleyoupi_ml_orphan_purge' ),
 				'i18n'        => [
 					'scanning'     => __( 'Scanning…', 'doubleyoupi-refined-media-library' ),
 					'noOrphans'    => __( 'No unused media found. Your library is clean!', 'doubleyoupi-refined-media-library' ),
@@ -80,14 +84,23 @@ class OrphanAdminPage extends AbstractModule {
 					'remainingOne' => __( '%d unused media file remaining.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of unused media files remaining. */
 					'remainingMany' => __( '%d unused media files remaining.', 'doubleyoupi-refined-media-library' ),
-					/* translators: %d: number of media files to be deleted. */
-					'confirmLabel' => __( 'I confirm the permanent deletion of %d media files.', 'doubleyoupi-refined-media-library' ),
-					'deleteBtn'    => __( 'Delete selected media', 'doubleyoupi-refined-media-library' ),
-					'deleting'     => __( 'Deleting…', 'doubleyoupi-refined-media-library' ),
-					/* translators: %d: number of deleted media files. */
-					'deleted'      => __( '%d files deleted.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files to be moved to the trash. */
+					'confirmLabel' => __( 'I confirm moving %d media files to the trash.', 'doubleyoupi-refined-media-library' ),
+					'deleteBtn'    => __( 'Move selected media to the trash', 'doubleyoupi-refined-media-library' ),
+					'deleting'     => __( 'Moving to the trash…', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files moved to the trash. */
+					'deleted'      => __( '%d files moved to the trash.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of errors encountered. */
 					'errors'       => __( '%d errors.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files left alone because they are in use. */
+					'kept'         => __( '%d files kept: they are in use.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of restored media files. */
+					'restored'     => __( '%d files restored.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of permanently deleted media files. */
+					'purged'       => __( '%d files permanently deleted.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files about to be erased. */
+					'confirmPurge' => __( 'Permanently delete %d files? They are erased from the server, and this cannot be undone.', 'doubleyoupi-refined-media-library' ),
+					'trashEmpty'   => __( 'Nothing has been moved to the trash from this screen.', 'doubleyoupi-refined-media-library' ),
 				],
 			] );
 		}
@@ -136,7 +149,97 @@ class OrphanAdminPage extends AbstractModule {
 
 			<div id="dy-orphan-done" style="display:none"></div>
 		</div>
+
+		<?php $this->render_trash_section(); ?>
 		<?php
+	}
+
+	/**
+	 * "Recently removed": what this screen put in the trash, and the two ways
+	 * out of it.
+	 *
+	 * Rendered on page load rather than fetched, so the section is already
+	 * there for someone arriving to undo something without scanning first.
+	 */
+	private function render_trash_section(): void {
+		$trashed = OrphanScanner::trashed_media();
+		?>
+		<div id="dy-orphan-trash" class="dy-orphan-trash">
+			<h2><?php esc_html_e( 'Recently removed', 'doubleyoupi-refined-media-library' ); ?></h2>
+			<p class="description">
+				<?php
+				printf(
+					/* translators: %d: number of days WordPress keeps files in the trash. */
+					esc_html__( 'Nothing here has been erased: each file is still on the server, so a page that displays it keeps working. Put a file back and it returns to the media library with its folders. WordPress empties its trash after %d days.', 'doubleyoupi-refined-media-library' ),
+					(int) ( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 30 )
+				);
+				?>
+			</p>
+
+			<p id="dy-orphan-trash-empty" <?php echo $trashed ? 'style="display:none"' : ''; ?>>
+				<?php esc_html_e( 'Nothing has been moved to the trash from this screen.', 'doubleyoupi-refined-media-library' ); ?>
+			</p>
+
+			<table class="wp-list-table widefat fixed striped media" id="dy-orphan-trash-table" <?php echo $trashed ? '' : 'style="display:none"'; ?>>
+				<thead>
+					<tr>
+						<th><?php esc_html_e( 'Preview', 'doubleyoupi-refined-media-library' ); ?></th>
+						<th><?php esc_html_e( 'File', 'doubleyoupi-refined-media-library' ); ?></th>
+						<th><?php esc_html_e( 'Removed', 'doubleyoupi-refined-media-library' ); ?></th>
+						<th><?php esc_html_e( 'Actions', 'doubleyoupi-refined-media-library' ); ?></th>
+					</tr>
+				</thead>
+				<tbody id="dy-orphan-trash-tbody">
+					<?php
+					foreach ( $trashed as $post ) {
+						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- self::trash_row_html() escapes every field it prints.
+						echo self::trash_row_html( $post );
+					}
+					?>
+				</tbody>
+			</table>
+
+			<p id="dy-orphan-trash-actions" <?php echo $trashed ? '' : 'style="display:none"'; ?>>
+				<button type="button" class="button" id="dy-orphan-purge-all">
+					<?php esc_html_e( 'Empty the trash', 'doubleyoupi-refined-media-library' ); ?>
+				</button>
+				<span class="spinner" id="dy-orphan-trash-spinner" style="float:none;visibility:hidden;margin-left:4px"></span>
+			</p>
+
+			<div id="dy-orphan-trash-done" style="display:none"></div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * One row of the trash table. Shared by the initial render and by the
+	 * AJAX answer, so a file just moved looks exactly like one that was
+	 * already there.
+	 */
+	public static function trash_row_html( \WP_Post $post ): string {
+		$thumb = wp_get_attachment_image( $post->ID, [ 60, 60 ], true );
+		if ( ! $thumb ) {
+			$thumb = '<span class="dashicons dashicons-media-default" aria-hidden="true"></span>';
+		}
+		$file = get_attached_file( $post->ID );
+
+		return sprintf(
+			'<tr data-id="%1$d">'
+				. '<td>%2$s</td>'
+				. '<td>%3$s</td>'
+				. '<td>%4$s</td>'
+				. '<td>'
+					. '<button type="button" class="button dy-orphan-restore">%5$s</button> '
+					. '<button type="button" class="button dy-orphan-purge">%6$s</button>'
+				. '</td>'
+			. '</tr>',
+			(int) $post->ID,
+			wp_kses_post( $thumb ),
+			esc_html( $file ? basename( $file ) : $post->post_title ),
+			esc_html( get_the_modified_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $post ) ),
+			esc_html__( 'Restore', 'doubleyoupi-refined-media-library' ),
+			esc_html__( 'Delete permanently', 'doubleyoupi-refined-media-library' )
+		);
 	}
 
 	/**

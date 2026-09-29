@@ -1466,6 +1466,20 @@ body.dy-dragging-folder .dy-folder-item { cursor: grabbing; }
 	color: #666;
 	flex-shrink: 0;
 }
+/* Sur un réseau, le site qui héberge l'usage. Sans ce repère, la ligne se lit
+   comme une page introuvable du site courant. */
+.dy-where-used__site {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  background: var(--bg-elev, #1d2030);
+  color: var(--ink-soft, #9ba3b5);
+}
+
 .dy-where-used__empty { font-size: 12px; color: #666 !important; font-style: italic; margin: 0; }
 .dy-where-used__loading { font-size: 12px; color: #888 !important; font-style: italic; }
 
@@ -5740,7 +5754,7 @@ body.upload-php { --accent: #5b3efe; }
 body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
             .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog,
             .dy-toast, .dy-mine-btn, .dy-duplicate-badge)
-  :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons)) {
+  :is(h1, h2, h3, h4, h5, h6, p, span, label, legend, td, th):not(:where(.dashicons, .dy-where-used__site)) {
   color: inherit !important;
 }
 

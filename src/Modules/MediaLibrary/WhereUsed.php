@@ -218,11 +218,89 @@ class WhereUsed extends AbstractModule {
 
 		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
+		// 6. The other sites of the network.
+		if ( $basename && is_multisite() ) {
+			foreach ( self::network_usages( $basename ) as $row ) {
+				$results[] = $row;
+			}
+		}
+
 		set_transient( $cache_key, $results, self::CACHE_TTL );
 		return $results;
 	}
 
-	/** @return array{id:int, title:string, url:string, post_type:string, edit_url:string} */
+	/**
+	 * Uses of this file found on the OTHER sites of the network.
+	 *
+	 * Each site owns its own tables, so everything above only ever saw the site
+	 * being browsed. Telling someone a file is used nowhere, while a second
+	 * site of their network displays it on its home page, is how a file gets
+	 * deleted by hand with a clear conscience.
+	 *
+	 * Matched by name only. An ID belongs to the site that issued it: number 42
+	 * on the shop is not number 42 on the blog, and reading one as the other
+	 * would invent uses that do not exist.
+	 *
+	 * @return array<int,array<string,mixed>>
+	 */
+	private static function network_usages( string $basename ): array {
+		global $wpdb;
+
+		$needle  = '%' . $wpdb->esc_like( $basename ) . '%';
+		$current = get_current_blog_id();
+		$rows    = [];
+
+		$sites = get_sites( [
+			'number' => (int) apply_filters( 'doubleyoupi_ml_where_used_network_site_limit', 0 ),
+			'fields' => 'ids',
+		] );
+
+		foreach ( $sites as $blog_id ) {
+			$blog_id = (int) $blog_id;
+			if ( $blog_id === $current || count( $rows ) >= 50 ) {
+				continue;
+			}
+
+			switch_to_blog( $blog_id );
+
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- caller caches the result per attachment; table names from $wpdb properties, value bound via $wpdb->prepare()
+			$found = (array) $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT DISTINCT p.ID, p.post_title, p.post_type, p.post_status
+					FROM {$wpdb->posts} p
+					LEFT JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
+					WHERE p.post_type NOT IN ('attachment','revision','nav_menu_item')
+					  AND p.post_status NOT IN ('auto-draft','trash')
+					  AND ( p.post_content LIKE %s OR pm.meta_value LIKE %s )
+					LIMIT 20",
+					$needle,
+					$needle
+				)
+			);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+			// Built while still switched, so the permalink and the edit link
+			// point at the site that actually holds the page.
+			$site_name = get_bloginfo( 'name' );
+			foreach ( $found as $row ) {
+				$formatted              = self::format_row( $row );
+				$formatted['site_id']   = $blog_id;
+				$formatted['site_name'] = (string) $site_name;
+				$rows[]                 = $formatted;
+			}
+
+			restore_current_blog();
+		}
+
+		return $rows;
+	}
+
+	/**
+	 * A row is site-agnostic by default; network_usages() adds site_id and
+	 * site_name when the page lives on another site of the network.
+	 *
+	 * @return array{id:int, title:string, url:string, post_type:string, edit_url:string}
+	 */
 	private static function format_row( object $row ): array {
 		$id = (int) $row->ID;
 		return [

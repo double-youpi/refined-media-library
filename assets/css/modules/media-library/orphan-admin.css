@@ -178,3 +178,42 @@
 #dy-orphan-done .notice {
   margin: 0;
 }
+
+/* ── Retirés récemment ──────────────────────────────────────────────────────
+   Le titre de section doit être déclaré. WordPress pose `color: #1d2327` sur
+   les titres de `.wrap`, et l'habillage sombre de la page ne reprend que le
+   h1 : le h2 gardait donc l'encre claire du thème clair sur un fond sombre,
+   à 1,22 de contraste, c'est-à-dire invisible. */
+#dy-orphan-trash {
+  margin-top: 34px;
+}
+
+#dy-orphan-trash h2 {
+  margin: 0 0 6px;
+  color: var(--dy-ink, #ecedf2);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Fichier sans aperçu possible (PDF, archive, police) : l'icône de secours
+   doit se voir. Sans taille ni couleur elle se réduisait à un point. */
+#dy-orphan-trash-tbody .dashicons {
+  width: 34px;
+  height: 34px;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--dy-ink-mute, #5a6070);
+}
+
+/* L'aperçu est dimensionné ici, pas par les attributs de l'image. Quand un
+   média n'a pas de métadonnées (bibliothèque importée, génération échouée),
+   wp_get_attachment_image() écrit width="1" height="1" et la vignette se
+   réduit à un point. */
+#dy-orphan-trash-tbody img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}

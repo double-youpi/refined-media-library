@@ -97,10 +97,16 @@
 				var icon  = postTypeIcon( u.post_type );
 				var title = u.title || '(no title)';
 				var href  = u.edit_url || u.url || '#';
+				// On a network, a use can live on another site. Saying which one
+				// is the whole point: an unlabelled row would read as a page of
+				// this site that cannot be found.
+				var site  = u.site_name
+					? '<span class="dy-where-used__site">' + escHtml( u.site_name ) + '</span>'
+					: '';
 				return (
 					'<li><a href="' + escHtml( href ) + '" target="_blank">' +
 						'<span class="dashicons ' + icon + '"></span>' +
-						escHtml( title ) +
+						escHtml( title ) + site +
 					'</a></li>'
 				);
 			} );

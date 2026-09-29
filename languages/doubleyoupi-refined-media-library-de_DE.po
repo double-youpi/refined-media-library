@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-29T09:14:40+00:00\n"
+"POT-Creation-Date: 2026-09-29T11:34:12+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -426,7 +426,8 @@ msgstr "In Vorbereitung"
 
 #: src/Admin/OverviewPage.php:586
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:137
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:186
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -994,7 +995,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:143
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:126
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:139
 msgid "Type"
 msgstr "Typ"
 
@@ -1003,7 +1004,7 @@ msgid "Dimensions"
 msgstr "Abmessungen"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:145
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:127
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:140
 msgid "Size"
 msgstr "Größe"
 
@@ -1372,66 +1373,98 @@ msgstr ""
 "Refined Media Library neu angelegt, und das Quell-Plugin wird nie verändert, "
 "sodass Sie das Ergebnis prüfen können, bevor Sie es entfernen."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:73
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:77
 msgid "Scanning…"
 msgstr "Scannen …"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:74
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
 msgid "No unused media found. Your library is clean!"
 msgstr "Keine unbenutzten Medien gefunden. Deine Bibliothek ist sauber!"
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:76
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
 #, php-format
 msgid "%d unused media file found."
 msgstr "%d ungenutzte Mediendatei gefunden."
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
 #, php-format
 msgid "%d unused media files found."
 msgstr "%d ungenutzte Mediendateien gefunden."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
 #, php-format
 msgid "%d unused media file remaining."
 msgstr "%d ungenutzte Mediendatei übrig."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
 #, php-format
 msgid "%d unused media files remaining."
 msgstr "%d ungenutzte Mediendateien übrig."
 
-#. translators: %d: number of media files to be deleted.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
-#, php-format
-msgid "I confirm the permanent deletion of %d media files."
-msgstr "Ich bestätige die dauerhafte Löschung von %d Mediendateien."
-
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:85
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:164
-msgid "Delete selected media"
-msgstr "Ausgewählte Medien löschen"
-
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
-msgid "Deleting…"
-msgstr "Wird gelöscht …"
-
-#. translators: %d: number of deleted media files.
+#. translators: %d: number of media files to be moved to the trash.
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:88
 #, php-format
-msgid "%d files deleted."
-msgstr "%d Dateien gelöscht."
+msgid "I confirm moving %d media files to the trash."
+msgstr "Ich bestätige, %d Mediendateien in den Papierkorb zu verschieben."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:89
+msgid "Move selected media to the trash"
+msgstr "Ausgewählte Medien in den Papierkorb verschieben"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:90
+msgid "Moving to the trash…"
+msgstr "Wird in den Papierkorb verschoben…"
+
+#. translators: %d: number of media files moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:92
+#, php-format
+msgid "%d files moved to the trash."
+msgstr "%d Dateien in den Papierkorb verschoben."
 
 #. translators: %d: number of errors encountered.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:90
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:94
 #, php-format
 msgid "%d errors."
 msgstr "%d Fehler."
 
+#. translators: %d: number of media files left alone because they are in use.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:96
+#, php-format
+msgid "%d files kept: they are in use."
+msgstr "%d Dateien behalten: Sie werden verwendet."
+
+#. translators: %d: number of restored media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:98
+#, php-format
+msgid "%d files restored."
+msgstr "%d Dateien wiederhergestellt."
+
+#. translators: %d: number of permanently deleted media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:100
+#, php-format
+msgid "%d files permanently deleted."
+msgstr "%d Dateien endgültig gelöscht."
+
+#. translators: %d: number of media files about to be erased.
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:102
+#, php-format
+msgid ""
+"Permanently delete %d files? They are erased from the server, and this "
+"cannot be undone."
+msgstr ""
+"%d Dateien endgültig löschen? Sie werden vom Server entfernt, und das lässt "
+"sich nicht rückgängig machen."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:103
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:180
+msgid "Nothing has been moved to the trash from this screen."
+msgstr "Über diesen Bildschirm wurde nichts in den Papierkorb verschoben."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:115
 msgid ""
 "Media files not referenced in any post, page, featured image, or custom "
 "field."
@@ -1439,17 +1472,59 @@ msgstr ""
 "Mediendateien, die in keinem Beitrag, keiner Seite, keinem Beitragsbild oder "
 "benutzerdefinierten Feld referenziert werden."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:107
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:120
 msgid "Scan for unused media"
 msgstr "Nach unbenutzten Medien scannen"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:125
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:138
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:187
 msgid "File"
 msgstr "Datei"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:128
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:141
 msgid "Uploaded"
 msgstr "Hochgeladen"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:168
+msgid "Recently removed"
+msgstr "Kürzlich entfernt"
+
+#. translators: %d: number of days WordPress keeps files in the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:173
+#, php-format
+msgid ""
+"Nothing here has been erased: each file is still on the server, so a page "
+"that displays it keeps working. Put a file back and it returns to the media "
+"library with its folders. WordPress empties its trash after %d days."
+msgstr ""
+"Hier wurde nichts gelöscht: Jede Datei liegt weiterhin auf dem Server, eine "
+"Seite, die sie anzeigt, funktioniert also weiter. Stellen Sie eine Datei "
+"wieder her, und sie kehrt mit ihren Ordnern in die Mediathek zurück. "
+"WordPress leert seinen Papierkorb nach %d Tagen."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:188
+msgid "Removed"
+msgstr "Entfernt"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:189
+msgid "Actions"
+msgstr "Aktionen"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:204
+msgid "Empty the trash"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:240
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:241
+msgid "Delete permanently"
+msgstr "Endgültig löschen"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:267
+msgid "Delete selected media"
+msgstr "Ausgewählte Medien löschen"
 
 #: src/Modules/MediaLibrary/Settings.php:203
 msgid "Optimization"
@@ -2364,9 +2439,6 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 #~ "Schnellzugriff-Schaltflächen für die häufigsten Admin-Aktionen. Über das "
 #~ "Dropdown hinzufügen."
 
-#~ msgid "Actions"
-#~ msgstr "Aktionen"
-
 #~ msgid "Add an action"
 #~ msgstr "Aktion hinzufügen"
 
@@ -2821,9 +2893,6 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 
 #~ msgid "Nothing hidden."
 #~ msgstr "Nichts ausgeblendet."
-
-#~ msgid "Restore"
-#~ msgstr "Wiederherstellen"
 
 #~ msgid "Double Youpi styling is ON for this page"
 #~ msgstr "Double-Youpi-Styling ist für diese Seite AKTIVIERT"
@@ -3518,6 +3587,17 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 
 #~ msgid "Error — try again"
 #~ msgstr "Fehler — erneut versuchen"
+
+#, php-format
+#~ msgid "I confirm the permanent deletion of %d media files."
+#~ msgstr "Ich bestätige die dauerhafte Löschung von %d Mediendateien."
+
+#~ msgid "Deleting…"
+#~ msgstr "Wird gelöscht …"
+
+#, php-format
+#~ msgid "%d files deleted."
+#~ msgstr "%d Dateien gelöscht."
 
 #~ msgid ""
 #~ "Media files not referenced in any post, page, featured image, or custom "

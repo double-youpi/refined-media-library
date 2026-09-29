@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Double Youpï Refined Media Library 0.3.4\n"
+"Project-Id-Version: Double Youpï Refined Media Library 0.3.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-29T09:14:40+00:00\n"
+"POT-Creation-Date: 2026-09-29T11:34:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: doubleyoupi-refined-media-library\n"
@@ -411,7 +411,8 @@ msgstr ""
 
 #: src/Admin/OverviewPage.php:586
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:137
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:186
 msgid "Preview"
 msgstr ""
 
@@ -917,7 +918,7 @@ msgid "Date"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:143
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:126
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:139
 msgid "Type"
 msgstr ""
 
@@ -926,7 +927,7 @@ msgid "Dimensions"
 msgstr ""
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:145
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:127
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:140
 msgid "Size"
 msgstr ""
 
@@ -1280,79 +1281,142 @@ msgstr ""
 msgid "Import folders and collections from another media library plugin. Your media stay in place. This only re-creates the folder structure inside Refined Media Library, and the source plugin is never modified, so you can verify the result before removing it."
 msgstr ""
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:73
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:77
 msgid "Scanning…"
 msgstr ""
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:74
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
 msgid "No unused media found. Your library is clean!"
 msgstr ""
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:76
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
 #, php-format
 msgid "%d unused media file found."
 msgstr ""
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
 #, php-format
 msgid "%d unused media files found."
 msgstr ""
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
 #, php-format
 msgid "%d unused media file remaining."
 msgstr ""
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
 #, php-format
 msgid "%d unused media files remaining."
 msgstr ""
 
-#. translators: %d: number of media files to be deleted.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
-#, php-format
-msgid "I confirm the permanent deletion of %d media files."
-msgstr ""
-
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:85
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:164
-msgid "Delete selected media"
-msgstr ""
-
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
-msgid "Deleting…"
-msgstr ""
-
-#. translators: %d: number of deleted media files.
+#. translators: %d: number of media files to be moved to the trash.
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:88
 #, php-format
-msgid "%d files deleted."
+msgid "I confirm moving %d media files to the trash."
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:89
+msgid "Move selected media to the trash"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:90
+msgid "Moving to the trash…"
+msgstr ""
+
+#. translators: %d: number of media files moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:92
+#, php-format
+msgid "%d files moved to the trash."
 msgstr ""
 
 #. translators: %d: number of errors encountered.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:90
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:94
 #, php-format
 msgid "%d errors."
 msgstr ""
 
+#. translators: %d: number of media files left alone because they are in use.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:96
+#, php-format
+msgid "%d files kept: they are in use."
+msgstr ""
+
+#. translators: %d: number of restored media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:98
+#, php-format
+msgid "%d files restored."
+msgstr ""
+
+#. translators: %d: number of permanently deleted media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:100
+#, php-format
+msgid "%d files permanently deleted."
+msgstr ""
+
+#. translators: %d: number of media files about to be erased.
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:102
+#, php-format
+msgid "Permanently delete %d files? They are erased from the server, and this cannot be undone."
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:103
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:180
+msgid "Nothing has been moved to the trash from this screen."
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:115
 msgid "Media files not referenced in any post, page, featured image, or custom field."
 msgstr ""
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:107
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:120
 msgid "Scan for unused media"
 msgstr ""
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:125
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:138
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:187
 msgid "File"
 msgstr ""
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:128
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:141
 msgid "Uploaded"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:168
+msgid "Recently removed"
+msgstr ""
+
+#. translators: %d: number of days WordPress keeps files in the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:173
+#, php-format
+msgid "Nothing here has been erased: each file is still on the server, so a page that displays it keeps working. Put a file back and it returns to the media library with its folders. WordPress empties its trash after %d days."
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:188
+msgid "Removed"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:189
+msgid "Actions"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:204
+msgid "Empty the trash"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:240
+msgid "Restore"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:241
+msgid "Delete permanently"
+msgstr ""
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:267
+msgid "Delete selected media"
 msgstr ""
 
 #: src/Modules/MediaLibrary/Settings.php:203

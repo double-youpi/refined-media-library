@@ -6,6 +6,8 @@ jQuery( function ( $ ) {
 	var ajaxUrl     = doubleyoupiOrphanAdmin.ajaxUrl;
 	var nonceScan   = doubleyoupiOrphanAdmin.nonceScan;
 	var nonceDelete = doubleyoupiOrphanAdmin.nonceDelete;
+	var nonceRestore = doubleyoupiOrphanAdmin.nonceRestore;
+	var noncePurge   = doubleyoupiOrphanAdmin.noncePurge;
 
 	var $scanBtn       = $( '#dy-orphan-scan-btn' );
 	var $scanSpinner   = $( '#dy-orphan-spinner' );
@@ -21,6 +23,14 @@ jQuery( function ( $ ) {
 	var $deleteBtn     = $( '.dy-orphan-delete-btn' );
 	var $deleteSpinner = $( '.dy-orphan-delete-spinner' );
 	var $done          = $( '#dy-orphan-done' );
+
+	// ── Recently removed ──────────────────────────────────────────────────────
+	var $trashTable   = $( '#dy-orphan-trash-table' );
+	var $trashTbody   = $( '#dy-orphan-trash-tbody' );
+	var $trashEmpty   = $( '#dy-orphan-trash-empty' );
+	var $trashActions = $( '#dy-orphan-trash-actions' );
+	var $trashSpinner = $( '#dy-orphan-trash-spinner' );
+	var $trashDone    = $( '#dy-orphan-trash-done' );
 
 	// ── Scan ──────────────────────────────────────────────────────────────────
 
@@ -190,13 +200,114 @@ jQuery( function ( $ ) {
 		}
 
 		var msg = i18n.deleted.replace( '%d', data.deleted.length );
+		// Files the server refused to delete because a fresh check found them in
+		// use. Their rows stay in the table on purpose: they are not orphans.
+		if ( data.kept && data.kept.length ) {
+			msg += ' ' + i18n.kept.replace( '%d', data.kept.length );
+		}
 		if ( data.errors.length ) {
 			msg += ' ' + i18n.errors.replace( '%d', data.errors.length );
 		}
 		$done
 			.html( '<div class="notice notice-success inline"><p>' + escHtml( msg ) + '</p></div>' )
 			.show();
+
+		addTrashRows( data.rows );
 	}
+
+	// ── Recently removed: putting back, and erasing ───────────────────────────
+
+	/*
+	 * The section shows itself when it has something to hold and hides when it
+	 * runs out, so an empty trash never sits there as a row of furniture.
+	 */
+	function syncTrashVisibility() {
+		var has = $trashTbody.children( 'tr' ).length > 0;
+		$trashTable.toggle( has );
+		$trashActions.toggle( has );
+		$trashEmpty.toggle( ! has );
+	}
+
+	function trashMessage( text ) {
+		$trashDone
+			.html( '<div class="notice notice-success inline"><p>' + escHtml( text ) + '</p></div>' )
+			.show();
+	}
+
+	// Rows arrive from the server already built, so a file that has just been
+	// moved is rendered by the same code as one that was already there.
+	function addTrashRows( rows ) {
+		if ( ! rows || ! rows.length ) {
+			return;
+		}
+		$trashTbody.prepend( rows.join( '' ) );
+		syncTrashVisibility();
+	}
+
+	$trashTbody.on( 'click', '.dy-orphan-restore', function () {
+		var $row = $( this ).closest( 'tr' );
+		var id   = $row.data( 'id' );
+		$( this ).prop( 'disabled', true );
+
+		$.post( ajaxUrl, { action: 'doubleyoupi_ml_orphan_restore', nonce: nonceRestore, ids: [ id ] } )
+			.done( function ( response ) {
+				if ( ! response.success || ! response.data.restored.length ) {
+					$row.find( '.dy-orphan-restore' ).prop( 'disabled', false );
+					return;
+				}
+				$row.fadeOut( 200, function () {
+					$( this ).remove();
+					syncTrashVisibility();
+				} );
+				trashMessage( i18n.restored.replace( '%d', response.data.restored.length ) );
+			} );
+	} );
+
+	$trashTbody.on( 'click', '.dy-orphan-purge', function () {
+		if ( ! window.confirm( i18n.confirmPurge.replace( '%d', 1 ) ) ) {
+			return;
+		}
+		var $row = $( this ).closest( 'tr' );
+		var id   = $row.data( 'id' );
+		$( this ).prop( 'disabled', true );
+
+		$.post( ajaxUrl, { action: 'doubleyoupi_ml_orphan_purge', nonce: noncePurge, ids: [ id ] } )
+			.done( function ( response ) {
+				if ( ! response.success || ! response.data.purged.length ) {
+					$row.find( '.dy-orphan-purge' ).prop( 'disabled', false );
+					return;
+				}
+				$row.fadeOut( 200, function () {
+					$( this ).remove();
+					syncTrashVisibility();
+				} );
+				trashMessage( i18n.purged.replace( '%d', response.data.purged.length ) );
+			} );
+	} );
+
+	$( '#dy-orphan-purge-all' ).on( 'click', function () {
+		var count = $trashTbody.children( 'tr' ).length;
+		if ( ! count || ! window.confirm( i18n.confirmPurge.replace( '%d', count ) ) ) {
+			return;
+		}
+		var $btn = $( this );
+		$btn.prop( 'disabled', true );
+		$trashSpinner.css( 'visibility', 'visible' );
+
+		$.post( ajaxUrl, { action: 'doubleyoupi_ml_orphan_purge', nonce: noncePurge, all: '1' } )
+			.done( function ( response ) {
+				if ( ! response.success ) {
+					return;
+				}
+				$trashTbody.empty();
+				syncTrashVisibility();
+				trashMessage( i18n.purged.replace( '%d', response.data.purged.length ) );
+			} )
+			.always( function () {
+				$btn.prop( 'disabled', false );
+				$trashSpinner.css( 'visibility', 'hidden' );
+			} );
+	} );
 
 	// ── Helper ────────────────────────────────────────────────────────────────
 
