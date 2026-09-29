@@ -84,22 +84,42 @@ class OrphanAdminPage extends AbstractModule {
 					'remainingOne' => __( '%d unused media file remaining.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of unused media files remaining. */
 					'remainingMany' => __( '%d unused media files remaining.', 'doubleyoupi-refined-media-library' ),
+					/*
+					 * Chaque message compté vient en deux versions, singulier et
+					 * pluriel, comme foundOne/foundMany plus haut. Les comptes
+					 * sont connus côté navigateur, donc _n() ne peut pas servir :
+					 * les deux formes partent ensemble et le script choisit.
+					 */
 					/* translators: %d: number of media files to be moved to the trash. */
-					'confirmLabel' => __( 'I confirm moving %d media files to the trash.', 'doubleyoupi-refined-media-library' ),
+					'confirmLabelOne'  => __( 'I confirm moving %d media file to the trash.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files to be moved to the trash. */
+					'confirmLabelMany' => __( 'I confirm moving %d media files to the trash.', 'doubleyoupi-refined-media-library' ),
 					'deleteBtn'    => __( 'Move selected media to the trash', 'doubleyoupi-refined-media-library' ),
 					'deleting'     => __( 'Moving to the trash…', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of media files moved to the trash. */
-					'deleted'      => __( '%d files moved to the trash.', 'doubleyoupi-refined-media-library' ),
+					'deletedOne'   => __( '%d file moved to the trash.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files moved to the trash. */
+					'deletedMany'  => __( '%d files moved to the trash.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of errors encountered. */
-					'errors'       => __( '%d errors.', 'doubleyoupi-refined-media-library' ),
+					'errorsOne'    => __( '%d error.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of errors encountered. */
+					'errorsMany'   => __( '%d errors.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of media files left alone because they are in use. */
-					'kept'         => __( '%d files kept: they are in use.', 'doubleyoupi-refined-media-library' ),
+					'keptOne'      => __( '%d file kept: it is in use.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files left alone because they are in use. */
+					'keptMany'     => __( '%d files kept: they are in use.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of restored media files. */
-					'restored'     => __( '%d files restored.', 'doubleyoupi-refined-media-library' ),
+					'restoredOne'  => __( '%d file restored.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of restored media files. */
+					'restoredMany' => __( '%d files restored.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of permanently deleted media files. */
-					'purged'       => __( '%d files permanently deleted.', 'doubleyoupi-refined-media-library' ),
+					'purgedOne'    => __( '%d file permanently deleted.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of permanently deleted media files. */
+					'purgedMany'   => __( '%d files permanently deleted.', 'doubleyoupi-refined-media-library' ),
 					/* translators: %d: number of media files about to be erased. */
-					'confirmPurge' => __( 'Permanently delete %d files? They are erased from the server, and this cannot be undone.', 'doubleyoupi-refined-media-library' ),
+					'confirmPurgeOne'  => __( 'Permanently delete %d file? It is erased from the server, and this cannot be undone.', 'doubleyoupi-refined-media-library' ),
+					/* translators: %d: number of media files about to be erased. */
+					'confirmPurgeMany' => __( 'Permanently delete %d files? They are erased from the server, and this cannot be undone.', 'doubleyoupi-refined-media-library' ),
 					'trashEmpty'   => __( 'Nothing has been moved to the trash from this screen.', 'doubleyoupi-refined-media-library' ),
 				],
 			] );

@@ -120,7 +120,7 @@ jQuery( function ( $ ) {
 
 	function updateState() {
 		var n = $( '.dy-orphan-cb:checked' ).length;
-		$confirmLabel.text( i18n.confirmLabel.replace( '%d', n ) );
+		$confirmLabel.text( compte( 'confirmLabel', n ) );
 		// Reset confirmation whenever selection changes.
 		$confirmCb.prop( 'checked', false );
 		$deleteBtn.prop( 'disabled', true );
@@ -199,15 +199,20 @@ jQuery( function ( $ ) {
 			updateState();
 		}
 
-		var msg = i18n.deleted.replace( '%d', data.deleted.length );
-		// Files the server refused to delete because a fresh check found them in
-		// use. Their rows stay in the table on purpose: they are not orphans.
-		if ( data.kept && data.kept.length ) {
-			msg += ' ' + i18n.kept.replace( '%d', data.kept.length );
-		}
-		if ( data.errors.length ) {
-			msg += ' ' + i18n.errors.replace( '%d', data.errors.length );
-		}
+		/*
+		 * Le compte rendu ne dit que ce qui a eu lieu. « 0 fichier mis à la
+		 * corbeille » n'apprend rien, et oblige à trancher un pluriel dont la
+		 * règle change d'une langue à l'autre pour zéro.
+		 *
+		 * Les fichiers conservés sont ceux que le serveur a refusé de bouger :
+		 * une vérification fraîche les a trouvés utilisés. Leurs lignes restent
+		 * dans le tableau exprès, ce ne sont pas des orphelins.
+		 */
+		var parts = [];
+		if ( data.deleted.length ) { parts.push( compte( 'deleted', data.deleted.length ) ); }
+		if ( data.kept && data.kept.length ) { parts.push( compte( 'kept', data.kept.length ) ); }
+		if ( data.errors.length ) { parts.push( compte( 'errors', data.errors.length ) ); }
+		var msg = parts.join( ' ' );
 		$done
 			.html( '<div class="notice notice-success inline"><p>' + escHtml( msg ) + '</p></div>' )
 			.show();
@@ -259,12 +264,12 @@ jQuery( function ( $ ) {
 					$( this ).remove();
 					syncTrashVisibility();
 				} );
-				trashMessage( i18n.restored.replace( '%d', response.data.restored.length ) );
+				trashMessage( compte( 'restored', response.data.restored.length ) );
 			} );
 	} );
 
 	$trashTbody.on( 'click', '.dy-orphan-purge', function () {
-		if ( ! window.confirm( i18n.confirmPurge.replace( '%d', 1 ) ) ) {
+		if ( ! window.confirm( compte( 'confirmPurge', 1 ) ) ) {
 			return;
 		}
 		var $row = $( this ).closest( 'tr' );
@@ -281,13 +286,13 @@ jQuery( function ( $ ) {
 					$( this ).remove();
 					syncTrashVisibility();
 				} );
-				trashMessage( i18n.purged.replace( '%d', response.data.purged.length ) );
+				trashMessage( compte( 'purged', response.data.purged.length ) );
 			} );
 	} );
 
 	$( '#dy-orphan-purge-all' ).on( 'click', function () {
 		var count = $trashTbody.children( 'tr' ).length;
-		if ( ! count || ! window.confirm( i18n.confirmPurge.replace( '%d', count ) ) ) {
+		if ( ! count || ! window.confirm( compte( 'confirmPurge', count ) ) ) {
 			return;
 		}
 		var $btn = $( this );
@@ -301,13 +306,25 @@ jQuery( function ( $ ) {
 				}
 				$trashTbody.empty();
 				syncTrashVisibility();
-				trashMessage( i18n.purged.replace( '%d', response.data.purged.length ) );
+				trashMessage( compte( 'purged', response.data.purged.length ) );
 			} )
 			.always( function () {
 				$btn.prop( 'disabled', false );
 				$trashSpinner.css( 'visibility', 'hidden' );
 			} );
 	} );
+
+	/*
+	 * Choisit la forme d'un message compté.
+	 *
+	 * Les comptes ne sont connus qu'ici, dans le navigateur, donc _n() de
+	 * WordPress ne peut pas trancher côté serveur : les deux formes sont
+	 * envoyées et le choix se fait à l'affichage.
+	 */
+	function compte( cle, n ) {
+		var forme = i18n[ cle + ( n > 1 ? 'Many' : 'One' ) ];
+		return String( forme ).replace( '%d', n );
+	}
 
 	// ── Helper ────────────────────────────────────────────────────────────────
 

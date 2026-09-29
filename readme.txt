@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.5
+Stable tag: 0.3.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.6 =
+* Counted messages read properly when there is only one file. "1 files moved to the trash" is gone, in every language, and a count of zero is simply left unsaid rather than announced.
+
 = 0.3.5 =
 * Unused Media no longer erases anything. What you remove goes to the trash: it leaves the media library, but the file stays on the server, so a page still showing it keeps working, and one click puts it back with its folders. Erasing for good is now a separate, deliberate act on that trash, and WordPress clears what is left after 30 days.
 * Fixed: the screen reported files that are in fact in use. Nine ways of using a file were invisible to it: a file used by another site of a network, a URL kept in a custom field by a page builder, a file whose resized copy alone appears on a page, the site logo, an image set in a widget or a theme option, a [gallery] shortcode, a gallery field holding a list of IDs, a builder storing only the ID, and an image carrying nothing but the class WordPress writes on it.
@@ -198,6 +201,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.6 =
+Wording fix: counted messages now read correctly for a single file.
 
 = 0.3.5 =
 Unused Media moves files to the trash instead of erasing them, and no longer reports files that are in use, the site logo included. Recommended for every site.
