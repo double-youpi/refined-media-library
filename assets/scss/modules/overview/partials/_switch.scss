@@ -107,8 +107,73 @@
 	}
 }
 
+// ── Infobulle de coupure ──────────────────────────────────────
+// Une phrase apparaît au survol de l'interrupteur, et SEULEMENT quand il
+// est allumé : elle explique ce que couper le module change. Éteint, elle
+// n'aurait rien à dire, donc elle ne se montre pas. Posée par le filtre
+// doubleyoupi_filter_module_toggle_note, rendue hors du <label> pour ne
+// pas polluer le nom accessible de la case (cf. OverviewPage.php).
+//
+// Même vocabulaire que .dy-rail-tip : paper-3, ink, 11.5px, r-sm,
+// shadow-md, apparition en .12s.
+.dy-overview__switch-hold {
+	position: relative;
+	display: inline-flex;
+}
+
+.dy-overview__tip {
+	position: absolute;
+	left: 0;
+	bottom: calc(100% + 9px);
+	z-index: 3;
+
+	// Plus large que la carte, volontairement : à la largeur du contenu de la
+	// carte la bulle faisait sept lignes et montait jusqu'au titre du module.
+	// Elle dépasse donc sur la droite, ce que la carte autorise depuis qu'elle
+	// ne découpe plus ses enfants. Plafond en pixels et non en pourcentage :
+	// un pourcentage se calculerait sur l'enveloppe, large de l'interrupteur.
+	width: max-content;
+	max-width: 340px;
+
+	padding: 7px 10px;
+	background: var(--dya-paper-3);
+	border: 1px solid var(--dya-edge);
+	border-radius: var(--dya-r-sm);
+	box-shadow: var(--dya-shadow-md);
+
+	font-family: var(--dya-font-body);
+	font-size: 11.5px;
+	line-height: 1.45;
+	color: var(--dya-ink);
+	text-align: left;
+
+	// Masquée par la seule opacité : ni display ni visibility, pour qu'un
+	// lecteur d'écran continue de la lire via aria-describedby.
+	opacity: 0;
+	transform: translateY(3px);
+	pointer-events: none;
+	transition: opacity .12s var(--dya-ease), transform .12s var(--dya-ease);
+}
+
+// Le survol de l'enveloppe révèle l'infobulle, à la condition que la case
+// soit cochée : survoler pour ALLUMER ne dit rien.
+.dy-overview__switch-hold:has(input:checked):hover .dy-overview__tip,
+.dy-overview__switch-hold:has(input:checked:focus-visible) .dy-overview__tip {
+	opacity: 1;
+	transform: translateY(0);
+}
+
 // Reduced motion
 @media (prefers-reduced-motion: reduce) {
 	.dy-overview__switch-track,
 	.dy-overview__switch-track::after { transition: none; }
+
+	.dy-overview__tip {
+		transition: none;
+		transform: none;
+	}
+	.dy-overview__switch-hold:has(input:checked):hover .dy-overview__tip,
+	.dy-overview__switch-hold:has(input:checked:focus-visible) .dy-overview__tip {
+		transform: none;
+	}
 }

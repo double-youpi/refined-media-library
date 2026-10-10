@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-29T11:45:56+00:00\n"
+"POT-Creation-Date: 2026-10-10T02:00:28+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -30,7 +30,8 @@ msgstr ""
 "médiathèque WordPress, sans réglage image par image."
 
 #. Author of the plugin
-#: doubleyoupi-refined-media-library.php src/Admin/OverviewPage.php:343
+#: doubleyoupi-refined-media-library.php src/Admin/DyShell.php:118
+#: src/Admin/OverviewPage.php:357
 msgid "Double Youpï"
 msgstr "Double Youpï"
 
@@ -39,26 +40,38 @@ msgstr "Double Youpï"
 msgid "https://doubleyoupi.com"
 msgstr "https://doubleyoupi.com"
 
-#: doubleyoupi-refined-media-library.php:43
+#: doubleyoupi-refined-media-library.php:58
 msgid ""
-"You are already running the full Double Youpi suite, and it includes Double "
+"You are already running the full Double Youpï suite, and it includes Double "
 "Youpï Refined Media Library. This standalone copy stepped aside to stay out "
 "of its way. Want to run it on its own? Deactivate the suite first."
 msgstr ""
-"Vous utilisez déjà la suite Double Youpi complète, et elle inclut Double "
-"Youpï Refined Media Library. Cette copie autonome s’est mise en retrait pour "
-"ne pas la gêner. Vous voulez l’utiliser seule ? Désactivez d’abord la suite."
+"Vous utilisez déjà la suite Double Youpï complète, qui inclut Double Youpï "
+"Refined Media Library. Cette version autonome s’est donc mise en retrait "
+"pour ne pas la gêner. Vous préférez l’utiliser seule ? Désactivez d’abord la "
+"suite."
 
-#: src/Admin/AdminMenu.php:152 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:509
+# Retrait devant Refined Admin Dashboard, qui embarque la médiathèque.
+#: doubleyoupi-refined-media-library.php:59
+msgid ""
+"Double Youpï Refined Admin Dashboard is active, and it includes this whole "
+"media library: folders, collections and the detail panel. This copy stepped "
+"aside. Your folders, collections and settings are untouched, and the "
+"dashboard is using them right now. Want the media library on its own? "
+"Deactivate Refined Admin Dashboard first."
+msgstr ""
+"Double Youpï Refined Admin Dashboard est active, et elle inclut toute cette "
+"médiathèque : dossiers, collections et panneau de détail. Cette copie s’est "
+"mise en retrait. Vos dossiers, vos collections et vos réglages sont intacts, "
+"et le tableau de bord les utilise en ce moment même. Vous voulez la "
+"médiathèque seule ? Désactivez d’abord Refined Admin Dashboard."
+
+#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
+#: src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:87
+#: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
 msgstr "Réglages"
-
-#: src/Admin/DyShell.php:118
-msgid "Double Youpi"
-msgstr "Double Youpi"
 
 #: src/Admin/Feedback.php:127
 msgctxt "admin bar button"
@@ -113,7 +126,7 @@ msgid "(anonymous site identifier)"
 msgstr "(identifiant anonyme du site)"
 
 #: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
-#: src/Admin/OverviewPage.php:680
+#: src/Admin/OverviewPage.php:663
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "Fermer"
@@ -165,12 +178,12 @@ msgstr "Vous pouvez me répondre à"
 
 #: src/Admin/Feedback.php:285
 msgid ""
-"I agree to send this report to Double Youpi: my message, the screenshot if "
+"I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
 "to, and version numbers (WordPress, PHP, theme, this plugin). No site "
 "content is sent, and no site address unless I ask for a reply."
 msgstr ""
-"J’accepte d’envoyer ce retour à Double Youpi : mon message, la capture s’il "
+"J’accepte d’envoyer ce retour à Double Youpï : mon message, la capture s’il "
 "y en a une, l’adresse de cet écran dans wp-admin, l’extension ou le thème "
 "concerné, et les numéros de version (WordPress, PHP, thème, cette "
 "extension). Aucun contenu du site n’est envoyé, ni l’adresse du site sauf si "
@@ -308,23 +321,23 @@ msgid "Your media library finally has a personality. It's smug."
 msgstr "Votre médiathèque a enfin une personnalité. Elle est prétentieuse."
 
 #: src/Admin/OverviewPage.php:68
-msgid "Double Youpi · Overview"
-msgstr "Double Youpi · Vue d’ensemble"
+msgid "Double Youpï · Overview"
+msgstr "Double Youpï · Vue d’ensemble"
 
 #: src/Admin/OverviewPage.php:69
 msgid "Overview"
 msgstr "Vue d’ensemble"
 
-#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:455
+#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:467
 msgid "Active"
 msgstr "Actif"
 
 #: src/Admin/OverviewPage.php:154 src/Admin/OverviewPage.php:156
-#: src/Admin/OverviewPage.php:456 src/Admin/OverviewPage.php:497
+#: src/Admin/OverviewPage.php:468 src/Admin/OverviewPage.php:533
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:496
+#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:532
 msgid "Enabled"
 msgstr "Activé"
 
@@ -356,12 +369,12 @@ msgstr "Bientôt sur WordPress.org"
 msgid "Discover on doubleyoupi.com"
 msgstr "À découvrir sur doubleyoupi.com"
 
-#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:559
-#: src/Admin/OverviewPage.php:589
+#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:610
+#: src/Admin/OverviewPage.php:640
 msgid "Free"
 msgstr "Gratuit"
 
-#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:559
+#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:610
 msgid "Suite"
 msgstr "Suite"
 
@@ -381,7 +394,7 @@ msgstr "Aucun changement à enregistrer."
 msgid "Unknown module."
 msgstr "Module inconnu."
 
-#: src/Admin/OverviewPage.php:319
+#: src/Admin/OverviewPage.php:320
 msgid ""
 "Modular suite for pros who ship WordPress sites. Enable the modules you "
 "need, disable the rest."
@@ -389,110 +402,105 @@ msgstr ""
 "Suite modulaire pour pros qui livrent des sites WordPress. Activez les "
 "modules dont vous avez besoin, désactivez le reste."
 
-#: src/Admin/OverviewPage.php:358
+#: src/Admin/OverviewPage.php:343
+msgid ""
+"Your whole WordPress admin, redrawn. Each part can be turned on or off below."
+msgstr ""
+"Toute votre administration WordPress, redessinée. Chaque partie s’allume ou "
+"s’éteint ci-dessous."
+
+#: src/Admin/OverviewPage.php:372
 msgid "Suite information"
 msgstr "Informations sur la suite"
 
-#: src/Admin/OverviewPage.php:365
+#: src/Admin/OverviewPage.php:379
 msgid "active modules"
 msgstr "modules actifs"
 
-#: src/Admin/OverviewPage.php:409
+#: src/Admin/OverviewPage.php:423
 msgid "Save modules"
 msgstr "Enregistrer les modules"
 
-#: src/Admin/OverviewPage.php:454
+#: src/Admin/OverviewPage.php:466
 msgid "Coming soon"
 msgstr "Bientôt"
 
-#: src/Admin/OverviewPage.php:505 src/Modules/MediaLibrary/Settings.php:321
-#: src/Modules/MediaLibrary/Settings.php:348
+#: src/Admin/OverviewPage.php:556 src/Modules/MediaLibrary/Settings.php:387
+#: src/Modules/MediaLibrary/Settings.php:414
 msgid "Saved"
 msgstr "Enregistré"
 
-#: src/Admin/OverviewPage.php:527
+#: src/Admin/OverviewPage.php:578
 msgid "Reload to apply"
 msgstr "Recharger pour appliquer"
 
-#: src/Admin/OverviewPage.php:532
+#: src/Admin/OverviewPage.php:583
 msgid "In preparation"
 msgstr "En préparation"
 
-#: src/Admin/OverviewPage.php:586
+#: src/Admin/OverviewPage.php:637
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:157
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:206
 msgid "Preview"
 msgstr "Aperçu"
 
-#: src/Admin/OverviewPage.php:591
+#: src/Admin/OverviewPage.php:642
 msgid "Soon on WP.org"
 msgstr "Bientôt sur WP.org"
 
-#: src/Admin/OverviewPage.php:593
+#: src/Admin/OverviewPage.php:644
 msgid "In the suite"
 msgstr "Dans la suite"
 
-#: src/Admin/OverviewPage.php:624 src/Admin/OverviewPage.php:625
-msgid "Coming soon to Double Youpi"
-msgstr "Bientôt dans Double Youpi"
-
-#: src/Admin/OverviewPage.php:635
-msgid "Up next"
-msgstr "À suivre"
-
-#: src/Admin/OverviewPage.php:643
-msgid "Almost ready"
-msgstr "Bientôt prêt"
-
-#: src/Admin/OverviewPage.php:689
+#: src/Admin/OverviewPage.php:672
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
 msgstr "Précédent"
 
-#: src/Admin/OverviewPage.php:691
+#: src/Admin/OverviewPage.php:674
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:136
 msgid "Next"
 msgstr "Suivant"
 
-#: src/Admin/OverviewPage.php:735
+#: src/Admin/OverviewPage.php:718
 msgid "Support the project"
 msgstr "Soutenir le projet"
 
-#: src/Admin/OverviewPage.php:749
+#: src/Admin/OverviewPage.php:732
 msgid "Free, and built to stay that way"
 msgstr "Gratuit, et fait pour le rester"
 
 #. translators: 1: author first name (bold), 2: freelance studio name (linked).
-#: src/Admin/OverviewPage.php:766
+#: src/Admin/OverviewPage.php:749
 #, php-format
 msgid ""
 "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double "
-"Youpi to make WordPress nicer to use. This plugin will stay free for life, "
+"Youpï to make WordPress nicer to use. This plugin will stay free for life, "
 "updates included. If something's off or missing, please let me know. And if "
 "the plugin's useful and you genuinely like it, a coffee's always "
 "appreciated ;) Otherwise, just using it (and dropping a kind review) already "
 "helps a lot. Thanks!"
 msgstr ""
 "Moi c’est <b>%1$s</b>, designer et dev freelance, alias %2$s. Je fabrique "
-"Double Youpi pour que WordPress soit plus agréable à utiliser. Cette "
+"Double Youpï pour que WordPress soit plus agréable à utiliser. Cette "
 "extension restera gratuite à vie, mises à jour comprises. Si un truc coince "
 "ou vous manque, merci de me le dire. Et si l’extension vous est utile et "
 "vous plaît vraiment, un café ça fait toujours plaisir ;) Sinon, juste "
 "l’utiliser (et lâcher un avis sympa) aide déjà énormément. Merci !"
 
 #. translators: %s: author first name (bold).
-#: src/Admin/OverviewPage.php:776
+#: src/Admin/OverviewPage.php:759
 #, php-format
 msgid ""
-"I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make "
+"I'm <b>%s</b>, a freelance designer and dev. I build Double Youpï to make "
 "WordPress nicer to use. This plugin will stay free for life, updates "
 "included. If something's off or missing, please let me know. And if the "
 "plugin's useful and you genuinely like it, a coffee's always appreciated ;) "
 "Otherwise, just using it (and dropping a kind review) already helps a lot. "
 "Thanks!"
 msgstr ""
-"Moi c’est <b>%s</b>, designer et dev freelance. Je fabrique Double Youpi "
+"Moi c’est <b>%s</b>, designer et dev freelance. Je fabrique Double Youpï "
 "pour que WordPress soit plus agréable à utiliser. Cette extension restera "
 "gratuite à vie, mises à jour comprises. Si un truc coince ou vous manque, "
 "merci de me le dire. Et si l’extension vous est utile et vous plaît "
@@ -500,32 +508,32 @@ msgstr ""
 "lâcher un avis sympa) aide déjà énormément. Merci !"
 
 #. translators: %s: author first name.
-#: src/Admin/OverviewPage.php:788
+#: src/Admin/OverviewPage.php:771
 #, php-format
-msgid "%s · Double Youpi"
-msgstr "%s · Double Youpi"
+msgid "%s · Double Youpï"
+msgstr "%s · Double Youpï"
 
-#: src/Admin/OverviewPage.php:801
+#: src/Admin/OverviewPage.php:784
 msgid "Buy me a coffee"
 msgstr "Offrez-moi un café"
 
-#: src/Admin/OverviewPage.php:817
+#: src/Admin/OverviewPage.php:800
 msgid "Leave a review"
 msgstr "Laisser un avis"
 
-#: src/Admin/OverviewPage.php:824
-msgid "All Double Youpi plugins on WordPress.org"
-msgstr "Toutes les extensions Double Youpi sur WordPress.org"
+#: src/Admin/OverviewPage.php:807
+msgid "All Double Youpï plugins on WordPress.org"
+msgstr "Toutes les extensions Double Youpï sur WordPress.org"
 
-#: src/Admin/OverviewPage.php:840
+#: src/Admin/OverviewPage.php:823
 msgid "Report or suggest"
 msgstr "Signaler ou suggérer"
 
-#: src/Admin/OverviewPage.php:875 src/Admin/OverviewPage.php:884
+#: src/Admin/OverviewPage.php:858 src/Admin/OverviewPage.php:867
 msgid "Want to get involved?"
 msgstr "Envie de participer ?"
 
-#: src/Admin/OverviewPage.php:886
+#: src/Admin/OverviewPage.php:869
 msgid "Found a bug or got an idea to make it better? Let me know."
 msgstr "Un bogue repéré ou une idée pour l’améliorer ? Dites-le-moi."
 
@@ -542,8 +550,8 @@ msgstr ""
 "intelligent, navigation retravaillée, tableaux de contenu redessinés, mode "
 "sombre et votre identité visuelle."
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:47
-#: src/Modules/MediaLibrary/MediaLibrary.php:98
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:132
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -622,7 +630,7 @@ msgstr "Impossible de supprimer la collection."
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Settings.php:235
+#: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr "Collections"
 
@@ -675,7 +683,7 @@ msgstr "Impossible de supprimer le dossier."
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:227
+#: src/Modules/MediaLibrary/Settings.php:248
 msgid "Folders"
 msgstr "Dossiers"
 
@@ -1177,7 +1185,9 @@ msgstr "%d fichiers sélectionnés"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr ""
-"Laissez un champ vide pour conserver la valeur existante de chaque fichier."
+"Laissez un champ vide pour conserver la valeur actuelle de chaque "
+"fichier.Laissez un champ vide pour conserver la valeur existante de chaque "
+"fichier."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Alt text"
@@ -1229,15 +1239,31 @@ msgstr "Mettre à jour le dossier"
 msgid "No folders found"
 msgstr "Aucun dossier trouvé"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:48
+#: src/Modules/MediaLibrary/MediaLibrary.php:74
+msgid ""
+"Turning the media library off hands the Media screen back to WordPress. Your "
+"folders and your collections are kept, and come back if you turn it on again."
+msgstr ""
+"Couper la médiathèque rend l’écran Médias à WordPress. Vos dossiers et vos "
+"collections sont conservés, et réapparaissent si vous la rallumez."
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:77
+msgid ""
+"Double Youpï Refined Media Library is installed and standing aside: "
+"reactivate it if you want the media library without the rest."
+msgstr ""
+"Double Youpï Refined Media Library est installée et en retrait : réactivez-"
+"la si vous voulez la médiathèque sans le reste."
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:133
 msgid "Media Library"
 msgstr "Médiathèque"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:88
+#: src/Modules/MediaLibrary/MediaLibrary.php:175
 msgid "Unused media"
 msgstr "Médias inutilisés"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:94
+#: src/Modules/MediaLibrary/MediaLibrary.php:180
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importer"
@@ -1552,7 +1578,7 @@ msgstr "Actions"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:224
 msgid "Empty the trash"
-msgstr ""
+msgstr "Vider la corbeille"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:260
 msgid "Restore"
@@ -1566,75 +1592,95 @@ msgstr "Supprimer définitivement"
 msgid "Delete selected media"
 msgstr "Supprimer les médias sélectionnés"
 
-#: src/Modules/MediaLibrary/Settings.php:203
+#: src/Modules/MediaLibrary/Settings.php:224
 msgid "Optimization"
 msgstr "Optimisation"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:210
+#: src/Modules/MediaLibrary/Settings.php:231
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "Piloté par %s. Réglages gérés à cet endroit."
 
-#: src/Modules/MediaLibrary/Settings.php:212
+#: src/Modules/MediaLibrary/Settings.php:233
 msgid "This server cannot generate WebP images."
 msgstr "Ce serveur ne peut pas générer d’images WebP."
 
-#: src/Modules/MediaLibrary/Settings.php:213
+#: src/Modules/MediaLibrary/Settings.php:234
 msgid "This server cannot generate AVIF images."
 msgstr "Ce serveur ne peut pas générer d’images AVIF."
 
-#: src/Modules/MediaLibrary/Settings.php:220
+#: src/Modules/MediaLibrary/Settings.php:241
 msgid "Organisation"
 msgstr "Organisation"
 
-#: src/Modules/MediaLibrary/Settings.php:228
+#: src/Modules/MediaLibrary/Settings.php:249
 msgid "Organise the media library into folders"
 msgstr "Organiser la médiathèque en dossiers"
 
-#: src/Modules/MediaLibrary/Settings.php:236
+#: src/Modules/MediaLibrary/Settings.php:257
 msgid "Group media into cross-folder collections"
 msgstr "Regrouper les médias en collections transversales"
 
-#: src/Modules/MediaLibrary/Settings.php:243
+#: src/Modules/MediaLibrary/Settings.php:264
 msgid "Auto alt & title"
 msgstr "Alt et titre automatiques"
 
-#: src/Modules/MediaLibrary/Settings.php:244
+#: src/Modules/MediaLibrary/Settings.php:265
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
 "Remplir le texte alternatif et le titre depuis le nom du fichier au "
 "téléversement (si vides)"
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:274
+msgid "Duplicate badge"
+msgstr "Badge de doublon"
+
+#: src/Modules/MediaLibrary/Settings.php:275
+msgid "Mark files already in the library, by content"
+msgstr "Marquer les fichiers déjà présents, d’après leur contenu"
+
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "Conversion"
 msgstr "Conversion"
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "WebP on upload"
 msgstr "WebP au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:260
+#: src/Modules/MediaLibrary/Settings.php:291
 msgid "Generate a WebP version of each image on upload"
 msgstr "Générer une version WebP de chaque image au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:269
+#: src/Modules/MediaLibrary/Settings.php:300
 msgid "AVIF on upload"
 msgstr "AVIF au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:270
+#: src/Modules/MediaLibrary/Settings.php:301
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "Générer aussi une version AVIF (nécessite Imagick)"
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
 
-#: src/Modules/MediaLibrary/Settings.php:334
+#: src/Modules/MediaLibrary/Settings.php:349
+msgid ""
+"Double Youpï Refined Admin Dashboard includes this media library, and "
+"redraws the rest of the admin the same way. It is free too."
+msgstr ""
+"Double Youpï Refined Admin Dashboard inclut cette médiathèque, et redessine "
+"le reste de l’administration de la même façon. Elle est gratuite elle aussi."
+
+#: src/Modules/MediaLibrary/Settings.php:350
+msgid "Read about it"
+msgstr "En savoir plus"
+
+#: src/Modules/MediaLibrary/Settings.php:400
 msgid "Conversion quality"
 msgstr "Qualité de conversion"
 
-#: src/Modules/MediaLibrary/Settings.php:335
+#: src/Modules/MediaLibrary/Settings.php:401
 msgid "Higher means better quality and larger files. Default 82."
 msgstr ""
 "Plus la valeur est élevée, meilleure est la qualité et plus les fichiers "
@@ -1650,24 +1696,25 @@ msgstr ""
 #~ "WordPress, sans réglage image par image."
 
 #~ msgid ""
-#~ "You are already running the full Double Youpi suite, and it includes "
-#~ "Refined Media Library. This standalone copy stepped aside to stay out of "
-#~ "its way. Want to run it on its own? Deactivate the suite first."
+#~ "You are already running the full Double Youpï suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
 #~ msgstr ""
-#~ "Vous utilisez déjà la suite Double Youpi complète, qui inclut Refined "
-#~ "Media Library. Cette version autonome s’est donc mise en retrait pour ne "
-#~ "pas la gêner. Vous préférez l’utiliser seule ? Désactivez d’abord la "
-#~ "suite."
+#~ "Vous utilisez déjà la suite Double Youpï complète, qui inclut Double "
+#~ "Youpï Refined Admin Dashboard. Cette version autonome s’est donc mise en "
+#~ "retrait pour ne pas la gêner. Vous préférez l’utiliser seule ? Désactivez "
+#~ "d’abord la suite."
 
 #~ msgid ""
 #~ "I'm <b>%s</b>, a freelance UX/UI designer and developer. I build Double "
-#~ "Youpi to make WordPress genuinely nicer to use, and this module stays "
+#~ "Youpï to make WordPress genuinely nicer to use, and this module stays "
 #~ "free, with its updates included, for the long run. No paywalled basics, "
 #~ "no dark patterns. If it helps your work, a coffee keeps it going. Either "
 #~ "way, thanks for being here."
 #~ msgstr ""
 #~ "Je suis <b>%s</b>, designer UX/UI et développeur freelance. Je conçois "
-#~ "Double Youpi pour rendre WordPress vraiment plus agréable à utiliser, et "
+#~ "Double Youpï pour rendre WordPress vraiment plus agréable à utiliser, et "
 #~ "ce module reste gratuit, mises à jour comprises, sur la durée. Pas de "
 #~ "fonctions de base derrière un paywall, pas de dark patterns. S’il vous "
 #~ "est utile, un café m’aide à continuer. Et sinon, aucun souci : l’utiliser "
@@ -1675,13 +1722,13 @@ msgstr ""
 
 #~ msgid ""
 #~ "I'm <b>%s</b>, a freelance UX/UI designer and developer. I build Double "
-#~ "Youpi to make WordPress genuinely nicer to use, and this module stays "
+#~ "Youpï to make WordPress genuinely nicer to use, and this module stays "
 #~ "free, with its updates included, for the long run. It gets better with "
 #~ "your feedback, so tell me what's missing or what bugs you. If it helps "
 #~ "your work, a coffee keeps it going. Either way, thanks for being here."
 #~ msgstr ""
 #~ "Je suis <b>%s</b>, designer UX/UI et développeur freelance. Je conçois "
-#~ "Double Youpi pour rendre WordPress vraiment plus agréable à utiliser, et "
+#~ "Double Youpï pour rendre WordPress vraiment plus agréable à utiliser, et "
 #~ "ce module reste gratuit, mises à jour incluses, sur la durée. Il "
 #~ "s’améliore avec vos retours, alors dites-moi ce qui manque ou ce qui "
 #~ "coince. S’il vous est utile, un café m’aide à continuer. Et sinon, aucun "
@@ -1691,9 +1738,9 @@ msgstr ""
 #~ msgstr "Faire un retour"
 
 #~ msgid ""
-#~ "Double Youpi is shaped by the pros who use it. An idea, a bug, a request?"
+#~ "Double Youpï is shaped by the pros who use it. An idea, a bug, a request?"
 #~ msgstr ""
-#~ "Double Youpi est façonné par les pros qui l’utilisent. Une idée, un bug, "
+#~ "Double Youpï est façonné par les pros qui l’utilisent. Une idée, un bug, "
 #~ "une demande ?"
 
 #~ msgid "Feedback"
@@ -1701,19 +1748,28 @@ msgstr ""
 
 #~ msgid ""
 #~ "I'm <b>%1$s</b>, a freelance UX/UI designer and developer working as "
-#~ "%2$s. I build Double Youpi to make WordPress genuinely nicer to use, and "
+#~ "%2$s. I build Double Youpï to make WordPress genuinely nicer to use, and "
 #~ "this module stays free, with its updates included, for the long run. It "
 #~ "gets better with your feedback, so tell me what's missing or what bugs "
 #~ "you. If it helps your work, a coffee keeps it going. Either way, thanks "
 #~ "for being here."
 #~ msgstr ""
 #~ "Je suis <b>%1$s</b>, designer UX/UI et développeur freelance sous le nom "
-#~ "%2$s. Je conçois Double Youpi pour rendre WordPress vraiment plus "
+#~ "%2$s. Je conçois Double Youpï pour rendre WordPress vraiment plus "
 #~ "agréable à utiliser, et ce module reste gratuit, mises à jour incluses, "
 #~ "sur la durée. Il s’améliore avec vos retours, alors dites-moi ce qui "
 #~ "manque ou ce qui coince. S’il vous est utile, un café m’aide à continuer. "
 #~ "Et sinon, aucun souci : l’utiliser (et laisser un avis) aide déjà "
 #~ "beaucoup."
+
+#~ msgid "Coming soon to Double Youpï"
+#~ msgstr "Bientôt dans Double Youpï"
+
+#~ msgid "Up next"
+#~ msgstr "À suivre"
+
+#~ msgid "Almost ready"
+#~ msgstr "Bientôt prêt"
 
 #~ msgid ""
 #~ "Clone production to a private subdomain to test safely, with noindex, "
@@ -1723,17 +1779,17 @@ msgstr ""
 #~ "avec noindex, robots et basic auth optionnelle."
 
 #~ msgid ""
-#~ "Modular WordPress optimization suite for professionals — performance, "
+#~ "Modular WordPress optimization suite for professionals: performance, "
 #~ "images, static, SEO, metrics."
 #~ msgstr ""
-#~ "Suite modulaire d’optimisation WordPress pour professionnels — "
+#~ "Suite modulaire d’optimisation WordPress pour professionnels : "
 #~ "performance, images, statique, SEO, métriques."
 
 #~ msgid ""
-#~ "Double Youpi: the Composer dependencies are missing. Run <code>composer "
+#~ "Double Youpï: the Composer dependencies are missing. Run <code>composer "
 #~ "install</code> inside the plugin folder."
 #~ msgstr ""
-#~ "Double Youpi : les dépendances Composer sont absentes. Exécutez "
+#~ "Double Youpï : les dépendances Composer sont absentes. Exécutez "
 #~ "<code>composer install</code> dans le dossier du plugin."
 
 #~ msgid ""
@@ -1837,31 +1893,31 @@ msgstr ""
 #~ "La réponse du serveur n’a pas pu être vérifiée. Contactez le support."
 
 #~ msgid ""
-#~ "Your Double Youpi licence has expired. Updates are paused — <a "
+#~ "Your Double Youpï licence has expired. Updates are paused: <a "
 #~ "href=\"#\">renew your licence</a>."
 #~ msgstr ""
-#~ "Votre licence Double Youpi a expiré. Les mises à jour sont en pause — <a "
+#~ "Votre licence Double Youpï a expiré. Les mises à jour sont en pause : <a "
 #~ "href=\"#\">renouveler la licence</a>."
 
 #~ msgid ""
-#~ "Double Youpi could not reach the licence server. The plugin continues to "
+#~ "Double Youpï could not reach the licence server. The plugin continues to "
 #~ "work during the 30-day grace period."
 #~ msgstr ""
-#~ "Double Youpi n’a pas pu joindre le serveur de licences. Le plugin "
+#~ "Double Youpï n’a pas pu joindre le serveur de licences. Le plugin "
 #~ "continue de fonctionner pendant la période de grâce de 30 jours."
 
 #~ msgid ""
-#~ "No valid Double Youpi licence found. Please <a href=\"#\">activate your "
+#~ "No valid Double Youpï licence found. Please <a href=\"#\">activate your "
 #~ "licence</a>."
 #~ msgstr ""
-#~ "Aucune licence Double Youpi valide trouvée. <a href=\"#\">Activer votre "
+#~ "Aucune licence Double Youpï valide trouvée. <a href=\"#\">Activer votre "
 #~ "licence</a>."
 
 #~ msgid "Updates expired"
 #~ msgstr "Mises à jour expirées"
 
-#~ msgid "Degraded — could not reach licence server"
-#~ msgstr "Dégradée — serveur de licences injoignable"
+#~ msgid "Degraded: could not reach licence server"
+#~ msgstr "Dégradée : serveur de licences injoignable"
 
 #~ msgid "Invalid or missing"
 #~ msgstr "Invalide ou manquante"
@@ -1872,9 +1928,9 @@ msgstr ""
 #~ msgid "Accent color"
 #~ msgstr "Couleur d’accent"
 
-#~ msgid "The Double Youpi Admin module manages the administration palette."
+#~ msgid "The Double Youpï Admin module manages the administration palette."
 #~ msgstr ""
-#~ "le module Admin de Double Youpi gère la palette de l’administration."
+#~ "le module Admin de Double Youpï gère la palette de l’administration."
 
 #~ msgid "Configure →"
 #~ msgstr "Configurer →"
@@ -1945,8 +2001,8 @@ msgstr ""
 #~ msgid "Widget provided by a third-party plugin"
 #~ msgstr "Widget fourni par un plugin tiers"
 
-#~ msgid "Double Youpi Dashboard"
-#~ msgstr "Tableau de bord Double Youpi"
+#~ msgid "Double Youpï Dashboard"
+#~ msgstr "Tableau de bord Double Youpï"
 
 #~ msgid "Customize"
 #~ msgstr "Personnaliser"
@@ -2223,8 +2279,8 @@ msgstr ""
 #~ msgid "Standard"
 #~ msgstr "Standard"
 
-#~ msgid "Recommended by Double Youpi"
-#~ msgstr "Recommandée Double Youpi"
+#~ msgid "Recommended by Double Youpï"
+#~ msgstr "Recommandée Double Youpï"
 
 #~ msgid "Editor"
 #~ msgstr "Éditeur"
@@ -2389,8 +2445,8 @@ msgstr ""
 #~ "Date, taille et statut de la dernière sauvegarde. Devient rouge si > 7 "
 #~ "jours."
 
-#~ msgid "No Double Youpi backup."
-#~ msgstr "Aucune sauvegarde Double Youpi."
+#~ msgid "No Double Youpï backup."
+#~ msgstr "Aucune sauvegarde Double Youpï."
 
 #~ msgid "never"
 #~ msgstr "jamais"
@@ -2683,12 +2739,12 @@ msgstr ""
 
 #~ msgid ""
 #~ "Visually reorganize your admin navigation: drag chips between lines, hide "
-#~ "items, promote sub-pages to top-level, and toggle Double Youpi styling "
+#~ "items, promote sub-pages to top-level, and toggle Double Youpï styling "
 #~ "per sub-page."
 #~ msgstr ""
 #~ "Réorganisez visuellement votre navigation admin : glissez-déposez les "
 #~ "chips entre les lignes, masquez des éléments, promouvez des sous-pages au "
-#~ "niveau supérieur, et activez ou désactivez le style Double Youpi par sous-"
+#~ "niveau supérieur, et activez ou désactivez le style Double Youpï par sous-"
 #~ "page."
 
 #~ msgid ""
@@ -2947,11 +3003,11 @@ msgstr ""
 #~ msgid "Nothing hidden."
 #~ msgstr "Rien de masqué."
 
-#~ msgid "Double Youpi styling is ON for this page"
-#~ msgstr "Le style Double Youpi est ACTIVÉ sur cette page"
+#~ msgid "Double Youpï styling is ON for this page"
+#~ msgstr "Le style Double Youpï est ACTIVÉ sur cette page"
 
-#~ msgid "Double Youpi styling is OFF for this page"
-#~ msgstr "Le style Double Youpi est DÉSACTIVÉ sur cette page"
+#~ msgid "Double Youpï styling is OFF for this page"
+#~ msgstr "Le style Double Youpï est DÉSACTIVÉ sur cette page"
 
 #~ msgid "New item"
 #~ msgstr "Nouvel item"
@@ -3067,21 +3123,21 @@ msgstr ""
 #~ msgstr "Choisir une image"
 
 #~ msgid ""
-#~ "Logo shown above the side menu. If empty, the default Double Youpi logo "
+#~ "Logo shown above the side menu. If empty, the default Double Youpï logo "
 #~ "is used."
 #~ msgstr ""
-#~ "Logo affiché au-dessus du menu latéral. Si vide, le logo Double Youpi par "
+#~ "Logo affiché au-dessus du menu latéral. Si vide, le logo Double Youpï par "
 #~ "défaut est utilisé."
 
 #~ msgid "Per-user customization"
 #~ msgstr "Personnalisation par utilisateur"
 
 #~ msgid ""
-#~ "Let each user enable or disable the Double Youpi admin interface for "
+#~ "Let each user enable or disable the Double Youpï admin interface for "
 #~ "their own account"
 #~ msgstr ""
 #~ "Laisser chaque utilisateur activer ou désactiver l’interface "
-#~ "d’administration Double Youpi pour son propre compte"
+#~ "d’administration Double Youpï pour son propre compte"
 
 #~ msgid ""
 #~ "When enabled, your settings above still apply by default, but each user "
@@ -3157,11 +3213,11 @@ msgstr ""
 #~ msgid "Interface customization"
 #~ msgstr "Personnalisation de l’interface"
 
-#~ msgid "Double Youpi admin interface"
-#~ msgstr "Interface d’administration Double Youpi"
+#~ msgid "Double Youpï admin interface"
+#~ msgstr "Interface d’administration Double Youpï"
 
-#~ msgid "Enable the Double Youpi admin interface for this account"
-#~ msgstr "Activer l’interface d’administration Double Youpi pour ce compte"
+#~ msgid "Enable the Double Youpï admin interface for this account"
+#~ msgstr "Activer l’interface d’administration Double Youpï pour ce compte"
 
 #~ msgid ""
 #~ "When disabled, this account uses the standard WordPress admin. The "
@@ -3172,12 +3228,12 @@ msgstr ""
 #~ "logo) s’appliquent toujours lorsqu’elle est activée."
 
 #, php-format
-#~ msgid "[Double Youpi] Backup failed on %s"
-#~ msgstr "[Double Youpi] Échec de sauvegarde sur %s"
+#~ msgid "[Double Youpï] Backup failed on %s"
+#~ msgstr "[Double Youpï] Échec de sauvegarde sur %s"
 
 #, php-format
-#~ msgid "[Double Youpi] Backup completed on %s"
-#~ msgstr "[Double Youpi] Sauvegarde terminée sur %s"
+#~ msgid "[Double Youpï] Backup completed on %s"
+#~ msgstr "[Double Youpï] Sauvegarde terminée sur %s"
 
 #, php-format
 #~ msgid "Site     : %s"
@@ -3218,8 +3274,8 @@ msgstr ""
 #~ msgid "Full list: %s"
 #~ msgstr "Liste complète : %s"
 
-#~ msgid "Email sent automatically by Double Youpi Backups."
-#~ msgstr "Email envoyé automatiquement par Double Youpi Backups."
+#~ msgid "Email sent automatically by Double Youpï Backups."
+#~ msgstr "Email envoyé automatiquement par Double Youpï Backups."
 
 #~ msgid "Creating backup…"
 #~ msgstr "Création de la sauvegarde…"
@@ -3241,8 +3297,8 @@ msgstr ""
 #~ msgid "Done."
 #~ msgstr "Terminé."
 
-#~ msgid "Error — see the log."
-#~ msgstr "Erreur — voir le log."
+#~ msgid "Error: see the log."
+#~ msgstr "Erreur : voir le log."
 
 #~ msgid "Permanently delete this backup?"
 #~ msgstr "Supprimer définitivement cette sauvegarde ?"
@@ -3373,10 +3429,10 @@ msgstr ""
 #~ msgstr "Sauvegarde base de données automatique"
 
 #~ msgid ""
-#~ "A scheduled DB-only backup. Lightweight — ideal for daily snapshots. Can "
+#~ "A scheduled DB-only backup. Lightweight, ideal for daily snapshots. Can "
 #~ "be sent by email."
 #~ msgstr ""
-#~ "Une sauvegarde DB seule planifiée. Légère — idéale pour des snapshots "
+#~ "Une sauvegarde DB seule planifiée. Légère, idéale pour des snapshots "
 #~ "quotidiens. Peut être envoyée par email."
 
 #~ msgid "Run an automatic DB-only backup on a schedule"
@@ -3433,10 +3489,10 @@ msgstr ""
 #~ msgstr "phpseclib détecté, SFTP disponible."
 
 #~ msgid ""
-#~ "phpseclib not installed — SFTP unavailable. Run composer require "
-#~ "phpseclib/phpseclib to enable."
+#~ "phpseclib not installed: SFTP unavailable. Run composer require phpseclib/"
+#~ "phpseclib to enable."
 #~ msgstr ""
-#~ "phpseclib non installé — SFTP indisponible. Lancez composer require "
+#~ "phpseclib non installé : SFTP indisponible. Lancez composer require "
 #~ "phpseclib/phpseclib pour l’activer."
 
 #~ msgid "Test connection"
@@ -3593,8 +3649,8 @@ msgstr ""
 #~ "automatique, restauration en un clic avec auto-snapshot préalable."
 
 #, php-format
-#~ msgid "[Double Youpi] DB backup — %1$s — %2$s"
-#~ msgstr "[Double Youpi] Sauvegarde DB — %1$s — %2$s"
+#~ msgid "[Double Youpï] DB backup: %1$s (%2$s)"
+#~ msgstr "[Double Youpï] Sauvegarde DB : %1$s (%2$s)"
 
 #~ msgid "The compressed SQL dump is attached."
 #~ msgstr "Le dump SQL compressé est joint à ce message."
@@ -3751,10 +3807,10 @@ msgstr ""
 #~ "nativement."
 
 #~ msgid ""
-#~ "nginx server detected, .htaccess is not honored — see the docs for the "
+#~ "nginx server detected, .htaccess is not honored: see the docs for the "
 #~ "snippet to paste in nginx.conf."
 #~ msgstr ""
-#~ "Serveur nginx détecté, .htaccess n’est pas honoré — voir la doc pour le "
+#~ "Serveur nginx détecté, .htaccess n’est pas honoré : voir la doc pour le "
 #~ "snippet à coller dans nginx.conf."
 
 #~ msgid "Performance"
@@ -4004,8 +4060,8 @@ msgstr ""
 #~ msgid "Staging URL"
 #~ msgstr "URL préproduction"
 
-#~ msgid "(not configured — Settings tab)"
-#~ msgstr "(non configuré — onglet Réglages)"
+#~ msgid "(not configured, see the Settings tab)"
+#~ msgstr "(non configuré, onglet Réglages)"
 
 #~ msgid "Last sync"
 #~ msgstr "Dernière synchronisation"
@@ -4142,12 +4198,12 @@ msgstr ""
 #~ msgstr "Envoyer un email après chaque clone"
 
 #, php-format
-#~ msgid "[Double Youpi] Staging clone failed from %s"
-#~ msgstr "[Double Youpi] Échec de clone staging depuis %s"
+#~ msgid "[Double Youpï] Staging clone failed from %s"
+#~ msgstr "[Double Youpï] Échec de clone staging depuis %s"
 
 #, php-format
-#~ msgid "[Double Youpi] Staging cloned from %s"
-#~ msgstr "[Double Youpi] Staging cloné depuis %s"
+#~ msgid "[Double Youpï] Staging cloned from %s"
+#~ msgstr "[Double Youpï] Staging cloné depuis %s"
 
 #, php-format
 #~ msgid "Production : %s"
@@ -4176,8 +4232,8 @@ msgstr ""
 #~ msgid "See details: %s"
 #~ msgstr "Voir le détail : %s"
 
-#~ msgid "Email sent automatically by Double Youpi Staging."
-#~ msgstr "Email envoyé automatiquement par Double Youpi Staging."
+#~ msgid "Email sent automatically by Double Youpï Staging."
+#~ msgstr "Email envoyé automatiquement par Double Youpï Staging."
 
 #~ msgid "present"
 #~ msgstr "présent"
@@ -4197,8 +4253,8 @@ msgstr ""
 #~ msgid "ZIP extension (snapshots)"
 #~ msgstr "Extension ZIP (snapshots)"
 
-#~ msgid "absent — Revert unavailable"
-#~ msgstr "absent — Revert indisponible"
+#~ msgid "absent, Revert unavailable"
+#~ msgstr "absent, Revert indisponible"
 
 #~ msgid "Serving mode"
 #~ msgstr "Mode de serving"
@@ -4209,8 +4265,8 @@ msgstr ""
 #~ msgid ".htaccess (serving rules)"
 #~ msgstr ".htaccess (règles de serving)"
 
-#~ msgid "nginx — rules ignored (PHP intercept active)"
-#~ msgstr "nginx — règles ignorées (PHP intercept actif)"
+#~ msgid "nginx: rules ignored (PHP intercept active)"
+#~ msgstr "nginx : règles ignorées (PHP intercept actif)"
 
 #~ msgid "block installed"
 #~ msgstr "bloc installé"
@@ -4283,8 +4339,8 @@ msgstr ""
 #~ msgid "Open the Static page"
 #~ msgstr "Ouvrir la page Statique"
 
-#~ msgid "Double Youpi — static site"
-#~ msgstr "Double Youpi — site statique"
+#~ msgid "Double Youpï: static site"
+#~ msgstr "Double Youpï : site statique"
 
 #~ msgid "Current mode:"
 #~ msgstr "Mode actuel :"
@@ -4302,10 +4358,10 @@ msgstr ""
 #~ msgstr "%1$d OK / %2$d échec"
 
 #~ msgid ""
-#~ "Static serving paused — all visitors are served by WordPress. Generated "
+#~ "Static serving paused: all visitors are served by WordPress. Generated "
 #~ "files stay on disk, ready to be re-activated."
 #~ msgstr ""
-#~ "Service statique en pause — tous les visiteurs sont servis par WordPress. "
+#~ "Service statique en pause : tous les visiteurs sont servis par WordPress. "
 #~ "Les fichiers générés restent sur disque, prêts à être réactivés."
 
 #~ msgid ""
@@ -4422,8 +4478,8 @@ msgstr ""
 #~ msgid ".htaccess"
 #~ msgstr ".htaccess"
 
-#~ msgid "nginx — PHP intercept active"
-#~ msgstr "nginx — PHP intercept actif"
+#~ msgid "nginx: PHP intercept active"
+#~ msgstr "nginx : PHP intercept actif"
 
 #~ msgid "installed"
 #~ msgstr "installé"
@@ -5251,17 +5307,6 @@ msgstr ""
 #~ "bord que vous composez et une boîte à outils intégrée. Uniquement des "
 #~ "composants natifs."
 
-#~ msgid ""
-#~ "You are already running the full Double Youpi suite, and it includes "
-#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
-#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
-#~ "first."
-#~ msgstr ""
-#~ "Vous utilisez déjà la suite Double Youpi complète, et elle inclut Double "
-#~ "Youpï Refined Admin Dashboard. Cette copie autonome s’est mise en retrait "
-#~ "pour ne pas la gêner. Vous voulez l’utiliser seule ? Désactivez d’abord "
-#~ "la suite."
-
 #~ msgid "Appearance"
 #~ msgstr "Apparence"
 
@@ -5396,8 +5441,8 @@ msgstr ""
 #~ msgid "This file is too large to be a profile."
 #~ msgstr "Ce fichier est trop volumineux pour être un profil."
 
-#~ msgid "This file is not a Double Youpi admin profile."
-#~ msgstr "Ce fichier n’est pas un profil d’administration Double Youpi."
+#~ msgid "This file is not a Double Youpï admin profile."
+#~ msgstr "Ce fichier n’est pas un profil d’administration Double Youpï."
 
 #~ msgid ""
 #~ "This profile was written by a newer version. Update the plugin first."
@@ -5471,12 +5516,14 @@ msgstr ""
 
 #~ msgid ""
 #~ "The menu became a rail with seven sections, lists and the editor were "
-#~ "redrawn, notices moved into one place, and the dashboard is modular. "
-#~ "Everything else is automatic."
+#~ "redrawn, notices moved into one place, and the dashboard is modular. Each "
+#~ "person picks a light or dark theme from the top bar, and everything else "
+#~ "is automatic."
 #~ msgstr ""
 #~ "Le menu est devenu un rail à sept sections, les listes et l’éditeur ont "
 #~ "été redessinés, les notifications sont regroupées au même endroit et le "
-#~ "tableau de bord est modulaire. Tout le reste est automatique."
+#~ "tableau de bord est modulaire. Chacun choisit son thème clair ou sombre "
+#~ "depuis la barre du haut, et tout le reste est automatique."
 
 #~ msgid "Got it"
 #~ msgstr "Compris"
@@ -5491,8 +5538,135 @@ msgstr ""
 #~ msgstr ""
 #~ "Exportez cette configuration en profil et importez-la sur le suivant."
 
-#~ msgid "Double Youpi · Tools"
-#~ msgstr "Double Youpi · Outils"
+#~ msgid "Double Youpï · Tools"
+#~ msgstr "Double Youpï · Outils"
 
 #~ msgid "%s detected, we hand control over to it."
 #~ msgstr "%s détecté, nous lui laissons la main."
+
+#~ msgid "Maintenance"
+#~ msgstr "Entretien"
+
+#~ msgid "Add the tab that finds files nothing points to"
+#~ msgstr "Ajouter l’onglet qui trouve les fichiers que plus rien n’utilise"
+
+#~ msgid ""
+#~ "Setting up several sites? Export this configuration and import it on the "
+#~ "next one."
+#~ msgstr ""
+#~ "Vous installez sur plusieurs sites ? Exportez cette configuration et "
+#~ "importez-la sur le suivant."
+
+#~ msgid "Export the profile"
+#~ msgstr "Exporter le profil"
+
+#~ msgid "Primary buttons, links and active states."
+#~ msgstr "Boutons principaux, liens et états actifs."
+
+#~ msgid "This color is not accepted"
+#~ msgstr "Cette couleur n’est pas acceptée"
+
+#~ msgid "Logo"
+#~ msgstr "Logo"
+
+#~ msgid "Above the rail and on the login screen."
+#~ msgstr "Au-dessus du rail et sur l’écran de connexion."
+
+#~ msgid "Without an image, the Double Youpï logo."
+#~ msgstr "Sans image, le logo Double Youpï."
+
+#~ msgid "Accent on every menu line"
+#~ msgstr "L’accent sur toutes les lignes du menu"
+
+#~ msgid ""
+#~ "The seven sections of the rail take the accent instead of their own color."
+#~ msgstr ""
+#~ "Les sept sections du rail prennent l’accent au lieu de leur propre "
+#~ "couleur."
+
+#~ msgid "Brand"
+#~ msgstr "Marque"
+
+#~ msgid "Navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "Reimagined"
+#~ msgstr "Repensée"
+
+#~ msgid "Recommended"
+#~ msgstr "Recommandée"
+
+#~ msgid "Seven sections, content first."
+#~ msgstr "Sept sections, le contenu d’abord."
+
+#~ msgid "Native WordPress"
+#~ msgstr "WordPress natif"
+
+#~ msgid "The menu in WordPress order, for a team used to it."
+#~ msgstr ""
+#~ "Le menu dans l’ordre de WordPress, pour une équipe qui y est habituée."
+
+#~ msgid ""
+#~ "The Reorganize tab is hidden in native mode. Your layout is kept for when "
+#~ "you switch back."
+#~ msgstr ""
+#~ "L’onglet Réorganiser est masqué en mode natif. Votre disposition est "
+#~ "conservée pour votre retour."
+
+#~ msgid ""
+#~ "Hover a section of the rail to open its pages next to it. Keyboard: the "
+#~ "right arrow opens, Escape closes."
+#~ msgstr ""
+#~ "Survolez une section du rail pour ouvrir ses pages à côté. Clavier : la "
+#~ "flèche droite ouvre, Échap referme."
+
+#~ msgid "One level"
+#~ msgstr "Un niveau"
+
+#~ msgid "Two levels"
+#~ msgstr "Deux niveaux"
+
+#~ msgid "Team"
+#~ msgstr "Équipe"
+
+#~ msgid ""
+#~ "Each person can turn the Double Youpï interface off for their own "
+#~ "account, from their profile. Your settings stay the default."
+#~ msgstr ""
+#~ "Chaque personne peut couper l’interface Double Youpï pour son propre "
+#~ "compte, depuis son profil. Vos réglages restent ceux par défaut."
+
+#~ msgid ""
+#~ "This site’s configuration as one JSON file, to import on the next one."
+#~ msgstr ""
+#~ "La configuration de ce site en un fichier JSON, à importer sur le suivant."
+
+#~ msgid ""
+#~ "Same checks as this form. The logo keeps its address; the image is not "
+#~ "copied."
+#~ msgstr ""
+#~ "Mêmes contrôles que ce formulaire. Le logo garde son adresse, l’image "
+#~ "n’est pas copiée."
+
+#~ msgid "The profile carries"
+#~ msgstr "Le profil contient"
+
+#~ msgid "Stays with each site"
+#~ msgstr "Reste propre à chaque site"
+
+#~ msgid "Personal choices: theme, rail width"
+#~ msgstr "Choix personnels : thème, largeur du rail"
+
+#~ msgid "Dashboard layouts"
+#~ msgstr "Dispositions du tableau de bord"
+
+#~ msgid "Pin the profile in code, on every site"
+#~ msgstr "Figer le profil dans le code, sur chaque site"
+
+#~ msgid "Add to wp-config.php. The settings it covers lock on this page."
+#~ msgstr ""
+#~ "À ajouter dans wp-config.php. Les réglages qu’il couvre se verrouillent "
+#~ "sur cette page."
+
+#~ msgid "Pinned in code"
+#~ msgstr "Figé dans le code"

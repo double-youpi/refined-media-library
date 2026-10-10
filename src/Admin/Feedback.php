@@ -282,7 +282,7 @@ final class Feedback {
 			</label>
 			<label class="dy-feedback__check dy-feedback__consent">
 				<input type="checkbox" id="dy-feedback-consent">
-				<span><?php esc_html_e( 'I agree to send this report to Double Youpi: my message, the screenshot if any, this screen\'s address inside wp-admin, the plugin or theme it belongs to, and version numbers (WordPress, PHP, theme, this plugin). No site content is sent, and no site address unless I ask for a reply.', 'doubleyoupi-refined-media-library' ); ?></span>
+				<span><?php esc_html_e( 'I agree to send this report to Double Youpï: my message, the screenshot if any, this screen\'s address inside wp-admin, the plugin or theme it belongs to, and version numbers (WordPress, PHP, theme, this plugin). No site content is sent, and no site address unless I ask for a reply.', 'doubleyoupi-refined-media-library' ); ?></span>
 			</label>
 			<details class="dy-feedback__preview">
 				<summary><?php esc_html_e( 'See exactly what will be sent', 'doubleyoupi-refined-media-library' ); ?></summary>

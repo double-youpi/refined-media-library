@@ -8,7 +8,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Inline closure: no variables leak into the global scope.
+// The closure keeps its working variables out of the global scope. Its result
+// does land there, so it carries the plugin prefix: WordPress.org requires
+// four characters at least, and refused the short `dy` in June 2026.
 ( static function (): void {
 	if ( ! (bool) get_option( 'doubleyoupi_purge_on_uninstall', 0 ) ) {
 		return;
@@ -21,8 +23,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 		3 => 'doubleyoupi_ml_webp_upload',
 		4 => 'doubleyoupi_ml_avif_upload',
 		5 => 'doubleyoupi_ml_image_quality',
-		6 => 'doubleyoupi_refined_media_library_installed_version',
-		7 => 'doubleyoupi_purge_on_uninstall',
+		6 => 'doubleyoupi_ml_duplicates',
+		7 => 'doubleyoupi_refined_media_library_installed_version',
+		8 => 'doubleyoupi_purge_on_uninstall',
 );
 	foreach ( $options as $option ) {
 		delete_option( $option );

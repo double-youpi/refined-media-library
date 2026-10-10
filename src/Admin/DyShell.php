@@ -115,7 +115,7 @@ final class DyShell {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$current = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
 
-		echo '<nav class="dy-chipbar" id="dy-shell-chipbar" aria-label="' . esc_attr__( 'Double Youpi', 'doubleyoupi-refined-media-library' ) . '">';
+		echo '<nav class="dy-chipbar" id="dy-shell-chipbar" aria-label="' . esc_attr__( 'Double Youpï', 'doubleyoupi-refined-media-library' ) . '">';
 		echo '<div class="dy-chipbar-inner">';
 
 		foreach ( $items as $item ) {

@@ -65,7 +65,7 @@ final class OverviewPage {
 	 */
 	public static function register(): void {
 		AdminMenu::add_page(
-			static fn(): string => __( 'Double Youpi · Overview', 'doubleyoupi-refined-media-library' ),
+			static fn(): string => __( 'Double Youpï · Overview', 'doubleyoupi-refined-media-library' ),
 			static fn(): string => __( 'Overview', 'doubleyoupi-refined-media-library' ),
 			self::PAGE_SLUG,
 			[ self::class, 'render' ]
@@ -256,20 +256,21 @@ final class OverviewPage {
 			return;
 		}
 
-		// Split into four buckets for a clear ordering in the grid:
+		// Split into three buckets for a clear ordering in the grid:
 		//   1. present  : module(s) actually bundled in this plugin (toggle active)
 		//   2. free     : range modules that are available and free (showcase + install)
 		//   3. paid     : range modules that are available and paid (showcase + suite link)
-		//   4. soon     : "coming soon" → separate compact section, no action
+		// Les modules non livrés ne sont plus listés du tout.
 		// In the full suite, all available modules are registered → they all
 		// fall into "present" and the layout stays exactly as before.
 		$present = [];
 		$free    = [];
 		$paid    = [];
-		$soon    = [];
 		foreach ( ModuleCatalog::all() as $module ) {
+			// Les modules non livrés ne sont plus annoncés : promettre une gamme
+			// précise, sans calendrier, à des gens qui découvrent la marque ne
+			// rend service à personne. Décision du 30/09/2026.
 			if ( $module['status'] !== ModuleCatalog::STATUS_AVAILABLE ) {
-				$soon[] = $module;
 				continue;
 			}
 			if ( ModuleRegistry::has( $module['id'] ) ) {
@@ -321,12 +322,25 @@ final class OverviewPage {
 		$quip        = '';
 		if ( class_exists( '\\DoubleYoupi\\Core\\SoloConfig' ) ) {
 			$present = \DoubleYoupi\Core\SoloConfig::present_modules();
-			$entry   = ! empty( $present ) ? ModuleCatalog::find( (string) $present[0] ) : null;
-			if ( $entry && ! empty( $entry['description'] ) ) {
-				$tagline = (string) $entry['description'];
-			}
-			if ( $entry && ! empty( $entry['name'] ) ) {
-				$plugin_name = (string) $entry['name'];
+
+			// Un seul module embarqué : le héros porte SON nom et SA description,
+			// parce que la personne a installé cette extension-là et la cherche
+			// sous ce nom.
+			//
+			// Plusieurs modules : le héros porte la marque, comme dans la suite.
+			// Mettre en avant le premier reviendrait à répéter mot pour mot la
+			// carte qui suit trois centimètres plus bas, et à nommer un seul
+			// module sur une page qui en présente deux.
+			if ( 1 === count( $present ) ) {
+				$entry = ModuleCatalog::find( (string) $present[0] );
+				if ( $entry && ! empty( $entry['description'] ) ) {
+					$tagline = (string) $entry['description'];
+				}
+				if ( $entry && ! empty( $entry['name'] ) ) {
+					$plugin_name = (string) $entry['name'];
+				}
+			} elseif ( ! empty( $present ) ) {
+				$tagline = __( 'Your whole WordPress admin, redrawn. Each part can be turned on or off below.', 'doubleyoupi-refined-media-library' );
 			}
 			// Random quip in place of the "X / Y active modules" counter
 			// (meaningless in solo mode). Draws from a generic pool + module-specific ones.
@@ -417,8 +431,6 @@ final class OverviewPage {
 			 *
 			 * No direct coupling between core and modules: we fire, they listen.
 			 */
-			self::render_soon_section( $soon );
-
 			do_action( 'doubleyoupi_overview_after_modules_grid' );
 			?>
 
@@ -470,6 +482,19 @@ final class OverviewPage {
 		// the "Settings" link when a module is toggled without a page reload.
 		$settings_url    = $is_available && ! empty( $module['settings_url'] ) ? (string) $module['settings_url'] : '';
 		$requires_reload = $is_available && in_array( $module['id'], self::RELOAD_REQUIRED_IDS, true );
+
+		/**
+		 * Une phrase sous l'interrupteur, pour dire ce que le couper change.
+		 *
+		 * Posée par filtre, jamais en dur : cette page est partagée par la
+		 * suite et par les deux solos, et elle ne doit connaître aucun module
+		 * en particulier. Un module qui a quelque chose à prévenir s'accroche
+		 * ici et répond pour son propre identifiant.
+		 *
+		 * @param string $note   Texte brut, vide par défaut.
+		 * @param string $module Identifiant du module.
+		 */
+		$toggle_note = (string) apply_filters( 'doubleyoupi_filter_module_toggle_note', '', $module['id'] );
 		?>
 		<div class="dy-overview__card <?php echo esc_attr( $status_class ); ?>"
 		     data-module-id="<?php echo esc_attr( $module['id'] ); ?>"
@@ -485,18 +510,44 @@ final class OverviewPage {
 			<p class="dy-overview__desc"><?php echo esc_html( $module['description'] ); ?></p>
 			<div class="dy-overview__card-foot">
 				<?php if ( $is_available ) : ?>
-					<label class="dy-overview__switch">
-						<input type="checkbox"
-						       name="<?php echo esc_attr( $field_name ); ?>"
-						       value="1"
-						       <?php checked( $is_enabled ); ?>>
-						<span class="dy-overview__switch-track"></span>
-						<span class="dy-overview__switch-label">
-							<?php echo $is_enabled
-								? esc_html__( 'Enabled', 'doubleyoupi-refined-media-library' )
-								: esc_html__( 'Disabled', 'doubleyoupi-refined-media-library' ); ?>
-						</span>
-					</label>
+					<?php
+					/*
+					 * L'infobulle vit HORS du <label> : à l'intérieur, son texte entrerait
+					 * dans le nom accessible de la case à cocher, qui annoncerait la phrase
+					 * entière au lieu de « Activé ». Elle lui reste rattachée par
+					 * aria-describedby.
+					 */
+					$tip_id = 'dy-overview-tip-' . $module['id'];
+					?>
+					<span class="dy-overview__switch-hold">
+						<label class="dy-overview__switch">
+							<input type="checkbox"
+							       name="<?php echo esc_attr( $field_name ); ?>"
+							       value="1"
+							       <?php if ( '' !== $toggle_note ) : ?>aria-describedby="<?php echo esc_attr( $tip_id ); ?>"<?php endif; ?>
+							       <?php checked( $is_enabled ); ?>>
+							<span class="dy-overview__switch-track"></span>
+							<span class="dy-overview__switch-label">
+								<?php echo $is_enabled
+									? esc_html__( 'Enabled', 'doubleyoupi-refined-media-library' )
+									: esc_html__( 'Disabled', 'doubleyoupi-refined-media-library' ); ?>
+							</span>
+						</label>
+						<?php if ( '' !== $toggle_note ) : ?>
+							<?php
+							/*
+							 * Visible au survol de l'interrupteur, et seulement quand il est
+							 * allumé : la phrase explique ce que COUPER change, elle n'a rien à
+							 * dire dans l'autre sens. Elle reste en permanence dans l'arbre
+							 * d'accessibilité (opacité seule, ni display ni visibility), donc un
+							 * lecteur d'écran l'obtient dans les deux états.
+							 */
+							?>
+							<span class="dy-overview__tip" id="<?php echo esc_attr( $tip_id ); ?>" role="tooltip">
+								<?php echo esc_html( $toggle_note ); ?>
+							</span>
+						<?php endif; ?>
+					</span>
 					<?php // Transient "✓ Saved" confirmation beside the toggle (revealed by overview.js after auto-save). ?>
 					<span class="dy-overview__saved" role="status" aria-live="polite" hidden>
 						<svg class="dy-overview__saved-icon" viewBox="0 0 12 12" aria-hidden="true">
@@ -598,74 +649,6 @@ final class OverviewPage {
 	}
 
 	/**
-	 * "Coming soon" section: range modules not yet delivered (or not yet
-	 * published as standalone plugins). Compact cards — icon on the left, title
-	 * and description on the right — no action or hover state. Hidden if empty.
-	 *
-	 * @param array<int, array{id:string, name:string, description:string}> $modules
-	 */
-	private static function render_soon_section( array $modules ): void {
-		if ( empty( $modules ) ) {
-			return;
-		}
-
-		// The flagship Refined Admin Dashboard gets a "spotlight" treatment to
-		// signal it ships first and is nearly done; the rest stay understated.
-		$featured = null;
-		$rest     = [];
-		foreach ( $modules as $module ) {
-			if ( null === $featured && 'admin' === $module['id'] ) {
-				$featured = $module;
-			} else {
-				$rest[] = $module;
-			}
-		}
-		?>
-		<section class="dy-overview__soon" aria-label="<?php esc_attr_e( 'Coming soon to Double Youpi', 'doubleyoupi-refined-media-library' ); ?>">
-			<h2 class="dy-overview__soon-title"><?php esc_html_e( 'Coming soon to Double Youpi', 'doubleyoupi-refined-media-library' ); ?></h2>
-
-			<?php if ( null !== $featured ) : ?>
-				<article class="dy-overview__upnext">
-					<span class="dy-overview__upnext-icon" aria-hidden="true">
-						<?php echo IconSprite::svg( $featured['id'], 'dy-icon--module', 24 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
-					</span>
-					<div class="dy-overview__upnext-body">
-						<p class="dy-overview__upnext-eyebrow">
-							<span class="dy-overview__upnext-dot" aria-hidden="true"></span>
-							<?php esc_html_e( 'Up next', 'doubleyoupi-refined-media-library' ); ?>
-						</p>
-						<h3 class="dy-overview__upnext-name"><?php echo esc_html( $featured['name'] ); ?></h3>
-						<p class="dy-overview__upnext-desc"><?php echo esc_html( $featured['description'] ); ?></p>
-						<div class="dy-overview__upnext-progress">
-							<span class="dy-overview__upnext-rail" aria-hidden="true">
-								<span class="dy-overview__upnext-fill"></span>
-							</span>
-							<span class="dy-overview__upnext-state"><?php esc_html_e( 'Almost ready', 'doubleyoupi-refined-media-library' ); ?></span>
-						</div>
-					</div>
-				</article>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $rest ) ) : ?>
-				<div class="dy-overview__soon-grid">
-					<?php foreach ( $rest as $module ) : ?>
-						<div class="dy-overview__soon-card">
-							<span class="dy-overview__soon-icon" aria-hidden="true">
-								<?php echo IconSprite::svg( $module['id'], 'dy-icon--module', 20 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
-							</span>
-							<div class="dy-overview__soon-text">
-								<h3 class="dy-overview__soon-name"><?php echo esc_html( $module['name'] ); ?></h3>
-								<p class="dy-overview__soon-desc"><?php echo esc_html( $module['description'] ); ?></p>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-		</section>
-		<?php
-	}
-
-	/**
 	 * Single presentation modal (carousel + actions). Rendered once below the
 	 * grid; populated by JS from the data attributes of the clicked showcase
 	 * card. Hidden by default (hidden + aria-hidden).
@@ -763,7 +746,7 @@ final class OverviewPage {
 						printf(
 							wp_kses(
 								/* translators: 1: author first name (bold), 2: freelance studio name (linked). */
-								__( "I'm <b>%1\$s</b>, a freelance designer and dev, aka %2\$s. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!", 'doubleyoupi-refined-media-library' ),
+								__( "I'm <b>%1\$s</b>, a freelance designer and dev, aka %2\$s. I build Double Youpï to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!", 'doubleyoupi-refined-media-library' ),
 								[ 'b' => [] ]
 							),
 							esc_html( $author ),
@@ -773,7 +756,7 @@ final class OverviewPage {
 						printf(
 							wp_kses(
 								/* translators: %s: author first name (bold). */
-								__( "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!", 'doubleyoupi-refined-media-library' ),
+								__( "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpï to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!", 'doubleyoupi-refined-media-library' ),
 								[ 'b' => [] ]
 							),
 							esc_html( $author )
@@ -785,7 +768,7 @@ final class OverviewPage {
 					<?php
 					printf(
 						/* translators: %s: author first name. */
-						esc_html__( '%s · Double Youpi', 'doubleyoupi-refined-media-library' ),
+						esc_html__( '%s · Double Youpï', 'doubleyoupi-refined-media-library' ),
 						esc_html( $author )
 					);
 					?>
@@ -821,7 +804,7 @@ final class OverviewPage {
 				<?php if ( '' !== $wporg ) : ?>
 					<a class="dy-overview__support-link" href="<?php echo esc_url( $wporg ); ?>"
 					   target="_blank" rel="noopener noreferrer">
-						<?php esc_html_e( 'All Double Youpi plugins on WordPress.org', 'doubleyoupi-refined-media-library' ); ?>
+						<?php esc_html_e( 'All Double Youpï plugins on WordPress.org', 'doubleyoupi-refined-media-library' ); ?>
 					</a>
 				<?php endif; ?>
 			</div>

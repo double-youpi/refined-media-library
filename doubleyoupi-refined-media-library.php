@@ -3,7 +3,7 @@
  * Plugin Name:       Double Youpï Refined Media Library
  * Plugin URI:        https://doubleyoupi.com/plugins/refined-media-library
  * Description:       Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, auto alt text and WebP/AVIF for the WordPress media library, without the per-image fiddling.
- * Version:           0.3.6
+ * Version:           0.3.7
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Double Youpï
@@ -24,23 +24,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // ── Conflict detection BEFORE any autoloading ────────────────────────────────
-// If the full Double Youpi suite is active, the standalone steps aside to
-// prevent any DoubleYoupi\Core\* class collisions. Never silent.
-// Inline closure: no variables leak into the global scope.
-if ( ( static function (): bool {
-	$active = (array) get_option( 'active_plugins', array() );
-	if ( in_array( 'doubleyoupi/doubleyoupi.php', $active, true ) ) {
-		return true;
+// If a plugin that BUNDLES this one is active, this standalone steps aside: it
+// would only duplicate what is already there, and its DoubleYoupi\Core\*
+// classes would collide. Nothing is deactivated and no data is touched, so
+// turning the container off brings this copy straight back. Never silent.
+// The closure keeps its working variables out of the global scope. Its result
+// does land there, so it carries the plugin prefix: WordPress.org requires
+// four characters at least, and refused the short `dy` in June 2026.
+// It returns the position of the active container, not its message: this
+// runs before `init`, too early to translate (see the notices below).
+$doubleyoupi_standalone_container = ( static function (): ?int {
+	$containers = array(
+		'doubleyoupi/doubleyoupi.php',
+		'doubleyoupi-refined-admin-dashboard/doubleyoupi-refined-admin-dashboard.php',
+	);
+	$active  = (array) get_option( 'active_plugins', array() );
+	$network = is_multisite()
+		? (array) get_site_option( 'active_sitewide_plugins', array() )
+		: array();
+	foreach ( $containers as $index => $basename ) {
+		if ( in_array( $basename, $active, true )
+			|| array_key_exists( $basename, $network ) ) {
+			return $index;
+		}
 	}
-	if ( is_multisite() ) {
-		$network = (array) get_site_option( 'active_sitewide_plugins', array() );
-		return array_key_exists( 'doubleyoupi/doubleyoupi.php', $network );
-	}
-	return false;
-} )() ) {
-	add_action( 'admin_notices', static function (): void {
+	return null;
+} )();
+
+if ( $doubleyoupi_standalone_container !== null ) {
+	add_action( 'admin_notices', static function () use ( $doubleyoupi_standalone_container ): void {
+		// Translated here, at display time, in the same order as the list above.
+		$notices = array(
+			__( 'You are already running the full Double Youpï suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first.', 'doubleyoupi-refined-media-library' ),
+			__( 'Double Youpï Refined Admin Dashboard is active, and it includes this whole media library: folders, collections and the detail panel. This copy stepped aside. Your folders, collections and settings are untouched, and the dashboard is using them right now. Want the media library on its own? Deactivate Refined Admin Dashboard first.', 'doubleyoupi-refined-media-library' ),
+		);
 		echo '<div class="notice notice-warning"><p>'
-			. esc_html__( 'You are already running the full Double Youpi suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first.', 'doubleyoupi-refined-media-library' )
+			. esc_html( $notices[ $doubleyoupi_standalone_container ] ?? '' )
 			. '</p></div>';
 	} );
 	return;
@@ -51,7 +70,7 @@ if ( ( static function (): bool {
 // active and have defined them first. Its values stay, and this build still
 // finds its own files, because the autoloader and Core\Build below are bound
 // to THIS directory rather than to the constant.
-defined( 'DOUBLEYOUPI_VERSION' )  || define( 'DOUBLEYOUPI_VERSION', '0.3.6' );
+defined( 'DOUBLEYOUPI_VERSION' )  || define( 'DOUBLEYOUPI_VERSION', '0.3.7' );
 defined( 'DOUBLEYOUPI_FILE' )     || define( 'DOUBLEYOUPI_FILE', __FILE__ );
 defined( 'DOUBLEYOUPI_DIR' )      || define( 'DOUBLEYOUPI_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'DOUBLEYOUPI_URL' )      || define( 'DOUBLEYOUPI_URL', plugin_dir_url( __FILE__ ) );
@@ -71,7 +90,11 @@ spl_autoload_register( static function ( string $class ): void {
 	$rel  = str_replace( '\\', '/', substr( $class, $len ) );
 	$file = __DIR__ . '/src/' . $rel . '.php';
 	if ( is_file( $file ) ) {
-		require $file;
+		// require_once, jamais require : un nom de classe malformé, venu
+		// d'une autre extension ou d'un outil, peut désigner le même
+		// fichier par un chemin différent. Sans _once, PHP le relit et
+		// meurt sur une redéclaration.
+		require_once $file;
 	}
 } );
 
@@ -79,7 +102,14 @@ spl_autoload_register( static function ( string $class ): void {
 // the constants point at the other one (see Core\Build).
 \DoubleYoupi\Core\Build::register( __DIR__, plugin_dir_url( __FILE__ ) );
 
-register_activation_hook( __FILE__, array( '\DoubleYoupi\Core\Activator', 'activate' ) );
+// Activation runs after `plugins_loaded`, so the modules below have not been
+// instantiated yet, nor have the hooks they set in their constructors (a
+// module that keeps a setting on upgrade listens to `doubleyoupi_installing`).
+// Instantiate them first: constructors only add hooks, nothing boots here.
+register_activation_hook( __FILE__, static function (): void {
+	\DoubleYoupi\Modules\MediaLibrary\MediaLibrary::instance();
+	\DoubleYoupi\Core\Activator::activate();
+} );
 register_deactivation_hook( __FILE__, array( '\DoubleYoupi\Core\Activator', 'deactivate' ) );
 
 add_action( 'plugins_loaded', static function (): void {

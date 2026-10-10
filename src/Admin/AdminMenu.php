@@ -100,20 +100,25 @@ final class AdminMenu {
 		// satellite pages keep their own labels.
 		$settings_slug = '';
 		if ( class_exists( '\\DoubleYoupi\\Core\\SoloConfig' ) && method_exists( '\\DoubleYoupi\\Core\\SoloConfig', 'present_modules' ) ) {
-			$present = (array) \DoubleYoupi\Core\SoloConfig::present_modules();
-			if ( 1 === count( $present ) ) {
-				$rename_settings = true;
-				$settings_slug   = self::SLUG . '-' . (string) reset( $present );
+			// Ce que le paquet EMBARQUE fait foi, pas ce qui se trouve allumé.
+			// Compter les pages enregistrées revenait à laisser un interrupteur
+			// renommer le menu : éteindre un module sur deux ramenait le nom de
+			// l'extension à la place de l'ombrelle, alors que le menu contient
+			// toujours les deux entrées.
+			$present         = (array) \DoubleYoupi\Core\SoloConfig::present_modules();
+			$rename_settings = ( 1 === count( $present ) );
+			if ( $rename_settings ) {
+				$settings_slug = self::SLUG . '-' . (string) reset( $present );
 			}
 		}
 
 		// Top-level menu label. In MONO-SOLO mode (one module + solo context),
 		// the menu carries the PLUGIN NAME (e.g., "Refined Media Library") rather
-		// than the "Double Youpi" umbrella: the user finds their plugin under the
+		// than the "Double Youpï" umbrella: the user finds their plugin under the
 		// name they installed. Once there are ≥ 2 modules (suite, or multiple
-		// standalone plugins co-installed), the "Double Youpi" umbrella is meaningful again.
+		// standalone plugins co-installed), the "Double Youpï" umbrella is meaningful again.
 		// The Overview page remains the landing page in both cases.
-		$top_label = 'Double Youpi';
+		$top_label = 'Double Youpï';
 		if ( $rename_settings && method_exists( '\\DoubleYoupi\\Core\\SoloConfig', 'plugin_name' ) ) {
 			$name = (string) \DoubleYoupi\Core\SoloConfig::plugin_name();
 			if ( '' !== $name ) {

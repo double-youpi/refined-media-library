@@ -17,7 +17,7 @@
 		margin: 0 0 12px;
 		font-family: var(--dya-font-mono);
 		font-size: 11px;
-		font-weight: 600;
+		font-weight: 400; // regular, not bold (Raphaël, 30/09/2026)
 		letter-spacing: var(--dya-tracking-label);
 		text-transform: uppercase;
 		color: var(--dya-ink-mute);
@@ -271,4 +271,27 @@
 	.dy-mlset__group,
 	.dy-mlset__group:last-of-type { margin-bottom: 0; }
 	.dy-mlset__actions { grid-column: 1 / -1; margin-top: 4px; }
+}
+
+// Ligne fraternelle vers Refined Admin Dashboard, sur la seule page de
+// réglages de la médiathèque autonome. Volontairement effacée : c'est une
+// information, pas un encart (directive 11 de WordPress.org).
+.dy-mlset__sibling {
+	margin: 22px 0 0;
+	padding-top: 16px;
+	border-top: 1px solid var(--dy-line, #1e2235);
+	font-size: 12px;
+	line-height: 1.55;
+	color: var(--dy-ink-mute, #5a6070);
+
+	a {
+		color: var(--dy-ink-soft, #9ba3b5);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--dy-accent, #5b3efe);
+		}
+	}
 }

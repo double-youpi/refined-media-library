@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Double Youpï Refined Media Library 0.3.6\n"
+"Project-Id-Version: Double Youpï Refined Media Library 0.3.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-29T11:45:56+00:00\n"
+"POT-Creation-Date: 2026-10-10T02:00:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: doubleyoupi-refined-media-library\n"
@@ -31,7 +31,8 @@ msgstr ""
 
 #. Author of the plugin
 #: doubleyoupi-refined-media-library.php
-#: src/Admin/OverviewPage.php:343
+#: src/Admin/DyShell.php:118
+#: src/Admin/OverviewPage.php:357
 msgid "Double Youpï"
 msgstr ""
 
@@ -40,20 +41,20 @@ msgstr ""
 msgid "https://doubleyoupi.com"
 msgstr ""
 
-#: doubleyoupi-refined-media-library.php:43
-msgid "You are already running the full Double Youpi suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first."
+#: doubleyoupi-refined-media-library.php:58
+msgid "You are already running the full Double Youpï suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first."
 msgstr ""
 
-#: src/Admin/AdminMenu.php:152
+#: doubleyoupi-refined-media-library.php:59
+msgid "Double Youpï Refined Admin Dashboard is active, and it includes this whole media library: folders, collections and the detail panel. This copy stepped aside. Your folders, collections and settings are untouched, and the dashboard is using them right now. Want the media library on its own? Deactivate Refined Admin Dashboard first."
+msgstr ""
+
+#: src/Admin/AdminMenu.php:157
 #: src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:509
+#: src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:87
+#: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
-msgstr ""
-
-#: src/Admin/DyShell.php:118
-msgid "Double Youpi"
 msgstr ""
 
 #: src/Admin/Feedback.php:127
@@ -111,7 +112,7 @@ msgstr ""
 
 #: src/Admin/Feedback.php:246
 #: src/Admin/Feedback.php:307
-#: src/Admin/OverviewPage.php:680
+#: src/Admin/OverviewPage.php:663
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr ""
@@ -162,7 +163,7 @@ msgid "You may write back to me at"
 msgstr ""
 
 #: src/Admin/Feedback.php:285
-msgid "I agree to send this report to Double Youpi: my message, the screenshot if any, this screen's address inside wp-admin, the plugin or theme it belongs to, and version numbers (WordPress, PHP, theme, this plugin). No site content is sent, and no site address unless I ask for a reply."
+msgid "I agree to send this report to Double Youpï: my message, the screenshot if any, this screen's address inside wp-admin, the plugin or theme it belongs to, and version numbers (WordPress, PHP, theme, this plugin). No site content is sent, and no site address unless I ask for a reply."
 msgstr ""
 
 #: src/Admin/Feedback.php:288
@@ -295,7 +296,7 @@ msgid "Your media library finally has a personality. It's smug."
 msgstr ""
 
 #: src/Admin/OverviewPage.php:68
-msgid "Double Youpi · Overview"
+msgid "Double Youpï · Overview"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:69
@@ -303,19 +304,19 @@ msgid "Overview"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:153
-#: src/Admin/OverviewPage.php:455
+#: src/Admin/OverviewPage.php:467
 msgid "Active"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:154
 #: src/Admin/OverviewPage.php:156
-#: src/Admin/OverviewPage.php:456
-#: src/Admin/OverviewPage.php:497
+#: src/Admin/OverviewPage.php:468
+#: src/Admin/OverviewPage.php:533
 msgid "Disabled"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:155
-#: src/Admin/OverviewPage.php:496
+#: src/Admin/OverviewPage.php:532
 msgid "Enabled"
 msgstr ""
 
@@ -348,13 +349,13 @@ msgid "Discover on doubleyoupi.com"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:165
-#: src/Admin/OverviewPage.php:559
-#: src/Admin/OverviewPage.php:589
+#: src/Admin/OverviewPage.php:610
+#: src/Admin/OverviewPage.php:640
 msgid "Free"
 msgstr ""
 
 #: src/Admin/OverviewPage.php:166
-#: src/Admin/OverviewPage.php:559
+#: src/Admin/OverviewPage.php:610
 msgid "Suite"
 msgstr ""
 
@@ -375,126 +376,117 @@ msgstr ""
 msgid "Unknown module."
 msgstr ""
 
-#: src/Admin/OverviewPage.php:319
+#: src/Admin/OverviewPage.php:320
 msgid "Modular suite for pros who ship WordPress sites. Enable the modules you need, disable the rest."
 msgstr ""
 
-#: src/Admin/OverviewPage.php:358
+#: src/Admin/OverviewPage.php:343
+msgid "Your whole WordPress admin, redrawn. Each part can be turned on or off below."
+msgstr ""
+
+#: src/Admin/OverviewPage.php:372
 msgid "Suite information"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:365
+#: src/Admin/OverviewPage.php:379
 msgid "active modules"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:409
+#: src/Admin/OverviewPage.php:423
 msgid "Save modules"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:454
+#: src/Admin/OverviewPage.php:466
 msgid "Coming soon"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:505
-#: src/Modules/MediaLibrary/Settings.php:321
-#: src/Modules/MediaLibrary/Settings.php:348
+#: src/Admin/OverviewPage.php:556
+#: src/Modules/MediaLibrary/Settings.php:387
+#: src/Modules/MediaLibrary/Settings.php:414
 msgid "Saved"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:527
+#: src/Admin/OverviewPage.php:578
 msgid "Reload to apply"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:532
+#: src/Admin/OverviewPage.php:583
 msgid "In preparation"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:586
+#: src/Admin/OverviewPage.php:637
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:157
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:206
 msgid "Preview"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:591
+#: src/Admin/OverviewPage.php:642
 msgid "Soon on WP.org"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:593
+#: src/Admin/OverviewPage.php:644
 msgid "In the suite"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:624
-#: src/Admin/OverviewPage.php:625
-msgid "Coming soon to Double Youpi"
-msgstr ""
-
-#: src/Admin/OverviewPage.php:635
-msgid "Up next"
-msgstr ""
-
-#: src/Admin/OverviewPage.php:643
-msgid "Almost ready"
-msgstr ""
-
-#: src/Admin/OverviewPage.php:689
+#: src/Admin/OverviewPage.php:672
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:691
+#: src/Admin/OverviewPage.php:674
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:136
 msgid "Next"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:735
+#: src/Admin/OverviewPage.php:718
 msgid "Support the project"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:749
+#: src/Admin/OverviewPage.php:732
 msgid "Free, and built to stay that way"
 msgstr ""
 
 #. translators: 1: author first name (bold), 2: freelance studio name (linked).
-#: src/Admin/OverviewPage.php:766
+#: src/Admin/OverviewPage.php:749
 #, php-format
-msgid "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
+msgid "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double Youpï to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
 msgstr ""
 
 #. translators: %s: author first name (bold).
-#: src/Admin/OverviewPage.php:776
+#: src/Admin/OverviewPage.php:759
 #, php-format
-msgid "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
+msgid "I'm <b>%s</b>, a freelance designer and dev. I build Double Youpï to make WordPress nicer to use. This plugin will stay free for life, updates included. If something's off or missing, please let me know. And if the plugin's useful and you genuinely like it, a coffee's always appreciated ;) Otherwise, just using it (and dropping a kind review) already helps a lot. Thanks!"
 msgstr ""
 
 #. translators: %s: author first name.
-#: src/Admin/OverviewPage.php:788
+#: src/Admin/OverviewPage.php:771
 #, php-format
-msgid "%s · Double Youpi"
+msgid "%s · Double Youpï"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:801
+#: src/Admin/OverviewPage.php:784
 msgid "Buy me a coffee"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:817
+#: src/Admin/OverviewPage.php:800
 msgid "Leave a review"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:824
-msgid "All Double Youpi plugins on WordPress.org"
+#: src/Admin/OverviewPage.php:807
+msgid "All Double Youpï plugins on WordPress.org"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:840
+#: src/Admin/OverviewPage.php:823
 msgid "Report or suggest"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:875
-#: src/Admin/OverviewPage.php:884
+#: src/Admin/OverviewPage.php:858
+#: src/Admin/OverviewPage.php:867
 msgid "Want to get involved?"
 msgstr ""
 
-#: src/Admin/OverviewPage.php:886
+#: src/Admin/OverviewPage.php:869
 msgid "Found a bug or got an idea to make it better? Let me know."
 msgstr ""
 
@@ -507,8 +499,8 @@ msgid "A full rethink of the WordPress admin: smart dashboard, reworked navigati
 msgstr ""
 
 #: src/Core/ModuleCatalog.php:50
-#: src/Modules/MediaLibrary/MediaLibrary.php:47
-#: src/Modules/MediaLibrary/MediaLibrary.php:98
+#: src/Modules/MediaLibrary/MediaLibrary.php:132
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 msgid "Refined Media Library"
 msgstr ""
 
@@ -563,7 +555,7 @@ msgstr ""
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Settings.php:235
+#: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr ""
 
@@ -614,7 +606,7 @@ msgstr ""
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:227
+#: src/Modules/MediaLibrary/Settings.php:248
 msgid "Folders"
 msgstr ""
 
@@ -1156,15 +1148,23 @@ msgstr ""
 msgid "No folders found"
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:48
+#: src/Modules/MediaLibrary/MediaLibrary.php:74
+msgid "Turning the media library off hands the Media screen back to WordPress. Your folders and your collections are kept, and come back if you turn it on again."
+msgstr ""
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:77
+msgid "Double Youpï Refined Media Library is installed and standing aside: reactivate it if you want the media library without the rest."
+msgstr ""
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:133
 msgid "Media Library"
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:88
+#: src/Modules/MediaLibrary/MediaLibrary.php:175
 msgid "Unused media"
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:94
+#: src/Modules/MediaLibrary/MediaLibrary.php:180
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr ""
@@ -1461,72 +1461,88 @@ msgstr ""
 msgid "Delete selected media"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:203
+#: src/Modules/MediaLibrary/Settings.php:224
 msgid "Optimization"
 msgstr ""
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:210
+#: src/Modules/MediaLibrary/Settings.php:231
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:212
+#: src/Modules/MediaLibrary/Settings.php:233
 msgid "This server cannot generate WebP images."
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:213
+#: src/Modules/MediaLibrary/Settings.php:234
 msgid "This server cannot generate AVIF images."
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:220
+#: src/Modules/MediaLibrary/Settings.php:241
 msgid "Organisation"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:228
+#: src/Modules/MediaLibrary/Settings.php:249
 msgid "Organise the media library into folders"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:236
+#: src/Modules/MediaLibrary/Settings.php:257
 msgid "Group media into cross-folder collections"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:243
+#: src/Modules/MediaLibrary/Settings.php:264
 msgid "Auto alt & title"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:244
+#: src/Modules/MediaLibrary/Settings.php:265
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:274
+msgid "Duplicate badge"
+msgstr ""
+
+#: src/Modules/MediaLibrary/Settings.php:275
+msgid "Mark files already in the library, by content"
+msgstr ""
+
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "Conversion"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "WebP on upload"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:260
+#: src/Modules/MediaLibrary/Settings.php:291
 msgid "Generate a WebP version of each image on upload"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:269
+#: src/Modules/MediaLibrary/Settings.php:300
 msgid "AVIF on upload"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:270
+#: src/Modules/MediaLibrary/Settings.php:301
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Save changes"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:334
+#: src/Modules/MediaLibrary/Settings.php:349
+msgid "Double Youpï Refined Admin Dashboard includes this media library, and redraws the rest of the admin the same way. It is free too."
+msgstr ""
+
+#: src/Modules/MediaLibrary/Settings.php:350
+msgid "Read about it"
+msgstr ""
+
+#: src/Modules/MediaLibrary/Settings.php:400
 msgid "Conversion quality"
 msgstr ""
 
-#: src/Modules/MediaLibrary/Settings.php:335
+#: src/Modules/MediaLibrary/Settings.php:401
 msgid "Higher means better quality and larger files. Default 82."
 msgstr ""

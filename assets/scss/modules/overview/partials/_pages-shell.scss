@@ -100,7 +100,11 @@ body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:
 		}
 	}
 
-	h3 {
+	// Headings and paragraphs of plain page content only. Components that
+	// set their own rhythm (the settings cards, the first-run card) are left
+	// alone: this rule outweighs any class of theirs (0,4,1), and forced its
+	// 28 px and 14 px margins into them. :where() adds no specificity.
+	h3:where(:not(.dy-mlset *, .dy-overview__welcome *)) {
 		font-family: var(--dya-font-display);
 		font-weight: 500;
 		font-size: 17px;
@@ -109,13 +113,17 @@ body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:
 		letter-spacing: var(--dya-tracking-tight);
 	}
 
-	p {
+	p:where(:not(.dy-mlset *, .dy-overview__welcome *)) {
 		color: var(--dya-ink-soft);
 		line-height: var(--dya-lh-base);
 		margin: 0 0 14px;
 	}
 
-	a {
+	// Not the tabs: this rule outweighs the nav-tab one of _nav-tabs.scss
+	// (0,4,2 against 0,4,1), which painted the inactive tab in accent and
+	// underlined every tab on hover. Nor the shortcut cards of the first-run
+	// card, which are links drawn as cards. :where() keeps the specificity.
+	a:where(:not(.nav-tab, .dy-overview__welcome-item)) {
 		color: var(--dya-accent);
 		text-decoration: none;
 		text-underline-offset: 3px;

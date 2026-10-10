@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-09-29T11:45:56+00:00\n"
+"POT-Creation-Date: 2026-10-10T02:00:28+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -28,7 +28,8 @@ msgstr ""
 "के।"
 
 #. Author of the plugin
-#: doubleyoupi-refined-media-library.php src/Admin/OverviewPage.php:343
+#: doubleyoupi-refined-media-library.php src/Admin/DyShell.php:118
+#: src/Admin/OverviewPage.php:357
 msgid "Double Youpï"
 msgstr "Double Youpï"
 
@@ -37,26 +38,36 @@ msgstr "Double Youpï"
 msgid "https://doubleyoupi.com"
 msgstr "https://doubleyoupi.com"
 
-#: doubleyoupi-refined-media-library.php:43
+#: doubleyoupi-refined-media-library.php:58
 msgid ""
-"You are already running the full Double Youpi suite, and it includes Double "
+"You are already running the full Double Youpï suite, and it includes Double "
 "Youpï Refined Media Library. This standalone copy stepped aside to stay out "
 "of its way. Want to run it on its own? Deactivate the suite first."
 msgstr ""
-"आप पहले से ही पूरा Double Youpi सुइट चला रहे हैं, जिसमें Double Youpï Refined Media "
-"Library शामिल है। यह स्टैंडअलोन प्रति उसके रास्ते से हट गई है। इसे अलग से चलाना चाहते हैं? "
-"पहले सुइट को निष्क्रिय करें।"
+"आप पहले से ही पूरा Double Youpï suite चला रहे हैं, जिसमें Double Youpï Refined Media "
+"Library शामिल है। इसलिए यह स्टैंडअलोन संस्करण रास्ते से हट गया है। इसे अकेले चलाना चाहते "
+"हैं? पहले suite को निष्क्रिय करें।"
 
-#: src/Admin/AdminMenu.php:152 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:509
+# Retrait devant Refined Admin Dashboard, qui embarque la médiathèque.
+#: doubleyoupi-refined-media-library.php:59
+msgid ""
+"Double Youpï Refined Admin Dashboard is active, and it includes this whole "
+"media library: folders, collections and the detail panel. This copy stepped "
+"aside. Your folders, collections and settings are untouched, and the "
+"dashboard is using them right now. Want the media library on its own? "
+"Deactivate Refined Admin Dashboard first."
+msgstr ""
+"Double Youpï Refined Admin Dashboard सक्रिय है और इसमें यह पूरी मीडिया लाइब्रेरी "
+"शामिल है: फ़ोल्डर, संग्रह और विवरण पैनल। यह प्रति पीछे हट गई है। आपके फ़ोल्डर, संग्रह और "
+"सेटिंग्स अछूते हैं, और डैशबोर्ड उन्हें अभी उपयोग कर रहा है। केवल मीडिया लाइब्रेरी चाहिए? पहले "
+"Refined Admin Dashboard को निष्क्रिय करें।"
+
+#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
+#: src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:87
+#: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
 msgstr "सेटिंग्स"
-
-#: src/Admin/DyShell.php:118
-msgid "Double Youpi"
-msgstr "Double Youpi"
 
 #: src/Admin/Feedback.php:127
 msgctxt "admin bar button"
@@ -110,7 +121,7 @@ msgid "(anonymous site identifier)"
 msgstr "(साइट का गुमनाम पहचानकर्ता)"
 
 #: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
-#: src/Admin/OverviewPage.php:680
+#: src/Admin/OverviewPage.php:663
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "बंद करें"
@@ -162,12 +173,12 @@ msgstr "आप मुझे यहाँ जवाब दे सकते है
 
 #: src/Admin/Feedback.php:285
 msgid ""
-"I agree to send this report to Double Youpi: my message, the screenshot if "
+"I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
 "to, and version numbers (WordPress, PHP, theme, this plugin). No site "
 "content is sent, and no site address unless I ask for a reply."
 msgstr ""
-"मैं यह रिपोर्ट Double Youpi को भेजने के लिए सहमत हूँ: मेरा संदेश, स्क्रीनशॉट (यदि कोई "
+"मैं यह रिपोर्ट Double Youpï को भेजने के लिए सहमत हूँ: मेरा संदेश, स्क्रीनशॉट (यदि कोई "
 "हो), wp-admin के भीतर इस स्क्रीन का पता, संबंधित प्लगइन या थीम, और संस्करण संख्याएँ "
 "(WordPress, PHP, थीम, यह प्लगइन)। साइट की कोई सामग्री नहीं भेजी जाती, और जब तक मैं "
 "उत्तर न माँगूँ, साइट का पता भी नहीं।"
@@ -300,23 +311,23 @@ msgid "Your media library finally has a personality. It's smug."
 msgstr "आपकी मीडिया लाइब्रेरी में आख़िरकार एक व्यक्तित्व आ गया — थोड़ा घमंडी।"
 
 #: src/Admin/OverviewPage.php:68
-msgid "Double Youpi · Overview"
-msgstr "Double Youpi · सारांश"
+msgid "Double Youpï · Overview"
+msgstr "Double Youpï · सारांश"
 
 #: src/Admin/OverviewPage.php:69
 msgid "Overview"
 msgstr "सारांश"
 
-#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:455
+#: src/Admin/OverviewPage.php:153 src/Admin/OverviewPage.php:467
 msgid "Active"
 msgstr "सक्रिय"
 
 #: src/Admin/OverviewPage.php:154 src/Admin/OverviewPage.php:156
-#: src/Admin/OverviewPage.php:456 src/Admin/OverviewPage.php:497
+#: src/Admin/OverviewPage.php:468 src/Admin/OverviewPage.php:533
 msgid "Disabled"
 msgstr "अक्षम"
 
-#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:496
+#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:532
 msgid "Enabled"
 msgstr "सक्रिय"
 
@@ -348,12 +359,12 @@ msgstr "जल्द ही WordPress.org पर"
 msgid "Discover on doubleyoupi.com"
 msgstr "doubleyoupi.com पर देखें"
 
-#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:559
-#: src/Admin/OverviewPage.php:589
+#: src/Admin/OverviewPage.php:165 src/Admin/OverviewPage.php:610
+#: src/Admin/OverviewPage.php:640
 msgid "Free"
 msgstr "निःशुल्क"
 
-#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:559
+#: src/Admin/OverviewPage.php:166 src/Admin/OverviewPage.php:610
 msgid "Suite"
 msgstr "सुइट"
 
@@ -373,7 +384,7 @@ msgstr "सहेजने के लिए कोई परिवर्तन �
 msgid "Unknown module."
 msgstr "अज्ञात मॉड्यूल।"
 
-#: src/Admin/OverviewPage.php:319
+#: src/Admin/OverviewPage.php:320
 msgid ""
 "Modular suite for pros who ship WordPress sites. Enable the modules you "
 "need, disable the rest."
@@ -381,141 +392,136 @@ msgstr ""
 "WordPress साइट डिलीवर करने वाले पेशेवरों के लिए मॉड्यूलर सूट। आपको जिन मॉड्यूल की ज़रूरत "
 "हो उन्हें सक्रिय करें, बाक़ी निष्क्रिय करें।"
 
-#: src/Admin/OverviewPage.php:358
+#: src/Admin/OverviewPage.php:343
+msgid ""
+"Your whole WordPress admin, redrawn. Each part can be turned on or off below."
+msgstr ""
+"आपका पूरा WordPress प्रशासन, नए सिरे से बनाया गया। हर हिस्सा नीचे चालू या बंद किया "
+"जा सकता है।"
+
+#: src/Admin/OverviewPage.php:372
 msgid "Suite information"
 msgstr "सूट के बारे में जानकारी"
 
-#: src/Admin/OverviewPage.php:365
+#: src/Admin/OverviewPage.php:379
 msgid "active modules"
 msgstr "सक्रिय मॉड्यूल"
 
-#: src/Admin/OverviewPage.php:409
+#: src/Admin/OverviewPage.php:423
 msgid "Save modules"
 msgstr "मॉड्यूल सहेजें"
 
-#: src/Admin/OverviewPage.php:454
+#: src/Admin/OverviewPage.php:466
 msgid "Coming soon"
 msgstr "जल्द ही"
 
-#: src/Admin/OverviewPage.php:505 src/Modules/MediaLibrary/Settings.php:321
-#: src/Modules/MediaLibrary/Settings.php:348
+#: src/Admin/OverviewPage.php:556 src/Modules/MediaLibrary/Settings.php:387
+#: src/Modules/MediaLibrary/Settings.php:414
 msgid "Saved"
 msgstr "सहेजा गया"
 
-#: src/Admin/OverviewPage.php:527
+#: src/Admin/OverviewPage.php:578
 msgid "Reload to apply"
 msgstr "लागू करने के लिए पुनः लोड करें"
 
-#: src/Admin/OverviewPage.php:532
+#: src/Admin/OverviewPage.php:583
 msgid "In preparation"
 msgstr "तैयारी में"
 
-#: src/Admin/OverviewPage.php:586
+#: src/Admin/OverviewPage.php:637
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:157
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:206
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
-#: src/Admin/OverviewPage.php:591
+#: src/Admin/OverviewPage.php:642
 msgid "Soon on WP.org"
 msgstr "जल्द ही WP.org पर"
 
-#: src/Admin/OverviewPage.php:593
+#: src/Admin/OverviewPage.php:644
 msgid "In the suite"
 msgstr "सुइट में"
 
-#: src/Admin/OverviewPage.php:624 src/Admin/OverviewPage.php:625
-msgid "Coming soon to Double Youpi"
-msgstr "जल्द ही Double Youpi में"
-
-#: src/Admin/OverviewPage.php:635
-msgid "Up next"
-msgstr "अगला"
-
-#: src/Admin/OverviewPage.php:643
-msgid "Almost ready"
-msgstr "लगभग तैयार"
-
-#: src/Admin/OverviewPage.php:689
+#: src/Admin/OverviewPage.php:672
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:135
 msgid "Previous"
 msgstr "पिछला"
 
-#: src/Admin/OverviewPage.php:691
+#: src/Admin/OverviewPage.php:674
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:136
 msgid "Next"
 msgstr "अगला"
 
-#: src/Admin/OverviewPage.php:735
+#: src/Admin/OverviewPage.php:718
 msgid "Support the project"
 msgstr "परियोजना का समर्थन करें"
 
-#: src/Admin/OverviewPage.php:749
+#: src/Admin/OverviewPage.php:732
 msgid "Free, and built to stay that way"
 msgstr "मुफ़्त, और ऐसा ही बने रहने के लिए बनाया गया"
 
 #. translators: 1: author first name (bold), 2: freelance studio name (linked).
-#: src/Admin/OverviewPage.php:766
+#: src/Admin/OverviewPage.php:749
 #, php-format
 msgid ""
 "I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double "
-"Youpi to make WordPress nicer to use. This plugin will stay free for life, "
+"Youpï to make WordPress nicer to use. This plugin will stay free for life, "
 "updates included. If something's off or missing, please let me know. And if "
 "the plugin's useful and you genuinely like it, a coffee's always "
 "appreciated ;) Otherwise, just using it (and dropping a kind review) already "
 "helps a lot. Thanks!"
 msgstr ""
-"मैं हूँ <b>%1$s</b>, फ़्रीलांस डिज़ाइनर और डेव, उर्फ़ %2$s। मैं Double Youpi बनाता हूँ ताकि "
+"मैं हूँ <b>%1$s</b>, फ़्रीलांस डिज़ाइनर और डेव, उर्फ़ %2$s। मैं Double Youpï बनाता हूँ ताकि "
 "WordPress इस्तेमाल करने में ज़्यादा अच्छा लगे। यह प्लगइन हमेशा के लिए मुफ़्त रहेगा, अपडेट "
 "सहित। अगर कुछ अटके या कमी लगे, तो बेझिझक बता देना। और अगर प्लगइन काम आए और सच में "
 "पसंद आए, तो एक कॉफ़ी से हमेशा खुशी होती है ;) वरना, बस इसे इस्तेमाल करना (और एक अच्छा "
 "रिव्यू छोड़ना) ही बहुत मदद करता है। शुक्रिया!"
 
 #. translators: %s: author first name (bold).
-#: src/Admin/OverviewPage.php:776
+#: src/Admin/OverviewPage.php:759
 #, php-format
 msgid ""
-"I'm <b>%s</b>, a freelance designer and dev. I build Double Youpi to make "
+"I'm <b>%s</b>, a freelance designer and dev. I build Double Youpï to make "
 "WordPress nicer to use. This plugin will stay free for life, updates "
 "included. If something's off or missing, please let me know. And if the "
 "plugin's useful and you genuinely like it, a coffee's always appreciated ;) "
 "Otherwise, just using it (and dropping a kind review) already helps a lot. "
 "Thanks!"
 msgstr ""
-"मैं हूँ <b>%s</b>, फ़्रीलांस डिज़ाइनर और डेव। मैं Double Youpi बनाता हूँ ताकि WordPress "
+"मैं हूँ <b>%s</b>, फ़्रीलांस डिज़ाइनर और डेव। मैं Double Youpï बनाता हूँ ताकि WordPress "
 "इस्तेमाल करने में ज़्यादा अच्छा लगे। यह प्लगइन हमेशा के लिए मुफ़्त रहेगा, अपडेट सहित। अगर कुछ "
 "अटके या कमी लगे, तो बेझिझक बता देना। और अगर प्लगइन काम आए और सच में पसंद आए, तो एक "
 "कॉफ़ी से हमेशा खुशी होती है ;) वरना, बस इसे इस्तेमाल करना (और एक अच्छा रिव्यू छोड़ना) ही "
 "बहुत मदद करता है। शुक्रिया!"
 
 #. translators: %s: author first name.
-#: src/Admin/OverviewPage.php:788
+#: src/Admin/OverviewPage.php:771
 #, php-format
-msgid "%s · Double Youpi"
-msgstr "%s · Double Youpi"
+msgid "%s · Double Youpï"
+msgstr "%s · Double Youpï"
 
-#: src/Admin/OverviewPage.php:801
+#: src/Admin/OverviewPage.php:784
 msgid "Buy me a coffee"
 msgstr "मुझे एक कॉफ़ी पिलाएँ"
 
-#: src/Admin/OverviewPage.php:817
+#: src/Admin/OverviewPage.php:800
 msgid "Leave a review"
 msgstr "समीक्षा दें"
 
-#: src/Admin/OverviewPage.php:824
-msgid "All Double Youpi plugins on WordPress.org"
-msgstr "WordPress.org पर सभी Double Youpi प्लगइन"
+#: src/Admin/OverviewPage.php:807
+msgid "All Double Youpï plugins on WordPress.org"
+msgstr "WordPress.org पर सभी Double Youpï प्लगइन"
 
-#: src/Admin/OverviewPage.php:840
+#: src/Admin/OverviewPage.php:823
 msgid "Report or suggest"
 msgstr "बताएँ या सुझाव दें"
 
-#: src/Admin/OverviewPage.php:875 src/Admin/OverviewPage.php:884
+#: src/Admin/OverviewPage.php:858 src/Admin/OverviewPage.php:867
 msgid "Want to get involved?"
 msgstr "योगदान देना चाहते हैं?"
 
-#: src/Admin/OverviewPage.php:886
+#: src/Admin/OverviewPage.php:869
 msgid "Found a bug or got an idea to make it better? Let me know."
 msgstr "कोई बग मिला या इसे बेहतर बनाने का सुझाव है? मुझे बताएँ।"
 
@@ -531,8 +537,8 @@ msgstr ""
 "WordPress एडमिन का पूरा पुनर्विचार: स्मार्ट डैशबोर्ड, फिर से डिज़ाइन किया गया नेविगेशन, "
 "नई कॉन्टेंट टेबल, डार्क मोड और आपकी ब्रांडिंग।"
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:47
-#: src/Modules/MediaLibrary/MediaLibrary.php:98
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:132
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -611,7 +617,7 @@ msgstr "संग्रह नहीं हटाया जा सका।"
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Settings.php:235
+#: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr "संग्रह"
 
@@ -662,7 +668,7 @@ msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:227
+#: src/Modules/MediaLibrary/Settings.php:248
 msgid "Folders"
 msgstr "फ़ोल्डर"
 
@@ -1213,15 +1219,31 @@ msgstr "फ़ोल्डर अपडेट करें"
 msgid "No folders found"
 msgstr "कोई फ़ोल्डर नहीं मिला"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:48
+#: src/Modules/MediaLibrary/MediaLibrary.php:74
+msgid ""
+"Turning the media library off hands the Media screen back to WordPress. Your "
+"folders and your collections are kept, and come back if you turn it on again."
+msgstr ""
+"मीडिया लाइब्रेरी बंद करने पर मीडिया स्क्रीन फिर से WordPress की हो जाती है। आपके "
+"फ़ोल्डर और संग्रह सुरक्षित रहते हैं और दोबारा चालू करने पर लौट आते हैं।"
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:77
+msgid ""
+"Double Youpï Refined Media Library is installed and standing aside: "
+"reactivate it if you want the media library without the rest."
+msgstr ""
+"Double Youpï Refined Media Library संस्थापित है और पीछे हट गई है: यदि आप बाकी के "
+"बिना केवल मीडिया लाइब्रेरी चाहते हैं तो इसे फिर से सक्रिय करें।"
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:133
 msgid "Media Library"
 msgstr "मीडिया लाइब्रेरी"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:88
+#: src/Modules/MediaLibrary/MediaLibrary.php:175
 msgid "Unused media"
 msgstr "अप्रयुक्त मीडिया"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:94
+#: src/Modules/MediaLibrary/MediaLibrary.php:180
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "आयात करें"
@@ -1531,7 +1553,7 @@ msgstr "क्रियाएँ"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:224
 msgid "Empty the trash"
-msgstr ""
+msgstr "रद्दी खाली करें"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:260
 msgid "Restore"
@@ -1545,73 +1567,93 @@ msgstr "स्थायी रूप से हटाएँ"
 msgid "Delete selected media"
 msgstr "चयनित मीडिया हटाएँ"
 
-#: src/Modules/MediaLibrary/Settings.php:203
+#: src/Modules/MediaLibrary/Settings.php:224
 msgid "Optimization"
 msgstr "ऑप्टिमाइज़ेशन"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:210
+#: src/Modules/MediaLibrary/Settings.php:231
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "%s द्वारा संचालित। सेटिंग्स वहीं प्रबंधित होती हैं।"
 
-#: src/Modules/MediaLibrary/Settings.php:212
+#: src/Modules/MediaLibrary/Settings.php:233
 msgid "This server cannot generate WebP images."
 msgstr "यह सर्वर WebP छवियाँ नहीं बना सकता।"
 
-#: src/Modules/MediaLibrary/Settings.php:213
+#: src/Modules/MediaLibrary/Settings.php:234
 msgid "This server cannot generate AVIF images."
 msgstr "यह सर्वर AVIF छवियाँ नहीं बना सकता।"
 
-#: src/Modules/MediaLibrary/Settings.php:220
+#: src/Modules/MediaLibrary/Settings.php:241
 msgid "Organisation"
 msgstr "व्यवस्था"
 
-#: src/Modules/MediaLibrary/Settings.php:228
+#: src/Modules/MediaLibrary/Settings.php:249
 msgid "Organise the media library into folders"
 msgstr "मीडिया लाइब्रेरी को फ़ोल्डर में व्यवस्थित करें"
 
-#: src/Modules/MediaLibrary/Settings.php:236
+#: src/Modules/MediaLibrary/Settings.php:257
 msgid "Group media into cross-folder collections"
 msgstr "मीडिया को फ़ोल्डर-पार संग्रहों में समूहित करें"
 
-#: src/Modules/MediaLibrary/Settings.php:243
+#: src/Modules/MediaLibrary/Settings.php:264
 msgid "Auto alt & title"
 msgstr "स्वचालित alt और शीर्षक"
 
-#: src/Modules/MediaLibrary/Settings.php:244
+#: src/Modules/MediaLibrary/Settings.php:265
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr "अपलोड पर फ़ाइलनाम से alt और शीर्षक भरें (यदि रिक्त)"
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:274
+msgid "Duplicate badge"
+msgstr "डुप्लिकेट बैज"
+
+#: src/Modules/MediaLibrary/Settings.php:275
+msgid "Mark files already in the library, by content"
+msgstr "पहले से मौजूद फ़ाइलों को उनकी सामग्री से चिह्नित करें"
+
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "Conversion"
 msgstr "रूपांतरण"
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "WebP on upload"
 msgstr "अपलोड पर WebP"
 
-#: src/Modules/MediaLibrary/Settings.php:260
+#: src/Modules/MediaLibrary/Settings.php:291
 msgid "Generate a WebP version of each image on upload"
 msgstr "अपलोड पर हर छवि का WebP संस्करण बनाएँ"
 
-#: src/Modules/MediaLibrary/Settings.php:269
+#: src/Modules/MediaLibrary/Settings.php:300
 msgid "AVIF on upload"
 msgstr "अपलोड पर AVIF"
 
-#: src/Modules/MediaLibrary/Settings.php:270
+#: src/Modules/MediaLibrary/Settings.php:301
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "एक AVIF संस्करण भी बनाएँ (Imagick आवश्यक)"
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Save changes"
 msgstr "परिवर्तन सहेजें"
 
-#: src/Modules/MediaLibrary/Settings.php:334
+#: src/Modules/MediaLibrary/Settings.php:349
+msgid ""
+"Double Youpï Refined Admin Dashboard includes this media library, and "
+"redraws the rest of the admin the same way. It is free too."
+msgstr ""
+"Double Youpï Refined Admin Dashboard में यह मीडिया लाइब्रेरी शामिल है, और यह बाकी "
+"प्रशासन को भी उसी तरह नए सिरे से बनाता है। यह भी निःशुल्क है।"
+
+#: src/Modules/MediaLibrary/Settings.php:350
+msgid "Read about it"
+msgstr "और जानें"
+
+#: src/Modules/MediaLibrary/Settings.php:400
 msgid "Conversion quality"
 msgstr "रूपांतरण गुणवत्ता"
 
-#: src/Modules/MediaLibrary/Settings.php:335
+#: src/Modules/MediaLibrary/Settings.php:401
 msgid "Higher means better quality and larger files. Default 82."
 msgstr "अधिक = बेहतर गुणवत्ता और बड़ी फ़ाइलें। डिफ़ॉल्ट 82।"
 
@@ -1624,22 +1666,23 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "स्वचालित ऑल्ट टेक्स्ट और WebP/AVIF रूपांतरण — हर छवि के लिए अलग सेटिंग के बिना।"
 
 #~ msgid ""
-#~ "You are already running the full Double Youpi suite, and it includes "
-#~ "Refined Media Library. This standalone copy stepped aside to stay out of "
-#~ "its way. Want to run it on its own? Deactivate the suite first."
+#~ "You are already running the full Double Youpï suite, and it includes "
+#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
+#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
+#~ "first."
 #~ msgstr ""
-#~ "आप पहले से ही पूरा Double Youpi suite चला रहे हैं, जिसमें Refined Media Library "
-#~ "शामिल है। इसलिए यह स्टैंडअलोन संस्करण रास्ते से हट गया है। इसे अकेले चलाना चाहते हैं? पहले "
-#~ "suite को निष्क्रिय करें।"
+#~ "आप पहले से ही पूरा Double Youpï suite चला रहे हैं, जिसमें Double Youpï Refined "
+#~ "Admin Dashboard शामिल है। इसलिए यह स्टैंडअलोन संस्करण रास्ते से हट गया है। इसे अकेले "
+#~ "चलाना चाहते हैं? पहले suite को निष्क्रिय करें।"
 
 #~ msgid ""
 #~ "I'm <b>%s</b>, a freelance UX/UI designer and developer. I build Double "
-#~ "Youpi to make WordPress genuinely nicer to use, and this module stays "
+#~ "Youpï to make WordPress genuinely nicer to use, and this module stays "
 #~ "free, with its updates included, for the long run. No paywalled basics, "
 #~ "no dark patterns. If it helps your work, a coffee keeps it going. Either "
 #~ "way, thanks for being here."
 #~ msgstr ""
-#~ "मैं <b>%s</b> हूँ, एक फ़्रीलांस UX/UI डिज़ाइनर और डेवलपर। मैं Double Youpi इसलिए "
+#~ "मैं <b>%s</b> हूँ, एक फ़्रीलांस UX/UI डिज़ाइनर और डेवलपर। मैं Double Youpï इसलिए "
 #~ "बनाता हूँ ताकि WordPress सचमुच इस्तेमाल में बेहतर लगे, और यह मॉड्यूल लंबे समय तक मुफ़्त "
 #~ "रहता है, अपडेट सहित। न तो ज़रूरी सुविधाएँ पेवॉल के पीछे, न डार्क पैटर्न। अगर यह आपके "
 #~ "काम आए, तो एक कॉफ़ी मुझे इसे जारी रखने में मदद करती है। और अगर नहीं, तो कोई बात "
@@ -1647,30 +1690,39 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 
 #~ msgid ""
 #~ "I'm <b>%1$s</b>, a freelance UX/UI designer and developer working as "
-#~ "%2$s. I build Double Youpi to make WordPress genuinely nicer to use, and "
+#~ "%2$s. I build Double Youpï to make WordPress genuinely nicer to use, and "
 #~ "this module stays free, with its updates included, for the long run. It "
 #~ "gets better with your feedback, so tell me what's missing or what bugs "
 #~ "you. If it helps your work, a coffee keeps it going. Either way, thanks "
 #~ "for being here."
 #~ msgstr ""
 #~ "मैं <b>%1$s</b> हूँ, %2$s के नाम से काम करने वाला फ़्रीलांस UX/UI डिज़ाइनर और डेवलपर। "
-#~ "मैं Double Youpi बनाता हूँ ताकि WordPress सचमुच इस्तेमाल में ज़्यादा सुखद हो, और यह "
+#~ "मैं Double Youpï बनाता हूँ ताकि WordPress सचमुच इस्तेमाल में ज़्यादा सुखद हो, और यह "
 #~ "मॉड्यूल लंबे समय तक मुफ़्त रहेगा, अपडेट सहित। यह आपके फ़ीडबैक से बेहतर होता है, तो बताइए "
 #~ "क्या कमी है या क्या अटकता है। अगर यह आपके काम आता है, तो एक कॉफ़ी इसे चलाए रखती "
 #~ "है। वैसे भी, यहाँ होने के लिए शुक्रिया।"
 
 #~ msgid ""
 #~ "I'm <b>%s</b>, a freelance UX/UI designer and developer. I build Double "
-#~ "Youpi to make WordPress genuinely nicer to use, and this module stays "
+#~ "Youpï to make WordPress genuinely nicer to use, and this module stays "
 #~ "free, with its updates included, for the long run. It gets better with "
 #~ "your feedback, so tell me what's missing or what bugs you. If it helps "
 #~ "your work, a coffee keeps it going. Either way, thanks for being here."
 #~ msgstr ""
-#~ "मैं <b>%s</b> हूँ, फ़्रीलांस UX/UI डिज़ाइनर और डेवलपर। मैं Double Youpi बनाता हूँ ताकि "
+#~ "मैं <b>%s</b> हूँ, फ़्रीलांस UX/UI डिज़ाइनर और डेवलपर। मैं Double Youpï बनाता हूँ ताकि "
 #~ "WordPress सचमुच इस्तेमाल में ज़्यादा सुखद हो, और यह मॉड्यूल लंबे समय तक मुफ़्त रहेगा, "
 #~ "अपडेट सहित। यह आपके फ़ीडबैक से बेहतर होता है, तो बताइए क्या कमी है या क्या अटकता है। "
 #~ "अगर यह आपके काम आता है, तो एक कॉफ़ी इसे चलाए रखती है। वैसे भी, यहाँ होने के लिए "
 #~ "शुक्रिया।"
+
+#~ msgid "Coming soon to Double Youpï"
+#~ msgstr "जल्द ही Double Youpï में"
+
+#~ msgid "Up next"
+#~ msgstr "अगला"
+
+#~ msgid "Almost ready"
+#~ msgstr "लगभग तैयार"
 
 #~ msgid ""
 #~ "Clone production to a private subdomain to test safely, with noindex, "
@@ -1680,17 +1732,17 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "और वैकल्पिक basic auth के साथ।"
 
 #~ msgid ""
-#~ "Modular WordPress optimization suite for professionals — performance, "
+#~ "Modular WordPress optimization suite for professionals: performance, "
 #~ "images, static, SEO, metrics."
 #~ msgstr ""
-#~ "पेशेवरों के लिए मॉड्यूलर WordPress ऑप्टिमाइज़ेशन सूट — प्रदर्शन, छवियाँ, स्टेटिक, SEO, "
+#~ "पेशेवरों के लिए मॉड्यूलर WordPress ऑप्टिमाइज़ेशन सूट: प्रदर्शन, छवियाँ, स्टेटिक, SEO, "
 #~ "मेट्रिक्स।"
 
 #~ msgid ""
-#~ "Double Youpi: the Composer dependencies are missing. Run <code>composer "
+#~ "Double Youpï: the Composer dependencies are missing. Run <code>composer "
 #~ "install</code> inside the plugin folder."
 #~ msgstr ""
-#~ "Double Youpi: Composer निर्भरताएँ अनुपस्थित हैं। प्लगइन फ़ोल्डर में <code>composer "
+#~ "Double Youpï: Composer निर्भरताएँ अनुपस्थित हैं। प्लगइन फ़ोल्डर में <code>composer "
 #~ "install</code> चलाएँ।"
 
 #~ msgid ""
@@ -1792,31 +1844,31 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "सर्वर प्रतिक्रिया सत्यापित नहीं हो सकी। कृपया सपोर्ट से संपर्क करें।"
 
 #~ msgid ""
-#~ "Your Double Youpi licence has expired. Updates are paused — <a "
+#~ "Your Double Youpï licence has expired. Updates are paused: <a "
 #~ "href=\"#\">renew your licence</a>."
 #~ msgstr ""
-#~ "आपकी Double Youpi लाइसेंस समाप्त हो गई है। अपडेट रुक गए हैं — <a href=\"#\">लाइसेंस "
+#~ "आपकी Double Youpï लाइसेंस समाप्त हो गई है। अपडेट रुक गए हैं: <a href=\"#\">लाइसेंस "
 #~ "नवीनीकृत करें</a>।"
 
 #~ msgid ""
-#~ "Double Youpi could not reach the licence server. The plugin continues to "
+#~ "Double Youpï could not reach the licence server. The plugin continues to "
 #~ "work during the 30-day grace period."
 #~ msgstr ""
-#~ "Double Youpi लाइसेंस सर्वर तक नहीं पहुँच सका। प्लगइन 30-दिन की ग्रेस अवधि में काम "
+#~ "Double Youpï लाइसेंस सर्वर तक नहीं पहुँच सका। प्लगइन 30-दिन की ग्रेस अवधि में काम "
 #~ "करता रहेगा।"
 
 #~ msgid ""
-#~ "No valid Double Youpi licence found. Please <a href=\"#\">activate your "
+#~ "No valid Double Youpï licence found. Please <a href=\"#\">activate your "
 #~ "licence</a>."
 #~ msgstr ""
-#~ "कोई वैध Double Youpi लाइसेंस नहीं मिली। कृपया <a href=\"#\">अपनी लाइसेंस सक्रिय "
+#~ "कोई वैध Double Youpï लाइसेंस नहीं मिली। कृपया <a href=\"#\">अपनी लाइसेंस सक्रिय "
 #~ "करें</a>।"
 
 #~ msgid "Updates expired"
 #~ msgstr "अपडेट समाप्त"
 
-#~ msgid "Degraded — could not reach licence server"
-#~ msgstr "घटित — लाइसेंस सर्वर तक नहीं पहुँचा जा सका"
+#~ msgid "Degraded: could not reach licence server"
+#~ msgstr "घटित: लाइसेंस सर्वर तक नहीं पहुँचा जा सका"
 
 #~ msgid "Invalid or missing"
 #~ msgstr "अमान्य या अनुपस्थित"
@@ -1827,8 +1879,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Accent color"
 #~ msgstr "एक्सेंट रंग"
 
-#~ msgid "The Double Youpi Admin module manages the administration palette."
-#~ msgstr "Double Youpi का एडमिन मॉड्यूल प्रशासन की पैलेट को संभालता है।"
+#~ msgid "The Double Youpï Admin module manages the administration palette."
+#~ msgstr "Double Youpï का एडमिन मॉड्यूल प्रशासन की पैलेट को संभालता है।"
 
 #~ msgid "Configure →"
 #~ msgstr "कॉन्फ़िगर करें →"
@@ -1899,8 +1951,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Widget provided by a third-party plugin"
 #~ msgstr "तृतीय-पक्ष प्लगइन से प्रदत्त विजेट"
 
-#~ msgid "Double Youpi Dashboard"
-#~ msgstr "Double Youpi डैशबोर्ड"
+#~ msgid "Double Youpï Dashboard"
+#~ msgstr "Double Youpï डैशबोर्ड"
 
 #~ msgid "Customize"
 #~ msgstr "अनुकूलित करें"
@@ -2172,8 +2224,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Standard"
 #~ msgstr "मानक"
 
-#~ msgid "Recommended by Double Youpi"
-#~ msgstr "Double Youpi द्वारा अनुशंसित"
+#~ msgid "Recommended by Double Youpï"
+#~ msgstr "Double Youpï द्वारा अनुशंसित"
 
 #~ msgid "Editor"
 #~ msgstr "संपादक"
@@ -2336,8 +2388,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr ""
 #~ "अंतिम बैकअप की तारीख़, आकार और स्थिति। 7 दिनों से अधिक होने पर लाल हो जाता है।"
 
-#~ msgid "No Double Youpi backup."
-#~ msgstr "कोई Double Youpi बैकअप नहीं।"
+#~ msgid "No Double Youpï backup."
+#~ msgstr "कोई Double Youpï बैकअप नहीं।"
 
 #~ msgid "never"
 #~ msgstr "कभी नहीं"
@@ -2618,11 +2670,11 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 
 #~ msgid ""
 #~ "Visually reorganize your admin navigation: drag chips between lines, hide "
-#~ "items, promote sub-pages to top-level, and toggle Double Youpi styling "
+#~ "items, promote sub-pages to top-level, and toggle Double Youpï styling "
 #~ "per sub-page."
 #~ msgstr ""
 #~ "अपने एडमिन नेविगेशन को दृश्य रूप से पुनर्व्यवस्थित करें: लाइनों के बीच चिप्स खींचें, आइटम "
-#~ "छिपाएँ, उप-पृष्ठों को शीर्ष स्तर पर प्रमोट करें, और प्रति उप-पृष्ठ Double Youpi "
+#~ "छिपाएँ, उप-पृष्ठों को शीर्ष स्तर पर प्रमोट करें, और प्रति उप-पृष्ठ Double Youpï "
 #~ "स्टाइलिंग टॉगल करें।"
 
 #~ msgid ""
@@ -2878,11 +2930,11 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Nothing hidden."
 #~ msgstr "कुछ भी छिपा नहीं है।"
 
-#~ msgid "Double Youpi styling is ON for this page"
-#~ msgstr "इस पृष्ठ के लिए Double Youpi स्टाइलिंग चालू है"
+#~ msgid "Double Youpï styling is ON for this page"
+#~ msgstr "इस पृष्ठ के लिए Double Youpï स्टाइलिंग चालू है"
 
-#~ msgid "Double Youpi styling is OFF for this page"
-#~ msgstr "इस पृष्ठ के लिए Double Youpi स्टाइलिंग बंद है"
+#~ msgid "Double Youpï styling is OFF for this page"
+#~ msgstr "इस पृष्ठ के लिए Double Youpï स्टाइलिंग बंद है"
 
 #~ msgid "New item"
 #~ msgstr "नया आइटम"
@@ -2986,20 +3038,20 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "छवि चुनें"
 
 #~ msgid ""
-#~ "Logo shown above the side menu. If empty, the default Double Youpi logo "
+#~ "Logo shown above the side menu. If empty, the default Double Youpï logo "
 #~ "is used."
 #~ msgstr ""
-#~ "साइड मेन्यू के ऊपर प्रदर्शित लोगो। यदि रिक्त है, तो डिफ़ॉल्ट Double Youpi लोगो "
+#~ "साइड मेन्यू के ऊपर प्रदर्शित लोगो। यदि रिक्त है, तो डिफ़ॉल्ट Double Youpï लोगो "
 #~ "उपयोग किया जाता है।"
 
 #~ msgid "Per-user customization"
 #~ msgstr "प्रति-उपयोगकर्ता अनुकूलन"
 
 #~ msgid ""
-#~ "Let each user enable or disable the Double Youpi admin interface for "
+#~ "Let each user enable or disable the Double Youpï admin interface for "
 #~ "their own account"
 #~ msgstr ""
-#~ "प्रत्येक उपयोगकर्ता को अपने खाते के लिए Double Youpi एडमिन इंटरफ़ेस सक्षम या अक्षम "
+#~ "प्रत्येक उपयोगकर्ता को अपने खाते के लिए Double Youpï एडमिन इंटरफ़ेस सक्षम या अक्षम "
 #~ "करने दें"
 
 #~ msgid ""
@@ -3074,11 +3126,11 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Interface customization"
 #~ msgstr "इंटरफ़ेस अनुकूलन"
 
-#~ msgid "Double Youpi admin interface"
-#~ msgstr "Double Youpi एडमिन इंटरफ़ेस"
+#~ msgid "Double Youpï admin interface"
+#~ msgstr "Double Youpï एडमिन इंटरफ़ेस"
 
-#~ msgid "Enable the Double Youpi admin interface for this account"
-#~ msgstr "इस खाते के लिए Double Youpi एडमिन इंटरफ़ेस सक्षम करें"
+#~ msgid "Enable the Double Youpï admin interface for this account"
+#~ msgstr "इस खाते के लिए Double Youpï एडमिन इंटरफ़ेस सक्षम करें"
 
 #~ msgid ""
 #~ "When disabled, this account uses the standard WordPress admin. The "
@@ -3088,12 +3140,12 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "व्यवस्थापक सेटिंग्स (एक्सेंट रंग, लोगो) फिर भी लागू होती हैं।"
 
 #, php-format
-#~ msgid "[Double Youpi] Backup failed on %s"
-#~ msgstr "[Double Youpi] %s पर बैकअप विफल"
+#~ msgid "[Double Youpï] Backup failed on %s"
+#~ msgstr "[Double Youpï] %s पर बैकअप विफल"
 
 #, php-format
-#~ msgid "[Double Youpi] Backup completed on %s"
-#~ msgstr "[Double Youpi] %s पर बैकअप पूरा हुआ"
+#~ msgid "[Double Youpï] Backup completed on %s"
+#~ msgstr "[Double Youpï] %s पर बैकअप पूरा हुआ"
 
 #, php-format
 #~ msgid "Site     : %s"
@@ -3134,8 +3186,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Full list: %s"
 #~ msgstr "पूरी सूची: %s"
 
-#~ msgid "Email sent automatically by Double Youpi Backups."
-#~ msgstr "Double Youpi Backups द्वारा स्वचालित रूप से भेजा गया ईमेल।"
+#~ msgid "Email sent automatically by Double Youpï Backups."
+#~ msgstr "Double Youpï Backups द्वारा स्वचालित रूप से भेजा गया ईमेल।"
 
 #~ msgid "Creating backup…"
 #~ msgstr "बैकअप बनाया जा रहा है…"
@@ -3157,8 +3209,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Done."
 #~ msgstr "हो गया।"
 
-#~ msgid "Error — see the log."
-#~ msgstr "त्रुटि — लॉग देखें।"
+#~ msgid "Error: see the log."
+#~ msgstr "त्रुटि: लॉग देखें।"
 
 #~ msgid "Permanently delete this backup?"
 #~ msgstr "इस बैकअप को स्थायी रूप से हटाएँ?"
@@ -3287,10 +3339,10 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "स्वचालित डेटाबेस बैकअप"
 
 #~ msgid ""
-#~ "A scheduled DB-only backup. Lightweight — ideal for daily snapshots. Can "
+#~ "A scheduled DB-only backup. Lightweight, ideal for daily snapshots. Can "
 #~ "be sent by email."
 #~ msgstr ""
-#~ "एक निर्धारित केवल-DB बैकअप। हल्का — दैनिक स्नैपशॉट के लिए आदर्श। ईमेल से भेजा जा सकता "
+#~ "एक निर्धारित केवल-DB बैकअप। हल्का, दैनिक स्नैपशॉट के लिए आदर्श। ईमेल से भेजा जा सकता "
 #~ "है।"
 
 #~ msgid "Run an automatic DB-only backup on a schedule"
@@ -3347,10 +3399,10 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "phpseclib पाया गया, SFTP उपलब्ध।"
 
 #~ msgid ""
-#~ "phpseclib not installed — SFTP unavailable. Run composer require "
-#~ "phpseclib/phpseclib to enable."
+#~ "phpseclib not installed: SFTP unavailable. Run composer require phpseclib/"
+#~ "phpseclib to enable."
 #~ msgstr ""
-#~ "phpseclib स्थापित नहीं — SFTP अनुपलब्ध। सक्षम करने के लिए composer require "
+#~ "phpseclib स्थापित नहीं: SFTP अनुपलब्ध। सक्षम करने के लिए composer require "
 #~ "phpseclib/phpseclib चलाएँ।"
 
 #~ msgid "Test connection"
@@ -3505,8 +3557,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "एक-क्लिक पुनर्स्थापन।"
 
 #, php-format
-#~ msgid "[Double Youpi] DB backup — %1$s — %2$s"
-#~ msgstr "[Double Youpi] DB बैकअप — %1$s — %2$s"
+#~ msgid "[Double Youpï] DB backup: %1$s (%2$s)"
+#~ msgstr "[Double Youpï] DB बैकअप: %1$s (%2$s)"
 
 #~ msgid "The compressed SQL dump is attached."
 #~ msgstr "संपीड़ित SQL डंप संलग्न है।"
@@ -3657,10 +3709,10 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "LiteSpeed Web Server पहचाना गया, Brotli और Cache-Control मूल रूप से प्रबंधित हैं।"
 
 #~ msgid ""
-#~ "nginx server detected, .htaccess is not honored — see the docs for the "
+#~ "nginx server detected, .htaccess is not honored: see the docs for the "
 #~ "snippet to paste in nginx.conf."
 #~ msgstr ""
-#~ "nginx सर्वर पहचाना गया, .htaccess का सम्मान नहीं होता — nginx.conf में चिपकाने "
+#~ "nginx सर्वर पहचाना गया, .htaccess का सम्मान नहीं होता: nginx.conf में चिपकाने "
 #~ "हेतु snippet के लिए डॉक देखें।"
 
 #~ msgid "Performance"
@@ -3904,8 +3956,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Staging URL"
 #~ msgstr "स्टेजिंग URL"
 
-#~ msgid "(not configured — Settings tab)"
-#~ msgstr "(कॉन्फ़िगर नहीं — सेटिंग्स टैब)"
+#~ msgid "(not configured, see the Settings tab)"
+#~ msgstr "(कॉन्फ़िगर नहीं, सेटिंग्स टैब)"
 
 #~ msgid "Last sync"
 #~ msgstr "अंतिम सिंक्रोनाइज़ेशन"
@@ -4036,12 +4088,12 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "प्रत्येक क्लोन के बाद एक ईमेल भेजें"
 
 #, php-format
-#~ msgid "[Double Youpi] Staging clone failed from %s"
-#~ msgstr "[Double Youpi] %s से स्टेजिंग क्लोन विफल"
+#~ msgid "[Double Youpï] Staging clone failed from %s"
+#~ msgstr "[Double Youpï] %s से स्टेजिंग क्लोन विफल"
 
 #, php-format
-#~ msgid "[Double Youpi] Staging cloned from %s"
-#~ msgstr "[Double Youpi] %s से स्टेजिंग क्लोन की गई"
+#~ msgid "[Double Youpï] Staging cloned from %s"
+#~ msgstr "[Double Youpï] %s से स्टेजिंग क्लोन की गई"
 
 #, php-format
 #~ msgid "Production : %s"
@@ -4070,8 +4122,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "See details: %s"
 #~ msgstr "विवरण देखें: %s"
 
-#~ msgid "Email sent automatically by Double Youpi Staging."
-#~ msgstr "Double Youpi Staging द्वारा स्वचालित रूप से भेजा गया ईमेल।"
+#~ msgid "Email sent automatically by Double Youpï Staging."
+#~ msgstr "Double Youpï Staging द्वारा स्वचालित रूप से भेजा गया ईमेल।"
 
 #~ msgid "present"
 #~ msgstr "उपस्थित"
@@ -4091,8 +4143,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "ZIP extension (snapshots)"
 #~ msgstr "ZIP एक्सटेंशन (स्नैपशॉट)"
 
-#~ msgid "absent — Revert unavailable"
-#~ msgstr "अनुपस्थित — Revert उपलब्ध नहीं"
+#~ msgid "absent, Revert unavailable"
+#~ msgstr "अनुपस्थित, Revert उपलब्ध नहीं"
 
 #~ msgid "Serving mode"
 #~ msgstr "Serving मोड"
@@ -4103,8 +4155,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid ".htaccess (serving rules)"
 #~ msgstr ".htaccess (serving नियम)"
 
-#~ msgid "nginx — rules ignored (PHP intercept active)"
-#~ msgstr "nginx — नियम अनदेखे (PHP intercept सक्रिय)"
+#~ msgid "nginx: rules ignored (PHP intercept active)"
+#~ msgstr "nginx: नियम अनदेखे (PHP intercept सक्रिय)"
 
 #~ msgid "block installed"
 #~ msgstr "ब्लॉक स्थापित"
@@ -4177,8 +4229,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Open the Static page"
 #~ msgstr "स्टेटिक पृष्ठ खोलें"
 
-#~ msgid "Double Youpi — static site"
-#~ msgstr "Double Youpi — स्टेटिक साइट"
+#~ msgid "Double Youpï: static site"
+#~ msgstr "Double Youpï: स्टेटिक साइट"
 
 #~ msgid "Current mode:"
 #~ msgstr "वर्तमान मोड:"
@@ -4196,10 +4248,10 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "%1$d OK / %2$d विफल"
 
 #~ msgid ""
-#~ "Static serving paused — all visitors are served by WordPress. Generated "
+#~ "Static serving paused: all visitors are served by WordPress. Generated "
 #~ "files stay on disk, ready to be re-activated."
 #~ msgstr ""
-#~ "स्टैटिक सर्विंग रोक दिया गया — सभी विज़िटर्स को सीधे WordPress द्वारा सर्व किया जा "
+#~ "स्टैटिक सर्विंग रोक दिया गया: सभी विज़िटर्स को सीधे WordPress द्वारा सर्व किया जा "
 #~ "रहा है। जनरेट की गई फ़ाइलें डिस्क पर सुरक्षित रहती हैं, फिर से सक्रिय करने के लिए तैयार।"
 
 #~ msgid ""
@@ -4313,8 +4365,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid ".htaccess"
 #~ msgstr ".htaccess"
 
-#~ msgid "nginx — PHP intercept active"
-#~ msgstr "nginx — PHP intercept सक्रिय"
+#~ msgid "nginx: PHP intercept active"
+#~ msgstr "nginx: PHP intercept सक्रिय"
 
 #~ msgid "installed"
 #~ msgstr "स्थापित"
@@ -4985,9 +5037,9 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgstr "इंस्टॉल विफल — इंस्टॉलर खोलें"
 
 #~ msgid ""
-#~ "Double Youpi is shaped by the pros who use it. An idea, a bug, a request?"
+#~ "Double Youpï is shaped by the pros who use it. An idea, a bug, a request?"
 #~ msgstr ""
-#~ "Double Youpi को वही पेशेवर आकार देते हैं जो इसे इस्तेमाल करते हैं। कोई सुझाव, कोई बग, "
+#~ "Double Youpï को वही पेशेवर आकार देते हैं जो इसे इस्तेमाल करते हैं। कोई सुझाव, कोई बग, "
 #~ "कोई अनुरोध?"
 
 #~ msgid "Share feedback"
@@ -5119,16 +5171,6 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "करते हैं, नए सिरे से सोची गई सूचियाँ और संपादक, सभी सूचनाओं के लिए एक ही जगह, एक "
 #~ "डैशबोर्ड जिसे आप स्वयं बनाते हैं, और एक अंतर्निर्मित टूलकिट। केवल नेटिव घटक।"
 
-#~ msgid ""
-#~ "You are already running the full Double Youpi suite, and it includes "
-#~ "Double Youpï Refined Admin Dashboard. This standalone copy stepped aside "
-#~ "to stay out of its way. Want to run it on its own? Deactivate the suite "
-#~ "first."
-#~ msgstr ""
-#~ "आप पहले से ही पूरा Double Youpi सुइट चला रहे हैं, जिसमें Double Youpï Refined "
-#~ "Admin Dashboard शामिल है। यह स्टैंडअलोन प्रति उसके रास्ते से हट गई है। इसे अलग से "
-#~ "चलाना चाहते हैं? पहले सुइट को निष्क्रिय करें।"
-
 #~ msgid "Appearance"
 #~ msgstr "दिखावट"
 
@@ -5254,8 +5296,8 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "This file is too large to be a profile."
 #~ msgstr "यह फ़ाइल प्रोफ़ाइल होने के लिए बहुत बड़ी है।"
 
-#~ msgid "This file is not a Double Youpi admin profile."
-#~ msgstr "यह फ़ाइल Double Youpi एडमिन प्रोफ़ाइल नहीं है।"
+#~ msgid "This file is not a Double Youpï admin profile."
+#~ msgstr "यह फ़ाइल Double Youpï एडमिन प्रोफ़ाइल नहीं है।"
 
 #~ msgid ""
 #~ "This profile was written by a newer version. Update the plugin first."
@@ -5323,11 +5365,13 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 
 #~ msgid ""
 #~ "The menu became a rail with seven sections, lists and the editor were "
-#~ "redrawn, notices moved into one place, and the dashboard is modular. "
-#~ "Everything else is automatic."
+#~ "redrawn, notices moved into one place, and the dashboard is modular. Each "
+#~ "person picks a light or dark theme from the top bar, and everything else "
+#~ "is automatic."
 #~ msgstr ""
 #~ "मेनू सात खंडों वाली रेल बन गया, सूचियाँ और संपादक नए सिरे से बने, सूचनाएँ एक जगह आ गईं "
-#~ "और डैशबोर्ड मॉड्यूलर है। बाकी सब स्वचालित है।"
+#~ "और डैशबोर्ड मॉड्यूलर है। हर व्यक्ति ऊपरी बार से हल्की या गहरी थीम चुनता है, और बाकी "
+#~ "सब स्वचालित है।"
 
 #~ msgid "Got it"
 #~ msgstr "समझ गया"
@@ -5341,8 +5385,126 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ msgid "Export this setup as a profile and import it on the next one."
 #~ msgstr "इस सेटअप को प्रोफ़ाइल के रूप में निर्यात करें और अगली साइट पर आयात करें।"
 
-#~ msgid "Double Youpi · Tools"
-#~ msgstr "Double Youpi · उपकरण"
+#~ msgid "Double Youpï · Tools"
+#~ msgstr "Double Youpï · उपकरण"
 
 #~ msgid "%s detected, we hand control over to it."
 #~ msgstr "%s मिला, हम नियंत्रण उसे सौंप देते हैं।"
+
+#~ msgid "Maintenance"
+#~ msgstr "रखरखाव"
+
+#~ msgid "Add the tab that finds files nothing points to"
+#~ msgstr "वह टैब जोड़ें जो उन फ़ाइलों को ढूँढता है जिनका कोई उपयोग नहीं करता"
+
+#~ msgid ""
+#~ "Setting up several sites? Export this configuration and import it on the "
+#~ "next one."
+#~ msgstr ""
+#~ "कई साइटें सेट कर रहे हैं? इस कॉन्फ़िगरेशन को निर्यात करें और अगली साइट पर आयात करें।"
+
+#~ msgid "Export the profile"
+#~ msgstr "प्रोफ़ाइल निर्यात करें"
+
+#~ msgid "Primary buttons, links and active states."
+#~ msgstr "मुख्य बटन, लिंक और सक्रिय स्थितियाँ।"
+
+#~ msgid "This color is not accepted"
+#~ msgstr "यह रंग स्वीकार नहीं है"
+
+#~ msgid "Logo"
+#~ msgstr "लोगो"
+
+#~ msgid "Above the rail and on the login screen."
+#~ msgstr "रेल के ऊपर और लॉगिन स्क्रीन पर।"
+
+#~ msgid "Without an image, the Double Youpï logo."
+#~ msgstr "छवि के बिना, Double Youpï लोगो।"
+
+#~ msgid "Accent on every menu line"
+#~ msgstr "मेन्यू की हर पंक्ति पर एक्सेंट"
+
+#~ msgid ""
+#~ "The seven sections of the rail take the accent instead of their own color."
+#~ msgstr "रेल के सातों अनुभाग अपने रंग की जगह एक्सेंट रंग लेते हैं।"
+
+#~ msgid "Brand"
+#~ msgstr "ब्रांड"
+
+#~ msgid "Navigation"
+#~ msgstr "नेविगेशन"
+
+#~ msgid "Reimagined"
+#~ msgstr "नए सिरे से सोचा गया"
+
+#~ msgid "Recommended"
+#~ msgstr "अनुशंसित"
+
+#~ msgid "Seven sections, content first."
+#~ msgstr "सात अनुभाग, पहले सामग्री।"
+
+#~ msgid "Native WordPress"
+#~ msgstr "मूल WordPress"
+
+#~ msgid "The menu in WordPress order, for a team used to it."
+#~ msgstr "WordPress के क्रम में मेन्यू, उसकी आदी टीम के लिए।"
+
+#~ msgid ""
+#~ "The Reorganize tab is hidden in native mode. Your layout is kept for when "
+#~ "you switch back."
+#~ msgstr ""
+#~ "मूल मोड में पुनर्व्यवस्थित करें टैब छिपा रहता है। आपकी व्यवस्था वापस लौटने के लिए सुरक्षित "
+#~ "रहती है।"
+
+#~ msgid ""
+#~ "Hover a section of the rail to open its pages next to it. Keyboard: the "
+#~ "right arrow opens, Escape closes."
+#~ msgstr ""
+#~ "रेल के किसी अनुभाग पर होवर करें, उसके पृष्ठ बगल में खुल जाएँगे। कीबोर्ड: दायाँ तीर खोलता "
+#~ "है, Escape बंद करता है।"
+
+#~ msgid "One level"
+#~ msgstr "एक स्तर"
+
+#~ msgid "Two levels"
+#~ msgstr "दो स्तर"
+
+#~ msgid "Team"
+#~ msgstr "टीम"
+
+#~ msgid ""
+#~ "Each person can turn the Double Youpï interface off for their own "
+#~ "account, from their profile. Your settings stay the default."
+#~ msgstr ""
+#~ "हर व्यक्ति अपनी प्रोफ़ाइल से अपने खाते के लिए Double Youpï इंटरफ़ेस बंद कर सकता है। "
+#~ "आपकी सेटिंग्स डिफ़ॉल्ट बनी रहती हैं।"
+
+#~ msgid ""
+#~ "This site’s configuration as one JSON file, to import on the next one."
+#~ msgstr "इस साइट का कॉन्फ़िगरेशन एक JSON फ़ाइल में, अगली साइट पर इम्पोर्ट करने के लिए।"
+
+#~ msgid ""
+#~ "Same checks as this form. The logo keeps its address; the image is not "
+#~ "copied."
+#~ msgstr "इसी फ़ॉर्म जैसी जाँचें। लोगो अपना पता रखता है; छवि कॉपी नहीं होती।"
+
+#~ msgid "The profile carries"
+#~ msgstr "प्रोफ़ाइल में शामिल है"
+
+#~ msgid "Stays with each site"
+#~ msgstr "हर साइट के साथ रहता है"
+
+#~ msgid "Personal choices: theme, rail width"
+#~ msgstr "व्यक्तिगत विकल्प: थीम, रेल की चौड़ाई"
+
+#~ msgid "Dashboard layouts"
+#~ msgstr "डैशबोर्ड की व्यवस्थाएँ"
+
+#~ msgid "Pin the profile in code, on every site"
+#~ msgstr "प्रोफ़ाइल को कोड में पिन करें, हर साइट पर"
+
+#~ msgid "Add to wp-config.php. The settings it covers lock on this page."
+#~ msgstr "wp-config.php में जोड़ें। इसमें शामिल सेटिंग्स इस पृष्ठ पर लॉक हो जाती हैं।"
+
+#~ msgid "Pinned in code"
+#~ msgstr "कोड में पिन किया गया"

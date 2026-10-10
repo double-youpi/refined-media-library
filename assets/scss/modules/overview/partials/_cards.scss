@@ -46,7 +46,11 @@
 		border-radius: var(--dya-r-lg);
 		padding: 16px 18px 14px;
 		isolation: isolate;        // confines the ribbon ::before beneath the content
-		overflow: hidden;
+		// Pas de overflow:hidden : l'infobulle de l'interrupteur est plus large
+		// que la carte, et un découpage ici la tronquerait. Les deux décorations
+		// se chargent elles-mêmes de respecter l'arrondi : le halo ::after
+		// hérite du rayon, et le ruban ::before court de 10px à hauteur-10px,
+		// soit exactement la portion droite du bord, jamais dans l'arrondi.
 		transition: transform var(--dya-t-med) var(--dya-ease),
 		            border-color var(--dya-t-fast) var(--dya-ease),
 		            box-shadow var(--dya-t-med) var(--dya-ease),
@@ -81,6 +85,7 @@
 			content: "";
 			position: absolute;
 			inset: 0;
+			border-radius: inherit;   // se découpe seul, cf. absence de overflow
 			background: radial-gradient(
 				420px circle at var(--mx, 50%) var(--my, 50%),
 				rgba(var(--dya-accent-rgb), .06),
@@ -98,6 +103,7 @@
 		// ── Hover ────────────────────────────────────────────
 		&:hover {
 			transform: translateY(-3px);
+			z-index: 5;               // l'infobulle qui dépasse passe devant les voisines
 			border-color: var(--dya-edge-strong);
 			box-shadow: var(--dya-shadow-md);
 			background: var(--dya-paper);

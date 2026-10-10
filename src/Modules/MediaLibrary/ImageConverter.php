@@ -288,10 +288,12 @@ class ImageConverter extends AbstractModule {
 			$blob = (string) ob_get_clean();
 		} catch ( \Throwable $e ) {
 			ob_end_clean();
-			imagedestroy( $img );
+			unset( $img );
 			throw $e;
 		}
-		imagedestroy( $img );
+		// unset(), not imagedestroy(): a GdImage is freed with its last
+		// reference since PHP 8.0, and PHP 8.5 deprecates imagedestroy().
+		unset( $img );
 
 		if ( ! $ok || $blob === '' ) {
 			return false;

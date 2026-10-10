@@ -309,7 +309,10 @@ body[class*="page_doubleyoupi"] .wrap {
 		border-radius: var(--dya-r-md);
 		border-collapse: separate;
 		border-spacing: 0;
-		overflow: hidden;
+		// `clip`, not `hidden`: same rounded corners, but `hidden` turns the
+		// table into the scroll container of its sticky thead, which RAD then
+		// pushes 86px down onto the first rows (Unused media tab, 10/2026).
+		overflow: clip;
 		box-shadow: none;
 
 		thead th,

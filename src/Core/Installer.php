@@ -19,6 +19,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Installer {
 
 	public static function run(): void {
+		/**
+		 * Première installation, ou montée de version ?
+		 *
+		 * La question se pose avant d'écrire quoi que ce soit, parce que la
+		 * réponse change ce qu'une valeur par défaut veut dire. Sur une
+		 * installation neuve, un défaut est un choix d'éditeur. Sur une
+		 * montée de version, le même défaut écraserait un comportement que
+		 * l'utilisateur avait déjà, et qu'il n'a jamais demandé à perdre.
+		 *
+		 * L'option de version installée est le seul témoin fiable : elle est
+		 * écrite après ce passage, donc son absence signifie « jamais
+		 * installé ».
+		 *
+		 * Un module qui a besoin de faire la différence s'accroche ici.
+		 * L'action part AVANT les valeurs par défaut, pour qu'un module
+		 * puisse poser la sienne et que la boucle ci-dessous la respecte.
+		 *
+		 * @param bool $fresh Vrai si le paquet n'a jamais été installé ici.
+		 */
+		$fresh = ( null === get_option( SoloConfig::installed_version_option(), null ) );
+		do_action( 'doubleyoupi_installing', $fresh );
+
 		foreach ( SoloConfig::option_defaults() as $key => $value ) {
 			if ( get_option( $key, null ) === null ) {
 				add_option( $key, $value );

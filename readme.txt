@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.6
+Stable tag: 0.3.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,7 +106,7 @@ This plugin sends a report to doubleyoupi.com when you use the "Send feedback" t
 
 Reports are kept for 24 months, then deleted, screenshot included. You can ask for access, correction or deletion at any time.
 
-Service provider: Double Youpi, https://doubleyoupi.com
+Service provider: Double Youpï, https://doubleyoupi.com
 Terms of use: https://doubleyoupi.com/terms
 Privacy policy: https://doubleyoupi.com/privacy
 
@@ -122,6 +122,14 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.7 =
+* New: a switch for the duplicate badge, in Settings. The badge reads every uploaded file to recognise one already in the library, so a new install now starts with it off. Sites that already use the plugin keep it on, including after a reinstall.
+* When Double Youpï Refined Admin Dashboard is active, this plugin now steps aside as soon as it loads, and says so. Your folders, collections and settings stay where they are, and the dashboard uses them.
+* Fixed: PHP 8.5 logged a deprecation notice each time an image was converted to WebP or AVIF.
+* The Overview no longer lists modules that are not released yet, and says what turning the media library off would change.
+* The brand is spelled Double Youpï everywhere, menu included.
+* The Preview column of Unused Media no longer cuts its heading short.
 
 = 0.3.6 =
 * Counted messages read properly when there is only one file. "1 files moved to the trash" is gone, in every language, and a count of zero is simply left unsaid rather than announced.
@@ -201,6 +209,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.7 =
+A switch for the duplicate badge, a quieter log on PHP 8.5, and a clean hand-over when Refined Admin Dashboard is active. Your current settings are kept.
 
 = 0.3.6 =
 Wording fix: counted messages now read correctly for a single file.

@@ -20,7 +20,7 @@ final class SoloConfig {
 	}
 
 	public static function version(): string {
-		return '0.3.6';
+		return '0.3.7';
 	}
 
 	public static function installed_version_option(): string {
@@ -41,6 +41,7 @@ final class SoloConfig {
 		'doubleyoupi_ml_webp_upload' => 1,
 		'doubleyoupi_ml_avif_upload' => 0,
 		'doubleyoupi_ml_image_quality' => 82,
+		'doubleyoupi_ml_duplicates' => 0,
 );
 	}
 

@@ -56,10 +56,10 @@
 		width: 2.4em;
 	}
 
-	// Aperçu
+	// Aperçu : 104px, sinon l'en-tête en chasse fixe de RAD se coupe (« PR… »).
 	thead th:nth-child(2),
 	tbody td:nth-child(2) {
-		width: 58px;
+		width: 104px;
 	}
 
 	// Type

@@ -2,6 +2,8 @@
 namespace DoubleYoupi\Modules\MediaLibrary;
 
 use DoubleYoupi\Core\Build;
+use DoubleYoupi\Core\ModuleCatalog;
+use DoubleYoupi\Core\ModuleRegistry;
 
 use DoubleYoupi\Core\AbstractModule;
 
@@ -24,6 +26,7 @@ class Settings extends AbstractModule {
 	public const OPTION_WEBP_UPLOAD   = 'doubleyoupi_ml_webp_upload';
 	public const OPTION_AVIF_UPLOAD   = 'doubleyoupi_ml_avif_upload';
 	public const OPTION_IMAGE_QUALITY = 'doubleyoupi_ml_image_quality';
+	public const OPTION_DUPLICATES    = 'doubleyoupi_ml_duplicates';
 	public const SETTINGS_GROUP       = 'doubleyoupi_media_library';
 
 	private const QUALITY_MIN     = 40;
@@ -48,6 +51,7 @@ class Settings extends AbstractModule {
 		'webp_upload'   => self::OPTION_WEBP_UPLOAD,
 		'avif_upload'   => self::OPTION_AVIF_UPLOAD,
 		'image_quality' => self::OPTION_IMAGE_QUALITY,
+		'duplicates'    => self::OPTION_DUPLICATES,
 	];
 
 	public function boot(): void {
@@ -145,6 +149,11 @@ class Settings extends AbstractModule {
 			'default'           => false,
 			'sanitize_callback' => 'rest_sanitize_boolean',
 		] );
+		register_setting( self::SETTINGS_GROUP, self::OPTION_DUPLICATES, [
+			'type'              => 'boolean',
+			'sanitize_callback' => 'rest_sanitize_boolean',
+			'default'           => false,
+		] );
 		register_setting( self::SETTINGS_GROUP, self::OPTION_IMAGE_QUALITY, [
 			'type'              => 'integer',
 			'default'           => self::QUALITY_DEFAULT,
@@ -174,6 +183,18 @@ class Settings extends AbstractModule {
 
 	public static function avif_upload_enabled(): bool {
 		return (bool) get_option( self::OPTION_AVIF_UPLOAD, false );
+	}
+
+	/**
+	 * Entretien : deux fonctions éteintes par défaut.
+	 *
+	 * Le badge calcule une empreinte à chaque téléversement : ce coût
+	 * permanent ne s'impose pas à une installation neuve. Les installations
+	 * qui l'avaient déjà, du temps où il tournait sans interrupteur, le
+	 * gardent : voir MediaLibrary::backfill_maintenance().
+	 */
+	public static function duplicates_enabled(): bool {
+		return (bool) get_option( self::OPTION_DUPLICATES, false );
 	}
 
 	public static function image_quality(): int {
@@ -244,6 +265,16 @@ class Settings extends AbstractModule {
 							'desc'   => __( 'Fill alt text and title from filename on upload (if empty)', 'doubleyoupi-refined-media-library' ),
 							'icon'   => 'text',
 						] );
+						// Garder la médiathèque propre relève de l'organisation :
+						// le badge prévient au téléversement, avant l'encombrement.
+						self::toggle_card( [
+							'key'    => 'duplicates',
+							'option' => self::OPTION_DUPLICATES,
+							'on'     => self::duplicates_enabled(),
+							'name'   => __( 'Duplicate badge', 'doubleyoupi-refined-media-library' ),
+							'desc'   => __( 'Mark files already in the library, by content', 'doubleyoupi-refined-media-library' ),
+							'icon'   => 'duplicates',
+						] );
 						?>
 					</div>
 				</section>
@@ -282,7 +313,42 @@ class Settings extends AbstractModule {
 					<?php submit_button( __( 'Save changes', 'doubleyoupi-refined-media-library' ), 'primary', 'submit', false ); ?>
 				</p>
 			</form>
+			<?php self::sibling_note(); ?>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Une ligne discrète vers Refined Admin Dashboard, qui embarque cette
+	 * médiathèque et redessine le reste de l'administration.
+	 *
+	 * Uniquement sur cette page, jamais ailleurs : la directive 11 de
+	 * WordPress.org limite ce genre de mention à « the plugin's setting page »,
+	 * et ajoute que la publicité dans l'administration est à éviter. C'est donc
+	 * une information, pas un encart. Elle n'apparaît pas quand le module
+	 * tourne DANS Refined Admin Dashboard ou dans la suite, où elle n'aurait
+	 * aucun sens : la présence du module admin suffit à le dire.
+	 */
+	private static function sibling_note(): void {
+		if ( ModuleRegistry::has( 'admin' ) ) {
+			return;
+		}
+		// Rien à recommander tant que Refined Admin Dashboard n'est pas
+		// publié : « gratuit aussi » renverrait vers une page qui l'annonce
+		// pour bientôt. Le catalogue le passe « available » à sa publication.
+		$admin = ModuleCatalog::find( 'admin' );
+		if ( ! $admin || ( $admin['status'] ?? '' ) !== ModuleCatalog::STATUS_AVAILABLE ) {
+			return;
+		}
+		$url = ModuleCatalog::vitrine( 'admin' )['marketing_url'] ?? '';
+		if ( '' === $url ) {
+			return;
+		}
+		?>
+		<p class="dy-mlset__sibling">
+			<?php esc_html_e( 'Double Youpï Refined Admin Dashboard includes this media library, and redraws the rest of the admin the same way. It is free too.', 'doubleyoupi-refined-media-library' ); ?>
+			<a href="<?php echo esc_url( $url ); ?>" rel="noopener"><?php esc_html_e( 'Read about it', 'doubleyoupi-refined-media-library' ); ?></a>
+		</p>
 		<?php
 	}
 
@@ -359,6 +425,8 @@ class Settings extends AbstractModule {
 			'text'        => '<path d="M5 6V4h14v2"/><path d="M9 20h6"/><path d="M12 4v16"/>',
 			'image'       => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L6 20"/>',
 			'quality'     => '<path d="M4 21v-6M4 11V3M12 21v-9M12 8V3M20 21v-4M20 13V3M1 15h6M9 8h6M17 17h6"/>',
+			'duplicates'  => '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
+			'orphans'     => '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="m10 11 4 4M14 11l-4 4"/>',
 		];
 		$p = $icons[ $name ] ?? '';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static controlled SVG, no user input involved.

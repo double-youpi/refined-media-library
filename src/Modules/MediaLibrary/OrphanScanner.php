@@ -388,7 +388,7 @@ class OrphanScanner extends AbstractModule {
 		}
 		global $wpdb;
 
-		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- caller caches the whole scan in a transient; table names come from $wpdb properties and every value is bound via $wpdb->prepare()
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, PluginCheck.Security.DirectDB.UnescapedDBParameter -- caller caches the whole scan in a transient; table names come from $wpdb properties; the query is a fixed template whose only variable part is N copies of a fixed column name followed by `LIKE %s`, and every value is bound via $wpdb->prepare()
 		foreach ( array_chunk( $needles, 50, true ) as $batch ) {
 			$conditions = implode( ' OR ', array_fill( 0, count( $batch ), $column . ' LIKE %s' ) );
 			$like_args  = array_map(
@@ -396,9 +396,10 @@ class OrphanScanner extends AbstractModule {
 				array_values( $batch )
 			);
 
-			$matched = (array) $wpdb->get_col(
-				$wpdb->prepare( str_replace( '%CONDITIONS%', $conditions, $sql ), $like_args )
-			);
+			// The marker is swapped before prepare() sees the query, so the only
+			// placeholders it receives are the `%s` of each LIKE clause.
+			$query   = str_replace( '%CONDITIONS%', $conditions, $sql );
+			$matched = (array) $wpdb->get_col( $wpdb->prepare( $query, $like_args ) );
 			if ( empty( $matched ) ) {
 				continue;
 			}
@@ -410,7 +411,7 @@ class OrphanScanner extends AbstractModule {
 				}
 			}
 		}
-		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, PluginCheck.Security.DirectDB.UnescapedDBParameter
 	}
 
 	/**
@@ -434,7 +435,7 @@ class OrphanScanner extends AbstractModule {
 		}
 		global $wpdb;
 
-		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- caller caches the whole scan in a transient; table names come from $wpdb properties and every value is bound via $wpdb->prepare()
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, PluginCheck.Security.DirectDB.UnescapedDBParameter -- caller caches the whole scan in a transient; table names come from $wpdb properties; the query is a fixed template whose only variable part is N copies of a fixed column name followed by `LIKE %s`, and every value is bound via $wpdb->prepare()
 		foreach ( array_chunk( $ids, 50 ) as $batch ) {
 			$likes = [];
 			foreach ( $batch as $id ) {
@@ -467,11 +468,10 @@ class OrphanScanner extends AbstractModule {
 				"SELECT option_value FROM {$wpdb->options} WHERE (%CONDITIONS%)" => 'option_value',
 			] as $sql => $column ) {
 				$conditions = implode( ' OR ', array_fill( 0, count( $likes ), $column . ' LIKE %s' ) );
+				$query      = str_replace( '%CONDITIONS%', $conditions, $sql );
 				$rows[]     = implode(
 					"\n",
-					(array) $wpdb->get_col(
-						$wpdb->prepare( str_replace( '%CONDITIONS%', $conditions, $sql ), $likes )
-					)
+					(array) $wpdb->get_col( $wpdb->prepare( $query, $likes ) )
 				);
 			}
 
@@ -495,7 +495,7 @@ class OrphanScanner extends AbstractModule {
 				}
 			}
 		}
-		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, PluginCheck.Security.DirectDB.UnescapedDBParameter
 	}
 
 	/**

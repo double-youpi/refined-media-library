@@ -526,7 +526,6 @@
 // classes BEM à 0,1,0). Ces cartes gèrent leur propre espacement vertical →
 // on annule uniquement la marge HAUTE (marge basse conservée). Demande Raphaël.
 body.dy-admin .wrap {
-	.dy-overview__upnext-name,
 	.dy-overview__support-title,
 	.dy-overview__feedback-title { margin-top: 0; }
 }
