@@ -4,6 +4,7 @@ namespace DoubleYoupi\Modules\MediaLibrary;
 use DoubleYoupi\Core\Build;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Kses;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,7 +43,7 @@ class OrphanAdminPage extends AbstractModule {
 		// Load only on the Refined Media Library page, orphans tab.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$is_ml_page    = str_contains( $hook, 'doubleyoupi-media-library' );
-		$is_orphan_tab = ( $_GET['tab'] ?? 'settings' ) === 'orphans'; // phpcs:ignore
+		$is_orphan_tab = isset( $_GET['tab'] ) && 'orphans' === sanitize_key( wp_unslash( $_GET['tab'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only tab selection.
 
 		if ( ! $is_ml_page || ! $is_orphan_tab ) {
 			return;
@@ -212,8 +213,7 @@ class OrphanAdminPage extends AbstractModule {
 				<tbody id="dy-orphan-trash-tbody">
 					<?php
 					foreach ( $trashed as $post ) {
-						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- self::trash_row_html() escapes every field it prints.
-						echo self::trash_row_html( $post );
+						echo wp_kses( self::trash_row_html( $post ), Kses::ui_tags() );
 					}
 					?>
 				</tbody>

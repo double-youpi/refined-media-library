@@ -220,7 +220,7 @@ final class OverviewPage {
 
 		// sanitize_key preserves hyphens in module IDs (media-library, seo-a11y…).
 		$module_id = isset( $_POST['module_id'] ) ? sanitize_key( wp_unslash( $_POST['module_id'] ) ) : '';
-		$enabled   = isset( $_POST['enabled'] ) && '1' === $_POST['enabled'];
+		$enabled   = isset( $_POST['enabled'] ) && '1' === sanitize_text_field( wp_unslash( $_POST['enabled'] ) );
 
 		if ( ! in_array( $module_id, ModuleCatalog::available_ids(), true ) ) {
 			wp_send_json_error( [ 'message' => __( 'Unknown module.', 'doubleyoupi-refined-media-library' ) ], 400 );
@@ -361,10 +361,10 @@ final class OverviewPage {
 				}
 				?>
 				<?php if ( '' !== $plugin_name ) : ?>
-					<span class="dy-overview__brand"><?php echo $brand_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					<span class="dy-overview__brand"><?php echo wp_kses( $brand_html, Kses::ui_tags() ); ?></span>
 					<h1 class="dy-overview__title dy-overview__title--solo"><?php echo esc_html( $plugin_name ); ?></h1>
 				<?php else : ?>
-					<h1 class="dy-overview__title"><?php echo $brand_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h1>
+					<h1 class="dy-overview__title"><?php echo wp_kses( $brand_html, Kses::ui_tags() ); ?></h1>
 				<?php endif; ?>
 				<p class="dy-overview__tagline">
 					<?php echo esc_html( $tagline ); ?>
@@ -502,7 +502,7 @@ final class OverviewPage {
 		     style="--dya-card-i: <?php echo (int) $index; ?>;">
 			<div class="dy-overview__card-head">
 				<span class="dy-overview__icon-tile" aria-hidden="true">
-					<?php echo $icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
+					<?php echo wp_kses( $icon_svg, Kses::svg_tags() ); ?>
 				</span>
 				<span class="dy-overview__status"><?php echo esc_html( $status_label ); ?></span>
 			</div>
@@ -624,7 +624,7 @@ final class OverviewPage {
 		     style="--dya-card-i: <?php echo (int) $index; ?>;">
 			<div class="dy-overview__card-head">
 				<span class="dy-overview__icon-tile" aria-hidden="true">
-					<?php echo $icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped SVG markup from IconSprite::svg() ?>
+					<?php echo wp_kses( $icon_svg, Kses::svg_tags() ); ?>
 				</span>
 				<span class="dy-overview__badge dy-overview__badge--<?php echo esc_attr( $badge_mod ); ?>">
 					<?php echo esc_html( $badge_label ); ?>
@@ -750,7 +750,7 @@ final class OverviewPage {
 								[ 'b' => [] ]
 							),
 							esc_html( $author ),
-							$studio // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped anchor built with esc_url() + esc_html() above
+							wp_kses( $studio, Kses::ui_tags() )
 						);
 					} else {
 						printf(

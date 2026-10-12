@@ -123,7 +123,7 @@ final class Feedback {
 	private static function render_tab(): void {
 		?>
 <button type="button" class="dy-feedback-tab" id="dy-feedback-tab" aria-haspopup="dialog" aria-controls="dy-feedback" title="<?php echo esc_attr( self::title() ); ?>">
-	<span class="dy-feedback-tab__icon" aria-hidden="true"><?php echo self::brand_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- inline SVG from the plugin's own asset, attributes rewritten by preg_replace. ?></span>
+	<span class="dy-feedback-tab__icon" aria-hidden="true"><?php echo wp_kses( self::brand_icon(), Kses::svg_tags() ); ?></span>
 	<span class="dy-feedback-tab__label"><?php echo esc_html( _x( 'Feedback', 'admin bar button', 'doubleyoupi-refined-media-library' ) ); ?></span>
 </button>
 		<?php

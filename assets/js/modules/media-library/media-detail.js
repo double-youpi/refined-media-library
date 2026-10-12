@@ -712,14 +712,14 @@
 	// ── Location helpers ───────────────────────────────────────────────────
 
 	function getFolderName( id ) {
-		var st = window.dyMediaState;
+		var st = window.doubleyoupiMediaState;
 		if ( ! st || ! st.folders ) { return '#' + id; }
 		var found = st.folders.filter( function ( f ) { return f.id === id; } )[ 0 ];
 		return found ? found.name : '#' + id;
 	}
 
 	function getCollectionName( id ) {
-		var st = window.dyMediaState;
+		var st = window.doubleyoupiMediaState;
 		if ( ! st || ! st.collections ) { return '#' + id; }
 		var found = st.collections.filter( function ( c ) { return c.id === id; } )[ 0 ];
 		return found ? found.name : '#' + id;
@@ -810,7 +810,7 @@
 			headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': nonce },
 			body:    JSON.stringify( { attachment_ids: [ attId ] } ),
 		} ).then( function () {
-			if ( window.dyReloadFolders ) { window.dyReloadFolders(); }
+			if ( window.doubleyoupiReloadFolders ) { window.doubleyoupiReloadFolders(); }
 		} );
 		if ( trigger ) {
 			trigger.setAttribute( 'data-current', folderId );
@@ -821,7 +821,7 @@
 
 	function openFolderPopover( trigger, attId, currentId ) {
 		closeFolderPopover();
-		var st    = window.dyMediaState;
+		var st    = window.doubleyoupiMediaState;
 		var roots = buildFolderTreeData( ( st && st.folders ) ? st.folders : [] );
 
 		var pop = document.createElement( 'div' );
@@ -871,7 +871,7 @@
 	}
 
 	function buildCollectionsSection( collectionIds, attId ) {
-		var st          = window.dyMediaState;
+		var st          = window.doubleyoupiMediaState;
 		var collections = ( st && st.collections ) ? st.collections : [];
 
 		var tags = collectionIds.map( function ( cid ) {
@@ -956,7 +956,7 @@
 				// recompute itself (in particular, the add-to-collection select
 				// reappears when all collections were already assigned).
 				fetchAndRender( attId );
-				if ( window.dyReloadCollections ) { window.dyReloadCollections(); }
+				if ( window.doubleyoupiReloadCollections ) { window.doubleyoupiReloadCollections(); }
 			} );
 		} );
 
@@ -974,7 +974,7 @@
 			} ).then( function () {
 				// Refresh the detail panel to reflect updated collections
 				fetchAndRender( attId );
-				if ( window.dyReloadCollections ) { window.dyReloadCollections(); }
+				if ( window.doubleyoupiReloadCollections ) { window.doubleyoupiReloadCollections(); }
 			} );
 		} );
 	}
@@ -1079,8 +1079,8 @@
 			// answers in place, the toast is the signal the user learns to trust,
 			// and it would be odd for it to go missing on the one save they asked
 			// for explicitly.
-			if ( window.dyShowToast ) {
-				window.dyShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
+			if ( window.doubleyoupiShowToast ) {
+				window.doubleyoupiShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
 			}
 
 			// What was just saved becomes the new reference, so the button
@@ -1137,13 +1137,13 @@
 
 		persistFields( leavingId, collectFields() )
 			.then( function () {
-				if ( window.dyShowToast ) {
-					window.dyShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
+				if ( window.doubleyoupiShowToast ) {
+					window.doubleyoupiShowToast( i18n.savedOnLeave || 'Changes saved', 'success' );
 				}
 			} )
 			.catch( function () {
-				if ( window.dyShowToast ) {
-					window.dyShowToast( i18n.saveOnLeaveFailed || 'Could not save your changes', 'error' );
+				if ( window.doubleyoupiShowToast ) {
+					window.doubleyoupiShowToast( i18n.saveOnLeaveFailed || 'Could not save your changes', 'error' );
 				}
 			} );
 	}
@@ -1166,7 +1166,7 @@
 	}
 
 	function deleteAttachment( id ) {
-		window.dyDialog.confirm( {
+		window.doubleyoupiDialog.confirm( {
 			title:        i18n.deleteAction,
 			message:      i18n.deleteFileConfirm,
 			confirmLabel: i18n.deleteAction,
@@ -1187,7 +1187,7 @@
 				closePanel();
 			} )
 			.catch( function () {
-				window.dyDialog.alert( { title: i18n.deleteFileFailed } );
+				window.doubleyoupiDialog.alert( { title: i18n.deleteFileFailed } );
 			} );
 		} );
 	}

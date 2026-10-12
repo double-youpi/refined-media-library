@@ -54,13 +54,13 @@
 	/*
 	 * Shared state — readable by media-detail.js and other scripts.
 	 */
-	window.dyMediaState = window.dyMediaState || {
+	window.doubleyoupiMediaState = window.doubleyoupiMediaState || {
 		currentFolder:     0,
 		currentCollection: null,
 		folders:           [],
 		collections:       [],
 	};
-	var dyState = window.dyMediaState;
+	var dyState = window.doubleyoupiMediaState;
 
 	/*
 	 * ── Reveal curtain handshake ────────────────────────────────────────────
@@ -499,7 +499,7 @@
 			} ).get().filter( function ( v ) { return !! v; } );
 
 			if ( ! ids.length ) {
-				window.dyDialog.alert( { title: i18n.noItemsSelected || 'No media selected.' } );
+				window.doubleyoupiDialog.alert( { title: i18n.noItemsSelected || 'No media selected.' } );
 				return;
 			}
 
@@ -1362,7 +1362,7 @@
 		 * Every mutation that can move these totals already ends here: a file
 		 * dropped on a folder, a folder deleted, an upload (through
 		 * dyRefreshCountsSoon), a change from the details pane (through
-		 * window.dyReloadFolders). Hanging the counts off the same point means
+		 * window.doubleyoupiReloadFolders). Hanging the counts off the same point means
 		 * they inherit that whole web for free, instead of being refreshed at
 		 * ten sites and forgotten at the eleventh.
 		 *
@@ -1500,7 +1500,7 @@
 	// ── Folder drag: re-parent (drop INTO) + reorder (drop BETWEEN) ────────────
 	//
 	// Distinct from media drag (which uses `application/x-dy-media` + the
-	// document-level dyDragIds dispatch). Folder drag keys on `folderDrag`.
+	// document-level doubleyoupiDragIds dispatch). Folder drag keys on `folderDrag`.
 
 	var folderDrag      = null; // { id, el }
 	var autoExpandTimer = null;
@@ -1682,7 +1682,7 @@
 		var parent = ( typeof parentId === 'number' )
 			? parentId
 			: ( dyState.currentFolder > 0 ? dyState.currentFolder : 0 );
-		window.dyDialog.prompt( {
+		window.doubleyoupiDialog.prompt( {
 			title:        i18n.newFolder,
 			label:        i18n.folderName,
 			confirmLabel: i18n.create,
@@ -1697,7 +1697,7 @@
 	}
 
 	function renameFolder( id, current ) {
-		window.dyDialog.prompt( {
+		window.doubleyoupiDialog.prompt( {
 			title:        i18n.rename,
 			label:        i18n.folderName,
 			value:        current,
@@ -1710,7 +1710,7 @@
 	}
 
 	function deleteFolder( id, name ) {
-		window.dyDialog.confirm( {
+		window.doubleyoupiDialog.confirm( {
 			title:        i18n.delete,
 			message:      fmt( i18n.deleteFolderConfirm, name ),
 			confirmLabel: i18n.deleteAction,
@@ -1944,7 +1944,7 @@
 	// ── Collection CRUD ───────────────────────────────────────────────────────
 
 	function onAddCollection() {
-		window.dyDialog.prompt( {
+		window.doubleyoupiDialog.prompt( {
 			title:        i18n.newCollection || 'New collection',
 			label:        i18n.collectionName,
 			confirmLabel: i18n.create,
@@ -1957,7 +1957,7 @@
 	}
 
 	function renameCollection( id, current ) {
-		window.dyDialog.prompt( {
+		window.doubleyoupiDialog.prompt( {
 			title:        i18n.renameCollection || 'Rename',
 			label:        i18n.collectionName,
 			value:        current,
@@ -1971,7 +1971,7 @@
 	}
 
 	function deleteCollection( id, name ) {
-		window.dyDialog.confirm( {
+		window.doubleyoupiDialog.confirm( {
 			title:        i18n.deleteCollection || 'Delete collection',
 			message:      fmt( i18n.deleteCollectionConfirm, name ),
 			confirmLabel: i18n.deleteAction,
@@ -2010,7 +2010,7 @@
 	 * If the dragged attachment is in the WP selection, use all selected.
 	 * Otherwise, just the single dragged item.
 	 *
-	 * We store in window.dyDragIds so drop handlers can read them.
+	 * We store in window.doubleyoupiDragIds so drop handlers can read them.
 	 */
 	$( document ).on( 'dragstart', '.attachments .attachment', function ( e ) {
 		// WP uses data-id (not id="post-N") on its Backbone-rendered .attachment elements.
@@ -2026,7 +2026,7 @@
 			selectedIds = [ id ];
 		}
 
-		window.dyDragIds = selectedIds;
+		window.doubleyoupiDragIds = selectedIds;
 
 		/*
 		 * Set a custom data type so WP's uploader overlay (which triggers on
@@ -2047,7 +2047,7 @@
 	} );
 
 	$( document ).on( 'dragend', '.attachments .attachment', function () {
-		window.dyDragIds = null;
+		window.doubleyoupiDragIds = null;
 		$( 'body' ).removeClass( 'dy-dragging-media' );
 	} );
 
@@ -2066,7 +2066,7 @@
 	var dyHoveredTarget = null;
 
 	document.addEventListener( 'dragenter', function ( e ) {
-		if ( ! window.dyDragIds || ! window.dyDragIds.length ) { return; }
+		if ( ! window.doubleyoupiDragIds || ! window.doubleyoupiDragIds.length ) { return; }
 		var t = e.target.closest && e.target.closest( '.dy-collection-item, .dy-folder-item, .dy-show-all' );
 		if ( t ) {
 			dyHoveredTarget = t;
@@ -2075,7 +2075,7 @@
 	}, true );
 
 	document.addEventListener( 'dragleave', function ( e ) {
-		if ( ! window.dyDragIds ) { return; }
+		if ( ! window.doubleyoupiDragIds ) { return; }
 		var t = e.target.closest && e.target.closest( '.dy-collection-item, .dy-folder-item, .dy-show-all' );
 		if ( t && ! t.contains( e.relatedTarget ) ) {
 			t.classList.remove( 'dy-drop-target' );
@@ -2084,7 +2084,7 @@
 
 	// Globally allow drop during media drag (preventDefault on every dragover)
 	document.addEventListener( 'dragover', function ( e ) {
-		if ( window.dyDragIds && window.dyDragIds.length ) {
+		if ( window.doubleyoupiDragIds && window.doubleyoupiDragIds.length ) {
 			e.preventDefault();
 		}
 	}, true );
@@ -2092,8 +2092,8 @@
 	// Centralized drop handler — dispatches to the right action based on the
 	// LAST hovered target (which is more reliable than e.target at release time).
 	document.addEventListener( 'drop', function ( e ) {
-		if ( ! window.dyDragIds || ! window.dyDragIds.length ) { return; }
-		var ids = window.dyDragIds.slice();
+		if ( ! window.doubleyoupiDragIds || ! window.doubleyoupiDragIds.length ) { return; }
+		var ids = window.doubleyoupiDragIds.slice();
 		var target = dyHoveredTarget || ( e.target.closest && e.target.closest( '.dy-collection-item, .dy-folder-item, .dy-show-all' ) );
 
 
@@ -2113,7 +2113,7 @@
 		}, 100 );
 
 		if ( ! target ) {
-			window.dyDragIds = null;
+			window.doubleyoupiDragIds = null;
 			dyHoveredTarget = null;
 			$( 'body' ).removeClass( 'dy-dragging-media' );
 			return;
@@ -2123,7 +2123,7 @@
 		document.querySelectorAll( '.dy-drop-target' ).forEach( function ( el ) {
 			el.classList.remove( 'dy-drop-target' );
 		} );
-		window.dyDragIds = null;
+		window.doubleyoupiDragIds = null;
 		dyHoveredTarget = null;
 		$( 'body' ).removeClass( 'dy-dragging-media' );
 
@@ -2237,7 +2237,7 @@
 			selectedIds = [ id ];
 		}
 
-		window.dyDragIds = selectedIds;
+		window.doubleyoupiDragIds = selectedIds;
 
 		var dt = e.originalEvent.dataTransfer;
 		try { dt.clearData(); } catch ( _e ) {}
@@ -2250,7 +2250,7 @@
 	} );
 
 	$( document ).on( 'dragend', '#the-list tr', function () {
-		window.dyDragIds = null;
+		window.doubleyoupiDragIds = null;
 		$( 'body' ).removeClass( 'dy-dragging-media' );
 	} );
 
@@ -2369,7 +2369,7 @@
 
 	function openBulkFolderPicker( ids ) {
 		var folders = dyState.folders || [];
-		if ( ! folders.length ) { window.dyDialog.alert( { title: i18n.noFoldersYet } ); return; }
+		if ( ! folders.length ) { window.doubleyoupiDialog.alert( { title: i18n.noFoldersYet } ); return; }
 
 		var opts = '<option value="0">' + esc( i18n.rootNoFolder ) + '</option>';
 		folders.forEach( function ( f ) {
@@ -2414,7 +2414,7 @@
 
 	function openBulkCollectionPicker( ids ) {
 		var collections = dyState.collections || [];
-		if ( ! collections.length ) { window.dyDialog.alert( { title: i18n.noCollectionsYet } ); return; }
+		if ( ! collections.length ) { window.doubleyoupiDialog.alert( { title: i18n.noCollectionsYet } ); return; }
 
 		var opts = '<option value="">' + esc( i18n.chooseCollection ) + '</option>';
 		collections.forEach( function ( c ) {
@@ -2653,7 +2653,7 @@
 	 * propagate to the AJAX request.
 	 *
 	 * This hook intercepts wp.media.ajax to inject our params from the global
-	 * window.dyMediaState — bypassing the whitelist entirely.
+	 * window.doubleyoupiMediaState — bypassing the whitelist entirely.
 	 */
 	function initMediaAjaxHook() {
 		if ( ! window.wp || ! wp.media || ! wp.media.ajax ) { return; }
@@ -2721,10 +2721,10 @@
 			setTimeout( function () { $toast.remove(); }, 300 );
 		}, 2800 );
 	}
-	window.dyShowToast = showToast;
+	window.doubleyoupiShowToast = showToast;
 
 	// Expose reload functions for other scripts
-	window.dyReloadFolders     = loadFolderTree;
-	window.dyReloadCollections = loadCollections;
+	window.doubleyoupiReloadFolders     = loadFolderTree;
+	window.doubleyoupiReloadCollections = loadCollections;
 
 } )( jQuery, window );

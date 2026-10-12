@@ -6,6 +6,7 @@ use DoubleYoupi\Core\ModuleCatalog;
 use DoubleYoupi\Core\ModuleRegistry;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Kses;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -73,8 +74,7 @@ class Settings extends AbstractModule {
 		if ( ! isset( self::KEY_MAP[ $key ] ) ) {
 			wp_send_json_error( [ 'message' => 'unknown_key' ] );
 		}
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$raw = isset( $_POST['value'] ) ? wp_unslash( $_POST['value'] ) : '';
+		$raw = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( (string) $_POST['value'] ) ) : '';
 
 		if ( 'image_quality' === $key ) {
 			$value = $this->sanitize_quality( $raw );
@@ -429,7 +429,6 @@ class Settings extends AbstractModule {
 			'orphans'     => '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="m10 11 4 4M14 11l-4 4"/>',
 		];
 		$p = $icons[ $name ] ?? '';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static controlled SVG, no user input involved.
-		echo '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' . $p . '</svg>';
+		echo wp_kses( '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' . $p . '</svg>', Kses::svg_tags() );
 	}
 }

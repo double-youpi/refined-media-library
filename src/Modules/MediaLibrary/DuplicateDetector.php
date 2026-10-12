@@ -57,7 +57,7 @@ class DuplicateDetector extends AbstractModule {
 		$js = Build::dir( __FILE__, 'assets/js/modules/media-library/duplicate-badge.js' );
 		if ( file_exists( $js ) ) {
 			wp_enqueue_script(
-				'dy-duplicate-badge',
+				'doubleyoupi-duplicate-badge',
 				Build::url( __FILE__, 'assets/js/modules/media-library/duplicate-badge.js' ),
 				[ 'jquery', 'media-views' ],
 				DOUBLEYOUPI_VERSION,

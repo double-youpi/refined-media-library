@@ -130,7 +130,7 @@ class FolderManager extends AbstractModule {
 	 * in <head> (right after the stylesheet) so it applies before paint; the
 	 * transition rule is part of it so the reveal stays smooth.
 	 *
-	 * Returns the minified CSS payload (no <style> wrapper — the API adds it).
+	 * Returns the minified CSS payload (no style wrapper — the API adds it).
 	 */
 	private static function reveal_curtain_css(): string {
 		return 'body.upload-php:not(.dy-ml-ready) .wrap{opacity:0;transform:translateY(6px);pointer-events:none}'
@@ -247,10 +247,10 @@ class FolderManager extends AbstractModule {
 
 		// Supplementary scripts that depend on doubleyoupiMediaFolders.
 		foreach ( [
-			'dy-where-used'    => 'where-used.js',
-			'dy-bulk-metadata' => 'bulk-metadata.js',
-			'dy-media-filters' => 'media-filters.js',
-			'dy-media-detail'  => 'media-detail.js',
+			'doubleyoupi-where-used'    => 'where-used.js',
+			'doubleyoupi-bulk-metadata' => 'bulk-metadata.js',
+			'doubleyoupi-media-filters' => 'media-filters.js',
+			'doubleyoupi-media-detail'  => 'media-detail.js',
 		] as $handle => $filename ) {
 			$path = Build::dir( __FILE__, 'assets/js/modules/media-library/' ) . $filename;
 			if ( file_exists( $path ) ) {
@@ -306,15 +306,21 @@ class FolderManager extends AbstractModule {
 	 * (loadFolderTree / loadCollections triggered by the JS `FileUploaded` event).
 	 */
 	public function assign_taxonomies_on_upload( int $post_id ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$folder_id = isset( $_POST['doubleyoupi_folder_id'] ) ? (int) $_POST['doubleyoupi_folder_id'] : 0;
+		// The upload request itself is nonce-checked by WordPress (async-upload.php,
+		// media_handle_upload); filing the file needs the right to edit it.
+		if ( ! current_user_can( 'upload_files' ) || ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- see above.
+		$folder_id = isset( $_POST['doubleyoupi_folder_id'] ) ? absint( wp_unslash( $_POST['doubleyoupi_folder_id'] ) ) : 0;
 		if ( $folder_id > 0 && term_exists( $folder_id, FolderTaxonomy::TAXONOMY ) ) {
 			wp_set_object_terms( $post_id, [ $folder_id ], FolderTaxonomy::TAXONOMY );
 			wp_update_term_count_now( [ $folder_id ], FolderTaxonomy::TAXONOMY );
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$collection_id = isset( $_POST['doubleyoupi_collection_id'] ) ? (int) $_POST['doubleyoupi_collection_id'] : 0;
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- see above.
+		$collection_id = isset( $_POST['doubleyoupi_collection_id'] ) ? absint( wp_unslash( $_POST['doubleyoupi_collection_id'] ) ) : 0;
 		if ( $collection_id > 0 && term_exists( $collection_id, CollectionTaxonomy::TAXONOMY ) ) {
 			// append=true: a media file can belong to multiple collections.
 			wp_set_object_terms( $post_id, [ $collection_id ], CollectionTaxonomy::TAXONOMY, true );

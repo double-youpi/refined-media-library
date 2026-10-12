@@ -253,7 +253,7 @@
 	// -- 4. Rollback ----------------------------------------------------------
 
 	function doRollback( src ) {
-		window.dyDialog.confirm( {
+		window.doubleyoupiDialog.confirm( {
 			title:        t( 'rollbackConfirm' ),
 			confirmLabel: t( 'rollback' ),
 			cancelLabel:  t( 'cancel' ),

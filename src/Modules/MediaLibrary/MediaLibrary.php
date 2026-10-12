@@ -165,7 +165,7 @@ class MediaLibrary extends AbstractModule {
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'settings';
+		$current_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'settings';
 		$page_url    = admin_url( 'admin.php?page=doubleyoupi-media-library' );
 
 		$tabs = [

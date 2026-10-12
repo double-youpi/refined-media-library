@@ -53,8 +53,9 @@ final class IconSprite {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo file_get_contents( $path );
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local file shipped with the plugin.
+		// The file opens with an authoring comment, which wp_kses() would turn into text.
+		echo wp_kses( (string) preg_replace( '/<!--.*?-->/s', '', (string) file_get_contents( $path ) ), Kses::svg_tags() );
 	}
 
 	/**

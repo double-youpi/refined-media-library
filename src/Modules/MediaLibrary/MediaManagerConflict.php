@@ -2,6 +2,7 @@
 namespace DoubleYoupi\Modules\MediaLibrary;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Kses;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -291,7 +292,7 @@ class MediaManagerConflict extends AbstractModule {
 		printf(
 			'<div class="notice notice-info"><p>%1$s %2$s<a href="%3$s" class="button" style="margin-left:6px">%4$s</a></p></div>',
 			esc_html( $message ),
-			$import, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- assembled above from escaped parts.
+			wp_kses( $import, Kses::ui_tags() ),
 			esc_url( $url ),
 			esc_html( $button )
 		);
@@ -301,7 +302,7 @@ class MediaManagerConflict extends AbstractModule {
 	 * When RML owns, hide every active competitor's UI on upload.php.
 	 *
 	 * Emitted as inline CSS via the styles API (a registered src-less handle),
-	 * rather than echoing a <style> tag, per the WP.org enqueue guideline. The
+	 * rather than echoing a style tag, per the WP.org enqueue guideline. The
 	 * payload is a static literal assembled from class constants.
 	 */
 	public function enqueue_neutralize_css(): void {

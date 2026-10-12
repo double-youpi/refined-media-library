@@ -4,10 +4,10 @@
  * Drop-in, on-brand replacement for the browser's native window.confirm /
  * window.prompt / window.alert, styled to match the dark RML admin theme.
  *
- * Exposes window.dyDialog with three Promise-returning methods:
- *   dyDialog.confirm({ title, message, confirmLabel, cancelLabel, danger })  -> Promise<boolean>
- *   dyDialog.prompt({ title, label, value, placeholder, confirmLabel, cancelLabel }) -> Promise<string|null>
- *   dyDialog.alert({ title, message, okLabel })  -> Promise<void>
+ * Exposes window.doubleyoupiDialog with three Promise-returning methods:
+ *   doubleyoupiDialog.confirm({ title, message, confirmLabel, cancelLabel, danger })  -> Promise<boolean>
+ *   doubleyoupiDialog.prompt({ title, label, value, placeholder, confirmLabel, cancelLabel }) -> Promise<string|null>
+ *   doubleyoupiDialog.alert({ title, message, okLabel })  -> Promise<void>
  *
  * Vanilla JS, no dependencies. Focus-trapped, Esc to cancel, Enter to confirm,
  * backdrop click cancels, focus is restored to the opener on close.
@@ -15,7 +15,7 @@
 ( function ( window, document ) {
 	'use strict';
 
-	if ( window.dyDialog ) { return; }
+	if ( window.doubleyoupiDialog ) { return; }
 
 	var REDUCED = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 	var active  = null; // { overlay, resolve, opener }
@@ -144,7 +144,7 @@
 		} );
 	}
 
-	window.dyDialog = {
+	window.doubleyoupiDialog = {
 		confirm: function ( opts ) { return open( 'confirm', opts ); },
 		prompt:  function ( opts ) { return open( 'prompt', opts ); },
 		alert:   function ( opts ) { return open( 'alert', opts ); }

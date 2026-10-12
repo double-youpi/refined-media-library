@@ -285,16 +285,18 @@ class OrphanScanner extends AbstractModule {
 	 */
 	public function ajax_restore(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_restore', 'nonce' );
-		if ( ! current_user_can( 'delete_posts' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$ids      = isset( $_POST['ids'] ) ? array_map( 'intval', (array) $_POST['ids'] ) : [];
+		$ids      = self::posted_ids();
 		$restored = [];
 		foreach ( $ids as $id ) {
 			$post = get_post( $id );
 			if ( ! $post || 'attachment' !== $post->post_type || 'trash' !== $post->post_status ) {
+				continue;
+			}
+			if ( ! current_user_can( 'delete_post', $id ) ) {
 				continue;
 			}
 			if ( wp_untrash_post( $id ) ) {
@@ -307,19 +309,30 @@ class OrphanScanner extends AbstractModule {
 	}
 
 	/**
+	 * Attachment IDs posted by the screen, unslashed and cast to positive ints.
+	 * Callers have already checked the nonce.
+	 *
+	 * @return int[]
+	 */
+	private static function posted_ids(): array {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce checked by every caller (check_ajax_referer).
+		return isset( $_POST['ids'] ) ? array_values( array_filter( array_map( 'absint', (array) wp_unslash( $_POST['ids'] ) ) ) ) : [];
+	}
+
+	/**
 	 * Erase for good. The only place in this module where a file actually
 	 * leaves the server, and it takes an explicit act on a list the user is
 	 * looking at, after the file has already spent time in the trash.
 	 */
 	public function ajax_purge(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_purge', 'nonce' );
-		if ( ! current_user_can( 'delete_posts' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$ids = isset( $_POST['ids'] ) ? array_map( 'intval', (array) $_POST['ids'] ) : [];
-		if ( isset( $_POST['all'] ) && '1' === $_POST['all'] ) {
+		$ids = self::posted_ids();
+		$all = isset( $_POST['all'] ) ? sanitize_text_field( wp_unslash( $_POST['all'] ) ) : '';
+		if ( '1' === $all ) {
 			$ids = array_map( static fn( $post ) => (int) $post->ID, self::trashed_media() );
 		}
 
@@ -329,6 +342,9 @@ class OrphanScanner extends AbstractModule {
 			// Only ever from the trash: a file still in the library cannot be
 			// erased through this route, whatever the request says.
 			if ( ! $post || 'attachment' !== $post->post_type || 'trash' !== $post->post_status ) {
+				continue;
+			}
+			if ( ! current_user_can( 'delete_post', $id ) ) {
 				continue;
 			}
 			if ( wp_delete_attachment( $id, true ) ) {
@@ -764,12 +780,11 @@ class OrphanScanner extends AbstractModule {
 
 	public function ajax_delete(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_delete', 'nonce' );
-		if ( ! current_user_can( 'delete_posts' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$ids = isset( $_POST['ids'] ) ? array_map( 'intval', (array) $_POST['ids'] ) : [];
+		$ids = self::posted_ids();
 		if ( empty( $ids ) ) {
 			wp_send_json_error( [ 'message' => 'no_ids' ] );
 		}
@@ -793,7 +808,7 @@ class OrphanScanner extends AbstractModule {
 		foreach ( $ids as $id ) {
 			// Server-side double check: must be a valid attachment.
 			$post = get_post( $id );
-			if ( ! $post || $post->post_type !== 'attachment' ) {
+			if ( ! $post || $post->post_type !== 'attachment' || ! current_user_can( 'delete_post', $id ) ) {
 				$errors[] = $id;
 				continue;
 			}

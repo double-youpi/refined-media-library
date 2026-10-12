@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-10T02:00:28+00:00\n"
+"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -435,8 +435,8 @@ msgstr "Em preparação"
 
 #: src/Admin/OverviewPage.php:637
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:157
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:206
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:158
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:207
 msgid "Preview"
 msgstr "Pré-visualizar"
 
@@ -663,14 +663,14 @@ msgstr "Mover para uma pasta…"
 msgid "Add to collection…"
 msgstr "Adicionar a uma coleção…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:600
-#: src/Modules/MediaLibrary/FolderManager.php:636
+#: src/Modules/MediaLibrary/FolderManager.php:606
+#: src/Modules/MediaLibrary/FolderManager.php:642
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Uma pasta não pode ser movida para dentro de si mesma ou de uma de suas "
 "subpastas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:661
+#: src/Modules/MediaLibrary/FolderManager.php:667
 msgid "Could not delete folder."
 msgstr "Não foi possível excluir a pasta."
 
@@ -991,7 +991,7 @@ msgid "Date"
 msgstr "Data"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:143
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:159
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:160
 msgid "Type"
 msgstr "Tipo"
 
@@ -1000,7 +1000,7 @@ msgid "Dimensions"
 msgstr "Dimensões"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:145
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:160
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:161
 msgid "Size"
 msgstr "Tamanho"
 
@@ -1260,7 +1260,7 @@ msgid "Import"
 msgstr "Importar"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:257
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:258
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr ""
@@ -1268,13 +1268,13 @@ msgstr ""
 "está ativo."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
 #, php-format
 msgid "Let %s manage it"
 msgstr "Deixar o %s gerenciar"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:264
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
@@ -1282,12 +1282,12 @@ msgstr ""
 "O %s está gerenciando a biblioteca de mídia. O Refined Media Library deu um "
 "passo atrás."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
 msgid "Use Refined Media Library"
 msgstr "Usar o Refined Media Library"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:286
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:287
 #, php-format
 msgid "Import folders from %s"
 msgstr "Importar as pastas do %s"
@@ -1388,120 +1388,120 @@ msgstr ""
 "do Refined Media Library, e o plugin de origem nunca é modificado, então "
 "você pode verificar o resultado antes de removê-lo."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:77
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
 msgid "Scanning…"
 msgstr "Verificando…"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:79
 msgid "No unused media found. Your library is clean!"
 msgstr "Nenhuma mídia não utilizada encontrada. Sua biblioteca está limpa!"
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:80
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:81
 #, php-format
 msgid "%d unused media file found."
 msgstr "%d arquivo de mídia não utilizado encontrado."
 
 #. translators: %d: number of unused media files found.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:82
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:83
 #, php-format
 msgid "%d unused media files found."
 msgstr "%d arquivos de mídia não utilizados encontrados."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:84
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:85
 #, php-format
 msgid "%d unused media file remaining."
 msgstr "%d arquivo de mídia não utilizado restante."
 
 #. translators: %d: number of unused media files remaining.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:86
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:87
 #, php-format
 msgid "%d unused media files remaining."
 msgstr "%d arquivos de mídia não utilizados restantes."
 
 #. translators: %d: number of media files to be moved to the trash.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:94
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:95
 #, php-format
 msgid "I confirm moving %d media file to the trash."
 msgstr "Confirmo mover %d arquivo de mídia para a lixeira."
 
 #. translators: %d: number of media files to be moved to the trash.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:96
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:97
 #, php-format
 msgid "I confirm moving %d media files to the trash."
 msgstr "Confirmo mover %d arquivos de mídia para a lixeira."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:97
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:98
 msgid "Move selected media to the trash"
 msgstr "Mover para a lixeira as mídias selecionadas"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:98
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:99
 msgid "Moving to the trash…"
 msgstr "Movendo para a lixeira…"
 
 #. translators: %d: number of media files moved to the trash.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:100
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:101
 #, php-format
 msgid "%d file moved to the trash."
 msgstr "%d arquivo movido para a lixeira."
 
 #. translators: %d: number of media files moved to the trash.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:102
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:103
 #, php-format
 msgid "%d files moved to the trash."
 msgstr "%d arquivos movidos para a lixeira."
 
 #. translators: %d: number of errors encountered.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:104
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:105
 #, php-format
 msgid "%d error."
 msgstr "%d erro."
 
 #. translators: %d: number of errors encountered.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:106
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:107
 #, php-format
 msgid "%d errors."
 msgstr "%d erros."
 
 #. translators: %d: number of media files left alone because they are in use.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:108
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:109
 #, php-format
 msgid "%d file kept: it is in use."
 msgstr "%d arquivo mantido: está em uso."
 
 #. translators: %d: number of media files left alone because they are in use.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:110
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:111
 #, php-format
 msgid "%d files kept: they are in use."
 msgstr "%d arquivos mantidos: estão em uso."
 
 #. translators: %d: number of restored media files.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:112
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:113
 #, php-format
 msgid "%d file restored."
 msgstr "%d arquivo restaurado."
 
 #. translators: %d: number of restored media files.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:114
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:115
 #, php-format
 msgid "%d files restored."
 msgstr "%d arquivos restaurados."
 
 #. translators: %d: number of permanently deleted media files.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:116
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:117
 #, php-format
 msgid "%d file permanently deleted."
 msgstr "%d arquivo excluído definitivamente."
 
 #. translators: %d: number of permanently deleted media files.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:118
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:119
 #, php-format
 msgid "%d files permanently deleted."
 msgstr "%d arquivos excluídos definitivamente."
 
 #. translators: %d: number of media files about to be erased.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:120
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:121
 #, php-format
 msgid ""
 "Permanently delete %d file? It is erased from the server, and this cannot be "
@@ -1511,7 +1511,7 @@ msgstr ""
 "pode ser desfeito."
 
 #. translators: %d: number of media files about to be erased.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:122
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:123
 #, php-format
 msgid ""
 "Permanently delete %d files? They are erased from the server, and this "
@@ -1520,12 +1520,12 @@ msgstr ""
 "Excluir definitivamente %d arquivos? Eles são removidos do servidor e isso "
 "não pode ser desfeito."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:123
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:200
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:201
 msgid "Nothing has been moved to the trash from this screen."
 msgstr "Nada foi movido para a lixeira a partir desta tela."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:135
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:136
 msgid ""
 "Media files not referenced in any post, page, featured image, or custom "
 "field."
@@ -1533,25 +1533,25 @@ msgstr ""
 "Arquivos de mídia não referenciados em nenhum post, página, imagem destacada "
 "ou campo personalizado."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:140
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:141
 msgid "Scan for unused media"
 msgstr "Procurar mídia não utilizada"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:158
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:207
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:159
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:208
 msgid "File"
 msgstr "Arquivo"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:161
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:162
 msgid "Uploaded"
 msgstr "Enviado"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:188
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:189
 msgid "Recently removed"
 msgstr "Removidos recentemente"
 
 #. translators: %d: number of days WordPress keeps files in the trash.
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:193
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:194
 #, php-format
 msgid ""
 "Nothing here has been erased: each file is still on the server, so a page "
@@ -1563,11 +1563,11 @@ msgstr ""
 "biblioteca de mídia com suas pastas. O WordPress esvazia a lixeira após %d "
 "dias."
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:208
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:209
 msgid "Removed"
 msgstr "Removido"
 
-#: src/Modules/MediaLibrary/OrphanAdminPage.php:209
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:210
 msgid "Actions"
 msgstr "Ações"
 
@@ -1756,6 +1756,18 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ msgstr ""
 #~ "Clona a produção em um subdomínio privado para testar com segurança, com "
 #~ "noindex, robots e basic auth opcional."
+
+#~ msgid ""
+#~ "A dark and light redesign of the whole WordPress admin: a navigation rail "
+#~ "you can reorganise, reimagined list tables and post editor, one place for "
+#~ "every notice, a dashboard you compose, a media library with folders and "
+#~ "collections, and a built-in toolkit. Native components only."
+#~ msgstr ""
+#~ "Um redesenho claro e escuro de todo o painel do WordPress: uma barra de "
+#~ "navegação que você pode reorganizar, listas e editor de posts repensados, "
+#~ "um só lugar para todos os avisos, um painel que você monta, uma "
+#~ "biblioteca de mídia com pastas e coleções, e uma caixa de ferramentas "
+#~ "integrada. Apenas componentes nativos."
 
 #~ msgid ""
 #~ "Modular WordPress optimization suite for professionals: performance, "
@@ -5281,6 +5293,21 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 #~ msgid "Appearance"
 #~ msgstr "Aparência"
 
+#~ msgid "%1$d item%2$s"
+#~ msgid_plural "%1$d items%2$s"
+#~ msgstr[0] "%1$d item%2$s"
+#~ msgstr[1] "%1$d itens%2$s"
+
+#~ msgid "%1$d order%2$s"
+#~ msgid_plural "%1$d orders%2$s"
+#~ msgstr[0] "%1$d pedido%2$s"
+#~ msgstr[1] "%1$d pedidos%2$s"
+
+#~ msgid "%1$d pending · %2$d approved"
+#~ msgid_plural "%1$d pending · %2$d approved"
+#~ msgstr[0] "%1$d aguardando · %2$d aprovado"
+#~ msgstr[1] "%1$d aguardando · %2$d aprovados"
+
 #~ msgid "You are not allowed to export these settings."
 #~ msgstr "Você não tem permissão para exportar estas configurações."
 
@@ -5637,3 +5664,24 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
 #~ msgid "Pinned in code"
 #~ msgstr "Fixado no código"
+
+#~ msgid "Admin Columns is active."
+#~ msgstr "O Admin Columns está ativo."
+
+#~ msgid ""
+#~ "It manages the columns of your lists, so Refined Admin Dashboard leaves "
+#~ "those lists to it and keeps their native layout. Deactivate Admin Columns "
+#~ "if you prefer the redesigned view."
+#~ msgstr ""
+#~ "Ele gerencia as colunas das suas listas, então o Refined Admin Dashboard "
+#~ "deixa essas listas com ele e mantém o layout nativo. Desative o Admin "
+#~ "Columns se preferir a visualização redesenhada."
+
+#~ msgid "Deactivate Admin Columns"
+#~ msgstr "Desativar o Admin Columns"
+
+#~ msgid "Keep Admin Columns"
+#~ msgstr "Manter o Admin Columns"
+
+#~ msgid "You are not allowed to see this widget."
+#~ msgstr "Você não tem permissão para ver este widget."

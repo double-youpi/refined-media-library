@@ -186,11 +186,15 @@ final class ModuleCatalog {
 	 * @return array{tier:'free'|'paid', wporg_slug:?string, marketing_url:string, screenshots:string[]}
 	 */
 	public static function vitrine( string $id ): array {
-		$shot = static fn( string $module ): array => [
-			"assets/images/vitrine/{$module}-1.svg",
-			"assets/images/vitrine/{$module}-2.svg",
-			"assets/images/vitrine/{$module}-3.svg",
-		];
+		// Real screenshots (WebP) where they exist, SVG placeholders elsewhere.
+		$shot = static function ( string $module ): array {
+			$ext = in_array( $module, [ 'admin' ], true ) ? 'webp' : 'svg';
+			return [
+				"assets/images/vitrine/{$module}-1.{$ext}",
+				"assets/images/vitrine/{$module}-2.{$ext}",
+				"assets/images/vitrine/{$module}-3.{$ext}",
+			];
+		};
 
 		$map = [
 			'admin'         => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/plugins/refined-admin-dashboard' ],
