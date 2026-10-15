@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
 "Language: it_IT\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -649,31 +649,32 @@ msgstr "Modifica collezione"
 msgid "No collections found"
 msgstr "Nessuna collezione trovata"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:122
-#: src/Modules/MediaLibrary/DuplicateDetector.php:136
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
 msgid "Duplicate"
-msgstr "Duplica"
+msgstr "Duplicato"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:135
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
 msgid "View original"
 msgstr "Vedi l’originale"
 
-#: src/Modules/MediaLibrary/FolderManager.php:114
+#: src/Modules/MediaLibrary/FolderManager.php:118
 msgid "Move to folder…"
 msgstr "Sposta in una cartella…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:117
+#: src/Modules/MediaLibrary/FolderManager.php:121
 msgid "Add to collection…"
 msgstr "Aggiungi a una collezione…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:606
-#: src/Modules/MediaLibrary/FolderManager.php:642
+#: src/Modules/MediaLibrary/FolderManager.php:610
+#: src/Modules/MediaLibrary/FolderManager.php:646
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Una cartella non può essere spostata in sé stessa o in una delle sue "
 "sottocartelle."
 
-#: src/Modules/MediaLibrary/FolderManager.php:667
+#: src/Modules/MediaLibrary/FolderManager.php:671
 msgid "Could not delete folder."
 msgstr "Impossibile eliminare la cartella."
 
@@ -5715,3 +5716,7 @@ msgstr "Più alto = qualità migliore e file più grandi. Predefinito 82."
 
 #~ msgid "No note yet."
 #~ msgstr "Ancora nessuna nota."
+
+#~ msgctxt "post row action: copy this post as a draft"
+#~ msgid "Duplicate"
+#~ msgstr "Duplica"

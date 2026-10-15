@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.9
+Stable tag: 0.3.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,12 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.10 =
+* Fixed: the duplicate badge now shows on duplicate files, in the media grid and in media windows. It did not appear before.
+* Fixed: the duplicate badge and its column are translated, and read as a noun in German, Spanish, Italian and Portuguese.
+* The Duplicate column is back in the list view when the duplicate badge is on, with a link to the original file.
+* Translations: a few Hindi lines were tidied.
+
 = 0.3.9 =
 * New: Double Youpï Refined Admin Dashboard is now on WordPress.org, free like this plugin. The Overview shows it with an install button, and Settings mentions it.
 * New: a Settings link in the plugin's row on the Plugins screen.
@@ -222,6 +228,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.10 =
+The duplicate badge now shows on duplicate files, translated, with its link to the original in the list view.
 
 = 0.3.9 =
 Media windows in "Load more" mode are fixed, and Double Youpï Refined Admin Dashboard, now on WordPress.org, appears in the Overview.

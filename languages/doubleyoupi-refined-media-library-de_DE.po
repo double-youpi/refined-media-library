@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -657,31 +657,32 @@ msgstr "Sammlung bearbeiten"
 msgid "No collections found"
 msgstr "Keine Sammlungen gefunden"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:122
-#: src/Modules/MediaLibrary/DuplicateDetector.php:136
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
 msgid "Duplicate"
-msgstr "Duplizieren"
+msgstr "Duplikat"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:135
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
 msgid "View original"
 msgstr "Original ansehen"
 
-#: src/Modules/MediaLibrary/FolderManager.php:114
+#: src/Modules/MediaLibrary/FolderManager.php:118
 msgid "Move to folder…"
 msgstr "In Ordner verschieben …"
 
-#: src/Modules/MediaLibrary/FolderManager.php:117
+#: src/Modules/MediaLibrary/FolderManager.php:121
 msgid "Add to collection…"
 msgstr "Zur Sammlung hinzufügen …"
 
-#: src/Modules/MediaLibrary/FolderManager.php:606
-#: src/Modules/MediaLibrary/FolderManager.php:642
+#: src/Modules/MediaLibrary/FolderManager.php:610
+#: src/Modules/MediaLibrary/FolderManager.php:646
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Ein Ordner kann nicht in sich selbst oder einen seiner Unterordner "
 "verschoben werden."
 
-#: src/Modules/MediaLibrary/FolderManager.php:667
+#: src/Modules/MediaLibrary/FolderManager.php:671
 msgid "Could not delete folder."
 msgstr "Ordner konnte nicht gelöscht werden."
 
@@ -5732,3 +5733,7 @@ msgstr "Höher = bessere Qualität und größere Dateien. Standard 82."
 
 #~ msgid "No note yet."
 #~ msgstr "Noch keine Notiz."
+
+#~ msgctxt "post row action: copy this post as a draft"
+#~ msgid "Duplicate"
+#~ msgstr "Duplizieren"

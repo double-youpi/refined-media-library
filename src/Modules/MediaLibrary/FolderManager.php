@@ -54,21 +54,25 @@ class FolderManager extends AbstractModule {
 		// and opens the picker modal, which calls the REST endpoint directly.
 		add_filter( 'bulk_actions-upload', [ $this, 'register_bulk_actions' ] );
 
-		// List View column cleanup: remove noise columns (comments and the duplicate
-		// detector column) that add no value in an enriched media library. Priority 99
-		// ensures this runs AFTER DuplicateDetector (priority 10) which adds 'doubleyoupi_duplicate'.
+		// List View column cleanup: remove the comments column, which adds no value
+		// in an enriched media library. Priority 99 runs after other plugins.
+		//
+		// The duplicate column is NOT removed any more. It used to be, as noise,
+		// but it only exists when the user has turned on the duplicate badge in
+		// Settings (DuplicateDetector boots only then), and it is the one place
+		// that links a copy to its original: the readme promises that link.
 		add_filter( 'manage_media_columns', [ $this, 'remove_noise_columns' ], 99 );
 		add_filter( 'manage_upload_sortable_columns', [ $this, 'remove_noise_columns' ], 99 );
 	}
 
 	/**
-	 * Remove the comments and duplicate columns from the upload.php list view.
+	 * Remove the comments column from the upload.php list view.
 	 *
 	 * @param array<string,string> $columns
 	 * @return array<string,string>
 	 */
 	public function remove_noise_columns( array $columns ): array {
-		unset( $columns['comments'], $columns['doubleyoupi_duplicate'] );
+		unset( $columns['comments'] );
 		return $columns;
 	}
 

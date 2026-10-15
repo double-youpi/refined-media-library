@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -646,31 +646,32 @@ msgstr "Editar coleção"
 msgid "No collections found"
 msgstr "Nenhuma coleção encontrada"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:122
-#: src/Modules/MediaLibrary/DuplicateDetector.php:136
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
 msgid "Duplicate"
-msgstr "Duplicar"
+msgstr "Duplicado"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:135
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
 msgid "View original"
 msgstr "Ver original"
 
-#: src/Modules/MediaLibrary/FolderManager.php:114
+#: src/Modules/MediaLibrary/FolderManager.php:118
 msgid "Move to folder…"
 msgstr "Mover para uma pasta…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:117
+#: src/Modules/MediaLibrary/FolderManager.php:121
 msgid "Add to collection…"
 msgstr "Adicionar a uma coleção…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:606
-#: src/Modules/MediaLibrary/FolderManager.php:642
+#: src/Modules/MediaLibrary/FolderManager.php:610
+#: src/Modules/MediaLibrary/FolderManager.php:646
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Uma pasta não pode ser movida para dentro de si mesma ou de uma de suas "
 "subpastas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:667
+#: src/Modules/MediaLibrary/FolderManager.php:671
 msgid "Could not delete folder."
 msgstr "Não foi possível excluir a pasta."
 
@@ -5688,3 +5689,7 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
 #~ msgid "No note yet."
 #~ msgstr "Ainda não há nenhuma nota."
+
+#~ msgctxt "post row action: copy this post as a draft"
+#~ msgid "Duplicate"
+#~ msgstr "Duplicar"

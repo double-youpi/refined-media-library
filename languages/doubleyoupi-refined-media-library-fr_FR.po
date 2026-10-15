@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -653,31 +653,32 @@ msgstr "Modifier la collection"
 msgid "No collections found"
 msgstr "Aucune collection trouvée"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:122
-#: src/Modules/MediaLibrary/DuplicateDetector.php:136
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
 msgid "Duplicate"
 msgstr "Doublon"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:135
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
 msgid "View original"
 msgstr "Voir l’original"
 
-#: src/Modules/MediaLibrary/FolderManager.php:114
+#: src/Modules/MediaLibrary/FolderManager.php:118
 msgid "Move to folder…"
 msgstr "Déplacer dans un dossier…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:117
+#: src/Modules/MediaLibrary/FolderManager.php:121
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:606
-#: src/Modules/MediaLibrary/FolderManager.php:642
+#: src/Modules/MediaLibrary/FolderManager.php:610
+#: src/Modules/MediaLibrary/FolderManager.php:646
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:667
+#: src/Modules/MediaLibrary/FolderManager.php:671
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
 
@@ -5729,3 +5730,7 @@ msgstr ""
 
 #~ msgid "No note yet."
 #~ msgstr "Pas encore de note."
+
+#~ msgctxt "post row action: copy this post as a draft"
+#~ msgid "Duplicate"
+#~ msgstr "Dupliquer"

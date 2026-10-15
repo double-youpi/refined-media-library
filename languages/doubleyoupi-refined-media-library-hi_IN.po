@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -260,7 +260,7 @@ msgstr "अभी एक ऐसी बहस जीत रहा है जि�
 
 #: src/Admin/HeroQuips.php:59
 msgid "Suspiciously good for something this free."
-msgstr "इतने मुफ़्त के लिए शक़ हो जाए — इतना अच्छा।"
+msgstr "इतने मुफ़्त के लिए शक़ हो जाए, इतना अच्छा।"
 
 #: src/Admin/HeroQuips.php:60
 msgid "The bar was high. We brought a ladder."
@@ -308,7 +308,7 @@ msgstr "वह प्लगइन जिस पर आपकी मीडिय�
 
 #: src/Admin/HeroQuips.php:82
 msgid "Your media library finally has a personality. It's smug."
-msgstr "आपकी मीडिया लाइब्रेरी में आख़िरकार एक व्यक्तित्व आ गया — थोड़ा घमंडी।"
+msgstr "आपकी मीडिया लाइब्रेरी में आख़िरकार एक व्यक्तित्व आ गया। थोड़ा घमंडी।"
 
 #: src/Admin/OverviewPage.php:68
 msgid "Double Youpï · Overview"
@@ -639,29 +639,30 @@ msgstr "संग्रह संपादित करें"
 msgid "No collections found"
 msgstr "कोई संग्रह नहीं मिला"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:122
-#: src/Modules/MediaLibrary/DuplicateDetector.php:136
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
 msgid "Duplicate"
 msgstr "डुप्लिकेट"
 
-#: src/Modules/MediaLibrary/DuplicateDetector.php:135
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
 msgid "View original"
 msgstr "मूल देखें"
 
-#: src/Modules/MediaLibrary/FolderManager.php:114
+#: src/Modules/MediaLibrary/FolderManager.php:118
 msgid "Move to folder…"
 msgstr "फ़ोल्डर में स्थानांतरित करें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:117
+#: src/Modules/MediaLibrary/FolderManager.php:121
 msgid "Add to collection…"
 msgstr "संग्रह में जोड़ें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:606
-#: src/Modules/MediaLibrary/FolderManager.php:642
+#: src/Modules/MediaLibrary/FolderManager.php:610
+#: src/Modules/MediaLibrary/FolderManager.php:646
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "किसी फ़ोल्डर को उसी में या उसके किसी सबफ़ोल्डर में नहीं ले जाया जा सकता।"
 
-#: src/Modules/MediaLibrary/FolderManager.php:667
+#: src/Modules/MediaLibrary/FolderManager.php:671
 msgid "Could not delete folder."
 msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 
@@ -1663,7 +1664,7 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 #~ "image fiddling."
 #~ msgstr ""
 #~ "वर्डप्रेस मीडिया लाइब्रेरी के लिए फ़ोल्डर, संग्रह, डुप्लिकेट और अनुपयोगी फ़ाइलों की सफ़ाई, "
-#~ "स्वचालित ऑल्ट टेक्स्ट और WebP/AVIF रूपांतरण — हर छवि के लिए अलग सेटिंग के बिना।"
+#~ "स्वचालित ऑल्ट टेक्स्ट और WebP/AVIF रूपांतरण, हर छवि के लिए अलग सेटिंग के बिना।"
 
 #~ msgid ""
 #~ "You are already running the full Double Youpï suite, and it includes "
@@ -5558,3 +5559,7 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 
 #~ msgid "No note yet."
 #~ msgstr "अभी कोई नोट नहीं है।"
+
+#~ msgctxt "post row action: copy this post as a draft"
+#~ msgid "Duplicate"
+#~ msgstr "डुप्लिकेट करें"

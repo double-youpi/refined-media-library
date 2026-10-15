@@ -15,8 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * On upload: stores the hash in post_meta. If an attachment with the same hash
  * already exists, marks the new one as a duplicate (storing a reference to the original).
  *
- * The "duplicate" badge is exposed via the REST field `doubleyoupi_duplicate_of` and
- * displayed in list view via a dedicated column.
+ * The duplicate reference reaches the media grid through
+ * wp_prepare_attachment_for_js() (the grid's own data path) and the REST API
+ * through the field `doubleyoupi_duplicate_of`. The grid shows it as a badge.
  */
 class DuplicateDetector extends AbstractModule {
 
@@ -35,8 +36,15 @@ class DuplicateDetector extends AbstractModule {
 		// Priority 30: runs after MetadataAutoFiller (10) and FolderManager (20).
 		add_action( 'add_attachment', [ $this, 'on_add_attachment' ], 30, 1 );
 
-		// Expose the duplicate field in the REST API (Grid Backbone media library).
+		// Expose the duplicate field in the REST API.
 		add_action( 'rest_api_init', [ $this, 'register_rest_fields' ] );
+
+		// And to the grid itself. The REST field alone never reached it: the
+		// media grid and every media window load their models through
+		// admin-ajax (query-attachments), which builds them with
+		// wp_prepare_attachment_for_js(), not through the REST API. The badge
+		// read a field that was never there, so it never showed.
+		add_filter( 'wp_prepare_attachment_for_js', [ $this, 'add_grid_field' ], 10, 2 );
 
 		// Duplicate badge in Grid View (Backbone).
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
@@ -62,6 +70,14 @@ class DuplicateDetector extends AbstractModule {
 				[ 'jquery', 'media-views' ],
 				DOUBLEYOUPI_VERSION,
 				true
+			);
+			// The badge's label, translated here: the script used to write
+			// "Duplicate" in English whatever the site language. Same string as
+			// the list view column, so it is the noun, not the verb.
+			wp_localize_script(
+				'doubleyoupi-duplicate-badge',
+				'doubleyoupiDuplicateBadge',
+				[ 'label' => __( 'Duplicate', 'doubleyoupi-refined-media-library' ) ]
 			);
 		}
 	}
@@ -97,6 +113,18 @@ class DuplicateDetector extends AbstractModule {
 		if ( $existing_id > 0 ) {
 			update_post_meta( $post_id, self::META_DUPE, $existing_id );
 		}
+	}
+
+	/**
+	 * Hand the duplicate reference to the media grid's model.
+	 *
+	 * @param array<string,mixed> $response
+	 * @return array<string,mixed>
+	 */
+	public function add_grid_field( array $response, \WP_Post $attachment ): array {
+		$dupe = (int) get_post_meta( $attachment->ID, self::META_DUPE, true );
+		$response['doubleyoupi_duplicate_of'] = $dupe > 0 ? $dupe : null;
+		return $response;
 	}
 
 	public function register_rest_fields(): void {
@@ -135,8 +163,9 @@ class DuplicateDetector extends AbstractModule {
 				esc_attr__( 'View original', 'doubleyoupi-refined-media-library' ),
 				esc_html__( 'Duplicate', 'doubleyoupi-refined-media-library' )
 			);
-		} else {
-			echo '—';
 		}
+		// Not a duplicate: the cell stays empty. WordPress fills empty cells
+		// with a dash by convention; a blank reads just as clearly here, since
+		// the column only speaks up for the files it has something to say about.
 	}
 }
