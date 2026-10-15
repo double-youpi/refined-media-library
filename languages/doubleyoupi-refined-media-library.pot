@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Double Youpï Refined Media Library 0.3.8\n"
+"Project-Id-Version: Double Youpï Refined Media Library 0.3.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: doubleyoupi-refined-media-library\n"
@@ -49,7 +49,8 @@ msgstr ""
 msgid "Double Youpï Refined Admin Dashboard is active, and it includes this whole media library: folders, collections and the detail panel. This copy stepped aside. Your folders, collections and settings are untouched, and the dashboard is using them right now. Want the media library on its own? Deactivate Refined Admin Dashboard first."
 msgstr ""
 
-#: src/Admin/AdminMenu.php:157
+#: src/Admin/AdminMenu.php:80
+#: src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:157
 #: src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64

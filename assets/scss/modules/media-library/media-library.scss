@@ -391,9 +391,16 @@ body.folded #dy-folder-panel {
  * ended up misaligned with the thumbnails under it. The <ul> is absolutely
  * positioned with both `left` and `right`, so moving its left edge resizes it
  * in one declaration, with no width arithmetic to keep in step.
+ *
+ * One exception: with infinite scrolling turned off ("Load more", a user
+ * preference or the media_library_infinite_scrolling filter), core flips
+ * roles. The browser gets `.has-load-more`, the WRAPPER becomes the absolute,
+ * scrolling box, and the <ul> sits inside it. Offsetting only the <ul> then
+ * left the grid running 233px under the folder column.
  */
 .media-modal .attachments-browser.dy-has-folder-panel > .media-toolbar,
 .media-modal .attachments-browser.dy-has-folder-panel .attachments,
+.media-modal .attachments-browser.dy-has-folder-panel.has-load-more .attachments-wrapper,
 .media-modal .attachments-browser.dy-has-folder-panel .uploader-inline {
 	left: var( --dy-modal-fw, 220px ) !important;
 }
@@ -6206,8 +6213,8 @@ body.dy-admin #dy-panel-brand {
  */
 .media-modal.dy-ml-modal .dy-detail-close {
   position: absolute !important;
-  top: 8px !important;
-  right: 10px !important;
+  top: 16px !important;
+  right: 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;

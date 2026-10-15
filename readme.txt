@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.8
+Stable tag: 0.3.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,9 +50,9 @@ That's the whole point. A few toggles in one place, sensible defaults everywhere
 
 No locked features, no "upgrade to unlock folders", no nag screens. It's the standalone edition of the Double Youpï suite: the whole thing, **free for good and actively maintained**.
 
-**No per-image settings**
+**The whole admin, redrawn the same way**
 
-That's the whole point. A few toggles in one place, sensible defaults everywhere else.
+This media library is also part of [Double Youpï Refined Admin Dashboard](https://wordpress.org/plugins/doubleyoupi-refined-admin-dashboard/), which redraws the rest of the WordPress admin in the same style: navigation, lists, editor, notices and dashboard, in dark or light. It is free too. If you install it, this plugin steps aside and the dashboard keeps your folders and collections.
 
 == Installation ==
 
@@ -122,6 +122,14 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.9 =
+* New: Double Youpï Refined Admin Dashboard is now on WordPress.org, free like this plugin. The Overview shows it with an install button, and Settings mentions it.
+* New: a Settings link in the plugin's row on the Plugins screen.
+* Fixed: in media windows (such as "Add Media" or "Set featured image"), with infinite scrolling turned off ("Load more"), the thumbnails no longer slide under the folder column.
+* The close button of the file details panel in media windows now sits at the same place as in Double Youpï Refined Admin Dashboard.
+* French: the bundled translation now matches the one validated on translate.wordpress.org.
+* Under the hood: the feedback form reads the admin address from WordPress instead of assuming /wp-admin/.
 
 = 0.3.8 =
 * Security: the Unused Media actions (move to the trash, restore, delete for good) are now reserved to administrators, and checked file by file.
@@ -214,6 +222,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.9 =
+Media windows in "Load more" mode are fixed, and Double Youpï Refined Admin Dashboard, now on WordPress.org, appears in the Overview.
 
 = 0.3.8 =
 Security update: the Unused Media actions are now reserved to administrators. Recommended for every site.

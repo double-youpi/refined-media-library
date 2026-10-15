@@ -1163,7 +1163,17 @@
 		if ( ! anchor ) { return; }
 		// Document position, not viewport: the panel is fixed, and this must
 		// not move when the page scrolls.
-		var top = Math.round( anchor.getBoundingClientRect().top + ( window.pageYOffset || 0 ) );
+		// The reveal curtain lowers .wrap by up to 6px (translateY) while the
+		// page composes, and the first measure runs during it. A transform
+		// resizes nothing, so the ResizeObserver never corrects it: take the
+		// curtain's offset out of the measure.
+		var wrap = anchor.closest( '.wrap' );
+		var lift = 0;
+		if ( wrap && window.DOMMatrixReadOnly ) {
+			var t = window.getComputedStyle( wrap ).transform;
+			if ( t && 'none' !== t ) { lift = new window.DOMMatrixReadOnly( t ).m42; }
+		}
+		var top = Math.round( anchor.getBoundingClientRect().top - lift + ( window.pageYOffset || 0 ) );
 		if ( top <= 0 ) { return; }
 		body.style.setProperty( '--dy-panel-top', top + 'px' );
 	}

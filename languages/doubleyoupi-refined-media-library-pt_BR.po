@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -63,8 +63,8 @@ msgstr ""
 "está usando agora mesmo. Quer a biblioteca de mídia sozinha? Desative antes "
 "o Refined Admin Dashboard."
 
-#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:560
+#: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
+#: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
@@ -5685,3 +5685,6 @@ msgstr "Mais alto = melhor qualidade e arquivos maiores. Padrão 82."
 
 #~ msgid "You are not allowed to see this widget."
 #~ msgstr "Você não tem permissão para ver este widget."
+
+#~ msgid "No note yet."
+#~ msgstr "Ainda não há nenhuma nota."

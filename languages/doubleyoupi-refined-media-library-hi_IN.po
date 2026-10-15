@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -62,8 +62,8 @@ msgstr ""
 "सेटिंग्स अछूते हैं, और डैशबोर्ड उन्हें अभी उपयोग कर रहा है। केवल मीडिया लाइब्रेरी चाहिए? पहले "
 "Refined Admin Dashboard को निष्क्रिय करें।"
 
-#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:560
+#: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
+#: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
@@ -5555,3 +5555,6 @@ msgstr "अधिक = बेहतर गुणवत्ता और बड़
 
 #~ msgid "You are not allowed to see this widget."
 #~ msgstr "आपको यह विजेट देखने की अनुमति नहीं है।"
+
+#~ msgid "No note yet."
+#~ msgstr "अभी कोई नोट नहीं है।"

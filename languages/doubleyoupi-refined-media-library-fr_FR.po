@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -66,8 +66,8 @@ msgstr ""
 "et le tableau de bord les utilise en ce moment même. Vous voulez la "
 "médiathèque seule ? Désactivez d’abord Refined Admin Dashboard."
 
-#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:560
+#: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
+#: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
@@ -165,7 +165,7 @@ msgstr "Joindre une capture"
 
 #: src/Admin/Feedback.php:272
 msgid "or paste an image here (Ctrl/Cmd + V)"
-msgstr "ou collez une image ici (Ctrl/Cmd + V)"
+msgstr "ou collez une image ici (Ctrl/Cmd + V)"
 
 #: src/Admin/Feedback.php:275
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
@@ -230,7 +230,7 @@ msgstr "Trop de retours en peu de temps. Veuillez réessayer dans une heure."
 
 #: src/Admin/Feedback.php:443 src/Admin/Feedback.php:447
 msgid "The feedback service did not answer. Please try again later."
-msgstr "Le service de retours n’a pas répondu. Veuillez réessayer plus tard."
+msgstr "Le service de retour n’a pas répondu. Veuillez réessayer plus tard."
 
 #: src/Admin/HeroQuips.php:51
 msgid "Objectively the best plugin you've installed in the last five minutes."
@@ -423,7 +423,7 @@ msgstr "Enregistrer les modules"
 
 #: src/Admin/OverviewPage.php:466
 msgid "Coming soon"
-msgstr "Bientôt"
+msgstr "Bientôt disponible"
 
 #: src/Admin/OverviewPage.php:556 src/Modules/MediaLibrary/Settings.php:387
 #: src/Modules/MediaLibrary/Settings.php:414
@@ -482,12 +482,13 @@ msgid ""
 "appreciated ;) Otherwise, just using it (and dropping a kind review) already "
 "helps a lot. Thanks!"
 msgstr ""
-"Moi c’est <b>%1$s</b>, designer et dev freelance, alias %2$s. Je fabrique "
-"Double Youpï pour que WordPress soit plus agréable à utiliser. Cette "
-"extension restera gratuite à vie, mises à jour comprises. Si un truc coince "
-"ou vous manque, merci de me le dire. Et si l’extension vous est utile et "
-"vous plaît vraiment, un café ça fait toujours plaisir ;) Sinon, juste "
-"l’utiliser (et lâcher un avis sympa) aide déjà énormément. Merci !"
+"Moi c’est <b>%1$s</b>, designer et développeur indépendant, alias %2$s. Je "
+"fabrique Double Youpï pour que WordPress soit plus agréable à utiliser. "
+"Cette extension restera gratuite à vie, mises à jour comprises. Si quelque "
+"chose coince ou vous manque, merci de me le dire. Et si l’extension vous est "
+"utile et vous plaît vraiment, un café fait toujours plaisir ;) Sinon, "
+"simplement l’utiliser (et laisser un avis sympa) aide déjà énormément. "
+"Merci !"
 
 #. translators: %s: author first name (bold).
 #: src/Admin/OverviewPage.php:759
@@ -500,12 +501,12 @@ msgid ""
 "Otherwise, just using it (and dropping a kind review) already helps a lot. "
 "Thanks!"
 msgstr ""
-"Moi c’est <b>%s</b>, designer et dev freelance. Je fabrique Double Youpï "
-"pour que WordPress soit plus agréable à utiliser. Cette extension restera "
-"gratuite à vie, mises à jour comprises. Si un truc coince ou vous manque, "
-"merci de me le dire. Et si l’extension vous est utile et vous plaît "
-"vraiment, un café ça fait toujours plaisir ;) Sinon, juste l’utiliser (et "
-"lâcher un avis sympa) aide déjà énormément. Merci !"
+"Moi c’est <b>%s</b>, designer et développeur indépendant. Je fabrique Double "
+"Youpï pour que WordPress soit plus agréable à utiliser. Cette extension "
+"restera gratuite à vie, mises à jour comprises. Si quelque chose coince ou "
+"vous manque, merci de me le dire. Et si l’extension vous est utile et vous "
+"plaît vraiment, un café fait toujours plaisir ;) Sinon, simplement "
+"l’utiliser (et laisser un avis sympa) aide déjà énormément. Merci !"
 
 #. translators: %s: author first name.
 #: src/Admin/OverviewPage.php:771
@@ -983,7 +984,7 @@ msgstr "Erreur de chargement."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:138
 msgid "Drag to resize"
-msgstr "Glisser pour redimensionner"
+msgstr "Faites glisser pour redimensionner"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:139
 msgid "View full size"
@@ -1185,9 +1186,7 @@ msgstr "%d fichiers sélectionnés"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:216
 msgid "Leave a field empty to keep each file’s existing value unchanged."
 msgstr ""
-"Laissez un champ vide pour conserver la valeur actuelle de chaque "
-"fichier.Laissez un champ vide pour conserver la valeur existante de chaque "
-"fichier."
+"Laissez un champ vide pour conserver la valeur existante de chaque fichier."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:217
 msgid "Alt text"
@@ -1325,7 +1324,7 @@ msgstr "Lecture de la source…"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:28
 msgid "Import preview"
-msgstr "Aperçu de l’import"
+msgstr "Aperçu de l’importation"
 
 #. translators: %1$d: folders, %2$d: collections, %3$d: media
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:30
@@ -1335,7 +1334,7 @@ msgstr "%1$d dossiers, %2$d collections et %3$d médias seront importés."
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:31
 msgid "Start import"
-msgstr "Démarrer l’import"
+msgstr "Démarrer l’importation"
 
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:33
 msgid "Importing…"
@@ -1842,7 +1841,7 @@ msgstr ""
 #~ "héberger sur Cloudflare Pages, Netlify, GitHub Pages."
 
 #~ msgid "Toolkit"
-#~ msgstr "Outils"
+#~ msgstr "Boîte à outils"
 
 #~ msgid ""
 #~ "Toggles that replace common micro-plugins: Classic Editor, Disable "
@@ -2024,7 +2023,7 @@ msgstr ""
 #~ msgstr "Fermer le panneau de personnalisation"
 
 #~ msgid "Current screen"
-#~ msgstr "Écran courant"
+#~ msgstr "Écran actuel"
 
 #~ msgid "Paragraph"
 #~ msgstr "Paragraphe"
@@ -2068,7 +2067,7 @@ msgstr ""
 
 #~ msgid "Drag a tile onto the current screen, or click it to add it."
 #~ msgstr ""
-#~ "Glissez une tuile sur l’écran courant, ou cliquez dessus pour l’ajouter."
+#~ "Glissez une tuile sur l’écran actuel, ou cliquez dessus pour l’ajouter."
 
 #~ msgid "Assign to role"
 #~ msgstr "Assigner au rôle"
@@ -2089,7 +2088,7 @@ msgstr ""
 #~ msgstr "Afficher l’écran WordPress (dernier)"
 
 #~ msgid "Auto-sync"
-#~ msgstr "Synchro auto"
+#~ msgstr "Synchronisation automatique"
 
 #~ msgid "Reset"
 #~ msgstr "Réinitialiser"
@@ -2138,12 +2137,12 @@ msgstr ""
 #~ msgid ""
 #~ "Replace the current layout with « %s »? Unsaved changes will be lost."
 #~ msgstr ""
-#~ "Remplacer la disposition courante par « %s » ? Les modifications non "
+#~ "Remplacer la disposition actuelle par « %s » ? Les modifications non "
 #~ "enregistrées seront perdues."
 
 #, php-format
 #~ msgid "Update « %s » with the current settings?"
-#~ msgstr "Mettre à jour « %s » avec les paramètres actuels ?"
+#~ msgstr "Mettre à jour « %s » avec les réglages actuels ?"
 
 #~ msgid "Clear everything and start from a single blank screen?"
 #~ msgstr "Tout vider et repartir d’un seul écran vierge ?"
@@ -2158,7 +2157,7 @@ msgstr ""
 #~ msgstr "Appliquer"
 
 #~ msgid "Update with current settings"
-#~ msgstr "Mettre à jour avec les paramètres actuels"
+#~ msgstr "Mettre à jour avec les réglages actuels"
 
 #~ msgid "Export"
 #~ msgstr "Exporter"
@@ -2173,7 +2172,7 @@ msgstr ""
 #~ msgstr "Importer une disposition"
 
 #~ msgid "Remove this widget"
-#~ msgstr "Supprimer ce widget"
+#~ msgstr "Retirer ce widget"
 
 #~ msgid "Delete this screen"
 #~ msgstr "Supprimer cet écran"
@@ -2228,7 +2227,7 @@ msgstr ""
 #~ msgstr "Quelque chose de neuf"
 
 #~ msgid "At least one user screen is required."
-#~ msgstr "Au moins un écran utilisateur est requis."
+#~ msgstr "Au moins un écran utilisateur est nécessaire."
 
 #~ msgid "Delete this screen?"
 #~ msgstr "Supprimer cet écran ?"
@@ -2266,16 +2265,16 @@ msgstr ""
 #~ msgstr "Ajouter un paragraphe…"
 
 #~ msgid "Background color"
-#~ msgstr "Couleur de fond"
+#~ msgstr "Couleur d’arrière-plan"
 
 #~ msgid "Global"
 #~ msgstr "Global"
 
 #~ msgid "Reset to global color"
-#~ msgstr "Réinitialiser sur la couleur globale"
+#~ msgstr "Revenir à la couleur globale"
 
 #~ msgid "A disposition name is required."
-#~ msgstr "Un nom de disposition est requis."
+#~ msgstr "Un nom de disposition est obligatoire."
 
 #~ msgid "Maximum number of saved dispositions reached."
 #~ msgstr "Nombre maximum de dispositions enregistrées atteint."
@@ -2293,13 +2292,13 @@ msgstr ""
 #~ msgstr "Standard"
 
 #~ msgid "Recommended by Double Youpï"
-#~ msgstr "Recommandée Double Youpï"
+#~ msgstr "Recommandée par Double Youpï"
 
 #~ msgid "Editor"
 #~ msgstr "Éditeur"
 
 #~ msgid "Focus on content creation"
-#~ msgstr "Focus création de contenu"
+#~ msgstr "Priorité à la création de contenu"
 
 #~ msgid "Admin site"
 #~ msgstr "Admin site"
@@ -2321,14 +2320,14 @@ msgstr ""
 #~ msgstr "Version de disposition invalide (attendue %1$d, reçue %2$d)."
 
 #~ msgid "At least one screen is required."
-#~ msgstr "Au moins un écran est requis."
+#~ msgstr "Au moins un écran est nécessaire."
 
 #~ msgid "No valid screen after sanitization."
 #~ msgstr "Aucun écran valide après nettoyage."
 
 #, php-format
 #~ msgid "%s and plugins"
-#~ msgstr "Informations %s et Extensions"
+#~ msgstr "%s et extensions"
 
 #~ msgid "WordPress"
 #~ msgstr "WordPress"
@@ -2337,7 +2336,7 @@ msgstr ""
 #~ msgstr "Aucun widget natif ou d’extension n’est enregistré sur ce site."
 
 #~ msgid "This widget could not be rendered (callback missing)."
-#~ msgstr "Ce widget n’a pas pu être affiché (callback manquant)."
+#~ msgstr "Ce widget n’a pas pu être affiché (fonction de rappel manquante)."
 
 #~ msgid "Dashboard screens navigation"
 #~ msgstr "Navigation entre les écrans du tableau de bord"
@@ -2359,7 +2358,7 @@ msgstr ""
 #~ msgstr "La disposition doit être un objet."
 
 #~ msgid "Widget ID required."
-#~ msgstr "ID de widget requis."
+#~ msgstr "L’ID du widget est obligatoire."
 
 #, php-format
 #~ msgid "Unknown widget « %s »."
@@ -2390,7 +2389,8 @@ msgstr ""
 #~ msgstr "Titre"
 
 #~ msgid "A configurable title, frameless, to structure the Dashboard."
-#~ msgstr "Un titre configurable, sans cadre, pour structurer le Dashboard."
+#~ msgstr ""
+#~ "Un titre configurable, sans cadre, pour structurer le tableau de bord."
 
 #~ msgid ""
 #~ "A configurable paragraph (light Markdown), frameless, to explain and "
@@ -2429,7 +2429,7 @@ msgstr ""
 #~ msgstr "il y a %d j"
 
 #~ msgid "Admin link"
-#~ msgstr "Lien admin"
+#~ msgstr "Lien d’administration"
 
 #~ msgid "Single shortcut button to an admin page."
 #~ msgstr "Bouton de raccourci unique vers une page d’administration."
@@ -2455,8 +2455,8 @@ msgstr ""
 
 #~ msgid "Date, size and status of the last backup. Turns red if > 7 days."
 #~ msgstr ""
-#~ "Date, taille et statut de la dernière sauvegarde. Devient rouge si > 7 "
-#~ "jours."
+#~ "Date, taille et état de la dernière sauvegarde. Devient rouge au-delà de "
+#~ "7 jours."
 
 #~ msgid "No Double Youpï backup."
 #~ msgstr "Aucune sauvegarde Double Youpï."
@@ -2475,14 +2475,16 @@ msgstr ""
 
 #~ msgid "Single-action button to create a new post of the configured type."
 #~ msgstr ""
-#~ "Bouton à action unique pour créer un nouveau contenu du type configuré."
+#~ "Bouton à action unique pour créer une nouvelle publication du type "
+#~ "configuré."
 
 #~ msgid ""
 #~ "A button that immediately creates a new entry of the chosen content type."
-#~ msgstr "Un bouton qui crée immédiatement un nouveau contenu du type choisi."
+#~ msgstr ""
+#~ "Un bouton qui crée immédiatement une nouvelle publication du type choisi."
 
 #~ msgid "Post type"
-#~ msgstr "Type de contenu"
+#~ msgstr "Type de publication"
 
 #~ msgid "Label (optional)"
 #~ msgstr "Libellé (facultatif)"
@@ -2501,8 +2503,9 @@ msgstr ""
 #~ "Server disk space, media library size, DB size. Cached 1h to avoid "
 #~ "walking on each pageload."
 #~ msgstr ""
-#~ "Espace disque serveur, taille médiathèque, taille DB. Cache 1h pour ne "
-#~ "pas walker à chaque pageload."
+#~ "Espace disque du serveur, taille de la médiathèque, taille de la base de "
+#~ "données. Mis en cache 1 h pour ne pas tout parcourir à chaque chargement "
+#~ "de page."
 
 #~ msgid "Disk"
 #~ msgstr "Disque"
@@ -2511,15 +2514,13 @@ msgstr ""
 #~ msgstr "médias"
 
 #~ msgid "db"
-#~ msgstr "db"
+#~ msgstr "bdd"
 
 #~ msgid "Modules"
 #~ msgstr "Modules"
 
 #~ msgid "Status of the suite modules: active, disabled, in progress."
-#~ msgstr ""
-#~ "État des modules de la suite : actifs, désactivés, en cours "
-#~ "d’implémentation."
+#~ msgstr "État des modules de la suite : actifs, désactivés, en cours."
 
 #, php-format
 #~ msgid "%1$d / %2$d"
@@ -2550,8 +2551,8 @@ msgstr ""
 #~ "Configurable buttons for frequent admin actions. Multiple instances "
 #~ "possible for distinct workflows."
 #~ msgstr ""
-#~ "Boutons configurables vers les actions admin fréquentes. Plusieurs "
-#~ "instances possibles pour des workflows distincts."
+#~ "Boutons configurables vers les actions d’administration fréquentes. "
+#~ "Plusieurs instances possibles pour des flux de travail distincts."
 
 #~ msgid ""
 #~ "Quick-access buttons for the admin actions you run most often. Add one "
@@ -2570,10 +2571,10 @@ msgstr ""
 #~ msgstr "+ Page"
 
 #~ msgid "+ Media"
-#~ msgstr "+ Médias"
+#~ msgstr "+ Média"
 
 #~ msgid "Clear cache"
-#~ msgstr "Vider cache"
+#~ msgstr "Vider le cache"
 
 #~ msgid "Update plugins"
 #~ msgstr "Mettre à jour les extensions"
@@ -2591,13 +2592,13 @@ msgstr ""
 #~ msgstr "Thèmes"
 
 #~ msgid "Customizer"
-#~ msgstr "Personnalisateur"
+#~ msgstr "Outil de personnalisation"
 
 #~ msgid "Permalinks"
 #~ msgstr "Permaliens"
 
 #~ msgid "No action. Edit the widget config."
-#~ msgstr "Aucune action. Édite la config du widget."
+#~ msgstr "Aucune action. Modifiez les réglages du widget."
 
 #~ msgid "Shortcuts"
 #~ msgstr "Raccourcis"
@@ -2606,8 +2607,8 @@ msgstr ""
 #~ "Configurable bookmarks to frequently used admin pages. Multiple instances "
 #~ "possible to categorize."
 #~ msgstr ""
-#~ "Bookmarks configurables vers les pages admin fréquentes. Plusieurs "
-#~ "instances possibles pour catégoriser."
+#~ "Marque-pages configurables vers les pages d’administration fréquentes. "
+#~ "Plusieurs instances possibles pour les classer."
 
 #~ msgid "Posts"
 #~ msgstr "Articles"
@@ -2627,7 +2628,7 @@ msgstr ""
 #~ msgid ""
 #~ "Bookmarks to the admin pages you visit most. Add one from the dropdown."
 #~ msgstr ""
-#~ "Favoris vers les pages d’administration que vous consultez le plus. "
+#~ "Marque-pages vers les pages d’administration que vous consultez le plus. "
 #~ "Ajoutez-en un depuis le menu."
 
 #~ msgid "Add a shortcut"
@@ -2637,7 +2638,7 @@ msgstr ""
 #~ msgstr "Aucun raccourci configuré."
 
 #~ msgid "WordPress health"
-#~ msgstr "Santé WordPress"
+#~ msgstr "Santé de WordPress"
 
 #~ msgid "Summary of WP_Site_Health tests: critical, recommended, passed."
 #~ msgstr "Résumé des tests WP_Site_Health : critiques, recommandés, réussis."
@@ -2714,7 +2715,7 @@ msgstr ""
 #~ msgstr "Hybride"
 
 #~ msgid "Static Site module not active."
-#~ msgstr "Module Site statique non actif."
+#~ msgstr "Module Site statique inactif."
 
 #, php-format
 #~ msgid "%d page generated"
@@ -2724,7 +2725,7 @@ msgstr ""
 
 #, php-format
 #~ msgid "Last export: %s ago"
-#~ msgstr "Dernier export il y a %s"
+#~ msgstr "Dernier export : il y a %s"
 
 #~ msgid "To handle"
 #~ msgstr "À traiter"
@@ -2732,35 +2733,35 @@ msgstr ""
 #~ msgid ""
 #~ "Drafts, scheduled posts, comments in moderation, plugins awaiting update."
 #~ msgstr ""
-#~ "Brouillons, articles programmés, commentaires en attente de modération, "
+#~ "Brouillons, articles planifiés, commentaires en attente de modération, "
 #~ "extensions à mettre à jour."
 
 #~ msgid "Drafts"
 #~ msgstr "Brouillons"
 
 #~ msgid "Scheduled"
-#~ msgstr "Programmés"
+#~ msgstr "Planifiés"
 
 #~ msgid "In moderation"
 #~ msgstr "En modération"
 
 #~ msgid "State of the quick toggles (Disable Comments, Classic Editor, etc.)."
 #~ msgstr ""
-#~ "État des réglages rapides (Désactiver les commentaires, Éditeur "
+#~ "État des interrupteurs rapides (Désactiver les commentaires, Éditeur "
 #~ "classique, etc.)."
 
 #~ msgid "No toggle available."
-#~ msgstr "Aucun réglage disponible."
+#~ msgstr "Aucun interrupteur disponible."
 
 #~ msgid ""
 #~ "Visually reorganize your admin navigation: drag chips between lines, hide "
 #~ "items, promote sub-pages to top-level, and toggle Double Youpï styling "
 #~ "per sub-page."
 #~ msgstr ""
-#~ "Réorganisez visuellement votre navigation admin : glissez-déposez les "
-#~ "chips entre les lignes, masquez des éléments, promouvez des sous-pages au "
-#~ "niveau supérieur, et activez ou désactivez le style Double Youpï par sous-"
-#~ "page."
+#~ "Réorganisez visuellement votre navigation d’administration : glissez-"
+#~ "déposez les pastilles entre les lignes, masquez des éléments, faites "
+#~ "passer des sous-pages au premier niveau, et activez ou désactivez le "
+#~ "style Double Youpï par sous-page."
 
 #~ msgid ""
 #~ "The navigation editor requires JavaScript. Please enable it in your "
@@ -2788,10 +2789,10 @@ msgstr ""
 #~ msgstr "Options de publication"
 
 #~ msgid "Collapse panel"
-#~ msgstr "Réduire le panneau"
+#~ msgstr "Replier le panneau"
 
 #~ msgid "Expand panel"
-#~ msgstr "Développer le panneau"
+#~ msgstr "Déplier le panneau"
 
 #~ msgid "Permalink"
 #~ msgstr "Permalien"
@@ -2955,19 +2956,19 @@ msgstr ""
 #~ msgstr "Réorganiser"
 
 #~ msgid "Drag to reorder"
-#~ msgstr "Glisser pour réorganiser"
+#~ msgstr "Faites glisser pour réorganiser"
 
 #~ msgid "Reorder failed. Please refresh."
 #~ msgstr "Échec du réordonnancement. Rechargez la page."
 
 #~ msgid "Unknown post type."
-#~ msgstr "Type de contenu inconnu."
+#~ msgstr "Type de publication inconnu."
 
 #~ msgid "This post type is not orderable."
-#~ msgstr "Ce type de contenu n’est pas réordonnable."
+#~ msgstr "Ce type de publication ne peut pas être réordonné."
 
 #~ msgid "You cannot edit this post type."
-#~ msgstr "Vous ne pouvez pas modifier ce type de contenu."
+#~ msgstr "Vous ne pouvez pas modifier ce type de publication."
 
 #~ msgid "Dashboard"
 #~ msgstr "Tableau de bord"
@@ -3063,14 +3064,14 @@ msgstr ""
 
 #~ msgid "Color too dark: even strong saturation cannot recover identity here."
 #~ msgstr ""
-#~ "Couleur trop sombre : même une forte saturation ne peut pas récupérer "
-#~ "l’identité ici."
+#~ "Couleur trop sombre : même une forte saturation ne lui rend pas son "
+#~ "identité."
 
 #~ msgid ""
 #~ "Color too light: even strong saturation cannot recover identity here."
 #~ msgstr ""
-#~ "Couleur trop claire : même une forte saturation ne peut pas récupérer "
-#~ "l’identité ici."
+#~ "Couleur trop claire : même une forte saturation ne lui rend pas son "
+#~ "identité."
 
 #~ msgid "Gray too dark: without saturation, tinted surfaces will turn muddy."
 #~ msgstr ""
@@ -3092,8 +3093,8 @@ msgstr ""
 #~ msgid ""
 #~ "Customize the look of your WordPress admin. Everything else is automatic."
 #~ msgstr ""
-#~ "Personnalisez l’apparence de votre admin WordPress. Tout le reste est "
-#~ "automatique."
+#~ "Personnalisez l’apparence de votre administration WordPress. Tout le "
+#~ "reste est automatique."
 
 #~ msgid "Recommended colors"
 #~ msgstr "Couleurs recommandées"
@@ -3196,7 +3197,7 @@ msgstr ""
 #~ msgstr "Tout réinitialiser"
 
 #~ msgid "selected"
-#~ msgstr "sélectionné·s"
+#~ msgstr "sélectionné(s)"
 
 #~ msgid "Add New"
 #~ msgstr "Ajouter"
@@ -3214,7 +3215,7 @@ msgstr ""
 #~ msgstr "Slug"
 
 #~ msgid "Status"
-#~ msgstr "Statut"
+#~ msgstr "État"
 
 #~ msgid "Sort"
 #~ msgstr "Trier"
@@ -4604,7 +4605,7 @@ msgstr ""
 #~ "Forces TinyMCE on all posts/pages/CPTs and disables the block widget "
 #~ "editor. Replaces Classic Editor / Disable Gutenberg."
 #~ msgstr ""
-#~ "Impose TinyMCE sur tous les articles, pages et types de contenu "
+#~ "Impose TinyMCE sur tous les articles, pages et types de publication "
 #~ "personnalisés, et désactive l’éditeur de widgets en blocs. Remplace "
 #~ "Classic Editor et Disable Gutenberg."
 
@@ -4612,16 +4613,17 @@ msgstr ""
 #~ msgstr "Désactiver les commentaires"
 
 #~ msgid "Cut comments and trackbacks everywhere"
-#~ msgstr "Couper les commentaires et trackbacks partout"
+#~ msgstr "Couper les commentaires et les rétroliens partout"
 
 #~ msgid ""
 #~ "Removes comment support from all post types, hides the Comments menu and "
 #~ "admin bar icon, blocks POST to wp-comments-post.php. Replaces Disable "
 #~ "Comments."
 #~ msgstr ""
-#~ "Retire la prise en charge des commentaires de tous les types de contenu, "
-#~ "masque le menu Commentaires et son icône dans la barre d’administration, "
-#~ "bloque les envois vers wp-comments-post.php. Remplace Disable Comments."
+#~ "Retire la prise en charge des commentaires de tous les types de "
+#~ "publication, masque le menu Commentaires et son icône dans la barre "
+#~ "d’administration, bloque les envois vers wp-comments-post.php. Remplace "
+#~ "Disable Comments."
 
 #~ msgid "Comments are disabled on this site."
 #~ msgstr "Les commentaires sont désactivés sur ce site."
@@ -4640,8 +4642,8 @@ msgstr ""
 #~ "Prompt."
 #~ msgstr ""
 #~ "Supprime l’invite plein écran de vérification de l’e-mail "
-#~ "d’administration que WordPress affiche à la connexion tous les quelques "
-#~ "mois. Remplace Make Disable Admin Email Verification Prompt."
+#~ "d’administration que WordPress affiche à la connexion, à intervalles "
+#~ "réguliers. Remplace Make Disable Admin Email Verification Prompt."
 
 #~ msgid "Disable update emails"
 #~ msgstr "Désactiver les e-mails de mise à jour"
@@ -4656,33 +4658,33 @@ msgstr ""
 #~ "and critical emails are kept, and core update emails are untouched. "
 #~ "Replaces Companion Auto Update / Easy Updates Manager."
 #~ msgstr ""
-#~ "Met fin au spam dans la boîte de réception causé par les mises à jour "
-#~ "automatiques réussies d’extensions/thèmes. Les e-mails d’échec et "
+#~ "Met fin aux e-mails indésirables envoyés après chaque mise à jour "
+#~ "automatique réussie d’une extension ou d’un thème. Les e-mails d’échec et "
 #~ "critiques sont conservés, et les e-mails de mise à jour du cœur ne sont "
 #~ "pas touchés. Remplace Companion Auto Update / Easy Updates Manager."
 
 #~ msgid "Duplicate a post/page"
-#~ msgstr "Dupliquer un article/page"
+#~ msgstr "Dupliquer un article ou une page"
 
 #~ msgid "Enable a « Duplicate » link in the admin lists"
-#~ msgstr "Activer un lien « Dupliquer » dans les listes admin"
+#~ msgstr "Activer un lien « Dupliquer » dans les listes de l’administration"
 
 #~ msgid ""
 #~ "Adds a « Duplicate » link in the Posts/Pages/CPT lists. Clones the "
 #~ "content, meta and taxonomies as a draft. Replaces Yoast Duplicate Post."
 #~ msgstr ""
 #~ "Ajoute un lien « Dupliquer » dans les listes d’articles, de pages et de "
-#~ "types de contenu personnalisés. Copie le contenu, les métadonnées et les "
-#~ "taxonomies dans un brouillon. Remplace Yoast Duplicate Post."
+#~ "types de publication personnalisés. Copie le contenu, les métadonnées et "
+#~ "les taxonomies dans un brouillon. Remplace Yoast Duplicate Post."
 
 #~ msgid "Duplicate this content as a draft"
 #~ msgstr "Dupliquer ce contenu en brouillon"
 
 #~ msgid "Post ID missing."
-#~ msgstr "ID de contenu manquant."
+#~ msgstr "ID de publication manquant."
 
 #~ msgid "Source post not found."
-#~ msgstr "Contenu source introuvable."
+#~ msgstr "Publication source introuvable."
 
 #~ msgid "(Copy)"
 #~ msgstr "(Copie)"
@@ -4698,9 +4700,10 @@ msgstr ""
 #~ "content. Replaces Really Simple SSL. (The WordPress « Site Address » "
 #~ "setting is not modified: do it manually.)"
 #~ msgstr ""
-#~ "301 redirect front et admin, réécriture des URLs http→https dans le "
-#~ "contenu. Remplace Really Simple SSL. (Le réglage WordPress « Adresse du "
-#~ "site » n’est pas modifié : à faire à la main.)"
+#~ "Redirection 301 sur le site et dans l’administration, réécriture des "
+#~ "adresses http→https dans le contenu. Remplace Really Simple SSL. (Le "
+#~ "réglage WordPress « Adresse du site » n’est pas modifié : à faire à la "
+#~ "main.)"
 
 #~ msgid ""
 #~ "Local environment detected: Force HTTPS is blocked here to avoid breaking "
@@ -4708,9 +4711,9 @@ msgstr ""
 #~ "override: add_filter( 'doubleyoupi_toolkit_force_https_in_local', "
 #~ "'__return_true' );"
 #~ msgstr ""
-#~ "Environnement local détecté : Force HTTPS bloqué ici pour ne pas casser "
-#~ "l’accès au site (les certificats locaux ne sont généralement pas "
-#~ "configurés). Pour outrepasser : "
+#~ "Environnement local détecté : Forcer HTTPS est bloqué ici pour ne pas "
+#~ "casser l’accès au site (les certificats locaux ne sont généralement pas "
+#~ "configurés). Pour passer outre : "
 #~ "add_filter( 'doubleyoupi_toolkit_force_https_in_local', '__return_true' );"
 
 #~ msgid "Hide login"
@@ -4759,8 +4762,8 @@ msgstr ""
 #, php-format
 #~ msgid "Locked out? Add %s to wp-config.php to restore the default login."
 #~ msgstr ""
-#~ "Verrouillé dehors ? Ajoutez %s à wp-config.php pour rétablir la connexion "
-#~ "par défaut."
+#~ "Vous ne pouvez plus vous connecter ? Ajoutez %s à wp-config.php pour "
+#~ "rétablir la connexion par défaut."
 
 #~ msgid "This page does not exist."
 #~ msgstr "Cette page n’existe pas."
@@ -4792,8 +4795,8 @@ msgstr ""
 #~ "Le %2$s par défaut renvoie désormais une 404 aux visiteurs déconnectés. "
 #~ "Ajoutez la nouvelle URL à vos favoris.\n"
 #~ "\n"
-#~ "Si vous êtes un jour verrouillé dehors, ajoutez cette ligne à wp-"
-#~ "config.php pour rétablir la connexion par défaut :\n"
+#~ "Si un jour vous ne pouvez plus vous connecter, ajoutez cette ligne à wp-"
+#~ "config.php pour rétablir la connexion par défaut :\n"
 #~ "define( 'DOUBLEYOUPI_HIDE_LOGIN_DISABLE', true );"
 
 #~ msgid "Intuitive Save/Publish"
@@ -4808,10 +4811,10 @@ msgstr ""
 #~ "Editor), Cmd+S triggers the primary button. Gutenberg is untouched (it "
 #~ "already has its native shortcut). Behavior similar to Bricks."
 #~ msgstr ""
-#~ "Sur les pages admin avec un formulaire à enregistrer (Réglages, profil, "
-#~ "édition de term, Classic Editor), Cmd+S déclenche le bouton primaire. "
-#~ "Gutenberg n’est pas touché (il a déjà le raccourci natif). Comportement "
-#~ "similaire à Bricks."
+#~ "Sur les pages d’administration avec un formulaire à enregistrer "
+#~ "(Réglages, profil, modification d’un terme, Classic Editor), Cmd+S "
+#~ "déclenche le bouton principal. L’éditeur de blocs n’est pas concerné (il "
+#~ "a déjà son propre raccourci). Comportement similaire à Bricks."
 
 #~ msgid "Local avatars"
 #~ msgstr "Avatars locaux"
@@ -4902,7 +4905,7 @@ msgstr ""
 #~ msgstr "%s détecté — on lui laisse la main."
 
 #~ msgid "Tools updated. Reload the page to see the effects."
-#~ msgstr "Outils mis à jour. Recharge la page pour voir les effets."
+#~ msgstr "Outils mis à jour. Rechargez la page pour voir les effets."
 
 #~ msgid "Orders to process"
 #~ msgstr "Commandes à traiter"
@@ -4918,14 +4921,14 @@ msgstr ""
 #~ "Revenue collected this month vs last month (same days elapsed). Cached 15 "
 #~ "min."
 #~ msgstr ""
-#~ "CA encaissé ce mois-ci vs le mois dernier (mêmes jours écoulés). Cache 15 "
-#~ "min."
+#~ "Chiffre d’affaires encaissé ce mois-ci, comparé au mois dernier (mêmes "
+#~ "jours écoulés). Mis en cache 15 min."
 
 #~ msgid "Shop activity"
-#~ msgstr "Activité boutique"
+#~ msgstr "Activité de la boutique"
 
 #~ msgid "Latest orders: number, amount, status and time."
-#~ msgstr "Dernières commandes : numéro, montant, statut et heure."
+#~ msgstr "Dernières commandes : numéro, montant, état et heure."
 
 #~ msgid "Low stock"
 #~ msgstr "Stock faible"
@@ -4933,8 +4936,8 @@ msgstr ""
 #~ msgid ""
 #~ "Products running low or out of stock, with a quick preview. Cached 15 min."
 #~ msgstr ""
-#~ "Produits en stock faible ou en rupture, avec un aperçu rapide. Cache 15 "
-#~ "min."
+#~ "Produits en stock faible ou en rupture, avec un aperçu rapide. Mis en "
+#~ "cache 15 min."
 
 #~ msgid "Sales (7 days)"
 #~ msgstr "Ventes (7 jours)"
@@ -4942,14 +4945,14 @@ msgstr ""
 #~ msgid ""
 #~ "Daily revenue sparkline over the last 7 days, plus total and order count."
 #~ msgstr ""
-#~ "Courbe du CA jour par jour sur les 7 derniers jours, plus le total et le "
-#~ "nombre de commandes."
+#~ "Courbe du chiffre d’affaires jour par jour sur les 7 derniers jours, plus "
+#~ "le total et le nombre de commandes."
 
 #~ msgid "Top products"
-#~ msgstr "Top produits"
+#~ msgstr "Meilleurs produits"
 
 #~ msgid "Best sellers this month by units sold. Cached 30 min."
-#~ msgstr "Meilleures ventes du mois par quantité vendue. Cache 30 min."
+#~ msgstr "Meilleures ventes du mois par quantité vendue. Mis en cache 30 min."
 
 #~ msgid "WooCommerce not active."
 #~ msgstr "WooCommerce inactif."
@@ -4982,7 +4985,7 @@ msgstr ""
 #~ msgstr "Rien en attente. Tout est traité."
 
 #~ msgid "vs last month"
-#~ msgstr "vs le mois dernier"
+#~ msgstr "par rapport au mois dernier"
 
 #~ msgid "first sales of the period"
 #~ msgstr "premières ventes de la période"
@@ -4997,10 +5000,10 @@ msgstr ""
 #~ msgstr "rupture"
 
 #~ msgid "stock alerts"
-#~ msgstr "alertes stock"
+#~ msgstr "alertes de stock"
 
 #~ msgid "All products well stocked."
-#~ msgstr "Tous les produits bien approvisionnés."
+#~ msgstr "Tous les produits sont bien approvisionnés."
 
 #~ msgid "No orders yet."
 #~ msgstr "Aucune commande pour l’instant."
@@ -5067,20 +5070,20 @@ msgstr ""
 #~ "One create button per content type, generated automatically, including "
 #~ "your custom post types."
 #~ msgstr ""
-#~ "Un bouton de création par type de contenu, généré automatiquement, y "
+#~ "Un bouton de création par type de publication, généré automatiquement, y "
 #~ "compris vos types personnalisés."
 
 #~ msgid "No content type available to create."
-#~ msgstr "Aucun type de contenu à créer."
+#~ msgstr "Aucun type de publication à créer."
 
 #~ msgid "Just create and go"
 #~ msgstr "Créer et filer, c’est tout"
 
 #~ msgid "Your shop, then the editor flow"
-#~ msgstr "Votre boutique, puis le flux éditeur"
+#~ msgstr "Votre boutique, puis le flux de travail éditorial"
 
 #~ msgid "Sales in depth, plus the editor flow"
-#~ msgstr "Les ventes en détail, plus le flux éditeur"
+#~ msgstr "Les ventes en détail, plus le flux de travail éditorial"
 
 #~ msgid "Create (all types)"
 #~ msgstr "Créer (tous types)"
@@ -5146,7 +5149,7 @@ msgstr ""
 #~ msgstr "Notification ignorée"
 
 #~ msgid "default: %s"
-#~ msgstr "défaut : %s"
+#~ msgstr "par défaut : %s"
 
 #~ msgid "No order"
 #~ msgstr "Aucune commande"
@@ -5199,7 +5202,7 @@ msgstr ""
 #~ msgstr "Échec de l’installation — ouvrir l’installateur"
 
 #~ msgid "Admin Columns deactivated."
-#~ msgstr "Admin Columns désactivé."
+#~ msgstr "Admin Columns désactivée."
 
 #~ msgid ""
 #~ "Admin Columns rewrites WordPress list-table columns, which conflicts with "
@@ -5253,7 +5256,7 @@ msgstr ""
 #~ msgstr "On y va ?"
 
 #~ msgid "Sales and orders, without leaving the dashboard."
-#~ msgstr "Le nerf de la guerre, sans quitter le tableau de bord."
+#~ msgstr "Les ventes et les commandes, sans quitter le tableau de bord."
 
 #~ msgid "Update"
 #~ msgstr "Mettre à jour"
@@ -5280,7 +5283,7 @@ msgstr ""
 #~ msgstr "Tout mettre à jour"
 
 #~ msgid "Auto-updates"
-#~ msgstr "MAJ auto"
+#~ msgstr "Mises à jour auto"
 
 #~ msgid "More"
 #~ msgstr "Plus"
@@ -5343,10 +5346,10 @@ msgstr ""
 #~ msgstr[1] "%1$d en attente · %2$d approuvés"
 
 #~ msgid "You are not allowed to export these settings."
-#~ msgstr "Vous n’avez pas le droit d’exporter ces réglages."
+#~ msgstr "Vous n’avez pas l’autorisation d’exporter ces réglages."
 
 #~ msgid "You are not allowed to import these settings."
-#~ msgstr "Vous n’avez pas le droit d’importer ces réglages."
+#~ msgstr "Vous n’avez pas l’autorisation d’importer ces réglages."
 
 #~ msgid "Accent color and logo"
 #~ msgstr "Couleur d’accent et logo"
@@ -5496,7 +5499,7 @@ msgstr ""
 #~ msgstr "Nouvelles colonnes : %s"
 
 #~ msgid "You are not allowed to do this."
-#~ msgstr "Vous n’avez pas le droit de faire cela."
+#~ msgstr "Vous n’avez pas l’autorisation de faire cela."
 
 #~ msgid "Refined Admin Dashboard is on."
 #~ msgstr "Refined Admin Dashboard est actif."
@@ -5643,7 +5646,7 @@ msgstr ""
 #~ "you switch back."
 #~ msgstr ""
 #~ "L’onglet Réorganiser est masqué en mode natif. Votre disposition est "
-#~ "conservée pour votre retour."
+#~ "conservée si vous y revenez."
 
 #~ msgid ""
 #~ "Hover a section of the rail to open its pages next to it. Keyboard: the "
@@ -5722,4 +5725,7 @@ msgstr ""
 #~ msgstr "Garder Admin Columns"
 
 #~ msgid "You are not allowed to see this widget."
-#~ msgstr "Vous n’avez pas le droit de voir ce widget."
+#~ msgstr "Vous n’avez pas l’autorisation de voir ce widget."
+
+#~ msgid "No note yet."
+#~ msgstr "Pas encore de note."

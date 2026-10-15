@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Double Youpi 0.9.40-dev\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-12T12:25:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T02:12:06+00:00\n"
 "PO-Revision-Date: 2026-05-20 22:34+0000\n"
 "Last-Translator: Double Youpï\n"
 "Language-Team: Double Youpï (English (United Kingdom))\n"
@@ -62,8 +62,8 @@ msgid ""
 "Deactivate Refined Admin Dashboard first."
 msgstr ""
 
-#: src/Admin/AdminMenu.php:157 src/Admin/OverviewPage.php:157
-#: src/Admin/OverviewPage.php:560
+#: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
+#: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
 #: src/Modules/MediaLibrary/MediaLibrary.php:172
 msgid "Settings"
@@ -5224,3 +5224,6 @@ msgstr ""
 
 #~ msgid "You are not allowed to see this widget."
 #~ msgstr "You are not allowed to see this widget."
+
+#~ msgid "No note yet."
+#~ msgstr "No note yet."

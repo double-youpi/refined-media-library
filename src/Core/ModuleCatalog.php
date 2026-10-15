@@ -38,11 +38,11 @@ final class ModuleCatalog {
 				'name'         => __( 'Refined Admin Dashboard', 'doubleyoupi-refined-media-library' ),
 				'description'  => __( 'A full rethink of the WordPress admin: smart dashboard, reworked navigation, redesigned content tables, dark mode, and your branding.', 'doubleyoupi-refined-media-library' ),
 				'icon'         => 'dashicons-admin-customizer',
-				// Range status: not yet published as a standalone plugin on
-				// WordPress.org, hence "coming soon" in the OTHER solo builds.
-				// In its own build it is promoted to "available" by
-				// `with_present_modules_promoted()`.
-				'status'       => self::STATUS_COMING_SOON,
+				// Published on WordPress.org on 14 Oct 2026, so the OTHER solo
+				// builds show it as an installable showcase card (and the media
+				// library settings may say it is free too). In its own build it
+				// is a present module anyway (`with_present_modules_promoted()`).
+				'status'       => self::STATUS_AVAILABLE,
 				'settings_url' => null,
 			],
 			[
@@ -197,7 +197,7 @@ final class ModuleCatalog {
 		};
 
 		$map = [
-			'admin'         => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/plugins/refined-admin-dashboard' ],
+			'admin'         => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-admin-dashboard', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-admin-dashboard' ],
 			'media-library' => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-media-library', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-media-library' ],
 			'performance'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-performance' ],
 			'static-site'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-static' ],

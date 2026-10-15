@@ -399,12 +399,17 @@ final class ScreenOwner {
 	 * Admin-relative address of the screen, without nonces and with the
 	 * search term dropped (it may contain personal data). The host is never
 	 * part of it.
+	 *
+	 * @param string      $path       Path of the screen's URL.
+	 * @param string      $query      Its query string.
+	 * @param string|null $admin_path Path of admin_url(); read from it when null
+	 *                                (WordPress may live in a subdirectory).
 	 */
-	public static function clean_url( string $path, string $query ): string {
-		$path = '/' . ltrim( $path, '/' );
-		$pos  = strpos( $path, '/wp-admin/' );
-		if ( false !== $pos ) {
-			$path = substr( $path, $pos + strlen( '/wp-admin' ) );
+	public static function clean_url( string $path, string $query, ?string $admin_path = null ): string {
+		$path  = '/' . ltrim( $path, '/' );
+		$admin = trim( null === $admin_path ? (string) wp_parse_url( admin_url(), PHP_URL_PATH ) : $admin_path, '/' );
+		if ( '' !== $admin && str_starts_with( $path, '/' . $admin . '/' ) ) {
+			$path = substr( $path, strlen( '/' . $admin ) );
 		}
 		$params = [];
 		if ( '' !== $query ) {

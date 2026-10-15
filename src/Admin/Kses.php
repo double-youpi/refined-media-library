@@ -117,6 +117,20 @@ final class Kses {
 		return self::$ui;
 	}
 
+	/**
+	 * Protocols for our interface fragments: WordPress's own, plus `data`, for
+	 * the base64 images plugins give as menu icons (WPForms, WP Mail SMTP…).
+	 * CoreCapabilities::menu_icon_html() only lets through the strict form
+	 * `data:image/…;base64,…`. Without `data` here, wp_kses() cut the scheme
+	 * and the browser asked the server for `image/svg+xml;base64,…` (404, no
+	 * icon on the chips and in the rail's flyouts).
+	 *
+	 * @return string[]
+	 */
+	public static function ui_protocols(): array {
+		return array_merge( wp_allowed_protocols(), [ 'data' ] );
+	}
+
 	/** An inline SVG, filtered. */
 	public static function svg( string $svg ): string {
 		return wp_kses( $svg, self::svg_tags() );
