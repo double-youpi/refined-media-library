@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
+"POT-Creation-Date: 2026-10-16T18:22:57+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -65,7 +65,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:172
+#: src/Modules/MediaLibrary/MediaLibrary.php:176
 msgid "Settings"
 msgstr "सेटिंग्स"
 
@@ -369,6 +369,9 @@ msgid "Suite"
 msgstr "सुइट"
 
 #: src/Admin/OverviewPage.php:177 src/Admin/OverviewPage.php:217
+#: src/Modules/MediaLibrary/FolderService.php:252
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
 msgid "Access denied."
 msgstr "पहुँच अस्वीकृत।"
 
@@ -537,8 +540,8 @@ msgstr ""
 "WordPress एडमिन का पूरा पुनर्विचार: स्मार्ट डैशबोर्ड, फिर से डिज़ाइन किया गया नेविगेशन, "
 "नई कॉन्टेंट टेबल, डार्क मोड और आपकी ब्रांडिंग।"
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:132
-#: src/Modules/MediaLibrary/MediaLibrary.php:184
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:136
+#: src/Modules/MediaLibrary/MediaLibrary.php:188
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -611,12 +614,14 @@ msgstr ""
 "स्नैपशॉट)।"
 
 #: src/Modules/MediaLibrary/CollectionManager.php:169
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
 msgid "Could not delete collection."
 msgstr "संग्रह नहीं हटाया जा सका।"
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
 #: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr "संग्रह"
@@ -657,12 +662,14 @@ msgstr "फ़ोल्डर में स्थानांतरित कर
 msgid "Add to collection…"
 msgstr "संग्रह में जोड़ें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:610
-#: src/Modules/MediaLibrary/FolderManager.php:646
+#: src/Modules/MediaLibrary/FolderManager.php:604
+#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "किसी फ़ोल्डर को उसी में या उसके किसी सबफ़ोल्डर में नहीं ले जाया जा सकता।"
 
-#: src/Modules/MediaLibrary/FolderManager.php:671
+#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
 msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 
@@ -1204,6 +1211,25 @@ msgstr "पुनः प्रयास करें"
 msgid "More fields"
 msgstr "अधिक फ़ील्ड"
 
+#: src/Modules/MediaLibrary/FolderService.php:151
+#: src/Modules/MediaLibrary/FolderService.php:154
+#: src/Modules/MediaLibrary/FolderService.php:180
+#: src/Modules/MediaLibrary/FolderService.php:199
+#: src/Modules/MediaLibrary/FolderService.php:235
+#: src/Modules/MediaLibrary/FolderService.php:255
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
+msgid "Something went wrong. Please try again."
+msgstr "कुछ गड़बड़ हो गई। कृपया पुनः प्रयास करें।"
+
+#: src/Modules/MediaLibrary/FolderService.php:278
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+msgid "A folder or collection with this name already exists here."
+msgstr "यहाँ इस नाम का फ़ोल्डर या संग्रह पहले से मौजूद है।"
+
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:65
 msgid "Add folder"
 msgstr "फ़ोल्डर जोड़ें"
@@ -1219,6 +1245,11 @@ msgstr "फ़ोल्डर अपडेट करें"
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:68
 msgid "No folders found"
 msgstr "कोई फ़ोल्डर नहीं मिला"
+
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+msgid ""
+"Collections are kept apart from folders: this change is not possible here."
+msgstr "संग्रह फ़ोल्डरों से अलग रहते हैं, इसलिए यह बदलाव यहाँ संभव नहीं है।"
 
 #: src/Modules/MediaLibrary/MediaLibrary.php:74
 msgid ""
@@ -1236,15 +1267,15 @@ msgstr ""
 "Double Youpï Refined Media Library संस्थापित है और पीछे हट गई है: यदि आप बाकी के "
 "बिना केवल मीडिया लाइब्रेरी चाहते हैं तो इसे फिर से सक्रिय करें।"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:133
+#: src/Modules/MediaLibrary/MediaLibrary.php:137
 msgid "Media Library"
 msgstr "मीडिया लाइब्रेरी"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:175
+#: src/Modules/MediaLibrary/MediaLibrary.php:179
 msgid "Unused media"
 msgstr "अप्रयुक्त मीडिया"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:180
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "आयात करें"
@@ -1358,10 +1389,6 @@ msgstr "पूर्ववत किया जा रहा है…"
 #, php-format
 msgid "%d imported folders removed."
 msgstr "%d आयातित फ़ोल्डर हटाए गए।"
-
-#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
-msgid "Something went wrong. Please try again."
-msgstr "कुछ गड़बड़ हो गई। कृपया पुनः प्रयास करें।"
 
 #: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
 msgid ""

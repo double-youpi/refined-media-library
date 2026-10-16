@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
+"POT-Creation-Date: 2026-10-16T18:22:57+00:00\n"
 "Language: es_ES\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -66,7 +66,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:172
+#: src/Modules/MediaLibrary/MediaLibrary.php:176
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -377,6 +377,9 @@ msgid "Suite"
 msgstr "Suite"
 
 #: src/Admin/OverviewPage.php:177 src/Admin/OverviewPage.php:217
+#: src/Modules/MediaLibrary/FolderService.php:252
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
 msgid "Access denied."
 msgstr "Acceso denegado."
 
@@ -548,8 +551,8 @@ msgstr ""
 "inteligente, navegación rediseñada, tablas de contenido renovadas, modo "
 "oscuro y tu marca."
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:132
-#: src/Modules/MediaLibrary/MediaLibrary.php:184
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:136
+#: src/Modules/MediaLibrary/MediaLibrary.php:188
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -622,12 +625,14 @@ msgstr ""
 "restauración con un clic (snapshot automático primero)."
 
 #: src/Modules/MediaLibrary/CollectionManager.php:169
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
 msgid "Could not delete collection."
 msgstr "No se ha podido eliminar la colección."
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
 #: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr "Colecciones"
@@ -668,13 +673,15 @@ msgstr "Mover a carpeta…"
 msgid "Add to collection…"
 msgstr "Añadir a la colección…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:610
-#: src/Modules/MediaLibrary/FolderManager.php:646
+#: src/Modules/MediaLibrary/FolderManager.php:604
+#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Una carpeta no se puede mover dentro de sí misma o de una de sus subcarpetas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:671
+#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
 msgstr "No se ha podido eliminar la carpeta."
 
@@ -1217,6 +1224,25 @@ msgstr "Reintentar"
 msgid "More fields"
 msgstr "Más campos"
 
+#: src/Modules/MediaLibrary/FolderService.php:151
+#: src/Modules/MediaLibrary/FolderService.php:154
+#: src/Modules/MediaLibrary/FolderService.php:180
+#: src/Modules/MediaLibrary/FolderService.php:199
+#: src/Modules/MediaLibrary/FolderService.php:235
+#: src/Modules/MediaLibrary/FolderService.php:255
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
+msgid "Something went wrong. Please try again."
+msgstr "Algo salió mal. Inténtalo de nuevo."
+
+#: src/Modules/MediaLibrary/FolderService.php:278
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+msgid "A folder or collection with this name already exists here."
+msgstr "Ya existe aquí una carpeta o colección con este nombre."
+
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:65
 msgid "Add folder"
 msgstr "Añadir carpeta"
@@ -1232,6 +1258,13 @@ msgstr "Actualizar carpeta"
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:68
 msgid "No folders found"
 msgstr "No se han encontrado carpetas"
+
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+msgid ""
+"Collections are kept apart from folders: this change is not possible here."
+msgstr ""
+"Las colecciones se mantienen separadas de las carpetas: este cambio no es "
+"posible aquí."
 
 #: src/Modules/MediaLibrary/MediaLibrary.php:74
 msgid ""
@@ -1250,15 +1283,15 @@ msgstr ""
 "Double Youpï Refined Media Library está instalado y en segundo plano: "
 "actívalo de nuevo si quieres la biblioteca de medios sin el resto."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:133
+#: src/Modules/MediaLibrary/MediaLibrary.php:137
 msgid "Media Library"
 msgstr "Biblioteca de medios"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:175
+#: src/Modules/MediaLibrary/MediaLibrary.php:179
 msgid "Unused media"
 msgstr "Medios sin uso"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:180
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importar"
@@ -1375,10 +1408,6 @@ msgstr "Deshaciendo…"
 #, php-format
 msgid "%d imported folders removed."
 msgstr "%d carpetas importadas eliminadas."
-
-#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
-msgid "Something went wrong. Please try again."
-msgstr "Algo salió mal. Inténtalo de nuevo."
 
 #: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
 msgid ""

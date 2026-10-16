@@ -559,14 +559,8 @@ class FolderManager extends AbstractModule {
 	 * i.e. the new parent is the folder itself or one of its descendants.
 	 */
 	private function would_create_cycle( int $new_parent, int $folder_id ): bool {
-		if ( $new_parent <= 0 ) {
-			return false;
-		}
-		if ( $new_parent === $folder_id ) {
-			return true;
-		}
-		$ancestors = get_ancestors( $new_parent, FolderTaxonomy::TAXONOMY, 'taxonomy' );
-		return in_array( $folder_id, array_map( 'intval', (array) $ancestors ), true );
+		// One rule for every surface that moves folders (this panel, Bricks).
+		return FolderService::would_create_cycle( $new_parent, $folder_id );
 	}
 
 	public function rest_create_folder( \WP_REST_Request $request ): \WP_REST_Response {

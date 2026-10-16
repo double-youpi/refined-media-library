@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-15T15:31:30+00:00\n"
+"POT-Creation-Date: 2026-10-16T18:22:57+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -69,7 +69,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:157 src/Admin/OverviewPage.php:560
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:172
+#: src/Modules/MediaLibrary/MediaLibrary.php:176
 msgid "Settings"
 msgstr "Réglages"
 
@@ -379,6 +379,9 @@ msgid "Suite"
 msgstr "Suite"
 
 #: src/Admin/OverviewPage.php:177 src/Admin/OverviewPage.php:217
+#: src/Modules/MediaLibrary/FolderService.php:252
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
 msgid "Access denied."
 msgstr "Accès refusé."
 
@@ -551,8 +554,8 @@ msgstr ""
 "intelligent, navigation retravaillée, tableaux de contenu redessinés, mode "
 "sombre et votre identité visuelle."
 
-#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:132
-#: src/Modules/MediaLibrary/MediaLibrary.php:184
+#: src/Core/ModuleCatalog.php:50 src/Modules/MediaLibrary/MediaLibrary.php:136
+#: src/Modules/MediaLibrary/MediaLibrary.php:188
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -625,12 +628,14 @@ msgstr ""
 "restauration en un clic (instantané automatique d’abord)."
 
 #: src/Modules/MediaLibrary/CollectionManager.php:169
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
 msgid "Could not delete collection."
 msgstr "Impossible de supprimer la collection."
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
 #: src/Modules/MediaLibrary/Settings.php:256
 msgid "Collections"
 msgstr "Collections"
@@ -671,14 +676,16 @@ msgstr "Déplacer dans un dossier…"
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:610
-#: src/Modules/MediaLibrary/FolderManager.php:646
+#: src/Modules/MediaLibrary/FolderManager.php:604
+#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:671
+#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
 
@@ -1223,6 +1230,25 @@ msgstr "Réessayer"
 msgid "More fields"
 msgstr "Plus de champs"
 
+#: src/Modules/MediaLibrary/FolderService.php:151
+#: src/Modules/MediaLibrary/FolderService.php:154
+#: src/Modules/MediaLibrary/FolderService.php:180
+#: src/Modules/MediaLibrary/FolderService.php:199
+#: src/Modules/MediaLibrary/FolderService.php:235
+#: src/Modules/MediaLibrary/FolderService.php:255
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
+msgid "Something went wrong. Please try again."
+msgstr "Une erreur est survenue. Veuillez réessayer."
+
+#: src/Modules/MediaLibrary/FolderService.php:278
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+msgid "A folder or collection with this name already exists here."
+msgstr "Un dossier ou une collection porte déjà ce nom ici."
+
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:65
 msgid "Add folder"
 msgstr "Ajouter un dossier"
@@ -1238,6 +1264,13 @@ msgstr "Mettre à jour le dossier"
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:68
 msgid "No folders found"
 msgstr "Aucun dossier trouvé"
+
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+msgid ""
+"Collections are kept apart from folders: this change is not possible here."
+msgstr ""
+"Les collections restent à part des dossiers : cette modification n’est pas "
+"possible ici."
 
 #: src/Modules/MediaLibrary/MediaLibrary.php:74
 msgid ""
@@ -1255,15 +1288,15 @@ msgstr ""
 "Double Youpï Refined Media Library est installée et en retrait : réactivez-"
 "la si vous voulez la médiathèque sans le reste."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:133
+#: src/Modules/MediaLibrary/MediaLibrary.php:137
 msgid "Media Library"
 msgstr "Médiathèque"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:175
+#: src/Modules/MediaLibrary/MediaLibrary.php:179
 msgid "Unused media"
 msgstr "Médias inutilisés"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:180
+#: src/Modules/MediaLibrary/MediaLibrary.php:184
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importer"
@@ -1376,10 +1409,6 @@ msgstr "Annulation…"
 #, php-format
 msgid "%d imported folders removed."
 msgstr "%d dossiers importés supprimés."
-
-#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
-msgid "Something went wrong. Please try again."
-msgstr "Une erreur est survenue. Veuillez réessayer."
 
 #: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
 msgid ""
@@ -1994,7 +2023,7 @@ msgstr ""
 #~ msgstr "Commerce"
 
 #~ msgid "Users"
-#~ msgstr "Utilisateurs"
+#~ msgstr "Comptes"
 
 #~ msgid "Community"
 #~ msgstr "Communauté"
@@ -2006,7 +2035,7 @@ msgstr ""
 #~ msgstr "Système"
 
 #~ msgid "Developer"
-#~ msgstr "Développeur"
+#~ msgstr "Développement"
 
 #~ msgid "Native WordPress widget"
 #~ msgstr "Widget WordPress natif"
@@ -2033,7 +2062,7 @@ msgstr ""
 #~ msgstr "Widgets"
 
 #~ msgid "Layout"
-#~ msgstr "Disposition"
+#~ msgstr "Mise en page"
 
 #~ msgid "Screens"
 #~ msgstr "Écrans"
@@ -2077,7 +2106,7 @@ msgstr ""
 #~ msgstr "Aucun"
 
 #~ msgid "Lock the layout"
-#~ msgstr "Verrouiller la disposition"
+#~ msgstr "Verrouiller la mise en page"
 
 #~ msgid "Export JSON"
 #~ msgstr "Exporter le JSON"
@@ -2104,41 +2133,41 @@ msgstr ""
 #~ msgstr "Vos réglages actuels"
 
 #~ msgid "Save as disposition"
-#~ msgstr "Enregistrer comme disposition"
+#~ msgstr "Enregistrer comme mise en page"
 
 #~ msgid "Disposition name:"
-#~ msgstr "Nom de la disposition :"
+#~ msgstr "Nom de la mise en page :"
 
 #~ msgid "Disposition name"
-#~ msgstr "Nom de la disposition"
+#~ msgstr "Nom de la mise en page"
 
 #~ msgid "New disposition"
-#~ msgstr "Nouvelle disposition"
+#~ msgstr "Nouvelle mise en page"
 
 #~ msgid "Delete this disposition"
-#~ msgstr "Supprimer cette disposition"
+#~ msgstr "Supprimer cette mise en page"
 
 #~ msgid "Disposition saved."
-#~ msgstr "Disposition enregistrée."
+#~ msgstr "Mise en page enregistrée."
 
 #~ msgid "Disposition updated."
-#~ msgstr "Disposition mise à jour."
+#~ msgstr "Mise en page mise à jour."
 
 #~ msgid "Disposition deleted."
-#~ msgstr "Disposition supprimée."
+#~ msgstr "Mise en page supprimée."
 
 #~ msgid "Not styled yet"
 #~ msgstr "À styliser"
 
 #, php-format
 #~ msgid "Delete the disposition « %s »?"
-#~ msgstr "Supprimer la disposition « %s » ?"
+#~ msgstr "Supprimer la mise en page « %s » ?"
 
 #, php-format
 #~ msgid ""
 #~ "Replace the current layout with « %s »? Unsaved changes will be lost."
 #~ msgstr ""
-#~ "Remplacer la disposition actuelle par « %s » ? Les modifications non "
+#~ "Remplacer la mise en page actuelle par « %s » ? Les modifications non "
 #~ "enregistrées seront perdues."
 
 #, php-format
@@ -2149,10 +2178,10 @@ msgstr ""
 #~ msgstr "Tout vider et repartir d’un seul écran vierge ?"
 
 #~ msgid "This file is not a valid disposition export."
-#~ msgstr "Ce fichier n’est pas un export de disposition valide."
+#~ msgstr "Ce fichier n’est pas un export de mise en page valide."
 
 #~ msgid "Imported disposition"
-#~ msgstr "Disposition importée"
+#~ msgstr "Mise en page importée"
 
 #~ msgid "Apply"
 #~ msgstr "Appliquer"
@@ -2167,10 +2196,10 @@ msgstr ""
 #~ msgstr "Vider complètement"
 
 #~ msgid "Save as new disposition"
-#~ msgstr "Enregistrer comme nouvelle disposition"
+#~ msgstr "Enregistrer comme nouvelle mise en page"
 
 #~ msgid "Import a disposition"
-#~ msgstr "Importer une disposition"
+#~ msgstr "Importer une mise en page"
 
 #~ msgid "Remove this widget"
 #~ msgstr "Retirer ce widget"
@@ -2228,18 +2257,18 @@ msgstr ""
 #~ msgstr "Quelque chose de neuf"
 
 #~ msgid "At least one user screen is required."
-#~ msgstr "Au moins un écran utilisateur est nécessaire."
+#~ msgstr "Au moins un écran personnalisé est nécessaire."
 
 #~ msgid "Delete this screen?"
 #~ msgstr "Supprimer cet écran ?"
 
 #~ msgid "Reset to the standard layout? All customizations will be lost."
 #~ msgstr ""
-#~ "Réinitialiser à la disposition standard ? Toutes les personnalisations "
+#~ "Réinitialiser à la mise en page standard ? Toutes les personnalisations "
 #~ "seront perdues."
 
 #~ msgid "Layout exported"
-#~ msgstr "Disposition exportée"
+#~ msgstr "Mise en page exportée"
 
 #~ msgid "Invalid JSON"
 #~ msgstr "JSON invalide"
@@ -2275,19 +2304,19 @@ msgstr ""
 #~ msgstr "Revenir à la couleur globale"
 
 #~ msgid "A disposition name is required."
-#~ msgstr "Un nom de disposition est obligatoire."
+#~ msgstr "Un nom de mise en page est obligatoire."
 
 #~ msgid "Maximum number of saved dispositions reached."
-#~ msgstr "Nombre maximum de dispositions enregistrées atteint."
+#~ msgstr "Nombre maximum de mises en page enregistrées atteint."
 
 #~ msgid "Unknown disposition."
-#~ msgstr "Disposition inconnue."
+#~ msgstr "Mise en page inconnue."
 
 #~ msgid "Built-in (customized)"
 #~ msgstr "Intégrée (personnalisée)"
 
 #~ msgid "Saved disposition"
-#~ msgstr "Disposition enregistrée"
+#~ msgstr "Mise en page enregistrée"
 
 #~ msgid "Standard"
 #~ msgstr "Standard"
@@ -2296,7 +2325,7 @@ msgstr ""
 #~ msgstr "Recommandée par Double Youpï"
 
 #~ msgid "Editor"
-#~ msgstr "Éditeur"
+#~ msgstr "Éditeur/éditrice"
 
 #~ msgid "Focus on content creation"
 #~ msgstr "Priorité à la création de contenu"
@@ -2314,11 +2343,11 @@ msgstr ""
 #~ msgstr "Quelques widgets essentiels"
 
 #~ msgid "The layout payload must be an array."
-#~ msgstr "Le contenu de la disposition doit être un tableau."
+#~ msgstr "Le contenu de la mise en page doit être un tableau."
 
 #, php-format
 #~ msgid "Invalid layout version (expected %1$d, got %2$d)."
-#~ msgstr "Version de disposition invalide (attendue %1$d, reçue %2$d)."
+#~ msgstr "Version de mise en page invalide (attendue %1$d, reçue %2$d)."
 
 #~ msgid "At least one screen is required."
 #~ msgstr "Au moins un écran est nécessaire."
@@ -2356,7 +2385,7 @@ msgstr ""
 #~ msgstr "Aucun écran configuré."
 
 #~ msgid "The layout must be an object."
-#~ msgstr "La disposition doit être un objet."
+#~ msgstr "La mise en page doit être un objet."
 
 #~ msgid "Widget ID required."
 #~ msgstr "L’ID du widget est obligatoire."
@@ -2584,7 +2613,7 @@ msgstr ""
 #~ msgstr "Menus"
 
 #~ msgid "+ User"
-#~ msgstr "+ Utilisateur"
+#~ msgstr "+ Compte"
 
 #~ msgid "Comments"
 #~ msgstr "Commentaires"
@@ -2781,10 +2810,10 @@ msgstr ""
 #~ msgstr "Les signatures doivent être un tableau."
 
 #~ msgid "Native view"
-#~ msgstr "Affichage natif"
+#~ msgstr "Vue native"
 
 #~ msgid "Redesigned view"
-#~ msgstr "Affichage repensé"
+#~ msgstr "Vue repensée"
 
 #~ msgid "Publishing options"
 #~ msgstr "Options de publication"
@@ -2802,10 +2831,10 @@ msgstr ""
 #~ msgstr "Ajouter un titre"
 
 #~ msgid "Switch to native view"
-#~ msgstr "Basculer vers l’affichage natif"
+#~ msgstr "Basculer vers la vue native"
 
 #~ msgid "Switch to redesigned view"
-#~ msgstr "Basculer vers l’affichage repensé"
+#~ msgstr "Basculer vers la vue repensée"
 
 #~ msgid "Published"
 #~ msgstr "Publié"
@@ -2884,19 +2913,19 @@ msgstr ""
 #~ msgstr "Aucun commentaire"
 
 #~ msgid "No users"
-#~ msgstr "Aucun utilisateur"
+#~ msgstr "Aucun compte"
 
 #, php-format
 #~ msgid "%1$d user · %2$d role"
 #~ msgid_plural "%1$d users · %2$d roles"
-#~ msgstr[0] "%1$d utilisateur · %2$d rôle"
-#~ msgstr[1] "%1$d utilisateurs · %2$d rôles"
+#~ msgstr[0] "%1$d compte · %2$d rôle"
+#~ msgstr[1] "%1$d comptes · %2$d rôles"
 
 #, php-format
 #~ msgid "%d user"
 #~ msgid_plural "%d users"
-#~ msgstr[0] "%d utilisateur"
-#~ msgstr[1] "%d utilisateurs"
+#~ msgstr[0] "%d compte"
+#~ msgstr[1] "%d comptes"
 
 #~ msgid "No extension"
 #~ msgstr "Aucune extension"
@@ -2960,7 +2989,7 @@ msgstr ""
 #~ msgstr "Faites glisser pour réorganiser"
 
 #~ msgid "Reorder failed. Please refresh."
-#~ msgstr "Échec du réordonnancement. Rechargez la page."
+#~ msgstr "Échec du réordonnancement. Veuillez actualiser la page."
 
 #~ msgid "Unknown post type."
 #~ msgstr "Type de publication inconnu."
@@ -3147,7 +3176,7 @@ msgstr ""
 #~ "défaut est utilisé."
 
 #~ msgid "Per-user customization"
-#~ msgstr "Personnalisation par utilisateur"
+#~ msgstr "Personnalisation par compte"
 
 #~ msgid ""
 #~ "Let each user enable or disable the Double Youpï admin interface for "
@@ -3241,8 +3270,9 @@ msgstr ""
 #~ "administrator settings (accent color, logo) still apply when enabled."
 #~ msgstr ""
 #~ "Lorsque cette option est désactivée, ce compte utilise l’administration "
-#~ "WordPress standard. Les réglages de l’administrateur (couleur d’accent, "
-#~ "logo) s’appliquent toujours lorsqu’elle est activée."
+#~ "WordPress standard. Les réglages de l’administrateur ou de "
+#~ "l’administratrice (couleur d’accent, logo) s’appliquent toujours "
+#~ "lorsqu’elle est activée."
 
 #, php-format
 #~ msgid "[Double Youpï] Backup failed on %s"
@@ -4642,9 +4672,9 @@ msgstr ""
 #~ "at login every few months. Replaces Make Disable Admin Email Verification "
 #~ "Prompt."
 #~ msgstr ""
-#~ "Supprime l’invite plein écran de vérification de l’e-mail "
-#~ "d’administration que WordPress affiche à la connexion, à intervalles "
-#~ "réguliers. Remplace Make Disable Admin Email Verification Prompt."
+#~ "Retire l’invite plein écran de vérification de l’e-mail d’administration "
+#~ "que WordPress affiche à la connexion, à intervalles réguliers. Remplace "
+#~ "Make Disable Admin Email Verification Prompt."
 
 #~ msgid "Disable update emails"
 #~ msgstr "Désactiver les e-mails de mise à jour"
@@ -4714,7 +4744,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Environnement local détecté : Forcer HTTPS est bloqué ici pour ne pas "
 #~ "casser l’accès au site (les certificats locaux ne sont généralement pas "
-#~ "configurés). Pour passer outre : "
+#~ "configurés). Pour surcharger ce comportement : "
 #~ "add_filter( 'doubleyoupi_toolkit_force_https_in_local', '__return_true' );"
 
 #~ msgid "Hide login"
@@ -4729,7 +4759,7 @@ msgstr ""
 #~ "recovery constant prevents lockout. Replaces WPS Hide Login."
 #~ msgstr ""
 #~ "Déplace wp-login.php vers un slug personnalisé et renvoie une 404 sur la "
-#~ "connexion par défaut pour les visiteurs déconnectés. Vous envoie la "
+#~ "connexion par défaut pour les internautes non connectés. Vous envoie la "
 #~ "nouvelle URL par e-mail, et une constante de récupération dans wp-config "
 #~ "évite tout verrouillage. Remplace WPS Hide Login."
 
@@ -4793,8 +4823,8 @@ msgstr ""
 #~ "\n"
 #~ "Nouvelle URL de connexion : %1$s\n"
 #~ "\n"
-#~ "Le %2$s par défaut renvoie désormais une 404 aux visiteurs déconnectés. "
-#~ "Ajoutez la nouvelle URL à vos favoris.\n"
+#~ "Le %2$s par défaut renvoie désormais une 404 aux internautes non "
+#~ "connectés. Ajoutez la nouvelle URL à vos favoris.\n"
 #~ "\n"
 #~ "Si un jour vous ne pouvez plus vous connecter, ajoutez cette ligne à wp-"
 #~ "config.php pour rétablir la connexion par défaut :\n"
@@ -4822,7 +4852,7 @@ msgstr ""
 
 #~ msgid "Per-user avatar upload, with zero Gravatar requests"
 #~ msgstr ""
-#~ "Téléversement d’avatar par utilisateur, sans aucune requête vers Gravatar"
+#~ "Téléversement d’avatar par compte, sans aucune requête vers Gravatar"
 
 #~ msgid ""
 #~ "Adds an avatar upload field to user profiles and serves every avatar "
@@ -4830,11 +4860,10 @@ msgstr ""
 #~ "without an uploaded avatar get a generated initials avatar. Replaces "
 #~ "Simple Local Avatars."
 #~ msgstr ""
-#~ "Ajoute un champ de téléversement d’avatar aux profils utilisateurs et "
-#~ "sert chaque avatar localement : aucune requête n’atteint gravatar.com "
-#~ "(respectueux du RGPD). Les utilisateurs sans avatar téléversé reçoivent "
-#~ "un avatar généré à partir de leurs initiales. Remplace Simple Local "
-#~ "Avatars."
+#~ "Ajoute un champ de téléversement d’avatar aux profils des comptes et sert "
+#~ "chaque avatar localement : aucune requête n’atteint gravatar.com "
+#~ "(respectueux du RGPD). Les comptes sans avatar téléversé reçoivent un "
+#~ "avatar généré à partir de leurs initiales. Remplace Simple Local Avatars."
 
 #~ msgid "Local avatar"
 #~ msgstr "Avatar local"
@@ -5050,7 +5079,7 @@ msgstr ""
 #~ msgstr "Ventes (mois)"
 
 #~ msgid "Administrator"
-#~ msgstr "Administrateur"
+#~ msgstr "Administrateur/administratrice"
 
 #~ msgid "Technical health and maintenance"
 #~ msgstr "Santé technique et maintenance"
@@ -5102,17 +5131,17 @@ msgstr ""
 #~ msgstr "Déverrouiller"
 
 #~ msgid "Layout locked."
-#~ msgstr "Disposition verrouillée."
+#~ msgstr "Mise en page verrouillée."
 
 #~ msgid "Layout unlocked."
-#~ msgstr "Disposition déverrouillée."
+#~ msgstr "Mise en page déverrouillée."
 
 #~ msgid "Assign « %s » to roles"
 #~ msgstr "Assigner « %s » à des rôles"
 
 #~ msgid "Users with these roles will see this disposition (read-only)."
 #~ msgstr ""
-#~ "Les utilisateurs de ces rôles verront cette disposition (lecture seule)."
+#~ "Les comptes ayant ces rôles verront cette mise en page (lecture seule)."
 
 #~ msgid "already on %s"
 #~ msgstr "déjà sur %s"
@@ -5121,7 +5150,7 @@ msgstr ""
 #~ "These roles are already assigned to another disposition: %s. Switch them "
 #~ "to this one?"
 #~ msgstr ""
-#~ "Ces rôles sont déjà assignés à une autre disposition : %s. Les basculer "
+#~ "Ces rôles sont déjà assignés à une autre mise en page : %s. Les basculer "
 #~ "sur celle-ci ?"
 
 #~ msgid "Roles assigned."
@@ -5359,8 +5388,8 @@ msgstr ""
 #~ "Navigation tree (reimagined or native), section pages on hover, and the "
 #~ "Reorganize layout"
 #~ msgstr ""
-#~ "Arborescence (repensée ou native), pages de la section au survol, et "
-#~ "disposition de Réorganiser"
+#~ "Arborescence (repensée ou native), pages de la section au survol, et mise "
+#~ "en page de Réorganiser"
 
 #~ msgid "Screens left in native styling"
 #~ msgstr "Écrans laissés en style natif"
@@ -5558,8 +5587,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Le menu est devenu un rail à sept sections, les listes et l’éditeur ont "
 #~ "été redessinés, les notifications sont regroupées au même endroit et le "
-#~ "tableau de bord est modulaire. Chacun choisit son thème clair ou sombre "
-#~ "depuis la barre du haut, et tout le reste est automatique."
+#~ "tableau de bord est modulaire. Chaque personne choisit son thème clair ou "
+#~ "sombre depuis la barre du haut, et tout le reste est automatique."
 
 #~ msgid "Got it"
 #~ msgstr "Compris"
@@ -5646,7 +5675,7 @@ msgstr ""
 #~ "The Reorganize tab is hidden in native mode. Your layout is kept for when "
 #~ "you switch back."
 #~ msgstr ""
-#~ "L’onglet Réorganiser est masqué en mode natif. Votre disposition est "
+#~ "L’onglet Réorganiser est masqué en mode natif. Votre mise en page est "
 #~ "conservée si vous y revenez."
 
 #~ msgid ""
@@ -5694,7 +5723,7 @@ msgstr ""
 #~ msgstr "Choix personnels : thème, largeur du rail"
 
 #~ msgid "Dashboard layouts"
-#~ msgstr "Dispositions du tableau de bord"
+#~ msgstr "Mises en page du tableau de bord"
 
 #~ msgid "Pin the profile in code, on every site"
 #~ msgstr "Figer le profil dans le code, sur chaque site"

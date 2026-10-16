@@ -106,6 +106,10 @@ class MediaLibrary extends AbstractModule {
 		FolderTaxonomy::instance()->boot();
 		CollectionTaxonomy::instance()->boot();
 		FolderManager::instance()->boot();
+		// Folders and collections in the Bricks builder's media browser. Only
+		// hooks: nothing runs, and no Bricks class is touched, unless Bricks 2.4+
+		// fires them.
+		Integrations\BricksBridge::boot();
 		CollectionManager::instance()->boot();
 		MetadataAutoFiller::instance()->boot();
 		ImageConverter::instance()->boot();
