@@ -14,6 +14,9 @@
 	// Accent colours
 	--dy-accent:        #{$color-accent};
 	--dy-accent-hover:  #{$color-accent-hover};
+	// The accent as r, g, b, for rgba(var(--dy-accent-rgb), a). Refined Admin
+	// Dashboard overrides it with its own accent (body.dy-admin).
+	--dy-accent-rgb:    #{red($color-accent)}, #{green($color-accent)}, #{blue($color-accent)};
 
 	// Text
 	--dy-ink:           #{$color-ink};

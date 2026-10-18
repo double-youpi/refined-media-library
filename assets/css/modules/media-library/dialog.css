@@ -94,7 +94,7 @@
 }
 .dy-dialog__input:focus {
   border-color: var(--dy-accent, #5b3efe);
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.18);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.18);
 }
 
 .dy-dialog__actions {
@@ -141,7 +141,7 @@
 }
 .dy-dialog__btn--ghost:focus-visible, .dy-dialog__btn--primary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {

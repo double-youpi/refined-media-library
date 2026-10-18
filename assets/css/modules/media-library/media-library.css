@@ -2,6 +2,7 @@
 :root {
   --dy-accent: #5b3efe;
   --dy-accent-hover: #7059fe;
+  --dy-accent-rgb: 91, 62, 254;
   --dy-ink: #ecedf2;
   --dy-ink-soft: #9ba3b5;
   --dy-ink-mute: #5a6070;
@@ -805,7 +806,7 @@ body.upload-php #e-image-ai-media-library a:focus,
 body.upload-php #e-image-ai-media-library a:focus-visible {
   background: var(--bg-card, #161a23) !important;
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15) !important;
   outline: none !important;
 }
 
@@ -865,7 +866,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 }
 
 .dy-show-all.is-active {
-  background: rgba(91, 62, 254, 0.08);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.08);
   color: var(--ink, #ecedf2);
 }
 
@@ -1018,7 +1019,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 }
 
 .dy-folder-root.is-active {
-  background: rgba(91, 62, 254, 0.08);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.08);
   color: var(--ink, #ecedf2);
 }
 
@@ -1061,7 +1062,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 }
 
 .dy-folder-root.is-active .dy-folder-root__count {
-  background: rgba(91, 62, 254, 0.15);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15);
   color: var(--accent, #5b3efe);
 }
 
@@ -1083,7 +1084,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 }
 
 .dy-folder-item.is-active {
-  background: rgba(91, 62, 254, 0.08);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.08);
   color: var(--ink, #ecedf2);
 }
 
@@ -1175,7 +1176,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 
 .dy-folder-item.is-active .dy-folder-item__count,
 .dy-show-all.is-active .dy-show-all__count {
-  background: rgba(91, 62, 254, 0.15);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15);
   color: var(--accent, #5b3efe) !important;
 }
 
@@ -1414,9 +1415,9 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 /* Drop target */
 .dy-folder-item.dy-drop-target,
 .dy-folder-root.dy-drop-target {
-  background: rgba(91, 62, 254, 0.14) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.14) !important;
   color: var(--ink, #ecedf2) !important;
-  outline: 1px dashed rgba(91, 62, 254, 0.5);
+  outline: 1px dashed rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.5);
   outline-offset: -2px;
 }
 
@@ -1436,9 +1437,9 @@ body.dy-dragging-folder .dy-folder-item {
 /* Drop INTO a folder (re-parent) — solid accent ring. */
 .dy-folder-item.dy-drop-into,
 #dy-show-all.dy-drop-into {
-  background: rgba(91, 62, 254, 0.18) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.18) !important;
   color: var(--ink, #ecedf2) !important;
-  box-shadow: inset 0 0 0 1px rgba(91, 62, 254, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.6);
   border-radius: 5px;
 }
 
@@ -1452,7 +1453,7 @@ body.dy-dragging-folder .dy-folder-item {
   height: 2px;
   background: var(--accent, #5b3efe);
   border-radius: 2px;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2);
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2);
   pointer-events: none;
 }
 
@@ -1663,7 +1664,7 @@ body.dy-dragging-folder .dy-folder-item {
 .dy-bulk-folder-select:focus,
 .dy-bulk-col-select:focus {
   border-color: var(--accent, #5b3efe);
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15);
 }
 
 .dy-bulk-dialog__field select:hover,
@@ -1721,7 +1722,7 @@ body.dy-dragging-folder .dy-folder-item {
 }
 
 .dy-bulk-btn-apply:hover {
-  background: #7059fe;
+  background: var(--dy-accent-hover, #7059fe);
   transform: translateY(-1px);
 }
 
@@ -1767,11 +1768,15 @@ body.dy-dragging-folder .dy-folder-item {
 }
 
 .dy-bulk-folder-btn:hover {
-  background: rgba(91, 62, 254, 0.1) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.1) !important;
 }
 
 .dy-bulk-col-btn:hover {
   background: rgba(165, 124, 255, 0.1) !important;
+}
+
+:where(body.dy-admin) .dy-bulk-col-btn:hover {
+  background: color-mix(in srgb, var(--accent-3, #a57cff) 10%, transparent) !important;
 }
 
 /* ── Type filter ─────────────────────────────────────────────────────────── */
@@ -1964,7 +1969,7 @@ body.upload-php .media-toolbar select:focus,
 body.upload-php .media-toolbar .attachment-filters:focus {
   outline: none !important;
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
 }
 
 /* Option 1: hide the redundant native "All media items" type dropdown.
@@ -2000,10 +2005,10 @@ body.upload-php .dy-mine-btn:hover {
 body.upload-php .dy-mine-btn:focus-visible {
   outline: none !important;
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
 }
 body.upload-php .dy-mine-btn.is-active {
-  background-color: rgba(91, 62, 254, 0.14) !important;
+  background-color: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.14) !important;
   border-color: var(--accent, #5b3efe) !important;
   color: var(--ink, #ecedf2) !important;
 }
@@ -2067,7 +2072,7 @@ body.upload-php input.search[type=search] {
 
 body.upload-php input.search[type=search]:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
   outline: none !important;
 }
 
@@ -2428,7 +2433,7 @@ body.upload-php .attachment {
 }
 
 body.upload-php .attachment:hover {
-  box-shadow: 0 0 0 1px rgba(91, 62, 254, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
   transform: scale(1.02) !important;
 }
 
@@ -2439,13 +2444,13 @@ body.upload-php .attachment:focus {
 
 /* Selected state — clean inset ring */
 body.upload-php .selected.attachment {
-  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 0 1px var(--accent, #5b3efe), 0 8px 20px -6px rgba(91, 62, 254, 0.35) !important;
+  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 0 1px var(--accent, #5b3efe), 0 8px 20px -6px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.35) !important;
   transform: translateY(-1px) !important;
 }
 
 /* WP's .details class = focused/opened attachment */
 body.upload-php .attachment.details {
-  box-shadow: 0 0 0 2px var(--accent, #5b3efe), 0 0 20px rgba(91, 62, 254, 0.25) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe), 0 0 20px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.25) !important;
 }
 
 /* Thumbnail background — checkered pattern for transparency */
@@ -3170,7 +3175,7 @@ body.upload-php .wp-list-table tbody tr.iedit:hover td {
 /* 6. Selected state — checkbox checked = full row highlighted
    WP adds aria-checked on the row OR we target via :has() (modern browsers) */
 body.upload-php .wp-list-table tbody tr:has(.check-column input:checked) {
-  background: rgba(91, 62, 254, 0.06) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.06) !important;
   box-shadow: inset 3px 0 0 var(--accent, #5b3efe);
 }
 
@@ -3324,6 +3329,13 @@ body.upload-php .tablenav .actions input[type=submit] {
   padding: 0 12px !important;
 }
 
+/* Pagination links carry `.button` too, which the rule above dresses as a
+   dropdown. They are not one: no chevron, even padding. */
+body.upload-php .tablenav .tablenav-pages .button {
+  background-image: none !important;
+  padding: 0 10px !important;
+}
+
 body.upload-php .tablenav .actions select:hover,
 body.upload-php .tablenav .button:hover,
 body.upload-php .filter-items select:hover,
@@ -3357,7 +3369,7 @@ body.upload-php #media-search-input {
 body.upload-php .search-box input[type=search]:focus,
 body.upload-php #media-search-input:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
 }
 
 body.upload-php .search-box input[type=submit] {
@@ -3415,7 +3427,7 @@ body.upload-php .media-sidebar textarea {
 body.upload-php .media-sidebar input:focus,
 body.upload-php .media-sidebar textarea:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
 }
 
 body.upload-php .media-sidebar a {
@@ -3629,8 +3641,8 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   transform: translateY(0);
 }
 .dy-dp-expand:hover {
-  background: rgba(91, 62, 254, 0.85);
-  border-color: rgba(91, 62, 254, 0.9);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.85);
+  border-color: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.9);
 }
 .dy-dp-expand:active {
   transform: scale(0.94);
@@ -3652,7 +3664,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
 }
 .dy-dp-resize:hover .dy-dp-resize-grip {
   opacity: 1;
-  background: #5b3efe;
+  background: var(--accent, var(--dy-accent, #5b3efe));
   width: 46px;
 }
 
@@ -3751,8 +3763,8 @@ body.dy-dp-resizing * {
 }
 .dy-lb-close:hover,
 .dy-lb-nav:hover {
-  background: rgba(91, 62, 254, 0.85);
-  border-color: rgba(91, 62, 254, 0.9);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.85);
+  border-color: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.9);
 }
 .dy-lb-close:active,
 .dy-lb-nav:active {
@@ -3912,7 +3924,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input {
 .dy-dp-input:focus,
 body.upload-php #dy-detail-panel .dy-dp-input:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15) !important;
   /* background-COLOR (not the shorthand): the shorthand was resetting
      background-image/position → the <select> chevron jumped to the left /
      disappeared on focus. */
@@ -4178,27 +4190,27 @@ body.upload-php #dy-detail-panel .dy-dp-save.is-dirty {
   background: var(--accent, #5b3efe) !important;
   border-color: var(--accent, #5b3efe) !important;
   color: #fff !important;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.16) !important;
   animation: dy-save-wake 0.42s cubic-bezier(0.22, 0.7, 0.2, 1);
 }
 
 .dy-dp-save.is-dirty:hover:not(:disabled),
 body.upload-php #dy-detail-panel .dy-dp-save.is-dirty:hover:not(:disabled) {
-  background: #7059fe !important;
-  border-color: #7059fe !important;
+  background: var(--dy-accent-hover, #7059fe) !important;
+  border-color: var(--dy-accent-hover, #7059fe) !important;
   color: #fff !important;
   transform: translateY(-1px);
 }
 
 @keyframes dy-save-wake {
   0% {
-    box-shadow: 0 0 0 0 rgba(91, 62, 254, 0.5);
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.5);
   }
   60% {
-    box-shadow: 0 0 0 7px rgba(91, 62, 254, 0);
+    box-shadow: 0 0 0 7px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0);
   }
   100% {
-    box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.16);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.16);
   }
 }
 .dy-dp-save:disabled,
@@ -4267,7 +4279,7 @@ body.upload-php #dy-detail-panel .dy-dp-save:disabled {
 
 /* ── Active attachment (selected for detail) ──────────────────────────────── */
 body.upload-php .attachment.dy-detail-active {
-  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 12px rgba(91, 62, 254, 0.4) !important;
+  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 12px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.4) !important;
 }
 
 /* ── Loading state ────────────────────────────────────────────────────────── */
@@ -4376,7 +4388,7 @@ body.post-type-attachment .notice a {
 
 body.upload-php .notice a:hover,
 body.post-type-attachment .notice a:hover {
-  color: #7059fe;
+  color: var(--dy-accent-hover, #7059fe);
 }
 
 /* Variants — colored left border */
@@ -4602,7 +4614,7 @@ body.upload-php .attachments-browser > p {
 /* (legacy grid placement rules removed — detail panel now uses position:fixed) */
 /* ── Attachment hover: no transform if detail panel is open ─────────────── */
 body.upload-php .attachment.dy-detail-active {
-  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 12px rgba(91, 62, 254, 0.4) !important;
+  box-shadow: inset 0 0 0 2px var(--accent, #5b3efe), 0 0 12px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.4) !important;
   transform: none !important;
 }
 
@@ -4686,6 +4698,10 @@ body.upload-php .attachment.dy-detail-active {
   color: var(--ink, #ecedf2);
 }
 
+:where(body.dy-admin) .dy-collection-item.is-active {
+  background: color-mix(in srgb, var(--accent-3, #a57cff) 8%, transparent);
+}
+
 .dy-collection-item.is-active::before {
   content: "";
   position: absolute;
@@ -4734,12 +4750,21 @@ body.upload-php .attachment.dy-detail-active {
   color: var(--accent-3, #a57cff) !important;
 }
 
+:where(body.dy-admin) .dy-collection-item.is-active .dy-collection-item__count {
+  background: color-mix(in srgb, var(--accent-3, #a57cff) 15%, transparent);
+}
+
 /* Collection drop target */
 .dy-collection-item.dy-drop-target {
   background: rgba(165, 124, 255, 0.14) !important;
   color: var(--ink, #ecedf2) !important;
   outline: 1px dashed rgba(165, 124, 255, 0.5);
   outline-offset: -2px;
+}
+
+:where(body.dy-admin) .dy-collection-item.dy-drop-target {
+  background: color-mix(in srgb, var(--accent-3, #a57cff) 14%, transparent) !important;
+  outline: 1px dashed color-mix(in srgb, var(--accent-3, #a57cff) 50%, transparent);
 }
 
 /* Shared empty message */
@@ -4779,6 +4804,11 @@ body.upload-php .attachment.dy-detail-active {
   font-size: 11px;
   color: var(--accent-3, #a57cff) !important;
   font-family: inherit;
+}
+
+:where(body.dy-admin) .dy-dp-col-tag {
+  background: color-mix(in srgb, var(--accent-3, #a57cff) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-3, #a57cff) 30%, transparent);
 }
 
 .dy-dp-col-remove {
@@ -4970,7 +5000,7 @@ body.upload-php::before {
 	letter-spacing: 0.05em;
 	border-radius: 100px;
 	pointer-events: none;
-	box-shadow: 0 4px 12px rgba( 91, 62, 254, 0.4 );
+	box-shadow: 0 4px 12px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.4);
 }
 */
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -5072,7 +5102,7 @@ body.post-type-attachment input[type=text]:focus,
 body.post-type-attachment input[type=url]:focus,
 body.post-type-attachment textarea:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15) !important;
 }
 
 /* Image preview */
@@ -5175,13 +5205,13 @@ body.post-type-attachment #publish {
   color: #0a0c11 !important;
   font-weight: 600 !important;
   border-radius: 4px !important;
-  box-shadow: 0 2px 6px rgba(91, 62, 254, 0.3) !important;
+  box-shadow: 0 2px 6px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3) !important;
   text-shadow: none !important;
 }
 
 body.post-type-attachment .button-primary:hover {
-  background: #7059fe !important;
-  border-color: #7059fe !important;
+  background: var(--dy-accent-hover, #7059fe) !important;
+  border-color: var(--dy-accent-hover, #7059fe) !important;
   transform: translateY(-1px);
   transition: transform 0.1s;
 }
@@ -5255,7 +5285,7 @@ body.post-type-attachment input[type=text]:not(#title) {
 body.post-type-attachment input.urlfield:focus,
 body.post-type-attachment input.large-text:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 3px rgba(91, 62, 254, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.15) !important;
 }
 
 /* Permalink section */
@@ -5350,7 +5380,7 @@ body.post-type-attachment #wpadminbar .ab-sub-wrapper li.hover > .ab-item {
 /* Variants */
 .dy-toast--success {
   background: var(--accent, #5b3efe);
-  box-shadow: 0 12px 28px -8px rgba(91, 62, 254, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .dy-toast--warning {
@@ -5362,6 +5392,10 @@ body.post-type-attachment #wpadminbar .ab-sub-wrapper li.hover > .ab-item {
 .dy-toast--mixed {
   background: var(--accent-3, #a57cff);
   box-shadow: 0 12px 28px -8px rgba(165, 124, 255, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+:where(body.dy-admin) .dy-toast--mixed {
+  box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--accent-3, #a57cff) 50%, transparent), 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .dy-toast--error {
@@ -5430,7 +5464,7 @@ body.media-new-php #plupload-upload-ui.drag-over,
 body.media-new-php .drag-drop.drag-over,
 body.media-new-php #plupload-upload-ui:hover {
   border-color: var(--accent, #5b3efe) !important;
-  background: rgba(91, 62, 254, 0.04) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.04) !important;
 }
 
 body.media-new-php .drag-drop-info {
@@ -5467,8 +5501,8 @@ body.media-new-php input.button-hero[type=submit] {
 
 body.media-new-php #plupload-browse-button:hover,
 body.media-new-php .button-hero:hover {
-  background: #7059fe !important;
-  border-color: #7059fe !important;
+  background: var(--dy-accent-hover, #7059fe) !important;
+  border-color: var(--dy-accent-hover, #7059fe) !important;
   transform: translateY(-1px);
 }
 
@@ -5487,7 +5521,7 @@ body.media-new-php .wrap a {
 }
 
 body.media-new-php .wrap a:hover {
-  color: #7059fe;
+  color: var(--dy-accent-hover, #7059fe);
   text-decoration: underline;
 }
 
@@ -5607,8 +5641,12 @@ body.dy-admin.upload-php .view-switch a.current .dashicons {
 }
 
 /* Native date/type filter selects: custom chevrons in accent colour.
-   The selector covers all selects in the uploader toolbar. */
+   The selector covers all selects in the uploader toolbar. The list view
+   gives its type and folder filters the violet SVG chevron through ID
+   selectors, so they are named here by ID as well. */
 body.dy-admin.upload-php select#filter-by-date,
+body.dy-admin.upload-php select#attachment-filter,
+body.dy-admin.upload-php select#dy-folder-filter,
 body.dy-admin.upload-php select.attachment-filters,
 body.dy-admin.upload-php .actions select {
   background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%), linear-gradient(135deg, var(--accent) 50%, transparent 50%) !important;
@@ -5634,7 +5672,7 @@ body.dy-all-loaded .spinner.load-more-spinner {
  * (upload.php does not have body.dy-shell: --accent is redefined locally here).
  * ========================================================================== */
 body.upload-php {
-  --accent: #5b3efe;
+  --accent: #5b3efe; --accent-rgb: 91, 62, 254;
 }
 
 /* "Folders/Collections disabled" indicator inside an inactive section. */
@@ -5711,8 +5749,8 @@ body.upload-php {
 #dy-folder-panel .dy-foreign-action:hover,
 #dy-folder-panel .dy-foreign-action:focus,
 #dy-folder-panel .dy-foreign-action:focus-within {
-  background: rgba(91, 62, 254, 0.1) !important;
-  border-color: rgba(91, 62, 254, 0.4) !important;
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.1) !important;
+  border-color: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.4) !important;
   color: #fff !important;
 }
 
@@ -5750,7 +5788,7 @@ body.upload-php {
 .dy-panel-settings:hover,
 .dy-panel-settings:focus {
   color: var(--accent, #5b3efe);
-  background: rgba(91, 62, 254, 0.08);
+  background: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.08);
 }
 
 /* ID specificity + !important: beats the generic `.dashicons` panel rules
@@ -5967,7 +6005,7 @@ body.dy-admin #dy-panel-brand {
    so a modal we have stepped away from keeps WordPress's own look.
    ═══════════════════════════════════════════════════════════════════════ */
 .media-modal.dy-ml-modal {
-  --accent: #5b3efe;
+  --accent: #5b3efe; --accent-rgb: 91, 62, 254;
 }
 
 /* ── Frame, title, close ──────────────────────────────────────────────── */
@@ -6055,7 +6093,7 @@ body.dy-admin #dy-panel-brand {
 .media-modal.dy-ml-modal input.search[type=search]:focus,
 .media-modal.dy-ml-modal #media-search-input:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(91, 62, 254, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
   outline: none !important;
 }
 
@@ -6181,12 +6219,12 @@ body.dy-admin #dy-panel-brand {
   border: 1px solid var(--accent, #5b3efe) !important;
   color: #0a0c11 !important;
   font-weight: 600 !important;
-  box-shadow: 0 2px 6px rgba(91, 62, 254, 0.3) !important;
+  box-shadow: 0 2px 6px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3) !important;
 }
 
 .media-modal.dy-ml-modal .button-primary:hover:not(:disabled) {
-  background: #7059fe !important;
-  border-color: #7059fe !important;
+  background: var(--dy-accent-hover, #7059fe) !important;
+  border-color: var(--dy-accent-hover, #7059fe) !important;
   color: #0a0c11 !important;
 }
 
@@ -6256,7 +6294,7 @@ body.dy-admin #dy-panel-brand {
 }
 
 .media-modal.dy-ml-modal .attachment:hover {
-  box-shadow: 0 0 0 1px rgba(91, 62, 254, 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* The light plate core puts behind every preview shows through at the tile
@@ -6410,4 +6448,21 @@ body.dy-admin #dy-panel-brand {
    until the count arrives, and an empty badge must not draw a stray pill. */
 .dy-show-all__count:empty {
   display: none;
+}
+
+/*
+ * Collections are drawn in a lighter shade of the accent (#a57cff next to the
+ * Double Youpï violet), through var(--accent-3, #a57cff). Nothing in RML
+ * defines --accent-3, so RML alone keeps that exact shade. With Refined Admin
+ * Dashboard present (body.dy-admin is RAD's class), the shade derives from
+ * RAD's accent: a red accent gives pink collections, not leftover violet ones.
+ *
+ * Translucent tints of that shade stay plain rgba(165, 124, 255, a) in their
+ * own rules, so RML alone renders to the exact pixel (color-mix() rounds
+ * differently). Each is followed by a ":where(body.dy-admin)" twin that mixes
+ * from --accent-3 instead: zero added specificity, right after the original,
+ * so it wins exactly where the original won, and only under RAD.
+ */
+body.dy-admin {
+  --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 60%, #fff);
 }

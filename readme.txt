@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.11
+Stable tag: 0.3.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 
 == Changelog ==
 
+= 0.3.12 =
+* Fixed: the list view pagination buttons no longer show a dropdown arrow.
+
 = 0.3.11 =
 * New: your folders and collections now appear in the Bricks 2.4 media browser. Open a folder or a collection to filter, create, rename, move and delete folders, and move files, all from the builder.
 * New: a file uploaded from the Bricks media browser lands in the folder you have open.
@@ -233,6 +236,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.12 =
+A small fix: the pagination buttons of the list view no longer show a dropdown arrow.
 
 = 0.3.11 =
 Your folders and collections now work inside the Bricks 2.4 media browser.
