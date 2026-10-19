@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-19T02:09:36+00:00\n"
+"POT-Creation-Date: 2026-10-19T03:02:34+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -72,111 +72,136 @@ msgstr ""
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/Admin/Feedback.php:127
+#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/OverviewPage.php:817
+msgid "Leave a review"
+msgstr "Bewertung abgeben"
+
+#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
 msgctxt "admin bar button"
 msgid "Feedback"
 msgstr "Feedback"
 
+#. translators: %s = label of the Feedback button (e.g. "Feedback")
+#: src/Admin/Feedback.php:182
+#, php-format
+msgid ""
+"If you like the plugin, two lines on WordPress.org help it a lot. If "
+"something is wrong, tell us with “%s” instead: it is quicker to fix."
+msgstr ""
+"Wenn dir das Plugin gefällt, helfen ihm zwei Zeilen auf WordPress.org sehr. "
+"Wenn etwas nicht stimmt, sag es uns lieber über „%s“: Das lässt sich "
+"schneller beheben."
+
+#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
+#: src/Admin/OverviewPage.php:680
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
+msgid "Close"
+msgstr "Schließen"
+
+#: src/Admin/Feedback.php:200
+msgid "Write a review on WordPress.org"
+msgstr "Bewertung auf WordPress.org schreiben"
+
+#: src/Admin/Feedback.php:200
+msgid "(opens in a new tab)"
+msgstr "(öffnet in einem neuen Tab)"
+
 #. translators: %s = product name (e.g. "Refined Admin Dashboard")
-#: src/Admin/Feedback.php:135
+#: src/Admin/Feedback.php:211
 #, php-format
 msgid "Your feedback on %s"
 msgstr "Dein Feedback zu %s"
 
-#: src/Admin/Feedback.php:214 src/Admin/Feedback.php:301
+#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
 msgid "Send"
 msgstr "Senden"
 
-#: src/Admin/Feedback.php:215
+#: src/Admin/Feedback.php:291
 msgid "Sending…"
 msgstr "Wird gesendet…"
 
-#: src/Admin/Feedback.php:216
+#: src/Admin/Feedback.php:292
 msgid "Try again"
 msgstr "Erneut versuchen"
 
 #. translators: %s = name of the theme
-#: src/Admin/Feedback.php:218
+#: src/Admin/Feedback.php:294
 #, php-format
 msgid "%s (theme)"
 msgstr "%s (Theme)"
 
-#: src/Admin/Feedback.php:219
+#: src/Admin/Feedback.php:295
 msgid "This image is still too large after compression (1.5 MB maximum)."
 msgstr "Dieses Bild ist auch nach der Komprimierung zu groß (maximal 1,5 MB)."
 
-#: src/Admin/Feedback.php:220 src/Admin/Feedback.php:373
+#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
 msgid "Please use a PNG, JPEG or WebP image."
 msgstr "Bitte ein PNG-, JPEG- oder WebP-Bild verwenden."
 
-#: src/Admin/Feedback.php:221
+#: src/Admin/Feedback.php:297
 msgid "Your report could not be sent. Check your connection and try again."
 msgstr ""
 "Dein Bericht konnte nicht gesendet werden. Prüfe deine Verbindung und "
 "versuche es erneut."
 
 #. translators: %s = reference returned by the feedback service
-#: src/Admin/Feedback.php:223
+#: src/Admin/Feedback.php:299
 #, php-format
 msgid "Reference %s."
 msgstr "Referenz %s."
 
-#: src/Admin/Feedback.php:224
+#: src/Admin/Feedback.php:300
 msgid "(anonymous site identifier)"
 msgstr "(anonyme Website-Kennung)"
 
-#: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
-#: src/Admin/OverviewPage.php:680
-#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
-msgid "Close"
-msgstr "Schließen"
-
-#: src/Admin/Feedback.php:252
+#: src/Admin/Feedback.php:329
 msgid "This screen"
 msgstr "Dieser Bildschirm"
 
-#: src/Admin/Feedback.php:256
+#: src/Admin/Feedback.php:333
 msgid "What kind of feedback"
 msgstr "Welche Art von Feedback"
 
-#: src/Admin/Feedback.php:257
+#: src/Admin/Feedback.php:334
 msgid "Something is wrong"
 msgstr "Etwas stimmt nicht"
 
-#: src/Admin/Feedback.php:258
+#: src/Admin/Feedback.php:335
 msgid "An idea"
 msgstr "Eine Idee"
 
-#: src/Admin/Feedback.php:259
+#: src/Admin/Feedback.php:336
 msgid "Something else"
 msgstr "Etwas anderes"
 
-#: src/Admin/Feedback.php:262
+#: src/Admin/Feedback.php:339
 msgid "Your message"
 msgstr "Deine Nachricht"
 
-#: src/Admin/Feedback.php:263
+#: src/Admin/Feedback.php:340
 msgid "What happened, and what you expected."
 msgstr "Was passiert ist und was du erwartet hast."
 
-#: src/Admin/Feedback.php:270
+#: src/Admin/Feedback.php:347
 msgid "Attach a screenshot"
 msgstr "Screenshot anhängen"
 
-#: src/Admin/Feedback.php:272
+#: src/Admin/Feedback.php:349
 msgid "or paste an image here (Ctrl/Cmd + V)"
 msgstr "oder ein Bild hier einfügen (Strg/Cmd + V)"
 
-#: src/Admin/Feedback.php:275
+#: src/Admin/Feedback.php:352
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/Admin/Feedback.php:280
+#: src/Admin/Feedback.php:357
 msgid "You may write back to me at"
 msgstr "Ihr dürft mir antworten an"
 
-#: src/Admin/Feedback.php:285
+#: src/Admin/Feedback.php:362
 msgid ""
 "I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
@@ -189,47 +214,47 @@ msgstr ""
 "PHP, Theme, dieses Plugin). Es werden keine Inhalte der Website gesendet und "
 "keine Website-Adresse, außer ich bitte um eine Antwort."
 
-#: src/Admin/Feedback.php:288
+#: src/Admin/Feedback.php:365
 msgid "See exactly what will be sent"
 msgstr "Genau sehen, was gesendet wird"
 
 #. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
-#: src/Admin/Feedback.php:297
+#: src/Admin/Feedback.php:374
 #, php-format
 msgid "Seen with %s"
 msgstr "Gesehen mit %s"
 
-#: src/Admin/Feedback.php:300 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/Admin/Feedback.php:305
+#: src/Admin/Feedback.php:382
 msgid "Thank you, it is on its way."
 msgstr "Danke, es ist unterwegs."
 
-#: src/Admin/Feedback.php:349
+#: src/Admin/Feedback.php:426
 msgid "Please confirm you agree to send this report."
 msgstr "Bitte bestätige, dass du diesen Bericht senden möchtest."
 
-#: src/Admin/Feedback.php:357
+#: src/Admin/Feedback.php:434
 msgid "Please write a few words first."
 msgstr "Bitte schreibe zuerst ein paar Worte."
 
-#: src/Admin/Feedback.php:364
+#: src/Admin/Feedback.php:441
 msgid "This email address does not look right."
 msgstr "Diese E-Mail-Adresse sieht nicht richtig aus."
 
-#: src/Admin/Feedback.php:370
+#: src/Admin/Feedback.php:447
 msgid "The screenshot is too large."
 msgstr "Der Screenshot ist zu groß."
 
-#: src/Admin/Feedback.php:382
+#: src/Admin/Feedback.php:459
 msgid "Too many reports in a short time. Please try again in an hour."
 msgstr ""
 "Zu viele Berichte in kurzer Zeit. Bitte versuche es in einer Stunde erneut."
 
-#: src/Admin/Feedback.php:443 src/Admin/Feedback.php:447
+#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
 msgid "The feedback service did not answer. Please try again later."
 msgstr ""
 "Der Feedback-Dienst hat nicht geantwortet. Bitte versuche es später erneut."
@@ -525,10 +550,6 @@ msgstr "%s · Double Youpï"
 #: src/Admin/OverviewPage.php:801
 msgid "Buy me a coffee"
 msgstr "Spendier mir einen Kaffee"
-
-#: src/Admin/OverviewPage.php:817
-msgid "Leave a review"
-msgstr "Bewertung abgeben"
 
 #: src/Admin/OverviewPage.php:824
 msgid "All Double Youpï plugins on WordPress.org"

@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.13
+Stable tag: 0.3.14
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.14 =
+* New: a "Leave a review" link beside the Feedback button.
 
 = 0.3.13 =
 * New: a light theme for the media library, in Settings > Appearance. Dark stays the default.
@@ -242,6 +245,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.14 =
+A "Leave a review" link beside the Feedback button.
 
 = 0.3.13 =
 A light theme for the media library, in Settings > Appearance. Dark stays the default.

@@ -112,6 +112,38 @@ final class Feedback {
 		];
 	}
 
+	/**
+	 * WordPress.org review address of this build (`support.review_url` in the
+	 * build config, read through the generated SoloConfig). Empty in the suite,
+	 * which has no WordPress.org page: no review link there.
+	 */
+	public static function review_url(): string {
+		$url = '';
+		if ( class_exists( '\\DoubleYoupi\\Core\\SoloConfig' ) && method_exists( '\\DoubleYoupi\\Core\\SoloConfig', 'support' ) ) {
+			$support = (array) \DoubleYoupi\Core\SoloConfig::support();
+			$url     = (string) ( $support['review_url'] ?? '' );
+		}
+		return '' === $url ? '' : esc_url_raw( $url );
+	}
+
+	/**
+	 * The "Leave a review" link beside the Feedback tab (19/10/2026): for
+	 * administrators only, wherever the tab shows, never in the suite. A
+	 * demo (WordPress Playground's Live Preview) turns it off with
+	 * `add_filter( 'doubleyoupi_filter_review_link_enabled', '__return_false' )`.
+	 */
+	public static function review_link_available(): bool {
+		if ( ! self::is_available() || ! current_user_can( 'manage_options' ) || '' === self::review_url() ) {
+			return false;
+		}
+		/**
+		 * Filter: doubleyoupi_filter_review_link_enabled
+		 *
+		 * @param bool $enabled Whether the review link is shown on this request.
+		 */
+		return (bool) apply_filters( 'doubleyoupi_filter_review_link_enabled', true );
+	}
+
 	// =====================================================================
 	//  Admin bar + assets + dialog
 	// =====================================================================
@@ -122,10 +154,54 @@ final class Feedback {
 	 */
 	private static function render_tab(): void {
 		?>
+<div class="dy-feedback-dock">
+		<?php if ( self::review_link_available() ) : ?>
+<button type="button" class="dy-review-tab" id="dy-review-tab" aria-haspopup="dialog" aria-controls="dy-review">
+	<svg class="dy-review-tab__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+	<span class="dy-review-tab__label"><?php esc_html_e( 'Leave a review', 'doubleyoupi-refined-media-library' ); ?></span>
+</button>
+		<?php endif; ?>
 <button type="button" class="dy-feedback-tab" id="dy-feedback-tab" aria-haspopup="dialog" aria-controls="dy-feedback" title="<?php echo esc_attr( self::title() ); ?>">
 	<span class="dy-feedback-tab__icon" aria-hidden="true"><?php echo wp_kses( self::brand_icon(), Kses::svg_tags() ); ?></span>
 	<span class="dy-feedback-tab__label"><?php echo esc_html( _x( 'Feedback', 'admin bar button', 'doubleyoupi-refined-media-library' ) ); ?></span>
 </button>
+</div>
+		<?php
+	}
+
+	/**
+	 * The review dialog: one sentence and a link to the WordPress.org review
+	 * form, in a new tab. Nothing is counted or sent, nothing comes back.
+	 */
+	private static function render_review_dialog(): void {
+		if ( ! self::review_link_available() ) {
+			return;
+		}
+		$text = sprintf(
+			/* translators: %s = label of the Feedback button (e.g. "Feedback") */
+			__( 'If you like the plugin, two lines on WordPress.org help it a lot. If something is wrong, tell us with “%s” instead: it is quicker to fix.', 'doubleyoupi-refined-media-library' ),
+			_x( 'Feedback', 'admin bar button', 'doubleyoupi-refined-media-library' )
+		);
+		?>
+<dialog class="dy-feedback dy-feedback--review" id="dy-review" aria-labelledby="dy-review-title">
+	<div class="dy-feedback__form">
+		<header class="dy-feedback__head">
+			<h2 class="dy-feedback__title" id="dy-review-title"><?php esc_html_e( 'Leave a review', 'doubleyoupi-refined-media-library' ); ?></h2>
+			<button type="button" class="dy-feedback__close" data-dy-review-close aria-label="<?php esc_attr_e( 'Close', 'doubleyoupi-refined-media-library' ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+			</button>
+		</header>
+		<div class="dy-feedback__body">
+			<p class="dy-review__text"><?php echo esc_html( $text ); ?></p>
+		</div>
+		<footer class="dy-feedback__foot">
+			<button type="button" class="dy-feedback__cancel" data-dy-review-close><?php esc_html_e( 'Close', 'doubleyoupi-refined-media-library' ); ?></button>
+			<a class="dy-feedback__send" href="<?php echo esc_url( self::review_url() ); ?>" target="_blank" rel="noopener noreferrer" data-dy-review-go>
+				<?php esc_html_e( 'Write a review on WordPress.org', 'doubleyoupi-refined-media-library' ); ?><span class="screen-reader-text"> <?php esc_html_e( '(opens in a new tab)', 'doubleyoupi-refined-media-library' ); ?></span>
+			</a>
+		</footer>
+	</div>
+</dialog>
 		<?php
 	}
 
@@ -236,6 +312,7 @@ final class Feedback {
 			return;
 		}
 		self::render_tab();
+		self::render_review_dialog();
 		$product = self::product();
 		$version = '' !== $product['version'] ? $product['name'] . ' ' . $product['version'] : $product['name'];
 		?>

@@ -9,6 +9,28 @@
  * Nothing is sent before the consent box is ticked; the JSON preview shows
  * the exact payload (the server only adds the timestamp).
  * =============================================================*/
+// ── Review link (19/10/2026) ────────────────────────────────────
+// The "Leave a review" button beside the tab opens a small dialog with one
+// sentence and a link to the WordPress.org review form. Nothing is counted
+// or sent. Without <dialog> support, the button goes straight to the form.
+(function () {
+  'use strict';
+  var dialog = document.getElementById('dy-review');
+  var trigger = document.getElementById('dy-review-tab');
+  if (!dialog || !trigger) { return; }
+  var go = dialog.querySelector('[data-dy-review-go]');
+  if (typeof dialog.showModal !== 'function') {
+    trigger.addEventListener('click', function () { if (go) { window.open(go.href, '_blank', 'noopener'); } });
+    return;
+  }
+  trigger.addEventListener('click', function (e) { e.preventDefault(); if (!dialog.open) { dialog.showModal(); } });
+  dialog.querySelectorAll('[data-dy-review-close]').forEach(function (b) {
+    b.addEventListener('click', function () { dialog.close(); });
+  });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) { dialog.close(); } });   // backdrop
+  if (go) { go.addEventListener('click', function () { dialog.close(); }); }
+})();
+
 (function () {
   'use strict';
 

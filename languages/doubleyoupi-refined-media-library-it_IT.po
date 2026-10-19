@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-19T02:09:36+00:00\n"
+"POT-Creation-Date: 2026-10-19T03:02:34+00:00\n"
 "Language: it_IT\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -71,111 +71,135 @@ msgstr ""
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/Admin/Feedback.php:127
+#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/OverviewPage.php:817
+msgid "Leave a review"
+msgstr "Lascia una recensione"
+
+#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
 msgctxt "admin bar button"
 msgid "Feedback"
 msgstr "Feedback"
 
-#. translators: %s = product name (e.g. "Refined Admin Dashboard")
-#: src/Admin/Feedback.php:135
+#. translators: %s = label of the Feedback button (e.g. "Feedback")
+#: src/Admin/Feedback.php:182
 #, php-format
-msgid "Your feedback on %s"
-msgstr "Il tuo feedback su %s"
-
-#: src/Admin/Feedback.php:214 src/Admin/Feedback.php:301
-msgid "Send"
-msgstr "Invia"
-
-#: src/Admin/Feedback.php:215
-msgid "Sending…"
-msgstr "Invio…"
-
-#: src/Admin/Feedback.php:216
-msgid "Try again"
-msgstr "Riprova"
-
-#. translators: %s = name of the theme
-#: src/Admin/Feedback.php:218
-#, php-format
-msgid "%s (theme)"
-msgstr "%s (tema)"
-
-#: src/Admin/Feedback.php:219
-msgid "This image is still too large after compression (1.5 MB maximum)."
+msgid ""
+"If you like the plugin, two lines on WordPress.org help it a lot. If "
+"something is wrong, tell us with “%s” instead: it is quicker to fix."
 msgstr ""
-"Questa immagine è ancora troppo grande dopo la compressione (massimo 1,5 MB)."
+"Se il plugin ti piace, due righe su WordPress.org lo aiutano molto. Se "
+"qualcosa non va, diccelo piuttosto con «%s»: si sistema più in fretta."
 
-#: src/Admin/Feedback.php:220 src/Admin/Feedback.php:373
-msgid "Please use a PNG, JPEG or WebP image."
-msgstr "Usa un'immagine PNG, JPEG o WebP."
-
-#: src/Admin/Feedback.php:221
-msgid "Your report could not be sent. Check your connection and try again."
-msgstr ""
-"Impossibile inviare la segnalazione. Controlla la connessione e riprova."
-
-#. translators: %s = reference returned by the feedback service
-#: src/Admin/Feedback.php:223
-#, php-format
-msgid "Reference %s."
-msgstr "Riferimento %s."
-
-#: src/Admin/Feedback.php:224
-msgid "(anonymous site identifier)"
-msgstr "(identificativo anonimo del sito)"
-
-#: src/Admin/Feedback.php:246 src/Admin/Feedback.php:307
+#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
 #: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/Admin/Feedback.php:252
+#: src/Admin/Feedback.php:200
+msgid "Write a review on WordPress.org"
+msgstr "Scrivi una recensione su WordPress.org"
+
+#: src/Admin/Feedback.php:200
+msgid "(opens in a new tab)"
+msgstr "(si apre in una nuova scheda)"
+
+#. translators: %s = product name (e.g. "Refined Admin Dashboard")
+#: src/Admin/Feedback.php:211
+#, php-format
+msgid "Your feedback on %s"
+msgstr "Il tuo feedback su %s"
+
+#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
+msgid "Send"
+msgstr "Invia"
+
+#: src/Admin/Feedback.php:291
+msgid "Sending…"
+msgstr "Invio…"
+
+#: src/Admin/Feedback.php:292
+msgid "Try again"
+msgstr "Riprova"
+
+#. translators: %s = name of the theme
+#: src/Admin/Feedback.php:294
+#, php-format
+msgid "%s (theme)"
+msgstr "%s (tema)"
+
+#: src/Admin/Feedback.php:295
+msgid "This image is still too large after compression (1.5 MB maximum)."
+msgstr ""
+"Questa immagine è ancora troppo grande dopo la compressione (massimo 1,5 MB)."
+
+#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
+msgid "Please use a PNG, JPEG or WebP image."
+msgstr "Usa un'immagine PNG, JPEG o WebP."
+
+#: src/Admin/Feedback.php:297
+msgid "Your report could not be sent. Check your connection and try again."
+msgstr ""
+"Impossibile inviare la segnalazione. Controlla la connessione e riprova."
+
+#. translators: %s = reference returned by the feedback service
+#: src/Admin/Feedback.php:299
+#, php-format
+msgid "Reference %s."
+msgstr "Riferimento %s."
+
+#: src/Admin/Feedback.php:300
+msgid "(anonymous site identifier)"
+msgstr "(identificativo anonimo del sito)"
+
+#: src/Admin/Feedback.php:329
 msgid "This screen"
 msgstr "Questa schermata"
 
-#: src/Admin/Feedback.php:256
+#: src/Admin/Feedback.php:333
 msgid "What kind of feedback"
 msgstr "Che tipo di feedback"
 
-#: src/Admin/Feedback.php:257
+#: src/Admin/Feedback.php:334
 msgid "Something is wrong"
 msgstr "Qualcosa non va"
 
-#: src/Admin/Feedback.php:258
+#: src/Admin/Feedback.php:335
 msgid "An idea"
 msgstr "Un'idea"
 
-#: src/Admin/Feedback.php:259
+#: src/Admin/Feedback.php:336
 msgid "Something else"
 msgstr "Altro"
 
-#: src/Admin/Feedback.php:262
+#: src/Admin/Feedback.php:339
 msgid "Your message"
 msgstr "Il tuo messaggio"
 
-#: src/Admin/Feedback.php:263
+#: src/Admin/Feedback.php:340
 msgid "What happened, and what you expected."
 msgstr "Cosa è successo e cosa ti aspettavi."
 
-#: src/Admin/Feedback.php:270
+#: src/Admin/Feedback.php:347
 msgid "Attach a screenshot"
 msgstr "Allega uno screenshot"
 
-#: src/Admin/Feedback.php:272
+#: src/Admin/Feedback.php:349
 msgid "or paste an image here (Ctrl/Cmd + V)"
 msgstr "o incolla un'immagine qui (Ctrl/Cmd + V)"
 
-#: src/Admin/Feedback.php:275
+#: src/Admin/Feedback.php:352
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: src/Admin/Feedback.php:280
+#: src/Admin/Feedback.php:357
 msgid "You may write back to me at"
 msgstr "Potete rispondermi a"
 
-#: src/Admin/Feedback.php:285
+#: src/Admin/Feedback.php:362
 msgid ""
 "I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
@@ -188,46 +212,46 @@ msgstr ""
 "questo plugin). Nessun contenuto del sito viene inviato, né l'indirizzo del "
 "sito a meno che non chieda una risposta."
 
-#: src/Admin/Feedback.php:288
+#: src/Admin/Feedback.php:365
 msgid "See exactly what will be sent"
 msgstr "Vedi esattamente cosa verrà inviato"
 
 #. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
-#: src/Admin/Feedback.php:297
+#: src/Admin/Feedback.php:374
 #, php-format
 msgid "Seen with %s"
 msgstr "Visto con %s"
 
-#: src/Admin/Feedback.php:300 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/Admin/Feedback.php:305
+#: src/Admin/Feedback.php:382
 msgid "Thank you, it is on its way."
 msgstr "Grazie, è in viaggio."
 
-#: src/Admin/Feedback.php:349
+#: src/Admin/Feedback.php:426
 msgid "Please confirm you agree to send this report."
 msgstr "Conferma di accettare l'invio di questa segnalazione."
 
-#: src/Admin/Feedback.php:357
+#: src/Admin/Feedback.php:434
 msgid "Please write a few words first."
 msgstr "Scrivi prima qualche parola."
 
-#: src/Admin/Feedback.php:364
+#: src/Admin/Feedback.php:441
 msgid "This email address does not look right."
 msgstr "Questo indirizzo email non sembra corretto."
 
-#: src/Admin/Feedback.php:370
+#: src/Admin/Feedback.php:447
 msgid "The screenshot is too large."
 msgstr "Lo screenshot è troppo grande."
 
-#: src/Admin/Feedback.php:382
+#: src/Admin/Feedback.php:459
 msgid "Too many reports in a short time. Please try again in an hour."
 msgstr "Troppe segnalazioni in poco tempo. Riprova tra un'ora."
 
-#: src/Admin/Feedback.php:443 src/Admin/Feedback.php:447
+#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
 msgid "The feedback service did not answer. Please try again later."
 msgstr "Il servizio di feedback non ha risposto. Riprova più tardi."
 
@@ -517,10 +541,6 @@ msgstr "%s · Double Youpï"
 #: src/Admin/OverviewPage.php:801
 msgid "Buy me a coffee"
 msgstr "Offrimi un caffè"
-
-#: src/Admin/OverviewPage.php:817
-msgid "Leave a review"
-msgstr "Lascia una recensione"
 
 #: src/Admin/OverviewPage.php:824
 msgid "All Double Youpï plugins on WordPress.org"
