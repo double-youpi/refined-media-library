@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Settings for the Refined Media Library module.
  *
- * Six global options, no per-image configuration.
+ * Global options only, no per-image configuration.
  * Getters are static so they can be called without dependency injection
  * from any other class within the module.
  */
@@ -28,6 +28,7 @@ class Settings extends AbstractModule {
 	public const OPTION_AVIF_UPLOAD   = 'doubleyoupi_ml_avif_upload';
 	public const OPTION_IMAGE_QUALITY = 'doubleyoupi_ml_image_quality';
 	public const OPTION_DUPLICATES    = 'doubleyoupi_ml_duplicates';
+	public const OPTION_LIGHT_THEME   = 'doubleyoupi_ml_light_theme';
 	public const SETTINGS_GROUP       = 'doubleyoupi_media_library';
 
 	private const QUALITY_MIN     = 40;
@@ -53,6 +54,7 @@ class Settings extends AbstractModule {
 		'avif_upload'   => self::OPTION_AVIF_UPLOAD,
 		'image_quality' => self::OPTION_IMAGE_QUALITY,
 		'duplicates'    => self::OPTION_DUPLICATES,
+		'light_theme'   => self::OPTION_LIGHT_THEME,
 	];
 
 	public function boot(): void {
@@ -154,6 +156,11 @@ class Settings extends AbstractModule {
 			'sanitize_callback' => 'rest_sanitize_boolean',
 			'default'           => false,
 		] );
+		register_setting( self::SETTINGS_GROUP, self::OPTION_LIGHT_THEME, [
+			'type'              => 'boolean',
+			'sanitize_callback' => 'rest_sanitize_boolean',
+			'default'           => false,
+		] );
 		register_setting( self::SETTINGS_GROUP, self::OPTION_IMAGE_QUALITY, [
 			'type'              => 'integer',
 			'default'           => self::QUALITY_DEFAULT,
@@ -195,6 +202,17 @@ class Settings extends AbstractModule {
 	 */
 	public static function duplicates_enabled(): bool {
 		return (bool) get_option( self::OPTION_DUPLICATES, false );
+	}
+
+	/**
+	 * Light theme of the library, for Refined Media Library alone.
+	 *
+	 * Dark by default. With Refined Admin Dashboard present, its own theme
+	 * decides (body.dy-theme-light, switched in the browser), so this setting
+	 * is hidden and reads as off: one switch, never two that disagree.
+	 */
+	public static function light_theme_enabled(): bool {
+		return ! ModuleRegistry::has( 'admin' ) && (bool) get_option( self::OPTION_LIGHT_THEME, false );
 	}
 
 	public static function image_quality(): int {
@@ -307,6 +325,24 @@ class Settings extends AbstractModule {
 						?>
 					</div>
 				</section>
+
+				<?php if ( ! ModuleRegistry::has( 'admin' ) ) : ?>
+					<section class="dy-mlset__group">
+						<p class="dy-mlset__eyebrow"><?php esc_html_e( 'Appearance', 'doubleyoupi-refined-media-library' ); ?></p>
+						<div class="dy-mlset__cards">
+							<?php
+							self::toggle_card( [
+								'key'    => 'light_theme',
+								'option' => self::OPTION_LIGHT_THEME,
+								'on'     => self::light_theme_enabled(),
+								'name'   => __( 'Light theme', 'doubleyoupi-refined-media-library' ),
+								'desc'   => __( 'Show the media library on a light background', 'doubleyoupi-refined-media-library' ),
+								'icon'   => 'theme',
+							] );
+							?>
+						</div>
+					</section>
+				<?php endif; ?>
 
 				<?php // JS-less fallback: when JS is active, auto-save hides this button (see ml-settings.js / _ml-settings.scss). ?>
 				<p class="dy-mlset__actions">
@@ -426,6 +462,7 @@ class Settings extends AbstractModule {
 			'image'       => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L6 20"/>',
 			'quality'     => '<path d="M4 21v-6M4 11V3M12 21v-9M12 8V3M20 21v-4M20 13V3M1 15h6M9 8h6M17 17h6"/>',
 			'duplicates'  => '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
+			'theme'       => '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
 			'orphans'     => '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="m10 11 4 4M14 11l-4 4"/>',
 		];
 		$p = $icons[ $name ] ?? '';

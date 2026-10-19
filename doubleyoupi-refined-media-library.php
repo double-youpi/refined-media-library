@@ -3,7 +3,7 @@
  * Plugin Name:       Double Youpï Refined Media Library
  * Plugin URI:        https://doubleyoupi.com/plugins/refined-media-library
  * Description:       Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, auto alt text and WebP/AVIF for the WordPress media library, without the per-image fiddling.
- * Version:           0.3.12
+ * Version:           0.3.13
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Double Youpï
@@ -55,7 +55,7 @@ if ( $doubleyoupi_standalone_container !== null ) {
 	add_action( 'admin_notices', static function () use ( $doubleyoupi_standalone_container ): void {
 		// Translated here, at display time, in the same order as the list above.
 		$notices = array(
-			__( 'You are already running the full Double Youpï suite, and it includes Double Youpï Refined Media Library. This standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the suite first.', 'doubleyoupi-refined-media-library' ),
+			__( 'Another Double Youpï plugin that already includes Double Youpï Refined Media Library is active, so this standalone copy stepped aside to stay out of its way. Want to run it on its own? Deactivate the other plugin first.', 'doubleyoupi-refined-media-library' ),
 			__( 'Double Youpï Refined Admin Dashboard is active, and it includes this whole media library: folders, collections and the detail panel. This copy stepped aside. Your folders, collections and settings are untouched, and the dashboard is using them right now. Want the media library on its own? Deactivate Refined Admin Dashboard first.', 'doubleyoupi-refined-media-library' ),
 		);
 		echo '<div class="notice notice-warning"><p>'
@@ -70,7 +70,7 @@ if ( $doubleyoupi_standalone_container !== null ) {
 // active and have defined them first. Its values stay, and this build still
 // finds its own files, because the autoloader and Core\Build below are bound
 // to THIS directory rather than to the constant.
-defined( 'DOUBLEYOUPI_VERSION' )  || define( 'DOUBLEYOUPI_VERSION', '0.3.12' );
+defined( 'DOUBLEYOUPI_VERSION' )  || define( 'DOUBLEYOUPI_VERSION', '0.3.13' );
 defined( 'DOUBLEYOUPI_FILE' )     || define( 'DOUBLEYOUPI_FILE', __FILE__ );
 defined( 'DOUBLEYOUPI_DIR' )      || define( 'DOUBLEYOUPI_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'DOUBLEYOUPI_URL' )      || define( 'DOUBLEYOUPI_URL', plugin_dir_url( __FILE__ ) );

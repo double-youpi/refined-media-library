@@ -753,6 +753,27 @@ body.upload-php [data-dy-adopt=notice-cta] {
   box-shadow: inset 0 0 0 2px var(--accent, #5b3efe);
 }
 
+/* Light theme: the button takes the accent, like the other primary actions
+   on a light page (the dark theme keeps its inverted pale button). The focus
+   ring moves outside, an inset ring would vanish on the accent. */
+:is(body.dy-theme-light, body.dy-ml-light) #dy-add-media-action {
+  background: var(--accent, var(--dy-accent, #5b3efe));
+  color: var(--dya-accent-on, #fff);
+}
+
+:is(body.dy-theme-light, body.dy-ml-light) #dy-add-media-action:hover {
+  background: var(--dy-accent-hover, #7059fe);
+  color: var(--dya-accent-on, #fff);
+}
+
+:is(body.dy-theme-light, body.dy-ml-light) #dy-add-media-action .dashicons {
+  color: inherit !important; /* beats the panel-wide icon colour, itself !important */
+}
+
+:is(body.dy-theme-light, body.dy-ml-light) #dy-add-media-action:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg, #fff), 0 0 0 4px var(--accent, var(--dy-accent, #5b3efe));
+}
+
 #dy-add-media-action .dashicons {
   font-size: 18px;
   width: 18px;
@@ -1231,7 +1252,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   background: var(--bg-card, #161a23);
   border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 8px;
-  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, calc(0.8 * var(--dy-shadow-k, 1))), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1274,7 +1295,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-ctx-menu__item.is-danger:hover,
 .dy-ctx-menu__item.is-danger:focus-visible {
   background: rgba(214, 54, 56, 0.12);
-  color: #ff7a8f;
+  color: var(--accent-4-hover, #ff7a8f);
 }
 
 .dy-ctx-menu__icon {
@@ -1341,7 +1362,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   background: var(--bg-card, #161a23);
   border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 8px;
-  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, calc(0.8 * var(--dy-shadow-k, 1))), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   opacity: 0;
   transform: scale(0.97);
   transition: opacity 0.13s cubic-bezier(0.23, 1, 0.32, 1), transform 0.13s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1489,7 +1510,7 @@ body.dy-dragging-folder .dy-folder-item {
 
 /* ── Where Used panel (injected inside .attachment-details) ───────────────── */
 .dy-where-used {
-  border-top: 1px solid #3c3c3c;
+  border-top: 1px solid var(--line-hi, #3c3c3c);
   margin-top: 14px;
   padding: 14px 16px 4px;
 }
@@ -1500,7 +1521,7 @@ body.dy-dragging-folder .dy-folder-item {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #888 !important;
+  color: var(--ink-mute, #888) !important;
   margin: 0 0 10px;
 }
 
@@ -1518,7 +1539,7 @@ body.dy-dragging-folder .dy-folder-item {
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #c5c5c5;
+  color: var(--ink-soft, #c5c5c5);
   text-decoration: none;
   padding: 3px 0;
   transition: color 0.12s;
@@ -1532,7 +1553,7 @@ body.dy-dragging-folder .dy-folder-item {
   font-size: 12px;
   width: 12px;
   height: 12px;
-  color: #666;
+  color: var(--ink-faint, #666);
   flex-shrink: 0;
 }
 
@@ -1552,14 +1573,14 @@ body.dy-dragging-folder .dy-folder-item {
 
 .dy-where-used__empty {
   font-size: 12px;
-  color: #666 !important;
+  color: var(--ink-faint, #666) !important;
   font-style: italic;
   margin: 0;
 }
 
 .dy-where-used__loading {
   font-size: 12px;
-  color: #888 !important;
+  color: var(--ink-mute, #888) !important;
   font-style: italic;
 }
 
@@ -1579,7 +1600,7 @@ body.dy-dragging-folder .dy-folder-item {
   background: var(--bg-card, #161a23);
   border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 10px;
-  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, calc(0.8 * var(--dy-shadow-k, 1)));
   padding: 28px;
   width: 420px;
   max-width: 90vw;
@@ -2433,7 +2454,7 @@ body.upload-php .attachment {
 }
 
 body.upload-php .attachment:hover {
-  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, calc(0.7 * var(--dy-shadow-k, 1))), 0 4px 8px -2px rgba(0, 0, 0, calc(0.4 * var(--dy-shadow-k, 1))) !important;
   transform: scale(1.02) !important;
 }
 
@@ -2508,7 +2529,7 @@ body.upload-php .attachment .filename {
   background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
   border: 0 !important;
   box-shadow: none !important; /* kill WP core's inset 0 0 0 1px hairline */
-  color: var(--ink, #ecedf2) !important;
+  color: #ecedf2 !important; /* on the photo: light in both themes */
   font-family: var(--font-body, "Inter Tight", system-ui, -apple-system, sans-serif) !important;
   font-size: 10.5px !important;
   font-weight: 500 !important;
@@ -2561,7 +2582,7 @@ body.upload-php .attachment-preview:not(.type-image) .thumbnail::before {
   background: var(--bg-elev, #1d2030);
   border: 1px solid var(--dy-edge-hi, #2a3049);
   border-radius: 16px;
-  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, calc(0.7 * var(--dy-shadow-k, 1)));
   -webkit-font-smoothing: antialiased;
   transition: color 0.18s var(--ease, ease), border-color 0.18s var(--ease, ease), transform 0.22s var(--ease, ease);
 }
@@ -2592,7 +2613,7 @@ body.upload-php .check {
   background: var(--accent, #5b3efe) !important;
   border: 0 !important;
   border-radius: 50% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, calc(0.35 * var(--dy-shadow-k, 1))) !important;
 }
 
 /* Checkmark: a sharp real « ✓ » (colour-masked via --accent-on) instead of the
@@ -2731,7 +2752,7 @@ body.upload-php .wp-list-table .column-fichier {
 /* Striping — subtle dark alternation */
 body.upload-php #wpbody table.wp-list-table.striped > tbody > tr:nth-child(odd),
 body.upload-php #wpbody table.wp-list-table tbody > tr.alternate {
-  background-color: rgba(255, 255, 255, 0.025) !important;
+  background-color: var(--row-alt, rgba(255, 255, 255, 0.025)) !important;
 }
 
 body.upload-php .wp-list-table thead th a,
@@ -3281,7 +3302,7 @@ body.upload-php .row-actions .trash a {
 
 body.upload-php .row-actions .delete a:hover,
 body.upload-php .row-actions .trash a:hover {
-  color: #ff8da6;
+  color: var(--accent-4-hover, #ff8da6);
 }
 
 /* List-view toolbar (above the table) */
@@ -3588,7 +3609,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   position: relative;
   /* Checkered transparency pattern, same as thumbnail */
   background-color: var(--bg, #0c0e13);
-  background-image: linear-gradient(45deg, #111318 25%, transparent 25%), linear-gradient(-45deg, #111318 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #111318 75%), linear-gradient(-45deg, transparent 75%, #111318 75%);
+  background-image: linear-gradient(45deg, var(--checker, #111318) 25%, transparent 25%), linear-gradient(-45deg, var(--checker, #111318) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checker, #111318) 75%), linear-gradient(-45deg, transparent 75%, var(--checker, #111318) 75%);
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
   display: flex;
@@ -3730,7 +3751,7 @@ body.dy-dp-resizing * {
   object-fit: contain;
   border-radius: 6px;
   background: #0c0e13;
-  box-shadow: 0 24px 70px -20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 24px 70px -20px rgba(0, 0, 0, calc(0.7 * var(--dy-shadow-k, 1)));
   transition: opacity 0.14s ease, filter 0.14s ease;
 }
 .dy-lb-img.is-swapping {
@@ -4515,7 +4536,7 @@ body.upload-php #screen-meta {
   background: var(--bg-soft, #141720) !important;
   border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: 0 !important;
-  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, calc(0.6 * var(--dy-shadow-k, 1)));
   color: var(--ink-soft, #9ba3b5) !important;
 }
 
@@ -5239,7 +5260,7 @@ body.post-type-attachment a.submitdelete {
 }
 
 body.post-type-attachment a.submitdelete:hover {
-  color: #ff8da6 !important;
+  color: var(--accent-4-hover, #ff8da6) !important;
   text-decoration: underline;
 }
 
@@ -5341,7 +5362,7 @@ body.upload-php #wpadminbar .ab-sub-wrapper,
 body.post-type-attachment #wpadminbar .ab-sub-wrapper {
   background: var(--bg-card, #161a23) !important;
   border: 1px solid var(--dy-edge-hi, #2a3049) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, calc(0.4 * var(--dy-shadow-k, 1))) !important;
 }
 
 body.upload-php #wpadminbar .ab-sub-wrapper li > .ab-item,
@@ -5380,27 +5401,27 @@ body.post-type-attachment #wpadminbar .ab-sub-wrapper li.hover > .ab-item {
 /* Variants */
 .dy-toast--success {
   background: var(--accent, #5b3efe);
-  box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.5), 0 4px 10px rgba(0, 0, 0, calc(0.3 * var(--dy-shadow-k, 1)));
 }
 
 .dy-toast--warning {
   background: var(--accent-2, #f59e0b);
   color: #1a1410;
-  box-shadow: 0 12px 28px -8px rgba(245, 158, 11, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(245, 158, 11, 0.5), 0 4px 10px rgba(0, 0, 0, calc(0.3 * var(--dy-shadow-k, 1)));
 }
 
 .dy-toast--mixed {
   background: var(--accent-3, #a57cff);
-  box-shadow: 0 12px 28px -8px rgba(165, 124, 255, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(165, 124, 255, 0.5), 0 4px 10px rgba(0, 0, 0, calc(0.3 * var(--dy-shadow-k, 1)));
 }
 
 :where(body.dy-admin) .dy-toast--mixed {
-  box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--accent-3, #a57cff) 50%, transparent), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px color-mix(in srgb, var(--accent-3, #a57cff) 50%, transparent), 0 4px 10px rgba(0, 0, 0, calc(0.3 * var(--dy-shadow-k, 1)));
 }
 
 .dy-toast--error {
   background: var(--accent-4, #ff6b8a);
-  box-shadow: 0 12px 28px -8px rgba(255, 107, 138, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(255, 107, 138, 0.5), 0 4px 10px rgba(0, 0, 0, calc(0.3 * var(--dy-shadow-k, 1)));
 }
 
 .dy-toast.dy-toast--visible {
@@ -6128,7 +6149,7 @@ body.dy-admin #dy-panel-brand {
   background: linear-gradient(to top, rgba(6, 8, 12, 0.92) 14%, rgba(6, 8, 12, 0.55) 58%, transparent 100%) !important;
   border: 0 !important;
   box-shadow: none !important;
-  color: var(--ink, #ecedf2) !important;
+  color: #ecedf2 !important; /* on the photo: light in both themes */
 }
 
 .media-modal.dy-ml-modal .attachment .filename > div {
@@ -6148,7 +6169,7 @@ body.dy-admin #dy-panel-brand {
   background: var(--accent, #5b3efe) !important;
   border: 0 !important;
   border-radius: 50% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, calc(0.35 * var(--dy-shadow-k, 1))) !important;
 }
 
 .media-modal.dy-ml-modal .check .media-modal-icon {
@@ -6294,7 +6315,7 @@ body.dy-admin #dy-panel-brand {
 }
 
 .media-modal.dy-ml-modal .attachment:hover {
-  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.3), 0 12px 32px -8px rgba(0, 0, 0, calc(0.7 * var(--dy-shadow-k, 1))), 0 4px 8px -2px rgba(0, 0, 0, calc(0.4 * var(--dy-shadow-k, 1))) !important;
 }
 
 /* The light plate core puts behind every preview shows through at the tile
@@ -6328,7 +6349,7 @@ body.dy-admin #dy-panel-brand {
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  color: var(--ink, #ecedf2) !important;
+  color: #ecedf2 !important; /* on the photo: light in both themes */
   font-family: var(--font-body, "Inter Tight", system-ui, -apple-system, sans-serif) !important;
   font-size: 10.5px !important;
   font-weight: 500 !important;
@@ -6465,4 +6486,57 @@ body.dy-admin #dy-panel-brand {
  */
 body.dy-admin {
   --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 60%, #fff);
+}
+
+/*
+ * Light theme (19/10/2026).
+ *
+ * The library is dark by default, and most of its colours come from tokens
+ * that nothing defines: every rule reads var(--ink, #ecedf2), so the dark
+ * value written as fallback is what shows. The light theme defines those
+ * tokens, and only those, under two classes:
+ *   - body.dy-theme-light: Refined Admin Dashboard's light theme, toggled live
+ *     in the browser (the library follows it, no setting of its own);
+ *   - body.dy-ml-light: Refined Media Library alone, from its own setting.
+ * The dark theme is untouched: none of this applies without those classes.
+ *
+ * The palette is the one of Refined Admin Dashboard's light theme, so both
+ * plugins look the same: white page, surfaces tinted with the accent at 4, 8
+ * and 12 %, inks from #18181a down to #707177, black hairlines.
+ */
+body.dy-theme-light,
+body.dy-ml-light {
+  --bg: #fff;
+  --bg-soft: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --bg-card: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --paper: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --bg-elev: color-mix(in srgb, var(--dy-accent, #5b3efe) 8%, #fff);
+  --bg-hi: color-mix(in srgb, var(--dy-accent, #5b3efe) 12%, #fff);
+  --ink: #18181a;
+  --ink-soft: #44444a;
+  --ink-mute: #707177;
+  --ink-faint: #727378;
+  --line: rgba(0, 0, 0, 0.07);
+  --line-hi: rgba(0, 0, 0, 0.12);
+  --line-soft: rgba(0, 0, 0, 0.04);
+  --row-alt: rgba(0, 0, 0, 0.02);
+  --checker: #ececef;
+  --dy-shadow-k: 0.3;
+  --dy-ink: #18181a;
+  --dy-ink-soft: #44444a;
+  --dy-ink-mute: #707177;
+  --dy-ink-faint: #727378;
+  --dy-bg: #fff;
+  --dy-bg-soft: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --dy-bg-card: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --dy-bg-elev: color-mix(in srgb, var(--dy-accent, #5b3efe) 8%, #fff);
+  --dy-line: rgba(0, 0, 0, 0.07);
+  --dy-line-hi: rgba(0, 0, 0, 0.12);
+  --dy-line-soft: rgba(0, 0, 0, 0.04);
+  /* Collections: a deeper shade of the accent, readable as text on white. */
+  --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 80%, #000);
+  /* Danger pink: the deeper red of the admin light theme, AA as text on white. */
+  --accent-4: #d13425;
+  --accent-4-hover: #a8281c;
+  color-scheme: light;
 }

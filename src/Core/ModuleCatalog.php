@@ -6,22 +6,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Module catalog — SOLO VERSION (generated in WP.org builds).
+ * Module catalog, SOLO VERSION (generated in WP.org builds).
  *
- * Mirror of the suite catalog: same 8 modules + tools, same statuses
- * "available / coming-soon". The solo difference lies elsewhere:
+ * Lists only the plugins published on WordPress.org (Refined Admin Dashboard
+ * and Refined Media Library): a free plugin must not describe modules that
+ * are not available to its users.
  *   - `available_ids()` returns only the module(s) ACTUALLY bundled
  *     (SoloConfig::present_modules()), so only those get a persistent toggle;
- *   - the module(s) bundled here are promoted to "available" whatever their
- *     range status, so each solo plugin features its own module;
+ *   - the module(s) bundled here are promoted to "available", so each solo
+ *     plugin features its own module;
  *   - OverviewPage decides "bundled here vs. showcase" via ModuleRegistry::has().
  *
- * Modules marked `available` but NOT bundled (e.g. Refined Admin Dashboard in
- * the Media Library solo) become showcase cards for the broader product range.
+ * A module marked `available` but NOT bundled (Refined Admin Dashboard in the
+ * Media Library solo) becomes a showcase card with an install button.
  *
- * Source of truth: build/standalone/shell/ModuleCatalog.php. Metadata is
- * intentionally kept as a mirror of the suite catalog; a future Phase II
- * refactor will extract this metadata into a single shared source.
+ * Source of truth: build/standalone/shell/ModuleCatalog.php.
  */
 final class ModuleCatalog {
 
@@ -52,51 +51,6 @@ final class ModuleCatalog {
 				'icon'         => 'dashicons-format-gallery',
 				'status'       => self::STATUS_AVAILABLE,
 				'settings_url' => admin_url( 'admin.php?page=doubleyoupi-media-library' ),
-			],
-			[
-				'id'           => 'performance',
-				'name'         => __( 'Simple Performance', 'doubleyoupi-refined-media-library' ),
-				'description'  => __( 'Caching, CSS/JS, lazy-load, responsive WebP/AVIF delivery, self-hosted fonts, and a native Cloudflare CDN.', 'doubleyoupi-refined-media-library' ),
-				'icon'         => 'dashicons-performance',
-				// Shown as "coming soon" in solo builds until its own free plugin
-				// is published on WordPress.org.
-				'status'       => self::STATUS_COMING_SOON,
-				'settings_url' => null,
-			],
-			[
-				'id'           => 'static-site',
-				'name'         => __( 'Simple Static', 'doubleyoupi-refined-media-library' ),
-				'description'  => __( 'Static HTML export to shrink your attack surface and host free on Cloudflare Pages, Netlify or GitHub Pages.', 'doubleyoupi-refined-media-library' ),
-				'icon'         => 'dashicons-download',
-				'status'       => self::STATUS_COMING_SOON,
-				'settings_url' => null,
-			],
-			// Toolkit is no longer a standalone module/product: it is bundled
-			// for free with Refined Admin Dashboard (its toggles live in the
-			// "Double Youpi > Tools" page). No showcase card here.
-			[
-				'id'           => 'seo-a11y',
-				'name'         => __( 'Simple SEO & Accessibility', 'doubleyoupi-refined-media-library' ),
-				'description'  => __( 'Completes Rank Math on accessibility: auto aria-labels, AI alt-text, and a WCAG audit.', 'doubleyoupi-refined-media-library' ),
-				'icon'         => 'dashicons-universal-access-alt',
-				'status'       => self::STATUS_COMING_SOON,
-				'settings_url' => null,
-			],
-			[
-				'id'           => 'metrics',
-				'name'         => __( 'Simple Metrics', 'doubleyoupi-refined-media-library' ),
-				'description'  => __( 'PageSpeed Insights tracking in the admin: per-page history over time, on mobile and desktop.', 'doubleyoupi-refined-media-library' ),
-				'icon'         => 'dashicons-chart-line',
-				'status'       => self::STATUS_COMING_SOON,
-				'settings_url' => null,
-			],
-			[
-				'id'           => 'backups',
-				'name'         => __( 'Simple Backups', 'doubleyoupi-refined-media-library' ),
-				'description'  => __( 'Scheduled full or DB-only backups, with rotation and one-click restore (auto-snapshot first).', 'doubleyoupi-refined-media-library' ),
-				'icon'         => 'dashicons-backup',
-				'status'       => self::STATUS_COMING_SOON,
-				'settings_url' => null,
 			],
 		];
 
@@ -151,11 +105,6 @@ final class ModuleCatalog {
 		$pages = [
 			'admin'         => 'doubleyoupi-admin',
 			'media-library' => 'doubleyoupi-media-library',
-			'performance'   => 'doubleyoupi-performance',
-			'static-site'   => 'doubleyoupi-static',
-			'metrics'       => 'doubleyoupi-metrics',
-			'backups'       => 'doubleyoupi-backups',
-			'staging'       => 'doubleyoupi-staging',
 		];
 
 		return isset( $pages[ $id ] ) ? admin_url( 'admin.php?page=' . $pages[ $id ] ) : null;
@@ -181,7 +130,7 @@ final class ModuleCatalog {
 	}
 
 	/**
-	 * Showcase metadata for the product range. Mirror of the suite version.
+	 * Showcase metadata for the two published plugins.
 	 *
 	 * @return array{tier:'free'|'paid', wporg_slug:?string, marketing_url:string, screenshots:string[]}
 	 */
@@ -198,17 +147,10 @@ final class ModuleCatalog {
 
 		$map = [
 			'admin'         => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-admin-dashboard', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-admin-dashboard' ],
-			'media-library' => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-media-library', 'marketing_url' => 'https://doubleyoupi.com/plugins/refined-media-library' ],
-			'performance'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-performance' ],
-			'static-site'   => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-static' ],
-			'seo-a11y'      => [ 'tier' => 'free', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-seo-accessibility' ],
-			'toolkit'       => [ 'tier' => 'paid', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/toolkit' ],
-			'metrics'       => [ 'tier' => 'paid', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-metrics' ],
-			'backups'       => [ 'tier' => 'paid', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-backups' ],
-			'staging'       => [ 'tier' => 'paid', 'wporg_slug' => null,                   'marketing_url' => 'https://doubleyoupi.com/simple-staging' ],
+			'media-library' => [ 'tier' => 'free', 'wporg_slug' => 'doubleyoupi-refined-media-library',   'marketing_url' => 'https://doubleyoupi.com/plugins/refined-media-library' ],
 		];
 
-		$entry = $map[ $id ] ?? [ 'tier' => 'paid', 'wporg_slug' => null, 'marketing_url' => 'https://doubleyoupi.com' ];
+		$entry = $map[ $id ] ?? [ 'tier' => 'free', 'wporg_slug' => null, 'marketing_url' => 'https://doubleyoupi.com' ];
 		$entry['screenshots'] = $shot( $id );
 		return $entry;
 	}

@@ -36,6 +36,9 @@ jQuery( function ( $ ) {
 		if ( $input.length ) {
 			$input.prop( 'checked', ! $input.prop( 'checked' ) );
 			$card.attr( 'data-state', $input.prop( 'checked' ) ? 'active' : 'default' );
+			if ( 'light_theme' === $input.data( 'key' ) ) {
+				document.body.classList.toggle( 'dy-ml-light', $input.prop( 'checked' ) );
+			}
 		}
 	}
 
@@ -64,6 +67,10 @@ jQuery( function ( $ ) {
 		var $card  = $input.closest( '.dy-mlset__card' );
 		var on     = $input.prop( 'checked' );
 		$card.attr( 'data-state', on ? 'active' : 'default' );
+		// The theme shows at once: the stylesheets react to the body class alone.
+		if ( 'light_theme' === $input.data( 'key' ) ) {
+			document.body.classList.toggle( 'dy-ml-light', on );
+		}
 		save( $input.data( 'key' ), on ? '1' : '0', $card );
 	} );
 

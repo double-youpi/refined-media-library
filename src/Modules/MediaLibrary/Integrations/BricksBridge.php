@@ -3,6 +3,7 @@ namespace DoubleYoupi\Modules\MediaLibrary\Integrations;
 
 use DoubleYoupi\Modules\MediaLibrary\FolderManager;
 use DoubleYoupi\Modules\MediaLibrary\MediaManagerConflict;
+use DoubleYoupi\Modules\MediaLibrary\Settings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -148,5 +149,11 @@ final class BricksBridge {
 			return;
 		}
 		FolderManager::instance()->enqueue_assets( 'bricks-builder' );
+		// The light theme rides on a body class, set by admin_body_class in
+		// the admin; the builder is a front-end page, so set it here too.
+		// <body> is printed after this hook, the filter is still in time.
+		if ( Settings::light_theme_enabled() ) {
+			add_filter( 'body_class', static fn( array $classes ): array => array_merge( $classes, [ 'dy-ml-light' ] ) );
+		}
 	}
 }

@@ -289,13 +289,13 @@
 		            color var(--dya-t-fast) var(--dya-ease),
 		            transform var(--dya-t-fast) var(--dya-ease);
 
-		&--dya-primary {
+		&--primary {
 			background: var(--dya-accent);
 			color: #fff;
 			&:hover { transform: translateY(-1px); filter: brightness(1.06); }
 		}
 
-		&--dya-ghost {
+		&--ghost {
 			background: transparent;
 			border-color: var(--dya-edge-strong);
 			color: var(--dya-ink);

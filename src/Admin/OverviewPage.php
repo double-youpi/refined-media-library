@@ -149,22 +149,29 @@ final class OverviewPage {
 				'nonce'         => wp_create_nonce( self::AJAX_ACTION ),
 				'reloadModules' => array_values( self::RELOAD_REQUIRED_IDS ),
 				'installBaseUrl' => self_admin_url( 'plugin-install.php?tab=search&type=term&s=' ),
-				'i18n'          => [
-					'statusActive'   => __( 'Active', 'doubleyoupi-refined-media-library' ),
-					'statusInactive' => __( 'Disabled', 'doubleyoupi-refined-media-library' ),
-					'switchOn'       => __( 'Enabled', 'doubleyoupi-refined-media-library' ),
-					'switchOff'      => __( 'Disabled', 'doubleyoupi-refined-media-library' ),
-					'settings'       => __( 'Settings', 'doubleyoupi-refined-media-library' ),
-					'saveError'      => __( 'Could not save. Please retry.', 'doubleyoupi-refined-media-library' ),
-					'install'        => __( 'Install for free', 'doubleyoupi-refined-media-library' ),
-					'installing'     => __( 'Installing…', 'doubleyoupi-refined-media-library' ),
-					'installed'      => __( 'Installed ✓', 'doubleyoupi-refined-media-library' ),
-					'installError'   => __( 'Install failed, open the installer', 'doubleyoupi-refined-media-library' ),
-					'comingSoon'     => __( 'Soon on WordPress.org', 'doubleyoupi-refined-media-library' ),
-					'discover'       => __( 'Discover on doubleyoupi.com', 'doubleyoupi-refined-media-library' ),
-					'free'           => __( 'Free', 'doubleyoupi-refined-media-library' ),
-					'suite'          => __( 'Suite', 'doubleyoupi-refined-media-library' ),
-				],
+				'i18n'          => array_merge(
+					[
+						'statusActive'   => __( 'Active', 'doubleyoupi-refined-media-library' ),
+						'statusInactive' => __( 'Disabled', 'doubleyoupi-refined-media-library' ),
+						'switchOn'       => __( 'Enabled', 'doubleyoupi-refined-media-library' ),
+						'switchOff'      => __( 'Disabled', 'doubleyoupi-refined-media-library' ),
+						'settings'       => __( 'Settings', 'doubleyoupi-refined-media-library' ),
+						'saveError'      => __( 'Could not save. Please retry.', 'doubleyoupi-refined-media-library' ),
+					],
+					// Showcase modal strings, only when a showcase card exists:
+					// a plugin that ships every module it lists (Refined Admin
+					// Dashboard) has nothing to advertise (19/10/2026).
+					self::has_vitrine() ? [
+						'install'      => __( 'Install for free', 'doubleyoupi-refined-media-library' ),
+						'installing'   => __( 'Installing…', 'doubleyoupi-refined-media-library' ),
+						'installed'    => __( 'Installed ✓', 'doubleyoupi-refined-media-library' ),
+						'installError' => __( 'Install failed, open the installer', 'doubleyoupi-refined-media-library' ),
+						'comingSoon'   => __( 'Soon on WordPress.org', 'doubleyoupi-refined-media-library' ),
+						'discover'     => __( 'Discover on doubleyoupi.com', 'doubleyoupi-refined-media-library' ),
+						'free'         => __( 'Free', 'doubleyoupi-refined-media-library' ),
+						'suite'        => __( 'Suite', 'doubleyoupi-refined-media-library' ),
+					] : []
+				),
 			]
 		);
 	}
@@ -369,7 +376,7 @@ final class OverviewPage {
 				<p class="dy-overview__tagline">
 					<?php echo esc_html( $tagline ); ?>
 				</p>
-				<div class="dy-overview__hero-meta" aria-label="<?php esc_attr_e( 'Suite information', 'doubleyoupi-refined-media-library' ); ?>">
+				<div class="dy-overview__hero-meta" aria-label="<?php esc_attr_e( 'Plugin information', 'doubleyoupi-refined-media-library' ); ?>">
 					<?php if ( '' !== $quip ) : ?>
 						<?php // Solo: random quip (accented) in place of the counter. ?>
 						<span class="dy-overview__hero-quip"><?php echo esc_html( $quip ); ?></span>
@@ -447,6 +454,16 @@ final class OverviewPage {
 	 * @param array{id:string, name:string, description:string, icon:string, status:string, settings_url:?string} $module
 	 * @param int $index Position in the grid — used for the staggered entry animation (--dya-card-i).
 	 */
+	/** Whether the grid shows a showcase card (a listed module not bundled here). */
+	private static function has_vitrine(): bool {
+		foreach ( ModuleCatalog::all() as $module ) {
+			if ( ModuleCatalog::STATUS_AVAILABLE === $module['status'] && ! ModuleRegistry::has( $module['id'] ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private static function render_card( array $module, int $index = 0 ): void {
 		$is_available  = $module['status'] === ModuleCatalog::STATUS_AVAILABLE;
 

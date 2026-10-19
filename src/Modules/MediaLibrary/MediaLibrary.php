@@ -3,6 +3,7 @@ namespace DoubleYoupi\Modules\MediaLibrary;
 
 use DoubleYoupi\Admin\AdminMenu;
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Core\Build;
 use DoubleYoupi\Modules\MediaLibrary\Migration\MigrationManager;
 use DoubleYoupi\Modules\MediaLibrary\Migration\SourceDetector;
 
@@ -143,6 +144,7 @@ class MediaLibrary extends AbstractModule {
 		// Refined Admin Dashboard + Refined Media Library combination (e.g. collections inherit
 		// the accent colour when both modules are active).
 		add_filter( 'admin_body_class', [ $this, 'body_class' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_shell_light' ] );
 	}
 
 	/**
@@ -156,7 +158,35 @@ class MediaLibrary extends AbstractModule {
 		if ( false === strpos( ' ' . $classes . ' ', ' dy-media-library ' ) ) {
 			$classes .= ' dy-media-library';
 		}
+		// Light theme (Refined Media Library alone): on every screen too, for
+		// the same reason, a media window can open anywhere.
+		if ( Settings::light_theme_enabled() && false === strpos( ' ' . $classes . ' ', ' dy-ml-light ' ) ) {
+			$classes .= ' dy-ml-light';
+		}
 		return $classes;
+	}
+
+	/**
+	 * Light values for the library's own pages and the Double Youpï pages
+	 * around them (see shell-light.css). Loaded whatever the setting: the
+	 * sheet is inert without a light class, so the Settings switch and the
+	 * theme switch of Refined Admin Dashboard both apply without a reload.
+	 */
+	public function enqueue_shell_light( string $hook ): void {
+		if ( ! str_contains( $hook, 'doubleyoupi' ) ) {
+			return;
+		}
+		$rel = 'assets/css/modules/media-library/shell-light.css';
+		$abs = Build::dir( __FILE__, $rel );
+		if ( ! file_exists( $abs ) ) {
+			return;
+		}
+		wp_enqueue_style(
+			'doubleyoupi-ml-shell-light',
+			Build::url( __FILE__, $rel ),
+			[],
+			(string) ( filemtime( $abs ) ?: DOUBLEYOUPI_VERSION )
+		);
 	}
 
 	/**

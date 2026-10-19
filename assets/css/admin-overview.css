@@ -1810,20 +1810,20 @@ input:focus-visible + .dy-overview__switch-track {
   border: 1px solid transparent;
   transition: background var(--dya-t-fast) var(--dya-ease), border-color var(--dya-t-fast) var(--dya-ease), color var(--dya-t-fast) var(--dya-ease), transform var(--dya-t-fast) var(--dya-ease);
 }
-.dy-overview__btn--dya-primary {
+.dy-overview__btn--primary {
   background: var(--dya-accent);
   color: #fff;
 }
-.dy-overview__btn--dya-primary:hover {
+.dy-overview__btn--primary:hover {
   transform: translateY(-1px);
   filter: brightness(1.06);
 }
-.dy-overview__btn--dya-ghost {
+.dy-overview__btn--ghost {
   background: transparent;
   border-color: var(--dya-edge-strong);
   color: var(--dya-ink);
 }
-.dy-overview__btn--dya-ghost:hover {
+.dy-overview__btn--ghost:hover {
   border-color: rgba(var(--dya-accent-rgb), 0.5);
   color: var(--dya-accent);
 }
@@ -3962,9 +3962,9 @@ body[class*=page_doubleyoupi] .wrap .dy-diagnostic-status--ok {
   background: var(--dya-success-soft);
   color: var(--dya-success);
 }
-body[class*=page_doubleyoupi] .wrap .dy-diag-status.is-warn, body[class*=page_doubleyoupi] .wrap .dy-diag-status--dya-warn,
+body[class*=page_doubleyoupi] .wrap .dy-diag-status.is-warn, body[class*=page_doubleyoupi] .wrap .dy-diag-status--warn,
 body[class*=page_doubleyoupi] .wrap .dy-diagnostic-status.is-warn,
-body[class*=page_doubleyoupi] .wrap .dy-diagnostic-status--dya-warn {
+body[class*=page_doubleyoupi] .wrap .dy-diagnostic-status--warn {
   background: var(--dya-warn-soft);
   color: var(--dya-warn);
 }

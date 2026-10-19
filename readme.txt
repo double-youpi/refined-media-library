@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.12
+Stable tag: 0.3.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,7 +48,7 @@ That's the whole point. A few toggles in one place, sensible defaults everywhere
 
 **Free, and built to stay that way**
 
-No locked features, no "upgrade to unlock folders", no nag screens. It's the standalone edition of the Double Youpï suite: the whole thing, **free for good and actively maintained**.
+No locked features, no "upgrade to unlock folders", no nag screens. It's not a trial or a lite version: the whole plugin, **free for good and actively maintained**.
 
 **The whole admin, redrawn the same way**
 
@@ -122,6 +122,12 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.13 =
+* New: a light theme for the media library, in Settings > Appearance. Dark stays the default.
+* Tweak: in the light theme, the "Add Media File" button takes the accent colour.
+* Fixed: the warning and danger colours of the Overview buttons show again.
+* Translations: the bundled language files no longer carry strings the plugin does not use, and plurals follow the rule of each language (in French and Portuguese, zero is now singular).
 
 = 0.3.12 =
 * Fixed: the list view pagination buttons no longer show a dropdown arrow.
@@ -236,6 +242,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.13 =
+A light theme for the media library, in Settings > Appearance. Dark stays the default.
 
 = 0.3.12 =
 A small fix: the pagination buttons of the list view no longer show a dropdown arrow.

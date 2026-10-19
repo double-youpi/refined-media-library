@@ -35,7 +35,7 @@
 			var(--dy-bg-card, #161a23);
 		border: 1px solid var(--dy-edge, transparent);
 		border-radius: var(--dy-radius-lg, 8px);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px -22px rgba(0, 0, 0, 0.8);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px -22px rgba(0, 0, 0, calc(0.8 * var(--dy-shadow-k, 1)));
 		scrollbar-width: thin;
 		scrollbar-color: var(--dy-line-hi, #2a3049) transparent;
 
@@ -109,7 +109,7 @@
 	}
 
 	.dy-ml-node[data-kind="collection"] .dy-ml-node__icon {
-		color: #b58cff;
+		color: var(--accent-3, #b58cff);
 	}
 
 	.dy-ml-node__name {
@@ -128,7 +128,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		color: #cdb4ff;
+		color: var(--accent-3, #cdb4ff);
 		background: rgba(181, 140, 255, 0.12);
 		border: 1px solid rgba(181, 140, 255, 0.3);
 		border-radius: 999px;
@@ -157,4 +157,12 @@
 #dy-ml-migration progress {
 	margin-top: 10px;
 	height: 14px;
+}
+
+/* Collection tags, from the accent's collection shade wherever that shade
+   moves: with Refined Admin Dashboard (its accent) and in the light theme.
+   Zero added specificity, after the original: wins only there. */
+:where(body.dy-admin, body.dy-ml-light) #dy-ml-migration .dy-ml-node__tag {
+  background: color-mix(in srgb, var(--accent-3, #b58cff) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent-3, #b58cff) 30%, transparent);
 }

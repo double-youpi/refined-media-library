@@ -1,0 +1,56 @@
+/*
+ * Light theme of the media library's own pages (Settings, Unused media,
+ * Import), and of the Double Youpï pages around them.
+ *
+ * Loaded on every Double Youpï admin page, inert unless a light class is on
+ * <body>, so switching theme never needs a reload:
+ *   - body.dy-ml-light: Refined Media Library alone, from its setting. Those
+ *     pages wear the standalone dark skin (body.dy-shell, tokens in
+ *     admin-overview.css); the block below turns its tokens light, with the
+ *     values of Refined Admin Dashboard's light theme.
+ *   - body.dy-theme-light: Refined Admin Dashboard's light theme. RAD already
+ *     paints its own tokens; only the library's --dy-* tokens are set here.
+ */
+
+/* With RAD, collections take RAD's accent (same rule as media-library.css,
+   which is not loaded on these pages). */
+body.dy-admin {
+  --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 60%, #fff);
+}
+
+body.dy-shell.dy-ml-light {
+  --dya-bg: #fff;
+  --dya-bg-elev: color-mix(in srgb, var(--dya-accent) 8%, white);
+  --dya-paper: color-mix(in srgb, var(--dya-accent) 4%, white);
+  --dya-paper-2: color-mix(in srgb, var(--dya-accent) 6%, white);
+  --dya-paper-3: color-mix(in srgb, var(--dya-accent) 12%, white);
+  --dya-ink: #18181a;
+  --dya-ink-soft: #44444a;
+  --dya-ink-mute: #707177;
+  --dya-ink-fade: #727378;
+  --dya-line: rgba(0, 0, 0, 0.07);
+  --dya-line-strong: rgba(0, 0, 0, 0.12);
+  --dya-line-soft: rgba(0, 0, 0, 0.04);
+  --dya-accent-soft: rgba(var(--dya-accent-rgb), 0.08);
+  --dya-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --dya-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --dya-shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.1);
+  color-scheme: light;
+}
+
+body.dy-theme-light,
+body.dy-ml-light {
+  --dy-ink: #18181a;
+  --dy-ink-soft: #44444a;
+  --dy-ink-mute: #707177;
+  --dy-ink-faint: #727378;
+  --dy-bg: #fff;
+  --dy-bg-soft: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --dy-bg-card: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
+  --dy-bg-elev: color-mix(in srgb, var(--dy-accent, #5b3efe) 8%, #fff);
+  --dy-line: rgba(0, 0, 0, 0.07);
+  --dy-line-hi: rgba(0, 0, 0, 0.12);
+  --dy-line-soft: rgba(0, 0, 0, 0.04);
+  --dy-shadow-k: 0.3;
+  --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 80%, #000);
+}
