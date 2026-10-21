@@ -1,0 +1,1679 @@
+# Traduction russe des chaînes propres aux copies autonomes (21/10/2026). Ces entrées priment sur languages/doubleyoupi-ru_RU.po dans le build solo.
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
+"refined-media-library\n"
+"POT-Creation-Date: 2026-10-21T04:26:02+00:00\n"
+"Language: ru_RU\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Plugin Name of the plugin
+#: doubleyoupi-refined-media-library.php
+msgid "Double Youpï Refined Media Library"
+msgstr "Double Youpï Refined Media Library"
+
+#. Plugin URI of the plugin
+#: doubleyoupi-refined-media-library.php
+msgid "https://doubleyoupi.com/plugins/refined-media-library"
+msgstr "https://doubleyoupi.com/plugins/refined-media-library"
+
+#. Description of the plugin
+#: doubleyoupi-refined-media-library.php
+msgid ""
+"Nested folders with drag-and-drop, collections, duplicate and orphan "
+"cleanup, auto alt text and WebP/AVIF for the WordPress media library, "
+"without the per-image fiddling."
+msgstr ""
+"Вложенные папки с перетаскиванием, коллекции, очистка дубликатов и "
+"неиспользуемых файлов, автоматический атрибут alt и WebP/AVIF для библиотеки "
+"файлов WordPress, без настройки каждого изображения."
+
+#. Author of the plugin
+#: doubleyoupi-refined-media-library.php src/Admin/DyShell.php:118
+#: src/Admin/OverviewPage.php:364
+msgid "Double Youpï"
+msgstr "Double Youpï"
+
+#. Author URI of the plugin
+#: doubleyoupi-refined-media-library.php
+msgid "https://doubleyoupi.com"
+msgstr "https://doubleyoupi.com"
+
+#: doubleyoupi-refined-media-library.php:58
+msgid ""
+"Another Double Youpï plugin that already includes Double Youpï Refined Media "
+"Library is active, so this standalone copy stepped aside to stay out of its "
+"way. Want to run it on its own? Deactivate the other plugin first."
+msgstr ""
+"Активен другой плагин Double Youpï, который уже включает Double Youpï "
+"Refined Media Library, поэтому эта отдельная версия отошла в сторону, чтобы "
+"ему не мешать. Хотите использовать её самостоятельно? Сначала деактивируйте "
+"другой плагин."
+
+#: doubleyoupi-refined-media-library.php:59
+msgid ""
+"Double Youpï Refined Admin Dashboard is active, and it includes this whole "
+"media library: folders, collections and the detail panel. This copy stepped "
+"aside. Your folders, collections and settings are untouched, and the "
+"dashboard is using them right now. Want the media library on its own? "
+"Deactivate Refined Admin Dashboard first."
+msgstr ""
+"Активен Double Youpï Refined Admin Dashboard, и он включает всю эту "
+"библиотеку файлов: папки, коллекции и панель сведений. Эта копия отошла в "
+"сторону. Ваши папки, коллекции и настройки не тронуты, и Консоль использует "
+"их прямо сейчас. Хотите библиотеку файлов отдельно? Сначала деактивируйте "
+"Refined Admin Dashboard."
+
+#: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
+#: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:64
+#: src/Modules/MediaLibrary/MediaLibrary.php:206
+msgid "Settings"
+msgstr "Настройки"
+
+#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/OverviewPage.php:817
+msgid "Leave a review"
+msgstr "Оставить отзыв"
+
+#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
+msgctxt "admin bar button"
+msgid "Feedback"
+msgstr "Обратная связь"
+
+#. translators: %s = label of the Feedback button (e.g. "Feedback")
+#: src/Admin/Feedback.php:182
+#, php-format
+msgid ""
+"If you like the plugin, two lines on WordPress.org help it a lot. If "
+"something is wrong, tell us with “%s” instead: it is quicker to fix."
+msgstr ""
+"Если плагин вам нравится, пара строк на WordPress.org очень ему поможет. "
+"Если что-то не так, лучше сообщите нам через «%s»: так проблему исправят "
+"быстрее."
+
+#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
+#: src/Admin/OverviewPage.php:680
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:137
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/Admin/Feedback.php:200
+msgid "Write a review on WordPress.org"
+msgstr "Написать отзыв на WordPress.org"
+
+#: src/Admin/Feedback.php:200
+msgid "(opens in a new tab)"
+msgstr "(откроется в новой вкладке)"
+
+#. translators: %s = product name (e.g. "Refined Admin Dashboard")
+#: src/Admin/Feedback.php:211
+#, php-format
+msgid "Your feedback on %s"
+msgstr "Обратная связь: %s"
+
+#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
+msgid "Send"
+msgstr "Отправить"
+
+#: src/Admin/Feedback.php:291
+msgid "Sending…"
+msgstr "Отправка…"
+
+#: src/Admin/Feedback.php:292
+msgid "Try again"
+msgstr "Повторить"
+
+#. translators: %s = name of the theme
+#: src/Admin/Feedback.php:294
+#, php-format
+msgid "%s (theme)"
+msgstr "%s (тема)"
+
+#: src/Admin/Feedback.php:295
+msgid "This image is still too large after compression (1.5 MB maximum)."
+msgstr "Изображение всё ещё слишком большое после сжатия (максимум 1,5 МБ)."
+
+#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
+msgid "Please use a PNG, JPEG or WebP image."
+msgstr "Используйте изображение PNG, JPEG или WebP."
+
+#: src/Admin/Feedback.php:297
+msgid "Your report could not be sent. Check your connection and try again."
+msgstr ""
+"Не удалось отправить сообщение. Проверьте подключение и попробуйте ещё раз."
+
+#. translators: %s = reference returned by the feedback service
+#: src/Admin/Feedback.php:299
+#, php-format
+msgid "Reference %s."
+msgstr "Номер обращения: %s."
+
+#: src/Admin/Feedback.php:300
+msgid "(anonymous site identifier)"
+msgstr "(анонимный идентификатор сайта)"
+
+#: src/Admin/Feedback.php:329
+msgid "This screen"
+msgstr "Этот экран"
+
+#: src/Admin/Feedback.php:333
+msgid "What kind of feedback"
+msgstr "Тип сообщения"
+
+#: src/Admin/Feedback.php:334
+msgid "Something is wrong"
+msgstr "Что-то не так"
+
+#: src/Admin/Feedback.php:335
+msgid "An idea"
+msgstr "Идея"
+
+#: src/Admin/Feedback.php:336
+msgid "Something else"
+msgstr "Другое"
+
+#: src/Admin/Feedback.php:339
+msgid "Your message"
+msgstr "Ваше сообщение"
+
+#: src/Admin/Feedback.php:340
+msgid "What happened, and what you expected."
+msgstr "Что произошло и чего вы ожидали."
+
+#: src/Admin/Feedback.php:347
+msgid "Attach a screenshot"
+msgstr "Прикрепить снимок экрана"
+
+#: src/Admin/Feedback.php:349
+msgid "or paste an image here (Ctrl/Cmd + V)"
+msgstr "или вставьте изображение сюда (Ctrl/Cmd + V)"
+
+#: src/Admin/Feedback.php:352
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:165
+msgid "Remove"
+msgstr "Убрать"
+
+#: src/Admin/Feedback.php:357
+msgid "You may write back to me at"
+msgstr "Мне можно ответить по адресу"
+
+#: src/Admin/Feedback.php:362
+msgid ""
+"I agree to send this report to Double Youpï: my message, the screenshot if "
+"any, this screen's address inside wp-admin, the plugin or theme it belongs "
+"to, and version numbers (WordPress, PHP, theme, this plugin). No site "
+"content is sent, and no site address unless I ask for a reply."
+msgstr ""
+"Я согласен(на) отправить это сообщение в Double Youpï: мой текст, снимок "
+"экрана (если есть), адрес этого экрана в wp-admin, плагин или тему, к "
+"которым он относится, и номера версий (WordPress, PHP, тема, этот плагин). "
+"Содержимое сайта не отправляется, а адрес сайта передаётся, только если я "
+"прошу ответить."
+
+#: src/Admin/Feedback.php:365
+msgid "See exactly what will be sent"
+msgstr "Посмотреть, что именно будет отправлено"
+
+#. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
+#: src/Admin/Feedback.php:374
+#, php-format
+msgid "Seen with %s"
+msgstr "Замечено в %s"
+
+#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/Admin/Feedback.php:382
+msgid "Thank you, it is on its way."
+msgstr "Спасибо, сообщение отправлено."
+
+#: src/Admin/Feedback.php:426
+msgid "Please confirm you agree to send this report."
+msgstr "Подтвердите согласие на отправку сообщения."
+
+#: src/Admin/Feedback.php:434
+msgid "Please write a few words first."
+msgstr "Сначала напишите несколько слов."
+
+#: src/Admin/Feedback.php:441
+msgid "This email address does not look right."
+msgstr "Похоже, адрес email указан неверно."
+
+#: src/Admin/Feedback.php:447
+msgid "The screenshot is too large."
+msgstr "Снимок экрана слишком большой."
+
+#: src/Admin/Feedback.php:459
+msgid "Too many reports in a short time. Please try again in an hour."
+msgstr ""
+"Слишком много сообщений за короткое время. Попробуйте ещё раз через час."
+
+#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
+msgid "The feedback service did not answer. Please try again later."
+msgstr "Сервис обратной связи не ответил. Попробуйте позже."
+
+#: src/Admin/HeroQuips.php:51
+msgid "Objectively the best plugin you've installed in the last five minutes."
+msgstr "Объективно лучший плагин, установленный вами за последние пять минут."
+
+#: src/Admin/HeroQuips.php:52
+msgid "Built different. We have a certificate and everything."
+msgstr "Не такой, как все. У нас даже сертификат есть."
+
+#: src/Admin/HeroQuips.php:53
+msgid "Zero shortcodes were harmed in the making of this plugin."
+msgstr "При создании этого плагина не пострадал ни один шорткод."
+
+#: src/Admin/HeroQuips.php:54
+msgid "Awarded Plugin of the Year by a panel of one."
+msgstr "Признан плагином года жюри из одного человека."
+
+#: src/Admin/HeroQuips.php:55
+msgid "Refined enough to make your theme nervous."
+msgstr "Настолько изысканный, что ваша тема начинает нервничать."
+
+#: src/Admin/HeroQuips.php:56
+msgid "We benchmarked it against perfection. Perfection lost."
+msgstr "Мы сравнили его с совершенством. Совершенство проиграло."
+
+#: src/Admin/HeroQuips.php:57
+msgid "Your other plugins are taking this personally."
+msgstr "Остальные ваши плагины принимают это на свой счёт."
+
+#: src/Admin/HeroQuips.php:58
+msgid "Currently winning an argument it wasn't invited to."
+msgstr "Прямо сейчас выигрывает спор, на который его не звали."
+
+#: src/Admin/HeroQuips.php:59
+msgid "Suspiciously good for something this free."
+msgstr "Подозрительно хорош для чего-то настолько бесплатного."
+
+#: src/Admin/HeroQuips.php:60
+msgid "The bar was high. We brought a ladder."
+msgstr "Планка была высокой. Мы принесли лестницу."
+
+#: src/Admin/HeroQuips.php:61
+msgid "Compared to nothing, it is literally the best."
+msgstr "По сравнению с ничем он буквально лучший."
+
+#: src/Admin/HeroQuips.php:62
+msgid "Powered by talent and a concerning amount of confidence."
+msgstr "Работает на таланте и тревожном количестве уверенности в себе."
+
+#: src/Admin/HeroQuips.php:63
+msgid "Reviews are in: we wrote them ourselves."
+msgstr "Отзывы уже есть: мы написали их сами."
+
+#: src/Admin/HeroQuips.php:64
+msgid "Finally, a plugin that matches your impeccable taste."
+msgstr "Наконец-то плагин под стать вашему безупречному вкусу."
+
+#: src/Admin/HeroQuips.php:65
+msgid "Great taste. You installed this, after all."
+msgstr "Отличный вкус. В конце концов, это вы его установили."
+
+#: src/Admin/HeroQuips.php:66
+msgid "Two icons in one admin: you and this plugin."
+msgstr "Две звезды в одной админ-панели: вы и этот плагин."
+
+#: src/Admin/HeroQuips.php:67
+msgid "People with taste end up here. Welcome."
+msgstr "Люди со вкусом в итоге оказываются здесь. Добро пожаловать."
+
+#: src/Admin/HeroQuips.php:68
+msgid "Smart move installing this. We expected nothing less from you."
+msgstr "Установить его было умным ходом. Другого мы от вас и не ждали."
+
+#: src/Admin/HeroQuips.php:80
+msgid "Probably the finest media library you'll configure all day."
+msgstr "Пожалуй, лучшая библиотека файлов, которую вы настроите за сегодня."
+
+#: src/Admin/HeroQuips.php:81
+msgid "The plugin your media library brags about."
+msgstr "Плагин, которым хвастается ваша библиотека файлов."
+
+#: src/Admin/HeroQuips.php:82
+msgid "Your media library finally has a personality. It's smug."
+msgstr "У вашей библиотеки файлов наконец появился характер. Самодовольный."
+
+#: src/Admin/OverviewPage.php:68
+msgid "Double Youpï · Overview"
+msgstr "Double Youpï · Обзор"
+
+#: src/Admin/OverviewPage.php:69
+msgid "Overview"
+msgstr "Обзор"
+
+#: src/Admin/OverviewPage.php:154 src/Admin/OverviewPage.php:484
+msgid "Active"
+msgstr "Активен"
+
+#: src/Admin/OverviewPage.php:155 src/Admin/OverviewPage.php:157
+#: src/Admin/OverviewPage.php:485 src/Admin/OverviewPage.php:550
+msgid "Disabled"
+msgstr "Выключено"
+
+#: src/Admin/OverviewPage.php:156 src/Admin/OverviewPage.php:549
+msgid "Enabled"
+msgstr "Включено"
+
+#: src/Admin/OverviewPage.php:159
+msgid "Could not save. Please retry."
+msgstr "Не удалось сохранить. Попробуйте ещё раз."
+
+#: src/Admin/OverviewPage.php:165
+msgid "Install for free"
+msgstr "Установить бесплатно"
+
+#: src/Admin/OverviewPage.php:166
+msgid "Installing…"
+msgstr "Установка…"
+
+#: src/Admin/OverviewPage.php:167
+msgid "Installed ✓"
+msgstr "Установлено ✓"
+
+#: src/Admin/OverviewPage.php:168
+msgid "Install failed, open the installer"
+msgstr "Ошибка установки, откройте установщик"
+
+#: src/Admin/OverviewPage.php:169
+msgid "Soon on WordPress.org"
+msgstr "Скоро на WordPress.org"
+
+#: src/Admin/OverviewPage.php:170
+msgid "Discover on doubleyoupi.com"
+msgstr "Подробнее на doubleyoupi.com"
+
+#: src/Admin/OverviewPage.php:171 src/Admin/OverviewPage.php:627
+#: src/Admin/OverviewPage.php:657
+msgid "Free"
+msgstr "Бесплатно"
+
+#: src/Admin/OverviewPage.php:172 src/Admin/OverviewPage.php:627
+msgid "Suite"
+msgstr "Пакет"
+
+#: src/Admin/OverviewPage.php:184 src/Admin/OverviewPage.php:224
+#: src/Modules/MediaLibrary/FolderService.php:252
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
+msgid "Access denied."
+msgstr "Доступ запрещён."
+
+#: src/Admin/OverviewPage.php:206
+msgid "Modules updated. Reload the page to see the effects."
+msgstr "Модули обновлены. Перезагрузите страницу, чтобы увидеть изменения."
+
+#: src/Admin/OverviewPage.php:207
+msgid "No changes to save."
+msgstr "Нет изменений для сохранения."
+
+#: src/Admin/OverviewPage.php:233
+msgid "Unknown module."
+msgstr "Неизвестный модуль."
+
+#: src/Admin/OverviewPage.php:327
+msgid ""
+"Modular suite for pros who ship WordPress sites. Enable the modules you "
+"need, disable the rest."
+msgstr ""
+"Модульный пакет для профессионалов, которые создают сайты на WordPress. "
+"Включите нужные модули, отключите остальные."
+
+#: src/Admin/OverviewPage.php:350
+msgid ""
+"Your whole WordPress admin, redrawn. Each part can be turned on or off below."
+msgstr ""
+"Вся ваша админ-панель WordPress, перерисованная заново. Каждую часть можно "
+"включить или отключить ниже."
+
+#: src/Admin/OverviewPage.php:379
+msgid "Plugin information"
+msgstr "Информация о плагине"
+
+#: src/Admin/OverviewPage.php:386
+msgid "active modules"
+msgstr "активных модулей"
+
+#: src/Admin/OverviewPage.php:430
+msgid "Save modules"
+msgstr "Сохранить модули"
+
+#: src/Admin/OverviewPage.php:483
+msgid "Coming soon"
+msgstr "Скоро"
+
+#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:423
+#: src/Modules/MediaLibrary/Settings.php:450
+msgid "Saved"
+msgstr "Сохранено"
+
+#: src/Admin/OverviewPage.php:595
+msgid "Reload to apply"
+msgstr "Перезагрузите, чтобы применить"
+
+#: src/Admin/OverviewPage.php:600
+msgid "In preparation"
+msgstr "В разработке"
+
+#: src/Admin/OverviewPage.php:654
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:24
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:158
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:207
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: src/Admin/OverviewPage.php:659
+msgid "Soon on WP.org"
+msgstr "Скоро на WP.org"
+
+#: src/Admin/OverviewPage.php:661
+msgid "In the suite"
+msgstr "В пакете"
+
+#: src/Admin/OverviewPage.php:689
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:135
+msgid "Previous"
+msgstr "Назад"
+
+#: src/Admin/OverviewPage.php:691
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:136
+msgid "Next"
+msgstr "Далее"
+
+#: src/Admin/OverviewPage.php:735
+msgid "Support the project"
+msgstr "Поддержать проект"
+
+#: src/Admin/OverviewPage.php:749
+msgid "Free, and built to stay that way"
+msgstr "Бесплатно, и так будет всегда"
+
+#. translators: 1: author first name (bold), 2: freelance studio name (linked).
+#: src/Admin/OverviewPage.php:766
+#, php-format
+msgid ""
+"I'm <b>%1$s</b>, a freelance designer and dev, aka %2$s. I build Double "
+"Youpï to make WordPress nicer to use. This plugin will stay free for life, "
+"updates included. If something's off or missing, please let me know. And if "
+"the plugin's useful and you genuinely like it, a coffee's always "
+"appreciated ;) Otherwise, just using it (and dropping a kind review) already "
+"helps a lot. Thanks!"
+msgstr ""
+"Меня зовут <b>%1$s</b>, я независимый дизайнер и разработчик, также "
+"известный как %2$s. Я делаю Double Youpï, чтобы WordPress было приятнее "
+"пользоваться. Этот плагин останется бесплатным навсегда, включая обновления. "
+"Если что-то работает не так или чего-то не хватает, пожалуйста, сообщите "
+"мне. А если плагин полезен и действительно вам нравится, чашка кофе всегда в "
+"радость ;) Но даже просто пользоваться им (и оставить добрый отзыв) уже "
+"очень помогает. Спасибо!"
+
+#. translators: %s: author first name (bold).
+#: src/Admin/OverviewPage.php:776
+#, php-format
+msgid ""
+"I'm <b>%s</b>, a freelance designer and dev. I build Double Youpï to make "
+"WordPress nicer to use. This plugin will stay free for life, updates "
+"included. If something's off or missing, please let me know. And if the "
+"plugin's useful and you genuinely like it, a coffee's always appreciated ;) "
+"Otherwise, just using it (and dropping a kind review) already helps a lot. "
+"Thanks!"
+msgstr ""
+"Меня зовут <b>%s</b>, я независимый дизайнер и разработчик. Я делаю Double "
+"Youpï, чтобы WordPress было приятнее пользоваться. Этот плагин останется "
+"бесплатным навсегда, включая обновления. Если что-то работает не так или "
+"чего-то не хватает, пожалуйста, сообщите мне. А если плагин полезен и "
+"действительно вам нравится, чашка кофе всегда в радость ;) Но даже просто "
+"пользоваться им (и оставить добрый отзыв) уже очень помогает. Спасибо!"
+
+#. translators: %s: author first name.
+#: src/Admin/OverviewPage.php:788
+#, php-format
+msgid "%s · Double Youpï"
+msgstr "%s · Double Youpï"
+
+#: src/Admin/OverviewPage.php:801
+msgid "Buy me a coffee"
+msgstr "Угостить меня кофе"
+
+#: src/Admin/OverviewPage.php:824
+msgid "All Double Youpï plugins on WordPress.org"
+msgstr "Все плагины Double Youpï на WordPress.org"
+
+#: src/Admin/OverviewPage.php:840
+msgid "Report or suggest"
+msgstr "Сообщить или предложить"
+
+#: src/Admin/OverviewPage.php:875 src/Admin/OverviewPage.php:884
+msgid "Want to get involved?"
+msgstr "Хотите поучаствовать?"
+
+#: src/Admin/OverviewPage.php:886
+msgid "Found a bug or got an idea to make it better? Let me know."
+msgstr "Нашли ошибку или есть идея, как сделать лучше? Расскажите мне."
+
+#: src/Core/ModuleCatalog.php:37
+msgid "Refined Admin Dashboard"
+msgstr "Refined Admin Dashboard"
+
+#: src/Core/ModuleCatalog.php:38
+msgid ""
+"A full rethink of the WordPress admin: smart dashboard, reworked navigation, "
+"redesigned content tables, dark mode, and your branding."
+msgstr ""
+"Полное переосмысление админ-панели WordPress: умная консоль, переработанная "
+"навигация, обновлённые таблицы содержимого, тёмная тема и ваш фирменный "
+"стиль."
+
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:137
+#: src/Modules/MediaLibrary/MediaLibrary.php:218
+msgid "Refined Media Library"
+msgstr "Refined Media Library"
+
+#: src/Core/ModuleCatalog.php:50
+msgid ""
+"Folders and collections, drag & drop, quick preview, duplicate & orphan "
+"cleanup, plus WebP/AVIF conversion on upload."
+msgstr ""
+"Папки и коллекции, перетаскивание, быстрый просмотр, очистка дубликатов и "
+"неиспользуемых медиафайлов, а также конвертация в WebP/AVIF при загрузке."
+
+#: src/Modules/MediaLibrary/CollectionManager.php:169
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
+msgid "Could not delete collection."
+msgstr "Не удалось удалить коллекцию."
+
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:52
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
+#: src/Modules/MediaLibrary/Settings.php:274
+msgid "Collections"
+msgstr "Коллекции"
+
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:87
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:45
+msgid "Collection"
+msgstr "Коллекция"
+
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:88
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:53
+msgid "New collection"
+msgstr "Новая коллекция"
+
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:89
+msgid "Edit collection"
+msgstr "Изменить коллекцию"
+
+#: src/Modules/MediaLibrary/CollectionTaxonomy.php:90
+msgid "No collections found"
+msgstr "Коллекции не найдены"
+
+#: src/Modules/MediaLibrary/DuplicateDetector.php:80
+#: src/Modules/MediaLibrary/DuplicateDetector.php:150
+#: src/Modules/MediaLibrary/DuplicateDetector.php:164
+msgid "Duplicate"
+msgstr "Дубликат"
+
+#: src/Modules/MediaLibrary/DuplicateDetector.php:163
+msgid "View original"
+msgstr "Просмотр оригинала"
+
+#: src/Modules/MediaLibrary/FolderManager.php:118
+msgid "Move to folder…"
+msgstr "Переместить в папку…"
+
+#: src/Modules/MediaLibrary/FolderManager.php:121
+msgid "Add to collection…"
+msgstr "Добавить в коллекцию…"
+
+#: src/Modules/MediaLibrary/FolderManager.php:604
+#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderService.php:202
+msgid "A folder cannot be moved into itself or one of its subfolders."
+msgstr "Папку нельзя переместить в саму себя или в одну из её подпапок."
+
+#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderService.php:241
+msgid "Could not delete folder."
+msgstr "Не удалось удалить папку."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:35
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:61
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:63
+#: src/Modules/MediaLibrary/Settings.php:266
+msgid "Folders"
+msgstr "Папки"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:36
+msgid "New folder"
+msgstr "Новая папка"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:37
+msgid "New subfolder"
+msgstr "Новая подпапка"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:38
+msgid "Move to…"
+msgstr "Переместить в…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:39
+msgid "Top level"
+msgstr "Верхний уровень"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:40
+msgid "More actions"
+msgstr "Другие действия"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:41
+msgid "Rename"
+msgstr "Переименовать"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:42
+msgid "Delete folder"
+msgstr "Удалить папку"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:43
+msgid "Delete this folder? Media files will not be deleted."
+msgstr "Удалить эту папку? Медиафайлы не будут удалены."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:44
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:162
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:193
+msgid "No folder"
+msgstr "Без папки"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:45
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:192
+msgid "All folders"
+msgstr "Все папки"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:46
+msgid "No folders yet."
+msgstr "Папок пока нет."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:47
+msgid "Could not load folders."
+msgstr "Не удалось загрузить папки."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:48
+msgid "Show all media"
+msgstr "Все медиафайлы"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:49
+msgid "Media without folder"
+msgstr "Без папки"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:54
+msgid "Rename collection"
+msgstr "Переименовать коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:55
+msgid "Delete collection"
+msgstr "Удалить коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:56
+msgid "Delete this collection? Media files will not be deleted."
+msgstr "Удалить эту коллекцию? Медиафайлы не будут удалены."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:57
+msgid "No collections yet."
+msgstr "Коллекций пока нет."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:58
+msgid "Could not load collections."
+msgstr "Не удалось загрузить коллекции."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:61
+msgid "Folders are disabled."
+msgstr "Папки отключены."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:62
+msgid "Collections are disabled."
+msgstr "Коллекции отключены."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:63
+msgid "Enable"
+msgstr "Включить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:67
+msgid "Where used"
+msgstr "Где используется"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:68
+msgid "Not used anywhere"
+msgstr "Нигде не используется"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:71
+msgid "Destination folder"
+msgstr "Папка назначения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:72
+msgid "Root (no folder)"
+msgstr "Корень (без папки)"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:73
+msgid "Choose a collection"
+msgstr "Выберите коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:75
+msgid "Move"
+msgstr "Переместить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:76
+msgid "Add"
+msgstr "Добавить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:77
+msgid "Create"
+msgstr "Создать"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:78
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:169
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:79
+msgid "Discard"
+msgstr "Отменить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:80
+msgid "Folder name"
+msgstr "Название папки"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:81
+msgid "Collection name"
+msgstr "Название коллекции"
+
+#. translators: %d: number of selected media files.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:83
+#, php-format
+msgid "Move %d files to a folder"
+msgstr "Переместить файлы (%d) в папку"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:84
+msgid "Move 1 file to a folder"
+msgstr "Переместить 1 файл в папку"
+
+#. translators: %d: number of selected media files.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:86
+#, php-format
+msgid "Add %d files to a collection"
+msgstr "Добавить файлы (%d) в коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:87
+msgid "Add 1 file to a collection"
+msgstr "Добавить 1 файл в коллекцию"
+
+#. translators: %s: folder name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:91
+#, php-format
+msgid ""
+"Delete folder « %s »?\n"
+"\n"
+"Media inside won’t be deleted, they will be moved to « Media without "
+"folder »."
+msgstr ""
+"Удалить папку «%s»?\n"
+"\n"
+"Медиафайлы в ней не будут удалены, они переместятся в «Медиафайлы без папки»."
+
+#. translators: %s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:95
+#, php-format
+msgid ""
+"Delete collection « %s »?\n"
+"\n"
+"Media files won’t be deleted, they will simply be removed from this "
+"collection."
+msgstr ""
+"Удалить коллекцию «%s»?\n"
+"\n"
+"Медиафайлы не будут удалены, они просто будут убраны из этой коллекции."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:98
+msgid "this folder"
+msgstr "эта папка"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:99
+msgid "this collection"
+msgstr "эта коллекция"
+
+#. translators: %s: folder name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:103
+#, php-format
+msgid "Folder « %s » deleted"
+msgstr "Папка «%s» удалена"
+
+#. translators: %s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:105
+#, php-format
+msgid "Collection « %s » deleted"
+msgstr "Коллекция «%s» удалена"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:106
+msgid "Could not delete folder"
+msgstr "Не удалось удалить папку"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:107
+msgid "Could not delete collection"
+msgstr "Не удалось удалить коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:108
+msgid "Move failed"
+msgstr "Ошибка перемещения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:109
+msgid "Add failed"
+msgstr "Ошибка добавления"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:110
+msgid "folder"
+msgstr "папка"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:111
+msgid "collection"
+msgstr "коллекция"
+
+#. translators: %s: folder name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:114
+#, php-format
+msgid "1 file moved to « %s »"
+msgstr "1 файл перемещён в «%s»"
+
+#. translators: %1$d: number of files; %2$s: folder name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:116
+#, php-format
+msgid "%1$d files moved to « %2$s »"
+msgstr "Файлов перемещено в «%2$s»: %1$d"
+
+#. translators: %s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:118
+#, php-format
+msgid "1 file added to « %s »"
+msgstr "1 файл добавлен в «%s»"
+
+#. translators: %1$d: number of files; %2$s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:120
+#, php-format
+msgid "%1$d files added to « %2$s »"
+msgstr "Файлов добавлено в «%2$s»: %1$d"
+
+#. translators: %s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:122
+#, php-format
+msgid "Already in « %s »"
+msgstr "Уже в «%s»"
+
+#. translators: %s: collection name.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:124
+#, php-format
+msgid "All already in « %s »"
+msgstr "Все уже в «%s»"
+
+#. translators: %1$d: number of files moved; %2$d: number already present.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:126
+#, php-format
+msgid "%1$d moved, %2$d already present"
+msgstr "Перемещено: %1$d, уже были: %2$d"
+
+#. translators: %1$d: number of files added; %2$d: number already present.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:128
+#, php-format
+msgid "%1$d added, %2$d already present"
+msgstr "Добавлено: %1$d, уже были: %2$d"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:131
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:133
+msgid "Loading…"
+msgstr "Загрузка…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:132
+msgid "Loading details…"
+msgstr "Загрузка сведений…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:134
+msgid "Loading error."
+msgstr "Ошибка загрузки."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:138
+msgid "Drag to resize"
+msgstr "Перетащите для изменения размера"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:139
+msgid "View full size"
+msgstr "Открыть в полном размере"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:141
+msgid "Information"
+msgstr "Сведения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:142
+msgid "Date"
+msgstr "Дата"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:143
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:160
+msgid "Type"
+msgstr "Тип"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:144
+msgid "Dimensions"
+msgstr "Размеры"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:145
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:161
+msgid "Size"
+msgstr "Размер"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:146
+msgid "Alternative text"
+msgstr "Альтернативный текст"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:147
+msgid "Describe the image for accessibility…"
+msgstr "Опишите изображение для специальных возможностей…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:148
+msgid "Title"
+msgstr "Заголовок"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:152
+msgid "Caption"
+msgstr "Подпись"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:153
+msgid "Description"
+msgstr "Описание"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:156
+msgid "You can view this file but not edit it."
+msgstr "Вы можете просматривать этот файл, но не изменять его."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:157
+msgid "File URL"
+msgstr "Ссылка на файл"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:158
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:159
+msgid "Copied!"
+msgstr "Скопировано!"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:161
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:64
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:44
+msgid "Folder"
+msgstr "Папка"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:163
+msgid "+ Add to a collection"
+msgstr "+ Добавить в коллекцию"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:164
+msgid "No collection"
+msgstr "Нет коллекции"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:167
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:168
+msgid "Edit"
+msgstr "Изменить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:170
+msgid "Saving…"
+msgstr "Сохранение…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:171
+msgid "Saved ✓"
+msgstr "Сохранено ✓"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:172
+msgid "Error, try again"
+msgstr "Ошибка, попробуйте ещё раз"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:174
+msgid "Not used in content."
+msgstr "Не используется в содержимом."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:175
+msgid "(untitled)"
+msgstr "(без названия)"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:177
+msgid "Permanently delete this file? This action cannot be undone."
+msgstr "Удалить этот файл навсегда? Это действие нельзя отменить."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:178
+msgid "Could not delete this file."
+msgstr "Не удалось удалить этот файл."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:179
+msgid "Unsaved changes will be lost. Continue?"
+msgstr "Несохранённые изменения будут потеряны. Продолжить?"
+
+#. translators: shown after the panel saved pending edits on its own when the user moved to another media file.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:182
+msgid "Changes saved"
+msgstr "Изменения сохранены"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:183
+msgid "Could not save your changes"
+msgstr "Не удалось сохранить изменения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:184
+msgid "You have unsaved changes"
+msgstr "У вас есть несохранённые изменения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:190
+msgid "B"
+msgstr "Б"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:191
+msgid "KB"
+msgstr "КБ"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:192
+msgid "MB"
+msgstr "МБ"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:195
+msgid "All types"
+msgstr "Все типы"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:196
+msgid "Images"
+msgstr "Изображения"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:197
+msgid "Videos"
+msgstr "Видео"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:198
+msgid "Audio"
+msgstr "Аудио"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:199
+msgid "Documents"
+msgstr "Документы"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:200
+msgid "SVG"
+msgstr "SVG"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:201
+msgid "Mine"
+msgstr "Мои"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:204
+msgid "Search"
+msgstr "Поиск"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:207
+msgid "No media selected."
+msgstr "Медиафайлы не выбраны."
+
+#. translators: %d: number of selected media files.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:211
+#, php-format
+msgid "Edit metadata (%d)"
+msgstr "Изменить метаданные (%d)"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:212
+msgid "Bulk edit"
+msgstr "Массовое изменение"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:213
+msgid "1 file selected"
+msgstr "Выбран 1 файл"
+
+#. translators: %d: number of selected media files.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:215
+#, php-format
+msgid "%d files selected"
+msgstr "Выбрано файлов: %d"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:216
+msgid "Leave a field empty to keep each file’s existing value unchanged."
+msgstr "Оставьте поле пустым, чтобы сохранить текущее значение каждого файла."
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:217
+msgid "Alt text"
+msgstr "Атрибут alt"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:218
+msgid "Describe the image…"
+msgstr "Опишите изображение…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:219
+msgid "File title…"
+msgstr "Название файла…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:220
+msgid "Apply to 1 file"
+msgstr "Применить к 1 файлу"
+
+#. translators: %d: number of selected media files.
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:222
+#, php-format
+msgid "Apply to %d files"
+msgstr "Применить к файлам (%d)"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:223
+msgid "Applying…"
+msgstr "Применение…"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:224
+msgid "Retry"
+msgstr "Повторить"
+
+#: src/Modules/MediaLibrary/FolderManagerI18n.php:227
+msgid "More fields"
+msgstr "Другие поля"
+
+#: src/Modules/MediaLibrary/FolderService.php:151
+#: src/Modules/MediaLibrary/FolderService.php:154
+#: src/Modules/MediaLibrary/FolderService.php:180
+#: src/Modules/MediaLibrary/FolderService.php:199
+#: src/Modules/MediaLibrary/FolderService.php:235
+#: src/Modules/MediaLibrary/FolderService.php:255
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
+msgid "Something went wrong. Please try again."
+msgstr "Что-то пошло не так. Попробуйте ещё раз."
+
+#: src/Modules/MediaLibrary/FolderService.php:278
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+msgid "A folder or collection with this name already exists here."
+msgstr "Папка или коллекция с таким названием здесь уже есть."
+
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:65
+msgid "Add folder"
+msgstr "Добавить папку"
+
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:66
+msgid "Edit folder"
+msgstr "Изменить папку"
+
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:67
+msgid "Update folder"
+msgstr "Обновить папку"
+
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:68
+msgid "No folders found"
+msgstr "Папки не найдены"
+
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+msgid ""
+"Collections are kept apart from folders: this change is not possible here."
+msgstr "Коллекции хранятся отдельно от папок: здесь это изменение невозможно."
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:75
+msgid ""
+"Turning the media library off hands the Media screen back to WordPress. Your "
+"folders and your collections are kept, and come back if you turn it on again."
+msgstr ""
+"Если отключить библиотеку файлов, экран «Медиафайлы» вернётся к стандартному "
+"виду WordPress. Ваши папки и коллекции сохранятся и вернутся, если вы снова "
+"её включите."
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:78
+msgid ""
+"Double Youpï Refined Media Library is installed and standing aside: "
+"reactivate it if you want the media library without the rest."
+msgstr ""
+"Double Youpï Refined Media Library установлен и уступил место: активируйте "
+"его снова, если вам нужна только библиотека файлов без остального."
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:138
+msgid "Media Library"
+msgstr "Библиотека файлов"
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:209
+msgid "Unused media"
+msgstr "Неиспользуемые медиафайлы"
+
+#: src/Modules/MediaLibrary/MediaLibrary.php:214
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
+msgid "Import"
+msgstr "Импорт"
+
+#. translators: %s: name of the competing media-library plugin (e.g. FileBird).
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:258
+#, php-format
+msgid "Refined Media Library is managing the media library. %s is also active."
+msgstr "Библиотекой файлов управляет Refined Media Library. %s тоже активен."
+
+#. translators: %s: name of the competing media-library plugin.
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
+#, php-format
+msgid "Let %s manage it"
+msgstr "Передать управление %s"
+
+#. translators: %s: name of the competing media-library plugin currently managing the page.
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
+#, php-format
+msgid ""
+"%s is managing the media library. Refined Media Library has stepped aside."
+msgstr ""
+"Библиотекой файлов управляет %s. Refined Media Library уступил ему место."
+
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+msgid "Use Refined Media Library"
+msgstr "Использовать Refined Media Library"
+
+#. translators: %s: name of the competing media-library plugin (e.g. FileBird).
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:287
+#, php-format
+msgid "Import folders from %s"
+msgstr "Импортировать папки из %s"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:19
+msgid "No other folder plugin detected. Nothing to import."
+msgstr "Других плагинов папок не обнаружено. Импортировать нечего."
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:20
+msgid "Detected plugins"
+msgstr "Обнаруженные плагины"
+
+#. translators: %1$d: folder count, %2$d: media count
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:22
+#, php-format
+msgid "%1$d folders · %2$d media"
+msgstr "Папок: %1$d · медиафайлов: %2$d"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:23
+msgid "Already imported"
+msgstr "Уже импортировано"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:26
+msgid "Undo this import"
+msgstr "Отменить этот импорт"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:27
+msgid "Reading source…"
+msgstr "Чтение источника…"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:28
+msgid "Import preview"
+msgstr "Предпросмотр импорта"
+
+#. translators: %1$d: folders, %2$d: collections, %3$d: media
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:30
+#, php-format
+msgid "%1$d folders, %2$d collections and %3$d media will be imported."
+msgstr "Будет импортировано папок: %1$d, коллекций: %2$d, медиафайлов: %3$d."
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:31
+msgid "Start import"
+msgstr "Начать импорт"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:33
+msgid "Importing…"
+msgstr "Импорт…"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:34
+msgid "Creating folders…"
+msgstr "Создание папок…"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:35
+msgid "Assigning media…"
+msgstr "Распределение медиафайлов…"
+
+#. translators: %1$d: folders+collections, %2$d: media
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:37
+#, php-format
+msgid "Done. %1$d folders and %2$d media imported."
+msgstr "Готово. Импортировано папок: %1$d, медиафайлов: %2$d."
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:38
+msgid "Open the media library"
+msgstr "Открыть библиотеку файлов"
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:39
+msgid ""
+"Remove all folders created by this import? Your media and the source plugin "
+"are left untouched."
+msgstr ""
+"Удалить все папки, созданные этим импортом? Ваши медиафайлы и исходный "
+"плагин останутся нетронутыми."
+
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:40
+msgid "Undoing…"
+msgstr "Отмена…"
+
+#. translators: %d: number of folders removed
+#: src/Modules/MediaLibrary/Migration/MigrationI18n.php:42
+#, php-format
+msgid "%d imported folders removed."
+msgstr "Удалено импортированных папок: %d."
+
+#: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
+msgid ""
+"Import folders and collections from another media library plugin. Your media "
+"stay in place. This only re-creates the folder structure inside Refined "
+"Media Library, and the source plugin is never modified, so you can verify "
+"the result before removing it."
+msgstr ""
+"Импортируйте папки и коллекции из другого плагина библиотеки файлов. Ваши "
+"медиафайлы остаются на месте: воссоздаётся только структура папок внутри "
+"Refined Media Library, а исходный плагин никогда не изменяется, поэтому вы "
+"можете проверить результат, прежде чем удалить его."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:78
+msgid "Scanning…"
+msgstr "Сканирование…"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:79
+msgid "No unused media found. Your library is clean!"
+msgstr "Неиспользуемых медиафайлов не найдено. Ваша библиотека в порядке!"
+
+#. translators: %d: number of unused media files found.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:81
+#, php-format
+msgid "%d unused media file found."
+msgstr "Найдено неиспользуемых медиафайлов: %d."
+
+#. translators: %d: number of unused media files found.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:83
+#, php-format
+msgid "%d unused media files found."
+msgstr "Найдено неиспользуемых медиафайлов: %d."
+
+#. translators: %d: number of unused media files remaining.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:85
+#, php-format
+msgid "%d unused media file remaining."
+msgstr "Осталось неиспользуемых медиафайлов: %d."
+
+#. translators: %d: number of unused media files remaining.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:87
+#, php-format
+msgid "%d unused media files remaining."
+msgstr "Осталось неиспользуемых медиафайлов: %d."
+
+#. translators: %d: number of media files to be moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:95
+#, php-format
+msgid "I confirm moving %d media file to the trash."
+msgstr "Подтверждаю перемещение медиафайлов в корзину: %d."
+
+#. translators: %d: number of media files to be moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:97
+#, php-format
+msgid "I confirm moving %d media files to the trash."
+msgstr "Подтверждаю перемещение медиафайлов в корзину: %d."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:98
+msgid "Move selected media to the trash"
+msgstr "Переместить выбранные медиафайлы в корзину"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:99
+msgid "Moving to the trash…"
+msgstr "Перемещение в корзину…"
+
+#. translators: %d: number of media files moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:101
+#, php-format
+msgid "%d file moved to the trash."
+msgstr "Перемещено в корзину файлов: %d."
+
+#. translators: %d: number of media files moved to the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:103
+#, php-format
+msgid "%d files moved to the trash."
+msgstr "Перемещено в корзину файлов: %d."
+
+#. translators: %d: number of errors encountered.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:105
+#, php-format
+msgid "%d error."
+msgstr "Ошибок: %d."
+
+#. translators: %d: number of errors encountered.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:107
+#, php-format
+msgid "%d errors."
+msgstr "Ошибок: %d."
+
+#. translators: %d: number of media files left alone because they are in use.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:109
+#, php-format
+msgid "%d file kept: it is in use."
+msgstr "Файлов сохранено, так как они используются: %d."
+
+#. translators: %d: number of media files left alone because they are in use.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:111
+#, php-format
+msgid "%d files kept: they are in use."
+msgstr "Файлов сохранено, так как они используются: %d."
+
+#. translators: %d: number of restored media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:113
+#, php-format
+msgid "%d file restored."
+msgstr "Восстановлено файлов: %d."
+
+#. translators: %d: number of restored media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:115
+#, php-format
+msgid "%d files restored."
+msgstr "Восстановлено файлов: %d."
+
+#. translators: %d: number of permanently deleted media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:117
+#, php-format
+msgid "%d file permanently deleted."
+msgstr "Удалено навсегда файлов: %d."
+
+#. translators: %d: number of permanently deleted media files.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:119
+#, php-format
+msgid "%d files permanently deleted."
+msgstr "Удалено навсегда файлов: %d."
+
+#. translators: %d: number of media files about to be erased.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:121
+#, php-format
+msgid ""
+"Permanently delete %d file? It is erased from the server, and this cannot be "
+"undone."
+msgstr ""
+"Удалить навсегда файлы (%d)? Они будут стёрты с сервера, и это нельзя "
+"отменить."
+
+#. translators: %d: number of media files about to be erased.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:123
+#, php-format
+msgid ""
+"Permanently delete %d files? They are erased from the server, and this "
+"cannot be undone."
+msgstr ""
+"Удалить навсегда файлы (%d)? Они будут стёрты с сервера, и это нельзя "
+"отменить."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:124
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:201
+msgid "Nothing has been moved to the trash from this screen."
+msgstr "С этого экрана ничего не перемещалось в корзину."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:136
+msgid ""
+"Media files not referenced in any post, page, featured image, or custom "
+"field."
+msgstr ""
+"Медиафайлы, на которые нет ссылок ни в записях, ни на страницах, ни в "
+"изображениях записей, ни в произвольных полях."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:141
+msgid "Scan for unused media"
+msgstr "Найти неиспользуемые медиафайлы"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:159
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:208
+msgid "File"
+msgstr "Файл"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:162
+msgid "Uploaded"
+msgstr "Загружено"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:189
+msgid "Recently removed"
+msgstr "Недавно убранные"
+
+#. translators: %d: number of days WordPress keeps files in the trash.
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:194
+#, php-format
+msgid ""
+"Nothing here has been erased: each file is still on the server, so a page "
+"that displays it keeps working. Put a file back and it returns to the media "
+"library with its folders. WordPress empties its trash after %d days."
+msgstr ""
+"Здесь ничего не стёрто: каждый файл по-прежнему лежит на сервере, поэтому "
+"страница, которая его показывает, продолжает работать. Верните файл, и он "
+"снова появится в библиотеке файлов вместе со своими папками. WordPress "
+"очищает корзину через %d дн."
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:209
+msgid "Removed"
+msgstr "Удалено"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:210
+msgid "Actions"
+msgstr "Действия"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:224
+msgid "Empty the trash"
+msgstr "Очистить корзину"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:260
+msgid "Restore"
+msgstr "Восстановить"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:261
+msgid "Delete permanently"
+msgstr "Удалить навсегда"
+
+#: src/Modules/MediaLibrary/OrphanAdminPage.php:287
+msgid "Delete selected media"
+msgstr "Удалить выбранные медиафайлы"
+
+#: src/Modules/MediaLibrary/Settings.php:242
+msgid "Optimization"
+msgstr "Оптимизация"
+
+#. translators: %s: name of the module piloting image conversion
+#: src/Modules/MediaLibrary/Settings.php:249
+#, php-format
+msgid "Piloted by %s. Settings managed there."
+msgstr "Управляется модулем %s. Настройки находятся там."
+
+#: src/Modules/MediaLibrary/Settings.php:251
+msgid "This server cannot generate WebP images."
+msgstr "Этот сервер не может создавать изображения WebP."
+
+#: src/Modules/MediaLibrary/Settings.php:252
+msgid "This server cannot generate AVIF images."
+msgstr "Этот сервер не может создавать изображения AVIF."
+
+#: src/Modules/MediaLibrary/Settings.php:259
+msgid "Organisation"
+msgstr "Организация"
+
+#: src/Modules/MediaLibrary/Settings.php:267
+msgid "Organise the media library into folders"
+msgstr "Распределять библиотеку файлов по папкам"
+
+#: src/Modules/MediaLibrary/Settings.php:275
+msgid "Group media into cross-folder collections"
+msgstr "Объединять медиафайлы в коллекции поверх папок"
+
+#: src/Modules/MediaLibrary/Settings.php:282
+msgid "Auto alt & title"
+msgstr "Авто alt и заголовок"
+
+#: src/Modules/MediaLibrary/Settings.php:283
+msgid "Fill alt text and title from filename on upload (if empty)"
+msgstr ""
+"Заполнять атрибут alt и заголовок по имени файла при загрузке (если они "
+"пусты)"
+
+#: src/Modules/MediaLibrary/Settings.php:292
+msgid "Duplicate badge"
+msgstr "Значок дубликата"
+
+#: src/Modules/MediaLibrary/Settings.php:293
+msgid "Mark files already in the library, by content"
+msgstr "Отмечать файлы, которые уже есть в библиотеке, по их содержимому"
+
+#: src/Modules/MediaLibrary/Settings.php:301
+msgid "Conversion"
+msgstr "Конвертация"
+
+#: src/Modules/MediaLibrary/Settings.php:308
+msgid "WebP on upload"
+msgstr "WebP при загрузке"
+
+#: src/Modules/MediaLibrary/Settings.php:309
+msgid "Generate a WebP version of each image on upload"
+msgstr "Создавать версию WebP для каждого изображения при загрузке"
+
+#: src/Modules/MediaLibrary/Settings.php:318
+msgid "AVIF on upload"
+msgstr "AVIF при загрузке"
+
+#: src/Modules/MediaLibrary/Settings.php:319
+msgid "Generate an AVIF version too (requires Imagick)"
+msgstr "Создавать также версию AVIF (требуется Imagick)"
+
+#: src/Modules/MediaLibrary/Settings.php:331
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: src/Modules/MediaLibrary/Settings.php:338
+msgid "Light theme"
+msgstr "Светлая тема"
+
+#: src/Modules/MediaLibrary/Settings.php:339
+msgid "Show the media library on a light background"
+msgstr "Показывать библиотеку файлов на светлом фоне"
+
+#: src/Modules/MediaLibrary/Settings.php:349
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: src/Modules/MediaLibrary/Settings.php:385
+msgid ""
+"Double Youpï Refined Admin Dashboard includes this media library, and "
+"redraws the rest of the admin the same way. It is free too."
+msgstr ""
+"Double Youpï Refined Admin Dashboard включает эту библиотеку файлов и так же "
+"перерисовывает остальную часть админки. Он тоже бесплатный."
+
+#: src/Modules/MediaLibrary/Settings.php:386
+msgid "Read about it"
+msgstr "Подробнее"
+
+#: src/Modules/MediaLibrary/Settings.php:436
+msgid "Conversion quality"
+msgstr "Качество конвертации"
+
+#: src/Modules/MediaLibrary/Settings.php:437
+msgid "Higher means better quality and larger files. Default 82."
+msgstr ""
+"Чем выше значение, тем лучше качество и тяжелее файлы. По умолчанию: 82."
