@@ -60,7 +60,7 @@
 		border-radius: var(--dya-r-md);
 		background: var(--dya-accent-soft);
 		border: 1px solid rgba(var(--dya-accent-rgb), .28);
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		transition: color var(--dya-t-fast) var(--dya-ease), background var(--dya-t-fast) var(--dya-ease), border-color var(--dya-t-fast) var(--dya-ease);
 
 		svg { width: 20px; height: 20px; display: block; }
@@ -178,7 +178,7 @@
 		font-family: var(--dya-font-body);
 		font-size: 11px;
 		font-weight: 600;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity var(--dya-t-med) var(--dya-ease-out), transform var(--dya-t-med) var(--dya-ease-out);
@@ -248,7 +248,7 @@
 		font-family: var(--dya-font-mono);
 		font-size: 13.5px;
 		font-weight: 600;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		min-width: 2.5ch;
 		text-align: right;
 	}
@@ -282,7 +282,9 @@
 	border-top: 1px solid var(--dy-line, #1e2235);
 	font-size: 12px;
 	line-height: 1.55;
-	color: var(--dy-ink-mute, #5a6070);
+	// The media library's own token is not defined on this page: the old
+	// fallback #5a6070 read 3.07:1 (audit of 21/10/2026). The page's ink.
+	color: var(--dya-ink-mute, #9a9ba2);
 
 	a {
 		color: var(--dy-ink-soft, #9ba3b5);

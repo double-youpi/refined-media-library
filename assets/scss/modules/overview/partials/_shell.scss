@@ -76,7 +76,7 @@
 		// feel, with the distinction carried only by italic + accent color.
 		font-style: italic;
 		font-weight: 500;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		margin-inline-start: 0.08em;
 	}
 
@@ -92,7 +92,7 @@
 		font-size: clamp(20px, 1.6vw, 26px);
 		letter-spacing: var(--dya-tracking-tight);
 		line-height: 1;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		margin-bottom: 2px;
 		opacity: 0;
 		animation: dy-overview-fade-up 480ms var(--dya-ease-out) 40ms forwards;

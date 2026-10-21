@@ -103,7 +103,7 @@ body[class*="page_doubleyoupi"] .wrap {
 
 	// ── Button-link (text link styled as button) ───────────────
 	.button-link {
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		font-family: var(--dya-font-body);
 		font-weight: 500;
 		text-decoration: none;

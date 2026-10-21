@@ -54,6 +54,10 @@
 		} ).join( '' );
 
 		var $select = $( '<select id="dy-type-filter" class="attachment-filters">' + options + '</select>' );
+		// Accessible name (audit of 21/10/2026): WordPress's own, already
+		// translated, "Filter by type"; else the first option.
+		var l10n = window.wp && wp.media && wp.media.view && wp.media.view.l10n;
+		$select.attr( 'aria-label', ( l10n && l10n.filterByType ) || ( types[0] && types[0].label ) || '' );
 
 		$select.on( 'change', function () {
 			var val = $( this ).val();

@@ -45,7 +45,7 @@ body[class*="page_doubleyoupi"] .wrap .notice {
 
 	strong { color: var(--dya-ink); font-weight: 600; }
 	em     { font-style: italic; color: var(--dya-ink-soft); }
-	a      { color: var(--dya-accent); }
+	a      { color: var(--dya-accent-text, var(--dya-accent)); }
 
 	// Buttons inside (action notice): compact + outline
 	.button {

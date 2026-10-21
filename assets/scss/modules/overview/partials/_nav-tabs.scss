@@ -111,7 +111,7 @@ body[class*="page_doubleyoupi"] .wrap .nav-tab-wrapper {
 
 		&.nav-tab-active .count {
 			background: var(--dya-accent-soft, rgba(var(--dya-accent-rgb), .12));
-			color: var(--dya-accent);
+			color: var(--dya-accent-text, var(--dya-accent));
 		}
 	}
 }

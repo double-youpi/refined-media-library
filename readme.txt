@@ -4,7 +4,7 @@ Tags: media library, folders, collections, media organizer, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.14
+Stable tag: 0.3.15
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,12 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.15 =
+* Fixed: secondary text in the media library (empty folder and collection messages, detail panel labels, counts) now meets WCAG AA contrast, in the dark and light themes.
+* Fixed: text in the accent colour (sorted column, collection tags) stays readable whatever the accent.
+* Fixed: on the Settings and Unused media pages, tabs, descriptions and the note about Refined Admin Dashboard are readable in the dark theme, and the accent stays readable in the light theme.
+* Fixed: the quality slider in Settings and the type filter of the media screen are now named for screen readers.
 
 = 0.3.14 =
 * New: a "Leave a review" link beside the Feedback button.
@@ -245,6 +251,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.15 =
+Readable text throughout: the media library and its pages meet WCAG AA contrast in the dark and light themes, and two controls are named for screen readers.
 
 = 0.3.14 =
 A "Leave a review" link beside the Feedback button.

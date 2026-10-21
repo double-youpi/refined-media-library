@@ -29,7 +29,7 @@
 
 		&--paid {
 			background: var(--dya-accent-soft);
-			color: var(--dya-accent);
+			color: var(--dya-accent-text, var(--dya-accent));
 			box-shadow: inset 0 0 0 1px rgba(var(--dya-accent-rgb), .25);
 		}
 	}
@@ -75,7 +75,7 @@
 
 		&:hover {
 			border-color: rgba(var(--dya-accent-rgb), .5);
-			color: var(--dya-accent);
+			color: var(--dya-accent-text, var(--dya-accent));
 			background: var(--dya-accent-soft);
 			transform: translateY(-1px);
 		}
@@ -93,7 +93,7 @@
 		color: var(--dya-ink-mute);
 
 		&.is-free { color: var(--dya-success); }
-		&.is-paid { color: var(--dya-accent); }
+		&.is-paid { color: var(--dya-accent-text, var(--dya-accent)); }
 	}
 
 	// ── Modal ────────────────────────────────────────────────
@@ -299,7 +299,7 @@
 			background: transparent;
 			border-color: var(--dya-edge-strong);
 			color: var(--dya-ink);
-			&:hover { border-color: rgba(var(--dya-accent-rgb), .5); color: var(--dya-accent); }
+			&:hover { border-color: rgba(var(--dya-accent-rgb), .5); color: var(--dya-accent-text, var(--dya-accent)); }
 		}
 
 		&.is-disabled {

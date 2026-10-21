@@ -433,10 +433,10 @@ class Settings extends AbstractModule {
 		<div class="dy-mlset__card dy-mlset__card--range" data-state="active">
 			<span class="dy-mlset__icon" aria-hidden="true"><?php self::icon( 'quality' ); ?></span>
 			<span class="dy-mlset__body">
-				<span class="dy-mlset__name"><?php esc_html_e( 'Conversion quality', 'doubleyoupi-refined-media-library' ); ?></span>
+				<span class="dy-mlset__name" id="dy-mlset-quality-name"><?php esc_html_e( 'Conversion quality', 'doubleyoupi-refined-media-library' ); ?></span>
 				<span class="dy-mlset__desc"><?php esc_html_e( 'Higher means better quality and larger files. Default 82.', 'doubleyoupi-refined-media-library' ); ?></span>
 				<span class="dy-mlset__range-row">
-					<input type="range" class="dy-mlset__range" id="dy_ml_quality"
+					<input type="range" class="dy-mlset__range" id="dy_ml_quality" aria-labelledby="dy-mlset-quality-name"
 						data-key="image_quality"
 						name="<?php echo esc_attr( self::OPTION_IMAGE_QUALITY ); ?>"
 						min="<?php echo esc_attr( (string) self::QUALITY_MIN ); ?>"

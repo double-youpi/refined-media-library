@@ -26,8 +26,11 @@ body.dy-shell.dy-ml-light {
   --dya-paper-3: color-mix(in srgb, var(--dya-accent) 12%, white);
   --dya-ink: #18181a;
   --dya-ink-soft: #44444a;
-  --dya-ink-mute: #707177;
-  --dya-ink-fade: #727378;
+  --dya-ink-mute: #636469;
+  --dya-ink-fade: #66676d;
+  --dya-success: #147245;
+  --dya-warn: #995900;
+  --dya-danger: #c22f20;
   --dya-line: rgba(0, 0, 0, 0.07);
   --dya-line-strong: rgba(0, 0, 0, 0.12);
   --dya-line-soft: rgba(0, 0, 0, 0.04);
@@ -42,8 +45,12 @@ body.dy-theme-light,
 body.dy-ml-light {
   --dy-ink: #18181a;
   --dy-ink-soft: #44444a;
-  --dy-ink-mute: #707177;
-  --dy-ink-faint: #727378;
+  --dy-ink-mute: #636469;
+  --dy-ink-faint: #66676d;
+  --dy-success: #147245;
+  --dy-warning: #995900;
+  --dy-danger: #c22f20;
+  --dy-danger-hover: #a8281c;
   --dy-bg: #fff;
   --dy-bg-soft: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
   --dy-bg-card: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);

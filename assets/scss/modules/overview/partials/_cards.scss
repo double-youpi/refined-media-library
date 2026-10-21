@@ -113,7 +113,7 @@
 			.dy-overview__icon-tile {
 				border-color: rgba(var(--dya-accent-rgb), .35);
 				background: var(--dya-accent-soft);
-				color: var(--dya-accent);
+				color: var(--dya-accent-text, var(--dya-accent));
 			}
 
 			.dy-icon .dy-draw {
@@ -157,7 +157,7 @@
 			}
 
 			.dy-overview__icon-tile {
-				color: var(--dya-accent);
+				color: var(--dya-accent-text, var(--dya-accent));
 				background: var(--dya-accent-soft);
 				border-color: rgba(var(--dya-accent-rgb), .25);
 			}
@@ -311,7 +311,7 @@
 		font-family: var(--dya-font-body);
 		font-size: 12.5px;
 		font-weight: 500;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		text-decoration: none;
 		display: inline-flex;
 		align-items: center;
@@ -329,7 +329,7 @@
 		}
 
 		&:hover {
-			color: var(--dya-accent);
+			color: var(--dya-accent-text, var(--dya-accent));
 			text-decoration: underline;
 			text-underline-offset: 3px;
 			text-decoration-thickness: 1px;

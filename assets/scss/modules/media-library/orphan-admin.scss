@@ -171,7 +171,7 @@
 	&:disabled {
 		background: var(--dy-bg-elev, #1d2030);
 		border-color: var(--dy-line-hi, #2a3049);
-		color: var(--dy-ink-mute, #5a6070);
+		color: var(--dy-ink-mute, #8a8b92);
 		opacity: 1;
 		cursor: not-allowed;
 		box-shadow: none;
@@ -215,7 +215,7 @@
   height: 34px;
   font-size: 34px;
   line-height: 1;
-  color: var(--dy-ink-mute, #5a6070);
+  color: var(--dy-ink-mute, #8a8b92);
 }
 
 // L'aperçu est dimensionné ici, pas par les attributs de l'image. Quand un

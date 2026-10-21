@@ -65,7 +65,7 @@
 		font-size: 13.5px;
 		letter-spacing: var(--dya-tracking-body);
 		text-transform: none;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		text-align: right;
 		line-height: 1.45;
 		// Balances lines when the punchline wraps to two lines

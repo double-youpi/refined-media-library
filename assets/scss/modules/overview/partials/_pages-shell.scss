@@ -60,7 +60,7 @@ body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:
 		.dy-page-title-mark {
 			font-style: italic;
 			font-weight: 500;
-			color: var(--dya-accent);
+			color: var(--dya-accent-text, var(--dya-accent));
 		}
 	}
 
@@ -124,7 +124,7 @@ body[class*="page_doubleyoupi"]:not([class*="doubleyoupi-media-library"]) .wrap:
 	// underlined every tab on hover. Nor the shortcut cards of the first-run
 	// card, which are links drawn as cards. :where() keeps the specificity.
 	a:where(:not(.nav-tab, .dy-overview__welcome-item)) {
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 		text-decoration: none;
 		text-underline-offset: 3px;
 		transition: color var(--dya-t-fast) var(--dya-ease);
@@ -186,7 +186,7 @@ body[class*="doubleyoupi-media-library"] .wrap > h1 {
 	.dy-page-title-mark {
 		font-style: italic;
 		font-weight: 500;
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 	}
 }
 

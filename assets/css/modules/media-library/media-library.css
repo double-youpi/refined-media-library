@@ -5,7 +5,7 @@
   --dy-accent-rgb: 91, 62, 254;
   --dy-ink: #ecedf2;
   --dy-ink-soft: #9ba3b5;
-  --dy-ink-mute: #5a6070;
+  --dy-ink-mute: #8a8b92;
   --dy-ink-faint: #4a4f5d;
   --dy-bg: #0c0e13;
   --dy-bg-soft: #0f1118;
@@ -859,7 +859,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 /* "Show all media" + "Media without folder" — top quick-filters */
@@ -931,7 +931,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   background: none;
   border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 4px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -1075,7 +1075,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-folder-root__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   background: var(--bg-elev, #1d2030);
   padding: 1px 5px;
   border-radius: 3px;
@@ -1128,7 +1128,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-size: 10px;
   transition: transform 0.15s;
   cursor: pointer;
@@ -1188,7 +1188,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
 .dy-show-all__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   background: var(--bg-elev, #1d2030);
   padding: 1px 5px;
   border-radius: 3px;
@@ -1215,7 +1215,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   border: none;
   border-radius: 5px;
   background: none;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   cursor: pointer;
   opacity: 0;
   min-height: 0;
@@ -1343,7 +1343,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   width: 16px;
   height: 16px;
   font-size: 16px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 .dy-dp-folder-trigger__label {
@@ -1406,7 +1406,7 @@ body.upload-php #e-image-ai-media-library a [class*=eicon] {
   width: 15px;
   height: 15px;
   font-size: 15px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 .dy-folder-pop__item.is-current .dy-folder-pop__icon {
@@ -1630,7 +1630,7 @@ body.dy-dragging-folder .dy-folder-item {
 
 .dy-bulk-dialog__hint {
   font-size: 12px;
-  color: var(--ink-mute, #6f7585) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   margin: 0 0 20px;
 }
 
@@ -2098,7 +2098,7 @@ body.upload-php input.search[type=search]:focus {
 }
 
 body.upload-php input.search[type=search]::placeholder {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 body.upload-php .media-toolbar .button,
@@ -2150,7 +2150,7 @@ body.upload-php .media-toolbar .delete-selected-button:disabled,
 body.upload-php .media-toolbar .delete-selected-permanently-button:disabled {
   background: var(--bg-card, #161a23) !important;
   border-color: var(--dy-edge-hi, #2a3049) !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -2638,7 +2638,7 @@ body.upload-php .uploader-inline:hover {
 
 /* ── No-media / count text ───────────────────────────────────────────────── */
 body.upload-php .no-media {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2689,7 +2689,7 @@ body.upload-php #wpbody table.wp-list-table tbody th {
 body.upload-php #wpbody table.wp-list-table thead th,
 body.upload-php #wpbody table.wp-list-table tfoot th {
   background-color: var(--bg-elev, #1d2030) !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   border-bottom: 1px solid var(--line, #1e2235);
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 10px;
@@ -2757,7 +2757,7 @@ body.upload-php #wpbody table.wp-list-table tbody > tr.alternate {
 
 body.upload-php .wp-list-table thead th a,
 body.upload-php .wp-list-table tfoot th a {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -2767,7 +2767,7 @@ body.upload-php .wp-list-table tfoot th a {
 
 body.upload-php .wp-list-table thead th.sorted a,
 body.upload-php .wp-list-table thead th.sorted .sorting-indicator {
-  color: var(--accent, #5b3efe) !important;
+  color: var(--dy-accent-text, var(--accent, #5b3efe)) !important;
 }
 
 /*
@@ -2818,12 +2818,12 @@ body.upload-php .wp-list-table .sorting-indicators::after {
 
 body.upload-php .wp-list-table .sorting-indicators::before {
   top: 1px;
-  border-bottom: 4px solid var(--ink-mute, #5a6070);
+  border-bottom: 4px solid var(--ink-mute, #8a8b92);
 }
 
 body.upload-php .wp-list-table .sorting-indicators::after {
   bottom: 1px;
-  border-top: 4px solid var(--ink-mute, #5a6070);
+  border-top: 4px solid var(--ink-mute, #8a8b92);
 }
 
 /* Active sort — highlight only the matching arrow */
@@ -2899,7 +2899,7 @@ body.upload-php .wp-list-table .row-actions span {
 
 body.upload-php .wp-list-table .row-actions a,
 body.upload-php .wp-list-table .row-actions button.button-link {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   text-decoration: none;
   transition: color 0.12s;
   font-size: 11px;
@@ -3046,7 +3046,7 @@ body.upload-php .wp-list-table .filename {
   display: block;
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 10px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   margin: 2px 0 0 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3057,7 +3057,7 @@ body.upload-php .wp-list-table .column-author,
 body.upload-php .wp-list-table .column-parent,
 body.upload-php .wp-list-table .column-date {
   font-size: 12px;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 body.upload-php .wp-list-table .column-parent strong {
@@ -3221,7 +3221,7 @@ body.upload-php .wp-list-table .row-actions span:last-child::after {
 body.upload-php .wp-list-table .no-items td {
   text-align: center !important;
   padding: 60px 14px !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-style: italic;
   font-size: 14px;
 }
@@ -3281,13 +3281,13 @@ body.upload-php .column-title .media-icon img {
 
 /* Row actions (Edit | View | Delete) */
 body.upload-php .row-actions {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 12px;
   padding-top: 4px;
 }
 
 body.upload-php .row-actions a {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   transition: color 0.12s;
 }
 
@@ -3308,7 +3308,7 @@ body.upload-php .row-actions .trash a:hover {
 /* List-view toolbar (above the table) */
 body.upload-php .tablenav {
   background: transparent;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   margin: 12px 0 21px;
   padding: 0;
   border: none;
@@ -3371,7 +3371,7 @@ body.upload-php select option {
 }
 
 body.upload-php .displaying-num {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 12px;
 }
 
@@ -3407,7 +3407,7 @@ body.upload-php .tablenav .bulkactions select {
 
 /* Filter bar (Media / All media / All dates / Bulk selection) */
 body.upload-php .subsubsub {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 13px;
 }
 
@@ -3434,7 +3434,7 @@ body.upload-php .media-sidebar .attachment-details h3 {
 
 body.upload-php .media-sidebar label,
 body.upload-php .media-sidebar .setting > span {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 body.upload-php .media-sidebar input[type=text],
@@ -3457,7 +3457,7 @@ body.upload-php .media-sidebar a {
 
 body.upload-php .media-sidebar .copy-to-clipboard-container input {
   background: var(--bg-elev, #1d2030) !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   border-color: var(--dy-edge, #1e2235) !important;
 }
 
@@ -3582,7 +3582,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 16px;
   cursor: pointer;
   padding: 0;
@@ -3693,7 +3693,7 @@ body.upload-php .attachments-wrapper::-webkit-scrollbar-thumb {
   width: 34px;
   height: 3px;
   border-radius: 3px;
-  background: var(--ink-mute, #5a6070);
+  background: var(--ink-mute, #8a8b92);
   opacity: 0.5;
   transition: opacity 0.15s ease, background 0.15s ease, width 0.15s ease;
 }
@@ -3862,7 +3862,7 @@ body.dy-lb-open {
   font-size: 32px;
   width: 32px;
   height: 32px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 /* ── Sections ─────────────────────────────────────────────────────────────── */
@@ -3887,7 +3887,7 @@ body.upload-php #dy-detail-panel .dy-dp-field-label {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   margin-bottom: 10px;
 }
 
@@ -3905,7 +3905,7 @@ body.upload-php #dy-detail-panel .dy-dp-field-label {
 }
 
 .dy-dp-meta td:first-child {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   width: 90px;
   flex-shrink: 0;
   padding-right: 8px;
@@ -3953,7 +3953,7 @@ body.upload-php #dy-detail-panel .dy-dp-input:focus {
 }
 
 .dy-dp-input::placeholder {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-style: italic;
 }
 
@@ -4111,7 +4111,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
 .dy-dp-url-input {
   flex: 1;
   font-size: 11px !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-family: var(--font-mono, monospace) !important;
   cursor: default;
 }
@@ -4162,7 +4162,7 @@ body.upload-php #dy-detail-panel select.dy-dp-input option {
 
 .dy-dp-used-empty {
   font-size: 12px;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-style: italic;
 }
 
@@ -4309,7 +4309,7 @@ body.upload-php .attachment.dy-detail-active {
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-size: 13px;
   font-style: italic;
 }
@@ -4449,7 +4449,7 @@ body.post-type-attachment .notice.is-dismissible .notice-dismiss {
 
 body.upload-php .notice.is-dismissible .notice-dismiss::before,
 body.post-type-attachment .notice.is-dismissible .notice-dismiss::before {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-size: 14px;
   transition: color 0.15s;
 }
@@ -4504,7 +4504,7 @@ body.upload-php #screen-meta-links .show-settings {
   background: var(--bg-card, #161a23) !important;
   border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: none !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   border-radius: 0 0 4px 4px !important;
 }
 
@@ -4521,7 +4521,7 @@ body.upload-php #contextual-help-link-wrap {
 }
 
 body.upload-php #contextual-help-link {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 body.upload-php #contextual-help-link:hover {
@@ -4625,7 +4625,7 @@ body.upload-php .wrap {
 
 /* ── Attachment count text at bottom of grid ─────────────────────────────── */
 body.upload-php .attachments-browser > p {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 12px;
   text-align: center;
   padding: 12px;
@@ -4683,7 +4683,7 @@ body.upload-php .attachment.dy-detail-active {
   background: none;
   border: 1px solid var(--dy-edge, #1e2235);
   border-radius: 4px;
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -4759,7 +4759,7 @@ body.upload-php .attachment.dy-detail-active {
 .dy-collection-item__count {
   font-size: 10px;
   font-family: var(--font-mono, monospace);
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   background: var(--bg-elev, #1d2030);
   padding: 1px 5px;
   border-radius: 3px;
@@ -4792,7 +4792,7 @@ body.upload-php .attachment.dy-detail-active {
 .dy-panel-empty {
   padding: 8px 14px;
   font-size: 11px;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-style: italic;
   margin: 0;
 }
@@ -4856,7 +4856,7 @@ body.upload-php .attachment.dy-detail-active {
 
 .dy-dp-col-none {
   font-size: 12px;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-style: italic;
 }
 
@@ -4874,7 +4874,7 @@ body.upload-php #dy-detail-panel select.dy-dp-col-add-select,
   background-size: 12px !important;
   border: 1px dashed var(--line-hi, #2a3049) !important;
   border-radius: 5px !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-size: 12px !important;
   font-family: inherit !important;
   cursor: pointer !important;
@@ -4983,7 +4983,7 @@ body.upload-php .wp-filter .search-form p.search-box {
 /* Pagination in list view */
 body.upload-php .tablenav .tablenav-pages a,
 body.upload-php .tablenav .tablenav-pages span {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 body.upload-php .tablenav .tablenav-pages a:hover {
@@ -5100,7 +5100,7 @@ body.post-type-attachment .page-title-action:hover {
 
 /* Permalink line */
 body.post-type-attachment .wrap > p:first-of-type {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 body.post-type-attachment .wrap > p:first-of-type a {
@@ -5215,7 +5215,7 @@ body.post-type-attachment .postbox .inside {
 body.post-type-attachment .postbox .handlediv,
 body.post-type-attachment .postbox .handle-order-higher,
 body.post-type-attachment .postbox .handle-order-lower {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 /* Save / publish buttons */
@@ -5334,13 +5334,13 @@ body.post-type-attachment .misc-pub-section {
 }
 
 body.post-type-attachment .dashicons {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
 }
 
 /* Help text under fields */
 body.post-type-attachment .description,
 body.post-type-attachment p.description {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-style: italic;
 }
 
@@ -5531,7 +5531,7 @@ body.media-new-php .button-hero:hover {
 body.media-new-php .wrap > p,
 body.media-new-php #async-upload-wrap,
 body.media-new-php #post-upload-info {
-  color: var(--ink-mute, #5a6070);
+  color: var(--ink-mute, #8a8b92);
   font-size: 13px;
   margin: 12px 0;
 }
@@ -5596,7 +5596,7 @@ body.media-new-php #screen-meta-links .show-settings {
   background: var(--bg-card, #161a23) !important;
   border: 1px solid var(--dy-edge-hi, #2a3049) !important;
   border-top: none !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   border-radius: 0 0 4px 4px !important;
 }
 
@@ -5622,11 +5622,11 @@ body.media-new-php #screen-meta-links .show-settings {
 body.dy-admin.dy-media-library .dy-dp-col-tag {
   background: color-mix(in srgb, var(--accent) 12%, transparent) !important;
   border-color: color-mix(in srgb, var(--accent) 30%, transparent) !important;
-  color: var(--accent) !important;
+  color: var(--dy-accent-text, var(--accent)) !important;
 }
 
 body.dy-admin.dy-media-library .dy-dp-col-remove {
-  color: var(--accent) !important;
+  color: var(--dy-accent-text, var(--accent)) !important;
 }
 
 body.dy-admin.dy-media-library #dy-detail-panel select.dy-dp-col-add-select:hover,
@@ -5703,7 +5703,7 @@ body.upload-php {
   font-size: 12px;
   font-style: italic;
   line-height: 1.4;
-  color: var(--dy-ink-mute, #6f7077) !important;
+  color: var(--dy-ink-mute, #8a8b92) !important;
 }
 
 #dy-folder-panel.dy-folders-off #dy-show-all {
@@ -6002,7 +6002,7 @@ body :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel, #dy-ml-notices,
  */
 :where(#dy-panel-brand, #dy-folder-panel, #dy-detail-panel,
 .dy-ctx-menu, .dy-folder-pop, .dy-where-used, .dy-bulk-dialog) .dashicons {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 body.dy-admin #dy-panel-brand {
@@ -6043,7 +6043,7 @@ body.dy-admin #dy-panel-brand {
 }
 
 .media-modal.dy-ml-modal .media-modal-close .media-modal-icon::before {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 .media-modal.dy-ml-modal .media-modal-close:hover .media-modal-icon::before,
@@ -6058,7 +6058,7 @@ body.dy-admin #dy-panel-brand {
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 .media-modal.dy-ml-modal .media-router .media-menu-item:hover,
@@ -6079,7 +6079,7 @@ body.dy-admin #dy-panel-brand {
 
 .media-modal.dy-ml-modal .media-toolbar label,
 .media-modal.dy-ml-modal .media-toolbar .media-search-input-label {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 .media-modal.dy-ml-modal .media-toolbar select,
@@ -6195,7 +6195,7 @@ body.dy-admin #dy-panel-brand {
 .media-modal.dy-ml-modal .media-sidebar label,
 .media-modal.dy-ml-modal .media-sidebar .setting > span,
 .media-modal.dy-ml-modal .media-sidebar .attachment-info {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 .media-modal.dy-ml-modal .media-sidebar input[type=text],
@@ -6253,7 +6253,7 @@ body.dy-admin #dy-panel-brand {
 .media-modal.dy-ml-modal .button-primary:disabled {
   background: var(--bg-elev, #1d2030) !important;
   border-color: var(--line, #1e2235) !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   box-shadow: none !important;
   opacity: 1 !important;
 }
@@ -6273,7 +6273,7 @@ body.dy-admin #dy-panel-brand {
 .media-modal.dy-ml-modal .uploader-inline p,
 .media-modal.dy-ml-modal .max-upload-size,
 .media-modal.dy-ml-modal #post-upload-info {
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
 }
 
 /*
@@ -6433,7 +6433,7 @@ body.dy-admin #dy-panel-brand {
   background: transparent !important;
   border: 0 !important;
   border-radius: 4px !important;
-  color: var(--ink-mute, #5a6070) !important;
+  color: var(--ink-mute, #8a8b92) !important;
   font-size: 18px !important;
   line-height: 1 !important;
   cursor: pointer !important;
@@ -6514,8 +6514,8 @@ body.dy-ml-light {
   --bg-hi: color-mix(in srgb, var(--dy-accent, #5b3efe) 12%, #fff);
   --ink: #18181a;
   --ink-soft: #44444a;
-  --ink-mute: #707177;
-  --ink-faint: #727378;
+  --ink-mute: #636469; /* AA on the 12 % tinted surfaces too (#707177 fell to 4.0:1); values of the admin light theme */
+  --ink-faint: #66676d;
   --line: rgba(0, 0, 0, 0.07);
   --line-hi: rgba(0, 0, 0, 0.12);
   --line-soft: rgba(0, 0, 0, 0.04);
@@ -6524,8 +6524,12 @@ body.dy-ml-light {
   --dy-shadow-k: 0.3;
   --dy-ink: #18181a;
   --dy-ink-soft: #44444a;
-  --dy-ink-mute: #707177;
-  --dy-ink-faint: #727378;
+  --dy-ink-mute: #636469;
+  --dy-ink-faint: #66676d;
+  --dy-success: #147245;
+  --dy-warning: #995900;
+  --dy-danger: #c22f20;
+  --dy-danger-hover: #a8281c;
   --dy-bg: #fff;
   --dy-bg-soft: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
   --dy-bg-card: color-mix(in srgb, var(--dy-accent, #5b3efe) 4%, #fff);
@@ -6535,8 +6539,25 @@ body.dy-ml-light {
   --dy-line-soft: rgba(0, 0, 0, 0.04);
   /* Collections: a deeper shade of the accent, readable as text on white. */
   --accent-3: color-mix(in srgb, var(--dy-accent, #5b3efe) 80%, #000);
-  /* Danger pink: the deeper red of the admin light theme, AA as text on white. */
-  --accent-4: #d13425;
+  /* Danger pink: the deeper red of the admin light theme, AA as text on the tinted rows too (4.7:1). */
+  --accent-4: #c22f20;
   --accent-4-hover: #a8281c;
   color-scheme: light;
+}
+
+/*
+ * Accent used as text (audit 21/10/2026). The accent is chosen as a fill; as
+ * text it can miss 4.5:1, on the dark ground (#5b3efe: 3.6:1) as on a light
+ * one with a pale accent. Same remedy as Refined Admin Dashboard: keep the hue,
+ * raise the lightness in the dark theme, lower it in the light one. Browsers
+ * without relative colours keep the plain accent through the fallback.
+ */
+@supports (color: oklch(from red l c h)) {
+  body {
+    --dy-accent-text: oklch(from var(--accent, var(--dy-accent, #5b3efe)) max(l, 0.72) min(c, 0.15) h);
+  }
+  body.dy-theme-light,
+  body.dy-ml-light {
+    --dy-accent-text: oklch(from var(--accent, var(--dy-accent, #5b3efe)) min(l, 0.5) c h);
+  }
 }

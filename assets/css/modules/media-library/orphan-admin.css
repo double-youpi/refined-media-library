@@ -5,7 +5,7 @@
   --dy-accent-rgb: 91, 62, 254;
   --dy-ink: #ecedf2;
   --dy-ink-soft: #9ba3b5;
-  --dy-ink-mute: #5a6070;
+  --dy-ink-mute: #8a8b92;
   --dy-ink-faint: #4a4f5d;
   --dy-bg: #0c0e13;
   --dy-bg-soft: #0f1118;
@@ -165,7 +165,7 @@
 .dy-orphan-delete-btn.button:disabled {
   background: var(--dy-bg-elev, #1d2030);
   border-color: var(--dy-line-hi, #2a3049);
-  color: var(--dy-ink-mute, #5a6070);
+  color: var(--dy-ink-mute, #8a8b92);
   opacity: 1;
   cursor: not-allowed;
   box-shadow: none;
@@ -204,7 +204,7 @@
   height: 34px;
   font-size: 34px;
   line-height: 1;
-  color: var(--dy-ink-mute, #5a6070);
+  color: var(--dy-ink-mute, #8a8b92);
 }
 
 /* L'aperçu est dimensionné ici, pas par les attributs de l'image. Quand un

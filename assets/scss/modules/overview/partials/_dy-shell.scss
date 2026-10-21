@@ -27,8 +27,10 @@ body.dy-shell {
 	// ── Ink ──────────────────────────────────────────────────
 	--dya-ink:         #ededee;
 	--dya-ink-soft:    #a8a9ad;
-	--dya-ink-mute:    #6f7077;
-	--dya-ink-fade:    #4a4b52;
+	// Same values as the Admin module since the audit of 21/10/2026: the old
+	// ones read 3.1 to 3.9:1 here (tabs, section titles, descriptions).
+	--dya-ink-mute:    #9a9ba2;
+	--dya-ink-fade:    #93949b;
 
 	// ── Rules / dividers ─────────────────────────────────────
 	--dya-line:        rgba(255, 255, 255, .07);
@@ -45,6 +47,9 @@ body.dy-shell {
 	--dya-accent-rgb:  91, 62, 254;
 	--dya-accent-soft: rgba(91, 62, 254, .16);
 	--dya-accent-on:   #ffffff;
+	// The accent as TEXT: the Admin module's recipe (OKLCH L .72, chroma .15)
+	// applied to this fixed accent, 5.5 to 7.5:1 on the four grounds above.
+	--dya-accent-text: #9298ff;
 
 	// Native WP controls (checked checkbox/radio, focus, range…): WordPress colors
 	// them via --wp-admin-theme-color. We map it to the Double Youpi accent
@@ -176,7 +181,7 @@ body.dy-shell {
 
 	// The optional anti-FOUC curtain and generic content links.
 	#wpbody-content a:not(.button):not(.dy-chip):not([class*="dy-overview__"]) {
-		color: var(--dya-accent);
+		color: var(--dya-accent-text, var(--dya-accent));
 	}
 }
 
@@ -284,4 +289,18 @@ body.dy-shell .dy-track {
 
 @media (prefers-reduced-motion: reduce) {
 	body.dy-shell .dy-track { transition: none; }
+}
+
+// Media library light theme (`body.dy-shell.dy-ml-light`, shell-light.scss)
+// redefines the paper and ink but not the accent as text: without this, the
+// light-on-dark #9298ff above would carry over onto white. Same recipe as
+// the Admin module's light theme (OKLCH L capped at .5): 5.7 to 6.8:1.
+body.dy-shell.dy-ml-light {
+	--dya-accent-text: #5430f2;
+}
+
+// WordPress's help text (`.description`, #646970) on our dark ground:
+// 3.5:1 on the Unused media tab (audit of 21/10/2026).
+body.dy-shell .description {
+	color: var(--dya-ink-mute);
 }
