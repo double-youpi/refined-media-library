@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-21T04:26:02+00:00\n"
+"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
 "Language: ru_RU\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
@@ -69,7 +69,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:206
+#: src/Modules/MediaLibrary/MediaLibrary.php:209
 msgid "Settings"
 msgstr "Настройки"
 
@@ -572,8 +572,8 @@ msgstr ""
 "навигация, обновлённые таблицы содержимого, тёмная тема и ваш фирменный "
 "стиль."
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:137
-#: src/Modules/MediaLibrary/MediaLibrary.php:218
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
+#: src/Modules/MediaLibrary/MediaLibrary.php:221
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -1222,6 +1222,10 @@ msgid ""
 "Collections are kept apart from folders: this change is not possible here."
 msgstr "Коллекции хранятся отдельно от папок: здесь это изменение невозможно."
 
+#: src/Modules/MediaLibrary/Integrations/HeadlessApi.php:178
+msgid "Media folders and collections are private on this site."
+msgstr "Папки и коллекции библиотеки файлов на этом сайте закрыты."
+
 #: src/Modules/MediaLibrary/MediaLibrary.php:75
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
@@ -1239,15 +1243,15 @@ msgstr ""
 "Double Youpï Refined Media Library установлен и уступил место: активируйте "
 "его снова, если вам нужна только библиотека файлов без остального."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:138
+#: src/Modules/MediaLibrary/MediaLibrary.php:141
 msgid "Media Library"
 msgstr "Библиотека файлов"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:212
 msgid "Unused media"
 msgstr "Неиспользуемые медиафайлы"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:214
+#: src/Modules/MediaLibrary/MediaLibrary.php:217
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Импорт"

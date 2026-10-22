@@ -1,14 +1,14 @@
-=== Double Youpï Refined Media Library - Folders, Collections & WebP ===
+=== Double Youpï Refined Media Library - Media Folders, Collections & WebP ===
 Contributors: doubleyoupi
-Tags: media library, folders, collections, media organizer, webp
+Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.16
+Stable tag: 0.3.17
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Nested folders with drag-and-drop, collections, duplicate and orphan cleanup, and WebP/AVIF for the WordPress media library.
+A media library organizer for WordPress: nested folders by drag and drop, collections, duplicate and unused file cleanup, WebP/AVIF on upload.
 
 == Description ==
 
@@ -52,7 +52,7 @@ No locked features, no "upgrade to unlock folders", no nag screens. It's not a t
 
 **The whole admin, redrawn the same way**
 
-This media library is also part of [Double Youpï Refined Admin Dashboard](https://wordpress.org/plugins/doubleyoupi-refined-admin-dashboard/), which redraws the rest of the WordPress admin in the same style: navigation, lists, editor, notices and dashboard, in dark or light. It is free too. If you install it, this plugin steps aside and the dashboard keeps your folders and collections.
+This media library is also part of [Double Youpï Refined Admin Dashboard](https://wordpress.org/plugins/doubleyoupi-refined-admin-dashboard/), which redraws the rest of the WordPress admin in the same style: navigation, lists, editor, notices and dashboard, in dark or light. It is free too. If you install it, this plugin steps aside and the dashboard keeps your folders and collections. If you use it, you don't need this plugin as well.
 
 == Installation ==
 
@@ -122,6 +122,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.17 =
+* New: folders, collections and the WebP/AVIF copies are available to headless fronts through WPGraphQL and the REST API. Folder names can be kept private with the doubleyoupi_filter_media_folders_public filter.
 
 = 0.3.16 =
 * New: Russian translation. It follows WordPress's own Russian vocabulary but has not yet been reviewed by a native speaker: corrections are welcome on translate.wordpress.org.
@@ -254,6 +257,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.17 =
+Folders, collections and WebP/AVIF copies reach headless fronts through WPGraphQL and the REST API.
 
 = 0.3.16 =
 A Russian translation of the interface.

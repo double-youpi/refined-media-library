@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-21T04:26:02+00:00\n"
+"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
 "Language: de_DE\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -68,7 +68,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:206
+#: src/Modules/MediaLibrary/MediaLibrary.php:209
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -580,8 +580,8 @@ msgstr ""
 "Dashboard, überarbeitete Navigation, neu gestaltete Inhaltstabellen, Dark "
 "Mode und dein Branding."
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:137
-#: src/Modules/MediaLibrary/MediaLibrary.php:218
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
+#: src/Modules/MediaLibrary/MediaLibrary.php:221
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -1238,6 +1238,11 @@ msgstr ""
 "Sammlungen bleiben von Ordnern getrennt: Diese Änderung ist hier nicht "
 "möglich."
 
+#: src/Modules/MediaLibrary/Integrations/HeadlessApi.php:178
+msgid "Media folders and collections are private on this site."
+msgstr ""
+"Die Ordner und Sammlungen der Mediathek sind auf dieser Website privat."
+
 #: src/Modules/MediaLibrary/MediaLibrary.php:75
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
@@ -1255,15 +1260,15 @@ msgstr ""
 "Double Youpï Refined Media Library ist installiert und tritt zurück: "
 "Aktiviere es erneut, wenn du die Mediathek ohne den Rest möchtest."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:138
+#: src/Modules/MediaLibrary/MediaLibrary.php:141
 msgid "Media Library"
 msgstr "Mediathek"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:212
 msgid "Unused media"
 msgstr "Unbenutzte Medien"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:214
+#: src/Modules/MediaLibrary/MediaLibrary.php:217
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importieren"

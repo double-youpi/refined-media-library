@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-21T04:26:02+00:00\n"
+"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -66,7 +66,7 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:206
+#: src/Modules/MediaLibrary/MediaLibrary.php:209
 msgid "Settings"
 msgstr "सेटिंग्स"
 
@@ -561,8 +561,8 @@ msgstr ""
 "WordPress एडमिन का पूरा पुनर्विचार: स्मार्ट डैशबोर्ड, फिर से डिज़ाइन किया गया नेविगेशन, "
 "नई कॉन्टेंट टेबल, डार्क मोड और आपकी ब्रांडिंग।"
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:137
-#: src/Modules/MediaLibrary/MediaLibrary.php:218
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
+#: src/Modules/MediaLibrary/MediaLibrary.php:221
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -1212,6 +1212,10 @@ msgid ""
 "Collections are kept apart from folders: this change is not possible here."
 msgstr "संग्रह फ़ोल्डरों से अलग रहते हैं, इसलिए यह बदलाव यहाँ संभव नहीं है।"
 
+#: src/Modules/MediaLibrary/Integrations/HeadlessApi.php:178
+msgid "Media folders and collections are private on this site."
+msgstr "इस साइट पर मीडिया लाइब्रेरी के फ़ोल्डर और संग्रह निजी हैं।"
+
 #: src/Modules/MediaLibrary/MediaLibrary.php:75
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
@@ -1228,15 +1232,15 @@ msgstr ""
 "Double Youpï Refined Media Library संस्थापित है और पीछे हट गई है: यदि आप बाकी के "
 "बिना केवल मीडिया लाइब्रेरी चाहते हैं तो इसे फिर से सक्रिय करें।"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:138
+#: src/Modules/MediaLibrary/MediaLibrary.php:141
 msgid "Media Library"
 msgstr "मीडिया लाइब्रेरी"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:212
 msgid "Unused media"
 msgstr "अप्रयुक्त मीडिया"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:214
+#: src/Modules/MediaLibrary/MediaLibrary.php:217
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "आयात करें"

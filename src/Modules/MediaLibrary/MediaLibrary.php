@@ -111,6 +111,9 @@ class MediaLibrary extends AbstractModule {
 		// hooks: nothing runs, and no Bricks class is touched, unless Bricks 2.4+
 		// fires them.
 		Integrations\BricksBridge::boot();
+		// Folders, collections and WebP/AVIF copies for headless fronts
+		// (REST and WPGraphQL). Only hooks.
+		Integrations\HeadlessApi::boot();
 		CollectionManager::instance()->boot();
 		MetadataAutoFiller::instance()->boot();
 		ImageConverter::instance()->boot();

@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Double Youpï Refined Media Library 0.3.16\n"
+"Project-Id-Version: Double Youpï Refined Media Library 0.3.17\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-refined-media-library\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-21T04:26:02+00:00\n"
+"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: doubleyoupi-refined-media-library\n"
@@ -54,7 +54,7 @@ msgstr ""
 #: src/Admin/OverviewPage.php:158
 #: src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:206
+#: src/Modules/MediaLibrary/MediaLibrary.php:209
 msgid "Settings"
 msgstr ""
 
@@ -522,8 +522,8 @@ msgid "A full rethink of the WordPress admin: smart dashboard, reworked navigati
 msgstr ""
 
 #: src/Core/ModuleCatalog.php:49
-#: src/Modules/MediaLibrary/MediaLibrary.php:137
-#: src/Modules/MediaLibrary/MediaLibrary.php:218
+#: src/Modules/MediaLibrary/MediaLibrary.php:140
+#: src/Modules/MediaLibrary/MediaLibrary.php:221
 msgid "Refined Media Library"
 msgstr ""
 
@@ -1159,6 +1159,10 @@ msgstr ""
 msgid "Collections are kept apart from folders: this change is not possible here."
 msgstr ""
 
+#: src/Modules/MediaLibrary/Integrations/HeadlessApi.php:178
+msgid "Media folders and collections are private on this site."
+msgstr ""
+
 #: src/Modules/MediaLibrary/MediaLibrary.php:75
 msgid "Turning the media library off hands the Media screen back to WordPress. Your folders and your collections are kept, and come back if you turn it on again."
 msgstr ""
@@ -1167,15 +1171,15 @@ msgstr ""
 msgid "Double Youpï Refined Media Library is installed and standing aside: reactivate it if you want the media library without the rest."
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:138
+#: src/Modules/MediaLibrary/MediaLibrary.php:141
 msgid "Media Library"
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:212
 msgid "Unused media"
 msgstr ""
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:214
+#: src/Modules/MediaLibrary/MediaLibrary.php:217
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr ""
