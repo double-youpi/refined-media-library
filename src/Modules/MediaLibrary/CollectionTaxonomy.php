@@ -104,10 +104,12 @@ class CollectionTaxonomy extends AbstractModule {
 				// _update_generic_term_count: counts ALL attachments with this term,
 				// including orphans (post_parent = 0). Otherwise the badge count drifts from the grid.
 				'update_count_callback' => '_update_generic_term_count',
+				// Managing the tree is for editors (23/10/2026); filing a file
+				// (assign_terms) stays open to anyone who can upload.
 				'capabilities'      => [
-					'manage_terms' => 'upload_files',
-					'edit_terms'   => 'upload_files',
-					'delete_terms' => 'upload_files',
+					'manage_terms' => FolderManager::manage_folders_cap(),
+					'edit_terms'   => FolderManager::manage_folders_cap(),
+					'delete_terms' => FolderManager::manage_folders_cap(),
 					'assign_terms' => 'upload_files',
 				],
 			]

@@ -7,6 +7,7 @@ use DoubleYoupi\Core\AbstractModule;
 use DoubleYoupi\Modules\MediaLibrary\CollectionTaxonomy;
 use DoubleYoupi\Modules\MediaLibrary\FolderTaxonomy;
 use DoubleYoupi\Modules\MediaLibrary\Migration\Contracts\SourceAdapter;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -96,7 +97,7 @@ final class MigrationManager extends AbstractModule {
 		// Site-wide import: previewing, running and rolling back all create or
 		// delete folder/collection terms across the whole site, so these routes
 		// require full admin capability (not merely upload_files).
-		$perm = static fn() => current_user_can( 'manage_options' );
+		$perm = static fn() => current_user_can( Access::CAP );
 
 		register_rest_route( self::REST_NS, '/media-migration/sources', [
 			'methods'             => \WP_REST_Server::READABLE,

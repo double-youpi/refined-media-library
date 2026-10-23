@@ -6,7 +6,9 @@ use DoubleYoupi\Core\ModuleCatalog;
 use DoubleYoupi\Core\ModuleRegistry;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Feedback;
 use DoubleYoupi\Admin\Kses;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -55,6 +57,8 @@ class Settings extends AbstractModule {
 		'image_quality' => self::OPTION_IMAGE_QUALITY,
 		'duplicates'    => self::OPTION_DUPLICATES,
 		'light_theme'   => self::OPTION_LIGHT_THEME,
+		'hide_feedback' => Feedback::OPTION_HIDE,
+		'settings_owner' => Access::OPTION_OWNER,
 	];
 
 	public function boot(): void {
@@ -69,7 +73,7 @@ class Settings extends AbstractModule {
 	 */
 	public function ajax_save_setting(): void {
 		check_ajax_referer( self::AJAX_ACTION, 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 		$key = isset( $_POST['key'] ) ? sanitize_key( wp_unslash( (string) $_POST['key'] ) ) : '';
@@ -80,6 +84,8 @@ class Settings extends AbstractModule {
 
 		if ( 'image_quality' === $key ) {
 			$value = $this->sanitize_quality( $raw );
+		} elseif ( 'settings_owner' === $key ) {
+			$value = rest_sanitize_boolean( $raw ) ? get_current_user_id() : 0;
 		} else {
 			$value = rest_sanitize_boolean( $raw );
 			// Refuse to enable WebP/AVIF if the server does not support it or if
@@ -161,6 +167,20 @@ class Settings extends AbstractModule {
 			'sanitize_callback' => 'rest_sanitize_boolean',
 			'default'           => false,
 		] );
+		// Shared with Refined Admin Dashboard, which shows it on its own page:
+		// registered here only when this page carries the switch.
+		if ( ! ModuleRegistry::has( 'admin' ) ) {
+			register_setting( self::SETTINGS_GROUP, Feedback::OPTION_HIDE, [
+				'type'              => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default'           => false,
+			] );
+			register_setting( self::SETTINGS_GROUP, Access::OPTION_OWNER, [
+				'type'              => 'integer',
+				'sanitize_callback' => [ self::class, 'sanitize_owner' ],
+				'default'           => 0,
+			] );
+		}
 		register_setting( self::SETTINGS_GROUP, self::OPTION_IMAGE_QUALITY, [
 			'type'              => 'integer',
 			'default'           => self::QUALITY_DEFAULT,
@@ -220,6 +240,17 @@ class Settings extends AbstractModule {
 		return max( self::QUALITY_MIN, min( self::QUALITY_MAX, $q ) );
 	}
 
+	/**
+	 * The settings owner: a user id when stored by code, "1" or empty when
+	 * posted by the form's checkbox (then: the current user, or nobody).
+	 */
+	public static function sanitize_owner( mixed $value ): int {
+		if ( is_int( $value ) ) {
+			return max( 0, $value );
+		}
+		return rest_sanitize_boolean( $value ) ? get_current_user_id() : 0;
+	}
+
 	public function sanitize_quality( mixed $input ): int {
 		$q = (int) $input;
 		return max( self::QUALITY_MIN, min( self::QUALITY_MAX, $q ) );
@@ -230,7 +261,7 @@ class Settings extends AbstractModule {
 	// -------------------------------------------------------------------------
 
 	public function render_tab(): void {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			return;
 		}
 
@@ -338,6 +369,34 @@ class Settings extends AbstractModule {
 								'name'   => __( 'Light theme', 'doubleyoupi-refined-media-library' ),
 								'desc'   => __( 'Show the media library on a light background', 'doubleyoupi-refined-media-library' ),
 								'icon'   => 'theme',
+							] );
+							?>
+						</div>
+					</section>
+
+					<?php // One switch per site: with Refined Admin Dashboard present, its own settings carry them. ?>
+					<section class="dy-mlset__group">
+						<p class="dy-mlset__eyebrow"><?php esc_html_e( 'Team', 'doubleyoupi-refined-media-library' ); ?></p>
+						<div class="dy-mlset__cards">
+							<?php
+							self::toggle_card( [
+								'key'    => 'hide_feedback',
+								'option' => Feedback::OPTION_HIDE,
+								'on'     => Feedback::hidden(),
+								'name'   => __( 'Hide Feedback and review requests', 'doubleyoupi-refined-media-library' ),
+								'desc'   => __( 'No Feedback button, review link or review request, for anyone on this site.', 'doubleyoupi-refined-media-library' ),
+								'icon'   => 'feedback',
+							] );
+							$unlocked = defined( Access::UNLOCK ) && constant( Access::UNLOCK );
+							self::toggle_card( [
+								'key'       => 'settings_owner',
+								'option'    => Access::OPTION_OWNER,
+								'on'        => Access::owner_id() > 0 && Access::owner_id() === get_current_user_id(),
+								'name'      => __( 'Keep Double Youpï settings to myself', 'doubleyoupi-refined-media-library' ),
+								'desc'      => __( 'Other administrators keep the media library and its folders, without these settings, Feedback or the review link. Locked out? Add define( \'DOUBLEYOUPI_UNLOCK_SETTINGS\', true ); to wp-config.php.', 'doubleyoupi-refined-media-library' ),
+								'icon'      => 'lock',
+								'blocked'   => $unlocked,
+								'block_msg' => $unlocked ? __( 'Unlocked in wp-config.php: every administrator can change these settings.', 'doubleyoupi-refined-media-library' ) : '',
 							] );
 							?>
 						</div>
@@ -462,6 +521,8 @@ class Settings extends AbstractModule {
 			'image'       => '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L6 20"/>',
 			'quality'     => '<path d="M4 21v-6M4 11V3M12 21v-9M12 8V3M20 21v-4M20 13V3M1 15h6M9 8h6M17 17h6"/>',
 			'duplicates'  => '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
+			'lock'        => '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+			'feedback'    => '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
 			'theme'       => '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
 			'orphans'     => '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="m10 11 4 4M14 11l-4 4"/>',
 		];

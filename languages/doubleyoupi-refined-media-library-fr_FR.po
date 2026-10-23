@@ -5,7 +5,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
+"POT-Creation-Date: 2026-10-23T17:20:04+00:00\n"
 "Language: fr_FR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -70,139 +70,139 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:210
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/Feedback.php:188 src/Admin/Feedback.php:216
 #: src/Admin/OverviewPage.php:817
 msgid "Leave a review"
 msgstr "Laisser un avis"
 
-#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
+#: src/Admin/Feedback.php:193 src/Admin/Feedback.php:210
 msgctxt "admin bar button"
 msgid "Feedback"
 msgstr "Faire un retour"
 
 #. translators: %s = label of the Feedback button (e.g. "Feedback")
-#: src/Admin/Feedback.php:182
+#: src/Admin/Feedback.php:209
 #, php-format
 msgid ""
 "If you like the plugin, two lines on WordPress.org help it a lot. If "
 "something is wrong, tell us with “%s” instead: it is quicker to fix."
 msgstr ""
 "Si l’extension vous plaît, deux lignes sur WordPress.org l’aident beaucoup. "
-"Si quelque chose cloche, dites-le plutôt avec « %s » : c’est plus rapide à "
+"Si quelque chose cloche, dites-le plutôt avec « %s » : c’est plus rapide à "
 "corriger."
 
-#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
-#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
+#: src/Admin/Feedback.php:217 src/Admin/Feedback.php:225
+#: src/Admin/Feedback.php:350 src/Admin/Feedback.php:411
 #: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "Fermer"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "Write a review on WordPress.org"
 msgstr "Écrire un avis sur WordPress.org"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "(opens in a new tab)"
 msgstr "(s’ouvre dans un nouvel onglet)"
 
 #. translators: %s = product name (e.g. "Refined Admin Dashboard")
-#: src/Admin/Feedback.php:211
+#: src/Admin/Feedback.php:238
 #, php-format
 msgid "Your feedback on %s"
 msgstr "Votre retour sur %s"
 
-#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
+#: src/Admin/Feedback.php:317 src/Admin/Feedback.php:405
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/Admin/Feedback.php:291
+#: src/Admin/Feedback.php:318
 msgid "Sending…"
 msgstr "Envoi…"
 
-#: src/Admin/Feedback.php:292
+#: src/Admin/Feedback.php:319
 msgid "Try again"
 msgstr "Réessayer"
 
 #. translators: %s = name of the theme
-#: src/Admin/Feedback.php:294
+#: src/Admin/Feedback.php:321
 #, php-format
 msgid "%s (theme)"
 msgstr "%s (thème)"
 
-#: src/Admin/Feedback.php:295
+#: src/Admin/Feedback.php:322
 msgid "This image is still too large after compression (1.5 MB maximum)."
 msgstr "Cette image reste trop lourde après compression (1,5 Mo maximum)."
 
-#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:477
 msgid "Please use a PNG, JPEG or WebP image."
 msgstr "Veuillez utiliser une image PNG, JPEG ou WebP."
 
-#: src/Admin/Feedback.php:297
+#: src/Admin/Feedback.php:324
 msgid "Your report could not be sent. Check your connection and try again."
 msgstr ""
 "Votre retour n’a pas pu être envoyé. Vérifiez votre connexion et réessayez."
 
 #. translators: %s = reference returned by the feedback service
-#: src/Admin/Feedback.php:299
+#: src/Admin/Feedback.php:326
 #, php-format
 msgid "Reference %s."
 msgstr "Référence %s."
 
-#: src/Admin/Feedback.php:300
+#: src/Admin/Feedback.php:327
 msgid "(anonymous site identifier)"
 msgstr "(identifiant anonyme du site)"
 
-#: src/Admin/Feedback.php:329
+#: src/Admin/Feedback.php:356
 msgid "This screen"
 msgstr "Cet écran"
 
-#: src/Admin/Feedback.php:333
+#: src/Admin/Feedback.php:360
 msgid "What kind of feedback"
 msgstr "Quel type de retour"
 
-#: src/Admin/Feedback.php:334
+#: src/Admin/Feedback.php:361
 msgid "Something is wrong"
 msgstr "Quelque chose ne va pas"
 
-#: src/Admin/Feedback.php:335
+#: src/Admin/Feedback.php:362
 msgid "An idea"
 msgstr "Une idée"
 
-#: src/Admin/Feedback.php:336
+#: src/Admin/Feedback.php:363
 msgid "Something else"
 msgstr "Autre chose"
 
-#: src/Admin/Feedback.php:339
+#: src/Admin/Feedback.php:366
 msgid "Your message"
 msgstr "Votre message"
 
-#: src/Admin/Feedback.php:340
+#: src/Admin/Feedback.php:367
 msgid "What happened, and what you expected."
 msgstr "Ce qui s’est passé, et ce que vous attendiez."
 
-#: src/Admin/Feedback.php:347
+#: src/Admin/Feedback.php:374
 msgid "Attach a screenshot"
 msgstr "Joindre une capture"
 
-#: src/Admin/Feedback.php:349
+#: src/Admin/Feedback.php:376
 msgid "or paste an image here (Ctrl/Cmd + V)"
 msgstr "ou collez une image ici (Ctrl/Cmd + V)"
 
-#: src/Admin/Feedback.php:352
+#: src/Admin/Feedback.php:379
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Remove"
 msgstr "Retirer"
 
-#: src/Admin/Feedback.php:357
+#: src/Admin/Feedback.php:384
 msgid "You may write back to me at"
 msgstr "Vous pouvez me répondre à"
 
-#: src/Admin/Feedback.php:362
+#: src/Admin/Feedback.php:389
 msgid ""
 "I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
@@ -215,46 +215,46 @@ msgstr ""
 "extension). Aucun contenu du site n’est envoyé, ni l’adresse du site sauf si "
 "je demande une réponse."
 
-#: src/Admin/Feedback.php:365
+#: src/Admin/Feedback.php:392
 msgid "See exactly what will be sent"
 msgstr "Voir exactement ce qui sera envoyé"
 
 #. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
-#: src/Admin/Feedback.php:374
+#: src/Admin/Feedback.php:401
 #, php-format
 msgid "Seen with %s"
 msgstr "Vu avec %s"
 
-#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Admin/Feedback.php:404 src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/Admin/Feedback.php:382
+#: src/Admin/Feedback.php:409
 msgid "Thank you, it is on its way."
 msgstr "Merci, c’est parti."
 
-#: src/Admin/Feedback.php:426
+#: src/Admin/Feedback.php:453
 msgid "Please confirm you agree to send this report."
 msgstr "Veuillez confirmer que vous acceptez d’envoyer ce retour."
 
-#: src/Admin/Feedback.php:434
+#: src/Admin/Feedback.php:461
 msgid "Please write a few words first."
 msgstr "Veuillez d’abord écrire quelques mots."
 
-#: src/Admin/Feedback.php:441
+#: src/Admin/Feedback.php:468
 msgid "This email address does not look right."
 msgstr "Cette adresse e-mail ne semble pas valide."
 
-#: src/Admin/Feedback.php:447
+#: src/Admin/Feedback.php:474
 msgid "The screenshot is too large."
 msgstr "La capture est trop lourde."
 
-#: src/Admin/Feedback.php:459
+#: src/Admin/Feedback.php:486
 msgid "Too many reports in a short time. Please try again in an hour."
 msgstr "Trop de retours en peu de temps. Veuillez réessayer dans une heure."
 
-#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
+#: src/Admin/Feedback.php:547 src/Admin/Feedback.php:551
 msgid "The feedback service did not answer. Please try again later."
 msgstr "Le service de retour n’a pas répondu. Veuillez réessayer plus tard."
 
@@ -406,8 +406,8 @@ msgstr "Suite"
 
 #: src/Admin/OverviewPage.php:184 src/Admin/OverviewPage.php:224
 #: src/Modules/MediaLibrary/FolderService.php:252
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:159
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:187
 msgid "Access denied."
 msgstr "Accès refusé."
 
@@ -454,8 +454,8 @@ msgstr "Enregistrer les modules"
 msgid "Coming soon"
 msgstr "Bientôt disponible"
 
-#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:423
-#: src/Modules/MediaLibrary/Settings.php:450
+#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:482
+#: src/Modules/MediaLibrary/Settings.php:509
 msgid "Saved"
 msgstr "Enregistré"
 
@@ -576,8 +576,8 @@ msgstr ""
 "intelligent, navigation retravaillée, tableaux de contenu redessinés, mode "
 "sombre et votre identité visuelle."
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
-#: src/Modules/MediaLibrary/MediaLibrary.php:221
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:222
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -589,16 +589,16 @@ msgstr ""
 "Dossiers et collections, glisser-déposer, aperçu rapide, nettoyage des "
 "doublons et des orphelins, plus conversion WebP/AVIF au téléversement."
 
-#: src/Modules/MediaLibrary/CollectionManager.php:169
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
+#: src/Modules/MediaLibrary/CollectionManager.php:170
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:254
 msgid "Could not delete collection."
 msgstr "Impossible de supprimer la collection."
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
-#: src/Modules/MediaLibrary/Settings.php:274
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:77
+#: src/Modules/MediaLibrary/Settings.php:305
 msgid "Collections"
 msgstr "Collections"
 
@@ -630,23 +630,23 @@ msgstr "Doublon"
 msgid "View original"
 msgstr "Voir l’original"
 
-#: src/Modules/MediaLibrary/FolderManager.php:118
+#: src/Modules/MediaLibrary/FolderManager.php:119
 msgid "Move to folder…"
 msgstr "Déplacer dans un dossier…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:121
+#: src/Modules/MediaLibrary/FolderManager.php:122
 msgid "Add to collection…"
 msgstr "Ajouter à une collection…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:604
-#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderManager.php:629
+#: src/Modules/MediaLibrary/FolderManager.php:665
 #: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Un dossier ne peut pas être déplacé dans lui-même ou dans l’un de ses sous-"
 "dossiers."
 
-#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderManager.php:690
 #: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
 msgstr "Impossible de supprimer le dossier."
@@ -654,7 +654,7 @@ msgstr "Impossible de supprimer le dossier."
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:266
+#: src/Modules/MediaLibrary/Settings.php:297
 msgid "Folders"
 msgstr "Dossiers"
 
@@ -692,12 +692,12 @@ msgstr "Supprimer ce dossier ? Les fichiers médias ne seront pas supprimés."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:162
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:193
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:195
 msgid "No folder"
 msgstr "Aucun dossier"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:45
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:192
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:194
 msgid "All folders"
 msgstr "Tous les dossiers"
 
@@ -1198,16 +1198,16 @@ msgstr "Plus de champs"
 #: src/Modules/MediaLibrary/FolderService.php:199
 #: src/Modules/MediaLibrary/FolderService.php:235
 #: src/Modules/MediaLibrary/FolderService.php:255
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:259
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:271
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:286
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:393
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
 msgid "Something went wrong. Please try again."
 msgstr "Une erreur est survenue. Veuillez réessayer."
 
 #: src/Modules/MediaLibrary/FolderService.php:278
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:413
 msgid "A folder or collection with this name already exists here."
 msgstr "Un dossier ou une collection porte déjà ce nom ici."
 
@@ -1227,18 +1227,18 @@ msgstr "Mettre à jour le dossier"
 msgid "No folders found"
 msgstr "Aucun dossier trouvé"
 
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:406
 msgid ""
 "Collections are kept apart from folders: this change is not possible here."
 msgstr ""
-"Les collections restent à part des dossiers : cette modification n’est pas "
+"Les collections restent à part des dossiers : cette modification n’est pas "
 "possible ici."
 
 #: src/Modules/MediaLibrary/Integrations/HeadlessApi.php:178
 msgid "Media folders and collections are private on this site."
 msgstr "Les dossiers et collections de la médiathèque sont privés sur ce site."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:75
+#: src/Modules/MediaLibrary/MediaLibrary.php:76
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
 "folders and your collections are kept, and come back if you turn it on again."
@@ -1246,7 +1246,7 @@ msgstr ""
 "Couper la médiathèque rend l’écran Médias à WordPress. Vos dossiers et vos "
 "collections sont conservés, et réapparaissent si vous la rallumez."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:78
+#: src/Modules/MediaLibrary/MediaLibrary.php:79
 msgid ""
 "Double Youpï Refined Media Library is installed and standing aside: "
 "reactivate it if you want the media library without the rest."
@@ -1254,44 +1254,44 @@ msgstr ""
 "Double Youpï Refined Media Library est installée et en retrait : réactivez-"
 "la si vous voulez la médiathèque sans le reste."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:142
 msgid "Media Library"
 msgstr "Médiathèque"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:212
+#: src/Modules/MediaLibrary/MediaLibrary.php:213
 msgid "Unused media"
 msgstr "Médias inutilisés"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:217
+#: src/Modules/MediaLibrary/MediaLibrary.php:218
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importer"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:258
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr "Refined Media Library gère la médiathèque. %s est aussi actif."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:261
 #, php-format
 msgid "Let %s manage it"
 msgstr "Laisser %s gérer"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
 msgstr "%s gère la médiathèque. Refined Media Library s’est effacé."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
 msgid "Use Refined Media Library"
 msgstr "Utiliser Refined Media Library"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:287
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:288
 #, php-format
 msgid "Import folders from %s"
 msgstr "Importer les dossiers depuis %s"
@@ -1376,7 +1376,7 @@ msgstr "Annulation…"
 msgid "%d imported folders removed."
 msgstr "%d dossiers importés supprimés."
 
-#: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
+#: src/Modules/MediaLibrary/Migration/MigrationManager.php:469
 msgid ""
 "Import folders and collections from another media library plugin. Your media "
 "stay in place. This only re-creates the folder structure inside Refined "
@@ -1587,91 +1587,129 @@ msgstr "Supprimer définitivement"
 msgid "Delete selected media"
 msgstr "Supprimer les médias sélectionnés"
 
-#: src/Modules/MediaLibrary/Settings.php:242
+#: src/Modules/MediaLibrary/Settings.php:273
 msgid "Optimization"
 msgstr "Optimisation"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:249
+#: src/Modules/MediaLibrary/Settings.php:280
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "Piloté par %s. Réglages gérés à cet endroit."
 
-#: src/Modules/MediaLibrary/Settings.php:251
+#: src/Modules/MediaLibrary/Settings.php:282
 msgid "This server cannot generate WebP images."
 msgstr "Ce serveur ne peut pas générer d’images WebP."
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "This server cannot generate AVIF images."
 msgstr "Ce serveur ne peut pas générer d’images AVIF."
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "Organisation"
 msgstr "Organisation"
 
-#: src/Modules/MediaLibrary/Settings.php:267
+#: src/Modules/MediaLibrary/Settings.php:298
 msgid "Organise the media library into folders"
 msgstr "Organiser la médiathèque en dossiers"
 
-#: src/Modules/MediaLibrary/Settings.php:275
+#: src/Modules/MediaLibrary/Settings.php:306
 msgid "Group media into cross-folder collections"
 msgstr "Regrouper les médias en collections transversales"
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Auto alt & title"
 msgstr "Alt et titre automatiques"
 
-#: src/Modules/MediaLibrary/Settings.php:283
+#: src/Modules/MediaLibrary/Settings.php:314
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
 "Remplir le texte alternatif et le titre depuis le nom du fichier au "
 "téléversement (si vides)"
 
-#: src/Modules/MediaLibrary/Settings.php:292
+#: src/Modules/MediaLibrary/Settings.php:323
 msgid "Duplicate badge"
 msgstr "Badge de doublon"
 
-#: src/Modules/MediaLibrary/Settings.php:293
+#: src/Modules/MediaLibrary/Settings.php:324
 msgid "Mark files already in the library, by content"
-msgstr "Marquer les fichiers déjà présents, d’après leur contenu"
+msgstr ""
+"Marquer les fichiers déjà présents dans la bibliothèque en fonction de leur "
+"contenu"
 
-#: src/Modules/MediaLibrary/Settings.php:301
+#: src/Modules/MediaLibrary/Settings.php:332
 msgid "Conversion"
 msgstr "Conversion"
 
-#: src/Modules/MediaLibrary/Settings.php:308
+#: src/Modules/MediaLibrary/Settings.php:339
 msgid "WebP on upload"
 msgstr "WebP au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:309
+#: src/Modules/MediaLibrary/Settings.php:340
 msgid "Generate a WebP version of each image on upload"
 msgstr "Générer une version WebP de chaque image au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:318
+#: src/Modules/MediaLibrary/Settings.php:349
 msgid "AVIF on upload"
 msgstr "AVIF au téléversement"
 
-#: src/Modules/MediaLibrary/Settings.php:319
+#: src/Modules/MediaLibrary/Settings.php:350
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "Générer aussi une version AVIF (nécessite Imagick)"
 
-#: src/Modules/MediaLibrary/Settings.php:331
+#: src/Modules/MediaLibrary/Settings.php:362
 msgid "Appearance"
 msgstr "Apparence"
 
-#: src/Modules/MediaLibrary/Settings.php:338
+#: src/Modules/MediaLibrary/Settings.php:369
 msgid "Light theme"
 msgstr "Thème clair"
 
-#: src/Modules/MediaLibrary/Settings.php:339
+#: src/Modules/MediaLibrary/Settings.php:370
 msgid "Show the media library on a light background"
 msgstr "Afficher la médiathèque sur un arrière-plan clair"
 
-#: src/Modules/MediaLibrary/Settings.php:349
+#: src/Modules/MediaLibrary/Settings.php:379
+msgid "Team"
+msgstr "Équipe"
+
+#: src/Modules/MediaLibrary/Settings.php:386
+msgid "Hide Feedback and review requests"
+msgstr "Masquer le bouton de retour et les demandes d’avis"
+
+#: src/Modules/MediaLibrary/Settings.php:387
+msgid ""
+"No Feedback button, review link or review request, for anyone on this site."
+msgstr ""
+"Ni bouton « Faire un retour », ni lien ou demande d’avis, pour personne sur "
+"ce site."
+
+#: src/Modules/MediaLibrary/Settings.php:395
+msgid "Keep Double Youpï settings to myself"
+msgstr "Garder les réglages de Double Youpï pour moi"
+
+#: src/Modules/MediaLibrary/Settings.php:396
+msgid ""
+"Other administrators keep the media library and its folders, without these "
+"settings, Feedback or the review link. Locked out? Add "
+"define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); to wp-config.php."
+msgstr ""
+"Les autres comptes administrateur gardent la médiathèque et ses dossiers, "
+"sans ces réglages, ni bouton de retour, ni lien d’avis. Accès perdu ? "
+"Ajoutez define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); à wp-config.php."
+
+#: src/Modules/MediaLibrary/Settings.php:399
+msgid ""
+"Unlocked in wp-config.php: every administrator can change these settings."
+msgstr ""
+"Déverrouillé dans wp-config.php : tout compte administrateur peut modifier "
+"ces réglages."
+
+#: src/Modules/MediaLibrary/Settings.php:408
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
 
-#: src/Modules/MediaLibrary/Settings.php:385
+#: src/Modules/MediaLibrary/Settings.php:444
 msgid ""
 "Double Youpï Refined Admin Dashboard includes this media library, and "
 "redraws the rest of the admin the same way. It is free too."
@@ -1679,15 +1717,15 @@ msgstr ""
 "Double Youpï Refined Admin Dashboard inclut cette médiathèque, et redessine "
 "le reste de l’administration de la même façon. Elle est gratuite elle aussi."
 
-#: src/Modules/MediaLibrary/Settings.php:386
+#: src/Modules/MediaLibrary/Settings.php:445
 msgid "Read about it"
 msgstr "En savoir plus"
 
-#: src/Modules/MediaLibrary/Settings.php:436
+#: src/Modules/MediaLibrary/Settings.php:495
 msgid "Conversion quality"
 msgstr "Qualité de conversion"
 
-#: src/Modules/MediaLibrary/Settings.php:437
+#: src/Modules/MediaLibrary/Settings.php:496
 msgid "Higher means better quality and larger files. Default 82."
 msgstr ""
 "Plus la valeur est élevée, meilleure est la qualité et plus les fichiers "

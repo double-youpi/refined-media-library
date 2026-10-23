@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace DoubleYoupi\Core;
 
+use DoubleYoupi\Admin\Access;
 use DoubleYoupi\Admin\AdminMenu;
 use DoubleYoupi\Admin\DyShell;
 use DoubleYoupi\Admin\Feedback;
@@ -83,6 +84,9 @@ final class Plugin {
 
 		// Boot all modules registered via ModuleRegistry.
 		ModuleRegistry::boot();
+
+		// Who may change Double Youpï (doubleyoupi_manage), before any menu asks.
+		Access::register();
 
 		// Double Youpi menu — brand consistency preserved even in solo builds.
 		AdminMenu::register();

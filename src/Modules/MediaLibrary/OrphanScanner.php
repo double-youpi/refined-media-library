@@ -2,6 +2,7 @@
 namespace DoubleYoupi\Modules\MediaLibrary;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -285,7 +286,7 @@ class OrphanScanner extends AbstractModule {
 	 */
 	public function ajax_restore(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_restore', 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
@@ -326,7 +327,7 @@ class OrphanScanner extends AbstractModule {
 	 */
 	public function ajax_purge(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_purge', 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
@@ -746,7 +747,7 @@ class OrphanScanner extends AbstractModule {
 
 	public function ajax_scan(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_scan', 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 
@@ -780,7 +781,7 @@ class OrphanScanner extends AbstractModule {
 
 	public function ajax_delete(): void {
 		check_ajax_referer( 'doubleyoupi_ml_orphan_delete', 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 

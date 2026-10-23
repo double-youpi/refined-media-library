@@ -24,8 +24,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 		4 => 'doubleyoupi_ml_avif_upload',
 		5 => 'doubleyoupi_ml_image_quality',
 		6 => 'doubleyoupi_ml_duplicates',
-		7 => 'doubleyoupi_refined_media_library_installed_version',
-		8 => 'doubleyoupi_purge_on_uninstall',
+		7 => 'doubleyoupi_hide_feedback',
+		8 => 'doubleyoupi_settings_owner',
+		9 => 'doubleyoupi_refined_media_library_installed_version',
+		10 => 'doubleyoupi_purge_on_uninstall',
 );
 	foreach ( $options as $option ) {
 		delete_option( $option );

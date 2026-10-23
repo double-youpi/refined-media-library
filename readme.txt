@@ -4,7 +4,7 @@ Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.17
+Stable tag: 0.3.19
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,12 @@ Convert images to **WebP and/or AVIF** the moment they land, after a quick check
 **No per-image settings**
 
 That's the whole point. A few toggles in one place, sensible defaults everywhere else.
+
+**For teams and client sites**
+
+* Editors and administrators manage folders and collections; anyone who can upload files their media.
+* Keep the settings to yourself, and hide the Feedback button and the review link in one click.
+* Folders, collections and WebP/AVIF copies are available to headless fronts through WPGraphQL and the REST API.
 
 **Free, and built to stay that way**
 
@@ -122,6 +128,14 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.19 =
+* Change, for sites already in use: creating, renaming, moving and deleting folders and collections is now for editors and administrators. Authors and contributors can no longer change the folder tree; anyone who can upload still files media into folders and collections. The doubleyoupi_filter_manage_folders_cap filter sets another capability.
+* New: keep the media library settings to yourself (Settings, Team). Other administrators keep the media library and its folders, without these settings, the Feedback button or the review link. Locked out? Add define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); to wp-config.php.
+* The settings group "Feedback" is now called "Team".
+
+= 0.3.18 =
+* New: hide the Feedback button and the review link in one click (Settings, Feedback). Handy on sites you hand over to clients.
 
 = 0.3.17 =
 * New: folders, collections and the WebP/AVIF copies are available to headless fronts through WPGraphQL and the REST API. Folder names can be kept private with the doubleyoupi_filter_media_folders_public filter.
@@ -257,6 +271,12 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.19 =
+Folders and collections are now managed by editors and administrators; authors still file their media. Settings can be kept to one account.
+
+= 0.3.18 =
+One switch hides the Feedback button and the review link for the whole site.
 
 = 0.3.17 =
 Folders, collections and WebP/AVIF copies reach headless fronts through WPGraphQL and the REST API.

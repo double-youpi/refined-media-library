@@ -43,7 +43,8 @@ class CollectionManager extends AbstractModule {
 	}
 
 	public function register_rest_routes(): void {
-		$perm = static fn() => current_user_can( 'upload_files' );
+		$perm   = static fn() => current_user_can( 'upload_files' );
+		$manage = static fn() => FolderManager::can_manage_folders();
 
 		register_rest_route( self::REST_NS, '/media-collections', [
 			[
@@ -54,7 +55,7 @@ class CollectionManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => [ $this, 'rest_create_collection' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 				'args'                => [
 					'name' => [ 'type' => 'string', 'required' => true, 'sanitize_callback' => 'sanitize_text_field' ],
 				],
@@ -65,7 +66,7 @@ class CollectionManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::EDITABLE,
 				'callback'            => [ $this, 'rest_update_collection' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 				'args'                => [
 					'name' => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
 				],
@@ -73,7 +74,7 @@ class CollectionManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::DELETABLE,
 				'callback'            => [ $this, 'rest_delete_collection' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 			],
 		] );
 

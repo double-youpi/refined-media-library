@@ -2,6 +2,7 @@
 namespace DoubleYoupi\Modules\MediaLibrary\Integrations;
 
 use DoubleYoupi\Modules\MediaLibrary\CollectionTaxonomy;
+use DoubleYoupi\Modules\MediaLibrary\FolderManager;
 use DoubleYoupi\Modules\MediaLibrary\FolderService;
 use DoubleYoupi\Modules\MediaLibrary\FolderTaxonomy;
 use DoubleYoupi\Modules\MediaLibrary\MediaManagerConflict;
@@ -56,7 +57,7 @@ final class BricksFolderProvider implements \Bricks\Media_Folder_Provider, \Bric
 
 	public function can_manage() {
 		// Same gate as the media library panel's folder routes.
-		return $this->is_available();
+		return $this->is_available() && FolderManager::can_manage_folders();
 	}
 
 	public function can_assign() {

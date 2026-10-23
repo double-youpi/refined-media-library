@@ -27,6 +27,11 @@
 	var foldersEnabled     = doubleyoupiMediaFolders.foldersEnabled !== '0';
 	var collectionsEnabled = doubleyoupiMediaFolders.collectionsEnabled !== '0';
 	var settingsUrl        = doubleyoupiMediaFolders.settingsUrl || '';
+	// Creating, renaming, moving and deleting folders and collections is for
+	// editors and administrators (23/10/2026); filing files stays open to
+	// anyone who can upload. The server refuses anyway: this only avoids
+	// offering doors that answer 403.
+	var canManage          = doubleyoupiMediaFolders.canManage !== '0';
 	var ajaxUrl            = doubleyoupiMediaFolders.ajaxUrl || '';
 	var enableNonce        = doubleyoupiMediaFolders.enableNonce || '';
 
@@ -1229,10 +1234,10 @@
 	 */
 	function buildPanel() {
 		// "+" add button only rendered when the section is enabled.
-		var addFolderBtn = foldersEnabled
+		var addFolderBtn = foldersEnabled && canManage
 			? '<button type="button" id="dy-add-folder-btn" title="' + esc( i18n.newFolder ) + '">+</button>'
 			: '';
-		var addCollectionBtn = collectionsEnabled
+		var addCollectionBtn = collectionsEnabled && canManage
 			? '<button type="button" id="dy-add-collection-btn" title="' + esc( i18n.newCollection ) + '">+</button>'
 			: '';
 		// Initial content: "disabled" message when the section is off (the
@@ -1439,9 +1444,9 @@
 					'<span class="dy-folder-item__icon dashicons dashicons-category"></span>' +
 					'<span class="dy-folder-item__name">' + esc( node.name ) + '</span>' +
 					'<span class="dy-folder-item__count">' + node.count + '</span>' +
-					'<button class="dy-item-menu-btn dy-folder-menu-btn" type="button" aria-haspopup="true" aria-label="' + esc( i18n.moreActions ) + '">' +
+					( canManage ? '<button class="dy-item-menu-btn dy-folder-menu-btn" type="button" aria-haspopup="true" aria-label="' + esc( i18n.moreActions ) + '">' +
 						'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>' +
-					'</button>' +
+					'</button>' : '' ) +
 				'</div>'
 			);
 
@@ -1610,12 +1615,12 @@
 	}
 
 	$( document ).on( 'mouseenter', '#dy-folder-tree .dy-folder-item', function () {
-		if ( ! this.getAttribute( 'draggable' ) ) { this.setAttribute( 'draggable', 'true' ); }
+		if ( canManage && ! this.getAttribute( 'draggable' ) ) { this.setAttribute( 'draggable', 'true' ); }
 	} );
 
 	$( document ).on( 'dragstart', '#dy-folder-tree .dy-folder-item', function ( e ) {
 		var id = idOf( this );
-		if ( ! id ) { return; }
+		if ( ! id || ! canManage ) { return; }
 		folderDrag = { id: id, el: this };
 		var dt = e.originalEvent.dataTransfer;
 		// Custom type (not "Files") so WP's uploader overlay doesn't treat this as
@@ -1689,6 +1694,7 @@
 	// parentId optional — defaults to the currently open folder (used by the
 	// context menu's "New subfolder", which passes an explicit parent).
 	function onAddFolder( parentId ) {
+		if ( ! canManage ) { return; }
 		var parent = ( typeof parentId === 'number' )
 			? parentId
 			: ( dyState.currentFolder > 0 ? dyState.currentFolder : 0 );
@@ -1806,6 +1812,7 @@
 	}
 
 	function openFolderMenu( id, name, x, y ) {
+		if ( ! canManage ) { return; }
 		openContextMenu( [
 			{ label: i18n.newSubfolder, icon: 'plus-alt2', onClick: function () { onAddFolder( id ); } },
 			{ label: i18n.rename, icon: 'edit', onClick: function () { renameFolder( id, name ); } },
@@ -1859,6 +1866,7 @@
 	}
 
 	function openCollectionMenu( id, name, x, y ) {
+		if ( ! canManage ) { return; }
 		openContextMenu( [
 			{ label: i18n.rename, icon: 'edit', onClick: function () { renameCollection( id, name ); } },
 			{ label: i18n.deleteCollection, icon: 'trash', danger: true, onClick: function () { deleteCollection( id, name ); } }
@@ -1910,9 +1918,9 @@
 					'<span class="dy-collection-item__icon dashicons dashicons-star-filled"></span>' +
 					'<span class="dy-collection-item__name">' + esc( col.name ) + '</span>' +
 					'<span class="dy-collection-item__count">' + col.count + '</span>' +
-					'<button class="dy-item-menu-btn dy-collection-menu-btn" type="button" aria-haspopup="true" aria-label="' + esc( i18n.moreActions ) + '">' +
+					( canManage ? '<button class="dy-item-menu-btn dy-collection-menu-btn" type="button" aria-haspopup="true" aria-label="' + esc( i18n.moreActions ) + '">' +
 						'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>' +
-					'</button>' +
+					'</button>' : '' ) +
 				'</div>'
 			);
 			makeCollectionDropTarget( $item, col.id );
@@ -1954,6 +1962,7 @@
 	// ── Collection CRUD ───────────────────────────────────────────────────────
 
 	function onAddCollection() {
+		if ( ! canManage ) { return; }
 		window.doubleyoupiDialog.prompt( {
 			title:        i18n.newCollection || 'New collection',
 			label:        i18n.collectionName,

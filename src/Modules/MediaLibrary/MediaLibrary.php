@@ -6,6 +6,7 @@ use DoubleYoupi\Core\AbstractModule;
 use DoubleYoupi\Core\Build;
 use DoubleYoupi\Modules\MediaLibrary\Migration\MigrationManager;
 use DoubleYoupi\Modules\MediaLibrary\Migration\SourceDetector;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -197,7 +198,7 @@ class MediaLibrary extends AbstractModule {
 	 * Uses native WP tab markup (nav-tab-wrapper / nav-tab / nav-tab-active).
 	 */
 	public function render_page(): void {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			return;
 		}
 

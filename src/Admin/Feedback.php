@@ -22,8 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * listed in the dialog and can be previewed as JSON before sending. The
  * site address is never included unless the user asks for a reply.
  *
- * No setting: the button shows for users who can manage the site (or hold
- * the `doubleyoupi_send_feedback` capability). A host can turn it off with
+ * The button shows for users who can manage the site (or hold the
+ * `doubleyoupi_send_feedback` capability). One site setting turns it off
+ * together with the review link and the review request (OPTION_HIDE, asked
+ * by agencies on 23/10/2026); a host can also do it in code with
  * `define( 'DOUBLEYOUPI_FEEDBACK_ENDPOINT', '' )` or the
  * `doubleyoupi_filter_feedback_enabled` filter.
  *
@@ -37,6 +39,9 @@ final class Feedback {
 	public const NODE_ID          = 'doubleyoupi-feedback';
 	public const DEFAULT_ENDPOINT = 'https://doubleyoupi.com/api/v1/feedback';
 	public const PAYLOAD_VERSION  = 1;
+
+	/** Site setting: hides the button, the review link and the review request. */
+	public const OPTION_HIDE = 'doubleyoupi_hide_feedback';
 
 	private const MAX_MESSAGE     = 5000;
 	private const MAX_SCREENSHOT  = 1500000; // bytes of data URL (~1.1 MB of image)
@@ -70,11 +75,33 @@ final class Feedback {
 	}
 
 	public static function user_can(): bool {
-		return current_user_can( self::CAPABILITY ) || current_user_can( 'manage_options' );
+		return current_user_can( self::CAPABILITY ) || current_user_can( Access::CAP );
+	}
+
+	/** Whether the site setting hides Feedback and the review requests. */
+	public static function hidden(): bool {
+		return (bool) get_option( self::OPTION_HIDE, false );
+	}
+
+	/**
+	 * Whether the review request may appear (ReviewAsk): off with the site
+	 * setting, or in code with the `doubleyoupi_filter_review_ask_enabled`
+	 * filter.
+	 */
+	public static function review_ask_enabled(): bool {
+		if ( self::hidden() ) {
+			return false;
+		}
+		/**
+		 * Filter: doubleyoupi_filter_review_ask_enabled
+		 *
+		 * @param bool $enabled Whether the review request may appear.
+		 */
+		return (bool) apply_filters( 'doubleyoupi_filter_review_ask_enabled', true );
 	}
 
 	public static function is_available(): bool {
-		if ( '' === self::endpoint() || ! self::user_can() ) {
+		if ( self::hidden() || '' === self::endpoint() || ! self::user_can() ) {
 			return false;
 		}
 		global $pagenow;
@@ -133,7 +160,7 @@ final class Feedback {
 	 * `add_filter( 'doubleyoupi_filter_review_link_enabled', '__return_false' )`.
 	 */
 	public static function review_link_available(): bool {
-		if ( ! self::is_available() || ! current_user_can( 'manage_options' ) || '' === self::review_url() ) {
+		if ( ! self::is_available() || ! current_user_can( Access::CAP ) || '' === self::review_url() ) {
 			return false;
 		}
 		/**
@@ -418,7 +445,7 @@ final class Feedback {
 	}
 
 	public static function rest_permission(): bool {
-		return is_user_logged_in() && self::user_can() && '' !== self::endpoint();
+		return is_user_logged_in() && self::user_can() && ! self::hidden() && '' !== self::endpoint();
 	}
 
 	public static function handle( \WP_REST_Request $request ): \WP_REST_Response {

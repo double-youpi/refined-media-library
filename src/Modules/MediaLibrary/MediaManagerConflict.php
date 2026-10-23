@@ -3,6 +3,7 @@ namespace DoubleYoupi\Modules\MediaLibrary;
 
 use DoubleYoupi\Core\AbstractModule;
 use DoubleYoupi\Admin\Kses;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -222,7 +223,7 @@ class MediaManagerConflict extends AbstractModule {
 			return;
 		}
 		check_admin_referer( self::SWITCH_ACTION );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			return;
 		}
 		$target = sanitize_key( wp_unslash( (string) $_GET['doubleyoupi_ml_set_owner'] ) );
@@ -244,7 +245,7 @@ class MediaManagerConflict extends AbstractModule {
 		if ( ! $screen || 'upload' !== $screen->id ) {
 			return;
 		}
-		if ( ! $this->has_conflict() || ! current_user_can( 'manage_options' ) ) {
+		if ( ! $this->has_conflict() || ! current_user_can( Access::CAP ) ) {
 			return;
 		}
 

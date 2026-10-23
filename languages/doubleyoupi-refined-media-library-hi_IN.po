@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
+"POT-Creation-Date: 2026-10-23T17:20:04+00:00\n"
 "Language: hi_IN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -66,22 +66,22 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:210
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/Feedback.php:188 src/Admin/Feedback.php:216
 #: src/Admin/OverviewPage.php:817
 msgid "Leave a review"
 msgstr "समीक्षा दें"
 
-#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
+#: src/Admin/Feedback.php:193 src/Admin/Feedback.php:210
 msgctxt "admin bar button"
 msgid "Feedback"
 msgstr "फ़ीडबैक"
 
 #. translators: %s = label of the Feedback button (e.g. "Feedback")
-#: src/Admin/Feedback.php:182
+#: src/Admin/Feedback.php:209
 #, php-format
 msgid ""
 "If you like the plugin, two lines on WordPress.org help it a lot. If "
@@ -90,113 +90,113 @@ msgstr ""
 "अगर आपको प्लगइन पसंद है, तो WordPress.org पर दो पंक्तियाँ इसकी बहुत मदद करती हैं। अगर "
 "कुछ गड़बड़ है, तो इसके बजाय “%s” से बताइए: इसे ठीक करना जल्दी होता है।"
 
-#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
-#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
+#: src/Admin/Feedback.php:217 src/Admin/Feedback.php:225
+#: src/Admin/Feedback.php:350 src/Admin/Feedback.php:411
 #: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "बंद करें"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "Write a review on WordPress.org"
 msgstr "WordPress.org पर समीक्षा लिखें"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "(opens in a new tab)"
 msgstr "(नए टैब में खुलता है)"
 
 #. translators: %s = product name (e.g. "Refined Admin Dashboard")
-#: src/Admin/Feedback.php:211
+#: src/Admin/Feedback.php:238
 #, php-format
 msgid "Your feedback on %s"
 msgstr "%s पर आपका फ़ीडबैक"
 
-#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
+#: src/Admin/Feedback.php:317 src/Admin/Feedback.php:405
 msgid "Send"
 msgstr "भेजें"
 
-#: src/Admin/Feedback.php:291
+#: src/Admin/Feedback.php:318
 msgid "Sending…"
 msgstr "भेजा जा रहा है…"
 
-#: src/Admin/Feedback.php:292
+#: src/Admin/Feedback.php:319
 msgid "Try again"
 msgstr "फिर से कोशिश करें"
 
 #. translators: %s = name of the theme
-#: src/Admin/Feedback.php:294
+#: src/Admin/Feedback.php:321
 #, php-format
 msgid "%s (theme)"
 msgstr "%s (थीम)"
 
-#: src/Admin/Feedback.php:295
+#: src/Admin/Feedback.php:322
 msgid "This image is still too large after compression (1.5 MB maximum)."
 msgstr "संपीड़न के बाद भी यह छवि बहुत बड़ी है (अधिकतम 1.5 MB)।"
 
-#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:477
 msgid "Please use a PNG, JPEG or WebP image."
 msgstr "कृपया PNG, JPEG या WebP छवि का उपयोग करें।"
 
-#: src/Admin/Feedback.php:297
+#: src/Admin/Feedback.php:324
 msgid "Your report could not be sent. Check your connection and try again."
 msgstr "आपकी रिपोर्ट नहीं भेजी जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।"
 
 #. translators: %s = reference returned by the feedback service
-#: src/Admin/Feedback.php:299
+#: src/Admin/Feedback.php:326
 #, php-format
 msgid "Reference %s."
 msgstr "संदर्भ %s।"
 
-#: src/Admin/Feedback.php:300
+#: src/Admin/Feedback.php:327
 msgid "(anonymous site identifier)"
 msgstr "(साइट का गुमनाम पहचानकर्ता)"
 
-#: src/Admin/Feedback.php:329
+#: src/Admin/Feedback.php:356
 msgid "This screen"
 msgstr "यह स्क्रीन"
 
-#: src/Admin/Feedback.php:333
+#: src/Admin/Feedback.php:360
 msgid "What kind of feedback"
 msgstr "किस प्रकार का फ़ीडबैक"
 
-#: src/Admin/Feedback.php:334
+#: src/Admin/Feedback.php:361
 msgid "Something is wrong"
 msgstr "कुछ गड़बड़ है"
 
-#: src/Admin/Feedback.php:335
+#: src/Admin/Feedback.php:362
 msgid "An idea"
 msgstr "एक विचार"
 
-#: src/Admin/Feedback.php:336
+#: src/Admin/Feedback.php:363
 msgid "Something else"
 msgstr "कुछ और"
 
-#: src/Admin/Feedback.php:339
+#: src/Admin/Feedback.php:366
 msgid "Your message"
 msgstr "आपका संदेश"
 
-#: src/Admin/Feedback.php:340
+#: src/Admin/Feedback.php:367
 msgid "What happened, and what you expected."
 msgstr "क्या हुआ, और आप क्या उम्मीद कर रहे थे।"
 
-#: src/Admin/Feedback.php:347
+#: src/Admin/Feedback.php:374
 msgid "Attach a screenshot"
 msgstr "स्क्रीनशॉट संलग्न करें"
 
-#: src/Admin/Feedback.php:349
+#: src/Admin/Feedback.php:376
 msgid "or paste an image here (Ctrl/Cmd + V)"
 msgstr "या यहाँ एक छवि पेस्ट करें (Ctrl/Cmd + V)"
 
-#: src/Admin/Feedback.php:352
+#: src/Admin/Feedback.php:379
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Remove"
 msgstr "हटाएँ"
 
-#: src/Admin/Feedback.php:357
+#: src/Admin/Feedback.php:384
 msgid "You may write back to me at"
 msgstr "आप मुझे यहाँ जवाब दे सकते हैं"
 
-#: src/Admin/Feedback.php:362
+#: src/Admin/Feedback.php:389
 msgid ""
 "I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
@@ -208,46 +208,46 @@ msgstr ""
 "(WordPress, PHP, थीम, यह प्लगइन)। साइट की कोई सामग्री नहीं भेजी जाती, और जब तक मैं "
 "उत्तर न माँगूँ, साइट का पता भी नहीं।"
 
-#: src/Admin/Feedback.php:365
+#: src/Admin/Feedback.php:392
 msgid "See exactly what will be sent"
 msgstr "ठीक-ठीक देखें कि क्या भेजा जाएगा"
 
 #. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
-#: src/Admin/Feedback.php:374
+#: src/Admin/Feedback.php:401
 #, php-format
 msgid "Seen with %s"
 msgstr "%s के साथ देखा गया"
 
-#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Admin/Feedback.php:404 src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: src/Admin/Feedback.php:382
+#: src/Admin/Feedback.php:409
 msgid "Thank you, it is on its way."
 msgstr "धन्यवाद, यह भेजा जा रहा है।"
 
-#: src/Admin/Feedback.php:426
+#: src/Admin/Feedback.php:453
 msgid "Please confirm you agree to send this report."
 msgstr "कृपया पुष्टि करें कि आप यह रिपोर्ट भेजने के लिए सहमत हैं।"
 
-#: src/Admin/Feedback.php:434
+#: src/Admin/Feedback.php:461
 msgid "Please write a few words first."
 msgstr "पहले कुछ शब्द लिखें।"
 
-#: src/Admin/Feedback.php:441
+#: src/Admin/Feedback.php:468
 msgid "This email address does not look right."
 msgstr "यह ईमेल पता सही नहीं लगता।"
 
-#: src/Admin/Feedback.php:447
+#: src/Admin/Feedback.php:474
 msgid "The screenshot is too large."
 msgstr "स्क्रीनशॉट बहुत बड़ा है।"
 
-#: src/Admin/Feedback.php:459
+#: src/Admin/Feedback.php:486
 msgid "Too many reports in a short time. Please try again in an hour."
 msgstr "थोड़े समय में बहुत सारी रिपोर्ट। कृपया एक घंटे बाद फिर से कोशिश करें।"
 
-#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
+#: src/Admin/Feedback.php:547 src/Admin/Feedback.php:551
 msgid "The feedback service did not answer. Please try again later."
 msgstr "फ़ीडबैक सेवा ने जवाब नहीं दिया। कृपया बाद में फिर से कोशिश करें।"
 
@@ -395,8 +395,8 @@ msgstr "सुइट"
 
 #: src/Admin/OverviewPage.php:184 src/Admin/OverviewPage.php:224
 #: src/Modules/MediaLibrary/FolderService.php:252
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:159
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:187
 msgid "Access denied."
 msgstr "पहुँच अस्वीकृत।"
 
@@ -443,8 +443,8 @@ msgstr "मॉड्यूल सहेजें"
 msgid "Coming soon"
 msgstr "जल्द ही"
 
-#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:423
-#: src/Modules/MediaLibrary/Settings.php:450
+#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:482
+#: src/Modules/MediaLibrary/Settings.php:509
 msgid "Saved"
 msgstr "सहेजा गया"
 
@@ -561,8 +561,8 @@ msgstr ""
 "WordPress एडमिन का पूरा पुनर्विचार: स्मार्ट डैशबोर्ड, फिर से डिज़ाइन किया गया नेविगेशन, "
 "नई कॉन्टेंट टेबल, डार्क मोड और आपकी ब्रांडिंग।"
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
-#: src/Modules/MediaLibrary/MediaLibrary.php:221
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:222
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -574,16 +574,16 @@ msgstr ""
 "फ़ोल्डर और संग्रह, ड्रैग एंड ड्रॉप, त्वरित पूर्वावलोकन, डुप्लिकेट और अनाथ फ़ाइलों की सफ़ाई, "
 "और अपलोड पर WebP/AVIF रूपांतरण।"
 
-#: src/Modules/MediaLibrary/CollectionManager.php:169
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
+#: src/Modules/MediaLibrary/CollectionManager.php:170
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:254
 msgid "Could not delete collection."
 msgstr "संग्रह नहीं हटाया जा सका।"
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
-#: src/Modules/MediaLibrary/Settings.php:274
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:77
+#: src/Modules/MediaLibrary/Settings.php:305
 msgid "Collections"
 msgstr "संग्रह"
 
@@ -615,21 +615,21 @@ msgstr "डुप्लिकेट"
 msgid "View original"
 msgstr "मूल देखें"
 
-#: src/Modules/MediaLibrary/FolderManager.php:118
+#: src/Modules/MediaLibrary/FolderManager.php:119
 msgid "Move to folder…"
 msgstr "फ़ोल्डर में स्थानांतरित करें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:121
+#: src/Modules/MediaLibrary/FolderManager.php:122
 msgid "Add to collection…"
 msgstr "संग्रह में जोड़ें…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:604
-#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderManager.php:629
+#: src/Modules/MediaLibrary/FolderManager.php:665
 #: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr "किसी फ़ोल्डर को उसी में या उसके किसी सबफ़ोल्डर में नहीं ले जाया जा सकता।"
 
-#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderManager.php:690
 #: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
 msgstr "फ़ोल्डर नहीं हटाया जा सका।"
@@ -637,7 +637,7 @@ msgstr "फ़ोल्डर नहीं हटाया जा सका।"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:266
+#: src/Modules/MediaLibrary/Settings.php:297
 msgid "Folders"
 msgstr "फ़ोल्डर"
 
@@ -675,12 +675,12 @@ msgstr "यह फ़ोल्डर हटाएँ? मीडिया फ़�
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:162
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:193
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:195
 msgid "No folder"
 msgstr "कोई फ़ोल्डर नहीं"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:45
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:192
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:194
 msgid "All folders"
 msgstr "सभी फ़ोल्डर"
 
@@ -1178,16 +1178,16 @@ msgstr "अधिक फ़ील्ड"
 #: src/Modules/MediaLibrary/FolderService.php:199
 #: src/Modules/MediaLibrary/FolderService.php:235
 #: src/Modules/MediaLibrary/FolderService.php:255
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:259
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:271
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:286
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:393
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
 msgid "Something went wrong. Please try again."
 msgstr "कुछ गड़बड़ हो गई। कृपया पुनः प्रयास करें।"
 
 #: src/Modules/MediaLibrary/FolderService.php:278
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:413
 msgid "A folder or collection with this name already exists here."
 msgstr "यहाँ इस नाम का फ़ोल्डर या संग्रह पहले से मौजूद है।"
 
@@ -1207,7 +1207,7 @@ msgstr "फ़ोल्डर अपडेट करें"
 msgid "No folders found"
 msgstr "कोई फ़ोल्डर नहीं मिला"
 
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:406
 msgid ""
 "Collections are kept apart from folders: this change is not possible here."
 msgstr "संग्रह फ़ोल्डरों से अलग रहते हैं, इसलिए यह बदलाव यहाँ संभव नहीं है।"
@@ -1216,7 +1216,7 @@ msgstr "संग्रह फ़ोल्डरों से अलग रह�
 msgid "Media folders and collections are private on this site."
 msgstr "इस साइट पर मीडिया लाइब्रेरी के फ़ोल्डर और संग्रह निजी हैं।"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:75
+#: src/Modules/MediaLibrary/MediaLibrary.php:76
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
 "folders and your collections are kept, and come back if you turn it on again."
@@ -1224,7 +1224,7 @@ msgstr ""
 "मीडिया लाइब्रेरी बंद करने पर मीडिया स्क्रीन फिर से WordPress की हो जाती है। आपके "
 "फ़ोल्डर और संग्रह सुरक्षित रहते हैं और दोबारा चालू करने पर लौट आते हैं।"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:78
+#: src/Modules/MediaLibrary/MediaLibrary.php:79
 msgid ""
 "Double Youpï Refined Media Library is installed and standing aside: "
 "reactivate it if you want the media library without the rest."
@@ -1232,46 +1232,46 @@ msgstr ""
 "Double Youpï Refined Media Library संस्थापित है और पीछे हट गई है: यदि आप बाकी के "
 "बिना केवल मीडिया लाइब्रेरी चाहते हैं तो इसे फिर से सक्रिय करें।"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:142
 msgid "Media Library"
 msgstr "मीडिया लाइब्रेरी"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:212
+#: src/Modules/MediaLibrary/MediaLibrary.php:213
 msgid "Unused media"
 msgstr "अप्रयुक्त मीडिया"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:217
+#: src/Modules/MediaLibrary/MediaLibrary.php:218
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "आयात करें"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:258
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr ""
 "Refined Media Library मीडिया लाइब्रेरी को manage कर रहा है। %s भी active है।"
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:261
 #, php-format
 msgid "Let %s manage it"
 msgstr "%s को manage करने दें"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
 msgstr ""
 "%s मीडिया लाइब्रेरी को manage कर रहा है। Refined Media Library पीछे हट गया है।"
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
 msgid "Use Refined Media Library"
 msgstr "Refined Media Library इस्तेमाल करें"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:287
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:288
 #, php-format
 msgid "Import folders from %s"
 msgstr "%s से फ़ोल्डर आयात करें"
@@ -1355,7 +1355,7 @@ msgstr "पूर्ववत किया जा रहा है…"
 msgid "%d imported folders removed."
 msgstr "%d आयातित फ़ोल्डर हटाए गए।"
 
-#: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
+#: src/Modules/MediaLibrary/Migration/MigrationManager.php:469
 msgid ""
 "Import folders and collections from another media library plugin. Your media "
 "stay in place. This only re-creates the folder structure inside Refined "
@@ -1560,89 +1560,121 @@ msgstr "स्थायी रूप से हटाएँ"
 msgid "Delete selected media"
 msgstr "चयनित मीडिया हटाएँ"
 
-#: src/Modules/MediaLibrary/Settings.php:242
+#: src/Modules/MediaLibrary/Settings.php:273
 msgid "Optimization"
 msgstr "ऑप्टिमाइज़ेशन"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:249
+#: src/Modules/MediaLibrary/Settings.php:280
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "%s द्वारा संचालित। सेटिंग्स वहीं प्रबंधित होती हैं।"
 
-#: src/Modules/MediaLibrary/Settings.php:251
+#: src/Modules/MediaLibrary/Settings.php:282
 msgid "This server cannot generate WebP images."
 msgstr "यह सर्वर WebP छवियाँ नहीं बना सकता।"
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "This server cannot generate AVIF images."
 msgstr "यह सर्वर AVIF छवियाँ नहीं बना सकता।"
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "Organisation"
 msgstr "व्यवस्था"
 
-#: src/Modules/MediaLibrary/Settings.php:267
+#: src/Modules/MediaLibrary/Settings.php:298
 msgid "Organise the media library into folders"
 msgstr "मीडिया लाइब्रेरी को फ़ोल्डर में व्यवस्थित करें"
 
-#: src/Modules/MediaLibrary/Settings.php:275
+#: src/Modules/MediaLibrary/Settings.php:306
 msgid "Group media into cross-folder collections"
 msgstr "मीडिया को फ़ोल्डर-पार संग्रहों में समूहित करें"
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Auto alt & title"
 msgstr "स्वचालित alt और शीर्षक"
 
-#: src/Modules/MediaLibrary/Settings.php:283
+#: src/Modules/MediaLibrary/Settings.php:314
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr "अपलोड पर फ़ाइलनाम से alt और शीर्षक भरें (यदि रिक्त)"
 
-#: src/Modules/MediaLibrary/Settings.php:292
+#: src/Modules/MediaLibrary/Settings.php:323
 msgid "Duplicate badge"
 msgstr "डुप्लिकेट बैज"
 
-#: src/Modules/MediaLibrary/Settings.php:293
+#: src/Modules/MediaLibrary/Settings.php:324
 msgid "Mark files already in the library, by content"
 msgstr "पहले से मौजूद फ़ाइलों को उनकी सामग्री से चिह्नित करें"
 
-#: src/Modules/MediaLibrary/Settings.php:301
+#: src/Modules/MediaLibrary/Settings.php:332
 msgid "Conversion"
 msgstr "रूपांतरण"
 
-#: src/Modules/MediaLibrary/Settings.php:308
+#: src/Modules/MediaLibrary/Settings.php:339
 msgid "WebP on upload"
 msgstr "अपलोड पर WebP"
 
-#: src/Modules/MediaLibrary/Settings.php:309
+#: src/Modules/MediaLibrary/Settings.php:340
 msgid "Generate a WebP version of each image on upload"
 msgstr "अपलोड पर हर छवि का WebP संस्करण बनाएँ"
 
-#: src/Modules/MediaLibrary/Settings.php:318
+#: src/Modules/MediaLibrary/Settings.php:349
 msgid "AVIF on upload"
 msgstr "अपलोड पर AVIF"
 
-#: src/Modules/MediaLibrary/Settings.php:319
+#: src/Modules/MediaLibrary/Settings.php:350
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "एक AVIF संस्करण भी बनाएँ (Imagick आवश्यक)"
 
-#: src/Modules/MediaLibrary/Settings.php:331
+#: src/Modules/MediaLibrary/Settings.php:362
 msgid "Appearance"
 msgstr "दिखावट"
 
-#: src/Modules/MediaLibrary/Settings.php:338
+#: src/Modules/MediaLibrary/Settings.php:369
 msgid "Light theme"
 msgstr "लाइट थीम"
 
-#: src/Modules/MediaLibrary/Settings.php:339
+#: src/Modules/MediaLibrary/Settings.php:370
 msgid "Show the media library on a light background"
 msgstr "मीडिया लाइब्रेरी को हल्की पृष्ठभूमि पर दिखाएँ"
 
-#: src/Modules/MediaLibrary/Settings.php:349
+#: src/Modules/MediaLibrary/Settings.php:379
+msgid "Team"
+msgstr "टीम"
+
+#: src/Modules/MediaLibrary/Settings.php:386
+msgid "Hide Feedback and review requests"
+msgstr "फ़ीडबैक बटन और समीक्षा अनुरोध छिपाएँ"
+
+#: src/Modules/MediaLibrary/Settings.php:387
+msgid ""
+"No Feedback button, review link or review request, for anyone on this site."
+msgstr "इस साइट पर किसी के लिए भी फ़ीडबैक बटन, समीक्षा लिंक या समीक्षा अनुरोध नहीं।"
+
+#: src/Modules/MediaLibrary/Settings.php:395
+msgid "Keep Double Youpï settings to myself"
+msgstr "Double Youpï की सेटिंग्स केवल मेरे लिए रखें"
+
+#: src/Modules/MediaLibrary/Settings.php:396
+msgid ""
+"Other administrators keep the media library and its folders, without these "
+"settings, Feedback or the review link. Locked out? Add "
+"define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); to wp-config.php."
+msgstr ""
+"अन्य व्यवस्थापक मीडिया लाइब्रेरी और उसके फ़ोल्डर रखते हैं, पर इन सेटिंग्स, फ़ीडबैक बटन या "
+"समीक्षा लिंक के बिना। पहुँच खो गई? wp-config.php में "
+"define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); जोड़ें।"
+
+#: src/Modules/MediaLibrary/Settings.php:399
+msgid ""
+"Unlocked in wp-config.php: every administrator can change these settings."
+msgstr "wp-config.php में अनलॉक: हर व्यवस्थापक ये सेटिंग्स बदल सकता है।"
+
+#: src/Modules/MediaLibrary/Settings.php:408
 msgid "Save changes"
 msgstr "परिवर्तन सहेजें"
 
-#: src/Modules/MediaLibrary/Settings.php:385
+#: src/Modules/MediaLibrary/Settings.php:444
 msgid ""
 "Double Youpï Refined Admin Dashboard includes this media library, and "
 "redraws the rest of the admin the same way. It is free too."
@@ -1650,14 +1682,14 @@ msgstr ""
 "Double Youpï Refined Admin Dashboard में यह मीडिया लाइब्रेरी शामिल है, और यह बाकी "
 "प्रशासन को भी उसी तरह नए सिरे से बनाता है। यह भी निःशुल्क है।"
 
-#: src/Modules/MediaLibrary/Settings.php:386
+#: src/Modules/MediaLibrary/Settings.php:445
 msgid "Read about it"
 msgstr "और जानें"
 
-#: src/Modules/MediaLibrary/Settings.php:436
+#: src/Modules/MediaLibrary/Settings.php:495
 msgid "Conversion quality"
 msgstr "रूपांतरण गुणवत्ता"
 
-#: src/Modules/MediaLibrary/Settings.php:437
+#: src/Modules/MediaLibrary/Settings.php:496
 msgid "Higher means better quality and larger files. Default 82."
 msgstr "अधिक = बेहतर गुणवत्ता और बड़ी फ़ाइलें। डिफ़ॉल्ट 82।"

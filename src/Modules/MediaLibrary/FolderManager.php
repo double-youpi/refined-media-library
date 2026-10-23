@@ -4,6 +4,7 @@ namespace DoubleYoupi\Modules\MediaLibrary;
 use DoubleYoupi\Core\Build;
 
 use DoubleYoupi\Core\AbstractModule;
+use DoubleYoupi\Admin\Access;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -237,9 +238,10 @@ class FolderManager extends AbstractModule {
 				// Empty for anyone who cannot open that page: the panel hides the
 				// link when there is no URL, rather than offering a door that
 				// answers 403. Authors and editors browse the library too.
-				'settingsUrl'        => current_user_can( 'manage_options' )
+				'settingsUrl'        => current_user_can( Access::CAP )
 					? admin_url( 'admin.php?page=doubleyoupi-media-library' )
 					: '',
+				'canManage'          => self::can_manage_folders() ? '1' : '0',
 				'currentUserId'      => get_current_user_id(),
 				// "Mine" filter button only makes sense when several people upload.
 				'mineFilter'         => $this->has_multiple_uploaders() ? '1' : '0',
@@ -276,7 +278,7 @@ class FolderManager extends AbstractModule {
 	 */
 	public function ajax_enable_feature(): void {
 		check_ajax_referer( 'doubleyoupi_ml_enable_feature', 'nonce' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Access::CAP ) ) {
 			wp_send_json_error( [ 'message' => 'forbidden' ], 403 );
 		}
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -391,8 +393,31 @@ class FolderManager extends AbstractModule {
 		], 200 );
 	}
 
+	/**
+	 * Who may create, rename, move, reorder and delete folders and
+	 * collections: editors and administrators (`edit_others_posts`), decided
+	 * on 23/10/2026. Filing files into them stays open to anyone who can
+	 * upload. Filter `doubleyoupi_filter_manage_folders_cap` to choose
+	 * another capability.
+	 */
+	public static function can_manage_folders(): bool {
+		return current_user_can( 'upload_files' ) && current_user_can( self::manage_folders_cap() );
+	}
+
+	/** The capability behind can_manage_folders(), also the taxonomies' manage/edit/delete terms. */
+	public static function manage_folders_cap(): string {
+		/**
+		 * Filter: doubleyoupi_filter_manage_folders_cap
+		 *
+		 * @param string $cap Capability required to manage folders and collections.
+		 */
+		$cap = (string) apply_filters( 'doubleyoupi_filter_manage_folders_cap', 'edit_others_posts' );
+		return '' !== $cap ? $cap : 'edit_others_posts';
+	}
+
 	public function register_rest_routes(): void {
-		$perm = static fn() => current_user_can( 'upload_files' );
+		$perm   = static fn() => current_user_can( 'upload_files' );
+		$manage = static fn() => self::can_manage_folders();
 
 		register_rest_route( self::REST_NS, '/media-folders', [
 			[
@@ -403,7 +428,7 @@ class FolderManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => [ $this, 'rest_create_folder' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 				'args'                => [
 					'name'      => [ 'type' => 'string', 'required' => true, 'sanitize_callback' => 'sanitize_text_field' ],
 					'parent_id' => [ 'type' => 'integer', 'default' => 0 ],
@@ -416,7 +441,7 @@ class FolderManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::EDITABLE,
 				'callback'            => [ $this, 'rest_update_folder' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 				'args'                => [
 					'name'      => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
 					'parent_id' => [ 'type' => 'integer' ],
@@ -426,7 +451,7 @@ class FolderManager extends AbstractModule {
 			[
 				'methods'             => \WP_REST_Server::DELETABLE,
 				'callback'            => [ $this, 'rest_delete_folder' ],
-				'permission_callback' => $perm,
+				'permission_callback' => $manage,
 			],
 		] );
 
@@ -446,7 +471,7 @@ class FolderManager extends AbstractModule {
 		register_rest_route( self::REST_NS, '/media-folders/reorder', [
 			'methods'             => \WP_REST_Server::CREATABLE,
 			'callback'            => [ $this, 'rest_reorder_folders' ],
-			'permission_callback' => $perm,
+			'permission_callback' => $manage,
 			'args'                => [
 				'parent_id' => [ 'type' => 'integer', 'default' => 0 ],
 				'ids'       => [ 'type' => 'array', 'required' => true, 'items' => [ 'type' => 'integer' ] ],

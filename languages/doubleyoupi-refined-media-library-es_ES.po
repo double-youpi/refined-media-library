@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-22T15:08:59+00:00\n"
+"POT-Creation-Date: 2026-10-23T17:20:04+00:00\n"
 "Language: es_ES\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -67,22 +67,22 @@ msgstr ""
 #: src/Admin/AdminMenu.php:80 src/Admin/AdminMenu.php:202
 #: src/Admin/OverviewPage.php:158 src/Admin/OverviewPage.php:577
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:64
-#: src/Modules/MediaLibrary/MediaLibrary.php:209
+#: src/Modules/MediaLibrary/MediaLibrary.php:210
 msgid "Settings"
 msgstr "Ajustes"
 
-#: src/Admin/Feedback.php:161 src/Admin/Feedback.php:189
+#: src/Admin/Feedback.php:188 src/Admin/Feedback.php:216
 #: src/Admin/OverviewPage.php:817
 msgid "Leave a review"
 msgstr "Dejar una reseña"
 
-#: src/Admin/Feedback.php:166 src/Admin/Feedback.php:183
+#: src/Admin/Feedback.php:193 src/Admin/Feedback.php:210
 msgctxt "admin bar button"
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Opinión"
 
 #. translators: %s = label of the Feedback button (e.g. "Feedback")
-#: src/Admin/Feedback.php:182
+#: src/Admin/Feedback.php:209
 #, php-format
 msgid ""
 "If you like the plugin, two lines on WordPress.org help it a lot. If "
@@ -91,115 +91,115 @@ msgstr ""
 "Si te gusta el plugin, dos líneas en WordPress.org le ayudan mucho. Si algo "
 "falla, cuéntanoslo mejor con «%s»: se corrige más rápido."
 
-#: src/Admin/Feedback.php:190 src/Admin/Feedback.php:198
-#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:384
+#: src/Admin/Feedback.php:217 src/Admin/Feedback.php:225
+#: src/Admin/Feedback.php:350 src/Admin/Feedback.php:411
 #: src/Admin/OverviewPage.php:680
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:137
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "Write a review on WordPress.org"
 msgstr "Escribir una reseña en WordPress.org"
 
-#: src/Admin/Feedback.php:200
+#: src/Admin/Feedback.php:227
 msgid "(opens in a new tab)"
 msgstr "(se abre en una pestaña nueva)"
 
 #. translators: %s = product name (e.g. "Refined Admin Dashboard")
-#: src/Admin/Feedback.php:211
+#: src/Admin/Feedback.php:238
 #, php-format
 msgid "Your feedback on %s"
 msgstr "Tu opinión sobre %s"
 
-#: src/Admin/Feedback.php:290 src/Admin/Feedback.php:378
+#: src/Admin/Feedback.php:317 src/Admin/Feedback.php:405
 msgid "Send"
 msgstr "Enviar"
 
-#: src/Admin/Feedback.php:291
+#: src/Admin/Feedback.php:318
 msgid "Sending…"
 msgstr "Enviando…"
 
-#: src/Admin/Feedback.php:292
+#: src/Admin/Feedback.php:319
 msgid "Try again"
 msgstr "Reintentar"
 
 #. translators: %s = name of the theme
-#: src/Admin/Feedback.php:294
+#: src/Admin/Feedback.php:321
 #, php-format
 msgid "%s (theme)"
 msgstr "%s (tema)"
 
-#: src/Admin/Feedback.php:295
+#: src/Admin/Feedback.php:322
 msgid "This image is still too large after compression (1.5 MB maximum)."
 msgstr ""
 "Esta imagen sigue siendo demasiado grande tras la compresión (máximo 1,5 MB)."
 
-#: src/Admin/Feedback.php:296 src/Admin/Feedback.php:450
+#: src/Admin/Feedback.php:323 src/Admin/Feedback.php:477
 msgid "Please use a PNG, JPEG or WebP image."
 msgstr "Usa una imagen PNG, JPEG o WebP."
 
-#: src/Admin/Feedback.php:297
+#: src/Admin/Feedback.php:324
 msgid "Your report could not be sent. Check your connection and try again."
 msgstr ""
 "No se pudo enviar tu informe. Comprueba tu conexión e inténtalo de nuevo."
 
 #. translators: %s = reference returned by the feedback service
-#: src/Admin/Feedback.php:299
+#: src/Admin/Feedback.php:326
 #, php-format
 msgid "Reference %s."
 msgstr "Referencia %s."
 
-#: src/Admin/Feedback.php:300
+#: src/Admin/Feedback.php:327
 msgid "(anonymous site identifier)"
 msgstr "(identificador anónimo del sitio)"
 
-#: src/Admin/Feedback.php:329
+#: src/Admin/Feedback.php:356
 msgid "This screen"
 msgstr "Esta pantalla"
 
-#: src/Admin/Feedback.php:333
+#: src/Admin/Feedback.php:360
 msgid "What kind of feedback"
 msgstr "Qué tipo de comentario"
 
-#: src/Admin/Feedback.php:334
+#: src/Admin/Feedback.php:361
 msgid "Something is wrong"
 msgstr "Algo va mal"
 
-#: src/Admin/Feedback.php:335
+#: src/Admin/Feedback.php:362
 msgid "An idea"
 msgstr "Una idea"
 
-#: src/Admin/Feedback.php:336
+#: src/Admin/Feedback.php:363
 msgid "Something else"
 msgstr "Otra cosa"
 
-#: src/Admin/Feedback.php:339
+#: src/Admin/Feedback.php:366
 msgid "Your message"
 msgstr "Tu mensaje"
 
-#: src/Admin/Feedback.php:340
+#: src/Admin/Feedback.php:367
 msgid "What happened, and what you expected."
 msgstr "Qué ocurrió y qué esperabas."
 
-#: src/Admin/Feedback.php:347
+#: src/Admin/Feedback.php:374
 msgid "Attach a screenshot"
 msgstr "Adjuntar una captura"
 
-#: src/Admin/Feedback.php:349
+#: src/Admin/Feedback.php:376
 msgid "or paste an image here (Ctrl/Cmd + V)"
 msgstr "o pega una imagen aquí (Ctrl/Cmd + V)"
 
-#: src/Admin/Feedback.php:352
+#: src/Admin/Feedback.php:379
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:165
 msgid "Remove"
 msgstr "Quitar"
 
-#: src/Admin/Feedback.php:357
+#: src/Admin/Feedback.php:384
 msgid "You may write back to me at"
 msgstr "Podéis responderme en"
 
-#: src/Admin/Feedback.php:362
+#: src/Admin/Feedback.php:389
 msgid ""
 "I agree to send this report to Double Youpï: my message, the screenshot if "
 "any, this screen's address inside wp-admin, the plugin or theme it belongs "
@@ -212,47 +212,47 @@ msgstr ""
 "se envía ningún contenido del sitio, ni la dirección del sitio salvo que "
 "pida una respuesta."
 
-#: src/Admin/Feedback.php:365
+#: src/Admin/Feedback.php:392
 msgid "See exactly what will be sent"
 msgstr "Ver exactamente qué se enviará"
 
 #. translators: %s = product name and version (e.g. "Refined Admin Dashboard 0.1.0")
-#: src/Admin/Feedback.php:374
+#: src/Admin/Feedback.php:401
 #, php-format
 msgid "Seen with %s"
 msgstr "Visto con %s"
 
-#: src/Admin/Feedback.php:377 src/Modules/MediaLibrary/FolderManagerI18n.php:74
+#: src/Admin/Feedback.php:404 src/Modules/MediaLibrary/FolderManagerI18n.php:74
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:32
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/Admin/Feedback.php:382
+#: src/Admin/Feedback.php:409
 msgid "Thank you, it is on its way."
 msgstr "Gracias, ya está en camino."
 
-#: src/Admin/Feedback.php:426
+#: src/Admin/Feedback.php:453
 msgid "Please confirm you agree to send this report."
 msgstr "Confirma que aceptas enviar este informe."
 
-#: src/Admin/Feedback.php:434
+#: src/Admin/Feedback.php:461
 msgid "Please write a few words first."
 msgstr "Escribe primero unas palabras."
 
-#: src/Admin/Feedback.php:441
+#: src/Admin/Feedback.php:468
 msgid "This email address does not look right."
-msgstr "Esta dirección de correo no parece correcta."
+msgstr "Esta dirección de correo electrónico no parece correcta."
 
-#: src/Admin/Feedback.php:447
+#: src/Admin/Feedback.php:474
 msgid "The screenshot is too large."
 msgstr "La captura es demasiado grande."
 
-#: src/Admin/Feedback.php:459
+#: src/Admin/Feedback.php:486
 msgid "Too many reports in a short time. Please try again in an hour."
 msgstr ""
 "Demasiados informes en poco tiempo. Inténtalo de nuevo dentro de una hora."
 
-#: src/Admin/Feedback.php:520 src/Admin/Feedback.php:524
+#: src/Admin/Feedback.php:547 src/Admin/Feedback.php:551
 msgid "The feedback service did not answer. Please try again later."
 msgstr "El servicio de comentarios no respondió. Inténtalo de nuevo más tarde."
 
@@ -272,7 +272,7 @@ msgstr "Ningún shortcode resultó herido durante la creación de este plugin."
 
 #: src/Admin/HeroQuips.php:54
 msgid "Awarded Plugin of the Year by a panel of one."
-msgstr "Premiado Plugin del Año por un jurado de una sola persona."
+msgstr "Premiado como plugin del año por un jurado de una sola persona."
 
 #: src/Admin/HeroQuips.php:55
 msgid "Refined enough to make your theme nervous."
@@ -320,11 +320,11 @@ msgstr "Buen gusto. Al fin y al cabo, instalaste esto."
 
 #: src/Admin/HeroQuips.php:66
 msgid "Two icons in one admin: you and this plugin."
-msgstr "Dos iconos en un solo admin: tú y este plugin."
+msgstr "Dos iconos en una sola administración: tú y este plugin."
 
 #: src/Admin/HeroQuips.php:67
 msgid "People with taste end up here. Welcome."
-msgstr "La gente con buen gusto acaba aquí. Bienvenido."
+msgstr "La gente con buen gusto acaba aquí. Te damos la bienvenida."
 
 #: src/Admin/HeroQuips.php:68
 msgid "Smart move installing this. We expected nothing less from you."
@@ -403,8 +403,8 @@ msgstr "Suite"
 
 #: src/Admin/OverviewPage.php:184 src/Admin/OverviewPage.php:224
 #: src/Modules/MediaLibrary/FolderService.php:252
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:158
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:186
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:159
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:187
 msgid "Access denied."
 msgstr "Acceso denegado."
 
@@ -432,7 +432,7 @@ msgstr ""
 msgid ""
 "Your whole WordPress admin, redrawn. Each part can be turned on or off below."
 msgstr ""
-"Todo tu escritorio de WordPress, rediseñado. Cada parte se activa o se "
+"Toda tu administración de WordPress, rediseñada. Cada parte se activa o se "
 "desactiva abajo."
 
 #: src/Admin/OverviewPage.php:379
@@ -451,8 +451,8 @@ msgstr "Guardar los módulos"
 msgid "Coming soon"
 msgstr "Próximamente"
 
-#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:423
-#: src/Modules/MediaLibrary/Settings.php:450
+#: src/Admin/OverviewPage.php:573 src/Modules/MediaLibrary/Settings.php:482
+#: src/Modules/MediaLibrary/Settings.php:509
 msgid "Saved"
 msgstr "Guardado"
 
@@ -568,12 +568,12 @@ msgid ""
 "A full rethink of the WordPress admin: smart dashboard, reworked navigation, "
 "redesigned content tables, dark mode, and your branding."
 msgstr ""
-"Una reinvención completa de la administración de WordPress: panel "
+"Una reinvención completa de la administración de WordPress: escritorio "
 "inteligente, navegación rediseñada, tablas de contenido renovadas, modo "
 "oscuro y tu marca."
 
-#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:140
-#: src/Modules/MediaLibrary/MediaLibrary.php:221
+#: src/Core/ModuleCatalog.php:49 src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:222
 msgid "Refined Media Library"
 msgstr "Refined Media Library"
 
@@ -585,16 +585,16 @@ msgstr ""
 "Carpetas y colecciones, arrastrar y soltar, vista previa rápida, limpieza de "
 "duplicados y archivos huérfanos, y conversión WebP/AVIF al subir."
 
-#: src/Modules/MediaLibrary/CollectionManager.php:169
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:253
+#: src/Modules/MediaLibrary/CollectionManager.php:170
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:254
 msgid "Could not delete collection."
-msgstr "No se ha podido eliminar la colección."
+msgstr "No se ha podido borrar la colección."
 
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:84
 #: src/Modules/MediaLibrary/CollectionTaxonomy.php:86
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:52
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:76
-#: src/Modules/MediaLibrary/Settings.php:274
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:77
+#: src/Modules/MediaLibrary/Settings.php:305
 msgid "Collections"
 msgstr "Colecciones"
 
@@ -626,30 +626,30 @@ msgstr "Duplicado"
 msgid "View original"
 msgstr "Ver original"
 
-#: src/Modules/MediaLibrary/FolderManager.php:118
+#: src/Modules/MediaLibrary/FolderManager.php:119
 msgid "Move to folder…"
 msgstr "Mover a carpeta…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:121
+#: src/Modules/MediaLibrary/FolderManager.php:122
 msgid "Add to collection…"
 msgstr "Añadir a la colección…"
 
-#: src/Modules/MediaLibrary/FolderManager.php:604
-#: src/Modules/MediaLibrary/FolderManager.php:640
+#: src/Modules/MediaLibrary/FolderManager.php:629
+#: src/Modules/MediaLibrary/FolderManager.php:665
 #: src/Modules/MediaLibrary/FolderService.php:202
 msgid "A folder cannot be moved into itself or one of its subfolders."
 msgstr ""
 "Una carpeta no se puede mover dentro de sí misma o de una de sus subcarpetas."
 
-#: src/Modules/MediaLibrary/FolderManager.php:665
+#: src/Modules/MediaLibrary/FolderManager.php:690
 #: src/Modules/MediaLibrary/FolderService.php:241
 msgid "Could not delete folder."
-msgstr "No se ha podido eliminar la carpeta."
+msgstr "No se ha podido borrar la carpeta."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:35
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:61
 #: src/Modules/MediaLibrary/FolderTaxonomy.php:63
-#: src/Modules/MediaLibrary/Settings.php:266
+#: src/Modules/MediaLibrary/Settings.php:297
 msgid "Folders"
 msgstr "Carpetas"
 
@@ -679,20 +679,20 @@ msgstr "Renombrar"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:42
 msgid "Delete folder"
-msgstr "Eliminar carpeta"
+msgstr "Borrar carpeta"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:43
 msgid "Delete this folder? Media files will not be deleted."
-msgstr "¿Eliminar esta carpeta? Los archivos de medios no se eliminarán."
+msgstr "¿Borrar esta carpeta? Los archivos de medios no se borrarán."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:44
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:162
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:193
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:195
 msgid "No folder"
 msgstr "Sin carpeta"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:45
-#: src/Modules/MediaLibrary/FolderTaxonomy.php:192
+#: src/Modules/MediaLibrary/FolderTaxonomy.php:194
 msgid "All folders"
 msgstr "Todas las carpetas"
 
@@ -718,11 +718,11 @@ msgstr "Renombrar colección"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:55
 msgid "Delete collection"
-msgstr "Eliminar colección"
+msgstr "Borrar colección"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:56
 msgid "Delete this collection? Media files will not be deleted."
-msgstr "¿Eliminar esta colección? Los archivos de medios no se eliminarán."
+msgstr "¿Borrar esta colección? Los archivos de medios no se borrarán."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:57
 msgid "No collections yet."
@@ -779,7 +779,7 @@ msgstr "Crear"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:78
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:169
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Borrar"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:79
 msgid "Discard"
@@ -822,9 +822,9 @@ msgid ""
 "Media inside won’t be deleted, they will be moved to « Media without "
 "folder »."
 msgstr ""
-"¿Eliminar la carpeta «%s»?\n"
+"¿Borrar la carpeta «%s»?\n"
 "\n"
-"Los medios que contiene no se eliminarán, se moverán a «Medios sin carpeta»."
+"Los medios que contiene no se borrarán, se moverán a «Medios sin carpeta»."
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:95
@@ -835,9 +835,9 @@ msgid ""
 "Media files won’t be deleted, they will simply be removed from this "
 "collection."
 msgstr ""
-"¿Eliminar la colección «%s»?\n"
+"¿Borrar la colección «%s»?\n"
 "\n"
-"Los archivos de medios no se eliminarán, simplemente se retirarán de esta "
+"Los archivos de medios no se borrarán, simplemente se quitarán de esta "
 "colección."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:98
@@ -852,29 +852,29 @@ msgstr "esta colección"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:103
 #, php-format
 msgid "Folder « %s » deleted"
-msgstr "Carpeta « %s » eliminada"
+msgstr "Carpeta «%s» borrada"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:105
 #, php-format
 msgid "Collection « %s » deleted"
-msgstr "Colección « %s » eliminada"
+msgstr "Colección «%s» borrada"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:106
 msgid "Could not delete folder"
-msgstr "No se ha podido eliminar la carpeta"
+msgstr "No se ha podido borrar la carpeta"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:107
 msgid "Could not delete collection"
-msgstr "No se ha podido eliminar la colección"
+msgstr "No se ha podido borrar la colección"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:108
 msgid "Move failed"
-msgstr "Movimiento fallido"
+msgstr "Error al mover"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:109
 msgid "Add failed"
-msgstr "Añadir falló"
+msgstr "Error al añadir"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:110
 msgid "folder"
@@ -888,37 +888,37 @@ msgstr "colección"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:114
 #, php-format
 msgid "1 file moved to « %s »"
-msgstr "1 archivo movido a « %s »"
+msgstr "1 archivo movido a «%s»"
 
 #. translators: %1$d: number of files; %2$s: folder name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:116
 #, php-format
 msgid "%1$d files moved to « %2$s »"
-msgstr "%1$d archivos movidos a « %2$s »"
+msgstr "%1$d archivos movidos a «%2$s»"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:118
 #, php-format
 msgid "1 file added to « %s »"
-msgstr "1 archivo añadido a « %s »"
+msgstr "1 archivo añadido a «%s»"
 
 #. translators: %1$d: number of files; %2$s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:120
 #, php-format
 msgid "%1$d files added to « %2$s »"
-msgstr "%1$d archivos añadidos a « %2$s »"
+msgstr "%1$d archivos añadidos a «%2$s»"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:122
 #, php-format
 msgid "Already in « %s »"
-msgstr "Ya en « %s »"
+msgstr "Ya en «%s»"
 
 #. translators: %s: collection name.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:124
 #, php-format
 msgid "All already in « %s »"
-msgstr "Todos ya están en « %s »"
+msgstr "Todos ya están en «%s»"
 
 #. translators: %1$d: number of files moved; %2$d: number already present.
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:126
@@ -1056,11 +1056,11 @@ msgstr "(sin título)"
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:177
 msgid "Permanently delete this file? This action cannot be undone."
 msgstr ""
-"¿Eliminar este archivo permanentemente? Esta acción no se puede deshacer."
+"¿Borrar este archivo permanentemente? Esta acción no se puede deshacer."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:178
 msgid "Could not delete this file."
-msgstr "No se ha podido eliminar este archivo."
+msgstr "No se ha podido borrar este archivo."
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:179
 msgid "Unsaved changes will be lost. Continue?"
@@ -1135,7 +1135,7 @@ msgstr "Editar metadatos (%d)"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:212
 msgid "Bulk edit"
-msgstr "Edición masiva"
+msgstr "Edición por lotes"
 
 #: src/Modules/MediaLibrary/FolderManagerI18n.php:213
 msgid "1 file selected"
@@ -1191,16 +1191,16 @@ msgstr "Más campos"
 #: src/Modules/MediaLibrary/FolderService.php:199
 #: src/Modules/MediaLibrary/FolderService.php:235
 #: src/Modules/MediaLibrary/FolderService.php:255
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:258
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:270
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:285
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:392
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:259
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:271
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:286
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:393
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:43
 msgid "Something went wrong. Please try again."
 msgstr "Algo salió mal. Inténtalo de nuevo."
 
 #: src/Modules/MediaLibrary/FolderService.php:278
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:412
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:413
 msgid "A folder or collection with this name already exists here."
 msgstr "Ya existe aquí una carpeta o colección con este nombre."
 
@@ -1220,7 +1220,7 @@ msgstr "Actualizar carpeta"
 msgid "No folders found"
 msgstr "No se han encontrado carpetas"
 
-#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:405
+#: src/Modules/MediaLibrary/Integrations/BricksFolderProvider.php:406
 msgid ""
 "Collections are kept apart from folders: this change is not possible here."
 msgstr ""
@@ -1233,7 +1233,7 @@ msgstr ""
 "Las carpetas y colecciones de la biblioteca de medios son privadas en este "
 "sitio."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:75
+#: src/Modules/MediaLibrary/MediaLibrary.php:76
 msgid ""
 "Turning the media library off hands the Media screen back to WordPress. Your "
 "folders and your collections are kept, and come back if you turn it on again."
@@ -1242,7 +1242,7 @@ msgstr ""
 "WordPress. Tus carpetas y tus colecciones se conservan y reaparecen si "
 "vuelves a activarla."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:78
+#: src/Modules/MediaLibrary/MediaLibrary.php:79
 msgid ""
 "Double Youpï Refined Media Library is installed and standing aside: "
 "reactivate it if you want the media library without the rest."
@@ -1250,21 +1250,21 @@ msgstr ""
 "Double Youpï Refined Media Library está instalado y en segundo plano: "
 "actívalo de nuevo si quieres la biblioteca de medios sin el resto."
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:141
+#: src/Modules/MediaLibrary/MediaLibrary.php:142
 msgid "Media Library"
 msgstr "Biblioteca de medios"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:212
+#: src/Modules/MediaLibrary/MediaLibrary.php:213
 msgid "Unused media"
 msgstr "Medios sin uso"
 
-#: src/Modules/MediaLibrary/MediaLibrary.php:217
+#: src/Modules/MediaLibrary/MediaLibrary.php:218
 #: src/Modules/MediaLibrary/Migration/MigrationI18n.php:25
 msgid "Import"
 msgstr "Importar"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:258
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr ""
@@ -1272,13 +1272,13 @@ msgstr ""
 "está activo."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:261
 #, php-format
 msgid "Let %s manage it"
 msgstr "Dejar que %s la gestione"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:265
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
@@ -1286,12 +1286,12 @@ msgstr ""
 "%s está gestionando la biblioteca de medios. Refined Media Library se ha "
 "apartado."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
 msgid "Use Refined Media Library"
 msgstr "Usar Refined Media Library"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:287
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:288
 #, php-format
 msgid "Import folders from %s"
 msgstr "Importar las carpetas desde %s"
@@ -1376,7 +1376,7 @@ msgstr "Deshaciendo…"
 msgid "%d imported folders removed."
 msgstr "%d carpetas importadas eliminadas."
 
-#: src/Modules/MediaLibrary/Migration/MigrationManager.php:468
+#: src/Modules/MediaLibrary/Migration/MigrationManager.php:469
 msgid ""
 "Import folders and collections from another media library plugin. Your media "
 "stay in place. This only re-creates the folder structure inside Refined "
@@ -1390,7 +1390,7 @@ msgstr ""
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:78
 msgid "Scanning…"
-msgstr "Escaneando…"
+msgstr "Explorando…"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:79
 msgid "No unused media found. Your library is clean!"
@@ -1535,7 +1535,7 @@ msgstr ""
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:141
 msgid "Scan for unused media"
-msgstr "Escanear medios sin uso"
+msgstr "Explorar medios sin uso"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:159
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:208
@@ -1585,107 +1585,145 @@ msgstr "Borrar definitivamente"
 
 #: src/Modules/MediaLibrary/OrphanAdminPage.php:287
 msgid "Delete selected media"
-msgstr "Eliminar los medios seleccionados"
+msgstr "Borrar los medios seleccionados"
 
-#: src/Modules/MediaLibrary/Settings.php:242
+#: src/Modules/MediaLibrary/Settings.php:273
 msgid "Optimization"
 msgstr "Optimización"
 
 #. translators: %s: name of the module piloting image conversion
-#: src/Modules/MediaLibrary/Settings.php:249
+#: src/Modules/MediaLibrary/Settings.php:280
 #, php-format
 msgid "Piloted by %s. Settings managed there."
 msgstr "Controlado por %s. Los ajustes se gestionan allí."
 
-#: src/Modules/MediaLibrary/Settings.php:251
+#: src/Modules/MediaLibrary/Settings.php:282
 msgid "This server cannot generate WebP images."
 msgstr "Este servidor no puede generar imágenes WebP."
 
-#: src/Modules/MediaLibrary/Settings.php:252
+#: src/Modules/MediaLibrary/Settings.php:283
 msgid "This server cannot generate AVIF images."
 msgstr "Este servidor no puede generar imágenes AVIF."
 
-#: src/Modules/MediaLibrary/Settings.php:259
+#: src/Modules/MediaLibrary/Settings.php:290
 msgid "Organisation"
 msgstr "Organización"
 
-#: src/Modules/MediaLibrary/Settings.php:267
+#: src/Modules/MediaLibrary/Settings.php:298
 msgid "Organise the media library into folders"
 msgstr "Organizar la biblioteca de medios en carpetas"
 
-#: src/Modules/MediaLibrary/Settings.php:275
+#: src/Modules/MediaLibrary/Settings.php:306
 msgid "Group media into cross-folder collections"
 msgstr "Agrupar medios en colecciones transversales"
 
-#: src/Modules/MediaLibrary/Settings.php:282
+#: src/Modules/MediaLibrary/Settings.php:313
 msgid "Auto alt & title"
-msgstr "Auto alt y título"
+msgstr "Texto alternativo y título automáticos"
 
-#: src/Modules/MediaLibrary/Settings.php:283
+#: src/Modules/MediaLibrary/Settings.php:314
 msgid "Fill alt text and title from filename on upload (if empty)"
 msgstr ""
-"Rellenar alt y título desde el nombre del archivo al subir (si está vacío)"
+"Rellenar el texto alternativo y el título a partir del nombre del archivo al "
+"subir (si están vacíos)"
 
-#: src/Modules/MediaLibrary/Settings.php:292
+#: src/Modules/MediaLibrary/Settings.php:323
 msgid "Duplicate badge"
-msgstr "Distintivo de duplicado"
+msgstr "Insignia de duplicado"
 
-#: src/Modules/MediaLibrary/Settings.php:293
+#: src/Modules/MediaLibrary/Settings.php:324
 msgid "Mark files already in the library, by content"
 msgstr "Marcar los archivos ya presentes, según su contenido"
 
-#: src/Modules/MediaLibrary/Settings.php:301
+#: src/Modules/MediaLibrary/Settings.php:332
 msgid "Conversion"
 msgstr "Conversión"
 
-#: src/Modules/MediaLibrary/Settings.php:308
+#: src/Modules/MediaLibrary/Settings.php:339
 msgid "WebP on upload"
 msgstr "WebP al subir"
 
-#: src/Modules/MediaLibrary/Settings.php:309
+#: src/Modules/MediaLibrary/Settings.php:340
 msgid "Generate a WebP version of each image on upload"
 msgstr "Generar una versión WebP de cada imagen al subir"
 
-#: src/Modules/MediaLibrary/Settings.php:318
+#: src/Modules/MediaLibrary/Settings.php:349
 msgid "AVIF on upload"
 msgstr "AVIF al subir"
 
-#: src/Modules/MediaLibrary/Settings.php:319
+#: src/Modules/MediaLibrary/Settings.php:350
 msgid "Generate an AVIF version too (requires Imagick)"
 msgstr "Generar también una versión AVIF (requiere Imagick)"
 
-#: src/Modules/MediaLibrary/Settings.php:331
+#: src/Modules/MediaLibrary/Settings.php:362
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: src/Modules/MediaLibrary/Settings.php:338
+#: src/Modules/MediaLibrary/Settings.php:369
 msgid "Light theme"
 msgstr "Tema claro"
 
-#: src/Modules/MediaLibrary/Settings.php:339
+#: src/Modules/MediaLibrary/Settings.php:370
 msgid "Show the media library on a light background"
 msgstr "Mostrar la biblioteca de medios sobre fondo claro"
 
-#: src/Modules/MediaLibrary/Settings.php:349
+#: src/Modules/MediaLibrary/Settings.php:379
+msgid "Team"
+msgstr "Equipo"
+
+#: src/Modules/MediaLibrary/Settings.php:386
+msgid "Hide Feedback and review requests"
+msgstr "Ocultar el botón de opinión y las solicitudes de reseña"
+
+#: src/Modules/MediaLibrary/Settings.php:387
+msgid ""
+"No Feedback button, review link or review request, for anyone on this site."
+msgstr ""
+"Sin botón de opinión, enlace ni solicitud de reseña, para nadie en este "
+"sitio."
+
+#: src/Modules/MediaLibrary/Settings.php:395
+msgid "Keep Double Youpï settings to myself"
+msgstr "Reservar los ajustes de Double Youpï para mí"
+
+#: src/Modules/MediaLibrary/Settings.php:396
+msgid ""
+"Other administrators keep the media library and its folders, without these "
+"settings, Feedback or the review link. Locked out? Add "
+"define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); to wp-config.php."
+msgstr ""
+"Los demás administradores conservan la biblioteca de medios y sus carpetas, "
+"sin estos ajustes, ni el botón de opinión ni el enlace de reseña. ¿Sin "
+"acceso? Añade define( 'DOUBLEYOUPI_UNLOCK_SETTINGS', true ); a wp-config.php."
+
+#: src/Modules/MediaLibrary/Settings.php:399
+msgid ""
+"Unlocked in wp-config.php: every administrator can change these settings."
+msgstr ""
+"Desbloqueado en wp-config.php: cualquier administrador puede cambiar estos "
+"ajustes."
+
+#: src/Modules/MediaLibrary/Settings.php:408
 msgid "Save changes"
 msgstr "Guardar cambios"
 
-#: src/Modules/MediaLibrary/Settings.php:385
+#: src/Modules/MediaLibrary/Settings.php:444
 msgid ""
 "Double Youpï Refined Admin Dashboard includes this media library, and "
 "redraws the rest of the admin the same way. It is free too."
 msgstr ""
 "Double Youpï Refined Admin Dashboard incluye esta biblioteca de medios y "
-"rediseña el resto del escritorio de la misma manera. También es gratuito."
+"rediseña el resto de la administración de la misma manera. También es "
+"gratuito."
 
-#: src/Modules/MediaLibrary/Settings.php:386
+#: src/Modules/MediaLibrary/Settings.php:445
 msgid "Read about it"
 msgstr "Saber más"
 
-#: src/Modules/MediaLibrary/Settings.php:436
+#: src/Modules/MediaLibrary/Settings.php:495
 msgid "Conversion quality"
 msgstr "Calidad de conversión"
 
-#: src/Modules/MediaLibrary/Settings.php:437
+#: src/Modules/MediaLibrary/Settings.php:496
 msgid "Higher means better quality and larger files. Default 82."
 msgstr "Más alto = mejor calidad y archivos más grandes. Por defecto 82."

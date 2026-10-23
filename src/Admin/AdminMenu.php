@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class AdminMenu {
 
 	public const SLUG       = 'doubleyoupi';
-	public const CAPABILITY = 'manage_options';
+	public const CAPABILITY = Access::CAP;
 
 	/** @var array<array{page_title:string|\Closure, menu_title:string|\Closure, slug:string, callback:callable}> */
 	private static array $pages = [];
