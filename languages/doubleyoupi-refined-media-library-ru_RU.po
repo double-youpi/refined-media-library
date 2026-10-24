@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-23T17:20:04+00:00\n"
+"POT-Creation-Date: 2026-10-24T01:50:07+00:00\n"
 "Language: ru_RU\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
@@ -1257,31 +1257,31 @@ msgid "Import"
 msgstr "Импорт"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr "Библиотекой файлов управляет Refined Media Library. %s тоже активен."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:261
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:262
 #, php-format
 msgid "Let %s manage it"
 msgstr "Передать управление %s"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
 msgstr ""
 "Библиотекой файлов управляет %s. Refined Media Library уступил ему место."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:268
 msgid "Use Refined Media Library"
 msgstr "Использовать Refined Media Library"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:288
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:289
 #, php-format
 msgid "Import folders from %s"
 msgstr "Импортировать папки из %s"

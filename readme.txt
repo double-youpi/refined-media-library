@@ -4,7 +4,7 @@ Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.19
+Stable tag: 0.3.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.20 =
+* Fix: when Refined Media Library is in charge of the media library and HappyFiles is also active, HappyFiles' folder column is hidden properly and the list takes the full width.
 
 = 0.3.19 =
 * Change, for sites already in use: creating, renaming, moving and deleting folders and collections is now for editors and administrators. Authors and contributors can no longer change the folder tree; anyone who can upload still files media into folders and collections. The doubleyoupi_filter_manage_folders_cap filter sets another capability.
@@ -271,6 +274,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.20 =
+Cleaner media library when HappyFiles is also installed.
 
 = 0.3.19 =
 Folders and collections are now managed by editors and administrators; authors still file their media. Settings can be kept to one account.

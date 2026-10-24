@@ -67,9 +67,10 @@ class MediaManagerConflict extends AbstractModule {
 			'label'   => 'HappyFiles',
 			'plugins' => [ 'happyfiles-pro/happyfiles.php', 'happyfiles/happyfiles.php' ],
 			'folders' => [ '#^happyfiles#' ],
-			// Best-effort: HappyFiles' free build is closed on WordPress.org and
-			// could not be inspected. The "step aside" path works regardless.
-			'hide'    => '#happyfiles-categories,.happyfiles-categories,#happyfiles-folders{display:none!important}',
+			// Read from HappyFiles 1.5.1 (24/10/2026): its folder column is
+			// #hf-sidebar-wrapper, and it narrows the list beside it.
+			'hide'    => '#hf-sidebar-wrapper{display:none!important}'
+				. '#hf-sidebar-wrapper+.wrap{width:auto!important;margin-left:0!important}',
 		],
 		'real-media-library' => [
 			'label'   => 'Real Media Library',

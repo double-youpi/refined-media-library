@@ -3,7 +3,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/doubleyoupi-"
 "refined-media-library\n"
-"POT-Creation-Date: 2026-10-23T17:20:04+00:00\n"
+"POT-Creation-Date: 2026-10-24T01:50:07+00:00\n"
 "Language: es_ES\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -1264,7 +1264,7 @@ msgid "Import"
 msgstr "Importar"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:259
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:260
 #, php-format
 msgid "Refined Media Library is managing the media library. %s is also active."
 msgstr ""
@@ -1272,13 +1272,13 @@ msgstr ""
 "está activo."
 
 #. translators: %s: name of the competing media-library plugin.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:261
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:262
 #, php-format
 msgid "Let %s manage it"
 msgstr "Dejar que %s la gestione"
 
 #. translators: %s: name of the competing media-library plugin currently managing the page.
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:266
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
 #, php-format
 msgid ""
 "%s is managing the media library. Refined Media Library has stepped aside."
@@ -1286,12 +1286,12 @@ msgstr ""
 "%s está gestionando la biblioteca de medios. Refined Media Library se ha "
 "apartado."
 
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:267
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:268
 msgid "Use Refined Media Library"
 msgstr "Usar Refined Media Library"
 
 #. translators: %s: name of the competing media-library plugin (e.g. FileBird).
-#: src/Modules/MediaLibrary/MediaManagerConflict.php:288
+#: src/Modules/MediaLibrary/MediaManagerConflict.php:289
 #, php-format
 msgid "Import folders from %s"
 msgstr "Importar las carpetas desde %s"
