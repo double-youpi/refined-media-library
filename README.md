@@ -1,4 +1,4 @@
-![Double Youpï Refined Media Library](https://ps.w.org/doubleyoupi-refined-media-library/assets/banner-1544x500.png)
+![Double Youpï Refined Media Library](https://ps.w.org/doubleyoupi-refined-media-library/assets/banner-1544x500.png?rev=3589725)
 
 # Double Youpï Refined Media Library
 
@@ -10,7 +10,7 @@ Double Youpï Refined Media Library (RML) is a free WordPress plugin, with no Pr
 
 [Watch the tour on YouTube](https://www.youtube.com/watch?v=zslcgfwP7hQ)
 
-![The media library with folders](https://ps.w.org/doubleyoupi-refined-media-library/assets/screenshot-1.png)
+![The media library with folders](https://ps.w.org/doubleyoupi-refined-media-library/assets/screenshot-1.png?rev=3589725)
 
 ## What it does
 
