@@ -2,7 +2,7 @@
 
 # Double Youpï Refined Media Library
 
-Nested folders with drag and drop, collections, duplicate and unused media cleanup, and WebP/AVIF on upload, for the WordPress media library.
+Double Youpï Refined Media Library (RML) is a free WordPress plugin, with no Pro version, that adds folders and collections to the WordPress media library, with duplicate and unused media cleanup and WebP or AVIF copies on upload.
 
 **Install it from WordPress.org:** [wordpress.org/plugins/doubleyoupi-refined-media-library](https://wordpress.org/plugins/doubleyoupi-refined-media-library/)
 
@@ -31,7 +31,7 @@ It is also bundled whole in [Double Youpï Refined Admin Dashboard](https://word
 
 This repository mirrors **every release published on WordPress.org**. Each commit is one release, tagged with its version number, and the files are exactly those of the WordPress.org package. The SCSS sources of the stylesheets are added under `assets/scss/`.
 
-Development happens in a private repository that also holds other projects. This one starts with the first release published on WordPress.org: each commit is a release, dated the day it went out. For the earliest releases, the SCSS sources are no longer available.
+Development happens in a private repository that also holds other projects. This one starts with the first release published on WordPress.org: each release is a tagged commit, dated the day it went out (the README may be updated in between). For the earliest releases, the SCSS sources are no longer available.
 
 ## Getting help, reporting a bug
 
@@ -46,3 +46,5 @@ Development happens in a private repository that also holds other projects. This
 GPLv2 or later, see [LICENSE](LICENSE).
 
 Made by [Double Youpï](https://doubleyoupi.com).
+
+If it saves you time, a star helps other people find it.
