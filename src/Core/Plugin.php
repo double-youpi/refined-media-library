@@ -125,6 +125,6 @@ final class Plugin {
 
 		Installer::run();
 
-		update_option( $option, DOUBLEYOUPI_VERSION, false );
+		update_option( $option, DOUBLEYOUPI_VERSION, true ); // read on every page
 	}
 }

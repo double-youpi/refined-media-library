@@ -42,7 +42,7 @@ final class ModuleSettings {
 		}
 		$state                = self::all();
 		$state[ $module_id ]  = $enabled;
-		update_option( self::OPTION, $state, false );
+		update_option( self::OPTION, $state, true ); // read on every page (Installer)
 	}
 
 	/**

@@ -47,6 +47,8 @@ final class Installer {
 			}
 		}
 
+		self::autoload_every_request_options();
+
 		foreach ( SoloConfig::activation_callbacks() as $callback ) {
 			if ( is_callable( $callback ) ) {
 				call_user_func( $callback );
@@ -55,5 +57,59 @@ final class Installer {
 
 		// Required when a callback registers a taxonomy with show_in_rest=true.
 		flush_rewrite_rules();
+	}
+
+	/**
+	 * Small settings read on every page, front end included, go into the single
+	 * query WordPress makes for its autoloaded options, instead of one query
+	 * each (measured on 26/10/2026: 9 queries per public page, 16 per admin
+	 * screen). Several were saved with autoload off, two did not exist (a
+	 * missing option is queried again on every page). Absent ones get the value
+	 * get_option() already fell back to, so nothing changes but the queries.
+	 * The dashboard layouts are left out: they are read on the dashboard only,
+	 * and can be large.
+	 */
+	private static function autoload_every_request_options(): void {
+		$falsy = [];
+		if ( class_exists( '\\DoubleYoupi\\Modules\\Toolkit\\Features\\AbstractFeature' ) ) {
+			foreach ( [ 'classic_editor', 'disable_comments', 'duplicate_posts', 'force_https', 'disable_update_emails', 'disable_email_verification', 'hide_login', 'local_avatars', 'safe_svg', 'intuitive_save' ] as $feature ) {
+				$falsy[] = 'doubleyoupi_toolkit_' . $feature;
+			}
+		}
+		if ( class_exists( '\\DoubleYoupi\\Modules\\Admin\\UserCustomization' ) ) {
+			$falsy[] = 'doubleyoupi_admin_per_user';
+		}
+		if ( class_exists( '\\DoubleYoupi\\Admin\\Feedback' ) ) {
+			$falsy[] = 'doubleyoupi_hide_feedback';
+		}
+		foreach ( $falsy as $name ) {
+			if ( null === get_option( $name, null ) ) {
+				add_option( $name, 0, '', true );
+			}
+		}
+		// Same, with the value their reader falls back to. Not the welcome card's
+		// « seen » mark: its absence means « not seen yet ».
+		if ( class_exists( '\\DoubleYoupi\\Modules\\Admin\\Settings' ) ) {
+			foreach ( [ 'doubleyoupi_admin_logo_url' => '', 'doubleyoupi_admin_rail_flyout' => 'one' ] as $name => $value ) {
+				if ( null === get_option( $name, null ) ) {
+					add_option( $name, $value, '', true );
+				}
+			}
+		}
+
+		$names = array_merge( $falsy, [
+			SoloConfig::installed_version_option(),
+			'doubleyoupi_modules_enabled',
+			'doubleyoupi_ml_duplicates',
+			'doubleyoupi_admin_disabled_screens',
+			'doubleyoupi_admin_navigation_overrides',
+			'doubleyoupi_hide_feedback',
+			'doubleyoupi_admin_review_ask',
+			'doubleyoupi_admin_logo_url',
+			'doubleyoupi_admin_rail_flyout',
+			'doubleyoupi_admin_welcome_seen',
+		] );
+		// Options that do not exist are skipped by WordPress.
+		wp_set_options_autoload( $names, true );
 	}
 }

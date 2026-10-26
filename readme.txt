@@ -4,7 +4,7 @@ Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.21
+Stable tag: 0.3.22
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.22 =
+* Faster: the plugin's settings are read with WordPress's own settings in one database query, instead of separate queries on every page, the public site included.
 
 = 0.3.21 =
 * Fix: in the media list, every file shows its own thumbnail again (WordPress 7.1 changed the table's markup and they piled up in one place).
@@ -278,6 +281,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.22 =
+Fewer database queries on every page.
 
 = 0.3.21 =
 Thumbnails are back in the media list view.
