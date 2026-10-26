@@ -4,9 +4,9 @@
 
 Double Youpï Refined Media Library (RML) is a free WordPress plugin, with no Pro version, that adds folders and collections to the WordPress media library, with duplicate and unused media cleanup and WebP or AVIF copies on upload.
 
-**Install it from WordPress.org:** [wordpress.org/plugins/doubleyoupi-refined-media-library](https://wordpress.org/plugins/doubleyoupi-refined-media-library/)
+[![Try it live (no install)](https://img.shields.io/badge/Try_it_live-no_install-5b3efe?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/doubleyoupi-refined-media-library/?preview=1) [![Install from WordPress.org](https://img.shields.io/badge/Install_from-WordPress.org-3858e9?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/doubleyoupi-refined-media-library/)
 
-**Try it without installing:** [Live Preview on WordPress.org](https://wordpress.org/plugins/doubleyoupi-refined-media-library/?preview=1)
+The live preview opens the plugin in WordPress Playground, in your browser: nothing to install, nothing kept.
 
 [Watch the tour on YouTube](https://www.youtube.com/watch?v=zslcgfwP7hQ)
 
