@@ -2889,8 +2889,8 @@ body.upload-php .wp-list-table tbody th {
 }
 /* The title + parent columns have a multi-line internal layout
    (filename + .png, or post-title + Detach) → allow internal wrapping */
-body.upload-php .wp-list-table tbody td.column-title,
-body.upload-php .wp-list-table tbody td.column-fichier,
+body.upload-php .wp-list-table tbody :is(td, th).column-title,
+body.upload-php .wp-list-table tbody :is(td, th).column-fichier,
 body.upload-php .wp-list-table tbody td.column-parent {
 	white-space: normal;
 }
@@ -2934,12 +2934,29 @@ body.upload-php .wp-list-table .column-parent strong {
 	text-overflow: ellipsis;
 }
 
+/* Attach / Detach: the column's only actions, drawn as links. They had the
+   ink and weight of "(Unattached)", without underline (compatibility lab,
+   24/10/2026). */
+body.upload-php .wp-list-table tbody .column-parent > a {
+	color: var( --ink, #ecedf2 ) !important;
+	font-weight: 500;
+	text-decoration: underline;
+	text-decoration-color: color-mix( in srgb, currentColor 45%, transparent );
+	text-underline-offset: 2px;
+}
+body.upload-php .wp-list-table tbody .column-parent > a:hover,
+body.upload-php .wp-list-table tbody .column-parent > a:focus {
+	text-decoration-color: currentColor;
+}
+
+
 /*
  * 4. Title cell layout — thumbnail absolute-positioned on the left, text
  *    content aligned to the right of the thumb (bold title + filename.png stacked).
  *
  * WP HTML (which we do not control):
- *   <td class="column-title">
+ *   <td class="column-title">   (a <th scope="row"> since WordPress 7.1:
+ *                                  the rules match both, 24/10/2026)
  *     <strong class="has-media-icon">
  *       <a><span class="media-icon"><img></span> Title text</a>
  *     </strong>
@@ -2951,8 +2968,8 @@ body.upload-php .wp-list-table .column-parent strong {
  * padding-left to reserve the thumb zone. All text (title, filename,
  * row-actions) flows naturally into the reserved area.
  */
-body.upload-php .wp-list-table tbody td.column-title,
-body.upload-php .wp-list-table tbody td.column-fichier {
+body.upload-php .wp-list-table tbody :is(td, th).column-title,
+body.upload-php .wp-list-table tbody :is(td, th).column-fichier {
 	position: relative;
 	padding-left: 86px !important; /* 14px gutter + 60px thumb + 12px gap */
 	min-height: 60px;
