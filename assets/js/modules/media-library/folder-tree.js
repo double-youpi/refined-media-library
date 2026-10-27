@@ -826,6 +826,10 @@
 		// CSS-only collapse (`position: absolute; opacity: 0; pointer-
 		// events: none`) so it's invisible but functional.
 		$orig.addClass( 'dy-action-relocated' );
+		// Out of the Tab order and of assistive tech too: the clone is the
+		// button people use; the original was a Tab stop on nothing, 1 × 1 px
+		// and transparent (WCAG 2.4.7, compatibility lab, 27/10/2026).
+		$orig.attr( { tabindex: '-1', 'aria-hidden': 'true' } );
 	}
 
 	/*
@@ -869,6 +873,12 @@
 					!! el.querySelector( 'a, button' );
 			}
 			if ( ! isAction ) { continue; }
+			// A notice is not an action, even with a button in it (Hello
+			// Elementor's welcome notice, a React root before the header-end
+			// marker, ended up flattened in the folder column, lab, 27/10/2026).
+			if ( el.matches( '.notice, .updated, .error, .update-nag' ) ||
+				el.querySelector( '.notice, .notice-dismiss, h1, h2, h3, h4, p' ) ||
+				el.textContent.trim().length > 80 ) { continue; }
 
 			el.classList.add( 'dy-foreign-action' );
 			host.appendChild( el ); // MOVE — keeps the element and its event handlers intact
@@ -945,7 +955,9 @@
 	 * DOM before any of this runs: if we see it, we stand down rather than
 	 * fight over the same nodes.
 	 */
-	var NOTICE_SELECTOR = '.notice, div.updated, div.error, .update-nag';
+	// `#ehe-admin-cb`: Hello Elementor's welcome notice, a React root without
+	// the notice classes (compatibility lab, 27/10/2026).
+	var NOTICE_SELECTOR = '.notice, div.updated, div.error, .update-nag, #ehe-admin-cb';
 
 	// Containers where a "notice" is a working part of the screen rather than a
 	// message to the user. Moving those would break the feature that owns them
@@ -1137,8 +1149,12 @@
 		// Below 782px WP takes the rail off-canvas (hidden or translated out):
 		// the measure reads 0 or negative. Leave the variable untouched — the
 		// mobile media query already pins the panel to the gutter.
-		var right = Math.round( rail.getBoundingClientRect().right );
-		if ( right <= 0 ) { return; }
+		// In a right-to-left language the rail is on the right: what matters is
+		// its distance from the right edge (lab, 27/10/2026).
+		var box   = rail.getBoundingClientRect();
+		var rtl   = window.document.documentElement.dir === 'rtl';
+		var right = Math.round( rtl ? window.innerWidth - box.left : box.right );
+		if ( right <= 0 || ( rtl && box.right <= 0 ) ) { return; }
 
 		window.document.body.style.setProperty( '--dy-adminmenu-w', right + 'px' );
 	}
@@ -2502,7 +2518,9 @@
 
 			$( document ).on( 'mousemove.dyfw', function ( e2 ) {
 				var max = maxAllowed();
-				var newW = Math.max( 200, Math.min( max, startW + e2.clientX - startX ) );
+				// The handle is on the panel's far edge: right in LTR, left in RTL.
+				var moved = document.documentElement.dir === 'rtl' ? startX - e2.clientX : e2.clientX - startX;
+				var newW = Math.max( 200, Math.min( max, startW + moved ) );
 				document.body.style.setProperty( '--dy-fw', newW + 'px' );
 			} );
 

@@ -21,7 +21,7 @@
 // the link always sits just left of the tab whatever the label's length.
 .dy-feedback-dock {
   position: fixed;
-  right: 28px;
+  inset-inline-end: 28px; // away from the rail in RTL too (lab, 27/10/2026)
   bottom: 0;
   z-index: 9990;
   display: flex;
@@ -85,7 +85,7 @@
 .dy-review-tab__icon { display: block; flex: none; }
 
 @media (max-width: 782px) {
-  .dy-feedback-dock { right: 12px; gap: 6px; }
+  .dy-feedback-dock { inset-inline-end: 12px; gap: 6px; }
   .dy-feedback-tab { height: 30px; padding: 0 10px; }
   .dy-feedback-tab__label,
   .dy-review-tab__label { display: none; }

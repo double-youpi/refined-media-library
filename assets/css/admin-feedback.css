@@ -1,6 +1,6 @@
 .dy-feedback-dock {
   position: fixed;
-  right: 28px;
+  inset-inline-end: 28px;
   bottom: 0;
   z-index: 9990;
   display: flex;
@@ -93,7 +93,7 @@
 
 @media (max-width: 782px) {
   .dy-feedback-dock {
-    right: 12px;
+    inset-inline-end: 12px;
     gap: 6px;
   }
   .dy-feedback-tab {

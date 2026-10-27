@@ -2642,7 +2642,8 @@ body.dy-theme-light .dy-overview__support {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
 }
 .dy-mlset__input:focus-visible ~ .dy-mlset__switch .dy-mlset__track {
-  box-shadow: 0 0 0 4px rgba(var(--dya-accent-rgb), 0.2);
+  outline: 2px solid var(--dya-accent);
+  outline-offset: 2px;
 }
 .dy-mlset__input:disabled ~ .dy-mlset__switch {
   opacity: 0.4;

@@ -1990,7 +1990,7 @@ body.upload-php .media-toolbar select:focus,
 body.upload-php .media-toolbar .attachment-filters:focus {
   outline: none !important;
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
 }
 
 /* Option 1: hide the redundant native "All media items" type dropdown.
@@ -2026,7 +2026,7 @@ body.upload-php .dy-mine-btn:hover {
 body.upload-php .dy-mine-btn:focus-visible {
   outline: none !important;
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
 }
 body.upload-php .dy-mine-btn.is-active {
   background-color: rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.14) !important;
@@ -2093,7 +2093,7 @@ body.upload-php input.search[type=search] {
 
 body.upload-php input.search[type=search]:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
   outline: none !important;
 }
 
@@ -3071,8 +3071,10 @@ body.upload-php .wp-list-table .column-parent strong {
 
 /* Attach / Detach: the column's only actions, drawn as links. They had the
    ink and weight of "(Unattached)", without underline (compatibility lab,
-   24/10/2026). */
-body.upload-php .wp-list-table tbody .column-parent > a {
+   24/10/2026). With Refined Admin Dashboard, the cell's content sits in a
+   `.dy-cell-value` wrapper: matched too (lab, 27/10/2026). */
+body.upload-php .wp-list-table tbody .column-parent > a,
+body.upload-php .wp-list-table tbody .column-parent > .dy-cell-value > a {
 	color: var( --ink, #ecedf2 ) !important;
 	font-weight: 500;
 	text-decoration: underline;
@@ -3080,7 +3082,9 @@ body.upload-php .wp-list-table tbody .column-parent > a {
 	text-underline-offset: 2px;
 }
 body.upload-php .wp-list-table tbody .column-parent > a:hover,
-body.upload-php .wp-list-table tbody .column-parent > a:focus {
+body.upload-php .wp-list-table tbody .column-parent > a:focus,
+body.upload-php .wp-list-table tbody .column-parent > .dy-cell-value > a:hover,
+body.upload-php .wp-list-table tbody .column-parent > .dy-cell-value > a:focus {
 	text-decoration-color: currentColor;
 }
 
@@ -3407,7 +3411,7 @@ body.upload-php #media-search-input {
 body.upload-php .search-box input[type=search]:focus,
 body.upload-php #media-search-input:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
 }
 
 body.upload-php .search-box input[type=submit] {
@@ -3465,7 +3469,7 @@ body.upload-php .media-sidebar textarea {
 body.upload-php .media-sidebar input:focus,
 body.upload-php .media-sidebar textarea:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
 }
 
 body.upload-php .media-sidebar a {
@@ -6131,7 +6135,7 @@ body.dy-admin #dy-panel-brand {
 .media-modal.dy-ml-modal input.search[type=search]:focus,
 .media-modal.dy-ml-modal #media-search-input:focus {
   border-color: var(--accent, #5b3efe) !important;
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb, var(--dy-accent-rgb, 91, 62, 254)), 0.2) !important;
+  box-shadow: 0 0 0 2px var(--accent, #5b3efe) !important; /* a solid ring: a 20 % halo was not seen (WCAG 2.4.7, lab 27/10/2026) */
   outline: none !important;
 }
 
@@ -6577,4 +6581,75 @@ body.dy-ml-light {
   body.dy-ml-light {
     --dy-accent-text: oklch(from var(--accent, var(--dy-accent, #5b3efe)) min(l, 0.5) c h);
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Right-to-left languages (Arabic, Hebrew, Persian…): the layout mirrored.
+   The WordPress menu sits on the right; the folder panel runs along it, the
+   details panel opens on the left, and the room both reserve is taken on the
+   matching side. Everything above places them with left/right, so each one
+   is restated here (compatibility lab, 27/10/2026).
+   ═══════════════════════════════════════════════════════════════════════ */
+body.rtl #dy-folder-panel,
+body.rtl #dy-panel-brand {
+	left: auto !important;
+	right: calc( var( --dy-adminmenu-w, 160px ) + var( --dy-gutter, 20px ) );
+}
+body.rtl #dy-detail-panel {
+	right: auto;
+	left: var( --dy-gutter, 20px );
+	border-left: 0;
+	border-right: 1px solid var( --line, #1e2235 );
+}
+body.rtl.upload-php .wrap > .media-frame,
+body.rtl.upload-php .wrap > .notice,
+body.rtl.upload-php .wrap > .updated,
+body.rtl.upload-php .wrap > .error,
+body.rtl.upload-php .wrap > .wp-filter,
+body.rtl.upload-php .wrap > .subsubsub,
+body.rtl.upload-php .wrap > #posts-filter,
+body.rtl.upload-php .wrap > .search-box {
+	margin-left: 0;
+	margin-right: min( var( --dy-fw, 220px ), 35vw, 360px );
+}
+body.rtl.upload-php .wrap > .media-frame,
+body.rtl.upload-php .wrap > #posts-filter {
+	padding-right: 0;
+	padding-left: 20px;
+}
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .media-frame,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .wp-filter,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .subsubsub,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > #posts-filter,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .search-box {
+	margin-right: min( var( --dy-fw, 220px ), 35vw, 360px );
+	margin-left: calc( var( --dy-dw, 340px ) + var( --dy-gutter, 20px ) );
+}
+body.rtl.upload-php .wrap > .notice,
+body.rtl.upload-php .wrap > .updated,
+body.rtl.upload-php .wrap > .update-nag,
+body.rtl.upload-php .wrap > .error {
+	margin-right: min( var( --dy-fw, 220px ), 35vw, 360px ) !important;
+	margin-left: var( --dy-gutter, 20px ) !important;
+}
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .notice,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .updated,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .update-nag,
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > .error {
+	margin-left: calc( var( --dy-dw, 340px ) + var( --dy-gutter, 20px ) + 20px ) !important;
+}
+body.rtl.upload-php .wrap > #dy-ml-notices {
+	margin-left: var( --dy-gutter, 20px );
+	margin-right: min( var( --dy-fw, 220px ), 35vw, 360px );
+}
+body.rtl.upload-php:has( .dy-detail-open ) .wrap > #dy-ml-notices {
+	margin-left: calc( var( --dy-dw, 340px ) + var( --dy-gutter, 20px ) + 20px );
+}
+body.rtl .dy-rh-right {
+	right: auto;
+	left: -5px;
+}
+body.rtl .dy-rh-left {
+	left: auto;
+	right: 0;
 }

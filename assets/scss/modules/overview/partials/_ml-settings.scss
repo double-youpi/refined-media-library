@@ -157,8 +157,12 @@
 		border-color: rgba(0, 0, 0, .1);
 		box-shadow: 0 1px 3px rgba(0, 0, 0, .28);
 	}
+	// A clear ring, as on the Tools page: a 20 % halo could not be seen, the
+	// keyboard user did not know which switch had the focus (WCAG 2.4.7,
+	// compatibility lab, 27/10/2026).
 	&__input:focus-visible ~ &__switch &__track {
-		box-shadow: 0 0 0 4px rgba(var(--dya-accent-rgb), .2);
+		outline: 2px solid var(--dya-accent);
+		outline-offset: 2px;
 	}
 	&__input:disabled ~ &__switch { opacity: .4; }
 

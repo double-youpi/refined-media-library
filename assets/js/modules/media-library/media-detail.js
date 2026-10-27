@@ -252,7 +252,8 @@
 			var startDW = parseInt( $inner.outerWidth(), 10 );
 
 			$( document ).on( 'mousemove.dydw', function ( e2 ) {
-				var delta = startX - e2.clientX; // drag left = wider
+				// Drag outward = wider: left in LTR, right in RTL (the panel is on the left).
+				var delta = document.documentElement.dir === 'rtl' ? e2.clientX - startX : startX - e2.clientX;
 				var newW  = Math.max( 260, Math.min( 720, startDW + delta ) );
 				document.body.style.setProperty( '--dy-dw', newW + 'px' );
 			} );

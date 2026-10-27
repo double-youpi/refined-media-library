@@ -4,13 +4,15 @@ Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.22
+Stable tag: 0.3.24
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A media library organizer for WordPress: nested folders by drag and drop, collections, duplicate and unused file cleanup, WebP/AVIF on upload.
 
 == Description ==
+
+Double Youpï Refined Media Library (RML) is a free WordPress plugin that adds folders and collections to the media library. It is also included in [Double Youpï Refined Admin Dashboard](https://wordpress.org/plugins/doubleyoupi-refined-admin-dashboard/), so install one, not both.
 
 The WordPress media library hasn't really changed in years. A few hundred uploads in, you spend more time scrolling than working. Refined Media Library turns it into an actual asset manager, without adding a single per-image setting for you to babysit.
 
@@ -60,6 +62,14 @@ No locked features, no "upgrade to unlock folders", no nag screens. It's not a t
 
 This media library is also part of [Double Youpï Refined Admin Dashboard](https://wordpress.org/plugins/doubleyoupi-refined-admin-dashboard/), which redraws the rest of the WordPress admin in the same style: navigation, lists, editor, notices and dashboard, in dark or light. It is free too. If you install it, this plugin steps aside and the dashboard keeps your folders and collections. If you use it, you don't need this plugin as well.
 
+**Learn more**
+
+Documentation and news: [doubleyoupi.com/plugins/refined-media-library](https://doubleyoupi.com/plugins/refined-media-library).
+
+**Contributing**
+
+The code of every release is on GitHub: [github.com/double-youpi/refined-media-library](https://github.com/double-youpi/refined-media-library). Found a bug? Open an issue there. Questions and help requests stay on the support forum here.
+
 == Installation ==
 
 1. Install it from the Plugins screen, or upload it to `/wp-content/plugins/doubleyoupi-refined-media-library` by hand if that's your thing.
@@ -100,6 +110,10 @@ No. Alt text is built from the filename, right there on your server. Conversion 
 
 There isn't one. This is the standalone version, no strings attached. If it saves you an afternoon and you feel like it, there's a coffee button somewhere. Entirely optional.
 
+= Is the code open source? =
+
+Yes. It is released under the GPL (version 2 or later), and the code of every release is published on GitHub: [github.com/double-youpi/refined-media-library](https://github.com/double-youpi/refined-media-library). Bug reports are welcome there as issues; for help, use the support forum here.
+
 == External services ==
 
 This plugin sends a report to doubleyoupi.com when you use the "Send feedback" tab, and only then. Nothing is sent while you simply use the media library, and nothing is sent in the background.
@@ -128,6 +142,14 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.24 =
+* Fix: a theme's or plugin's welcome notice no longer lands in the folder column (Hello Elementor).
+* Fix: in the media list, the "Attach" link reads as a link when Refined Admin Dashboard is also active.
+
+= 0.3.23 =
+* Fix: right-to-left languages (Arabic, Hebrew, Persian): the folder panel runs along the menu on the right, the detail panel opens on the left, and both resize in the right direction.
+* Fix: keyboard focus is visible on the settings cards and in the media library's search and filters; the hidden "Add Media File" button no longer takes the focus.
 
 = 0.3.22 =
 * Faster: the plugin's settings are read with WordPress's own settings in one database query, instead of separate queries on every page, the public site included.
@@ -281,6 +303,12 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.24 =
+Welcome notices stay out of the folder column.
+
+= 0.3.23 =
+Right-to-left languages and visible keyboard focus.
 
 = 0.3.22 =
 Fewer database queries on every page.
