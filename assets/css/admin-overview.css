@@ -2605,6 +2605,14 @@ body.dy-theme-light .dy-overview__support {
   height: 1px;
   pointer-events: none;
 }
+.dy-mlset input[type=checkbox].dy-mlset__input {
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
 .dy-mlset__switch {
   justify-self: end;
   flex-shrink: 0;

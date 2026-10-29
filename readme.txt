@@ -4,7 +4,7 @@ Tags: media library organizer, media folders, folders, media library, webp
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.24
+Stable tag: 0.3.25
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -142,6 +142,10 @@ Privacy policy: https://doubleyoupi.com/privacy
 8. One-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Changelog ==
+
+= 0.3.25 =
+* Fix: WebP and AVIF conversion on upload keeps working when another plugin hands back an unexpected value for the image metadata.
+* Fix: in the settings, a setting the server cannot use (AVIF) no longer shows a stray checkbox next to its switch.
 
 = 0.3.24 =
 * Fix: a theme's or plugin's welcome notice no longer lands in the folder column (Hello Elementor).
@@ -303,6 +307,9 @@ Privacy policy: https://doubleyoupi.com/privacy
 * First public release. Nested folders with drag-to-reorganise and a right-click menu, collections, a Finder-style detail panel, duplicate and orphan cleanup, automatic alt text and titles, WebP/AVIF conversion on upload, and one-click import from FileBird, Real Media Library, HappyFiles, Folders and Enhanced Media Library.
 
 == Upgrade Notice ==
+
+= 0.3.25 =
+Settings: no stray checkbox next to a disabled switch.
 
 = 0.3.24 =
 Welcome notices stay out of the folder column.

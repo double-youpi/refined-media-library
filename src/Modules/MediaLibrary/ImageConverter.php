@@ -44,7 +44,12 @@ class ImageConverter extends AbstractModule {
 		add_filter( 'wp_generate_attachment_metadata', [ $this, 'on_generate_metadata' ], 20, 2 );
 	}
 
-	public function on_generate_metadata( array $metadata, int $attachment_id ): array {
+	public function on_generate_metadata( $metadata, $attachment_id ) {
+		// Untyped: another filter may hand back false; leave such a value alone.
+		if ( ! is_array( $metadata ) ) {
+			return $metadata;
+		}
+		$attachment_id = (int) $attachment_id;
 		// Short-circuit: if Module 04 (Optimisation) has registered itself via the
 		// `doubleyoupi_perf_image_converter` filter, it owns the conversion pipeline.
 		// M07 defers to M04's hook (which has its own options, its own quality setting,
